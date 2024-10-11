@@ -1,7 +1,7 @@
 **Helpful resource:** [How to write SRS](https://www.perforce.com/blog/alm/how-write-software-requirements-specification-srs-document)
 Start with bullet points and we will buff it out into paragraphs after.
 ___
-## BRIEF
+## Beeeef
 
 ___
 ### TABLE OF CONTENTS
