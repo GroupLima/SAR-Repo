@@ -26,6 +26,7 @@ ___
 ## FUNCTIONAL REQUIREMENTS
 - features of the search tool, what it must do
 - i.e. The system must send a confirmation email whenever an order is placed
+- display the appropriate original photo of the referenced xml, on a page
 
 ___
 ## NONFUNCTIONAL REQUIREMENTS
