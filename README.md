@@ -1,2 +1,2 @@
-# ARO-Project
-Aberdeen Registers Online (ARO) search tool web application project
+# SAR-Project
+Search Aberdeen Registers (SAR) search tool web application project
