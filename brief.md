@@ -2,8 +2,17 @@
 Start with bullet points and we will buff it out into paragraphs after.
 ___
 ## BRIEF
+
 ___
 ### TABLE OF CONTENTS
+
+#### Client Meeting
+#### Introduction: Purpose and Objectives
+#### Target Audience and Intended Usage
+#### Functional Requirements
+#### Nonfunctional Requirements
+#### Project Timing
+#### Definitions and Acronyms
 
 ___
 ### CLIENT MEETING
