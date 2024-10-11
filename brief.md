@@ -3,7 +3,6 @@ Start with bullet points and we will buff it out into paragraphs after.
 ___
 ## BRIEF
 
-___
 ### TABLE OF CONTENTS
 
 #### Client Meeting
