@@ -2,7 +2,6 @@
 Start with bullet points and we will buff it out into paragraphs after.
 ___
 ## BREF
-
 ___
 ### TABLE OF CONTENTS
 
