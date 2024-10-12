@@ -54,7 +54,10 @@ ___
 
 ___
 
-### PROJECT TIMING (andy)
+
+### PROJECT TIMING
+
+The stance chosen to carry out this project is that of the agile philosophy. Following this concluded that the one (1) week sprints are most appropriate length given both the time-frame and other responsibilities to our coursework. This layout will give us the best environment to perform at our optimum. Our sprint planning sessions will be had every Monday at 16:00 P.M. and further into the week, the classic sprint workflow will be kept to. Each iteration will allow us to incrementally progress towards a deliverable product for the client, for which we will have a further three (3) sprints for.
 
 ___
 
