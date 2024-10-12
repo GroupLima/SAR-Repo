@@ -17,11 +17,10 @@ ___
 ### CLIENT MEETING
 
 ___
-### INTRODUCTION: PURPOSE AND OBJECTIVES
+### INTRODUCTION: PURPOSE AND OBJECTIVES (fariha)
 
-This project aims to improve the previous version of Search Aberdeen Registers (SAR) (https://sar.abdn.ac.uk/#homepage), which was created in 2017. We will recreate the search tool using PHP, aligning with current practice and aiding future support and maintenance. The front end of the webpage will be developed using JavaScript and CSS. GitHub will be the source code repository and version control, and PHPUnit will be the testing framework.
+This project aims to improve the previous version of Search Aberdeen Registers (SAR) (https://sar.abdn.ac.uk/#homepage), which was created in 2017. We will recreate the search tool using PHP, aligning with current practice and aiding future support and maintenance. The front end of the webpage will be developed using JavaScript and CSS. GitHub will be the source code repository and version control, and PHPUnit will be the testing framework. The target audience is academic researchers and students with a specialist interest in the content. A secondary audience includes those who are curious about the records and transcripts.
 
-This tool is for the Aberdeen Registers Online organisation. It will allow users to search blah blah
 
 - rough summary of general goals and objectives goes here (scope)
 	- i.e improve upon 2017 version
@@ -30,7 +29,7 @@ This tool is for the Aberdeen Registers Online organisation. It will allow users
 - who lima is (project manager, product master, scrum master, other roles?)
 
 ___
-### TARGET AUDIENCE AND INTENDED USAGE
+### TARGET AUDIENCE AND INTENDED USAGE (rebekah)
 
 The primary audience of the webpage and search tool includes academic researchers and students with specific interest in the topic. The secondary audience includes non-specialists who have a general interest in the records and transcripts.
 
@@ -39,7 +38,7 @@ It will be kept in mind that some of these users are novices at technology.
 - experts in the field, but may be novice technology users
 
 ___
-### FUNCTIONAL REQUIREMENTS
+### FUNCTIONAL REQUIREMENTS (holly)
 - features of the search tool, what it must do
 - i.e. The system must send a confirmation email whenever an order is placed
 - implement easier system to browse through the volumes and pages
@@ -50,19 +49,20 @@ The user should be able to search for a word, expression or phrase and filter th
 
 The current edition of the tool does not allow for copying of results, so this will be added, as well as any additional fuctions as the client wishes (i.e., new searches, quality of life improvements)
 ___
-### NONFUNCTIONAL REQUIREMENTS
+### NONFUNCTIONAL REQUIREMENTS (caitlin & haziel)
 - performance, security, usability, accessibility, reliability and scalability
 - programming and scripting languages
 	- front-end: php, javascript, css, html
 	- back-end: up to us?
 - user experience relating to ui design (ux)
+	- back-end: python
 
 ___
 
-### PROJECT TIMING
+### PROJECT TIMING (andy)
 
 ___
 
-### DEFINITIONS AND ACRONYMS
+### DEFINITIONS AND ACRONYMS (piotr & dermot)
 
 ___
