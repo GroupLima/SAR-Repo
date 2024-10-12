@@ -34,7 +34,7 @@ ___
 
 The primary audience of the webpage and search tool includes academic researchers and students with specific interest in the topic. The secondary audience includes non-specialists who have a general interest in the records and transcripts.
 
-We will keep in mind that some of these users are novices at technology.
+It will be kept in mind that some of these users are novices at technology.
 
 - experts in the field, but may be novice technology users
 
@@ -42,13 +42,20 @@ ___
 ### FUNCTIONAL REQUIREMENTS
 - features of the search tool, what it must do
 - i.e. The system must send a confirmation email whenever an order is placed
-- holly this is my change
+- implement easier system to browse through the volumes and pages
+- may add additional searches if the client wishes
+
+Most importantly, our version of the search tool must retain the existing functionality of Search Aberdeen Registers. What this involves, is creating both basic and advanced search functions, and giving the user the ability to browse through each volume, page and entry.
+The user should be able to search for a word, expression or phrase and filter the results in various ways (i.e., page, date, content). They should also be able to search at the beggining, middle and end of words for their desired string of characters, and check for spelling variants.
+
+The current edition of the tool does not allow for copying of results, so this will be added, as well as any additional fuctions as the client wishes (i.e., new searches, quality of life improvements)
 ___
 ### NONFUNCTIONAL REQUIREMENTS
 - performance, security, usability, accessibility, reliability and scalability
 - programming and scripting languages
 	- front-end: php, javascript, css, html
 	- back-end: up to us?
+- user experience relating to ui design (ux)
 
 ___
 
