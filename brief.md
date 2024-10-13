@@ -55,7 +55,7 @@ ___
 - programming and scripting languages
 	- front-end: php, javascript, css, html
 	- back-end: up to us?
-- user experience relating to ui design (ux)
+- user experience (ux) relating to ui design 
 	- back-end: python
 
 ___
@@ -73,9 +73,16 @@ ___
 - Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [definition from https://sar.abdn.ac.uk]
 
 ARO - Aberdeen Registers Online
-<br> LACR - Law in the Aberdeen Council Registers
+<br> LACR - Law in the Aberdeen Council Registers 
 <br> SAR - Search Aberdeen Registers
 <br> TEI - Text Encoding Initiative (An organisation which has developed guidlines for presenting text online for research, teaching and preservation)
 <br> XML - Extensible Markup Language (Used for data representation and storage)
+<br> PHP - Hypertext Preprocessor (oginally stands for Personal Home Page) - powerful programming langage that is commonly used when buidling websites
+<br> UI - User Interface
+<br> UX - User Experience
+<br> HTML - Hypertext Markup Language (Used for the front end of a website, basic layout etc)
+<br> CSS - Cascading Style Sheets (Used for the front end, to simplify the html, and to make the UX uniform)
+
+
 
 ___
