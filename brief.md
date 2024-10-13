@@ -77,7 +77,7 @@ ARO - Aberdeen Registers Online
 <br> SAR - Search Aberdeen Registers
 <br> TEI - Text Encoding Initiative (An organisation which has developed guidlines for presenting text online for research, teaching and preservation)
 <br> XML - Extensible Markup Language (Used for data representation and storage)
-<br> PHP - Hypertext Preprocessor (oginally stands for Personal Home Page) - powerful programming langage that is commonly used when buidling websites
+<br> PHP - Hypertext Preprocessor (oginally stands for Personal Home Page) - powerful programming langage that is commonly used when building websites
 <br> UI - User Interface
 <br> UX - User Experience
 <br> HTML - Hypertext Markup Language (Used for the front end of a website, basic layout etc)
