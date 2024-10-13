@@ -38,16 +38,16 @@ It will be kept in mind that some of these users are novices at technology.
 - experts in the field, but may be novice technology users
 
 ___
-### FUNCTIONAL REQUIREMENTS (holly)
+### FUNCTIONAL REQUIREMENTS
 - features of the search tool, what it must do
 - i.e. The system must send a confirmation email whenever an order is placed
 - implement easier system to browse through the volumes and pages
 - may add additional searches if the client wishes
 
 Most importantly, our version of the search tool must retain the existing functionality of Search Aberdeen Registers. What this involves, is creating both basic and advanced search functions, and giving the user the ability to browse through each volume, page and entry.
-The user should be able to search for a word, expression or phrase and filter the results in various ways (i.e., page, date, content). They should also be able to search at the beggining, middle and end of words for their desired string of characters, and check for spelling variants.
+The user should be able to search for a word, expression or phrase and filter the results in various ways (i.e., page, date, content, language). They should also be able to search at the beginning, middle and end of words for their desired string of characters, and check for spelling variants.
 
-The current edition of the tool does not allow for copying of results, so this will be added, as well as any additional fuctions as the client wishes (i.e., new searches, quality of life improvements)
+The current edition of the tool does not allow for highlighting and copying of search results, so this will be added, as well as any additional fuctions as the client wishes (i.e., new searches, quality of life improvements)
 ___
 ### NONFUNCTIONAL REQUIREMENTS (caitlin & haziel)
 - performance, security, usability, accessibility, reliability and scalability
