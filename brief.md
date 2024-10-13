@@ -33,7 +33,7 @@ ___
 
 The key demographic of the webpage and search tool will consist of users aged 18 and above with a range of technological skills and experiences. The primary audience includes academic researchers and students with specific interests in the subject material. The secondary audience includes non-specialists who have a general interest in records and transcripts. To ensure that the webpage and search tool are accessible to all, steps will be taken to create a usable and accessible user interface with clear directions and instructions.
 
-The webpage and search tool will be used to search and navigate the Aberdeen registers, a valuable historical resource. The webpage will access the search tool and information about the tool and registers. It will also include external links to the University of Aberdeen registers page (https://www.abdn.ac.uk/riiss/projects/aberdeen-registers-online-213.php) and the Aberdeen registers blog page (https://aberdeenregisters.org/blog/). The search tool will be able to search the registers for keywords, phrases and expressions and filter language, spelling variant, volume, page, paragraph, date and entry ID.
+The webpage and search tool will be used to search and navigate the Aberdeen registers, a valuable historical resource. The webpage will access the search tool and information about the tool and registers. It will also include external links to the [University of Aberdeen registers page](https://www.abdn.ac.uk/riiss/projects/aberdeen-registers-online-213.php) and the [Aberdeen registers blog page](https://aberdeenregisters.org/blog/).
 
 ___
 ### FUNCTIONAL REQUIREMENTS
