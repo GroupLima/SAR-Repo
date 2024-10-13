@@ -60,7 +60,10 @@ ___
 
 ___
 
-### PROJECT TIMING (andy)
+
+### PROJECT TIMING
+
+The development methodology chosen to carry out this project is agile development. Following this, it was concluded that the one week sprints are most appropriate length given both the time-frame and other responsibilities of our coursework. This layout will give us the best environment to optimize our performance. Our sprint planning sessions will be held every Monday at 16:00 P.M. and further into the week, the classic sprint workflow will be kept to. Each iteration will allow us to incrementally progress towards a deliverable product for the client, for which we will have a further three or four sprints for.
 
 ___
 
