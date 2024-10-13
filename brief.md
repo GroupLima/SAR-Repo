@@ -73,9 +73,9 @@ ___
 - Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [definition from https://sar.abdn.ac.uk]
 
 ARO - Aberdeen Registers Online
-LACR - Law in the Aberdeen Council Registers
-SAR - Search Aberdeen Registers
-TEI - Text Encoding Initiative (An organisation which has developed guidlines for presenting text online for research, teaching and preservation)
-XML - Extensible Markup Language (Used for data representation and storage)
+<br> LACR - Law in the Aberdeen Council Registers
+<br> SAR - Search Aberdeen Registers
+<br> TEI - Text Encoding Initiative (An organisation which has developed guidlines for presenting text online for research, teaching and preservation)
+<br> XML - Extensible Markup Language (Used for data representation and storage)
 
 ___
