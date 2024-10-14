@@ -46,12 +46,6 @@ Lastly, the current edition of the tool does not allow for highlighting and copy
 ___
 ### NONFUNCTIONAL REQUIREMENTS
 
-- performance, security, usability, accessibility, reliability and scalability
-- programming and scripting languages
-	- front-end: php, javascript, css, html
-	- back-end: python
-- user experience (ux) relating to ui design back-end: python
-
 ### Capacity & scalability
 
 The database contains 5MB of transcribed XML files. It is considered a medium sized database and not expected to increase. However, if the search tool has an increase in the number of users, the website should still be able to handle the influx of activity, especially by following good programming practices that optimize efficiency in every aspect.
