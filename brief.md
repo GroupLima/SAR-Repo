@@ -1,20 +1,14 @@
-**Helpful resource:** [How to write SRS](https://www.perforce.com/blog/alm/how-write-software-requirements-specification-srs-document)
-Start with bullet points and we will buff it out into paragraphs after.
 ___
 ## BRIEF
 
 ### TABLE OF CONTENTS
 
-#### Client Meeting
 #### Introduction: Purpose and Objectives
 #### Target Audience and Intended Usage
 #### Functional Requirements
 #### Nonfunctional Requirements
 #### Project Timing
 #### Definitions and Acronyms
-
-___
-### CLIENT MEETING
 
 ___
 ### INTRODUCTION: PURPOSE AND OBJECTIVES
@@ -91,7 +85,7 @@ The development methodology chosen to carry out this project is agile developmen
 
 ___
 
-### DEFINITIONS AND ACRONYMS (piotr & dermot)
+### DEFINITIONS AND ACRONYMS
 - Aberdeen Registers Online: 1398-1511 (ARO) is a digital transcription of the first eight volumes of the Aberdeen Council Registers. [definition from https://www.abdn.ac.uk/aro]
 - Law in the Aberdeen Council Registers, 1398-1511: Concepts, Practices, Geographies (LACR) was a project to create a digital textual resource from the registers. This was achieved by creating a transcription and TEI-compliant mark-up of the entire corpus of text from the registers covering 1398-1511. [definition from https://aberdeenregisters.org/project/]
 - Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [definition from https://sar.abdn.ac.uk]
