@@ -13,7 +13,7 @@ ___
 ___
 ### INTRODUCTION: PURPOSE AND OBJECTIVES
 
-This project aims to improve the previous version of Search Aberdeen Registers (SAR) (https://sar.abdn.ac.uk/#homepage), which was created in 2017. We will recreate the search tool using PHP, aligning with current practice and aiding future support and maintenance. The front end of the webpage will be developed using JavaScript and CSS. GitHub will be the source code repository and version control, and PHPUnit will be the testing framework. The target audience is academic researchers and students with a specialist interest in the content. A secondary audience includes those who are curious about the records and transcripts.
+This project aims to improve the previous version of Search Aberdeen Registers [SAR](https://sar.abdn.ac.uk/#homepage), which was created in 2017. We will recreate the search tool using PHP, aligning with current practice and aiding future support and maintenance. The front end of the webpage will be developed using JavaScript and CSS. GitHub will be the source code repository and version control, and PHPUnit will be the testing framework. The target audience is academic researchers and students with a specialist interest in the content. A secondary audience includes those who are curious about the records and transcripts.
 
 
 ___
@@ -40,7 +40,7 @@ Lastly, the current edition of the tool does not allow for highlighting and copy
 ___
 ### NONFUNCTIONAL REQUIREMENTS
 
-### Capacity & scalability
+#### Capacity & scalability
 
 The database contains 5MB of transcribed XML files. It is considered a medium sized database and not expected to increase. However, if the search tool has an increase in the number of users, the website should still be able to handle the influx of activity, especially by following good programming practices that optimize efficiency in every aspect.
 
@@ -86,9 +86,9 @@ The development methodology chosen to carry out this project is agile developmen
 ___
 
 ### DEFINITIONS AND ACRONYMS
-- Aberdeen Registers Online: 1398-1511 (ARO) is a digital transcription of the first eight volumes of the Aberdeen Council Registers. [definition from https://www.abdn.ac.uk/aro]
-- Law in the Aberdeen Council Registers, 1398-1511: Concepts, Practices, Geographies (LACR) was a project to create a digital textual resource from the registers. This was achieved by creating a transcription and TEI-compliant mark-up of the entire corpus of text from the registers covering 1398-1511. [definition from https://aberdeenregisters.org/project/]
-- Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [definition from https://sar.abdn.ac.uk]
+- Aberdeen Registers Online: 1398-1511 (ARO) is a digital transcription of the first eight volumes of the Aberdeen Council Registers. [ARO Definition](https://www.abdn.ac.uk/aro)
+- Law in the Aberdeen Council Registers, 1398-1511: Concepts, Practices, Geographies (LACR) was a project to create a digital textual resource from the registers. This was achieved by creating a transcription and TEI-compliant mark-up of the entire corpus of text from the registers covering 1398-1511. [LACR Project Definition](https://aberdeenregisters.org/project/)
+- Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [SAR Definition](https://sar.abdn.ac.uk)
 
 ARO - Aberdeen Registers Online
 <br> LACR - Law in the Aberdeen Council Registers 
