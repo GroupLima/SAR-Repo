@@ -50,8 +50,16 @@ Lastly, the user should be able to search through the XML files using XQuery.
 
 
 ___
-### NONFUNCTIONAL REQUIREMENTS (caitlin & haziel)
-#### Capacity & scalability
+### NONFUNCTIONAL REQUIREMENTS
+
+- performance, security, usability, accessibility, reliability and scalability
+- programming and scripting languages
+	- front-end: php, javascript, css, html
+	- back-end: python
+- user experience (ux) relating to ui design back-end: python
+
+### Capacity & scalability
+
 The database contains 5MB of transcribed XML files. It is considered a medium sized database and not expected to increase. However, if the search tool has an increase in the number of users, the website should still be able to handle the influx of activity, especially by following good programming practices that optimize efficiency in every aspect.
 
 The method to access and manage the pictures of the original documents is currently unknown, so we still have to discuss this matter with the client.
@@ -101,9 +109,16 @@ ___
 - Search Aberdeen Registers is a prototype web application to facilitate search within the Aberdeen Registers Online (ARO) corpus. [definition from https://sar.abdn.ac.uk]
 
 ARO - Aberdeen Registers Online
-<br> LACR - Law in the Aberdeen Council Registers
+<br> LACR - Law in the Aberdeen Council Registers 
 <br> SAR - Search Aberdeen Registers
 <br> TEI - Text Encoding Initiative (An organisation which has developed guidlines for presenting text online for research, teaching and preservation)
 <br> XML - Extensible Markup Language (Used for data representation and storage)
+<br> PHP - Hypertext Preprocessor (oginally stands for Personal Home Page) - powerful programming langage that is commonly used when building websites
+<br> UI - User Interface
+<br> UX - User Experience
+<br> HTML - Hypertext Markup Language (Used for the front end of a website, basic layout etc)
+<br> CSS - Cascading Style Sheets (Used for the front end, to simplify the html, and to make the UX uniform)
+
+
 
 ___
