@@ -17,13 +17,13 @@ ___
 ### CLIENT MEETING
 
 ___
-### INTRODUCTION: PURPOSE AND OBJECTIVES (fariha)
+### INTRODUCTION: PURPOSE AND OBJECTIVES
 
 This project aims to improve the previous version of Search Aberdeen Registers (SAR) (https://sar.abdn.ac.uk/#homepage), which was created in 2017. We will recreate the search tool using PHP, aligning with current practice and aiding future support and maintenance. The front end of the webpage will be developed using JavaScript and CSS. GitHub will be the source code repository and version control, and PHPUnit will be the testing framework. The target audience is academic researchers and students with a specialist interest in the content. A secondary audience includes those who are curious about the records and transcripts.
 
 
 ___
-### TARGET AUDIENCE AND INTENDED USAGE (rebekah)
+### TARGET AUDIENCE AND INTENDED USAGE
 
 The key demographic of the webpage and search tool will consist of users aged 18 and above with a range of technological skills and experiences. The primary audience includes academic researchers and students with specific interests in the subject material. The secondary audience includes non-specialists who have a general interest in records and transcripts. To ensure that the webpage and search tool are accessible to all, steps will be taken to create a usable and accessible user interface with clear directions and instructions.
 
