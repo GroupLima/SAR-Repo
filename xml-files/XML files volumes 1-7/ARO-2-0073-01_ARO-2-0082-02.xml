@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-12-21T12:11:23">WH</change>
+            <change status="transcribed" when="2018-05-18T16:38:45">WP: checked annotations</change>
+            <change status="corrected" when="2018-06-15T13:10:02">EF</change>
+            <change status="corrected" when="2018-09-19T16:02:49">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="73" break="yes" xml:base=""/>
+            <div type="other">
+                <p><date when="1410" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0073-01" xml:lang="la">
+                    <p><lb break="yes"/>finientes cum Johanne fichet preposito de Anno et cetera
+                            cccc<hi rend="superscript">mo</hi> x<hi rend="superscript">mo</hi> .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0073-02" xml:lang="la">
+                    <p><lb break="yes"/><cb n="1"/><add place="margin">t'</add> Angus glenyson' xvj
+                            d'<lb break="yes"/><add place="margin">Johannes</add> Mathy coupar xij
+                            d'<lb break="yes"/>Thomas taillour xvj d'<lb break="yes"/><add
+                            place="margin">Johannes</add> Johannes fynlay textor viij d', Johannes
+                        Dunccani xij d'<lb break="yes"/><add place="margin">Johannes</add> Edy
+                        vxstar' vj d'<lb break="yes"/><add place="margin">Johannes</add> Meg
+                        fernwale viij d'<lb break="yes"/><add place="margin">Johannes</add> Magister
+                        Johannes scot' xij d'<lb break="yes"/><add place="margin">Johannes</add> Meg
+                        Abirnethy xij d'<lb break="yes"/>Nicholaus fery xviij d'<lb break="yes"
+                            /><add place="margin">Johannes</add> Johannes Roberti Walkar' ij s' .<lb
+                            break="yes"/>Mauld benche xij d'<lb break="yes"/>Johannes futhas xij
+                            d'<lb break="yes"/>Thomas henrici xij d'<lb break="yes"/><add
+                            place="margin">Johannes</add> Alexander pollor viij d'<lb break="yes"
+                        />Willelmus smyth vj d'<lb break="yes"/>Carnelee<lb break="yes"/>hugo
+                        lorymar xij d'<lb break="yes"/>Jacobus scynnar' xij d'<lb break="yes"/><add
+                            place="margin">Johannes</add> Sissy vj d'<lb break="yes"/><add
+                            place="margin">Johannes</add> Ewny goldsmyth xij d'<lb break="yes"
+                        />Johannes patricij xij d'<lb break="yes"/><add place="margin">t'</add>
+                        Andreas coupar xij d'<lb break="yes"/><add place="margin">t'</add> Willelmus
+                        sadillar' viij d'<lb break="yes"/>Marion' Abell' xij d'<lb break="yes"/><add
+                            place="margin">Johannes</add> Mauld mykil vj d'<lb break="yes"/>Johannes
+                        Suerdslepar xij d'<lb break="yes"/><add place="margin">Johannes</add> Thomas
+                        turnour vj d'<lb break="yes"/>Patricius garntuly viij d'<lb break="yes"
+                        />Magy corbrand xij d'<lb break="yes"/>Cristiana Walace vj d'<lb break="yes"
+                        />Meg turnbull' ij s'<lb break="yes"/>Willelmus Watson' ij s'<lb break="yes"
+                        />Johannes Willelmi xij d'<lb break="yes"/>Andreas Johannes pynour xij d'<lb
+                            break="yes"/>Willelmus Johannis pynour <del>xij d'</del> iiij d'<lb
+                            break="yes"/>Willelmus Watson' sutor iiij d'<lb break="yes"/>Jacobus
+                        browne viij d'<lb break="yes"/>Meg' cok viij d'<lb break="yes"/>Johannes
+                        fraser xij d'<lb break="yes"/>Johannes bryane vj d'<lb break="yes"/>Aly
+                        Rauff iiij d'<lb break="yes"/>Johannes Willelmi iiij d'<lb break="yes"
+                        />Johannes Kyntor iiij d'<lb break="yes"/>Adam tod iiij d'<lb break="yes"
+                        />Robertus Willy iiij d'<lb break="yes"/>Willelmus gilruth xij d'<lb
+                            break="yes"/>Clayhil iiij d'<lb break="yes"/>Magy Rauff iiij d'<lb
+                            break="yes"/>Willelmus vricht viij d'<lb break="yes"/><add
+                            place="margin"
+                            ><?oxy_comment_start author="his252" timestamp="20180615T093007+0100" comment="NOTE: The above names from &apos;Andreas Johannes pynour&apos; are linked to this name through a bracket."?>Thomas
+                            trayl<?oxy_comment_end?></add><lb break="yes"/><cb n="2"/><lb
+                            break="yes"/><add place="margin">Johannes</add> Duncanus futhas iiij d',
+                        Robertus smyth iiij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0073-03" xml:lang="la">
+                    <head>sellar'</head>
+                    <p><lb break="yes"/>Enoc sibald iiij d'<lb break="yes"/>Siffy Rauff iiij d'<lb
+                            break="yes"/>Marion' fetes iiij d'<lb break="yes"/>Maliz sprunt vj d'<lb
+                            break="yes"/>Meg' camsy iiij d'<lb break="yes"/>Marion' Pole viij d'<lb
+                            break="yes"/>Meg Walchope vj d'<lb break="yes"/>Joneta sutar' viij d'<lb
+                            break="yes"/>Thomas henrici viij d'<lb break="yes"/>Iwane lydale iiij
+                            d'<lb break="yes"/>Meg' Duby iiij d'<lb break="yes"/>Brydok iiij d'<lb
+                            break="yes"/>Martyn viij d'<lb break="yes"/>Wymort' iiij d'<lb
+                            break="yes"/>Johannes Scot iiij d'<lb break="yes"/>Willelmus Wyly vj
+                            d'<lb break="yes"/>Rayny nasmyth iiij d'<lb break="yes"/>Michael lambert
+                        xij d'<lb break="yes"/>Johannes qwite iiij d'<lb break="yes"/>platfute cum
+                        sociis vj d'<lb break="yes"/>femina barbert' iiij d'<lb break="yes"/>Copyn
+                        coupar xij d'<lb break="yes"/>Johannes Willelmi xij d'<lb break="yes"/>Wat'
+                        Bowar' ij s'<lb break="yes"/>Meg' Bowar' cum sociis - et memorandum de terra
+                        sancti Johannis</p>
+                </div>
+            </div>
+            <pb n="74" break="yes"/>
+            <div type="other">
+                <p><date when="1411-07-22" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0074-01" xml:lang="la">
+                    <p><lb break="yes"/>Taxacio facta quando Johannes Wormot et Johannes henrici
+                        recesserunt apud Edynburgh xxij<hi rend="superscript">o</hi><lb break="yes"
+                        />die mensis Julij Anno Domini Millesimo cccc<hi rend="superscript">mo</hi>
+                            xj<hi rend="superscript">mo</hi> .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0074-02" xml:lang="la">
+                    <p><lb break="yes"/><cb n="1"/>Andreas grig' viij d'<lb break="yes"/>Thomas coky
+                        vj d'<lb break="yes"/>Gilbertus Kynros vj d'<lb break="yes"/>patricius
+                        Nicholay vj d'<lb break="yes"/>Alexander litstar' viij d'<lb break="yes"
+                        />Alexander voket xij d'<lb break="yes"/>Andreas gilberti xij d'<lb
+                            break="yes"/>Rayny voket xvj d'<lb break="yes"/>Johannes trayle vj d'<lb
+                            break="yes"/>Thomas Molfane vj d'<lb break="yes"/>Bricius Roberti iiij
+                            d'<lb break="yes"/>Johannes Smale vj d'<lb break="yes"/>Thomas lamb xl
+                            d'<lb break="yes"/>Robertus glandirston' <del>xviij d'</del> xij d'<lb
+                            break="yes"/>Willelmus strade ij s'<lb break="yes"/>Thomas Brig' ij
+                            s'<lb break="yes"/>Willelmus harpar xij d'<lb break="yes"/>Johannes
+                        fichet ij s'<lb break="yes"/>Alexander clyntre vj d'<lb break="yes"
+                        />Robertus fraser vj d'<lb break="yes"/>Willelmus Andree vj d'<lb
+                            break="yes"/>Willelmus crag' viij d'<lb break="yes"/>Thomas amfrason'
+                        viij d'<lb break="yes"/>Johannes vscher' xviij d'<lb break="yes"/>Johannes
+                        voket vj d'<lb break="yes"/>Johannes Banerman vj d'<lb break="yes"/>Simon
+                        stil vj d'<lb break="yes"/>Johannes henrici xx d'<lb break="yes"/>Johannes
+                        buchane vj d'<lb break="yes"/>Thomas crowdane viij d'<lb break="yes"
+                        />Johannes Walteri ij s'<lb break="yes"/>henricus celty viij d'<lb
+                            break="yes"/>Robertus gray viij d'<lb break="yes"/>Willelmus de Kyntor
+                        xl d'<lb break="yes"/>Andreas Johannis xij d'<lb break="yes"/>Johannes
+                        Wodman xvijj s'<lb break="yes"/>Willelmus sprunt iiij d'<lb break="yes"
+                        />Thomas Roule vj d'<lb break="yes"/>Willelmus blyndsele xij d'<lb
+                            break="yes"/>Thomas Dalton' xviij s'<lb break="yes"/>Nicholayus gray xij
+                            d'<lb break="yes"/>Johannes quitbrow vj d'<lb break="yes"/>Adam
+                        glenyson' viij d'<lb break="yes"/>Rogerus sprunt vj d'<lb break="yes"
+                        />Patricius lang' vj d'<lb break="yes"/>Andreas Mathei xij d'<lb break="yes"
+                            /><cb n="2"/>Johannes cristison' viij d'<lb break="yes"/>Johannes
+                        lambynton' vj d'<lb break="yes"/>Walterus Roberti vj d'<lb break="yes"
+                        />Andreas giffard xij d'<lb break="yes"/>Alexander benyn vj d'<lb
+                            break="yes"/>Johannes Alani <del>xviij d'</del> ij s'<lb break="yes"
+                        />Dunccanus de Marr'<del> xviij d'</del> ij s'<lb break="yes"/>Andreas
+                        Johannis ij s'<lb break="yes"/>Adam thome xij d'<lb break="yes"/>Johannes
+                        Wormot filius vj d'<lb break="yes"/>Alexander Ruthirford' xij d'<lb
+                            break="yes"/>Robertus Dunccani vj d'<lb break="yes"/>Willelmus Jacson'
+                        iij s' .<lb break="yes"/>Rogerus Willelmi xij d'<lb break="yes"/>Johannes
+                        qwite xij d'<lb break="yes"/>Robertus de Echt xij d'<lb break="yes"
+                        />Willelmus ettale xij d'<lb break="yes"/>Robertus lownan xij d'<lb
+                            break="yes"/>Robertus Borthwic xij d'<lb break="yes"/>Johannes Jacobi
+                        xviij d'<lb break="yes"/>Thomas scherar' ij s'<lb break="yes"/>Thomas Andree
+                        viij d'<lb break="yes"/>Thomas sprunt vj d'<lb break="yes"/>patricius
+                        Alexandri viij d'<lb break="yes"/>Robertus Dauid xl d'<lb break="yes"
+                        />Willelmus col vij d'<lb break="yes"/>Dauid Riburn viij d'<lb break="yes"
+                        />Bricius Dunccani ij s'<lb break="yes"/>Johannes cristini de Durris vj
+                            d'<lb break="yes"/>Thomas col vj d'<lb break="yes"/>Willelmus Watson' vj
+                            d'<lb break="yes"/>Col. Johannis xij d'<lb break="yes"/>Johannes yhule
+                        xij d'<lb break="yes"/>Alexander stane vj d'<lb break="yes"/>Johannes Wormot
+                        viij d'<lb break="yes"/>Eliseus de Marr' viij d'<lb break="yes"/>Robertus
+                        browne viij d'<lb break="yes"/>Willelmus Johannis viij d'<lb break="yes"
+                        />Willelmus Dayntre xx d'<lb break="yes"/>Johannes petfair' viij d'<lb
+                            break="yes"/>Johannes Andree hunnyson' vj d'<lb break="yes"/>Thomas
+                        blyndsele viij d<lb break="yes"/>Johannes Nesbit viij d'<lb break="yes"
+                        />Johannes Marchele viij d'<lb break="yes"/>Thomas stephani viij d'<lb
+                            break="yes"/>Alexander Johannis vj d'<lb break="yes"/>Johannes scherale
+                        vj d'<lb break="yes"/>Johannes h<unclear reason="hand">onter</unclear>
+                        <seg xml:id="anchorb185">vj d'</seg><note anchored="true" type="editorial" target="#anchorb185">There is a manicula in the right margin, pointing to the right. A line links the finger to the entry at the bottom of the next page.</note>
+                        <pb n="75" break="yes"/>
+                        <lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180615T095855+0100" comment="NOTE: This section is actually at the bottom of page 75, but appears to be linked to the material on the previous page, rather than to that on this page."?>De
+                        ista summa<?oxy_comment_end?> . Willelmus de camera . pater . soluit xx s' .
+                        De qua est solutus de xiij s' vj d'<lb break="yes"/>Item Robertus Dauid
+                        soluit xx s' .<lb break="yes"/>Johannes fichet xx s' .<lb break="yes"
+                        />Robertus glandirston' xx s' .</p>
+                </div>
+            </div>
+            <div type="other">
+                <p><date when="1409" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0075-01" xml:lang="la">
+                    <p><lb break="yes"/>Assedacio Reddituum et aquarum burgi de Abirdene facta per .
+                        Andream Giffard Johannem Scherar'<lb break="yes"/>Alexandrum Ruthirford' et
+                        Alexandrum benyn ballivos de Anno et cetera quadringentesimo Nono .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0075-02" xml:lang="la">
+                    <head>Stellis</head>
+                    <p><lb break="yes"/>Assedantur Ricardo fichet xx s' <add place="inline">Inde
+                            defalcatur vj s' viij d'</add><lb break="yes"/>Assedantur henrico celty
+                        xl s'<lb break="yes"/>Assedantur . Willelmo baxtar xiij s' . iiij d'<lb
+                            break="yes"/>Adam strathkyn xl d'<lb break="yes"/>Simon baxtar xl d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0075-03" xml:lang="la">
+                    <head>Rake</head>
+                    <p><lb break="yes"/>Andreas Johannis de vico <del>castri</del> furcarum xl s'<lb
+                            break="yes"/>Robertus glandirston' xl s'<lb break="yes"/>Ricardus lownan
+                            <del>liij s' iiij d'</del> iij li'<lb break="yes"/>Johannes qwite
+                            <del>xx s'</del> xxvj . viij d'<lb break="yes"/>Johannes alani iiij
+                            li'<lb break="yes"/>Andreas Johannis de vico castri liij s' . iiij d'<lb
+                            break="yes"/><del>henricus sclatar vj s' . viij d'</del><lb break="yes"
+                            /><add place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180615T101209+0100" comment="NOTE: This note is linked to the previous seven lines through a bracket."?><gap
+                                reason="fold"/>o <gap reason="fold"/>ia<?oxy_comment_end?></add><lb
+                            break="yes"/>Willelmus Jacson' vj li'<lb break="yes"/><add
+                            place="margin">Inde Andreas girk xiij s' iiij d'</add><lb break="yes"
+                            /><add place="margin">Et Johannes Simonis vj s' viij d'</add><lb
+                            break="yes"/>Johannes yhung x s'<lb break="yes"/>Johannes voket xx s'
+                            .<lb break="yes"/>Johannes benyn x s' .<lb break="yes"/>philippus
+                        Johannis vj s' . viij d'<lb break="yes"/><add place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180615T101316+0100" comment="NOTE: This note is linked to the previous seven lines through a bracket."?><supplied
+                                reason="fold">r</supplied><?oxy_comment_end?>ete</add><lb
+                            break="yes"/>Thomas Molfane . xl s'<lb break="yes"/>Alexander clyntre
+                        xxxiij s' iiij d'<lb break="yes"/>Willelmus thaynston' xx s'<lb break="yes"
+                        />Johannes qwitbrow x s'<lb break="yes"/>Alanus Ricardi xx s'<lb break="yes"
+                        />Thomas squiar' xx s'<lb break="yes"/>Simon de camera xl d'<lb break="yes"
+                            /><add place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180615T101335+0100" comment="NOTE: This note is linked to the previous seven lines through a bracket."?><supplied
+                                reason="fold">re</supplied>te<?oxy_comment_end?></add><lb
+                            break="yes"/>Willelmus blyndsele liij s' . iiij d'<lb break="yes"
+                        />Johannes filius cristini xxvj s' viij d'<lb break="yes"/>Willelmus
+                        Johannis xxxiij s' iiij d'<lb break="yes"/><del>Simon stil xx s'</del><lb
+                            break="yes"/><del>Johannes garuok xiij s' iiij d'</del><lb break="yes"
+                            /><add place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180615T101357+0100" comment="NOTE: This note is linked to the previous five lines through a bracket."?><supplied
+                                reason="fold">r</supplied>ete<?oxy_comment_end?></add><lb
+                            break="yes"/>Patricius Nicholay xx s'<lb break="yes"/>Andreas baxtar xx
+                            s'<lb break="yes"/>Willelmus crag <del>xiij s' iiij d'</del> xx s'<lb
+                            break="yes"/>Alexander Dalton' xx s'<lb break="yes"/>Willelmus
+                        fidilmouth xx s'<lb break="yes"/><add place="margin"
+                            ><?oxy_comment_start author="his252" timestamp="20180615T101418+0100" comment="NOTE: This note is linked to the previous five lines through a bracket."?>dimidium
+                            rete<?oxy_comment_end?></add><lb break="yes"/>Summa huius aque xl li' vj
+                        s' viij d'</p>
+                </div>
+                <pb n="76" break="yes"/>
+                <div type="entry" xml:id="ARO-2-0076-01" xml:lang="la">
+                    <head>Midchingil</head>
+                    <p><lb break="yes"/>Thomas Scherare vnum rete . et dimidium iiij li'<lb
+                            break="yes"/>Johannes Wormot filius xxvj s' viij d'<lb break="yes"
+                        />Johannes buchane xl s'<lb break="yes"/>Johannes cristini de Durris xl
+                            s'<lb break="yes"/>Willelmus trayle x s'<lb break="yes"/>laurencius
+                        buchane xx s' .<lb break="yes"/>Johannes Roberti baxtar xij s'<lb
+                            break="yes"/>laurencius Johannis xxvij s' . viij d'<lb break="yes"
+                        />Dunccanus hervy xx s' .<lb break="yes"/>Andreas Scot xiij s' iiij d'<lb
+                            break="yes"/>Thomas Johannis xx s' <add place="inline">Inde Willelmus
+                            Roberti vj s' . viij d'</add><lb break="yes"/>Willelmus Calman xiij s' .
+                        iiij d'<lb break="yes"/>Summa xvj lib'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0076-02" xml:lang="la">
+                    <head>Pot</head>
+                    <p><lb break="yes"/>Johannes Walteri iij li'<lb break="yes"/><del>Colinus
+                            Johannis iij li'</del><lb break="yes"/><del>Thomas halt x s' .</del><lb
+                            break="yes"/>Johannes gilberti xv s'<lb break="yes"/><del>Johanne</del>
+                        Johannes de fores xxj . viij d'<lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180615T102445+0100" comment="NOTE: This note is linked to the previous five lines through a bracket."?><add
+                            place="margin">rete</add><?oxy_comment_end?><lb break="yes"/>Johannes
+                        atkynson' xx s' .<lb break="yes"/>Willelmus sperk xiij s' . iiij d'<lb
+                            break="yes"/>Andreas Mathei xxvj s' viij d'<lb break="yes"/>henricus
+                        buchane <del>xxj s'</del> x s'<lb break="yes"/>Thomas Roule <del>xiij s'
+                            iiij d'</del> xvj s' . viij d'<lb break="yes"/>Johannes Edmundson' xx
+                            s'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb186">rete</seg><note anchored="true" type="editorial" target="#anchorb186">This note is linked to the previous six lines through a bracket.</note></add><lb
+                            break="yes"/>Johannes letgate xiij s' iiij d'<lb break="yes"/>Stephanus
+                        philippi xiij s' iiij d'<lb break="yes"/>Thomas alani xxvj s' viij d'<lb
+                            break="yes"/>Adam glenyson' xxvj s' viij d' <add place="inline">Inde .
+                            Johannes de camera vj s' viij d'</add><lb break="yes"/>Willelmus
+                        lambynton' vj s' viij d'<lb break="yes"/>Galfridus Renfrw xiij s' iiij d'<lb
+                            break="yes"/><del>Robertus Duccani</del><lb break="yes"/><del>Stephanus
+                            Andree vj s' . viij d'</del><lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180615T102555+0100" comment="NOTE: This note is linked to the previous eight lines through a bracket."?><add
+                            place="margin">rete</add><?oxy_comment_end?><lb break="yes"/>Robertus
+                        Dunccani xx s' .<lb break="yes"/>Robertus echt xxxiij s' iiij d'<lb
+                            break="yes"/>Robertus Borthwic <del>xv s'</del> xx s'<lb break="yes"
+                        />Alexander stane xxvj s' . viij d'<lb break="yes"/>Alanus Jacobi xj s' .
+                        viij d'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb187">rete</seg><note anchored="true" type="editorial" target="#anchorb187">This note is linked to the previous five lines through a bracket.</note></add></p>
+                </div>
+                <pb n="77" break="yes"/>
+                <div type="entry" xml:id="ARO-2-0077-01" xml:lang="la">
+                    <head>Pot</head>
+                    <p><lb break="yes"/>Simon palframan xv s'<lb break="yes"/>Johannes huyson'<del>
+                            xx s'</del> xxvj s' . viij d'<lb break="yes"/>Johannes Smythson' x s'<lb
+                            break="yes"/>Willelmus Watson' x s'<lb break="yes"/><del>Ewny Weland xi
+                            s' xiij s' iiij d'</del><lb break="yes"/>Johannes Michaelis x s' .<lb
+                            break="yes"/>Alexander voket xlvj s' viij d'<lb break="yes"/><add
+                            place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180615T103119+0100" comment="NOTE: This note is linked to the previous seven lines through a bracket."?><supplied
+                                reason="fold">re</supplied>te<?oxy_comment_end?></add><lb
+                            break="yes"/>Ewny Weland <del>xiij s' iiij d'</del> xx s'<lb break="yes"
+                        />ffynlaus taillour xiij s' iiij d'<lb break="yes"/>Andreas nase xiij s'
+                        iiij d'<lb break="yes"/>Simon scynnar' xiij s' . iiij d'<lb break="yes"
+                        />Willelmus ayncroft <del>v</del> x s'<lb break="yes"/>Willelmus blakburn xx
+                        s' .<lb break="yes"/>Thomas halt x s' .<lb break="yes"/>Thomas lownan<lb
+                            break="yes"/>Summa xxxij li'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0077-02" xml:lang="la">
+                    <head>Aqua Borealis</head>
+                    <p><lb break="yes"/>Willelmus ettale xxj s' . viij d'<lb break="yes"/><add
+                            place="margin">-</add> Bricius Roberti xv s' .<lb break="yes"/>Alexander
+                        Willelmi x s' .<lb break="yes"/>Alexander litstar' xxxiij s' . iiij d'<lb
+                            break="yes"/>Johannes sprunt xiij s' iiij d'<lb break="yes"/>Robertus
+                        gray <del>xv s'</del> xx s'<lb break="yes"/>Willelmus sprunt <del>xv
+                            s'</del> xx s'<lb break="yes"/>Thomas sprunt <del>xv s'</del> xx s'<lb
+                            break="yes"/>Robertus browne xxvj s' . viij d'<lb break="yes"/>patricius
+                        lang . xiij s' iiij d'<lb break="yes"/>Thomas hukar' <del>xiij s' iiij
+                            d'</del> xx s'<lb break="yes"/>Bertholomeus <del>xiij s' . iiij d'</del>
+                        xx s'<lb break="yes"/>Simon Wricht <del>xiij s' iiij d' xx s' .</del> xviij
+                        s' iiij d'<lb break="yes"/>Andreas gilberti xl s' .<lb break="yes"/>Johannes
+                        mungwale xiij s' iiij d'<lb break="yes"/>Thomas brig iiij li'<lb break="yes"
+                        />Willelmus harpar iij li'<lb break="yes"/>Nicholaus gray xxvj s' viij d'<lb
+                            break="yes"/><del>Willelmus blakburn xx s'</del><lb break="yes"
+                        />Robertus Narne xx s'<lb break="yes"/>Johannes de camera xxxiij s' iiij
+                            d'<lb break="yes"/>Andreas Crag vj s' viij d'<lb break="yes"/>Andreas
+                        Bryane vj s' viij d'<lb break="yes"/>Johannes garuok xiij s' iiij d'<lb
+                            break="yes"/>Simon stil xx s'<lb break="yes"/>henricus sclatar vj s'
+                        viij d'<lb break="yes"/><del>Thomas halt x s'</del><lb break="yes"
+                        />Stephanus Andree vj s' viij d'<lb break="yes"/><del>W. lambynton' vj s' .
+                            viij d'</del><lb break="yes"/><add place="margin">Johannes henrici</add>
+                        Walterus Roberti x s'<lb break="yes"/>Johannes lawson' v s'<lb break="yes"
+                        />Summa xxx li'</p>
+                </div>
+                <pb n="78" break="yes"/>
+                <div type="entry" xml:id="ARO-2-0078-01" xml:lang="la">
+                    <head>ffurdis</head>
+                    <p><lb break="yes"/><add place="margin">rete</add> Assedatur Johanni Wodman, Et
+                        Willelmo Dayntre, <del>vnum rete et sexta pars retis</del> pro vij li' vj s'
+                        viij d'<lb break="yes"/>patricius Johannis xiij s' iiij d'<lb break="yes"
+                        />Alexander Alues vj s' . viij d'<lb break="yes"/><del>Thome</del> lawson' x
+                            s'<lb break="yes"/>W strade xl s'<lb break="yes"/>laurencius bell' x
+                            s'<lb break="yes"/>hankyn cucunar xiij s' iiij d<lb break="yes"
+                        />Johannes thome de Echt vj s' viij d'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb188">rete</seg><note anchored="true" type="editorial" target="#anchorb188">This note is linked to the previous seven lines through a bracket.</note></add><lb
+                            break="yes"/>Thomas Dalton' iiij li'<lb break="yes"/>Jacobus browne xx
+                            s'<lb break="yes"/>Thomas Murray x s'<lb break="yes"/>Willelmus Johannis
+                        taillour x s'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb189">rete</seg><note anchored="true" type="editorial" target="#anchorb189">This note is linked to the previous four lines through a bracket.</note></add><lb
+                            break="yes"/>Johannes Smale xx s' .<lb break="yes"/>Johannes vscher' v
+                            li'<lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180615T105401+0100" comment="NOTE: This note is linked to the previous two lines through a bracket."?><add
+                            place="margin">rete<?oxy_comment_end?></add><lb break="yes"/>Johannes
+                        Wormot pater xl s'<lb break="yes"/>patricius Alexandri xxx s' .<lb
+                            break="yes"/>Johannes lambynton' <del>xvj s' . viij d' .</del> xx s'<lb
+                            break="yes"/><add place="margin">memorandum</add> Thomas Andree
+                            <del>xxvj s' viij d'</del> xxiij s' iiij d'<lb break="yes"/><del>Thomas
+                            lownan vj .s' viij d'<lb break="yes"
+                            /></del><?oxy_comment_start author="his252" timestamp="20180615T105419+0100" comment="NOTE: This note is linked to the previous five lines through a bracket."?><add
+                            place="margin">rete<?oxy_comment_end?></add><lb break="yes"/>Dunccanus
+                        de Marr' iiij li'<lb break="yes"/>Thomas crowdane xl s' .<lb break="yes"
+                            /><add place="margin"
+                            ><seg xml:id="anchorb190">rete</seg></add><note anchored="true" type="editorial" target="#anchorb190">This note is linked to the previous two lines through a bracket.</note>
+                        <lb break="yes"/>Bricius Dunccani v li'<lb break="yes"/>Johannes banerman
+                        xiij s' . iiij d'<lb break="yes"/>Thomas Willelmi halt vj s' viij d'<lb
+                            break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180615T105445+0100" comment="NOTE: This note is linked to the previous three lines through a bracket."?><add
+                            place="margin">rete<?oxy_comment_end?></add><lb break="yes"/>Thomas Coll
+                        xx s'<lb break="yes"/>Willelmus coll xx s'<lb break="yes"/><del>Willelmus
+                            fidilmouth xx s'</del><lb break="yes"/>Alexander Dalton' xx s'<lb
+                            break="yes"/>Summa huius xlv li'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0078-02" xml:lang="la">
+                    <head>Croys</head>
+                    <p><lb break="yes"/>Assedatur . Johanni fichet et Willelmo de Kyntor ad terminum
+                        vnius anni pro xiiij li' vt patet in<lb break="yes"/>libris precedentibus
+                        .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0078-03" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum de parua custuma viij li'<lb break="yes"/>de
+                        bollis aque iij li'</p>
+                </div>
+                <pb n="79" break="yes"/>
+                <div type="entry" xml:id="ARO-2-0079-01" xml:lang="la">
+                    <head>Stallancia et parua tollonia</head>
+                    <p><lb break="yes"/>Assedantur ferguseo Ade thome trayle et Johanni sellar' tunc
+                        seriandis . pro iij li' vj s' . viij d'<lb break="yes"/>altero plegio
+                        alteruis . et ista assedacio est nec pro vno anno</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-02" xml:lang="la">
+                    <head>Villa de Rubislaw et <foreign xml:lang="sc">ly cunygarhill</foreign> cum
+                        pertincenciis . excepta <foreign xml:lang="sc">ly spetale
+                        myre</foreign></head>
+                    <p><lb break="yes"/>Assedatur Johanni henrici . pro termino quinque annorum
+                        quolibet anno pro iiij li' xl d' <w xml:id="w_kds_clv_2fb">se</w><w
+                            xml:id="w_q5w_clv_2fb">ipso</w> plegio .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-03" xml:lang="la">
+                    <head>Tollis ferlote</head>
+                    <p><lb break="yes"/>Assedantur Johanni Jacobi et Gilberto de Kynros pro xviij
+                        li' ad terminum vnius anni . plegio<lb break="yes"/>altero alterius .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-04" xml:lang="la">
+                    <head>Bolla aque</head>
+                    <p><lb break="yes"/><add place="margin"><gap reason="fold"
+                                /><?oxy_comment_start author="his252" timestamp="20180615T120728+0100" comment="NOTE: This marginal note is also linked to the following two entries through a bracket."?>cedu<gap
+                                reason="fold"/>m<?oxy_comment_end?></add> Assedatur <add
+                            place="above">Colino Johannis</add>
+                        <del>Johanni filio Walteri de Monros</del> ad terminum vnius anni pro iij
+                        li' per cedulam</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-05" xml:lang="la">
+                    <head>parua Custuma</head>
+                    <p><lb break="yes"/>Assedatur Roberto filio Dauid pro viij li'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-06" xml:lang="la">
+                    <head>Redditus perticarum de Rubislaw</head>
+                    <p><lb break="yes"/>Assedantur Willelmo de Camera filio pro xl s'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-07" xml:lang="la">
+                    <head><foreign xml:lang="sc">ly garne</foreign> et hesilhede</head>
+                    <p><lb break="yes"/>Assedantur . Willelmo de Camera patri et Johanni Scherar'
+                        pro v li' vt patet in libris precedentibus</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-08" xml:lang="la">
+                    <head>Schethokley</head>
+                    <p><lb break="yes"/>Assedatur Johanni yhule pro v marcis . vt patet in libris
+                        precedentibus</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-09" xml:lang="la">
+                    <head>Molendina</head>
+                    <p><lb break="yes"/>Assedantur Thome lamb pro xx li' vt patet in libris
+                        precedentibus tamen Ricardus<lb break="yes"/>fichet . subibit onus eorundem
+                        pro termino assedacionis dicte Thome . Ipso Thoma<lb break="yes"/>soluente
+                        sibi quolibet anno pro tempore sibi assedato iiij li'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-10" xml:lang="la">
+                    <head>Redditus perticarum ville</head>
+                    <p><lb break="yes"/>Assedantur Thome Amfray et Duthaco lownan et Thome lynton'
+                        pro decem marcis<lb break="yes"/>vt patet in libris precedentibus . Dicti
+                        tamen thomas amfray et Duthacus subibunt onus dicti<lb break="yes"/>thome
+                        lynton'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-11" xml:lang="la">
+                    <head><del>Redditus perticarum de Rubislaw</del></head>
+                    <p><lb break="yes"/><del>Assedantur Willelmo de camera filio pro xl s'
+                        .</del></p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-12" xml:lang="la">
+                    <p><lb break="yes"/>Summa huius dimidij folij iij<hi rend="superscript">xx</hi>
+                        xiij li' . x s'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0079-13" xml:lang="la">
+                    <p><lb break="yes"/>Summa totalis rentalis . xij<hi rend="superscript">xx</hi>
+                        xiiij li' xvj s' viij d'</p>
+                </div>
+                <pb n="80" break="yes"/>
+                <div type="entry" xml:id="ARO-2-0080-01" xml:lang="la">
+                    <head><choice>
+                            <sic>discrdantes</sic>
+                            <corr>discordantes</corr>
+                        </choice></head>
+                    <p><lb break="yes"/>Laurencius leth ' et firmarij redditus perticarum<lb
+                            break="yes"/>Johannes cristini et thomas de Marr'<lb break="yes"
+                        />Johannes Alani et Johannes sellar'<lb break="yes"/>Dunccanus hervy . et
+                        Johannes trayle<lb break="yes"/>Adam thome et Johannes alani<lb break="yes"
+                        />Johannes cristini et Johannes de Mernys<lb break="yes"/>Johannes fichet et
+                        Nicholayus gray<lb break="yes"/>Ricardus fichet et Dunccanus hervy<lb
+                            break="yes"/>laurencius leth et nicholayus gray<lb break="yes"/>henricus
+                        celty et thomas lawson'</p>
+                </div>
+                <div type="incompleteEntry" xml:id="ARO-2-0080-02" xml:lang="la">
+                    <head>Memorandum de terris accommodatis</head>
+                    <p><lb break="yes"/><add place="margin">rete</add>
+                        <space quantity="1" unit="paragraph"/><lb break="yes"/><add place="margin"
+                            >rete</add></p>
+                </div>
+            </div>
+            <pb n="82" break="yes" xml:base=""/>
+            <div type="other">
+                <p><date when="1410-02-21" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0082-01" xml:lang="la">
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb191">Isti</seg><note anchored="true" type="editorial" target="#anchorb191">The following entries have been written upside down and are in reverse order (i.e. page 82 comes before page 81, with a short continuation on page 80).</note>
+                        soluerunt ad expensas . W. de camera apud Edynburgh vicesimo primo februarii
+                        Anno cccc<hi rend="superscript">mo</hi> nono</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0082-02" xml:lang="la">
+                    <p><lb break="yes"/><cb n="1"/>Patricius Nicholay xij d'<lb break="yes"
+                            /><del>Alexander litstar' xij d'</del><lb break="yes"/>Alexander voket
+                        ij s' xviij d' xij d'<lb break="yes"/>Andreas gilberti <del>ij s' xij
+                            d'</del><lb break="yes"/><del>laurencius bell</del><lb break="yes"
+                            /><del>Johannes trayle</del><lb break="yes"/><del>Ricardus fichet xij
+                            d'</del><lb break="yes"/><del>Johannes Scherar' xij d'</del><lb
+                            break="yes"/><del>Thomas Morauia iiij d'</del><lb break="yes"
+                            /><del>Johannes Mungwale vj d'</del><lb break="yes"/><del>Alexander
+                            Alues iiij d'</del><lb break="yes"/><del>hankyn cucunar viij d'</del><lb
+                            break="yes"/>Johannes Watson <del>xl d' xxx d'</del> ij s'<lb
+                            break="yes"/>Thomas olfane xij d'<lb break="yes"/><del>Bricius Roberti
+                            viij d</del><lb break="yes"/><del>Johannes Smale viij d'</del><lb
+                            break="yes"/>Thomas lamb <del>vj s' viij d'</del> v s'<lb break="yes"
+                        />Robertus glandirston' xij
+                            <seg xml:id="anchorb192">d</seg><note anchored="true" type="editorial" target="#anchorb192">&apos;d&apos; overwrites &apos;s&apos;.</note>'<lb
+                            break="yes"/>Willelmus strade <del>xxx d'</del> xij d'<lb break="yes"
+                        />Thomas brig <del>v s'</del> xl d'<lb break="yes"/>Willelmus harpar
+                            <del>xxx d' ij s'</del> xij d'<lb break="yes"/>Johannes fichet <del>v
+                            s'</del> xl d'<lb break="yes"/>Alexander clyntre <del>ij s'</del> xij
+                            d'<lb break="yes"/>Robertus fraser xij d'<lb break="yes"/>Willelmus
+                        Andree xij d'<lb break="yes"/>Thomas amfrason' <del>ij s'</del> xij d'<lb
+                            break="yes"/>Johannes vscher' <del>v s'</del> xl d'<lb break="yes"
+                        />Johannes voket yhung xij d'<lb break="yes"/>Johannes banerman xij d'<lb
+                            break="yes"/>Simon stil xij d'<lb break="yes"/>Johannes henrici <del>xl
+                            d' xxx d'</del> ij s'<lb break="yes"/>Johannes buchane <del>ij s'</del>
+                        xij d'<lb break="yes"/>Thomas crowdane <del>ij s'</del> xij d'<lb
+                            break="yes"/><del>Thomas lawson' xij d'</del><lb break="yes"/>henricus
+                        celty <del>ij s'</del> xij d'<lb break="yes"/>Robertus gray xij d'<lb
+                            break="yes"/>Thomas Coky xij
+                            <seg xml:id="anchorb193">d</seg><note anchored="true" type="editorial" target="#anchorb193">&apos;d&apos; overwrites &apos;s&apos;.</note>'<lb
+                            break="yes"/>Willelmus Kyntor <del>vj s' viij d' . v s'</del> xl d'<lb
+                            break="yes"/>Andreas Johannis xij
+                            <seg xml:id="anchorb194">d</seg><note anchored="true" type="editorial" target="#anchorb194">&apos;d&apos; overwrites &apos;s&apos;.</note>'<lb
+                            break="yes"/>Johannes Wodman <del>v s' xl d'</del> xxx d'<lb break="yes"
+                            /><del>laurencius buchane viij d'</del><lb break="yes"/><del>Willelmus
+                            sprunt xij d'</del><lb break="yes"/><del>Thomas Roule xij d'</del><lb
+                            break="yes"/>Willelmus blyndsele <del>xxx d' ij s'</del> xvj d'<lb
+                            break="yes"/><del>Stephanus philippi vj d'</del><lb break="yes"
+                        />Willelmus thaynston' <del>xij d'</del> vj d'<lb break="yes"/>Thomas
+                        Dalton' <del>xl d'</del> xxx d'<lb break="yes"/>Nicholaius gray xij d'<lb
+                            break="yes"/><cb n="2"/>Thomas sprunt viij d'<lb break="yes"
+                            /><del>Andreas baxtar viij d'</del><lb break="yes"/><del>Willelmus
+                            lambynton' viij d'</del><lb break="yes"/><del>Johannes cristini xij
+                            d'</del><lb break="yes"/>Johannes lambynton xij d' viij d'<lb
+                            break="yes"/>Walterus Roberti <del>xvj d'</del> xij d'<lb break="yes"
+                            /><del>Alexander Willelmi xij d'</del><lb break="yes"/><del>laurencius
+                            leth xij d'</del><lb break="yes"/>Alexander stane xij d'<lb break="yes"
+                            /><del>Johannes benyn xij d'</del><lb break="yes"/>Johannes alani
+                            <del>iij s'</del> xxx d'<lb break="yes"/><del>Jacobus browne xij
+                            d'</del><lb break="yes"/><del>Johannes scroggis xij d'</del><lb
+                            break="yes"/>Dunccanus de Marr' <del>iij s'</del> xxx d'<lb break="yes"
+                        />Andreas Johannis <del>xxx d'</del> ij s'<lb break="yes"/>Adam thome
+                            <del>ij s'</del> xvj d'<lb break="yes"/><del>Johannes Wormot filius xij
+                            d'</del><lb break="yes"/><del>Gilbertus Kynros xij d'</del><lb
+                            break="yes"/><del>fynlaus taillour xij d'</del><lb break="yes"/><add
+                            place="margin">+</add>
+                        <del>Andreas nase viij d'</del><lb break="yes"/>Willelmus Jacson' <del>vj s'
+                            viiij d' v s'</del> xl d'<lb break="yes"/><del>Dunccanus hervy viij
+                            d'</del><lb break="yes"/><del>Willelmus blakburn viij d'</del><lb
+                            break="yes"/><del>Willelmus de camera filius xij d'</del><lb break="yes"
+                        />Johannes qwite xij d'<lb break="yes"/>Robertus de echt xij d'<lb
+                            break="yes"/>Willelmus ettale xij d'<lb break="yes"/>Ricardus lownan
+                            <del>xxx d'</del> ij s'<lb break="yes"/>Robertus borthwic xij d'<lb
+                            break="yes"/>Johannes Jacobi <del>xl d' xxx d'</del> ij s'<lb
+                            break="yes"/><del>laurencius Johannis xij d'</del><lb break="yes"
+                            /><del>Willelmus baxtar xij d'</del><lb break="yes"/>Thomas scherar'
+                            <del>xl d' xxx et</del> ij s'<lb break="yes"/>Thomas Andree xij d'<lb
+                            break="yes"/>Patricius Alexandri xij d'<lb break="yes"/><add
+                            place="margin">Memorandum</add>
+                        <del>Robertus Dauid v s'</del><lb break="yes"/>Willelmus coll xij d'<lb
+                            break="yes"/>Bricius Dunccani <del>v s'</del> xl d'<lb break="yes"
+                        />Johannes cristini de Durris xij d'<lb break="yes"/><del>Thomas lownan vj
+                            d'</del><lb break="yes"/><del>Thomas lambynton' vj d'</del><lb
+                            break="yes"/>Johannes yhule xij d'<lb break="yes"/><del>Johannes garuok
+                            viij d'</del><lb break="yes"/><del>Johannes gilberti xij d'</del><lb
+                            break="yes"/><del>Thomas hukar' vj d'</del><lb break="yes"/>Johannes
+                        Wormot ij s'<lb break="yes"/><del>Johannes atkynson' viij d'</del><lb
+                            break="yes"/><del>henricus buchane xij d'</del><lb break="yes"/>Robertus
+                        browne <del>xlij d'</del> xij d' <pb n="81" break="yes"/>
+                        <lb break="yes"/>Willelmus Johannis xij d'<lb break="yes"/><del>Andreas crag
+                            vj d'</del><lb break="yes"/><del>patricius brig viij d'</del><lb
+                            break="yes"/>Andreas Mathei ij s'<lb break="yes"/>Alexander Dalton' xij
+                            d'<lb break="yes"/>Willelmus crag <del>xlij d'</del> xij d'<lb
+                            break="yes"/>Colinus Johannis <del>xxx d' xl d'</del> ij s'<lb
+                            break="yes"/>Willelmus Dayntre <del>v v s'</del> xxx d'<lb break="yes"
+                        />Rogerus Willelmi xij d'<lb break="yes"/><del>Alexander lepar vj
+                            d'</del><lb break="yes"/><del>Johannes barry viij d'</del><lb
+                            break="yes"/><del>Johannes Mernys viij d'</del><lb break="yes"/>Rayny
+                        voket xij d'<lb break="yes"/>Andreas girk xij d'<lb break="yes"/>Willelmus
+                        nachty xij d'<lb break="yes"/>Eliseus de Marr' xij d'<lb break="yes"
+                        />Johannes Andree xij d'<lb break="yes"/>Thomas coll' xij d'<lb break="yes"
+                        />Johannes de Narn xij d'<lb break="yes"/>Johannes de hoggis xij d'</p>
+                </div>
+            </div>
+            <div type="other">
+                <p><date when="1410-05-29" cert="high"/></p>
+                <div type="entry" xml:id="ARO-2-0081-01" xml:lang="la">
+                    <head>Isti soluerunt quando Alexander Ruthirford recessit ad villam de
+                            Edynburgh<lb break="yes"/> valet . xxviiij die mensis May . Anno et
+                        cetera . cccc<hi rend="superscript">mo</hi> decimo</head>
+                    <p><lb break="yes"/><cb n="1"/>Thomas amfrason' vj d'<lb break="yes"/>Johannes
+                        vscher' xij d'<lb break="yes"/>Johannes voket vj d'<lb break="yes"/>Johannes
+                        banerman vj d'<lb break="yes"/>Simon stil vj d'<lb break="yes"/>Johannes
+                        henrici xij d'<lb break="yes"/>Johannes buchane vj d'<lb break="yes"
+                        />Alexander stane vj d'<lb break="yes"/>Thomas crowdane vj d'<lb break="yes"
+                        />Robertus fraser vj d'<lb break="yes"/>henricus celty vj d'<lb break="yes"
+                            /><del>Alex</del> Andreas Johannis xij d'<lb break="yes"/>Andreas Mathei
+                        vj d'<lb break="yes"/>Johannes Wodman, Willelmus Dayntre, ij s'<lb
+                            break="yes"/>Willelmus sprunt, Robertus gray, xij d'<lb break="yes"
+                        />Willelmus blyndsele xij d'<lb break="yes"/>Thomas col vj d'<lb break="yes"
+                        />Willelmus col vj d'<lb break="yes"/>Nicholaus gray xij d'<lb break="yes"
+                        />Thomas Dalton' xij d'<lb break="yes"/>Thomas scherar' xij d'<lb
+                            break="yes"/>Johannes Jacobi viij d'<lb break="yes"/>Ricardus lownan xij
+                            d'<lb break="yes"/>Thomas sprunt vj d'<lb break="yes"/>Willelmus crag vj
+                            d'<lb break="yes"/><cb n="2"/>Alexander clyntre vj d'<lb break="yes"
+                        />Willelmus harpar xij d'<lb break="yes"/>Willelmus strade xij d'<lb
+                            break="yes"/>Robertus glandirston' viij d'<lb break="yes"/>Thomas lamb
+                        ij s'<lb break="yes"/>Johannes Smale vj d'<lb break="yes"/>Thomas Molfane
+                        viij d'<lb break="yes"/>Johannes Walteri xij d'<lb break="yes"/>Andreas
+                        gilberti viij d'<lb break="yes"/>Alexander voket viij d'<lb break="yes"
+                        />Willelmus Kyntor xvj d'<lb break="yes"/>Walterus Roberti vj d'<lb
+                            break="yes"/>Willelmus Johannis vj d'<lb break="yes"/>Johannes yhule vj
+                            d'<lb break="yes"/>Johannes Wormot vj d'<lb break="yes"/>Johannes alani
+                        xij d'<lb break="yes"/>Bricius Dunccani xij d'<lb break="yes"/>Dunccanus de
+                        Marr' xij d'<lb break="yes"/>Andreas Johannis xij d'<lb break="yes"
+                        />Willelmus Jacson' xvj d'<lb break="yes"/>Robertus Dauid ij s'<lb
+                            break="yes"/>Patricius Alexandri vj d'<lb break="yes"/>Thomas Andree vj
+                            d'<lb break="yes"/>Johannes cristini vj d'<lb break="yes"/>Robertus
+                        borthwic vj d'<lb break="yes"/>Robertus de Echt <del>vj d'</del> viij d' <lb
+                            break="yes"
+                        /><seg xml:id="anchorb195">Thomas</seg><note anchored="true" type="editorial" target="#anchorb195">The following names are actually written on page 80, upside down in the bottom right corner of the page, but they are a continuation of this entry.</note>
+                        Brig xij d'<lb break="yes"/>Johannes harrv<lb break="yes"/>Patricius lang<lb
+                            break="yes"/>Robertus browne vj d'<lb break="yes"/>Robertus Dunccani vj
+                            d'<lb break="yes"/>Johannes qwite<lb break="yes"/>Thomas coly vj d'<lb
+                            break="yes"/>Rogerus Willelmi vj d' .<lb break="yes"/>Alexander Dalton'
+                        vj d'<lb break="yes"/>Andreas gryk vj d'</p>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

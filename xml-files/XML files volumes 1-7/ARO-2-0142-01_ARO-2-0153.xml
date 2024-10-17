@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2018-01-11T16:57:09">WH</change>
+            <change status="transcribed" when="2018-05-14T16:00:33">WP: checked annotations</change>
+            <change status="corrected" when="2018-06-28T14:23:13">EF</change>
+            <change status="corrected" when="2018-09-20T12:48:08">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="142" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date cert="medium" when="1413" notBefore="1413-07-25"/></p>
+                <div type="heading" xml:id="ARO-2-0142-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali tenta per Balliuos .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-02" xml:lang="la">
+                    <p><lb break="yes"/>Quo die accedens ad barram Bricius filius Dunccani cum
+                        prelocutoribus suis domino de<lb break="yes"/>Gordon' et Johanne Inchemartyn
+                        Archdiacono Rossensis . extendebant per plegium primo . quod exquo An<lb
+                            break="no"/>dreas filius Gilberti ab eo recepit tres pipas de <foreign
+                            xml:lang="sc">wad</foreign> et dict' <foreign xml:lang="sc"
+                            >wad</foreign> de illis pipis eua<lb break="no"/>cuauit . ponendo illud
+                            <foreign xml:lang="sc">wad</foreign> in quadam domo sua . tenendo illud
+                            <add place="above">vltra</add> pro xl dies . non satisfaciend'<lb
+                            break="yes"/>summam per ipsum debitam dicto Bricio infra dictum tempus .
+                        quod dictus Andreas iniuste ab eo tenet<lb break="yes"/><add place="margin"
+                            >Summa xxiij li' x s' .</add> dictam summam et quod sibi
+                            satisfac<unclear reason="hand">ie</unclear>t de eadem . Dictus Andreas
+                        audiens dictam calumpniam<lb break="yes"/>et dicti plegii Inuencionem .
+                        stetit nichil respondendo . Non negando nec concedendo nec a<lb break="no"
+                        />uisacionem petendo . Tunc dictus . Johannes Inchemartyn . tanquam
+                        prelocutor dicti Bricij<lb break="yes"/>extendebat per plegium . quod dictus
+                        Bricius Dunccani ad suam peruenit calumpniam causa<lb break="yes"/>non
+                        defensa exquo dictus Andreas uoluit negare vel concedere vel aliud
+                        legittimum responsum<lb break="yes"/>dare . Quod plegius dictus Andreas
+                        recontrariauit . et sic ad wardam curie . vnde partibus<lb break="yes"
+                        />remotis . curia diligenter auisata decreuit et per os Johannis filij
+                        laurencij iudicatoris curie<lb break="yes"/>datum fuit pro iudicio quod
+                        vltimum plegium per dictum Johannem Inchemartyn nomine dicti bricij<lb
+                            break="yes"/>extensus fuit valoris et recontrariacio facta per dictum
+                        Andream nullius valoris et dictus<lb break="yes"/>Andreas in amerciamento
+                        curie</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-03" xml:lang="la">
+                    <p><lb break="yes"/>Philippus Johannis primo die vocatus ad sectam . Johannis
+                        Roberti Webstar non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-04" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Johannem Walteri et Johannem Banerman
+                        submittitur ad amicabilem composicionem et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-05" xml:lang="la">
+                    <p><lb break="yes"/>Johannes lowdone' in amerciamento curie quia non fecit ad
+                        plegium suum erga Johannem cristini de<lb break="yes"/>Durris quod facere
+                        tenetur</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-06" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Gilbertum Kynros et Johannem buchane
+                        submittitur ad amicabilem composicionem pre<lb break="no"/>sentando defectum
+                        Ballivis .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0142-07" xml:lang="la">
+                    <p><lb break="yes"/>Patricius carnifex primo die vocatus ad sectam Willelmi
+                        laurencij non comparuit et cetera</p>
+                </div>
+            </div>
+            <div type="other">
+                <p><date cert="medium" when="1413"/></p>
+                <div type="entry" xml:id="ARO-2-0142-08" xml:lang="mul">
+                    <head>Inquisicio de hijs qui faciunt carestiam in villa .</head>
+                    <p><lb break="yes"/>Janeta de Newporte<lb break="yes"/><add place="margin"
+                            >+</add> vxor Willelmi thaynston'<lb break="yes"/>vxor Johannis cristini
+                        de Durris<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180628T115402+0100" comment="NOTE: This note is linked to the preceding three names through a bracket."?>de
+                            brasia<?oxy_comment_end?><lb break="yes"/>vxor Johannis scot taillour de
+                            farina<lb break="yes"/>Meg' cok . pessima<lb break="yes"/>vxor Simonis
+                        palframan pessima<lb break="yes"/>vxor calman<lb break="yes"/>vxor Johannis
+                            bell<lb break="yes"/><add place="margin">+</add> vxor Wat' bowar'<lb
+                            break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180628T115548+0100" comment="NOTE: This note is linked to the preceding three names through a bracket."?>de
+                            omnibus<?oxy_comment_end?><lb break="yes"/>femina qui commoditur cum W.
+                        de camera patre<lb break="yes"/>vxor Johannis edmundson' faciet carestiam de
+                            farina<lb break="yes"/>Magy corbrand' pessima<lb break="yes"/>vxor
+                        Willelmi gilruth<lb break="yes"/>seruiens Johannis Moden de farina<lb
+                            break="yes"/>Omnes brasiatrices<lb break="yes"/>vxor Willelmi Watson'<lb
+                            break="yes"/>vxor Alani Ricardi<lb break="yes"/>vxor thome</p>
+                </div>
+            </div>
+            <pb n="143" break="yes"/>
+            <div type="court">
+                <p><date cert="medium" when="1413" notBefore="1413-07-25"/></p>
+                <div type="heading" xml:id="ARO-2-0143-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali tenta per Ballivos</p>
+                </div>
+                <div type="incompleteEntry" xml:id="ARO-2-0143-02" xml:lang="la">
+                    <p><lb break="yes"/>philippus Johannis</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-03" xml:lang="la">
+                    <p><lb break="yes"/>B<gap reason="rubbing"/> in amerciamento curie pro iniuste
+                        abduxit focalia Thome de Marr scissoris</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-04" xml:lang="la">
+                    <p><lb break="yes"/>R<gap reason="rubbing"/> primo die vocatus ad sectam
+                        Johannis pollok non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-05" xml:lang="la">
+                    <p><lb break="yes"/><gap reason="rubbing"/> primo die vocatus ad sectam Galfridi
+                        de Inuernochty non <supplied reason="rubbing">comparuit</supplied></p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-06" xml:lang="la">
+                    <p><lb break="yes"/>Dunccanus Ker in amerciamento curie quia iniuste brigauit
+                        percipiendo <gap reason="rubbing"/> gourlay</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-07" xml:lang="la">
+                    <p><lb break="yes"/><gap
+                            reason="rubbing"/>as posuit se in voluntate Ballivorum pro perturbacione
+                        dicti Dunccani</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-08" xml:lang="la">
+                    <p><lb break="yes"/>Simon lamb in amerciamento <supplied reason="rubbing"
+                            >curie</supplied> quia iniuste verberauit Meg' calman</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-09" xml:lang="la">
+                    <p><lb break="yes"/>Meg' calman in amerciamento curie quia iniuste tenuit <gap
+                            reason="rubbing"/> a Simone lamb</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-10" xml:lang="la">
+                    <p><lb break="yes"/>henricus goldsmyth in amerciamento curie quia iniuste
+                        Inuenit plegium super thomam huntar'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0143-11" xml:lang="la">
+                    <p><lb break="yes"/>Patricius carnifex secundo die vocatus ad sectam Willelmi
+                        laurencij non comparuit</p>
+                </div>
+            </div>
+            <div type="court">
+                <p><date cert="medium" when="1413" notBefore="1413-07-25"/></p>
+                <div type="heading" xml:id="ARO-2-0143-12" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali</p>
+                </div>
+            </div>
+            <pb n="144" break="yes"/>
+            <div type="court">
+                <p><date cert="medium" when="1413" notBefore="1413-07-25"/></p>
+                <div type="heading" xml:id="ARO-2-0144-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali tenta per Balliuos</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-02" xml:lang="la">
+                    <p><lb break="yes"/>Dominus hugo de Wellis secundo die vocatus ad sectam
+                        Johannis ressevat non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-03" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Willelmum de Camera filium et Johannem
+                        qwite submittitur ad amicabilem composicione proborum<lb break="yes"
+                        />hominum presentando defectum ballivis</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-04" xml:lang="la">
+                    <p><lb break="yes"/>Johannes tolly in voluntate ballivorum pro percussione
+                        cristini crusank</p>
+                </div>
+                <div type="incompleteEntry" xml:id="ARO-2-0144-05" xml:lang="la">
+                    <p><lb break="yes"/>Cristinus crusank</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-06" xml:lang="la">
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb211">Eodem</seg><note anchored="true" type="editorial" target="#anchorb211">There is a partly cut off manicula in the left margin</note>
+                        die Johannes smale venit coram ballivis in plena curia offerens se paratum
+                        in omnibus<lb break="yes"/>ad faciendum Dauid blabre quod determinatum fuit
+                        pre tempore sibi per assisam . Que determinacio<lb break="yes"/>scribitur in
+                        quadam curiam precedente et super hoc peciit instrumentum . testibus
+                        ballivis</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-07" xml:lang="la">
+                    <p><lb break="yes"/>Super quadam actione mota et ventilata inter Rogerum
+                        Willelmi et Andream sprunt fuit leua<lb break="no"/>ta assisa et iurata et
+                        remota per se in solio assise Johannes henrici prelocutor dicti Rogeri
+                            allega<lb break="no"/>uit dicens quod fuerunt presentes quidam vicini .
+                        qui sciebant de conuencionibus et contractibus inter<lb break="yes"/>dictum
+                        Rogerum et andream factis et extendebat per plegium . quod dicta assisa non
+                        debebat determinare<lb break="yes"/>super dicta actione . quousque audierit
+                        veredictum illorum vicinorum qui veritatem rei sciebant</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-08" xml:lang="la">
+                    <p><lb break="yes"/>Statim et incontinenter Thomas Roule prelocutor Andree
+                        sprunt' extendebat per plegium<lb break="yes"/>quod exquo Johannes filius
+                        henrici prelocutor dicti Rogeri obstruxit assisam impediendo<lb break="yes"
+                        />eam determinare super dicta actione / dictus Andreas sprunt quitus fuit a
+                        . calumpnia dicti<lb break="yes"/>Rogeri / de dicta actione secundum prius
+                        facta acta et allegata .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0144-09" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum de processu quarti diei . Willelmi laurencij .
+                        contra patricium fleschar' .</p>
+                </div>
+            </div>
+            <pb n="145" break="yes"/>
+            <note type="editorial">Page 145 is empty.</note>
+            <pb n="146" break="yes"/>
+            <div type="other">
+                <p><date cert="medium" when="1413"/></p>
+                <div type="entry" xml:id="ARO-2-0146-01" xml:lang="mul">
+                    <head><gap reason="rubbing"/></head>
+                    <p><lb break="yes"/><cb n="1"/>Maliz sprunt xij d'<lb break="yes"/>Dunccanus
+                        fleschewar' xij d'<lb break="yes"/>Johannes Bell xij d'<lb break="yes"
+                        />Marion' fetes xij d'<lb break="yes"/>Meg Duby xij d'<lb break="yes"
+                        />Androw bowar' vj d'<lb break="yes"/>Willelmus qwithede xij d'<lb
+                            break="yes"/>Johannes Smyth xij d'<lb break="yes"/>Akynhede xij d'<lb
+                            break="yes"/>Michael chapman vj d'<lb break="yes"/><add place="margin"
+                            >brasium</add> Thomas henrici ij s'<lb break="yes"/>Iby fetes<lb
+                            break="yes"/>ly ducheman ij s'<lb break="yes"/>Dunccanus Kerd viij d'<lb
+                            break="yes"/>Anny Rauffe viij d'<lb break="yes"/>Katerina coupar iiij
+                            d'<lb break="yes"/>Magy crusank iiij d'<lb break="yes"/>Johannes Walteri
+                        iiij d'<lb break="yes"/>vnus allutarius iiij d'<lb break="yes"/><add
+                            place="margin">quitus</add> patricius fleschewar' xvj d'<lb break="yes"
+                        />Browne eruginator viij d'<lb break="yes"/><add place="margin"
+                            >brasium</add> Johannes patricij ij s'<lb break="yes"/>Andreas Kynros<lb
+                            break="yes"/>Willelmus frendracht xij d'<lb break="yes"/>duo cum Johanne
+                        atkynson' xij d'<lb break="yes"/><cb n="2"/><add place="margin">quita</add>
+                        Magy corbrand <gap reason="rubbing"/><lb break="yes"/>Androw Mernys baxtar
+                        ij s'<lb break="yes"/><add place="margin">quitus</add> Spens carnifex xvj
+                            d'<lb break="yes"/>Johannes Walkar' cum socio xij d'<lb break="yes"
+                        />Thomas goven<lb break="yes"/>Willelmus Wynk iiij d'<lb break="yes"/><add
+                            place="margin">quitus</add> Jacobus browne xvj d'<lb break="yes"
+                        />Cristiana <gap reason="rubbing"/> iiij d'<lb break="yes"/>Martyn litstar'
+                        xij d'<lb break="yes"/>Anny tarras iiij d'<lb break="yes"/><add
+                            place="margin">brasium</add> Marion' Abell' ij s'<lb break="yes"
+                        />Robertus lyly viij d'<lb break="yes"/>Andreas coupar viij d'<lb
+                            break="yes"/>Walterus bowar' iiij s'<lb break="yes"/><del>Robertus
+                            Mungwale</del><lb break="yes"/>Johannes Willelmi<lb break="yes"/>Adam
+                        litstar' xij d'<lb break="yes"/>Thomas club xij d'<lb break="yes"/><add
+                            place="margin">quitus brasium
+                            <seg xml:id="anchorb212">quitus</seg><note anchored="true" type="editorial" target="#anchorb212">The second &apos;quitus&apos; partly overwrites &apos;brasium&apos;.</note></add>
+                        Patricius garntuly xvj s' sol' xij d'<lb break="yes"/>Johannes taillour vj
+                        d'</p>
+                </div>
+            </div>
+            <pb n="147" break="yes"/>
+            <div type="other">
+                <p><date cert="low" when="1413"/></p>
+                <div type="entry" xml:id="ARO-2-0147-01" xml:lang="mul">
+                    <p><lb break="yes"/><cb n="1"/>Magy Rauff viij d'<lb break="yes"/>Johannes
+                        futhas xij d'<lb break="yes"/>Meg h<unclear reason="hand">unet</unclear><lb
+                            break="yes"/><del>Johannes</del> Alexander Wedale xij d'<lb break="yes"
+                        />Mauld mykil vj d'<lb break="yes"/>Johannes sutar' xij d'<lb break="yes"
+                        />Johannes Suerdslepar xij d'<lb break="yes"/>Robertus Walkar' xij d'<lb
+                            break="yes"/>Alexander scynnar' xij d'<lb break="yes"/>Alexander filius
+                        Johannis thome viij d'<lb break="yes"/><add place="margin">quitus</add>
+                        Mathy coupar xij d'<lb break="yes"/>Meg scynnar' iiij d'<lb break="yes"
+                        />Joneta de hall<lb break="yes"/>Syssy v<del>ij</del> d'<lb break="yes"/>Edy
+                        taillour xij d'<lb break="yes"/><add place="margin">brasium</add> Andreas
+                        Wricht, vxor brasiatrix, ij s'<lb break="yes"/>Andreas wricht Junior xij
+                            d'<lb break="yes"/>Gib gley<lb break="yes"/><add place="margin"
+                            >quitus</add> Thomas barry iiij d'<lb break="yes"/><cb n="2"/>Johannes
+                        coupar stewart iiij d'<lb break="yes"/>Johannes taillour xij d'<lb
+                            break="yes"/>Johannes meignes<lb break="yes"/><add place="margin"
+                            >quita</add> Cristiana Walace vj d'<lb break="yes"/>Willelmus smyth,
+                            <add place="margin">brasium</add> vxor sua filia benche, ij s'<lb
+                            break="yes"/>Alanus carnifex, vxor suus, viij d'<lb break="yes"
+                        />Johannes schelp<lb break="yes"/>GenJoy coupar iiij d'<lb break="yes"
+                        />Alison' borthwic viij d'<lb break="yes"/>Joneta galoway viij d'<lb
+                            break="yes"/>Paulus coupar xij d'<lb break="yes"/>Alexander galfridi
+                        viij d'<lb break="yes"/>Alexander Raa iiij d'<lb break="yes"/>Thomas thekar'
+                        iiij d'<lb break="yes"/>Johannes bryame iiij d'<lb break="yes"/><add
+                            place="margin">brasium</add> Meg' Dyngwale ij s'<lb break="yes"/>Bricius
+                        fertletson' xij d'<lb break="yes"/>Emy schautangad iiij d'<lb break="yes"
+                        />Johannes henrici viij d'<lb break="yes"/>Ibby Dukar' viij d'<lb
+                            break="yes"/>Willelmus nory vj d'<lb break="yes"/>Johannes s<unclear
+                            reason="hand">c</unclear>uplis iiij d'<lb break="yes"/>Pery herd iiij
+                            d'<lb break="yes"/>Dunccanus futhas viij d'<lb break="yes"/>Adam Walteri
+                        vj d'<lb break="yes"/>Willelmus Wricht xij d'<lb break="yes"/>Willelmus
+                        Wricht xij d'<lb break="yes"/>Thomas taillour xij d'</p>
+                </div>
+            </div>
+            <pb n="148" break="yes"/>
+            <note type="editorial">Page 148 is empty.</note>
+            <pb n="149" break="yes"/>
+            <note type="editorial">Page 149 is empty.</note>
+            <pb n="150" break="yes"/>
+            <div type="undefined">
+                <p><date cert="medium" when="1413"/></p>
+                <div type="heading" xml:id="ARO-2-0150-01" xml:lang="la">
+                    <p><lb break="yes"/>Ista sunt ordinati pro communi vtilitate burgi . et
+                        libertatis eiusdem</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0150-02" xml:lang="sc">
+                    <p><lb break="yes"/>It is ordenit with hale consent of the Comonateiz . that
+                        ilke <expan>man</expan> duelland in the burgh<lb break="yes"
+                            /><expan>wateuir</expan> str<gap reason="rubbing"/> or condicion' wat he
+                        be of sal stand gard and Rass' With the <expan>Aldirman</expan> and the<lb
+                            break="yes"/>Bailliez of the tovn and for to kepe the Common
+                            <expan>profite</expan> of the tovne' and the <expan>fredommys</expan>
+                            of<lb break="yes"/>it and to suppouale and maintene the
+                            <expan>officeris</expan> of the tovne <expan>in</expan> thair office
+                        doand and thair<lb break="yes"/><expan>nechburris</expan> als fra schath and
+                        supprice <expan>vndir</expan> the payne of Banysyng' and tyttyn dovne<lb
+                            break="yes"/>of his huss' . and giff he has na huss'
+                            <expan>vndir</expan> the payne of banysyng' And the
+                            <expan>gudis</expan><lb break="yes"/>eschete</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0150-03" xml:lang="sc">
+                    <p><lb break="yes"/>Als' at thai syss' to the ryngyng of the Comon' bell' and to
+                            <expan>biddyngis</expan> of the <expan>officeris</expan><lb break="yes"
+                        />of the tovne / And giff ony soudane Affray <expan>commys</expan> / that
+                        thai be redy <expan>vndir</expan> the said'<lb break="yes"/>payne And giff
+                        any <expan>heris</expan> or <expan>persayvis</expan> ony schath aperand to
+                        the tovne or ony<lb break="yes"/>at <expan>duellis</expan> in it at thai mak
+                        warnyng' <expan>vndir</expan> the said payne</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0150-04" xml:lang="sc">
+                    <p><lb break="yes"/>Alss' that nane haff lord na lordschip othir na the kyng' .
+                        the duke and the Erle of<lb break="yes"/>Marr' . bot his
+                            <expan>Aldirman</expan> and his baillis <expan>vndir</expan> the said'
+                        payne</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0150-05" xml:lang="sc">
+                    <p><lb break="yes"/>Als . <expan>qwasumeuir</expan> has nocht his
+                            <expan>wapynnys</expan> redy and <expan>beris</expan>
+                        <expan>thaim</expan> nocht sal tyne viij s'<lb break="yes"/>withoute
+                        remission' and <expan>prisone</expan> quill' thar viij s' . be payit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0150-06" xml:lang="sc">
+                    <p><lb break="yes"/>Als that nane reset of herbry ony outduelland' Men
+                            <expan>in</expan> thair huss' bot qwhame at<lb break="yes"/>thai will
+                        stand for' / <del>ell</del> or ellis warn the <expan>officeris</expan> als
+                        fast as thair cummyn . <expan>vndir</expan><lb break="yes"/>payne of lyffe
+                        and tynsale of <expan>gudis</expan></p>
+                </div>
+            </div>
+            <pb n="151" break="yes"/>
+            <note type="editorial">Page 151 is empty.</note>
+            <pb n="152" break="yes"/>
+            <div type="undefined">
+                <p><date cert="medium" when="1413"/></p>
+                <div type="entry" xml:id="ARO-2-0152-01" xml:lang="la">
+                    <head><gap reason="rubbing"/></head>
+                    <p><lb break="yes"/>Simon stil <gap reason="rubbing"/><lb break="yes"/>Willelmus
+                            <gap reason="rubbing"/><lb break="yes"/>Johannes qwite similiter <gap
+                            reason="rubbing"/> non comparuit<lb break="yes"/>Johannes voket
+                        conuictus pro consimili causa<lb break="yes"/>Johannes Nesbit conuictus quia
+                        ocupat libertatem cum bonis extraneorum<lb break="yes"/>Johannes patricii de
+                        foty . brasiat et excercet artem sertorie<lb break="yes"/>Andreas Kynros
+                        respectuatur ad proximam primam<lb break="yes"/>Carnifex de tempil posuit se
+                        in voluntate ballivorum pro foristallacione emendo animalia infra liber<lb
+                            break="no"/>tatem wille et vendendo carnes extra tempil<lb break="yes"
+                        />Thomas goven excercet tincturam . sed modicum est de propriis bonis
+                        Alexander litstar plegius<lb break="yes"/><add place="margin">preposito
+                            quitus</add> Andreas ayncroft respectuatur Johanne voket plegio -
+                        finiuit xl d'<lb break="yes"/>Johannes kynros respectuatur<lb break="yes"
+                        />Meg' Dyngvale<lb break="yes"/>Thomas club<lb break="yes"/>Johannes
+                            harrw<lb break="yes"/><add place="margin">quitus</add>
+                        <del>Andreas grig</del><lb break="yes"/><del>Johannes quitbrow</del><lb
+                            break="yes"/>Thomas brig'<lb break="yes"/><add place="margin">preposito
+                            quitus</add> Andreas sprunt conuictus per assisam quod ocupat libertatem
+                            <foreign xml:lang="sc">lossand</foreign> et <foreign xml:lang="sc"
+                            >ladand'</foreign> v s'<lb break="yes"/>Adam Willelmi<lb break="yes"
+                        />Johannes petfur'<lb break="yes"/>Johannes de Dorre<lb break="yes"
+                            /><del>Andreas ayncroft</del><lb break="yes"/><add place="margin"
+                            >preposito quitus</add> Andreas cum Willelmo Jacson' finiuit xl d'<lb
+                            break="yes"/><foreign xml:lang="sc">Gib of the bra</foreign>, Johannes
+                        henrici, cum Johanne voket<lb break="yes"/>Dunccanus qui fuit cum Willelmo
+                        borthwic x s', Willelmus chapman vel Munk est in flandria conuictus pro
+                        pellibus et regratacione, emerunt pelles infra villam<lb break="yes"/>Thomas
+                        club iiij s'<lb break="yes"/>Johannes thome qui fuit cum Johanne thome de
+                        foty concedit regratacionem <del>xl d'</del> xxx d'<lb break="yes"/>Adam
+                        perswele x s'<lb break="yes"/>Walterus ettale xl d'<lb break="yes"/>Johannes
+                            Dunccani<lb break="yes"/>Willelmus Dunccani v s'<lb break="yes"
+                        />Alexander Willelmi cum Andrea Johannis v s'<lb break="yes"/>Willelmus
+                        Nicholay cum patricio lang' finiuit v s'<lb break="yes"/>Johannes Andree v
+                            s'<lb break="yes"/>Johannes petfur' vj s' viij d'</p>
+                </div>
+            </div>
+            <pb n="153" break="yes"/>
+            <note type="editorial">Page 153 is empty</note>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc>
+            <change status="corrected" when="2017-09">WP</change>
+            <change when="2016-11-15T12:33:51">AH: checked annotations.</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="33" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1501-11-24" cert="high"/></p>
+                <div type="heading" xml:id="ARO-8-0033-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum de Abirdene tenta in pretorio eiusdem
+                            xxiiij<hi rend="superscript">to</hi><lb break="yes"/>die mensis
+                        Nouembris anno quosupra</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0033-02" xml:lang="sc">
+                    <head><add place="margin">murray cowy</add></head>
+                    <p><lb break="yes"/>The said day the baillies assignit friday cum xv dais to
+                            thome<lb break="yes"/>cowy in futy tile ansuer to the borght stekit on
+                        him be Williame'<lb break="yes"/>murray in the name' ande behalf of Robert
+                        muray for the wrangwis'<lb break="yes"/>withhalding fra the said Robert of
+                        half ane barrell of girsillis</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0033-03" xml:lang="sc">
+                     <head><add place="margin">moreson' Colly</add></head>
+                     <p><lb break="yes"/>The said day Johnne' Colly was <w xml:id="w_uyr_rsf_xdb"
+                            >in</w><w xml:id="w_gz5_rsf_xdb">amerciament</w> of the court<lb
+                            break="yes"/>be ane suorne assis' Williame blinsele forspekar for the
+                            wrang<lb break="no"/>wis' strublance of alexander moresone and tile
+                            amend'<lb break="yes"/>at law will and forber in tyme tocum and that was
+                        gevin for dome'<lb break="yes"/>and the saide Alexander quyt of ale
+                        strublance of the said' Johne</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0033-04" xml:lang="sc">
+                      <head><add place="margin"><foreign xml:lang="la">prepositus et Auditores
+                                Compoti domini Johannis Ruthirfurd</foreign></add></head>
+                      <p><lb break="yes"/>the saide day the aldirman balyeis <del>and the</del>
+                        Counsale and<lb break="yes"/>communite being warnit be the hand' bell throw
+                            the<lb break="yes"/>haile tone and Ane gret part of the Samyn gatherit
+                            and<lb break="yes"/>present for the tyme Circualy Inquerit be <space/>
+                            officiar'<lb break="yes"/>walde nocht consent to discharge the Auditoris
+                        chosin and Suorne<lb break="yes"/>apone sere Jonhne Ruthirfurdis compt of
+                        thar aithis Ande grantit<lb break="yes"/>ande consentit to pass' with
+                        alexander menyeis aldirman to complene to<lb break="yes"/>the kingis hienes
+                        one the saide auditoris ande thai gaf nocht<lb break="yes"/>thar'
+                        deliuerance of the said' compt <add place="above">or</add>
+                        <del>of</del> the kingis cumin for<lb break="yes"/>the frethin' of the
+                        towne</p>
+                </div>
+            </div>  
+            <pb n="34" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1501-11-26"/></p>
+                <div type="heading" xml:id="ARO-8-0034-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta in pretorio
+                            eiusdem'<lb break="yes"/>xxvj die nouembris Anno quo supra</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0034-02" xml:lang="sc">
+                    <head><add place="margin">mvnk Colison'</add></head>
+                    <p><lb break="yes"/>The saide day It was ordanit and deliuerit be the court<lb
+                            break="yes"/>that Jonhne mvnk sal pay xx cartilfull of alding' to<lb
+                            break="yes"/>Jonhne Colison'</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0034-03" xml:lang="sc">
+                    <head><add place="margin">lip Riddaile</add></head>
+                    <p><lb break="yes"/>The said day the baillies assignit mononday that<lb
+                            break="yes"/>nixt cumis to thomas Riddaile tile ansuer to the borght<lb
+                            break="yes"/>strekit one him be Symon' lip for the wrangwis'
+                            withalding<lb break="yes"/>fra him of the waring of thre bollis of salt
+                        and <del>the wra</del><lb break="yes"/>ane suerd quhilk he left in his
+                        hous'</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0034-04" xml:lang="sc">
+                    <head><add place="margin">tailyeour Traill</add></head>
+                    <p><lb break="yes"/>The saide day the Alderman and ballies assignit sunday'<lb
+                            break="yes"/>the thrid day of december nixt tocum as day of
+                            peremptour'<lb break="yes"/>to patrik lesly and Dauid tailyour
+                        procuratouris and forspekaris<lb break="yes"/>for Jonet Westland and
+                        cristiane' Westland tile proceid and<lb break="yes"/>minister Justice anent
+                        the gudis of airschip clamit be thaim<lb break="yes"/>throue deceis' of
+                        vmquhile Johne' Westland and decernit<lb break="yes"/>the copy of the
+                        deposicionis of the witnes to James<lb break="yes"/>kennerty and malcome
+                        crag' in the name' of Jonet traile<lb break="yes"/>and ordanit gilbert
+                        prestone' officiar to warne' the said'<lb break="yes"/>Jonet to comper' the
+                        said day be hir self or hir procuratouris<lb break="yes"/>to ansuer'
+                        peremptourly to the <unclear reason="hand">proveine'</unclear> or thar
+                            procuratouris<lb break="yes"/>in the premisse bringand witht sic Richtis
+                        as thai haue<lb break="yes"/>and will wse becaus' this mater has bene
+                        diuers' tymes<lb break="yes"/>in the law and vndecidit</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0034-05" xml:lang="sc">
+                    <head><add place="margin">bisset tailyeour</add></head>
+                    <p><lb break="yes"/>The saide day the baillies chargit georg tailyeour<lb
+                            break="yes"/>to pay to georg bisset xviij <del>day</del> schillingis be
+                        the law<lb break="yes"/>day nixt eftir youle quhilk he grantit as borght for
+                            Johne<lb break="yes"/>colly'</p>
+                </div>
+                <pb n="35" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-8-0035-01" xml:lang="sc">
+                    <head><add place="margin">kintor Ratre</add></head>
+                    <p><lb break="yes"/>The said day It was deliuerit be ane assis' William<lb
+                            break="yes"/>blinseile forspekar that Dauid Kintor sale deliuere to
+                            Johne'<lb break="yes"/>of Ratre xij s' g' or a barrell of girlsillis
+                        quhilk ples'<lb break="yes"/>the said' Dauid best</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0035-02" xml:lang="sc">
+                    <head><add place="margin">mar club</add></head> 
+                    <p><lb break="yes"/>The said' day It was deliuerit be the said assis' that
+                            marion'<lb break="yes"/>club sale deliuer to Dauid mar baillie iij s' of
+                        his mertimes maile<lb break="yes"/>and gif scho prekis nocht one mononday
+                        that nixt cumis that scho has<lb break="yes"/>pait him iiij s' in haile
+                        pament of vij s' of h<supplied reason="rubbing">es</supplied> mertimes maile
+                            scho<lb break="yes"/>sale pay him
+                        the said iiij s'</p>
+                </div>
+            </div>
+            <pb n="36" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1501-11-29" cert="high"/></p>
+            <div type="entry" xml:id="ARO-8-0036-01" xml:lang="la">
+                <p><lb break="yes"/>Curia balliuorum de Abirdene tenta in pretorio eiusdem<lb
+                        break="yes"/>penultimo die mensis Nouembris anno quo supra</p>
+            </div>
+            <div type="entry" xml:id="ARO-8-0036-02" xml:lang="la">
+                <head><add place="margin">procuratorium alexandri annand</add></head>
+                <p><lb break="yes"/>Eodem die Alexander annand fecit constituit creauit<lb
+                            break="yes"/>nominauit ordinauit duncanum collisoun' et Johannem<lb
+                            break="yes"/>Ratre suos procuratores legitimos coniunctim et diuisum
+                            Dantes<lb break="yes"/>ac Concedentes eisdem suam plenariam potestatem
+                        et mandatem<lb break="yes"/>speciale ad prosequendum et calumpniandum thomam
+                            Riddaile<lb break="yes"/>et certas alias personas pro vna barella
+                        bituminis ab eo <unclear reason="hand">detenta</unclear><lb break="yes"
+                        />Promittens de Rato et grato in weriorem forma procuratorij et cetera</p>
+            </div>
+            <div type="entry" xml:id="ARO-8-0036-03" xml:lang="sc">
+                <head><add place="margin">annand Riddaile</add></head>
+                <p><lb break="yes"/>The said day the baillies assignit friday that nixt cumis<lb
+                            break="yes"/>to thomas riddaile to ansuer peremptourly to the borght
+                            strekit<lb break="yes"/>one him be alexander annand and his procuratoris
+                        for the wrangwis'<lb break="yes"/>Intrometting of ane barrell of ter
+                        pertening to him and decernit<lb break="yes"/>the copy to be gevin of the
+                        said borght to the said thomas</p>
+            </div>
+            <div type="entry" xml:id="ARO-8-0036-04" xml:lang="sc">
+                <head><add place="margin">club mar  mar</add></head>
+                <p><lb break="yes"/>The said day the court wardis schew for law and It was<lb
+                            break="yes"/>geuin for dome' that mariore club had faylyet in hir
+                            preif<lb break="yes"/>anent iiij s' pertening to dauid mar bailye for
+                        the quhilkis<lb break="yes"/>scho was <w xml:id="w_bnq_mvf_xdb">in</w><w
+                            xml:id="w_oht_mvf_xdb">amerciament</w> of the court and aucht to pay
+                            the<lb break="yes"/>said iiij s'</p>
+            </div>
+            <div type="entry" xml:id="ARO-8-0036-05" xml:lang="sc">
+                <head><add place="margin">Riddaile lip</add></head>
+                <p><lb break="yes"/>The said day the borght stekit be Symon lip one<lb break="yes"
+                        />thomas Riddaile for the wrangwis' withhalding fra him of<lb break="yes"
+                        />the waring of the bollis of gret salt and ane suerd is<lb break="yes"
+                        />fundin of waile for the quhilkis the said thomas was<lb break="yes"/>in
+                        amerciament of the court and aucht to mak Rekning <add place="above"
+                            >compt</add> and<lb break="yes"/>pament of the samyn to the said
+                        Symon'</p>
+            </div>
+                <pb n="37" break="yes" xml:base=""/> 
+                <div type="entry" xml:id="ARO-8-0037-01" xml:lang="sc">
+                    <head><add place="margin">potum gentilman alias' meldrum</add></head>
+                    <p><lb break="yes"/>The said day the borght stekit be William meldrum one Emy<lb
+                            break="yes"/>potum the Relict of Johnne' potum for the wrangwis'
+                        withhaldin fra<lb break="yes"/>him of ane stirk was fundin of nane' awaile
+                        for the quhilkis<lb break="yes"/>he was in amerciament of the court and scho
+                        quit of his chalang</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1501-12-03" cert="high"/></p>
+                <div type="heading" xml:id="ARO-8-0037-02" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirden' tenta In pretorio eiusdem
+                        tercio die<lb break="yes"/>Decembris Anno quo supra</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0037-03" xml:lang="sc">
+                    <head><add place="margin">Spens</add></head>
+                    <p><lb break="yes"/>the said' day comperit ser William mureson' Curat of
+                        abirdene forspekar<lb break="yes"/>for Jonhne Spens and askit at marion'
+                        burnat the relict of vmquhile<lb break="yes"/>Dauy Spens the gudis of
+                        arschip and the chartiris pertening to him as<lb break="yes"/>ayr' to the
+                        said' Dauy</p>
+                </div>  
+                <div type="entry" xml:id="ARO-8-0037-04" xml:lang="sc">
+                    <head><add place="margin">traill Westland'</add></head>
+                    <p><lb break="yes"/>The said' day the aldirman and balyeis with avis' of the
+                        court assignit<lb break="yes"/>to patry leslie and Dauy talyour procuratoris
+                        and forspekaris <del>tile</del> for cristiane<lb break="yes"/>Westlande and
+                        Jonet Westlande one that ane part Ande James<lb break="yes"/>Kennertj and
+                        malcome of crag caucionaris and forspekaris for Jonet<lb break="yes"/>traill
+                        one that vthir part friday <add place="above">eftir</add> the law day next
+                        eftir yule<lb break="yes"/>immediatlie eftir folloing' to comper befor tham
+                        within the tolbutht thar'<lb break="yes"/>to follou defende and ansuer'
+                        perempturlie to the saide cristiane West<lb break="no"/>lande and Jonet
+                        Westlande and to thar procuratoris for the airschip of gudis<lb break="yes"
+                        />clamit be tham be deces' of vmquhile Johne Westlande and to bring<lb
+                            break="yes"/>with tham sic Richtis as thai haue and wile us' in the
+                        premiss' with consent<lb break="yes"/>of bath the said' partiis and thar'
+                        handis tharto vphaldin</p>
+                </div>
+                <pb n="38" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-8-0038-01" xml:lang="sc">
+                    <p><lb break="yes"/>The said' day Jonhne greg lauchfullie warnit callit and<lb
+                            break="yes"/>nocht comperit til ansuer' to the borghe' stekit one him
+                            be<lb break="yes"/>Androw litstar for the wranguis' haldin fra him of ix
+                        l' xix s'<lb break="yes"/>and x d' be gud' estimacioun' for costis etc maid'
+                        and sustenit<lb break="yes"/>in the present of ane pix of wade tharfor the
+                        aldirman ande<lb break="yes"/>balyeis ordanit William scrimgeor officiar' to
+                        pas' and tak ane<lb break="yes"/>distres of the saide Jonhniz and latt it
+                        Agane to the borghe'<lb break="yes"/>and it be askit Ande warne him to
+                        comper this day<lb break="yes"/>xv dais the xxij day of this instand monetht
+                        of December'<lb break="yes"/>to ansuer to the said' borghe' as secunde day
+                        of process</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0038-02" xml:lang="sc">
+                    <head><add place="margin"><foreign xml:lang="la">constitucio procuratoris pro
+                                communitate burgi</foreign></add></head>
+                    <p><lb break="yes"/>The said' day the counsale and communite warnit be the
+                            hande<lb break="yes"/>bell throw the hell tone Ande forgatherit maid'
+                            constitut<lb break="yes"/>and ordanit Alexander menyeis Alexander chamer
+                        gilbert menyes James<lb break="yes"/>Colison' thar' procuratoris coniunctlie
+                        and Seueralie with pouer' to substitut<lb break="yes"/>ane or may to defend'
+                        the Summons maid' one the<lb break="yes"/>haill tone for iiij<hi
+                            rend="superscript">xx</hi> li' clamit be thomas leslie Johne<lb
+                            break="yes"/>mar' Richerd' ruthirfurd Richerd Waus and William Wormet<lb
+                            break="yes"/>Ande to follou and persew ser Johne ruthirfurd' for the
+                            common'<lb break="yes"/>gudis of the said' tone And' forthir tile
+                        ansuer' and defend'<lb break="yes"/>follou and persew ale and Sindrie
+                        actionis caus' concerning the<lb break="yes"/>hall tone and <gap
+                            reason="deletion"/> ordanit to make ane procuratory vndir<lb break="yes"
+                        />thar' common sele and to be Selit with thar said' common' sele</p>
+                </div>
+                <pb n="39" break="yes" xml:base=""/> 
+                <div type="entry" xml:id="ARO-8-0039-01" xml:lang="sc">
+                    <head><add place="margin">Ridall annand'</add></head>
+                    <p><lb break="yes"/>the saide day the aldirman and balyeis assignit sonday nixt
+                        eftir the la<gap reason="damage"/><lb break="yes"/>day to thome Ridall to
+                        ansuer perempturlie to the borghe fun<gap reason="damage"/><lb break="yes"
+                        />one him be Alexander annand' and his procuratoris for the wranguis'
+                            Intr<supplied reason="damage">omettin</supplied>g<lb break="yes"/>with
+                        ane barell of tar' of his</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0039-02" xml:lang="sc">
+                    <head><add place="margin">Spens barrat</add></head>
+                    <p><lb break="yes"/>The said' Day the aldirman and balyeis assignit to the Curat
+                            forspekar<lb break="yes"/>to Jonhne Spens friday eftir the law day for
+                        ministracion' <sic>of Justice<lb break="yes"/>of Justice</sic> Anent the
+                        airschip clamit be the saide Jonhne be the<lb break="yes"/>deces' of
+                        vmquhill Dauy Spens and ordanit marion' barrat<lb break="yes"/>to ansuer'
+                        the saide day for the saide arschip and decernit the<lb break="yes"/>Copy of
+                        that bill gevin In be the said' Curat to the saide marion'</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0039-03" xml:lang="sc">
+                    <head><add place="margin"><foreign xml:lang="la">propinacio domino gray
+                                Justiciario S domini nostri Regis</foreign></add></head>
+                    <p><lb break="yes"/>The saide say the aldirman ballieis and consale present for
+                        the tyme ordanit<lb break="yes"/>j pec' and demi of wax to be maide in
+                        torchis and prekatis and iij gallonis'<lb break="yes"/>of wyne <space/>
+                        boystis of skorcheatis to be gevin in ane propin'<lb break="yes"/>to the
+                        lorde gray Justice tile our Soueran lorde quhen he come to the<lb
+                            break="yes"/>ayr' of abirdene fra the northt partis and ordanit gilbert
+                        menyeis and Androu<lb break="yes"/>Cullane denys of the gilde to outred' the
+                        said' thingis of the common'<lb break="yes"/>gudis of the said' burghe'</p>
+                </div>
+            </div>  
+            <pb n="40" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1501-12-16" cert="high"/></p>
+                <div type="heading" xml:id="ARO-8-0040-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta In pretorio eiusdem
+                            xvj<hi rend="superscript">o</hi><lb break="yes"/>die mensis Decembris
+                        Anno quo supra</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0040-02" xml:lang="sc">
+                    <head><add place="margin">John ruthirfurd' Colisone</add></head>
+                    <p><lb break="yes"/>The said' day ser Jonhne ruthirfurd' warnit lauchfullie
+                        callit and nocht comperit<lb break="yes"/>to ansuer' to the borghe' fundin
+                        one him be Jonhne Colisone for the wrang<lb break="no"/>uys' withhaldin fra
+                        him of vj s' of ane cobill her' tharfor' the ballies<lb break="yes"/>ordanit
+                        gilbert prestone officiar' to pas' and tak</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0040-03" xml:lang="la">
+                    <head><add place="margin">pro cristina Smyth et cetera Inquisito mariore
+                            andirson'</add></head>
+                    <p><lb break="yes"/>gilbertus menyeis Duncanus Colison thomas Waus matheus<lb
+                            break="yes"/>branche Robertus crag Dauid murray patricius leslie
+                            Malcomus<lb break="yes"/>Crag gavanus murray Johannes Arthouris
+                        Willelmus murray and<lb break="yes"/>Johannes annand' burgenses dicti burgi
+                        Jurati dicunt quod quondam marioria<lb break="yes"/>Andirson' mar cristiane
+                        smitht latriciss presencium Obiit <del>vlt</del> ad<lb break="yes"/>parem et
+                        filem domini nostri Regis et cetera Et quod dicta cristina est legittima<lb
+                            break="yes"/>et propinquor heres dicte quondam matris sue Et quod est
+                            legittime<lb break="yes"/>etatis et qod non Obiit vestita et cetera de
+                        feodo aliquarum terrarum sine<lb break="yes"/>annuorum Redditum</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0040-04" xml:lang="sc">
+                    <head><add place="margin"><foreign xml:lang="la">protestacio Alexander
+                                scrogis</foreign></add></head>
+                    <p><lb break="yes"/>The said' day alexander scrogis Solempmtlie protestit that
+                        quhat was<lb break="yes"/>done or happin to be done Anent the Sesin of his
+                        Inland' clamit<lb break="yes"/>and follouit be <space></space> Scrogis his Sone suld' turne him to nay<lb break="yes"
+                        />preiudice</p>
+                </div>
+                <pb n="41" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-8-0041-01" xml:lang="sc">
+                    <head><add place="margin">Colison colp Smyth</add></head>
+                    <p><lb break="yes"/>The said' day comperit Dauid Colp ande producit our'
+                            <supplied reason="damage">Souerane</supplied><lb break="yes"/>lordis
+                        lettres vndir the Signet to the aldirman ande balyeis cha<supplied
+                            reason="damage">rgeand</supplied><lb break="yes"/>thame to minister
+                        Justice to the saide Dauy Anent the gudis et cetera gevin to him<lb
+                            break="yes"/>be our' Souerane lorde pertening to his hienes be the
+                        deces' of vmquhill<lb break="yes"/>Johne huchoson' as eschaet of bastardy as
+                        in the samyn mair' fullie Is<lb break="yes"/>contenit quhilkis lettres being
+                        rede and vndirstanding the said' Dauy askit<lb break="yes"/>at James
+                        Colison' and thomas lam <add place="above"><del>vij'</del></add> viij<hi
+                            rend="superscript">c</hi> skinnis and may skinnis and vthiris gudis<lb
+                            break="yes"/>that he mycht persewe that Johne huchoson' hed' and left in
+                        his hous' in tym of his deces'<lb break="yes"/>Ande the saide James Colison'
+                        being' present denyit that he hed' sic gudis or ony<lb break="yes"/>gudis
+                        pertening' to vmquhill the saide Johne Ande the aldirman and balyeis
+                            assignit<lb break="yes"/>the law day next eftir yule to the said' Dauy
+                        colp to preyve the gudis that the<lb break="yes"/>saide Johne hed in his
+                        hous' in tym of his deces' of his avne that Justice mycht be done<lb
+                            break="yes"/>equalie according' to our Soueran lettres<lb break="yes"
+                        />and gift maid' tharapon'</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1501-12-17" cert="high"/></p>
+                <div type="heading" xml:id="ARO-8-0041-02" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta In pretorio eiusdem
+                            <lb break="yes"/>xvij<hi rend="superscript">o</hi> die mensis decembris
+                        anno <w xml:id="w_t4n_jkg_xdb">quo</w><w xml:id="w_cwq_jkg_xdb"
+                        >supra</w></p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0041-03" xml:lang="sc">
+                    <head><add place="margin">Kintor Arthour</add></head>
+                    <p><lb break="yes"/>The said' day the baillies assignit the law day nixt eftir
+                        yonle to Dauid Kintor<lb break="yes"/><del>yonle</del> to ansuer
+                        peremptoiroly to the borght strekit one him<lb break="yes"/>be Johne Arthour
+                        for the wrangwis' withhalding fra <add place="above">him</add> of<lb
+                            break="yes"/>ane franche crown'</p>
+                </div>
+                <div type="entry" xml:id="ARO-8-0041-04" xml:lang="sc">
+                    <head><add place="margin">greg litstar</add></head>
+                    <p><lb break="yes"/>the saide day Jonhne grig lauchfullie callit and nocht
+                        comperit to ansuer<lb break="yes"/>to the borghe' strekit one him be Androw
+                        litstar for the wranguis' haldin<lb break="yes"/>fra him of ix l' xix s' and
+                        x d' for costis maid' and Sustenit in the<lb break="yes"/>persent of ane pip
+                        of wad' et cetera tharfor the balyeis ordanit William scrimgeour<lb
+                            break="yes"/>officiar' to pas' and tak ane stres' of the saide Johnis'
+                        and lat It Agan to<lb break="yes"/>borghe and It be askit Ande warne him to
+                        the law day next eftir<lb break="yes"/>yule to ansuer' to the said' borghe'
+                        as thrid' day of process befor witnes</p>
+                </div>
+                <pb n="42" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-8-0042-01" xml:lang="sc">
+                    <head><add place="margin"><gap reason="damage"/>eling <gap reason="damage"
+                            />er'</add></head>
+                    <p><lb break="yes"/>The said day Richerd litster grantit him awand' to ser
+                            Jhone<lb break="yes"/>streueling vj s' viij d' <del>and</del> quhilkis
+                        the baillies chargit him<lb break="yes"/>to pay within terme of law and
+                        allegeit that thomas gledstane and<lb break="yes"/>his wif suld pay the
+                        tothir half merk for the <unclear reason="hand">Retouris</unclear> maid to
+                        thame</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1502-01-04" cert="high"/></p>
+                <div type="entry" xml:id="ARO-8-0042-02" xml:lang="sc">
+                    <p><lb break="yes"/>The ferde day of Januar' the yer' of gode I<hi
+                            rend="superscript">M</hi> v<hi rend="superscript">c</hi> and ane yer'<lb
+                            break="yes"/>Alexander menyeis aldirman Johne Cullan Androw Cullan James
+                            Colisone<lb break="yes"/>Dauy mar' gilbert menyeis Androw murray William
+                        murray Alexander myrton'<lb break="yes"/>William nicholson Androw litstar
+                        Johne murray gilbert litstar Robert murray gavin'<lb break="yes"/>murray
+                        Johne blak alexander scrogis <del>mathow branche</del> Robert kintor
+                            malcum<lb break="yes"/>Crag Dauy murray Dauy Kintor patry leslie William
+                        blinsele Johne<lb break="yes"/>annand' <del>Johne Steuinson</del> patry Rede
+                        Johne Ratre thomas Waus<lb break="yes"/>Androw Waus Robert crag William
+                        Kintor Duncan Crak alexander prat<lb break="yes"/>Johne Auchneyve gilbert
+                        Reburn Johne Arthour Dauy fynne Richerd'<lb break="yes"/>Was yongar Johne
+                        meldrum Dauy arrot Dauy tulidef Johne falconar<lb break="yes"/>Richerde
+                        redhed' Dauy broys' Robert futhes alexander prat gilbert paterson'<lb
+                            break="yes"/>Johne talyour thome menyes thome Narne Johne Porter
+                            Williame<lb break="yes"/>philp Androw vody A' gordon' thome meldrum
+                        Johne chapman Androw<lb break="yes"/>louson' Cristy prat Wat strachan thome
+                        lammynton' Johne litstar yongar<lb break="yes"/>Johne horne James Kennertj
+                        William Ranison' thome Ridall henry<lb break="yes"/>horn' Dauy adamsone
+                        Duncan Collison' Duncan porter Syme Robertson'<lb break="yes"/>William
+                        scrimgeour laurence talyour Jonhne greg thome Watsone William<lb break="yes"
+                        />Walcar' Androw nachtj William blinsell couper gilbert preston thome
+                            sidlar'<lb break="yes"/>Johne malisson' Alexander horne A' Jofrasone
+                        William coupar Duncan<lb break="yes"/>Smyt William vmfray Johne chamer
+                        Donald' baxter Will smitht<lb break="yes"/>Dauy talyour Johne Rede hatmakar
+                        patry Adamson' Robert talyour george</p>
+                </div>
+                <pb n="43" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-8-0043-01" xml:lang="sc">
+                    <p><lb break="yes"/>talyour Jonhne knollis Johne Colison' Richerde hill yongar
+                        Sandy li<gap reason="damage"/><lb break="yes"/>mynton' Johne glenny
+                        Alexander mar' Androw ancroft Johne leslie of Warderis <gap reason="damage"
+                            /><lb break="yes"/>Alexander chamer Alexander rede Alexander mathouson'
+                        William futhes Androw futhes Alexander <gap reason="damage"/><lb break="yes"
+                        />gray Androw michelson' William portar henry <gap reason="overwriting"/>
+                        Alexander talyour Alexander Ranison'<lb break="yes"/>Johne cromy Androw
+                        tuliboy William Rolland' Alexander malisson' Johne sclatar<lb break="yes"
+                        />thomas talyour William cristy William gray alexander lindssay Alexander
+                            Rolland'<lb break="yes"/>and Robert Walcar'</p>
+                </div>
+            </div>   
+        </body>
+    </text>
+</TEI>

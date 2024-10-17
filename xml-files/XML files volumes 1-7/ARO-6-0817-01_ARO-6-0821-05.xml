@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-08-15T11:06:06">CH</change>
+            <change status="corrected" when="2017-08-21T20:38:10">EF</change>
+            <change status="corrected" when="2017-08-31T16:42:40">AH: annotations checked</change>
+            <change status="corrected" when="2018-11-29T11:56:15">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="817" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1483-11-10" cert="medium"/></p>
+                <div type="heading" xml:id="ARO-6-0817-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta in pretorio per
+                        balliuos eiusdem
+                            <?oxy_comment_start author="his252" timestamp="20181129T113741+0000" comment="NOTE: There is a dash before the &apos;x&apos; which may be an &apos;i&apos;."?>x<hi
+                            rend="superscript"><?oxy_comment_end?>o</hi> die mens<supplied
+                            reason="damage">is</supplied><lb break="yes"/>nouembris anno Domini et
+                        cetera lxxxiij<hi rend="superscript">o</hi> /</p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0817-02" xml:lang="la">
+                    <p><lb break="yes"/>quo die warda sive decretum plegij porrecti per Dauid<lb
+                            break="yes"/>menyes prelocutorem thome hatmakar' quod idem Thomas
+                        deuenit ad clameum suum aduersus Robertum<lb break="yes"/>crag plegium
+                        Willelmi richardson de iiij<hi rend="superscript">or</hi> marcas monete de
+                        Danskyn defectu introitus<lb break="yes"/>dicti Willelmi isto die iuxta
+                        tenorem acti precedentis / Respectuatur propter absenciam dicti roberti<lb
+                            break="yes"/>in forma perit' et effectu vt nunc vsque hodie ad octo dies
+                        sine preiudicio parcium</p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0817-03" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Alexander menyes deuenit plegius legalis pro thoma
+                        vaus' quod andreas Duvy<lb break="yes"/>et quidam Willelmus dictus <foreign
+                            xml:lang="sc">spylyelach</foreign> erunt indempnes de ipso thoma et
+                        parte sua aliter quam per viam<lb break="yes"/>Juris / quodcumque comparebit
+                        dictus thomas ad calumpniam balliuorum pro perturbio dictarum perarum<lb
+                            break="yes"/>super premunicione trium dierum</p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0817-04" xml:lang="la">
+                    <p><lb break="yes"/>Dauid cowy adiudicatur in amerciamento curie pro iniusta
+                        perturbacione andree menyes et emen<lb break="no"/>dabit parti lese ad visum
+                        proborum virorum Et idem Dauid inuenit Johannem de Kintor ple<lb break="no"
+                        />gium legalem pro eo quod dictus andreas et Johannes menyes erunt indempnes
+                        aliter quam per viam Juris<lb break="yes"/>Et Johannes menyes adiudicatur in
+                        amerciamento pro iniusta perturbacione Dauid cowy et tenetur emen<lb
+                            break="no"/>dare eidem vt Jura volunt / pro quo Johanne / andreas
+                        branche deuenit plegius<lb break="yes"/>legalis quod dictus Dauid erit
+                        indempnis aliter quam per viam Juris / Et quod dicti plegij<lb break="yes"
+                        />intrabunt partes coram preposito et ballivis quincumque ad hoc fuerint
+                        sufficienter premuniti et cetera<lb break="yes"/>Johannes fichet deuenit
+                        plegius legalis pro andrea menyes de indempnitate Dauid cowy aliter<lb
+                            break="yes"/>quam per viam Juris / et pro introitu eiusdem andree ut
+                        supra</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1483-11-12" cert="high"/></p>
+                <div type="entry" xml:id="ARO-6-0817-05" xml:lang="sc">
+                    <head><add place="margin"><expan>thomas</expan> marr'</add></head>
+                    <p><lb break="yes"/>In the court <expan>haldin</expan>
+                        <expan>in</expan> the tolbuthe of abirdene be the ballies of the
+                            <expan>samyn</expan> the xij dai<lb break="yes"/>of
+                            <expan>nouember'</expan> yer' forsaid <expan>comperit</expan> before the
+                            <expan>aldirman</expan> and ballies Thomas of marr' / and<lb break="yes"
+                        />drew his <expan>landis</expan> and <expan>gudis</expan>
+                        <expan>souerty</expan> til <expan>vndirly</expan> al clames and
+                            <expan>challancis</expan> of a <expan>rycht</expan> nobil and<lb
+                            break="yes"/>michtie lord George erle of <expan>huntly</expan> lord
+                        gordon' and of badenagh as law wil<lb break="yes"/>And atour' the said
+                        thomas <expan>constitute</expan> and ordanit <expan>Androw</expan> rede of
+                            <expan>badfothellis</expan>
+                        <expan>alexander</expan><lb break="yes"/>rede his son and Dauid marr'
+                            <expan>coniunctly</expan> and <expan>seueralie</expan> his laghful
+                            <expan>procuratouris</expan>
+                        <w xml:id="w_r1g_3yr_w1b">to</w><w xml:id="w_nlj_3yr_w1b">do</w><lb
+                            break="yes"/>and defend for him in the <expan>forsaidis</expan>
+                        <expan>actionis</expan> and al <expan>vthiris</expan>
+                        <expan>concerning</expan>
+                        <expan>him</expan> / <expan>promittand</expan>
+                        <w xml:id="w_l3z_jyr_w1b">to</w><w xml:id="w_xnc_kyr_w1b">hald</w><lb
+                            break="yes"/>ferme and stabil et cetera <expan>in</expan> the
+                            <expan>sickerast</expan>
+                        <expan>fourm</expan> of <expan>procuratory</expan> / witnez
+                            <expan>alexander</expan> trayl Jhone<lb break="yes"/>sclatar'
+                            <expan>ser</expan> Jhon' <expan>striuelin</expan>
+                        <expan>notar</expan> and <expan>vthiris</expan>
+                        <expan>diuers'</expan></p>
+                </div>
+            </div> 
+            <div type="unidentified">
+                <p><date when="1483-12-02" cert="high"/></p>
+                <div type="entry" xml:id="ARO-6-0817-06" xml:lang="la">
+                    <p><lb break="yes"/>Et est memorandum quod secundo die Decembris anno quo supra
+                        dictus dominus comes de huntle<lb break="yes"/>coram Willelmo blindsel vno
+                        ballivorum de abirdene constituit Robertum blindsel<lb break="yes"/>et
+                        Jacobum cvmyn coniunctim et divisim suos procuratores ad prosequendum et
+                            recuperandum<lb break="yes"/>debita et bona sibi assignata per Robertum
+                        senyour' aduersus thomam de marr'<lb break="yes"/>thomam scrogis et
+                        quoscumque alios / Ipso promittens de rato et cetera</p>
+                </div>
+            </div> 
+            <div type="unidentified">
+                <p><date when="1483-11-10" cert="high"/></p>
+                <div type="entry" xml:id="ARO-6-0817-07" xml:lang="sc">
+                    <head><add place="margin">more</add></head>
+                    <p><lb break="yes"/>On Sanct <expan>mertynis</expan> evin yer' of god et cetera
+                        lxxxiij In the tolbuthe before thomas fife ane of<lb break="yes"/>the
+                        ballies of <expan>abirdene</expan>
+                        <expan>comperit</expan>
+                        <expan>Wilyam</expan> more <expan>thom</expan>
+                        <expan>gardnaris</expan> maich and sayd <expan>that</expan> he had a<lb
+                            break="yes"/><expan>chamer</expan>
+                        <expan>in</expan> tak of John' grig as <expan>factour</expan> to matho massy
+                        quhilk was <expan>nocht</expan> sufficiently<lb break="yes"
+                            /><expan>mendit</expan> as he allegit it suld haf bene / and
+                            <expan>perofferit</expan> the key <expan>tharof</expan> to the said
+                            John'<lb break="yes"/>quhilk he refusit <w xml:id="w_mcp_ryr_w1b"
+                            >to</w><w xml:id="w_wys_ryr_w1b">tak</w> / and <expan>grantit</expan>
+                        <expan>him</expan>
+                        <w xml:id="w_yyf_syr_w1b">til</w><w xml:id="w_whj_syr_w1b">haf</w>
+                        <expan>resauit</expan> v s' for the mail of the said <expan>terme</expan><lb
+                            break="yes"/>of <expan>mertymes</expan> / quharfor the said
+                            <expan>Wilyam</expan>
+                        <expan>protestit</expan>
+                        <expan>that</expan> it suld turn <expan>him</expan> to na
+                            <expan>preiudice</expan>
+                        <expan>in</expan>
+                        <expan>tym</expan>
+                        <expan><w xml:id="w_s1c_vyr_w1b">to</w><w xml:id="w_u1f_vyr_w1b"
+                            >cum</w></expan></p>
+                </div>
+            </div> 
+            <pb n="818" break="yes" xml:base=""/>
+            <div type="unidentified">
+                <p><date when="1483-11-14" cert="high"/></p>
+                <div type="entry" xml:id="ARO-6-0818-01" xml:lang="sc">
+                    <p><lb break="yes"/>The xiiij dai of <expan>nouember</expan> yer' et cetera
+                        lxxxiij Dauid marr' <expan>producit</expan> ane
+                            <expan>obligacione</expan><lb break="yes"/>made til <expan>him</expan>
+                        and thomas of marr' be <expan>Alexander</expan> trail before
+                            <expan>Wilyam</expan> blindsel and <expan>androw</expan> culan<lb
+                            break="yes"/>twa of the balyeis of the <expan>burgh</expan> of
+                            <expan>abirdene</expan> sittand <expan>in</expan>
+                        <expan>Jugement</expan>
+                        <expan>in</expan> the tolbuthe of the <expan>samen</expan><lb break="yes"
+                        />quhilk <expan>obligacion</expan> he askit <w xml:id="w_k1v_zyr_w1b"
+                            >to</w><w xml:id="w_wzy_zyr_w1b">be</w> copyit <expan>in</expan>
+                        <expan>this</expan>
+                        <expan>common</expan> buke becaus' the said <expan>obligacione</expan><lb
+                            break="yes"/><expan>concernit</expan> to twa <expan>personis</expan>
+                        <expan>forsaidis</expan> / of the quhilk <expan>obligacion</expan> the
+                            <expan>tenour</expan> folowis <expan>in</expan> this fourme<lb
+                            break="yes"/><add place="margin"><foreign xml:lang="la">copia
+                                obligacionis</foreign></add> Be it made kend til al
+                            <expan>men</expan> be <expan>thir</expan>
+                        <expan>present</expan>
+                        <expan>lettres</expan> me <expan>Alexander</expan> trail burges of
+                            <expan>abirdene</expan><lb break="yes"/><w xml:id="w_mps_fzr_w1b"
+                            >to</w><w xml:id="w_kcx_fzr_w1b">be</w>
+                        <expan>bundin</expan> and straitlest oblist be the faith of my bodi to my
+                        weilbeluffit emys<lb break="yes"/>thom of marr' and Dauy marr'
+                            <expan>burges</expan> of the said <expan>burgh</expan> / quhare thai ar
+                            <expan>bundin</expan> for me<lb break="yes"/>to Cornelis bokkel
+                            <expan>portar</expan> of <expan>brugis</expan>
+                        <expan>in</expan> the some' of twelf li' g' of the money of<lb break="yes"
+                            /><expan>flandris</expan> for the <expan>redempcion</expan> frethin and
+                            <expan>reding</expan> of me owte of the stane <expan>in</expan>
+                        <expan>brugis</expan> / ffor the<lb break="yes"/>quhilk I oblis me to my
+                        forsaid emis <expan>thomas</expan> and Dauy and al my <expan>landis</expan>
+                        and <expan>gudis</expan><lb break="yes"/><expan>in</expan> stratast stile
+                        and <expan>fourm</expan> of <expan>obligacione</expan> / and atour' I
+                            <expan>assign</expan> and <expan>owyrgiffis</expan>
+                        <expan>puttis</expan>
+                        <expan>in</expan> thar'<lb break="yes"/><expan>handis</expan> my
+                            <expan>tackis</expan> and <expan>assedacionis</expan> of my
+                            <expan>wattiris</expan> and of my <expan>croftis</expan> that I haf
+                            of<lb break="yes"/>Wil cryne And mare I <expan>assign</expan> and
+                            <expan>owyrgiffis</expan> the land that lyis <expan>in</expan> the
+                            schipraw<lb break="yes"/>at meg the vaus duellis in / and xx s' of
+                            <expan>annuel</expan> of Johne <expan>Walkaris</expan> land<lb
+                            break="yes"/>lyand <expan>in</expan> the ovirkirkgate / and al my hail
+                            <expan>tempil</expan> land <expan>liand</expan> in the
+                            <expan>nethirkirkgate</expan><lb break="yes"/>and <expan>giffis</expan>
+                        ful power to ane balye of <expan>abirdene</expan>
+                        <w xml:id="w_epf_vzr_w1b">to</w><w xml:id="w_cy3_vzr_w1b">gif</w>
+                        <expan>thaim</expan> stait and possession'<lb break="yes"/>like as war
+                            <expan>in</expan>
+                        <expan>propir</expan>
+                        <expan>person</expan> And haldand and <w xml:id="w_qrj_xzr_w1b">for</w><w
+                            xml:id="w_gds_xzr_w1b">to</w><w xml:id="w_ot4_xzr_w1b">hald</w> al at is
+                        done <expan>in</expan> this<lb break="yes"/><expan>matir</expan> quhil my
+                        forsaid emys be fred and red of the said some And this<lb break="yes"/>I
+                        oblis be the gret aith sworn <w xml:id="w_gxl_zzr_w1b">to</w><w
+                            xml:id="w_kfp_zzr_w1b">kepe</w> this said <expan>condicionis</expan> In
+                            witnes<lb break="yes"/>heirof I haf <expan>writin</expan> this
+                            <expan>with</expan>
+                        <expan>myn</expan> awn' hand <expan>in</expan> the towne of brugis
+                            <date>the</date><lb break="yes"/><date when="1482-11-22" cert="high"
+                            >xxij of <expan>nouember</expan> the yer' of god M iiij<hi
+                                rend="superscript">C</hi> lxxxij yeris</date> / Be me
+                            <expan>Alexander</expan><lb break="yes"/>trail <foreign xml:lang="la"
+                            >manu propria</foreign> et cetera The quhilk copy the ballies
+                            <expan>decernit</expan> before <expan>thir</expan> witnez
+                            <expan>Walter</expan><lb break="yes"/>achneve <expan>Wilyam</expan>
+                        moyses Johne <expan>chepman</expan>
+                        <expan>androw</expan> nachty <expan>ser</expan> Robert leis notar' and
+                            <expan>othir</expan>
+                        <expan>sindry</expan></p>
+                </div>
+            </div> 
+            <div type="unidentified">
+                <p><date when="1483-11-17" cert="high"/></p>
+                <div type="entry" xml:id="ARO-6-0818-02" xml:lang="sc">
+                    <head><add place="margin">Janet <expan>Wormot</expan></add></head>
+                    <p><lb break="yes"/>The xvij dai of <expan>nouember</expan> yer' forsaid It is
+                            <expan>deliuerit</expan> and ordanit be ane assise with<lb break="yes"
+                            /><expan>consent</expan> of Jonet Wormot and thom prat /
+                            <expan>anent</expan> the debate of a <expan>termis</expan> mail of
+                            the<lb break="yes"/>thrid <expan>part</expan> of the pot
+                            <expan>wattir</expan> quhilk the said <expan>thomas</expan> has
+                            <expan>in</expan>
+                        <expan>assedacion</expan> of the said Janet<lb break="yes"
+                            /><expan>that</expan> the said Janet sal pay to the toune the last
+                            <expan>mertymes</expan>
+                        <expan>terme</expan> of his tak of the<lb break="yes"/>said
+                            <expan>wattir</expan> becaus' the said <expan>thomas</expan> pait a
+                            <expan>termis</expan> mail to the toune of his entre
+                            <expan>with</expan><lb break="yes"/>the said <expan>fisching</expan> and
+                        sal fre <expan>him</expan>
+                        <expan>tharof</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0818-03" xml:lang="sc">
+                    <p><lb break="yes"/>the <expan>samyn</expan> dai the <expan>actione</expan>
+                        <expan>dependand</expan> betuix <expan>thomas</expan> prat and James of
+                        Kintor <expan>anent</expan> a<lb break="yes"/>decrete of the
+                            <expan>lordis</expan> of consel <expan>producit</expan> be the said
+                        James / is <expan>continuit</expan>
+                        <expan>with</expan>
+                        <expan>consent</expan> of <expan>parties</expan><lb break="yes"
+                            /><expan>in</expan> sicklike <expan>fourme</expan> and effect as now
+                        quhil the law dai <expan>eftir</expan> yule next <expan><w
+                                xml:id="w_uk2_fbx_w1b">to</w><w xml:id="w_ahh_fbx_w1b"
+                            >cum</w></expan> for mare<lb break="yes"/><expan>informacion</expan>
+                        <w xml:id="w_kpw_fbx_w1b">to</w><w xml:id="w_nv1_gbx_w1b">be</w> gottin
+                            <expan>in</expan> the said <expan>matir</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0818-04" xml:lang="sc">
+                    <p><lb break="yes"/><expan>Item</expan> it is <expan>appoyntit</expan> and
+                        accordit betuix thom <expan>hatmakar</expan> and Robert crag
+                            <expan>anent</expan> four'<lb break="yes"/>Danskin <expan>merkis</expan>
+                        <expan>quhilkis</expan> the said robert com <expan>souerty</expan> for / for
+                            <expan>Wilyam</expan> richartson / <expan>that</expan> the<lb
+                            break="yes"/>said robert sal <expan>entir</expan> the said
+                            <expan>Wilyam</expan>
+                        <expan>in</expan> the court of <expan>this</expan> burgh on the law day
+                            <expan>eftir</expan> yule<lb break="yes"/>next <expan><w
+                                xml:id="w_k24_lbx_w1b">to</w><w xml:id="w_u4r_lbx_w1b"
+                            >cum</w></expan> / to the <expan>challance</expan> of the said
+                            <expan>thomas</expan> / or ellis the said robert <w
+                            xml:id="w_mv4_nbx_w1b">to</w><w xml:id="w_tsr_nbx_w1b">pay</w> the
+                            said<lb break="yes"/>some' the <expan>samyn</expan> day as the said
+                            <expan>Wilyam</expan> suld make <expan>payment</expan>
+                        <expan>tharof</expan> / but ony langar<lb break="yes"
+                        /><expan>proces</expan></p>
+                </div>
+            </div>
+            <pb n="821" break="yes" xml:base=""/>
+            <div type="unidentified">
+                <p><date cert="medium" notBefore="1483-11-17" notAfter="1483-12-15"/></p>
+                <div type="incompleteEntry" xml:id="ARO-6-0821-01" xml:lang="sc">
+                    <p><lb break="yes"/><seg xml:id="anchorb461">has</seg><note anchored="true" type="editorial" target="#anchorb461">Pages 819 and 820 are missing. This entry starts partway through.</note>
+                        <expan>consentit</expan> and ordanit <expan>that</expan>
+                        <expan>Alexander</expan>
+                        <expan>menyes</expan> sal pay and <expan>content</expan> of his
+                            <expan>wattir</expan> mail of <expan>this</expan>
+                        <expan>instant</expan><lb break="yes"/>yer' til <expan>Wilyam</expan>
+                        <expan>lutar</expan> sex <expan>merkis</expan> / quhilk some' is
+                            <expan>assignit</expan> til the said <expan>Wilyam</expan> be ane<lb
+                            break="yes"/>nobil lord Dauid erle of crafurd of the said
+                            <expan>lordis</expan>
+                        <expan>pencion</expan> of the toune / the<lb break="yes"/>said
+                            <expan>alexander</expan> takand <expan>William</expan>
+                        <expan>lutaris</expan>
+                        <expan>sufficient</expan>
+                        <expan>quittance</expan>
+                        <w xml:id="w_rtk_c2x_w1b">to</w><w xml:id="w_jd4_c2x_w1b">be</w>
+                        <expan>deliuerit</expan> to the <expan>aldirman</expan><lb break="yes"/>and
+                        ballies for his <expan>allowance</expan> and <expan>making</expan> of thare
+                        compt</p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0821-02" xml:lang="sc">
+                    <p><lb break="yes"/>the <expan>aldirman</expan> and <expan>consel</expan>
+                        <expan>with</expan>
+                        <expan>consent</expan> of <expan>diuers'</expan> of the
+                            <expan>communite</expan> has <expan>chosin</expan>
+                        <expan>Alexander</expan> rede Dauid<lb break="yes"/><expan>menyes</expan>
+                        <expan>yongar</expan> Dauid mathoson <expan>androw</expan>
+                        <expan>murra</expan>
+                        <expan>eldar</expan>
+                        <expan>Walter</expan> achneve and Jhon' <expan>glen<lb break="no"
+                            />maluin</expan> to fynd and <expan>vndirstand</expan> quhare xxx li'
+                        may be <expan>gottin</expan> or rasit of <expan>wattir</expan><lb
+                            break="yes"/>or land <expan>belanging</expan> this <expan>burgh</expan>
+                        for outred and <expan>payment</expan>
+                        <w xml:id="w_twn_j2x_w1b">to</w><w xml:id="w_jjq_j2x_w1b">be</w> made of
+                            <expan>certane</expan>
+                        <expan>chargis</expan><lb break="yes"/>and <expan>dettis</expan> of the
+                            <expan>samyn</expan> / And falyeand <expan>tharof</expan>
+                        <w xml:id="w_p5m_l2x_w1b">to</w><w xml:id="w_r2q_l2x_w1b">mak</w> ane
+                            <expan>general</expan> tax for the said <expan>payment</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0821-03" xml:lang="sc">
+                    <head><add place="margin"><foreign xml:lang="la"
+                        >procuratorium</foreign></add></head>
+                    <p><lb break="yes"/><expan>Item</expan> because the <expan>aldirman</expan>
+                        <expan>consale</expan> and <expan>communite</expan> of <expan>this</expan>
+                        <expan>burgh</expan> has gevin and <expan>assignit</expan> til Ja<lb
+                            break="no"/>mes cvmyn <expan>burges</expan> of the <expan>samyn</expan>
+                        the malis of the <expan>thrid</expan> part of a net of the pot<lb
+                            break="yes"/><expan>wattir</expan> for his <expan>termes</expan> of the
+                            <expan>assedacion</expan> made <expan>tharupon</expan> for
+                            <expan>certane</expan>
+                        <expan>costis</expan> and <expan>seruice</expan><lb break="yes"/>made be
+                            <expan>him</expan>
+                        <expan>concerning</expan> the toune / thai haf <expan>constitute</expan> and
+                        ordanit the said James<lb break="yes"/>thare lachful
+                            <expan>procuratour</expan>
+                        <expan><w xml:id="w_w2r_52x_w1b">to</w><w xml:id="w_gxt_52x_w1b"
+                            >persew</w></expan> and folow as law wil Dauid Kintor for a<lb
+                            break="yes"/><expan>termis</expan> mail / of the said
+                            <expan>fisching</expan> / and ony <expan>vthiris</expan> that has
+                        fischit or sal fisch<lb break="yes"/>the said <expan>wattir</expan> for his
+                            <expan>termes</expan> haldand and <w xml:id="w_oys_w2x_w1b">for</w><w
+                            xml:id="w_o5w_w2x_w1b">to</w><w xml:id="w_uqz_w2x_w1b">hald</w> ferm and
+                        stabil <expan>quhatsum<lb break="no"/>evir</expan>
+                        <expan>thing</expan> the said James cumyn lachfully <expan>ledis</expan>
+                        <w xml:id="w_gkr_z2x_w1b">to</w><w xml:id="w_m1v_z2x_w1b">be</w> done in
+                            the<lb break="yes"/>said office of <expan>procuratory</expan> / giffand
+                        and <expan>committand</expan> til <expan>him</expan> thare ful power of<lb
+                            break="yes"/>the <expan>samyn</expan>
+                        <expan>in</expan> al <expan>thingis</expan>
+                        <expan>tharto</expan> neidful or <expan>requirit</expan> / witnez
+                            <expan>alexander</expan>
+                        <expan>menyes</expan> James<lb break="yes"/>lesly <expan>alexander</expan>
+                        rede gilbert the vaus and <expan>vthiris</expan> sindry</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1483-12-15" cert="high"/></p>  
+                <div type="heading" xml:id="ARO-6-0821-04" xml:lang="la">
+                    <p><lb break="yes"/>Curia legalis tenta in pretorio burgi de abirdene per
+                        balliuos eiusdem xv die mensis<lb break="yes"/>Decembris anno et cetera
+                            lxxxiij<hi rend="superscript">o</hi></p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0821-05" xml:lang="sc">
+                    <p><lb break="yes"/>The quhilk dai thomas of marr' callit <expan><w
+                                xml:id="w_itb_ltr_y1b">to</w><w xml:id="w_bvw_ktr_y1b"
+                            >comper'</w></expan> or his <expan>procuratouris</expan> as he that
+                            drew<lb break="yes"/>his <expan>landis</expan> and <expan>gudis</expan>
+                        <expan>souerty</expan> to the <expan>instance</expan> of a
+                            <expan>mychti</expan> lord george erle of <expan>huntly</expan><lb
+                            break="yes"/>or his <expan>procuratouris</expan> til
+                            <expan>ansuer'</expan> and <expan>vndirly</expan> the law for the
+                            <expan>wrangwis'</expan>
+                        <expan>detencion</expan> and <expan>withhalding</expan><lb break="yes"/>fra
+                        the said lord of <expan>certane</expan>
+                        <expan>gudis</expan> and <expan>merchandice</expan> assignit
+                            <expan>til</expan> him be Robert<lb break="yes"/><expan>senyour</expan>
+                        to the vale of xx li' and mare <w xml:id="w_pw3_jfx_w1b">to</w><w
+                            xml:id="w_vnl_jfx_w1b">gude</w> compt and <expan>rekning</expan> as for
+                            the<lb break="yes"/>first day of <expan>proces'</expan> /
+                            <expan>comperit</expan>
+                        <expan>nocht</expan> / <expan>nothir</expan> be <expan>him</expan> self nor
+                        his <expan>procuratouris</expan> / quharfor <expan>Duncan</expan><lb
+                            break="yes"/>straloch <expan>seriand</expan> was . be the ballies . <w
+                            xml:id="w_cj3_5tr_y1b">to</w><w xml:id="w_apm_5tr_y1b">tak</w> ane
+                        distres / chargit et cetera . and <w xml:id="w_kq1_vtr_y1b">to</w><w
+                            xml:id="w_tvg_vtr_y1b">warn</w><lb break="yes"/>the said
+                            <expan>thomas</expan> at his <expan>habitacion</expan>
+                        <expan><w xml:id="w_aqq_wtr_y1b">to</w><w xml:id="w_egl_wtr_y1b"
+                            >comper'</w></expan> be <expan>him</expan> self or his
+                            <expan>procuratouris</expan> on the law<lb break="yes"/>day
+                            <expan>eftir</expan> yule til <expan>ansuer'</expan> to the said
+                            <expan>action</expan> as for the second day of this
+                            <expan>proces'</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-6-0821-06" xml:lang="la">
+                    <p><lb break="yes"/>Actio inter vicarium de Inuerugy et Johannem Wormot
+                        differtur per prepositum et balliuos<lb break="yes"/>ad diem mercurij
+                        propter debilitatem curie / ad auisiamentum consilij et cetera</p>
+                </div>
+            </div> 
+        </body>
+    </text>
+</TEI>

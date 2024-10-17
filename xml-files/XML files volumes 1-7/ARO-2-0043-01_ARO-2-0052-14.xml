@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-12-18T19:30:24">WH</change>
+            <change status="transcribed" when="2018-05-21T16:38:45">WP: checked annotations</change>
+            <change status="corrected" when="2018-06-07T17:31:19">EF</change>
+            <change status="corrected" when="2018-09-18T14:35:06">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text xml:lang="sc">
+        <body>
+            <pb n="43" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1409-09-02" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0043-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali tenta per Balliuos secundo die mensis
+                        Septembris anno quo Supra et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-02" xml:lang="la">
+                    <p><lb break="yes"/>Robertus Dunccani Inuenit plegium super Johannem Wormot
+                        filium . quod exquo piscauit aquam suam<lb break="yes"/>debeat soluere
+                        firmam eiusdem . videlicet xx s' dictus Johannes peciit auisari . ad
+                        faciendum responsum dicti<lb break="yes"/>plegii Vnde tam diu fuit se
+                        auisando . quod laurencius de leth prelocutor dicti Roberti extendebat<lb
+                            break="yes"/>plegium quod exquo dictus Johannes noluit respondere dicto
+                        plegio . quod . ad suam peruenit calumpniam causa non defensa<lb break="yes"
+                        />Postea eciam dictus laurencius ex parte dicti Roberti . extendebat aliud
+                        plegium . quod nullum plegium . per dictum Johannem<lb break="yes"/>Wormot
+                        isto die porrigend' debeat exandiri / Vnde Johannes Wormot duo vltima pleg'
+                            recon<lb break="no"/>trariauit in plena curia . per raciones suas
+                        ostendend' . cum tempus fuerit oportunum</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-03" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Adam Walteri et thomam de Der' submittitur
+                        et cetera presentando defectum ballivis . plegio<lb break="yes"/>Johanne
+                        scherar' pro vtroque defectu .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-04" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Alexandrum Ruthirford et martinum Waynour
+                        submittitur ad amicablem composicionem<lb break="yes"/>presentando defectum
+                        Ballivis . plegio Johanne fichet . pro defectu dicti Martini</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-05" xml:lang="la">
+                    <p><lb break="yes"/>Thomas taillour de Sculhill . primo die vocatus ad sectam
+                        Willelmi Johannis non comparuit precipitur et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-06" xml:lang="la">
+                    <p><lb break="yes"/>Andreas gilberti tercio die vocatus ad sectam Dunccani de
+                        Marr' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-07" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Gilbertum meignes . et hankyn . submittitur
+                        et cetera . plegio pro defectu hankyn<lb break="yes"/>Johanne cristini . et
+                        paulo crab plegio pro defectu gilberti prenotati .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-08" xml:lang="la">
+                    <p><lb break="yes"/>Johannes Wormot pater secundo die vocatus ad sectam Simonis
+                        palframan non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-09" xml:lang="la">
+                    <p><lb break="yes"/>Johannes atkynson tercio die vocatus ad sectam Johannis
+                        sellar' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-10" xml:lang="la">
+                    <p><lb break="yes"/>Johannes cristini in amerciamento curie quia iniuste Inuenit
+                        plegium super Johannem Andree nautam penes<lb break="yes"/>transitum suum
+                        secum in francia vt fuit obligatus per iuramentum et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-11" xml:lang="la">
+                    <p><lb break="yes"/>Ewny aurifaber posuit se in voluntate Ballivorum pro
+                        perturbacione ville et Copyn in amerciamento pro consimili causa <add
+                            place="margin">xv s' ix d'</add></p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-12" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum de quarto processu Ade filij Thome ducto contra
+                        henricum Ewynson'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-13" xml:lang="la">
+                    <p><lb break="yes"/>Anny Rauff, Ibby fetes, posuerunt se in voluntate ballivorum
+                        pro enormi perturbacione ville et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0043-14" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus foty primo die vocatus ad sectam philippi Johannis
+                        non comparuit precipitur seriandis et cetera .</p>
+                </div>
+            </div>
+            <pb n="44" break="yes"/>
+            <div type="court">
+                <p><date when="1409-09-17" cert="high"/></p>
+                <div type="heading" xml:id="ARO-2-0044-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legali tenta per Balliuos decimoseptimo die mensis
+                        Septembris Anno quo Supra .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0044-02" xml:lang="la">
+                    <p><lb break="yes"/>Johannes atkynson' in amerciamento curie propter iniustam
+                        Inuencionem plegium super actione mota inter ipsum<lb break="yes"/>et
+                        Johannem sellar' vt wardatum fuit per curiam</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0044-03" xml:lang="la">
+                    <p><lb break="yes"/>Similiter Johannes sellar' in amerciamento curie quia
+                        iniuste Inuenit plegium super dictum Johannem atkynson'</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0044-04" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus Roberti in amerciamento curie pro iniusta
+                        verberacione Mariote boncle</p>
+                </div>
+            </div>
+            <pb n="45" break="yes"/>
+            <note type="editorial">Page 45 is empty.</note>
+            <pb n="46" break="yes"/>
+            <div type="other">
+                <p><date cert="medium" when="1409"/></p>
+                <div type="entry" xml:id="ARO-2-0046-01" xml:lang="la">
+                    <head>Carnifices</head>
+                    <p><lb break="yes"/>Andreas Scot<lb break="yes"/>Willelmus Roberti<lb
+                            break="yes"/>Thomas Johannis<lb break="yes"/>Willelmus calman<lb
+                            break="yes"/>laurencius Johannis<lb break="yes"/>Dunccanus hervy<lb
+                            break="yes"/>Johannes Andree<lb break="yes"/>Donaldus Kymmyson'<lb
+                            break="yes"/>Stephanus Andree<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180607T152038+0100" comment="NOTE: All the above names are linked to this note through a bracket."?>quilibet
+                        xl d'<?oxy_comment_end?></p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0046-02" xml:lang="la">
+                    <head>foty</head>
+                    <p><lb break="yes"/><add place="margin">brasium</add> Willelmus Watson' <del>xij
+                            d'</del> ij s'<lb break="yes"/><add place="margin">brasium</add>
+                        Johannes patricij ij s'<lb break="yes"/>Mauld benche<lb break="yes"/><cb
+                            n="1"/>Johannes Scot xij d'<lb break="yes"/>Johannes Serale xij d'<lb
+                            break="yes"/>Alexander Johannis xij d'<lb break="yes"/>Johannes Smale
+                        xij d'<lb break="yes"/>Johannes Dunccani, Thomas henrici, cum Johanne
+                        henrici ij s' .<lb break="yes"/><cb n="2"/>Rayny voket xl d'<lb break="yes"
+                        />Thomas blyndsele xl d'<lb break="yes"/>Johannes Andree xl d'<lb
+                            break="yes"/>Dauid Riburn xl d'</p>
+                </div>
+            </div>
+            <pb n="47" break="yes"/>
+            <div type="other">
+                <p><date when="1409" cert="high"/></p>
+                <div type="entry" xml:id="ARO-2-0047-01" xml:lang="la">
+                    <head>Stallangiatores finientes cum .
+                        <?oxy_comment_start author="his252" timestamp="20180918T141656+0100" comment="NOTE: Robert Davidson was alderman in 1408-9."?>R
+                        . Dauid preposito<?oxy_comment_end?> . de Anno et cetera cccc<hi
+                            rend="superscript">mo</hi> . nono .</head>
+                    <p><lb break="yes"/><cb n="1"/>De quarterio fergusei Ade<lb break="yes"
+                            /><del>Johannes Joffrayson'</del> xij d'<lb break="yes"/>Johannes
+                            <unclear reason="hand">In</unclear>nes viij d'<lb break="yes"/>vxor
+                        Jacobi fleschar' xij d'<lb break="yes"/>Cristiana Walas viij d'<lb
+                            break="yes"/>Alison' tulch viij d'<lb break="yes"/>Sinistra vxor
+                        blakburn xij d'<lb break="yes"/>Johannes Dunccani<lb break="yes"/><add
+                            place="margin"><unclear reason="hand">t</unclear>e'</add> Thomas
+                            thekar'<lb break="yes"/>Ady Androwson' xij d'<lb break="yes"/>Adam
+                        Watson' xij d'<lb break="yes"/>Andreas fersithson' xij d'<lb break="yes"
+                            /><add place="margin">quitus</add> Johannes henrici xij d'<lb
+                            break="yes"/><del>Andr</del> pery herd<lb break="yes"/>Johannes
+                        Suerdslepar xij d'<lb break="yes"/>Gener suus viij d'<lb break="yes"/><add
+                            place="margin">scissor</add> Johannes Walterson' scissor iiij d'<lb
+                            break="yes"/>Alison' home xij d'<lb break="yes"/><add place="margin"
+                            >brasium</add> Bricius ferletson' brasium xij d'<lb break="yes"/>Summa
+                        de qua prepositus onerabitur de isto quarterio<lb break="yes"/>xx s' . vj
+                            d'<lb break="yes"/><lb break="yes"/>de quarterio lucris<lb break="yes"
+                            />Templarij<lb break="yes"/>Andreas portour <del>xij d'</del> ij s' .<lb
+                            break="yes"/>Magy corbrand'<lb break="yes"/>Willelmus Watson' sutor vj
+                            d'<lb break="yes"/>Willelmus foty Garntuly ij s'<lb break="yes"/>Jamy
+                        scynnar' xij d'<lb break="yes"/>hugon' hatcalle xij d'<lb break="yes"
+                        />Malkyn Webstar' viij d'<lb break="yes"/>Johannes fraser<lb break="yes"
+                        />Johannes crag ij s'<lb break="yes"/>Robertus Willy iiij d'<lb break="yes"
+                        />Andreas coupar xij d'<lb break="yes"/>Johannes Walkar' xij d'<lb
+                            break="yes"/>Magy Rauff<lb break="yes"/>Johannes futhas ij s'<lb
+                            break="yes"/>Dunccanus futhas viij d'<lb break="yes"/>Angus glenyson'<lb
+                            break="yes"/><add place="margin">brasium</add> Marion' Abell' ij s'<lb
+                            break="yes"/><add place="margin">sutor</add> Johannes Rede xl d'<lb
+                            break="yes"/>Marion' codlyn<lb break="yes"/>de isto quarterio onerabitur
+                        de xvij s' . vj d'<lb break="yes"/><cb n="2"/>Johannes Karle et mauld
+                            mykil<lb break="yes"/>Johannes Dunccaneson' ij s'<lb break="yes"/>Gib
+                            gley<lb break="yes"/>Thomas henryson' ij s'<lb break="yes"/><add
+                            place="margin">quita</add> Inge<lb break="yes"/>Johannes Walkar'
+                            <del>xiij d'</del> xij d'<lb break="yes"/>Ewyn goldsmyth<lb break="yes"
+                        />Johannes bryame<lb break="yes"/>Meg turnour<lb break="yes"/>Meg Abirnethy
+                        vj d'<lb break="yes"/>Thomas turnour xij d'<lb break="yes"/>pelliparius
+                        quadam gener halt<lb break="yes"/>Mahy coupar xij d'<lb break="yes"/>Thomas
+                        thekar' vj d'<lb break="yes"/>Eby vxstar<lb break="yes"/><add place="margin"
+                            >scissor</add> Willelmus gilruth ij s'<lb break="yes"/><add
+                            place="margin">scissor</add> Johannes scot xij d'<lb break="yes"/><add
+                            place="margin">faber</add> hugon' lorymar' xij d'<lb break="yes"/><add
+                            place="margin">faber</add> Rayny burdane faber vj d'<lb break="yes"
+                            /><del>Walterus Bowar'</del> De isto quarterio onerabitur<lb break="yes"
+                        />de xij s' .<lb break="yes"/><lb break="yes"/>Seffy Rauff<lb break="yes"
+                        />Marion' fetes viij d'<lb break="yes"/>Malice sprunt<lb break="yes"/>Meg
+                        campsy viij d'<lb break="yes"/>Marion' pole xij d'<lb break="yes"/>Anny
+                        Rauff xij d'<lb break="yes"/>Meg of Walchope viij d'<lb break="yes"/>Joneta
+                        sutar' xij d'<lb break="yes"/>Aly forglen' xij d'<lb break="yes"/>Willelmus
+                        Wyly <del>xij d'</del> vj d'<lb break="yes"/>Alanus boyde xij d'<lb
+                            break="yes"/><del>Copyn coupar</del><lb break="yes"/><add place="margin"
+                            >scissor</add> Johannes crusank ij s'<lb break="yes"/>Johannes Willelmi
+                        xij d'<lb break="yes"/><del>Joneta sutar'</del><lb break="yes"/>Thomas
+                        Johannis webstar <del>xij d'</del> iiij d'<lb break="yes"/>Walterus Bowar'
+                        ij s'<lb break="yes"/>De isto quarterio onerabitur xxix s' . ij d' <lb
+                            break="yes"/>Summa totalis finium recepta per prepositum de isto<lb
+                            break="yes"/>iij li' xix s' . ij d'</p>
+                </div>
+            </div>
+            <pb n="48" break="yes"/>
+            <div type="other">
+                <p><date cert="high" from="1409" to="1410"/></p>
+                <div type="entry" xml:id="ARO-2-0048-01" xml:lang="la">
+                    <head>Inquisicio capta de foristallacione ad Iter Camerarii de Anno
+                        <?oxy_comment_start author="his252" timestamp="20180918T142126+0100" comment="NOTE: John Fichet was alderman in 1409-10."?>Johannis
+                        fichet<?oxy_comment_end?></head>
+                    <p><lb break="yes"/><cb n="1"/>Sutor de cowly<lb break="yes"/>Andreas Mechyson'
+                        de hathirwic<lb break="yes"/>Ricardus buklar' ibidem<lb break="yes"
+                            /><del>Johannes Jacobi de balbuchane</del><lb break="yes"/>Robertus
+                        Watson de foresta .<lb break="yes"/><add place="margin">Memorandum</add>,
+                        Willelmus part cum Maky Dikyson', Donaldus scot <lb break="yes"/><cb n="2"
+                            />frendracht<lb break="yes"/>Nicholaus browne<lb break="yes"/>Johannes
+                        Wodman de strabolgy</p>
+                </div>
+            </div>
+            <div type="other">
+                <p><date cert="high" from="1409" to="1410"/></p>
+                <div type="entry" xml:id="ARO-2-0048-02" xml:lang="la">
+                    <head>Recepcio
+                        <?oxy_comment_start author="his252" timestamp="20180918T142222+0100" comment="NOTE: John Fichet was alderman in 1409-10."?>Johannis
+                            <add place="above">fichet</add> prepositi<?oxy_comment_end?> de officio
+                        suo</head>
+                    <p><lb break="yes"/>In primis . a . thoma Alani smyth iiij s' . de amerciamentis
+                            ballivorum<lb break="yes"/>Item . a . Simone palframan ij s' . de eisdem
+                            amerciamentis<lb break="yes"/>Thomas Johannis cum Johanne Jacobi xl d'
+                        ipso Johanne plegio<lb break="yes"/><add place="margin">quitus</add>
+                        Johannes <del>cuneagnes cum thoma lambynton'</del><lb break="yes"/>cum
+                        Willelmo crag taxatus pro regratacione xl d'<lb break="yes"/>Robertus cum
+                        Johanne scroggis . taxatus pro regratacione xl d'<lb break="yes"/>Nicholaus
+                        de fery posuit se in voluntate prepositi pro empcione pellium et quia vtitur
+                        artificio suo<lb break="yes"/>et vendit infra burgum cum non sit liber homo
+                        taxatus xl d'<lb break="yes"/><del>Andreas polgowny intrabit in proxima
+                            prima ad finiendum</del> cum preposito vel esse burgensis thoma Dalton'
+                            p<?oxy_comment_start author="his252" timestamp="20180607T163214+0100" comment="in fold; check original"?>---<?oxy_comment_end?><lb
+                            break="yes"/><del>Jacobus carnifex, hugo carnifex, vtuntur officio
+                            carnificis et non sunt liberi</del><lb break="yes"/>Johannes bettyson'
+                        conuictus per assisam pro regratacione xl d' soluendis ad aduincula beati
+                        petri Johanne trayl
+                            <?oxy_comment_start author="his252" timestamp="20180607T163415+0100" comment="in fold; check original"?>pl--<?oxy_comment_end?><lb
+                            break="yes"/><add place="margin">ad proximam primam</add> Simon
+                        Raynyson' intrabit in proxima prima Ricardo fichet plegio quia fullo est et
+                        vtitur secacione<lb break="yes"/><add place="margin">ad proximam
+                            primam</add> Johannes Smale ad proximam primam taxatus vj s' viij d'<lb
+                            break="yes"/><add place="margin">ad proximam primam</add> Johannes
+                        Roberti fullo est et vtitur secacione<lb break="yes"/>Ricardus barkar'
+                        maximus foristallator taxatus pro pellibus et regratacione<lb break="yes"
+                        />Rogerus cum Johanne benyn taxatus xl d'<lb break="yes"/><add
+                            place="margin">achynscynk</add> Willelmus cum Johanne qwitbrow xl d'<pb
+                            n="49" break="yes"/><lb break="yes"/>Andreas Martyson' conuictus pro
+                        regratacione xl d'<lb break="yes"/>Johannes Martyson' cum Simone stil
+                        taxatus ad xl d'<lb break="yes"/>andreas cum Johanne cristini de Durris
+                        taxatus ad xl d'<lb break="yes"/>Johannes Scot cum Willelmo blyndsele
+                        taxatus ad xl d'<lb break="yes"/>Alexander cum eodem<lb break="yes"
+                        />Johannes filius Jacobi in tali amerciamento quale debeat perdere erga
+                        gildam pro vilipensione Johannis<lb break="yes"/>lambynton' verbo .<lb
+                            break="yes"/>Johannes lambynton' posuit se in voluntate prepositi pro
+                        consimili causa .<lb break="yes"/>Willelmus gable cum Johanne bannerman
+                        taxatus ad xl d'<lb break="yes"/><add place="margin">quitus</add> Johannes
+                        Ricardi frater Willelmi Watson comparuit et factus fuit quitus<lb
+                            break="yes"/>Willelmus Marr', <add place="margin">maximus</add>
+                        Dunccanus patricij, cum Johanne Walteri, taxatus pro pellibus et
+                            regratacione<lb break="yes"/>Dauid blabre Angus taxatus ad xl d', W.
+                        Michaelis taxatus ad xl d'<lb break="yes"/>Dauid taxatus ad xl d', Johannes
+                        Scherale taxatus ad xl d', cum Johanne Alani<lb break="yes"/>Adam banerman
+                        taxatus xl d', Thomas leche taxatus xl d', Johannes Der' taxatus xl d', cum
+                        Johanne fichet<lb break="yes"/>Johannes vscher' quia concelauit
+                        foristallacione posuit se in voluntate prepositi xl s'<lb break="yes"
+                        />Malcolm Dowalson' xl d' Johanne vscher' plegio .<lb break="yes"/>Willelmus
+                        baxtar commorans in domo Johannis buchane .<lb break="yes"/>Willelmus
+                        Alexandri cum Andrea Johannis taxatus ad xl d'<lb break="yes"/><add
+                            place="margin">ad proximam</add> Johannes browne cum thaynston'<lb
+                            break="yes"/><add place="margin">preposito</add> Robertus thome finiuit
+                        vij s', <add place="margin"><del>preposito</del> quitus</add> Willelmus
+                        thome <del>finiuit</del> taxatus xl d', cum thoma Dalton'<lb break="yes"
+                            /><add place="margin">preposito per clericum quitus</add> Patricius cum
+                        Alexandro Willelmi taxatus pro pellibus et regratacione / solut' clerico et
+                        deliberat' preposito .<lb break="yes"/>W. nicholay cum patricio Nicholay
+                        taxatus pro xl d'<lb break="yes"/>Davnskyn . cum thoma Roule taxatus xl
+                            d'<lb break="yes"/>Angus qui nauigatus est Memorandum de eo<lb
+                            break="yes"/>Dauid syffwricht taxatus xl d', <add place="margin"
+                            >Dauid</add>
+                        <del>ferguseus</del> crag taxatus xl d', <add place="margin">quitus</add>
+                        <del>Robertus Kermage</del>, cum henrico celty<lb break="yes"/>filius
+                        laurencii Muryson' taxatus xl d', Angus filius Dauid taxatus xl d',
+                        Alexander de Der' taxatus xl d', x s' solut' clerico . et deliberat'
+                        preposito, Maky filius thome clerk taxatus xl d', cum Johanne qwite</p>
+                </div>
+            </div>
+            <pb n="50" break="yes"/>
+            <div type="other">
+                <p><date cert="high" from="1409" to="1410"/></p>
+                <div type="entry" xml:id="ARO-2-0050-01" xml:lang="la">
+                    <head>foristallatores finientes cum
+                        <?oxy_comment_start author="his252" timestamp="20180918T142710+0100" comment="NOTE: John Fichet was alderman in 1409-1410."?>Johanne
+                        fichet preposito<?oxy_comment_end?></head>
+                    <p><lb break="yes"/><add place="margin">preposito quitus</add> Johannes patricij
+                        cum Ewny Weland fatebatur regratacionem Johanne Smale plegio ad soluendum
+                            ad<lb break="yes"/>festum beati Nicholay<lb break="yes"/>Marky cum
+                        Willelmo de Kyntor ipso Willelmo plegio differtur ad proximam primam taxatus
+                        xl d'<lb break="yes"/><add place="margin">preposito quitus</add> homo
+                        Dunccani hervy . ipso Dunccano plegio conuictus pro regratacione xl d'<lb
+                            break="yes"/><add place="margin">Cristinus</add> homo Johannis vscher'
+                        ipso Johanne plegio conuictus pro regratacione xl d' Johanne vscher' plegio
+                            ad<lb break="yes"/>soluendum ad festum pasche<lb break="yes"/><add
+                            place="margin">Jac</add>
+                        <del>Johannes</del> filius Galfridi foristallator est ad signum quod emit
+                        coria . apud ecclesiam de Der' publice in die sancti Dur<lb break="no"
+                        />stani .<lb break="yes"/><del>Andreas Girk Willelmo Jacson' plegio</del><lb
+                            break="yes"/><del>Ewny Weland</del><lb break="yes"/>Walterus de Ettale x
+                        s' Johanne Jacobi plegio ad soluendum ad festum pentecostes<lb break="yes"
+                            /><del>Eliseus cum Dunccano de Marr'</del><lb break="yes"/><del>Johannes
+                            Andree Willelmo Kyntor plegio</del><lb break="yes"/>Willelmus Alani cum
+                        Alexandro Ruthirford' taxatus xl d'<lb break="yes"/>Morgan' de foresta
+                        taxatus x s'<lb break="yes"/>cum Johanne Walteri de Monros ipso Johanne
+                            plegio<lb break="yes"/>Johannes Narn taxatus xl d'<lb break="yes"
+                        />Johannes cristini cum Andrea gifford taxatus xl d'<lb break="yes"
+                        />Johannes harrw de fores Johanne Scherar' plegio conuictus pro lana v
+                            marcas<lb break="yes"/>Nicholayo gray plegio ad soluendum xxxiij s' iiij
+                        d' . medietatem videlicet . ad festum pasche et aliam medietatem<lb
+                            break="yes"/>ad festum nundinaris . residuum dependet ex causa<lb
+                            break="yes"/><add place="margin">iiij d'</add> Johannes Rede henrico
+                        celty plegio conuictus pro regratacione xl d'<lb break="yes"/>Thomas club
+                        taxatus ij s' xl d', Johannes Rede taxatus xl d' ij s', posuerunt se in
+                        voluntate prepositi pro tannacione<lb break="yes"/><add place="margin"
+                            >patrik symson' homo</add> Willelmi thaynston Johannes Andree plegius
+                        qui vocatur <foreign xml:lang="sc">huny Jon</foreign> concedit regratacionem
+                        xl d'<lb break="yes"/>Adam Rate Johannes <add place="above">Wodman</add>
+                            plegius<lb break="yes"/>fynlaus Montagow taxatus xl d'<lb break="yes"
+                        />Betty gley . henrico celty plegio conuictus pro regratacione xl d' henrico
+                            dicto<lb break="yes"/>plegio ad soluendum ad festum pasche .<lb
+                            break="yes"/>patricius fairley taxatus xl d'<pb n="51" break="yes"/><lb
+                            break="yes"/>Willelmus Nicholay cum Willelmo harpar taxatus xl d'<lb
+                            break="yes"/>Adam cum Thoma Andree concedit regratacionem xl d' dicto
+                        thoma plegio<lb break="yes"/><add place="margin">quitus</add>
+                        <del>Willelmus thome cum patricio Alexandri</del><lb break="yes"/>duo
+                        garciferi thome lawson'<lb break="yes"/>Johannes Rede cum Roberto de echt
+                        taxatus xl d'<lb break="yes"/>Thomas Johannis . cum Johanne harrw taxatus xl
+                            d'<lb break="yes"/>Alexander cum Waltero Roberti taxatus xl d'<lb
+                            break="yes"/>Johannes Kyninmond' cum thoma amfray taxatus xl d'<lb
+                            break="yes"/><add place="margin">ad primam</add> Andreas paton <add
+                            place="margin">ad proximam primam</add>, <del>W nachtyson</del>,
+                        Alexander Johannis taxatus xl d', cum Willelmo Jacson <del>Memorandum de
+                            Willelmo Duncano</del><lb break="yes"/>philippus body<lb break="yes"
+                        />Johannes Dunccani, Maky cowly taxatus xl d', Ricardus taxatus xl d', cum
+                        Johanne henrici<lb break="yes"/>Andreas frater suus taxatus xl d'<lb
+                            break="yes"/>W. Duncani taxatus xl d'<lb break="yes"/><add
+                            place="margin">ad proximam primam</add> Andreas frater Johannis rede
+                        taillour laborat in foresta de Kyntor xl d' taxatus fynlao tallour plegio<lb
+                            break="yes"/>Morice taxatus <del>xl d'</del> v s', Thomas concedit
+                        regratacionem conuictus pro pellibus Duncano Marr' plegio ad soluendum ad
+                        festum assumpcionis beate Marie, cum Dunccano de Marr'<lb break="yes"/>Adam
+                        cum Roberto fraser taxatus xl d'<lb break="yes"/>Dauid cum Roberto
+                        glandirston taxatus xl d'<lb break="yes"/>Willelmus fraser cum Willelmo col
+                        taxatus xl d'<lb break="yes"/>Andreas gray qui fuit cum thoma col taxatus xl
+                            d'<lb break="yes"/>Willelmus smale cum patre suo taxatus xl d'<lb
+                            break="yes"/><add place="margin">quitus</add>
+                        <del>Johannes trayle cum Johanne thome de echt</del><lb break="yes"
+                        />Johannes voky cum thoma coky taxatus xl d'</p>
+                </div>
+            </div>
+            <pb n="52" break="yes"/>
+            <div type="running">
+                <p><date cert="medium" from="1409" to="1410"/></p>
+                <div type="heading" xml:id="ARO-2-0052-01" xml:lang="la">
+                    <p><lb break="yes"/>ffratres gilde</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-02" xml:lang="la">
+                    <p><lb break="yes"/>Dauid Riburn xl s' . plegio Johanne Scherar' et Andrea
+                        Giffard soluendis medietatem<lb break="yes"/>ad festum Natiuitatis Domini et
+                        aliam medietatem ante festum pentecosten . Et exonerabitur ab aquis<lb
+                            break="yes"/>per vnum annum</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-03" xml:lang="la">
+                    <p><lb break="yes"/>Rayny voket v s' iij ob' . solutus est . preposito</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-04" xml:lang="la">
+                    <p><lb break="yes"/>Eliseus de Marr' frater gilde pro xl s' . soluendis
+                        medietatem ad festum pasche et aliam medietatem<lb break="yes"/>ante festum
+                        beati Michaelis plegio / Dunccano de Marr' / et exonerabitur ab aquis per
+                        vnum annum</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-05" xml:lang="la">
+                    <p><lb break="yes"/>Johannes Andree qui vocatur <foreign xml:lang="sc">huny
+                            Jon</foreign> frater gilde pro xl s' soluendis ad prefatos terminos
+                            Willelmo<lb break="yes"/>de Kyntor plegio . Et exonerabitur ab aquis per
+                        duos annos . a festo beati Michaelis<lb break="yes"/>proximo futuro</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-06" xml:lang="la">
+                    <p><lb break="yes"/>Johannes filius Thome de hoggis xl s' . Johanne fichet
+                        preposito plegio . Et exonerabitur<lb break="yes"/>ab aquis per duos annos .
+                        a festo beati Michaelis proximo futuro .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-07" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus nachtyson' xl s' / Soluendis medietatem ad festum
+                        pentecosten et aliam medie<lb break="no"/>tatem ante festum beati Michaelis
+                        proximo futuro . plegio Willelmo Jacson' . Et exonerabitur<lb break="yes"
+                        />ab aquis per duos annos immediate sequentes festum beati Michaelis proximo
+                        futuro</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-08" xml:lang="la">
+                    <p><lb break="yes"/>hugo carnifex xiij s' iiij d' soluendis ante exitum
+                        prepositi Andrea scot plegio . Et<lb break="yes"/>exonerabitur ab aquis per
+                        vnum annum</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-09" xml:lang="la">
+                    <p><lb break="yes"/>Jacobus carnifex xiij s' iiij d' soluendis vt prius . plegio
+                        Willelmo Jacson' . Et exoner<lb break="no"/>abitur ab aquis per vnum
+                        annum</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-10" xml:lang="la">
+                    <p><lb break="yes"/>Andreas polgowny xiij s' iiij d' . soluendis ante festum
+                        beati Michaelis . thoma Dalton' plegio<lb break="yes"/>Et exonerabitur ab
+                        aquis per duos annos</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-11" xml:lang="la">
+                    <p><lb break="yes"/>Thomas blyndsele xl s' . Willelmo blyndsele plegio Et
+                        exonerabitur ab aquis<lb break="yes"/>per duos annos</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-12" xml:lang="la">
+                    <p><lb break="yes"/>Johannes Andree carnifex xiij s' . iiij d' . soluendis ante
+                        festum beati Martini . Et exonerabitur<lb break="yes"/>ab aquis per duos
+                        annos .</p>
+                </div>
+                <div type="entry" xml:id="ARO-2-0052-13" xml:lang="la">
+                    <p><lb break="yes"/>Jac Joffrason' frater gilde pro xl s' . ad soluendis
+                        medietatem ad festum Natiuitatis Domini et<lb break="yes"/>aliam medietatem
+                        ad festum pentecostes . plegio Johanne Scherar' . Et exonerabitur ab
+                            aquis<lb break="yes"/>per duos annos .</p>
+                </div>
+            </div>
+                <div type="undefined">
+                <p><date when="1412-03-11" cert="high"/></p>
+                <div type="entry" xml:id="ARO-2-0052-14" xml:lang="la">
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb178">Memorandum</seg><note anchored="true" type="editorial" target="#anchorb178">There is a manicula in the left margin.</note>
+                        quod thomas blyndsele fauorabitur in proxima assedacione<lb break="yes"
+                        />aquarum secundum consideracionem communis consilij . Actum fuit hoc xj<hi
+                            rend="superscript">mo</hi> die<lb break="yes"/>Marcij Anno Domini
+                        Millesimo CCCC<hi rend="superscript">mo</hi> vndecimo</p>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

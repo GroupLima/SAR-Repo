@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-12-10T09:48:16">WH</change>
+            <change status="transcribed" when="2018-05-10T18:01:50">EF</change>
+            <change status="transcribed" when="2018-09-17T16:37:44">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="307" break="yes" xml:base=""/>
+            <div type="other">
+                <p><date cert="low" when="1407"/></p>
+                <div type="entry" xml:id="ARO-1-0307-01" xml:lang="la">
+                    <head>aqua borealis</head>
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb107">Johannes</seg><note anchored="true" type="editorial" target="#anchorb107">This whole entry has been deleted.</note>
+                        fichet dimidium retis<lb break="yes"/>W. Jacson' dimidium retis<lb
+                            break="yes"/>W kyntor dimidium retis<lb break="yes"/>Johannes vscher'
+                        quarterium et dimidium quarterium<lb break="yes"/>Johannes henricj
+                        quarterium et dimidium quarterium<lb break="yes"/>Thomas Crwdane xlvj s' .
+                        viij d', Simon stil xx s', <foreign xml:lang="sc">a quartar</foreign><lb
+                            break="yes"/>Ricardus Inchemethen quarterium . et dimidium quarterium
+                            .<lb break="yes"/>W. ettale octaua pars xxxiij s' . iiij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0307-02" xml:lang="la">
+                    <head>Rake</head>
+                    <p><lb break="yes"/><add place="margin">-</add>
+                        <seg xml:id="anchorb108">Thomas</seg><note anchored="true" type="editorial" target="#anchorb108">This whole entry has been deleted.</note>
+                        lamb vnum rete<lb break="yes"/>Johannes alani dimidium retis<lb break="yes"
+                        /><seg xml:id="anchorb109">Johannes</seg><note anchored="true" type="editorial" target="#anchorb109">This line and the following three are linked through a bracket in the left margin.</note>
+                        Wormot <del>duo partem retis</del> tercia pars retis xlij s' . iij d'<lb
+                            break="yes"/>filius . <del>tercia pars</del> retis xxxv s' vij d'
+                        <?oxy_comment_start author="his252" timestamp="20180510T161127+0100" comment="NOTE: This note is also linked to the two lines below."?>cum
+                        thoma predicto<?oxy_comment_end?><lb break="yes"/>Thomas lynton' xiij s'
+                        iiij d'<lb break="yes"/>Alexander de benyn tercia pars retis xxxv s' vij
+                            d'<lb break="yes"/>Ricardus lownan dimidium retis l s'<lb break="yes"
+                        />Cum thoma lownan xiij s' iiij d'<lb break="yes"
+                        /><seg xml:id="anchorb110">Johannes</seg><note anchored="true" type="editorial" target="#anchorb110">This and the following line are linked through a bracket in the left margin.</note>
+                        Wodman dimidium retis iij li' xl d'<lb break="yes"/>W. Dayntre dimidium
+                        retis iij li' xl d'<lb break="yes"
+                        /><seg xml:id="anchorb111">Johannes</seg><note anchored="true" type="editorial" target="#anchorb111">This line and the following two are linked through a bracket in the left margin.</note>
+                        yhule tercia pars retis xlij s' . iij d'<lb break="yes"/>patricius Alexandri
+                        tercia pars retis<lb break="yes"/>Alexander voket tercia pars retis<lb
+                            break="yes"/>Robertus glandirston xl s', Johannes lambynton' xxiij s' .
+                        iiij d', dimidium retis</p>
+                </div>
+                <div type="heading" xml:id="ARO-1-0307-03" xml:lang="la">
+                    <head>Stellis</head>
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb112">Johannes</seg><note anchored="true" type="editorial" target="#anchorb112">This whole entry has been deleted.</note>
+                        lambert xx s'<lb break="yes"/>laurencius bell' xx s'<lb break="yes"/>Thomas
+                        lawson' xxvj s' viij d'<lb break="yes"/>Alexander clyntre xxxiij s' iiij
+                        d'</p>
+                </div>
+            </div>
+            <pb n="308" break="yes"/>
+            <note type="editorial">Page 308 is empty.</note>
+            <pb n="309" break="yes"/>
+            <div type="other">
+                <p><date cert="low" when="1407"/></p>
+                <div type="entry" xml:id="ARO-1-0309-01" xml:lang="la">
+                    <head>Recepcio depositorum</head>
+                    <p><lb break="yes"/>In primis deliberatum Johanni filio henrici . de prima
+                        cedula amerciamentorum Balliuorum in denariis<lb break="yes"/>et namis .
+                        quadraginta solidos<lb break="yes"/>Item . Willelmus Dayntre deliberauit
+                        eidem Johanni in pretorio in crastino concepcionis beate Marie<lb
+                            break="yes"/>virginis . triginta tres solidos et quatuor denarios<lb
+                            break="yes"/>Item ab henrico celty pro Roberto garcifero suo . decem
+                        solidos</p>
+                </div>
+            </div>
+            <pb n="310" break="yes"/>
+            <div type="other">
+                <p><date cert="low" when="1407"/></p>
+                <div type="entry" xml:id="ARO-1-0310-01" xml:lang="la">
+                    <head>Aqua Borealis</head>
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb113">Thomas</seg><note anchored="true" type="editorial" target="#anchorb113">All the individual names in this entry have been deleted.</note>
+                        Scherar' iiij li'<lb break="yes"/>Thomas de Dalton' iij li'<lb break="yes"
+                        />Ricardus Inchemethen iij li'<lb break="yes"/>Johannes de buchania xxxiij
+                        s' . iiij d'<lb break="yes"
+                        /><seg xml:id="anchorb114">Patricius</seg><note anchored="true" type="editorial" target="#anchorb114">This line and the preceding four are linked through a bracket in the left margin.</note>
+                        Alexandri xxxiij s' . iiij d'<lb break="yes"/>Johannes filius cristini de
+                        Durris xxvj s' . viij d'<lb break="yes"/>Ricardus de lownan xl s' .<lb
+                            break="yes"/>Galfridus bra xx s' .<lb break="yes"/>Johannes filius Alani
+                        iij li'<lb break="yes"/>Alexander de benyn xxvj s' . viij d'<lb break="yes"
+                        />Robertus Dunccani xiij s' . iiij d'<lb break="yes"/>Gilbertus Kynros
+                        xxxiij s' . iiij d'<lb break="yes"/>Andreas gilberti xxxiij s' . iiij d'<lb
+                            break="yes"
+                        /><seg xml:id="anchorb115">Simon</seg><note anchored="true" type="editorial" target="#anchorb115">This line and the preceding eight are linked through a bracket in the left margin.</note>
+                        stil xiij s' . iiij d'<lb break="yes"/>Bricius Duncani iiij li'<lb
+                            break="yes"/>Johannes vscher' iiij li'<lb break="yes"/>Willelmus ettale
+                        xxvj s' . viij d'<lb break="yes"/>Johannes carsane xiij s' iiij d'<lb
+                            break="yes"/>hugo abirbothnot x s' .<lb break="yes"/>Simon lamb x s'
+                            .<lb break="yes"/>laurencius de buchania xx s' .<lb break="yes"/>Thomas
+                        de lownan vj s' . viij d'<lb break="yes"
+                        /><seg xml:id="anchorb116">Thomas</seg><note anchored="true" type="editorial" target="#anchorb116">This line and the preceding eight are linked through a bracket in the left margin.</note>
+                        clerk smyth xx s' . </p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0310-02" xml:lang="la">
+                    <head>Pot</head>
+                    <p><lb break="yes"/><cb n="1"
+                        /><seg xml:id="anchorb117">Duncanus</seg><note anchored="true" type="editorial" target="#anchorb117">All the individual names in this entry have been deleted.</note>
+                        de Marr' iij li'<lb break="yes"/>Willelmus harpar xl s' .<lb break="yes"
+                            /><add place="margin"
+                            ><seg xml:id="anchorb118">rete</seg><note anchored="true" type="editorial" target="#anchorb118">This note is linked to the preceding two lines through a bracket.</note></add><lb
+                            break="yes"/>henricus celty xxxiij s' . iiij d'<lb break="yes"/>Thomas
+                        Andree xx s'<lb break="yes"/>Andreas Johannis xxxiij s' . iiij d'<lb
+                            break="yes"/>Alexander Ruthirford' xiij s' iiij d'<lb break="yes"/><add
+                            place="margin"
+                            ><seg xml:id="anchorb119">rete</seg><note anchored="true" type="editorial" target="#anchorb119">This note is linked to the preceding four lines through a bracket.</note></add><lb
+                            break="yes"/>Robertus fraser xx s' .<lb break="yes"/>Robertus de echt
+                        xxvj s' . viij d'<lb break="yes"/>Johannes yhule xxvj s' . viij d'<lb
+                            break="yes"
+                        /><seg xml:id="anchorb120">Alexander</seg><note anchored="true" type="editorial" target="#anchorb120">This line and the preceding three are linked through a bracket in the left margin.</note>
+                        Clyntre xxvj s' . viij d'<lb break="yes"/>Thomas Molfane xxxiij s' . iiij
+                            d'<lb break="yes"/>Patricius Nicholay xxxiij s' . iiij d'<lb break="yes"
+                        />Johannes hulk xiij s' . iiij d'<lb break="yes"/>Alexander litstar' xiij s'
+                        . iiij d'<lb break="yes"
+                        /><seg xml:id="anchorb121">Alanus</seg><note anchored="true" type="editorial" target="#anchorb121">This line and the preceding four are linked through a bracket in the left margin.</note>
+                        smyth vj s' . viij d'<lb break="yes"/>Johannes Wellis xiij s' . iiij d'<lb
+                            break="yes"/>Johannes hervy xx s'<lb break="yes"/>Willelmus Scot x s'<lb
+                            break="yes"/>Gilbertus filius Ade x s'<lb break="yes"/>Johannes gilberti
+                        x s'<lb break="yes"/>henricus sclatar x s'<lb break="yes"/>Johannes garuok
+                        xiij s' . iiij d'<lb break="yes"/>laurencius Johannis xiij s'<lb break="yes"
+                        /><seg xml:id="anchorb122">Willelmus</seg><note anchored="true" type="editorial" target="#anchorb122">This line and the preceding eight are linked through a bracket in the left margin.</note>
+                        blakburn xiij s' iiij d'<lb break="yes"/><cb n="2"/>Alexander voket xxxiij
+                        s' . iiij d'<lb break="yes"/>Andreas Johannis xxxiij s' . iiij d'<lb
+                            break="yes"/>Johannes thome xiij s' . iiij d'<lb break="yes"/>Simon
+                        scynnar' xiij s' . iiij d'<lb break="yes"/>Thomas de Morauia xiij s' . iiij
+                            d'<lb break="yes"/>Andreas Andison' xiij s' . iiij d'<lb break="yes"
+                        /><seg xml:id="anchorb123">Dauid</seg><note anchored="true" type="editorial" target="#anchorb123">This line and the preceding six are linked through a bracket in the left margin.</note>
+                        de Tulch xiij s' . iiij d'</p>
+                </div>
+                <pb n="311" break="yes"/>
+                <div type="entry" xml:id="ARO-1-0311-01" xml:lang="la">
+                    <head>ffurdis</head>
+                    <p><lb break="yes"/><del>Johannes Jacobi</del> liij s' . iiij d' . dimidium
+                            retis<lb break="yes"/><del>Thomas de Crwdane</del> xlvj s' . viij d'<lb
+                            break="yes"
+                            /><del><seg xml:id="anchorb124">Robertus</seg><note anchored="true" type="editorial" target="#anchorb124">This line and the preceding two are linked through a bracket in the left margin.</note>
+                            lichardwod</del> vj s' viij d'<lb break="yes"/>Johannes Wormot xxxiij s'
+                        . iiij d'<lb break="yes"/>Johannes Wormot filius xx s'<lb break="yes"
+                        />Thomas lynton' xiij s' . iiij d'<lb break="yes"/>hankyn Cucunar xx s'<lb
+                            break="yes"
+                        /><seg xml:id="anchorb125">Johannes</seg><note anchored="true" type="editorial" target="#anchorb125">This line and the preceding four are linked through a bracket in the left margin.</note>
+                        Thome de Echt xx s'<lb break="yes"/>Andreas Scroggis xl s' .<lb break="yes"
+                        />Thomas de Brig iij li'<lb break="yes"
+                        /><seg xml:id="anchorb126">Johannes</seg><note anchored="true" type="editorial" target="#anchorb126">This line and the preceding two are linked through a bracket in the left margin.</note>
+                        atkynson' vj s' . viij d'<lb break="yes"/>Johannes banerman xxvj s' . viij
+                            d'<lb break="yes"/>fynlaus taillour xiij s' . iiij d'<lb break="yes"
+                        />Willelmus Johannis taillour xiij s' . iiij d'<lb break="yes"/>Andreas Nase
+                        xiij s' iiij d'<lb break="yes"/>Willelmus taillour xx s' .<lb break="yes"
+                        /><seg xml:id="anchorb127">Thomas</seg><note anchored="true" type="editorial" target="#anchorb127">This line and the preceding five are linked through a bracket in the left margin.</note>
+                        alani faber' xx s' .<lb break="yes"/>Thomas fleschar' xx s' .<lb break="yes"
+                        />Willelmus trayle xx s'<lb break="yes"/>Alexander Willelmi xiij s' . iiij
+                            d'<lb break="yes"
+                        /><seg xml:id="anchorb128">Willelmus</seg><note anchored="true" type="editorial" target="#anchorb128">This line and the preceding three are linked through a bracket in the left margin.</note>
+                        strade liij s' . iiij d'<lb break="yes"/>Johannes Wodman iij li'<lb
+                            break="yes"/>Thomas Roule xiij s' . iiij d'<lb break="yes"
+                        /><seg xml:id="anchorb129">Jacobus</seg><note anchored="true" type="editorial" target="#anchorb129">There is a line between this and the next name followed by a X.</note>
+                        bravne xx s'<lb break="yes"
+                        /><seg xml:id="anchorb130">Robertus</seg><note anchored="true" type="editorial" target="#anchorb130">This line and the preceding three are linked through a bracket in the left margin.</note>
+                        gray xx s'<lb break="yes"/><add place="margin">rete</add> Johannes fichet v
+                        li' vj s' . viij d'<lb break="yes"/><lb break="yes"/>Robertus borthwyke xxvj
+                        s' . viij d'<lb break="yes"/>Willelmus Coll xiij s' . iiij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0311-02" xml:lang="la">
+                    <head>Stellis</head>
+                    <p><lb break="yes"/><del>Johannes henrici</del> iiij li'<lb break="yes"
+                            /><del>Thomas lawson'</del> xx s' .</p>
+                </div>
+                <pb n="312" break="yes"/>
+                <div type="entry" xml:id="ARO-1-0312-01" xml:lang="la">
+                    <head>Rake</head>
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb131">Thomas</seg><note anchored="true" type="editorial" target="#anchorb131">All the individual names in this entry have been deleted.</note>
+                        lamb vnum rete vj li'<lb break="yes"/>Willelmus de Kyntor vnum rete vj
+                            li'<lb break="yes"/>Willelmus Jacson' vnum rete vj li'<lb break="yes"
+                        />Johannes lambynton' sexta pars retis xx s'<lb break="yes"/>Thomas squiar'
+                        nona pars retis xiij s' . iiij d'<lb break="yes"/>Johannes sprunt nona pars
+                        retis xiij s' . iiij d'<lb break="yes"/>Rogerus sprunt nona pars retis xiij
+                        s' . iiij d'<lb break="yes"/>Thomas sprunt nona pars retis xiij s' . iiij
+                            d'<lb break="yes"/>Robertus glandirston' xxxiij s' . iiij d'<lb
+                            break="yes"/>Andreas Bryane nona pars xiij s' . iiij d'<lb break="yes"
+                            /><add place="margin"
+                            ><seg xml:id="anchorb132">rete</seg><note anchored="true" type="editorial" target="#anchorb132">This note is linked to the preceding seven lines through a bracket.</note></add><lb
+                            break="yes"/>Johannes lawson' nona pars retis xiij s' . iiij d'<lb
+                            break="yes"/>Thomas Roule nona pars xiij s' . iiij d' Thomas col xiij s'
+                        . iiij d'<lb break="yes"/>Stephanus ostlar' xiij s' . iiij d'<lb break="yes"
+                        />Willelmus calman xiij s' . iiij d'<lb break="yes"/>Magister Johannes
+                        edmundson' xiij s' . iiij d' <lb break="yes"/>Andreas Johannis de foty
+                            <del>xxxiij s' iiij d'</del> xl s' .<lb break="yes"
+                        /><seg xml:id="anchorb133">Willelmus</seg><note anchored="true" type="editorial" target="#anchorb133">This line and the preceding six are linked through a bracket in the left margin.</note>
+                        vatson' xiij s' . iiij d'<lb break="yes"/>Johannes voket yhung xx s'<lb
+                            break="yes"/>Thomas halt xiij s' . iiij d'<lb break="yes"/>Thomas
+                        Willelmi halt vj s' . viij d'<lb break="yes"/>Willelmus sprunt xiij s' .
+                        iiij d'<lb break="yes"/>Thomas taillour vj s' . viij d'<lb break="yes"/>Adam
+                        strathekyn vj s' viij d'<lb break="yes"/><add place="margin"
+                            ><?oxy_comment_start author="his252" timestamp="20180510T170527+0100" comment="NOTE: This note is linked to the preceding six lines through a bracket."?>dimidium
+                            retis<?oxy_comment_end?></add></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0312-02" xml:lang="la">
+                    <head>Midchingil .</head>
+                    <p><lb break="yes"/><del>Alanus Ricardi</del> . vnum quarterium retis xiij s' .
+                        iiij d'<lb break="yes"/><del>Nicholaus gray</del> dimidium retis xxvj s' .
+                        viij d'<lb break="yes"/><del>Simon de camera</del> . dimidium quarterium
+                        retis vj s' viij d'<lb break="yes"/>Walterus taillour vj s' viij d'<lb
+                            break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb134">rete</seg><note anchored="true" type="editorial" target="#anchorb134">This note is linked to the preceding four lines through a bracket.</note></add><lb
+                            break="yes"/><del>Willelmus Dayntre</del> . vnum rete . et dimidium
+                        quarterium iij li'<lb break="yes"/><del>Dunccanus hervy</del> . dimidium
+                        quarterium vj s' . viij d'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb135">rete</seg><note anchored="true" type="editorial" target="#anchorb135">This note is linked to the preceding two lines through a bracket.</note></add><lb
+                            break="yes"/>Willelmus lambynton' dimidium quarterium vj s' . viij d'<lb
+                            break="yes"/><del>Willelmus filius</del> Roberti xiij s' . iiij d'<lb
+                            break="yes"/><del>laurencius bell'</del> xx s'<lb break="yes"/><add
+                            place="margin"
+                            ><seg xml:id="anchorb136">rete</seg><note anchored="true" type="editorial" target="#anchorb136">This note is linked to the preceding three lines through a bracket.</note></add><lb
+                            break="yes"/><del>Alexander Alues</del> vj s' viij d'<lb break="yes"
+                            /><del>Thomas yhung</del> vj s' . viij d'<lb break="yes"/><del>Willelmus
+                            Inuerrory</del> x s' .<lb break="yes"/><del>Thomas trayle</del> x s'
+                            .<lb break="yes"/><del>Ewny weland</del> x s' .<lb break="yes"
+                            /><del>Dunccanus More</del> x s'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb137">rete</seg><note anchored="true" type="editorial" target="#anchorb137">This note is linked to the preceding six lines through a bracket.</note></add><lb
+                            break="yes"/><del>Johannes lamb</del> xxxiij s' iiij d'<lb break="yes"
+                            /><del>laurencius Johannis</del>
+                        <del>xiij s' iiij d'</del> xx s'<lb break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb138">rete</seg><note anchored="true" type="editorial" target="#anchorb138">This note is linked to the preceding two lines through a bracket.</note></add><lb
+                            break="yes"/><del>Andreas mirden</del>
+                        <del>xiij s' iiij d'</del> xx s'<lb break="yes"/><del>Adam strathakyn</del>
+                        vj s' . <del>vj</del> viij d'<lb break="yes"/><del>Johannes yhung</del> xiij
+                        s' . iiij d'<lb break="yes"/><del>Robertus Browne</del> xiij s' . iiij d<lb
+                            break="yes"/><add place="margin"
+                            ><seg xml:id="anchorb139">rete</seg><note anchored="true" type="editorial" target="#anchorb139">This note is linked to the preceding four lines through a bracket.</note></add></p>
+                </div>
+            </div>
+            <pb n="313" break="yes"/>
+            <note type="editorial">Page 313 is empty.</note>
+            <pb n="314" break="yes"/>
+            <div type="other">
+                <p><date cert="high" notBefore="1407-06-01" notAfter="1407-06-30"/></p>
+                <div type="heading" xml:id="ARO-1-0314-01" xml:lang="la">
+                    <p><lb break="yes"/><gap reason="damage"/> Camerarii Anno M<hi
+                            rend="superscript"><supplied reason="damage">o</supplied></hi> CCCC<hi
+                            rend="superscript"><supplied reason="damage">o</supplied></hi> Septimo
+                        in mense Junij</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-02" xml:lang="la">
+                    <p><lb break="yes"/><gap reason="damage"/> Willelmi . Johannes henrici .
+                        Johannes Scherar' Johannes fichet Adam Thome . Thomas Spryng<lb break="yes"
+                            /><gap reason="damage"/>on' laurencius leth . Johannes Jacobi . Ricardus
+                        lownan</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-03" xml:lang="la">
+                    <p><lb break="yes"/>Gilbertus de Kynros fatebatur se debere . Willelmo Jacson'
+                        xvj s' . viij d' . et datur sibi octo .<lb break="yes"/>dies ad soluendum
+                        dictam summam</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-04" xml:lang="la">
+                    <p><lb break="yes"/>Balliui respondebunt Andree Nase de vno <foreign
+                            xml:lang="sc">fetirlok</foreign></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-05" xml:lang="la">
+                    <p><lb break="yes"/>De barella olei . quam . galfridus bra exigit . A . Johanne
+                        ressebat . si Idem galfridus probauerit ipsum<lb break="yes"/>Johannem
+                        promisisse sibi soluere tempore quo . Alanus Jacobi et Johannes Dunccani
+                        venerit de partibus orcadie<lb break="yes"/>infra octo dies post ipsorum
+                        aduentum . Idem Johannes deliberauit dicto galfrido dictam barellam</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-06" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus blyndsele fatebatur se debere . Waltero filio
+                        Roberti . xxv vlnas et dimidium albi panni precii<lb break="yes"/>de vlna
+                        xij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-07" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus de Kyntor soluet vnum per caligarum hugoni de
+                        Abirbothnot</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-08" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum de probacione Willelmi Jacson' contra philippum
+                        Johannis</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-09" xml:lang="la">
+                    <p><lb break="yes"/>Stephanus ostlar' fatebatur se debere henrico de buchania
+                        xxviij . <foreign xml:lang="sc">scorlyngis</foreign> et <foreign
+                            xml:lang="sc">futefellis</foreign></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-10" xml:lang="la">
+                    <p><lb break="yes"/>De cedula data per Johannem trayle super stephanum ostlar' .
+                        Idem stephanus ordinatur ad soluendum<lb break="yes"/>dicto Johanni ij s'
+                        .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-11" xml:lang="la">
+                    <p><lb break="yes"/>Willelmus calman soluet thome carnifici xij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-12" xml:lang="la">
+                    <p><lb break="yes"/>Johannes filius cristini restaurabit . Johanni carsane iiij
+                        vlnas et dimidium grasei panni . 2<hi rend="superscript">m</hi> quod probare
+                            poterit<lb break="yes"/>precium panni per duos testes sufficientes</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-13" xml:lang="la">
+                    <p><lb break="yes"/>Idem Johannes filius cristini satisfaciet Ade filio Walteri
+                        iiij s' . pro firma vnius opelle</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-14" xml:lang="la">
+                    <p><lb break="yes"/>Simon de camera . satisfaciet Ricardo de lownan viij s' .<lb
+                            break="yes"/>Et Ade filio Thome vj s' . vj d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-15" xml:lang="la">
+                    <p><lb break="yes"/>Andreas Crag satisfaciet thome taillour iij s' .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-16" xml:lang="la">
+                    <p><lb break="yes"/>Robertus de lownan probabit <add place="above">in
+                            crastinum</add> quod produxit warantum suum pro vno boue henrico
+                            sclatar'<lb break="yes"/>et si hoc non probauerit assignatum est sibi
+                        dies ad producendum warantum suum ante festum beati<lb break="yes"/>petri .
+                        quod dicitur Aduincula</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-17" xml:lang="la">
+                    <p><lb break="yes"/>Ricardus fichet est debitor pro xl d' . ad soluendum Johanni
+                        filio Andree .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-18" xml:lang="la">
+                    <p><lb break="yes"/>philippus Jonson' fecetur se debere . ade thomson' ad opus
+                        ecclesie xj s' gross'<lb break="yes"/>monete flandrie</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-19" xml:lang="la">
+                    <p><lb break="yes"/>thomas lamb debet Willelmo de strade precium trium petrarum
+                        ferri vel<lb break="yes"/>saltem tantum ferrum ad minus</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0314-20" xml:lang="la">
+                    <p><lb break="yes"/>Johannes filius andree adducet duos homines et fideles ad
+                            iurandum<lb break="yes"/>de quinta Summa pecunie idem Johannes soluet
+                        ballivis de elgyne quod<lb break="yes"/>defe<gap reason="faded"/>
+                        comparencie Willelmi filii Johannis /. et Johannis yong' . qui <add
+                            place="above">eum</add> traverunt<lb break="yes"/>in plegium et hoc
+                        iurate idem Willelmus soluet medietatem illius<pb n="315" break="yes"/><lb
+                            break="yes"/>Summe pecunie predicto Johanni filio andree . et habebit
+                        actionem de res<gap reason="damage"/><lb break="yes"/>contra predictum
+                        Johannem yong'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-01" xml:lang="la">
+                    <p><lb break="yes"/>Johannes Jonson' dabit Willelmo de strade duas petras ferri
+                        . vel saltem valor<supplied reason="damage">em</supplied><lb break="yes"
+                        />infra octo dies</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-02" xml:lang="la">
+                    <p><lb break="yes"/>Duncanus hervy soluet Willemo de strade . xiij s' iiij d' ad
+                        festum beati petri q<supplied reason="damage">ui</supplied><lb break="yes"
+                        />dicitur aduincula .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-03" xml:lang="la">
+                    <p><lb break="yes"/>Johannes de buchania soluet nicholao gray . iiij s' gross'
+                        quod naulo <add place="above">quatuor barella<supplied reason="damage"
+                                >rum</supplied></add> in naui<lb break="yes"/>Jacobi purss'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-04" xml:lang="la">
+                    <p><lb break="yes"/>Andreas nase remouebit portam apparentem super terram
+                        Willelmi blyndecel<lb break="yes"/>infra quatuordecem dies . Et eodem modo
+                        Simon lamb remouebit<lb break="yes"/>portam suam infra dictum tempus</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-05" xml:lang="la">
+                    <p><lb break="yes"/>Robertus Dauid satisfaciet <del>So</del> Simoni de camera in
+                        denariis aut in dena<lb break="no"/>riatis infra octo dies de xxvij s' et vj
+                        d' . Et pro seruicio suo seu carageo<lb break="yes"/>coreorum suorum
+                        secundum visum proborum hominum</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-06" xml:lang="la">
+                    <p><lb break="yes"/>Ricardus de lovnane satisfaciet Dauid' thome infra octo dies
+                        vj s'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-07" xml:lang="la">
+                    <p><lb break="yes"/>Thomas de marr' . soluet . philippo Jonson' vnam petram lane
+                        vel saltem<lb break="yes"/>valorem infra octo dies .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0315-08" xml:lang="la">
+                    <p><lb break="yes"/>Thomas de Marr' soluet Willelmo baxter' schewyll xviij d'
+                            infra<lb break="yes"/>octo dies</p>
+                </div>
+            </div>
+            <pb n="316" break="yes"/>
+            <div type="undefined">
+                <p><date cert="low" notBefore="1406-02-06"/></p>
+                <div type="entry" xml:id="ARO-1-0316-01" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum quod Adam filius Thome et Willelmus de Kyntor
+                        Magistri ecclesie reddiderunt bonum compotum<lb break="yes"/>fidele et
+                        finale preposito ballivis et Communitati de Abirdene . de omnibus receptis
+                        suis a<lb break="yes"/>primo die introitus sui in dicto officio . vsque ad
+                        sextum diem mensis februarii de Anno<lb break="yes"/>Domini Millesimo
+                        quadringentesimo Quinto Quo die presentauerunt post compotum suum vt<lb
+                            break="yes"/>superius dicitur datum vnam cedulam de debitis dicte
+                        ecclesie continent' summam vij li' xviij s'<lb break="yes"/>Et . iij<hi
+                            rend="superscript">C</hi>
+                        <foreign xml:lang="sc">burdis</foreign> . et xl petri plumbi . de q<unclear
+                            reason="faded">uanta</unclear> cuius cedule summa . <foreign
+                            xml:lang="sc">burdis</foreign> et plumbo predicto<lb break="yes"/>dicti
+                        Magistri ecclesie onerabunt se in proximo compoto suo reddendo .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0316-02" xml:lang="la">
+                    <p><lb break="yes"/>Johannes filius gilberti . est plegius ad deliberandum omnia
+                        bona Johannis hulk de quibus bonis<lb break="yes"/>ipse Johannes gilberti
+                        est mercator . apud <foreign xml:lang="sc">ley key</foreign> de Abirdene
+                        preposito eiusdem in proximo<lb break="yes"/>aduentu suo . videlicet tantum
+                        quantum veniet de vna sarpellaria lane et xvj coriis et<lb break="yes"
+                        />duabus barellis salmonum et j vnum <foreign xml:lang="sc">pok</foreign>
+                        pellium exceptis iij li' viij s' de moneta<lb break="yes"/>flandrie que
+                        summa soluetur in flandria nicolays gray Johanni Wodman et Dauid tulch .</p>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-07-17T17:57:28">WH</change>
+            <change status="corrected" when="2017-07-18T11:45:37">EF</change>
+            <change status="AnnotationsChecked" when="2017-09-01T10:25:29">AH</change>
+            <change status="corrected" when="2018-09-21T13:04:52">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="12" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1434-04-19" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0012-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legalis burgi tenta in pretorio per ballivos eiusdem
+                        die lune xix<hi rend="superscript">no</hi> die mensis aprilis<lb break="yes"
+                        />Anno et cetera trecesimo quarto Quo die secta vocata et curia affirmata
+                        absentes patent<lb break="yes"/>in rotulo communis secte</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Robertus blyndcele super quem matheus fichet alias
+                        porrexit plegium pro iniusta<lb break="yes"/>detencione vigintiduorum
+                        solidorum grossorum flandrie trium bollarum cum <foreign xml:lang="sc"
+                            >pec</foreign> salis grossi primo die<lb break="yes"/>sepe vocatus in
+                        curia non comparuit Et Ideo datur bedello burgi in mandatis pro capiat
+                            districtum<lb break="yes"/>octo solidorum de dicto Roberto et cetera Et
+                        quod premuniat ipsum legitime ad proximam curiam legalem et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-03" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Robertus Walkar' in amerciamento curie
+                        adiudicatur quia non comparuit ad prosequendum plegium<lb break="yes"/>quod
+                        nuper extendit contra Rayny hird et dictus Rayny quitus erit a clameo dicti
+                            Roberti<lb break="yes"/>quousque de nouo fuerit attachiatus</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Willelmus de spaigne adiudicatur in amerciamento curie
+                        quia non comparuit ad prosequendum plegium per<lb break="yes"/>extensum
+                        super Johannem Jacson' Et dictus Johannes quitus est a calumpnia predicta et
+                        cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-05" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Willelmus hell' faber adiudicatur in
+                        amerciamento pro plegio iniuste extenso super<lb break="yes"/>Henricum
+                        seruientem suum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-06" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die thomas Walkar' adiudicatur in amerciamento
+                        curie propter inobedienciam contra balliuum<lb break="yes"/>burgi</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-07" xml:lang="la">
+                    <p><lb break="yes"/>Item Alicia de galwidia adiudicatur in amerciamento curie
+                        pro rebellione facta contra Johannem de fyfe</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-08" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Andreas branche plegius mariote de beton'
+                        super quam Johannis champayn<lb break="yes"/>aliis extendit plegium pro
+                        iniusta detencione lotorij et <gap reason="deleted"/> capucij quanto die et
+                            peremptorio<lb break="yes"/>sepe vocatus ad intrare faciendum eandem non
+                        comparuit Et Ideo hora diei legitime exspectata<lb break="yes"/>et curia
+                        bene consulta datum fuit pro Judicio per os Willelmj quhitehede Judicatoris
+                            curie<lb break="yes"/>quod dictus andreas est in quatuor amerciamentis
+                        curie et in dictis lotorio et capucio vel precio eorundem<lb break="yes"/>ac
+                        expensis partis prosequentis secundum estimacionem curie</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-09" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die comparuit in Curia dominus Willelmus de
+                        eccell' cappellanus et presentauit ac perlegi<lb break="yes"/>fecit vnam
+                        cartam suam de illa terra quam nunc inhabitat Henricus sclatar' quam
+                            terram<lb break="yes"/>dictus dominus Willelmus asseruit dictum Henricum
+                        iniuste detinere ab ipso super qua detencione<lb break="yes"/>pecijt ipse
+                        dominus Willelmus a ballivis burgi sibi fieri iuris et iusticie
+                        complementum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-10" xml:lang="la">
+                    <p><lb break="yes"/>Item comparuit in curia Johannes trayl ostendens et perlegi
+                        faciens quoddam scriptum sibi secundum per Adam<lb break="yes"/>textorem
+                        super impigneracione cuiusdam terre in vico furcarum quam adam inhabitat
+                            protestando<lb break="yes"/>quod vendicio dicte terre per dictum adam
+                        facta cuicumque non preiudicaret sibi penes impigneracionem<lb break="yes"
+                        />sibi prius factam</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0012-11" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Jacobus Rede faber super quem Thomas de both'
+                        faber nuper <del>expendit</del>
+                        <add place="above">extendit</add> plegium<lb break="yes"/>pro iniusta
+                        detencione firme vnius Incudis ferree a dicto thoma primo die sepe vocatus
+                        in curia<lb break="yes"/>non comparuit Et Ideo precipitur bedello burgi quod
+                        capiat districtum de dicto Jacobo et quod premuniat<lb break="yes"/>eundem
+                        ad proximam curiam legalem tanquam secundum diem huius processus</p>
+                </div>
+                <pb n="13" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0013-01" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die penes discordiam motam inter thomam roberti
+                        et Duncanum ade ex parte vna et anna<lb break="yes"/>de benyn ex altera
+                        super iure vnius cimbe videlicet vnius <foreign xml:lang="sc"
+                            >cobil</foreign> decretum fuit per assisam in hunc modum<lb break="yes"
+                        />quod si dict' <foreign xml:lang="sc">ly cobil</foreign> inuent' fuit in
+                        mari dicta anna habebit a dictis thoma et Duncano duos<lb break="yes"
+                        />solidos pro acquisicione et saluacione eiusdem Et si in aqua dulci
+                        duodecim denar' et habebit<lb break="yes"/>insuper pro reparacione dict'
+                            <foreign xml:lang="sc">cobill'</foreign> quantum probare poterit per
+                        carpentarium et alterium ho<gap reason="rubbing"/> non<lb break="yes"
+                        />suspectum se exposuisse super eandem</p>
+                </div>
+            </div>
+            <div type="undefined">
+                <p><date when="1434-05-03" cert="high"/></p>
+                <div type="entry" xml:id="ARO-4-0013-02" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum quod tercio die mensis maij Anno et cetera
+                        trecesimo quarto In presencia Thome de camera prepositi Alexandri<lb
+                            break="yes"/>de Kyntor vnius ballivorum burgi de Abirdene gilberti
+                        meignez Willelmj giffard' et aliorum diuersorum<lb break="yes"/>Willelmus
+                        filius quondam Johannis christison de Durris concessit spontanea voluntate
+                        Willelmo Normavile<lb break="yes"/>vnum annuum redditum suum sex solidorum
+                        et vndecim denariorum debit' et exeunt' de terra alexandri de leez<lb
+                            break="yes"/>pelliparij Jacente in vico viridi dicti burgi . tanquam
+                        pignus pro quinque marcis vsualis monete.<lb break="yes"/>sibi per dictum
+                        Willelmum plenar' persolutis pro expensis eiusdem Willelmj in scolis ut
+                        asseruit faciendis<lb break="yes"/>sub protestacione tamen quod cum ipse
+                        Willelmus vno die de bonis suis propriis tantam summam<lb break="yes"
+                        />predicto Willelmo normavile fideliter persoluerit prefatus Willelmus
+                        Johannis rehabebit dictum<lb break="yes"/>annuum redditum suum et eodem
+                        libere gaudebit non obstant' impigneracione antedicta Et super<lb
+                            break="yes"/>hoc dabit idem Willelmus Normavile prefato Willelmo
+                        Johannis litteras suas reuersionis sub sigillo<lb break="yes"/>suo super
+                        annuo redditu antedicto ~</p>
+                </div>
+            </div>
+            <pb n="14" break="yes"/>
+            <div type="court">
+                <p><date when="1434-05-11" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0014-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia burgi de Abirdene de tenta per balliuos eiusdem
+                        vndecimo die mensis maij Anno et cetera xxxiiij<hi rend="superscript"
+                            >to</hi><lb break="yes"/>que curia statuta fuit pro perturbacione ville
+                        et diuersorum inhabitancium eandem . Quo die secta<lb break="yes"/>vocata
+                        curia affirmata</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0014-02" xml:lang="la">
+                    <p><lb break="yes"/>Thomas cuke posuit se in voluntate ballivorum pro iniusta
+                            perturbacione<lb break="yes"/>Willelmj Donaldson' .</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0014-03" xml:lang="la">
+                    <p><lb break="yes"/>Item dictus Willelmus Donaldson adiudicatur in amerciamento
+                        curie pro iniusta perturbacione dicti thome<lb break="yes"/>Cuke</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0014-04" xml:lang="la">
+                    <p><lb break="yes"/>Item dictus thomas cuke adiudicatur in amerciamento pro
+                        iniusta lesione vxoris Willelmj Donaldson'</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0014-05" xml:lang="la">
+                    <p><lb break="yes"/>Item dictus thomas cuke dedit Johanni de fyfe plegium
+                        legalem de indempnitate dicti Willelmj<lb break="yes"/>Donaldson' et partis
+                        sue . Et dictus Willelmus dedit thomam lauson' plegium legalem quod
+                            dictus<lb break="yes"/>thomas cuke et pars sua erunt indempnes et
+                        cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0014-06" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die comparens in curie coram ballivis Robertus de
+                        Vaus fatebatur se habuisse tantum vinum<lb break="yes"/>et sal grossum <add
+                            place="above">petri vande feld</add> pro quibus alias debuit viginti
+                        solidos et vnum denarium quam summam asseruit Idem<lb break="yes"/>Robertus
+                        se soluisse Johanni de Vaus fratri suo ex parte dicti petri</p>
+                </div>
+            </div>
+            <pb n="15" break="yes"/>
+            <div type="court">
+                <p><date when="1434-06-14" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0015-01" xml:lang="la">
+                    <p><lb break="yes"
+                        /><seg xml:id="anchorb234">Curia</seg><note anchored="true" type="editorial" target="#anchorb234">There is a note &apos;Amor vincit omnia&apos; above this entry in a different hand.</note>
+                        legalis burgi de Abirdene tenta in pretorio per ballivos eiusdem xiiij<hi
+                            rend="superscript">to</hi> die mensis Junij<lb break="yes"/>Anno et
+                        cetera trecesimoquarto . Quo die secta vocata et curia affirmata absentes
+                        patent in Rotulo<lb break="yes"/>communi secte</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0015-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Robertus blyndzele tercio die vocatus responsurus
+                        matheo fichet super plegio extenso<lb break="yes"/>contra dictum Robertum ut
+                        patet processibus curie precedentis non comparuit Et Ideo datur preceptum
+                            per<lb break="yes"/>Judicatorem curie bedello burgi leuare districtum
+                        octo solidorum de dicto Roberto et premunire<lb break="yes"/>eundem ad
+                        proximam curiam legalem et cetera .</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0015-03" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Ricardus quhite adiudicatur in amerciamento
+                        curie pro iniusta perturbacione thome<lb break="yes"/>de spens . et emendam
+                        tenetur facere eidem infra terminum iuris</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0015-04" xml:lang="la">
+                    <p><lb break="yes"/>Item predictus thomas de spens adiudicatur in amerciamento
+                        curie pro perturbacione dicti Ricardi et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0015-05" xml:lang="la">
+                    <p><lb break="yes"/>Item Robertus de Mireland super quem Johannes gray extendit
+                        plegium pro iniusta detencione<lb break="yes"/>viginti sex solidorum ab ipso
+                        . primo die vocatus ad respondendum non comparuit Et Ideo datur<lb
+                            break="yes"/>bedello burgi in preceptis quod capiat districtum octo
+                        solidorum de dicto Roberto et premuniat<lb break="yes"/>eundem ad proximam
+                        curiam legalem et cetera</p>
+                </div>
+            </div>
+            <pb n="16" break="yes"/>
+            <note type="editorial">Page 16 is empty.</note>
+            <pb n="17" break="yes"/>
+            <div type="court">
+                <p><date when="1434-06-18" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0017-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia burgi de Abirdene tenta in pretorio per ballivos
+                        eiusdem xviij<hi rend="superscript">o</hi> die mensis Junij Anno<lb
+                            break="yes"/>et cetera trecesimo quarto</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0017-02" xml:lang="la">
+                    <p><lb break="yes"/>Quo die secta curie vocata et curia affirmata comparuit
+                        coram ballivis<lb break="yes"/>Walterus Dow burgensis de Edynburgh' et
+                        presentauit ac perlegi fecit vnam obligacionem<lb break="yes"/>Roberti de
+                        Vaus et Johannis de hill' burgensium de Abirdene coniunctim et diuisim
+                        quandam summam<lb break="yes"/>pecunie monete flandrie continentem pro
+                        duobus botis vini vnius videlicet de <foreign xml:lang="sc"
+                            >maluesy</foreign> et alterius de<lb break="yes"/><foreign xml:lang="sc"
+                            >Muskadale</foreign> a dicto Waltero per dictos Robertum et Johannem
+                        emptis et receptis dictus tamen Walterus<lb break="yes"/>de toto precio
+                        dicti boti de <foreign xml:lang="sc">maluesy</foreign> predictum Robertum de
+                        vaus tunc presentem in curia<lb break="yes"/>penitus exonerauit petendo
+                        tantum certam summam monete predicte de precio integro dicti<lb break="yes"
+                        />boti de <foreign xml:lang="sc">muscadale </foreign>. quam summam dictus
+                        Robertus expresse denegauit et super hoc<lb break="yes"/>submisit se
+                        determinacioni assise . Cui interfuerunt subscripti magno Juramento onerati
+                            videlicet<lb break="yes"/>Ricardus de Ruthirfurd' Gilbertus meignez
+                        Johannes de fyfe Willelmus de Kyntor .<lb break="yes"/>Johannes henrici
+                        Johannes de scroggis Willelmus giffard' patricius de badyenach' Robertus<lb
+                            break="yes"/>de camera . Ricardus Jacson' Duncanus de clatt Willelmus de
+                        fodringham Willelmus symson'<lb break="yes"/>Thomas blyndzele . Adam
+                        nicholson . Que quidem assisa mature aduisata pecijt<lb break="yes"
+                        />dilacionj determinacionis dicte cause vsque diem crastinum que dilacio ex
+                        consensu parcium<lb break="yes"/>sibi conceditur per ballivos ~</p>
+                </div>
+            </div>
+            <div type="court">
+                <p><date when="1434-06-21" cert="high"/></p>
+                <div type="entry" xml:id="ARO-4-0017-03" xml:lang="la">
+                    <p><lb break="yes"/>Die lune xxj<hi rend="superscript">o</hi> die dicti mensis
+                        Junij comparuerunt in curia coram ballivis burgi Walterus Dow<lb break="yes"
+                        />et Robertus de vaus predicti dictus quod Robertus per Johannem de vaus
+                        fratrem et prelocutorem<lb break="yes"/>suum optulit se probaturum quod
+                        dictus Walterus Dow exonerauit eum de dicto boto de <foreign xml:lang="sc"
+                            >muscadale</foreign><lb break="yes"/>arrestari faciendo per ballivos
+                        burgi dictum botum tanquam suum proprium et nullius alterius<lb break="yes"
+                        />Deinde subscripti de communi consilio videlicet dominus andreas stewart
+                        miles thomas de Roul<lb break="yes"/>gilbertus meignez Johannes de scroggis
+                        Alexander fraser Willelmus giffard' thomas de stane<lb break="yes"/>Andreas
+                        branche . thomas blyndzele . Johannes henrici de culane Robertus de
+                            camera<lb break="yes"/>Walterus giffard' Johannes de straton' Johannes
+                        mercer' Ricardus Jacson' et Dauid clerk<lb break="yes"/>decreuerunt et
+                        ordinauerunt predictum Robertum legitime probaturum allegacionj suam
+                            superius<lb break="yes"/>expressam super exoneracionem suam per dictum
+                        Walterum sibi fact' de dicto boto de <foreign xml:lang="sc"
+                            >muscadale</foreign><lb break="yes"/><del>die lune proximo et immediate
+                            sequenti</del> Juxta quam quidem determinacionem predictorum de
+                            communi<lb break="yes"/>consilio Johannes de vaus frater et prelocutor
+                        predicti Roberti de vaus presentauit in curia<lb break="yes"/>coram ballivis
+                        ad probandum exoneracionem dicti Roberti fratris sui de dicto boto de
+                            <foreign xml:lang="sc">muscadale</foreign><lb break="yes"/>Willelmum de
+                        fodringham et Duncanum de clatt alios ballivos <add place="above"
+                            >huius</add>
+                        <del>dicti</del> burgi et Alexandrum<lb break="yes"/>skynnar' sergeandum qui
+                        magno sacramento in curia onerati deposuerunt et dixerunt<lb break="yes"
+                        />quod alias idem Walterus Dow fecit eos virtute officij sui arrestare
+                        dictum botum de<lb break="yes"/><foreign xml:lang="sc">Muscadale</foreign>
+                        tanquam suum proprium et suo signo proprio consignatum Qua probare prolata
+                            <pb n="18" break="yes"/><lb break="yes"/>et recepta dictus Johannes de
+                        vaus nomine dicti fratris sui Roberti extendit plegium quod cum<lb
+                            break="yes"/>dictus Walterus Dow arrestari fecit per dictos Willelmum et
+                        Duncanum tunc ballivos ac dictum<lb break="yes"/>alexandrum sergeandum
+                        predictum botum de <foreign xml:lang="sc">muscadale</foreign> . tanquam suum
+                        proprimus est sufficiens et<lb break="yes"/>legitima acquietacio et
+                        exoneracio dicti roberti fratris sui penes obligacionem suam super<lb
+                            break="yes"/>prefatum botum de <foreign xml:lang="sc"
+                            >muscadale</foreign> et preter eiusdem Quod plegium per Johannem de vaus
+                            extensum<lb break="yes"/>Johannes de fyfe prelocutor predicti Walteri
+                        Dow recontrariauit incontinent' Cuius plegij<lb break="yes"/>et
+                        contrariacionis eiusdem declaracio respectuat' fuit per curiam ex consensu
+                        parcium vsque<lb break="yes"/>diem mercurii proximo et immediate sequenti in
+                        hora causarum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0018-01" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Robertus de Mireland' accusatus in curia per
+                        ballivos super inobediencia<lb break="yes"/>sua et perturbacione Johannis
+                        fichet vnius ballivorum huius burgi submisit se cognicioni<lb break="yes"
+                        />assise vnde assisa aduisata pecijt dilacionem determinacionis dicte cause
+                        ad diem lune<lb break="yes"/>proximo et immediate sequente quod de consensu
+                        parcium sibi conceditur per ballivos ~</p>
+                </div>
+            </div>
+            <pb n="19" break="yes"/>
+            <div type="court">
+                <p><date when="1434-06-28" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0019-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legalis burgi de Abirdene tenta in pretorio eiusdem
+                        antepenultimo die mensis mensis Junij<lb break="yes"/>Anno et cetera
+                        trecesimoquarto . Quo die secta vocata et curia affirmata absentes patent
+                            in<lb break="yes"/>Rotulo communis secte</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die adam textor et edwardus Walkar' quorum quilibet
+                        perturbauit alterum iniuste<lb break="yes"/>per confessionem propriam
+                        adiudicantur videlicet eorum quilibet in amerciamento curie Et quod dictus
+                            edwardus<lb break="yes"/>erit indempnis de dicto adam andreas branche
+                        deuenit plegius legalis . Et quod dictus adam<lb break="yes"/>erit indempnis
+                        de dicto edwardo thomas de stane deuenit plegius legalis.</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-03" xml:lang="la">
+                    <p><lb break="yes"/>Item andreas Duncaneson' secundo die vocatus ad respondendum
+                        Roberto de camera super plegio extenso<lb break="yes"/>per ipsum super
+                        dictum andream penes detencionem cuiusdam summe salis grossi non comparuit
+                        Et Ideo<lb break="yes"/>datur bedello burgi quod capiat districtum octo
+                        solidorum de dicto andrea et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Robertus valence et andreas parkar' tinctores posuerunt
+                        se in voluntate ballivorum<lb break="yes"/>de amerciamentis curie pro
+                        pollucione aque communis riuuli burgi currentis infra burgum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-05" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die henricus sclatar' secundo die vocatus ad
+                        respondendum alexander freland' non comparuit<lb break="yes"/>Et Ideo
+                        precipitur bedello burgi et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-06" xml:lang="la">
+                    <p><lb break="yes"/>Item Willelmus de kirknes adiudicatur in amerciamento curie
+                        pro perturbacione Willelmj atkynson' sergeandi</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-07" xml:lang="la">
+                    <p><lb break="yes"/>Item Robertus de Mireland' secundo die vocatus ad
+                        respondendum Johanni gray non comparuit qui excusatur propter<lb break="yes"
+                        />seruicium regis</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-08" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Johannes de scroggis adiudicatur in
+                        amerciamento curie per confessionem propriam pro perturbacione<lb
+                            break="yes"/>Willelmj de telly</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-09" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die ad sedandum et remouendam discordiam motam
+                        inter Walterum Dow de edynburgh<lb break="yes"/>et Robertum de vaus penes
+                        precium unius botus <choice>
+                            <sic>vinii</sic>
+                            <corr>vini</corr>
+                        </choice> dicti <foreign xml:lang="sc">muscadale</foreign> electi fuerunt et
+                            Jurati<lb break="yes"/>subscripti ad determinandum dictam causam vtraque
+                        parcium predictarum consensient' ad hoc in curia<lb break="yes"/>coram
+                        preposito et ballivis burgi videlicet Johannes de scroggis Johannes
+                        henrison' Willelmus de Kyntor<lb break="yes"/>Andreas branche Johannes gray
+                        Duncanus patricij matheus fichet et Johannis voket filius ac<lb break="yes"
+                        />thomas blyndzele</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0019-10" xml:lang="la">
+                    <p><lb break="yes"/>Item electi fuerunt eodem die ad sedandum discordiam motam
+                        inter matheum fichet et Robertum<lb break="yes"/>blyndzele . penes quandam
+                        summam pecunie et salis grossi consensu et cetera Johannes de fyfe Johannes
+                            de<lb break="yes"/>scroggis angusius ade Johannes gray et andreas
+                        branche</p>
+                </div>
+                <pb n="20" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0020-01" xml:lang="sc">
+                    <p><lb break="yes"/>This is the decrete of John' of <expan>scroggis</expan> .
+                        John' henrison' Williame of Kyntor andraw branche .<lb break="yes"/>John'
+                            <expan>gray</expan>
+                        <expan>Duncane</expan>
+                        <expan>patrikson'</expan> mathew fichet thomas blyndzele and John' voket the
+                            son'<lb break="yes"/>chosyn and sworn as in assise to
+                            <expan>determyne</expan> as law will' the causez debatablez<lb
+                            break="yes"/>movit betwix Watt Dow of edynburgh' on the ta parte and
+                        Robert the vaus on the tuthir<lb break="yes"/>parte . <expan>anentis</expan>
+                        the price of a bote of muscadale that is to say that thai mak and
+                            decernis<lb break="yes"/>the said Robert quite of his obligacion' made
+                        to the said Watt Dow for the <expan>price</expan> of the<lb break="yes"
+                        />said wyne . and quite alsua of al <expan>chalangis</expan> folowand tharof
+                        to the day of the arrestyng<lb break="yes"/>made be the bailliez and the
+                        sergeand of this burgh' . at the request and instance of<lb break="yes"/>the
+                        said Watt Dow . twa yer' syne and mar' .</p>
+                </div>
+            </div>
+            <pb n="21" break="yes"/>
+            <div type="court">
+                <p><date when="1434-07-12" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0021-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia legalis burgi de Abirdene tenta in pretorio per
+                        ballivos eiusdem duodecimo die mensis<lb break="yes"/>Julij Anno et cetera
+                            xxxiiij<hi rend="superscript">to</hi>. Quo die secta vocata et curia
+                        affirmata absentes patent in<lb break="yes"/>Rotulo sectarum.</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Johannes gray deuenit plegius legalis pro thoma de
+                        both' quod Robertus Johannis textor<lb break="yes"/>erit indempnis de dicto
+                        thoma Et dictus Robertus dedit Johannes mawmond' plegium legalem<lb
+                            break="yes"/>quod dictus thomas erit indempnis de dicto Roberto aliter
+                        quam per viam iuris</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-03" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die nicholaus de luss' adiudicatur in
+                        amerciamento curie pro iniusta perturbacione et lesione Johannis<lb
+                            break="yes"/>mawmond' qui nicholaus dedit Jacobum sclatar' plegium
+                        legalem de indempnitate dicti Johannis<lb break="yes"/>et ad satisfaciendum
+                        eidem de dampno . Et dictus Johannes dedit Willelmum scherar' plegium
+                            legalem<lb break="yes"/>de indempnitate dicti nicholai.</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-04" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Robertus de Mireland' tercio die vocatus ad
+                        respondens Johanni gray ut patet in curia<lb break="yes"/>precedenti non
+                        comparuit Et ideo datur bedello per iudicatorem curie in mandatis quod
+                        capiat districtum et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-05" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Willelmus scherar' plegius Johannis de hoggis
+                        super quem Jacobus sclatar' alias extendit<lb break="yes"/>plegium pro
+                        iniusta detencione viginti solidorum grossorum flandrie primo die vocatus ad
+                        intrandum in curia<lb break="yes"/>dictum Johannem non comparuit Et Ideo
+                        datur bedello in mandatis quod capiat districtum de dicto Willelmo et
+                        cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-06" xml:lang="la">
+                    <p><lb break="yes"/>Item henricus sclatar' tercio die sepe vocatus ad
+                        respondendum alexandro de freland non comparuit et Ideo datur<lb break="yes"
+                        />bedello in mandatis quod capiat districtum et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-07" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Willelmus de Spaigne super quem Robertus
+                        blyndzele extendit plegium pro iniusta<lb break="yes"/>detencione quindecim
+                        salmonum pro quorum precio satisfactum est eidem Willelmo vt idem
+                            Robertus<lb break="yes"/>asserit primo die vocatus ad respondendum non
+                        comparuit Et Ideo datur bedello in mandatis et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0021-08" xml:lang="la">
+                    <p><lb break="yes"/>Item <add place="above"
+                            ><?oxy_comment_start author="his252" timestamp="20170718T114234+0100" comment="NOTE: It is not specifically indicated how the three superscripted words fit into the sentence. This is the most likely solution."?>matheus</add>
+                            Ricardi<del>is</del>
+                        <add place="above">fichet plegius</add><?oxy_comment_end?> Johannis
+                        Duncaneson' tercio die vocatus ad respondendum matheo scissori non
+                            comparuit<lb break="yes"/>et Ideo precipitur bedello quod capiat
+                        districtum de dicto plegio et cetera</p>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>

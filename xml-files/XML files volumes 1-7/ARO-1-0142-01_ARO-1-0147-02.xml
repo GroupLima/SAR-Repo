@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-12-18T12:50:28">CH</change>
+            <change status="corrected" when="2018-03-05T14:45:39">EF</change>
+            <change status="corrected" when="2018-09-13T11:17:11">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="142" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1400-10-09" cert="high"/></p>
+                <div type="heading" xml:id="ARO-1-0142-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia tenta per balliuos nono die mensis octobris Anno quo
+                        supra Quo die curia af<lb break="no"/>firmata</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-02" xml:lang="la">
+                    <p><lb break="yes"/>Dauid Milnar posuit se in voluntate ballivorum pro iniusta
+                        tencione vnius bipennis a con<lb break="no"/>sanguineo mauricij suerdslepar
+                        . Similiter Robertus baxtar et frater suus eadem de causa adiudicati<lb
+                            break="yes"/>sunt in amerciamento curie quilibet</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-03" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Wilkyn Webstar legittime vocatus ad veniendum cum
+                        acquietancia sua . secundum quod sibi in<lb break="yes"/>vltima curia
+                        adiungebatur non comparuit / propterea adiudicatur per os Willelmi croket
+                            iudicatoris<lb break="yes"/>curie quod conuictus est in causa illa et in
+                        omnibus punctis in quibus calumpniatus fuit</p>
+                </div>
+            </div> 
+            <div type="court">
+                <p><date when="1400-10-11" cert="high"/></p>
+                <div type="heading" xml:id="ARO-1-0142-04" xml:lang="la">
+                    <p><lb break="yes"/>Curia tenta per ballivos xj die predicti mensis Anno
+                        supradicto . quo die curia affirmata</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-05" xml:lang="la">
+                    <p><lb break="yes"/>Patricius baxtar vocatus legittime ad prosequendum quod
+                        Inuenit super Thomam Wode<lb break="yes"/>non comparuit . Johannes ledale
+                        prelocutor dicti thome extendebat plegium quod quitus fuit a<lb break="yes"
+                        />calumpnia sua quousque nouiter fuerit attachiatus et dictus patricius in
+                        amerciamento soluit</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-06" xml:lang="la">
+                    <p><lb break="yes"/>Robertus baxtar in amerciamento quia iniuste tenuit a
+                            <del>Johanne</del>
+                        <add place="above">thoma</add> Malville ij s'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-07" xml:lang="la">
+                    <p><lb break="yes"/>Johannes Dunccani commorans cum cragy in amerciamento quia
+                        iniuste cepit animalia Magistri sui a quodam<lb break="yes"/>vocato Johanne
+                        Walteri</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-08" xml:lang="la">
+                    <p><lb break="yes"/>Cristiana Jose in <add place="above">tribus</add>
+                        amerciamentis quia non intrauit <add place="above">tres</add> nautas suas ad
+                        calumpniam ballivorum</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-09" xml:lang="la">
+                    <p><lb break="yes"/><cb n="1"/>Copyn alane ad acquietanciam plegio aldirmanno<lb
+                            break="yes"/><add place="margin"
+                                ><?oxy_comment_start author="his252" timestamp="20180305T130628+0000" comment="NOTE: This marginal note is also linked to the third, fourth, sixth and seventh names through lines."?><supplied
+                                reason="damage">ple</supplied>gio Willelmo
+                            andree<?oxy_comment_end?></add> hankyn ad acquietanciam<lb break="yes"
+                        />henrik ad acquietanciam<lb break="yes"/>Johannes bowmele ad
+                            acquietanciam<lb break="yes"/>Cristiane Jose ad acquietanciam<lb
+                            break="yes"/>Johannes petri ad acquietanciam<lb break="yes"/>Willelmus
+                        petri ad acquietanciam<lb break="yes"/><cb n="2"
+                        /><seg xml:id="anchorb20">adiungitur</seg><note anchored="true" type="editorial" target="#anchorb20">These lines are linked to all names through a bracket.</note>
+                        omnibus istis ad veniendum crastina die acquietando<lb break="yes"/>se quod
+                        non vendiderunt aliqua bona de naui sua parua<lb break="yes"/>custuma non
+                        soluta <del>plegio Willelmo andree</del></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0142-10" xml:lang="la">
+                    <p><lb break="yes"/>Duncanus Marr' est plegius pro Johanne ayncroft et Johanne
+                        Wodman / et Johannes fichet est plegius<lb break="yes"/>pro thoma lamb et
+                        cetera</p>
+                </div>
+            </div> 
+            <pb n="143" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1400-10-12" cert="high"/></p>
+                <div type="heading" xml:id="ARO-1-0143-01" xml:lang="la">
+                    <p><lb break="yes"/>primus processus <supplied reason="faded">vnius</supplied>
+                        mulieris et Johannes andree in die martis</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0143-02" xml:lang="la">
+                    <p><lb break="yes"/>Johannes andree in amerciamento quia non venit ad
+                        prosequendum plegium quod Inuenit super quandam Mulierem pro qua
+                            Willelmus<lb break="yes"/>Jacson' fuit plegius . Johannes andree
+                        comparuit et est secunda dies mercurij</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0143-03" xml:lang="la">
+                    <p><lb break="yes"/><del>Johannes henrici in amerciamento quia non venit ad
+                            prosequendum plegium quod Inuenit super copyn purs . similiter dictus
+                            copyn in<lb break="yes"/>amerciamento quia non comparuit ad
+                            calumpniam</del> Eodem modo est processus de Johanne henrici et copyn
+                        purs</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0143-04" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter thomam Dauid et stephanum de
+                        capronston'</p>
+                </div>
+            </div>
+            <pb n="144" break="yes" xml:base=""/>
+            <div type="other">
+                <p><date cert="high" notBefore="1399-11-14" notAfter="1399-11-15"/></p>
+                <div type="heading" xml:id="ARO-1-0144-01" xml:lang="la">
+                    <p><lb break="yes"/>Assedacio Reddituum burgi de Abirdene facta in pretorio
+                        eiusdem per Willelmum blyndcele Si<lb break="no"/>monem de Benyn . Johannem
+                        Wormot et Johannem filium thome ballivos
+                        <?oxy_comment_start author="his252" timestamp="20180913T110240+0100" comment="NOTE: 15 November 1399 was a Saturday."?>die
+                        veneris decimo quin<lb break="no"/>to die mensis
+                        nouembris<?oxy_comment_end?> . de anno Domini Millesimo trecentesimo
+                        nonagesimo nono</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-02" xml:lang="la">
+                    <head><foreign xml:lang="sc">le garne</foreign></head>
+                    <p><lb break="yes"/>Assedatur Johanni filio andree <del>v</del> pro termino et
+                        annis contentis in communi libro de Anno et cetera nonagesimo<lb break="yes"
+                        />sexto quolibet anno pro sex libris</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-03" xml:lang="la">
+                    <head>Schetokisley</head>
+                    <p><lb break="yes"/>Assedatur Alexandro banerman et Willelmo filio andree vt
+                        patet in dicto libro de eodem an<lb break="no"/>no quolibet anno pro tribus
+                        libris</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-04" xml:lang="la">
+                    <head>Tollis ferlote</head>
+                    <p><lb break="yes"/>Assedantur Andree petri Johanni lambynton' et Dauid thome
+                        pro termino vnius anni pro viginti<lb break="yes"/>marcis plegio altero
+                        alterius</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-05" xml:lang="la">
+                    <head>Redditus perticarum</head>
+                    <p><lb break="yes"/>Assedantur Willelmo moden et Matheo pynches pro vno anno pro
+                        quatuor libris ple<lb break="no"/>gio altero alterius</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-06" xml:lang="la">
+                    <head>Stallancia cum parua tolonia</head>
+                    <p><lb break="yes"/>Assedantur Johanni Mungwale et Dauid de tulch pro termino
+                        vnius anni pro quatuor libris<lb break="yes"/>plegio altero alterius</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-07" xml:lang="la">
+                    <head>villa de Rubislaw cum redditu perticarum eiusdem</head>
+                    <p><lb break="yes"/>Assedatur Willelmo de camera patri pro termino trium Annorum
+                        quolibet anno pro tribus libris . et<lb break="yes"/>communitas habebit
+                        animalia sua cum communi pastore super bundas eiusdem . ac eciam equos<lb
+                            break="yes"/>et boues suos in suis laboribus laborando . sed nullus
+                        habebit ibidem animalia sua<lb break="yes"/>in speciali aliter quam
+                        predicitur plegio Willelmo filio suo</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0144-08" xml:lang="la">
+                    <head>foresta</head>
+                    <p><lb break="yes"/>Assedatur Matheo pynches et Willelmo spaldyng pro termino
+                        vnius anni . sed ante exitum<lb break="yes"/>anni dicti assedacio fuit
+                        annullata . et post adnullacionem . Johannes lucris et Do<lb break="no"
+                        />naldus Ka tunc seriandi fuerunt limitati custodes dicte foreste pro
+                            residuo<lb break="yes"/>dicti anni</p>
+                </div>
+                <pb n="145" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-1-0145-01" xml:lang="la">
+                    <head>Molendina</head>
+                    <p><lb break="yes"/>Assedantur Johanni filio andree et Johanni filio alani pro
+                        termino vnius anni pro sexdecim libris cum con<lb break="no"/>suetudinibus
+                        et iuribus debitis et consuetis plegio altero alterius . Et Memorandum quod
+                        ligna mo<lb break="no"/>uencia lapides et ferrum molendini inferioris .
+                        videlicet . <foreign xml:lang="sc">ly gangand tymmyr</foreign> peiorantur
+                            ad<lb break="yes"/>valorem xvj denariorum . Et <foreign xml:lang="sc">ly
+                            gangand tymmyr</foreign> molendini superioris peiorauit xij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-02" xml:lang="la">
+                    <head>Stellis</head>
+                    <p><lb break="yes"/>Assedantur Willelmo de camera filio Johanni locton' et
+                        Ricardo fichet pro termino vnius anni pro sex<lb break="yes"/>libris plegio
+                        pro Johanne locton' Johanne ledale plegiis pro Ricardo fichet Willelmo crag
+                        et Johanne<lb break="yes"/>scherar . plegio pro Willelmo de camera predicto
+                        patre suo .</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-03" xml:lang="la">
+                    <head><foreign xml:lang="sc">le Rake</foreign></head>
+                    <p><lb break="yes"/>Assedatur predictis Willelmo Johanni et Ricardo pro termino
+                        vnius anni quodlibet rete pro vndecim<lb break="yes"/>marcis predictis
+                        plegiis remanentibus Sunt quinque retia et dimidium</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-04" xml:lang="la">
+                    <head>Midchingil</head>
+                    <p><lb break="yes"/>Assedatur eisdem Willelmo Johanni et Ricardo pro vno anno
+                        quodlibet rete pro quatuor marcis<lb break="yes"/>predictis plegio
+                        remanentibus Sunt sex retia <add place="margin">xvj</add></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-05" xml:lang="la">
+                    <head><foreign xml:lang="sc">le pot</foreign></head>
+                    <p><lb break="yes"/>Assedatur eisdem Willelmo Johanni et Ricardo pro vno anno
+                        quodlibet rete pro quinque marcis sub<lb break="yes"/>predictis plegiis Sunt
+                        sex recia <add place="margin">xx</add></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-06" xml:lang="la">
+                    <head><foreign xml:lang="sc">le furdis</foreign></head>
+                    <p><lb break="yes"/>Assedatur eisdem Willelmo Johanni et Ricardo pro vno anno
+                        quodlibet rete pro quinque marcis predictis<lb break="yes"/>plegiis
+                        remanentibus Sunt septem retia et dimidium retis <add place="margin"
+                            >xxv</add></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0145-07" xml:lang="la">
+                    <head><foreign xml:lang="sc">le Croys</foreign></head>
+                    <p><lb break="yes"/>Assedatur alexandro banerman . thome lamb et Willelmo
+                        thaynston' pro termino duorum annorum pro<lb break="yes"/>viginti vna libris
+                        dimidietas . videlicet . dicto alexandro et alia medietas dictis thome<lb
+                            break="yes"/>et Willelmo plegio altero alterius . vt patet in libro
+                        communi de anno precedente</p>
+                </div>
+                <div type="incompleteEntry" xml:id="ARO-1-0145-08" xml:lang="la">
+                    <head><del>hesilhede</del></head>
+                    <p><lb break="yes"/><space quantity="1" unit="paragraph"/></p>
+                </div>
+                <pb n="146" break="yes" xml:base=""/>
+                <div type="entry" xml:id="ARO-1-0146-01" xml:lang="la">
+                    <head>fogagium communitatis dicti burgi a cruce bernardi vsque ad mare</head>
+                    <p><lb break="yes"/>Assedatur Matheo balram</p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0146-02" xml:lang="la">
+                    <head>Aqua borealis</head>
+                    <p><lb break="yes"/>Assedatur Dauid de Scroggis decima sexta pars retis pro
+                        xxvij s' vj d'<lb break="yes"/>Assedatur Johanni fichet decima sexta pars
+                        retis pro xxvij s' vj d'<lb break="yes"/>Assedatur Willelmo de Kyntor decima
+                        sexta pars retis pro xxvij vj d'<lb break="yes"/>Assedatur Dunccano de marr'
+                        decima sexta pars retis pro xxvij s' vj d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142643+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>j
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Roberto Dauid
+                        octaua pars retis pro lv s'<lb break="yes"/>dimidium quarterium<lb
+                            break="yes"/>Assedatur thome Dauid trecesima secunda pars retis pro xiij
+                        s' ix d'<lb break="yes"/>Assedatur Willelmo filio eius trecesima secunda
+                        pars retis pro xiij s' ix d'<lb break="yes"/>Assedatur Johanni de buchania
+                        trecesima secunda pars retis pro xiij s' ix d'<lb break="yes"/>Assedatur
+                        Roberto de glanderston' trecesima secunda pars retis pro xiij s' ix d'<lb
+                            break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142702+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>dimidium
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Willelmo de
+                        strade decima sexta pars retis pro xxvij s' vj d'<lb break="yes"/>Assedatur
+                        Johanni strang decima sexta pars retis pro xxvij s' vj d'<lb break="yes"
+                        />Assedatur Andrea gilberti decima sexta pars retis pro xxvij s' vj d'<lb
+                            break="yes"/>Assedatur Johanni Jacobi decima sexta pars retis pro xxij
+                        s' vj d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142710+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>j
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Willelmo
+                        borthwik decima sexta pars retis pro xxvij s' vj d'<lb break="yes"
+                        />Assedatur Johanni ayncroft filio decima sexta pars retis pro xxvij s' vj
+                            d'<lb break="yes"/>Assedatur Ade filio thome decima sexta pars retis pro
+                        xxvij s' vj d'<lb break="yes"/>Assedatur thome Willelmi decima sexta pars
+                        retis pro xxvij s' vj d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142719+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>j
+                            quarterium<?oxy_comment_end?><lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T143109+0000" comment="NOTE: This is linked to the preceding five quarteriums through a bracket."?>vnum
+                            rete<?oxy_comment_end?><lb break="yes"/>Assedatur Johanni hervy
+                        trecesima secunda pars retis pro xiij s' ix d'<lb break="yes"/>Assedatur
+                        Johanni vscher' trecesima secunda pars retis pro xiij s' ix d'<lb
+                            break="yes"/>Assedatur Willelmo Dayntre trecesimo secunda pars retis pro
+                        xiij s' ix d'<lb break="yes"/>Assedatur Willelmo Inuerrory trecesima secunda
+                        pars retis pro xiij s' ix d'<lb break="yes"
+                        /><seg xml:id="anchorb21">dimidium quarterium</seg><note anchored="true" type="editorial" target="#anchorb21">This is linked to the preceding four lines through a bracket.</note>
+                        <pb n="147" break="yes" xml:base=""/>
+                        <lb break="yes"/>Assedatur Ade de strathekyn decima sexta pars retis pro
+                        xxvij s' vj d'<lb break="yes"/>Assedatur Matheo hulk decima sexta pars retis
+                        pro xxvij s' vj d'<lb break="yes"/>Assedatur bricio Dunccani decima sexta
+                        pars retis pro xxvij s' vj d'<lb break="yes"/>Assedatur Patricio baxtar
+                        decima sexta pars retis pro xxvij s' vj d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142752+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>j
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Ricardo de
+                        lownan decima sexta pars retis pro xxvij s' vj d'<lb break="yes"/>Assedatur
+                        Johanni glenyson' decima sexta pars retis pro xxvij s' vj d'<lb break="yes"
+                        />Assedatur Willelmo Jacson' decima sexta pars retis pro xxvij s' vj d'<lb
+                            break="yes"/>Assedatur thome amfray trecesima secunda pars retis pro
+                        xiij s' ix d'<lb break="yes"/>Assedatur patricio alexandri trecesima secunda
+                        pars retis pro xiij s' ix d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142949+0000" comment="NOTE: This is linked to the preceding five lines through a bracket."?>j
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur henrico celty
+                        trecesima secunda pars retis pro xiij s' ix d'<lb break="yes"/>Assedatur
+                        gilberto hervy trecesima secunda pars retis pro xiij s' ix d'<lb break="yes"
+                        />Assedatur Ricardo Inchemethen trecesima secunda pars retis pro xiij s' ix
+                            d'<lb break="yes"/>Assedatur alano filio Ricardi trecesima secunda pars
+                        retis pro xiij s' ix d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142844+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>dimidium
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Johanni crab
+                        trecesima secunda pars retis pro xiij s' ix d'<lb break="yes"/>Assedatur
+                        Johanni Ruthirford' trecesima secunda pars retis pro xiij s' ix d'<lb
+                            break="yes"/>Assedatur thome scherar trecesima secunda pars retis pro
+                        xiij s' ix d'<lb break="yes"/>Assedatur thome lownan trecesima secunda pars
+                        retis pro xiij s' ix d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142907+0000" comment="NOTE: This is linked to the preceding four lines through a bracket."?>dimidium
+                            quarterium<?oxy_comment_end?><lb break="yes"/>Assedatur Johanni Wode
+                        decima sexta pars retis pro xxvij s' vj d'<lb break="yes"/>Assedatur Johanni
+                        abel trecesima secunda pars retis pro <del>xxvij s' vj d'</del> xiij s' ix
+                            d'<lb break="yes"/>Assedatur ade forstar trecesima secunda pars retis
+                        pro xiij s' ix d'<lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T142933+0000" comment="NOTE: This is linked to the preceding three lines through a bracket."?>dimidium
+                            quarterium<?oxy_comment_end?><lb break="yes"
+                        /><?oxy_comment_start author="his252" timestamp="20180305T144249+0000" comment="NOTE: This is linked to the preceding five quarteriums through a bracket."?>vnum
+                            r<supplied reason="damage">ete</supplied>
+                        <gap reason="damage"/> dimid' quarteri<gap reason="damage"
+                        /><?oxy_comment_end?></p>
+                </div>
+                <div type="entry" xml:id="ARO-1-0147-01" xml:lang="la">
+                    <p><lb break="yes"/>Tercium rete aque borealis dabatur Willelmo de camera patri
+                        pro debito et arragio<lb break="yes"/>quod ei Communitas debebat . Et
+                        Communitas ordinauit ballivis decem libras de parua<lb break="yes"
+                            />custu<supplied reason="rubbing">m</supplied>a ad suplendum eorum
+                        rentale . pro defectu tercij retis supradicti pro isto anno</p>
+                </div>
+            </div>   
+        </body>
+    </text>
+</TEI>
