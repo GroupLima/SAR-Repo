@@ -8,5 +8,5 @@
             <h1>SRA 2.0</h1> 
         </div>
         @include('home-views.search')
-        <img src="images/university.png" alt="University Logo" class="bottom-image">
+        <img src="{{ asset('images/university.png') }}" alt="University Logo" class="bottom-image">
 @endsection
