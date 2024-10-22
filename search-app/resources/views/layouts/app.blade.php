@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title> <!-- Default title, can be overridden -->
-    <link rel="stylesheet" href="../../css/app.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     @include('layouts.basic-navbar')   <!-- insert php content from other views -->
