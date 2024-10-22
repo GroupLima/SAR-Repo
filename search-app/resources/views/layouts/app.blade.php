@@ -8,6 +8,7 @@
     <title>@yield('title')</title> <!-- Default title, can be overridden -->
 </head>
 <body>
+    @yield('style', 'resources.css.app')
     @include('layouts.basic-navbar')   <!-- insert php content from other views -->
     @yield('content') <!-- Section for different page content -->
 </body>
