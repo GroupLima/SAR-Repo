@@ -17,11 +17,20 @@ class XmlController extends Controller
     ARO-(beginning_volume)-(beginning_page)-(beginning_chapter)_ARO-(ending_volume)-(ending_page)-(ending_chapter).xml
     
     python functionality:
-    2. returns results found:
-        a. number of matches per entry
+    2. returns results found for entries:
+        a. entry id of each entry
         b. index, length, and spelling variant of each match in each result
 
+    */
 
+    //python functions here
+    function search_entries($content){
+        // look through every single entry and return matches of every variance
+        // loop through all entries and have an array of tags for each entry
+        
+    }
+
+    /*
     xml filters (queries according to user input):
     1. dates
     2. language (Latin, Scots, Dutch)
@@ -42,20 +51,33 @@ class XmlController extends Controller
  - Two altered characters from query (rephrase)
     */
 
-    //handles user request which is a dictionary of filters
-    function assign_filters(Request $search_args){
-        /*ex.  $search_args = [ 
-                        "language" => "latin",
-                        "page" => "5, 18, 9",
-                        "paragraph" = None, 
+    //should be called after matches found
+    //! WORK IN PROGRESS
+    function query_results(Request $filter_args, $results) {
+    //handles user params which is a dictionary of filters
+        /*ex.  $filter_args = [ 
+                        'language' => 'latin',
+                        'page' => '5, 18, 9',
+                        'paragraph' => None, 
                         etc...
                     ];
-        $search_args["language"]; will return "latin"
+        filter_args['language']; will return 'latin'
         */
 
+        $params = [
+            'date' => get_date($filter_args->input('date')),
+            'language' => get_language($filter_args->input('language')),
+            'volume' => get_volume($filter_args->input('volume')),
+            'page' => get_page($filter_args->input('page')),
+            'paragraph' => get_paragraph($filter_args->input('paragraph')),
+            'entry_id' => get_entry_id($filter_args->input('entry_id')),
+        ];
+        // return something
     }
 
-
-
+    //generate entry objects and store in json file to be searched and queried through
 
 }
+
+
+
