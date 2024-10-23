@@ -3,10 +3,47 @@
 @extends('layouts.app')
 @section('title', 'Home Page')
 @section('content')
-        <h2>This is the home page</h2>
-        <div id = title>
-            <h1>SRA 2.0</h1> 
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="aro-description">ARO DESCRIPTION</div>
+            <button class="blog-page-button">BLOG PAGE</button>
         </div>
-        @include('home-views.search')
-        <img src="{{ asset('images/university.png') }}" alt="University Logo" class="bottom-image">
+    </header>
+
+    <!-- Main Section -->
+    <main>
+      <div class="search-section">
+            <div class="basic-search">
+                <input
+                    type="text"
+                    placeholder="Enter your search term"s
+                    aria-label="Search"
+                />
+                <button>SEARCH</button>
+            </div>
+            <div id="advanced" class="advanced-search-container">
+                <button class="dropdown-button" @click="toggleDropdown">
+                    ADVANCED SEARCH ▼
+                </button>
+                <div v-if="isDropdownOpen" class="advanced-search-dropdown">
+                    lalalalala
+                </div>
+            </div>
+      </div>
+    </main>
+  
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">IMPORTANT LINKS</a>
+            <a href="#">BLOG PAGE</a>
+            <a href="#">UNIVERSITY ARO PAGE</a>
+            <a href="#">ACKNOWLEDGMENTS</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="{{ asset('compiled-js/home.js') }}"></script>
 @endsection
