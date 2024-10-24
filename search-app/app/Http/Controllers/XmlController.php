@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mockery\Generator\StringManipulation\Pass\Pass;
+use SebastianBergmann\Type\NullType;
 
 class XmlController extends Controller
 {
@@ -64,6 +66,7 @@ class XmlController extends Controller
         filter_args['language']; will return 'latin'
         */
 
+       
         $params = [
             'date' => get_date($filter_args->input('date')),
             'language' => get_language($filter_args->input('language')),
@@ -73,6 +76,31 @@ class XmlController extends Controller
             'entry_id' => get_entry_id($filter_args->input('entry_id')),
         ];
         // return something
+
+        function get_date($date_param){
+            return NAN;
+        }
+
+        function get_language($language_param){
+            return NAN;
+        }
+
+        function get_volume($volume_param){
+            return NAN;
+        }
+
+        function get_page($page_param){
+            return NAN;
+        }
+
+        function get_paragraph($paragraph_param){
+            return NAN;
+        }
+
+        function get_entry_id($entry_id_param){
+            return NAN;
+        }
+
     }
 
     //generate entry objects and store in json file to be searched and queried through
