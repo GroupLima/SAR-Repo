@@ -25,9 +25,11 @@
             <div id="advanced" class="advanced-search-container">
                 <button class="dropdown-button" @click="toggleDropdown">
                     ADVANCED SEARCH ▼
-                </button>
+                 </button>
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
-                    lalalalala
+                    <div id="search-options">
+                    @include('home-views.search')
+                    </div>
                 </div>
             </div>
       </div>
