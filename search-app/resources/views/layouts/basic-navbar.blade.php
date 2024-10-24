@@ -9,7 +9,7 @@
                 <div class="logo-text">SAR</div>
                 <div class="logo-subtext">Search Aberdeen Registers</div>
             </div>
-            <img src="{{ asset('images/logo-current.png') }}" alt="Town Logo" class="logo-image">
+            <img src="{{ asset('images/logo-current-thin.png') }}" alt="Town Logo" class="logo-image">
         </div>
         <div class="nav-links">
             <a href='/home'>Home</a>
