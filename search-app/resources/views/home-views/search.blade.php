@@ -1,5 +1,6 @@
 <!-- resources/views/search.blade.php -->
 <!-- put search components here -->
+
 <div id="search-methods-radio"> 
     <h3>Search Method</h3>
     <input type="radio" id="keywords" name="search-method">
@@ -21,7 +22,7 @@
     <option value="scots">Middle Scots</option>
     <option value="dutch">Dutch</option>
 </select>
-<h3>Spelling Varients</h3>
+<h3>Spelling Variants</h3>
 <select id="varients">
     <option value="zero">0</option>
     <option value="one">1</option>
@@ -31,7 +32,6 @@
 </select>
 <div id=volume-select>
     <h3>Please select the volumes you wish to search within</h3>
-    
     <label>
        <input type="checkbox" id="volume-1" name="volume1" value="1"> 1
     </label>
@@ -57,3 +57,8 @@
        <input type="checkbox" id="volume-8" name="volume8" value="8"> 8
     </label>
 </div>
+<h3>Page Search</h3>
+<input type="search" placeholder="1, 69, 591...">
+<h3>Entry</h3>
+<input type="search" placeholder="1, 2, 3, 4...">
+<!-- still need to add date range and doc id -->
