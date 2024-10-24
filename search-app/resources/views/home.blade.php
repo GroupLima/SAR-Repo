@@ -29,8 +29,9 @@
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     lalalalala
                 </div>
-            </div>
-      </div>
+ 
+
+
     </main>
   
 
@@ -42,6 +43,8 @@
             <a href="#">UNIVERSITY ARO PAGE</a>
             <a href="#">ACKNOWLEDGMENTS</a>
         </div>
+
+
     </footer>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
