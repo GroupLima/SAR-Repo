@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2017-10-24T16:17:25">WH</change>
+            <change status="corrected" when="2017-12-06T12:24:17">EF</change>
+            <change status="corrected" when="2018-03-29T16:06:41">WP</change>
+            <change status="corrected" when="2018-10-03T12:56:11">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="322" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1443-10-14" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0322-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum tenta in pretorio burgi de Abirdene xiiij
+                        die mensis octobris<lb break="yes"/>Anno Domini et cetera quadragesimotercio
+                        / Quo die sectis vocatis et curia affirmata et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Duncanus brow in amerciamento curie quia non
+                        comparuit ad prosequendum plegium quod<lb break="yes"/>extendit super
+                        andream sprunt et ipse quitus a calumpnia sua quousque de nouo<lb
+                            break="yes"/>citetur et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-03" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes de buchane in amerciamento curie quia non
+                        comparuit ad prosequendum plegium quod<lb break="yes"/>extendit super thomam
+                        filium Johannis thomson' et ipse quitus a calumpnia sua et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Simon blabre in amerciamento curie quia non comparuit
+                        ad prosequendum plegium quod extendit<lb break="yes"/>super <space quantity="2" unit="words"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-05" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die Straty myddilton' balliuus burgi de montross'
+                            Replegiauit<lb break="yes"/>virtute comissionis sue Alexandrum Cant
+                        burgensis dictj burgi quem calumpniauit<lb break="yes"/>Johannes Wood</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-06" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem Willelmus banerman dedit gilbertum meignes
+                        plegium legalem quod thomas<lb break="yes"/>de murrefe et pars sua erit
+                        indempnis pro se et parte sua aliter quam per viam Juris<lb break="yes"/>Et
+                        idem thomas de murref dedit laurencium filium thome similiter plegium et
+                        cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0322-07" xml:lang="la">
+                    <head>Assisa Inquisicionis</head>
+                    <p><lb break="yes"/>Gilbertus meignes Willelmus scherar' Willelmus de spaigne
+                        Johannes Wood Johannes blyndsel<lb break="yes"/>patricius Wenton' Walterus
+                        giffard' Adam nicholson' Robertus sprunt Robertus<lb break="yes"
+                        />Williameson' <foreign xml:lang="sc">William</foreign>e mathouson' <foreign
+                            xml:lang="sc"><del>and</del></foreign> et thomas gibson' / Qui Juratj<lb
+                            break="yes"/>dicunt quod <add place="above">quondam</add> thomas stane
+                        obijt <add place="above">vltimo</add> vestitus et saisitus vt de feodo et
+                        cetera de duabus<lb break="yes"/>terris collateraliter Jacentibus infra
+                        burgum de abirdene ex parte orientali vicj furcarum<lb break="yes"/>inter
+                        terram Ricardi vaus ex parte australi ex parte vna / et terram quondam<lb
+                            break="yes"/>alexandri fraser ex parte boreali ex parte altera / quod et
+                        quod Edwardus stane<lb break="yes"/>filius fratris eiusdem thome lator
+                        presencium est legittimus et propinquior heres<lb break="yes"/>eiusdem
+                        quondam thome auunculi sui de dictis duabus perticatis terre cum
+                            pertinenciis<lb break="yes"/>et quod est legittime etatis / Et dicte
+                        terre valent nunc per annum decem libris<lb break="yes"/>et tantum tempore
+                        pacis / Et tenentur de domino nostro Rege per seruicium burgale<lb
+                            break="yes"/>Et existunt in manibus mariote <del>de c</del> Relicte
+                        eiusdem quondam thome per coniunctim<lb break="yes"/>infeodacionem factam
+                        eedem ab octo annis elapsis / Reddendo de terra australiori<lb break="yes"
+                        />heredibus quondam domini Andree stewart xx s' et de terra ex parte
+                            boreali<lb break="yes"/>Mariorie de cadiou x s' / Et de dictis duabus
+                        perticatis terre cum pertinenciis<lb break="yes"/>altari beatj nicholai de
+                        abirdene x marcas annuatim post <del>obitum</del> decessum<lb break="yes"
+                        />dicte mariote de quibus quidem decem marcis idem altar' habet possessionem
+                        et cetera</p>
+                </div>
+                <pb n="323" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0323-01" xml:lang="la">
+                    <p><lb break="yes"/>Item penes Inquisicionem Alexandri thaynston' qua
+                        prosequitur terram quam nunc tenent<lb break="yes"/>Duncanus de Ruthven' et
+                        Katerina sponsa / assisa Reperit dictam Katerinam et patrem<lb break="yes"
+                        />eius in possessione dicte terre a triginta annis quasi et cetera et ideo
+                        vlterius non procedunt<lb break="yes"/>et eciam inueniunt processus ductos
+                        super dicta terra cum pertinenciis in defectu non solucionis cuiusdam<lb
+                            break="yes"/>annuj Redditus xiij s' iiij d'</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-02" xml:lang="la">
+                    <p><lb break="yes"/>Item Duncanus de Ruthven' in amerciamento curie pro iniusta
+                            <del>perturbacione</del> detencione<lb break="yes"/>ij s' sibi debit' ab
+                        eodem et satisfaciet eidem infra terminum Juris et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-03" xml:lang="la">
+                    <p><lb break="yes"/>Item Alexander lammynton' in amerciamento curie pro eo quod
+                        vendidit carnes aliter quam fuerunt<lb break="yes"/>appreciate et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes loudon' in amerciamento curie per <del>s</del>
+                        confessionem propriam pro iniusta perturbacione<lb break="yes"/>sponse
+                        Johannis clerk / et emendabit partj lese ad visum proborum virorum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-05" xml:lang="la">
+                    <head><add place="margin">quhite</add></head>
+                    <p><lb break="yes"/>Item patricius quhite super quem Johannes littistar'
+                        extendit plegium pro iniusta detencione<lb break="yes"/>vnius barelle
+                        cineris primo die sepe vocatus ad sectam dictj Johannis non comparuit<lb
+                            break="yes"/>quare precipitur seriendo et cetera .</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-06" xml:lang="la">
+                    <p><lb break="yes"/>Item Robertus Williamson' probabit die veneris proximo
+                        futuro quod Dauid templeman<lb break="yes"/>debet sibi quatuor bollas farine
+                        precii <del>x</del> bolle x s' et xviij oues cum<lb break="yes"
+                        />comoditatibus earundem de nouem annis et cetera plegio quod dictus Dauid
+                            comparebit<lb break="yes"/>die predicto Waltero giffard'</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-07" xml:lang="la">
+                    <p><lb break="yes"/>Mariota sponsa Johannis clerk in amerciamento curie pro
+                        iniusta perturbacione Johannis loudon'<lb break="yes"/>et emendabit partj
+                        lese et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-08" xml:lang="la">
+                    <head><add place="margin">benyng</add></head>
+                    <p><lb break="yes"/>Adam benyng super quem Walterus giffard' extendit plegium
+                        pro iniusta detencione<lb break="yes"/>vj li' xiij s' primo die sepe vocatus
+                        ad sectam dictj Walterj non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0323-09" xml:lang="la">
+                    <p><lb break="yes"/>Brasium et frumentum Reperitur per assisam pro vj s' .</p>
+                </div>
+            </div>
+            <pb n="324" break="yes"/>
+            <div type="court">
+                <p><date when="1443-10-16" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0324-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta apud orreum
+                        gilbertj meignes Jacentem<lb break="yes"/>ad finem borealem terre
+                            <del>in</del> thome nycholson' xvj die mensis octobris Anno Domini<lb
+                            break="yes"/>et cetera xliij<hi rend="superscript">o</hi> / Quo die
+                        subscriptj fuerunt absentes videlicet Johannes blyndseil Willelmus<lb
+                            break="yes"/>baxstar' / Johannes traile / thomas farquhar' Johannes
+                        culane Willelmus spaigne Johannes<lb break="yes"/>henrison' / Johannes
+                        Kintor / Adam benyng / Walterus giffard'</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0324-02" xml:lang="la">
+                    <head>Assisa</head>
+                    <p><lb break="yes"/>Johannes de scrogs pater Johannes de marr' Willelmus
+                        scherar' Andreas ayncroft Alexander<lb break="yes"/>Kintor Johannes
+                        blyndseil patricius Wenton' Dauid clerk / thomas gibson' thomas<lb
+                            break="yes"/>stane Johannes de scrogs filius Johannes henrison' culane
+                        et Simon blabre et cetera<lb break="yes"/>Penes actionem motam inter thomam
+                        nicholson' ex vna et Robertum Williamson' partibus ex<lb break="yes"/>altera
+                        super quodam libero introitu et exitu quos clamat dictus thomas sibi
+                            pertinere<lb break="yes"/>per quoddam orreum dicti Robertj edificatum ad
+                        finem borealem terre in qua inhabitat<lb break="yes"/>dictus thomas /
+                        predictas partes summiserunt se personis suprascriptis Juratis<lb
+                            break="yes"/>ad cognoscendum de Jure dictj transitus / tantum tanquam
+                        arbitri vel compositores<lb break="yes"/>et non aliter . Qui mature et
+                        diligenter auisatj determinauerunt quod dictus<lb break="yes"/>thomas
+                        haberet et habebit anmodo liberos exitum et introitum per dictum<lb
+                            break="yes"/>orreum secundum quod habuit et habere consueuit ab antiquo
+                        / et dictus Robertus<lb break="yes"/>non occupabit in orto dicti thome quod
+                        vltra quam <del>ab</del> a possessoribus dicti orrei<lb break="yes"/>ab
+                        antea occupari consueuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0324-03" xml:lang="la">
+                    <p><lb break="yes"/>Item <del>d</del> gilbertus meignes protestatus fuit pro
+                        tali annuo redditu sibi debito de<lb break="yes"/>dicto transitu / sicut
+                        debetur sibi de consimilibus terris coadiacentibus</p>
+                </div>
+            </div>
+            <div type="undefined">
+                <p><date when="1443-12-02" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0324-04" xml:lang="la">
+                    <p><lb break="yes"/>Memorandum quod secundo die mensis Decembris Anno quo supra
+                        Alexander de<lb break="yes"/>grame receptus fuit in <sic>leberum</sic>
+                        burgensem et confratrem<lb break="yes"/>gilde pro v s' in bursa</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0324-05" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die gilbertus masson' receptus fuit in<lb break="yes"
+                        />liberum burgensem et confratrem gilde libertate paterna<lb break="yes"/>et
+                        soluit v s' in bursa</p>
+                </div>
+            </div> 
+            <pb n="325" break="yes"/>
+            <div type="undefined">
+                <p><date when="1443-11-23" cert="high"/></p>
+                <div type="entry" xml:id="ARO-4-0325-01" xml:lang="sc">
+                    <p><lb break="yes"/>It is to <expan>remembir'</expan>
+                        <expan>that</expan> the bisschap of ross' <expan>present</expan> a
+                            <expan>letter</expan> to the <lb break="yes"/><expan>balliez</expan> of
+                        the <expan>kyngis</expan> in this fwrm' the xxiij day of
+                            <expan>nouembir'</expan><lb break="yes"/>Jamys be the grace of god kyng'
+                        of <expan>Scottis</expan> to the <expan>Aldirman</expan><lb break="yes"/>and
+                            <expan>balliez</expan> of our' burch of <expan>Abirdene</expan> gretyng'
+                        It is our' will'<lb break="yes"/>and we <expan>chargis</expan> yw
+                            <expan>that</expan> ye diffend and supple a <expan>Reuerend</expan>
+                        <expan>faddir</expan> in<lb break="yes"/>crist the bisschap of rosse in the
+                        tak of the half net of the Rake<lb break="yes"/>as law will' / giff it swa
+                        be <expan>that</expan> he <expan>makkis</expan> sufficiand
+                            <expan>document</expan><lb break="yes"/>that he has richt thar to And
+                        this on na way leyffis on don'<lb break="yes"/><expan>gifwyn</expan>
+                        <expan>ondir</expan> our' signet at St fflyn' the xj day of
+                            <expan>nouembir'</expan><lb break="yes"/>and of our' regne the
+                            <expan>sewyn</expan>
+                        <unclear reason="hand">y</unclear> yer'</p>
+                </div>
+            </div>
+            <pb n="326" break="yes"/>
+            <div type="court">
+                <p><date when="1443-12-09" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0326-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia ballivorum burgi de Abirdene tenta in pretorio
+                            eiusdem<lb break="yes"/>nono die mensis Decembris Anno et cetera
+                            xliij<hi rend="superscript">o</hi> quo die curia affir<lb break="no"
+                        />mata et sectis vocatis</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-02" xml:lang="la">
+                    <p><lb break="yes"/><foreign xml:lang="sc">Jamys</foreign> clerk in amerciamento
+                        curie quia non uenit ad prosequendum plegium<lb break="yes"/>pro porrexit
+                        super Johannem tormokson' et dictus Johannes quittus et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-03" xml:lang="la">
+                    <p><lb break="yes"/>Actio mota inter Johannem litstar et patricium qwyt
+                        submittitur</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-04" xml:lang="la">
+                    <p><lb break="yes"/>Johannes clerk de gren' in amerciamento quia non venit ad
+                        prosequendum plegium<lb break="yes"/>quod porrexit super andream sprunt et
+                        dictus andreas quitus et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-05" xml:lang="la">
+                    <p><lb break="yes"/>thomas farqwar' in amerciamento curie quia non venit ad
+                        prosequendum per<lb break="yes"/>se <choice><sic>extesum</sic><corr>extensum</corr></choice> super henricum Kenyeach et
+                        dictus henricus quitus</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-06" xml:lang="sc">
+                    <p><lb break="yes"/><expan>John</expan> of <expan>Manmitt'</expan> in
+                            <expan>amerciment</expan> for the <expan>wranwis</expan> haldyn' of<lb
+                            break="yes"/>the fracht of v barellis of mell' <expan>fra</expan>
+                        <expan>John</expan> of Kyntor' and aw<lb break="yes"/>to content the said
+                            <expan>John</expan> of the said fracht <expan>in</expan> term of law</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-07" xml:lang="sc">
+                    <p><lb break="yes"/><expan>Thomas</expan> gibson' strekit a borch apon'
+                            <expan>patrik</expan> of Wldeny for the<lb break="yes"
+                            /><expan>wrangwys</expan>
+                        <expan>haldyn</expan> of a <expan>coueryng</expan>
+                        <expan>that</expan> the said <expan>thom</expan> laid <expan>hym</expan>
+                        <expan>in</expan> wed<lb break="yes"/>of x s' and <expan>perofferit</expan>
+                        the mone diuers' tymis and with <expan>nocht</expan> got it et cetera<lb
+                            break="yes"/>as the fyft day <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-08" xml:lang="sc">
+                    <p><lb break="yes"/><expan>William</expan> fechat <expan>strekit</expan> a borch apon' <expan>William</expan>
+                            <expan>that</expan>
+                        <expan>wrangwisly</expan> he<lb break="yes"/>held <expan>fra</expan>
+                        <expan>hym</expan> v lib' and xij s' as the first day
+                            <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-09" xml:lang="sc">
+                    <p><lb break="yes"/><expan>William</expan> fichat strekit a borch <expan>on</expan> richart
+                        henrison' <expan>that</expan>
+                        <expan>wrangwis<lb break="no"/>ly</expan> he held fra <expan>hym</expan>
+                        xlvij' s' of inglis mone as the frist day<lb break="yes"
+                            /><expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-10" xml:lang="sc">
+                    <p><lb break="yes"/>Will atkynson' strekit a borch <del>ap</del> apon' Aly
+                        Walance <expan>that</expan><lb break="yes"/>scho hold <expan>fra</expan>
+                        <expan>hym</expan>
+                        <expan>wrangwisly</expan> j wln' of blac' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-11" xml:lang="sc">
+                    <p><lb break="yes"/>John' <expan>glenny</expan> strekit a borch
+                            <expan>on</expan> Wat <expan>John</expan> of <expan>mawmundis</expan>
+                        son' that he<lb break="yes"/>held fra <expan>hym</expan>
+                        <expan>wrangwisly</expan> vj futfell' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-12" xml:lang="sc">
+                    <p><lb break="yes"/>John' of ettale strekit a borch on <expan>William</expan> Dog' and Andrw
+                            hym<lb break="yes"/><expan>that</expan> thai held
+                            <expan>wrangwisly</expan> fra <expan>hym</expan> xij s'
+                            <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0326-13" xml:lang="sc">
+                    <p><lb break="yes"/>John' <expan>glenny</expan> strekit a borch apon' <add
+                            place="above">John</add> of buchan' <expan>talyour</expan>
+                        <expan>that</expan> he held<lb break="yes"/><expan>wrangwisly</expan> fra
+                        hym xix s' and vj d' <expan>comperit</expan>
+                        <expan>nocht</expan> et cetera</p>
+                </div>
+                <pb n="327" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0327-01" xml:lang="sc">
+                    <p><lb break="yes"/>John' of ettale strekit a borch on ferguss' of the gren'
+                            that<lb break="yes"/><expan>wrangwisly</expan> he held fra
+                            <expan>hym</expan> vj s' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-02" xml:lang="sc">
+                    <p><lb break="yes"/>Robart neuison' strekit a borch on <expan>John</expan>
+                        <expan>stewyn</expan> Johnsonz <expan>man</expan><lb break="yes"/>that
+                            <expan>wrangwisly</expan> he held fra hym xij s' and borch of his<lb
+                            break="yes"/><expan>entre</expan> and the said <expan>stewyn</expan>
+                        <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-03" xml:lang="sc">
+                    <p><lb break="yes"/>John' of <expan>Kynnynmwnd</expan> strekit a borch on
+                            <expan>cristy</expan> of pettalachi<lb break="yes"/>that
+                            <expan>wrangwisly</expan> he held <expan>fra</expan> hym x s'
+                            <expan>with</expan> mar' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-04" xml:lang="sc">
+                    <p><lb break="yes"/>Jamys sclattar' strekit a borch apon' cristian' of ettale<lb
+                            break="yes"/>that <expan>wrangwisly</expan> scho held fra
+                            <expan>hym</expan> ix s' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-05" xml:lang="sc">
+                    <p><lb break="yes"/>John' Jacson' strekit a borch on <expan>Richard</expan>
+                        <expan>andirson</expan> that he <expan>wrang<lb break="no"/>wisly</expan>
+                        has spilt his pot laid <expan>in</expan> wed til <expan>hym</expan>
+                        <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-06" xml:lang="sc">
+                    <p><lb break="yes"/><expan>that</expan> ilke <expan>John</expan> Jacson' has
+                        strekit a borch on elyn' Cryn' <expan>that</expan> scho<lb break="yes"
+                            /><expan>wrangwisly</expan>
+                        <expan>haldis</expan> fra <expan>hym</expan> a stan' pot
+                            <expan>price</expan> iiij s' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-07" xml:lang="sc">
+                    <p><lb break="yes"/><expan>thomas</expan> blindzell' strekit a borch apon'
+                        mergret <expan>merser'</expan><lb break="yes"/><expan>that</expan> scho
+                            <expan>wrangwisly</expan> held fra <expan>hym</expan> a
+                            <expan>siluer</expan> pess' of viij vnce<lb break="yes"/>and ijij
+                            <expan>siluer</expan> sponis <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-08" xml:lang="sc">
+                    <p><lb break="yes"/><expan>Alexander</expan> of leys strekit a borch of John' of
+                        cardny <expan>that</expan> he<lb break="yes"/><expan>wrangwisly</expan> held
+                        fra <expan>hym</expan> iiij s' <expan>comperit</expan>
+                        <expan>nocht</expan></p>
+                </div>
+                <div type="incompleteEntry" xml:id="ARO-4-0327-09" xml:lang="sc">
+                    <p><lb break="yes"/>It is <expan>assignit</expan> John' Webstar' this day xv day
+                        is to prwff<lb break="yes"/>lachfwlly that</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0327-10" xml:lang="la">
+                    <p><lb break="yes"/>brasium vij s' frumentum vj s'</p>
+                </div>
+            </div>
+            <pb n="328" break="yes"/>
+            <div type="court">
+                <p><date when="1443-12-21" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0328-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum tenta in pretorio burgi de abirdene die
+                        lune xxj die<lb break="yes"/>mensis Decembris Anno Domini et cetera xliij<hi
+                            rend="superscript">o</hi></p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-02" xml:lang="la">
+                    <head><add place="margin">Willelmus adeson'</add></head>
+                    <p><lb break="yes"/>Quo die Willelmus adeson' super quem Dauid farquhar'
+                        extendit plegium pro<lb break="yes"/>iniusta detencione x solidorum primo
+                        die sepe vocatus non comparuit quare precipitur</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-03" xml:lang="la">
+                    <head><add place="margin">alicia valence</add></head>
+                    <p><lb break="yes"/>Alicia valence secundo die vocata ad sectam Willelmi
+                        atkynson' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-04" xml:lang="la">
+                    <head><add place="margin">vldeny</add></head>
+                    <p><lb break="yes"/>Patricius de vldeny secundo die vocatus ad sectam thome
+                        gibson' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-05" xml:lang="la">
+                    <head><add place="margin">Ricardus henrison'</add></head>
+                    <p><lb break="yes"/>Ricardus henrison secundo die vocatus ad sectam Willelmi
+                        fichat non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-06" xml:lang="la">
+                    <head><add place="margin">Willelmus fichat</add></head>
+                    <p><lb break="yes"/>Willelmus fichat senior secundo die vocatus ad sectam
+                        Willelmi fichat senioris non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-07" xml:lang="la">
+                    <head><add place="margin">chene</add></head>
+                    <p><lb break="yes"/>Patricius chene super quem dictus Willelmus fichat extendit
+                        plegium pro iniusta<lb break="yes"/>detencione iij li' ij s' vj d' primo die
+                        vocatus non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-08" xml:lang="la">
+                    <head><add place="margin">thomas andirson'</add></head>
+                    <p><lb break="yes"/>Thomas andirson' super quem Willelmus maliceson' extendit
+                        plegium pro iniusta detencione<lb break="yes"/>ij lib' g' monete flandrie et
+                        vltra primo die vocatus non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-09" xml:lang="la">
+                    <p><lb break="yes"/><del>Cristiana sp</del>
+                        <add place="above">Dictus thomas andirson'</add> postea comparuit et
+                        extendit plegium quod est quitus a calumpnia sua<lb break="yes"/>donec de
+                        nouo citetur</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-10" xml:lang="la">
+                    <head><add place="margin">buchane</add></head>
+                    <p><lb break="yes"/>Johannes buchane secundo die vocatus ad sectam Johannis
+                        glennyson' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-11" xml:lang="la">
+                    <head><add place="margin">debet childe</add></head>
+                    <p><lb break="yes"/>Andreas childe super quem Willelmus Wricht extendit plegium
+                        pro iniusta detencione<lb break="yes"/>ix s' primo die vocatus non comparuit
+                        quare precipitur seriendo et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-12" xml:lang="la">
+                    <p><lb break="yes"/>Johannes <del>adeson'</del> og extendit plegium super
+                        Willelmum adeson' quod iniuste intromisit<lb break="yes"/>se de xviij
+                            <foreign xml:lang="sc">futhiris</foreign> focalium / et idem Willelmus
+                        pecijt diem legittimum<lb break="yes"/>ad respondendum qui sibi concessus
+                        est et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-13" xml:lang="la">
+                    <p><lb break="yes"/>Item idem Willelmus adeson' optulit se paratum secte et
+                        calumpnie Dauid farchar'<lb break="yes"/>qui sepe vocatus non comparuit /
+                        quare extendit plegium quod ipse est quitus a calumpnia<lb break="yes"/>sua
+                        donec de nouo citetur / et dictus Dauid in amerciamento curie et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-14" xml:lang="la">
+                    <head><add place="margin">marr'</add></head>
+                    <p><lb break="yes"/>Jacobus de marr' super quem Johannes coupar extendit plegium
+                        pro iniusta detencione<lb break="yes"/>duarum <choice><sic>barillium</sic><corr>barellarum</corr></choice> primo die sepe
+                        vocatus non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-15" xml:lang="la">
+                    <p><lb break="yes"/>thomas gibson' in amerciamento curie pro eo quod iniuste
+                        extendit plegium super Johannem scherar'<lb break="yes"/>Dunbannane pro j
+                        barello bituminis et cetera .</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-16" xml:lang="la">
+                    <head><add place="margin">pettalochy</add></head>
+                    <p><lb break="yes"/>Cristinus de petalochy secundo die vocatus ad sectam
+                        Johannis Kynnynmond' non comparuit</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-17" xml:lang="la">
+                    <head>
+                        <add place="margin"
+                            ><seg xml:id="anchorb256">debet</seg><note anchored="true" type="editorial" target="#anchorb256">&apos;debet&apos; is linked to the names both in this heading and the next.</note>
+                            merser'</add></head>
+                    <p><lb break="yes"/>Mergareta merser secundo die vocata ad sectam thome
+                        blyndseil non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0328-18" xml:lang="la">
+                    <head><add place="margin">Dog <del>h</del> et hyne</add></head>
+                    <p><lb break="yes"/>Willelmus Dog et andreas hyne secundo die vocatj ad sectam
+                        Johannis ettale non comparuerunt</p>
+                </div>
+                <pb n="329" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0329-01" xml:lang="la">
+                    <p><lb break="yes"/>Simon blabre probauit sufficienter coram preposito et
+                        ballivis quod beuerlaa et frater suus<lb break="yes"/>agitauerunt easdem
+                        duas oues quas Robertus Irwyne vendidit dicto simoni<lb break="yes"/>quare
+                        Johannes bertlotson' satisfaciet sibi de eisdem cum commoditatibus
+                            prouenientibus<lb break="yes"/>de eisdem de tribus annis</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0329-02" xml:lang="la">
+                    <p><lb break="yes"/><del>Jacobus</del> Si Jacobus sclatar' possit probare
+                        legittime <del>hod</del> in proxima curia legali<lb break="yes"/>quod
+                        cristiana de ettale debet sibi ix s' eadem satisfaciet / sin autem ipsa<lb
+                            break="yes"/>acquietabit se per Juramentum suum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0329-03" xml:lang="la">
+                    <p><lb break="yes"/>Si laurencius abirkirdore non det alium debitorem matheo
+                        gibson' de xiij s' vj d'<lb break="yes"/>infra quindenam / dictus laurencius
+                        erit debitor et satisfaciet eidem infra terminum<lb break="yes"/>Juris</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0329-04" xml:lang="la">
+                    <head><add place="margin">andreas Johnson'</add></head>
+                    <p><lb break="yes"/>Andreas Johnson' super quem thomas andirson' extendit
+                        plegium pro iniusta detencione<lb break="yes"/>certorum bonorum sibi Jure
+                        hereditario pertinenti primo die vocatus non comparuit et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0329-05" xml:lang="la">
+                    <p><lb break="yes"/>Assisa ordinauit quod si fergusius de skene possit probare
+                        hodie ad quindenam quod<lb break="yes"/>obtulit Johanni ettale mulierem
+                        debitricem suam et equum / erit quitus sinautem<lb break="yes"/>satisfaciet
+                        sibi de vj s'</p>
+                </div>
+            </div>
+            <pb n="330" break="yes"/>
+            <div type="court">
+                <p><date when="1444-01-13" cert="high"/></p>
+                <div type="heading" xml:id="ARO-4-0330-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia Capitalis burgi de Abirdene tenta per balliuos in
+                        pretorio eiusdem xiij die<lb break="yes"/>mensis Januarij Anno Domini et
+                        cetera xliij Quo die sectis vocatis et curia affirmata<lb break="yes"
+                        />absentes patent in Rotulo sectarum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0330-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die accedens ad barram Johannes crukschank protestatus
+                        fuit pro quodam annuo redditu<lb break="yes"/>ij s' sibi debit' annuatim de
+                        quadam terra Jacente in <foreign xml:lang="sc">ly grene</foreign> inter
+                        terram Johannis mason'<lb break="yes"/>ex parte orientali et
+                            <del>terram</del> molendinum inferius huius burgi ex parte occidentali
+                        ex parte<lb break="yes"/>altera ad quam accedens nichil reperit
+                        distringibile preter terram et lapides quos<lb break="yes"/>presentauit in
+                        curia tanquam primo die huius processus / testibus Andrea sprunt Willelmo<lb
+                            break="yes"/>maliceson' et Johanne spens vno seriendorum</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0330-03" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes de Kintor protestatus fuit pro quodam annuo
+                        redditu viij s' sibi debit'<lb break="yes"/>annuatim de quadam terra Jacente
+                        in futy inter terram hered' quondam Willelmi Cryne<lb break="yes"/>ex parte
+                        australi et terram thome park ex parte boreali ad quam accedens nichil<lb
+                            break="yes"/>reperit distringibile preter terram et lapides quos
+                        presentauit in curia tanquam primo<lb break="yes"/>die huius processus /
+                        testibus Willelmo banerman gilberto Kymdy et Johanne spens seriendo</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0330-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Simon blabre protestatus fuit pro quodam <del>q</del>
+                        annuo redditu vj s' <del>sibi</del> debit'<lb break="yes"/>annuatim Johanni
+                        blabre filio fratris sui de quadam terra Jacente in <foreign xml:lang="sc"
+                            >ly futy</foreign> inter<lb break="yes"/><del>terrams</del> . duas
+                        terras gilbertj meignes ex partibus <del>orie</del> australi et boreali<lb
+                            break="yes"/>Ad quam accedens nichil reperit distringibile preter terram
+                        et lapides quos<lb break="yes"/>presentauit in curia tanquam secundo die
+                        huius processus testibus thoma de park<lb break="yes"/>Johanne Jakson' et
+                        Johanne mathison' seriendo</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0330-05" xml:lang="la">
+                    <p><lb break="yes"/>Item frater philippus prior fratrum carmelitarum dictj burgi
+                        protestatus fuit pro quodam<lb break="yes"/>annuo redditu viij s' domuj
+                        dictorum fratrum debit' annuatim de quadam terra<lb break="yes"/>Jacente in
+                        futy inter terram Robertj Williamson' ex parte australi et terram thome<lb
+                            break="yes"/>de park ex parte boreali <del>qu</del> ad quam accedens
+                        nichil reperit distringibile<lb break="yes"/>preter terram et lapides quos
+                        presentauit in curia tanquam primo die huius<lb break="yes"/>processus
+                        testibus thoma de park Johanne Jakson' et Johanne mathison' seriendo</p>
+                </div>
+                <div type="entry" xml:id="ARO-4-0330-06" xml:lang="la">
+                    <p><lb break="yes"/>Item dominus Andreas serace capellanus procurator altaris
+                        beate marie virginis in ecclesia beati nicholai<lb break="yes"/>protestatus
+                        fuit pro vno annuo redditu ij s' eidem altari debit' annuatim de
+                            <del>quondam</del><lb break="yes"/>duabus terris collateraliter
+                        Jacentibus ad finem australiorem ecclesie beati nicholai inter terram<lb
+                            break="yes"/>Willelmi scherar' ex parte orientali ex parte vna . et
+                        communem vinellam ex parte occidentali<lb break="yes"/>ex parte altera / ad
+                        quas accedens nichil reperit distringibile preter terram et lapides<lb
+                            break="yes"/>quos presentauit in curia tanquam tercio die huius
+                        processus testibus thoma de<lb break="yes"/>murray Johanne de castell et
+                        Willelmo straloch' seriendo cum alijs et cetera</p>
+                </div>
+                <pb n="331" break="yes"/>
+                <div type="entry" xml:id="ARO-4-0331-01" xml:lang="la">
+                    <p><lb break="yes"/>Item frater Johannes blunt prior domus fratrum predicatorum
+                        protestatus fuit pro quodam annuo<lb break="yes"/>redditu iij s' viij d'
+                        eedem domuj debit' annuatim de quadam terra vasta Jacente<lb break="yes"/>ex
+                        parte orientali <del>vicj</del> de <foreign xml:lang="sc">ly key</foreign>
+                        inter terram Johannis de fife ex parte occidentali<lb break="yes"/>et terram
+                        Rogeri Williamson' ex parte orientali <del>ex</del> ad quam accedens
+                            nichil<lb break="yes"/>Reperit distringibile preter terram et lapides
+                        quos presentauit in curia tanquam tercio<lb break="yes"/>die huius processus
+                        testibus Roberto massy et cristino pettalochy ac patricio<lb break="yes"
+                        />piot seriendorum vno et cetera</p>
+                </div>
+            </div>
+            <pb n="332" break="yes"/>
+            <note type="editorial">Page 332 is empty.</note>
+        </body>
+    </text>
+</TEI>

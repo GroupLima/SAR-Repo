@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader xml:lang="en">
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <publicationStmt>
+                <authority>HisTEI</authority>
+                <idno>ARO_VOL_ADMINYEAR</idno>
+            </publicationStmt>
+            <notesStmt>
+                <note/>
+            </notesStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository ref="org:org_j2g_fzp_yz">Aberdeen City Archives</repository>
+                        <collection/>
+                        <idno/>
+                        <altIdentifier>
+                            <idno/>
+                        </altIdentifier>
+                    </msIdentifier>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <creation>
+                <date/>
+                <settlement type="city" ref="plc:place_rhl_bzp_yq">Aberdeen</settlement>
+                <orgName type="court"/>
+            </creation>
+            <textClass>
+                <catRef target="gen:COURT_ROLL"/>
+            </textClass>
+            <handNotes>
+                <handNote/>
+            </handNotes>
+        </profileDesc>
+        <revisionDesc status="corrected">
+            <change status="transcribed" when="2016-10-10T11:25:34">WH</change>
+            <change when="2016-10-25T13:33:32" status="transcribed">AH: checked annotations.</change>
+            <change status="transcribed" when="2018-05-31T16:06:41">WP: rechecked annotations</change>
+            <change status="corrected" when="2018-06-18T13:02:34">EF</change>
+            <change status="corrected" when="2018-10-22T16:17:14">EF: final check</change>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url=""/>
+    </facsimile>
+    <text>
+        <body>
+            <pb n="401" break="yes" xml:base=""/>
+            <div type="court">
+                <p><date when="1460-09" cert="medium" notAfter="1460-09-17"/></p>
+                <div type="heading" xml:id="ARO-5-0401-01" xml:lang="la">
+                    <p><lb break="yes"/><gap reason="damage"/><lb break="yes"/><supplied
+                            reason="conservation">september</supplied>
+                        <gap reason="damage"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0401-02" xml:lang="la">
+                    <p><lb break="yes"/>Quo die decretum f<gap reason="faded"/> quod <supplied
+                            reason="faded">hans crem</supplied>ar' <foreign xml:lang="sc">ly
+                            steirman</foreign> de <gap reason="damage"/><lb break="yes"/>habuit
+                        procuratorum uel <supplied reason="faded">mandatum</supplied> suffi<supplied
+                            reason="faded">ciens</supplied> ad prosequendum plegium quod S<supplied
+                            reason="damage">imon</supplied>
+                        <gap reason="damage"/><lb break="yes"/>prelocutor ipsius et <supplied
+                            reason="faded">eius n</supplied>omine <gap reason="faded"/>ndit quod
+                        Johannes de gallartboce et <del>com</del> ca<gap reason="damage"/><lb
+                            break="yes"/>et complices sui naute de Regno francie iniuste
+                        intromittebant se de vna la<supplied reason="damage">sta</supplied><lb
+                            break="yes"/>bituminis de duabus lastis cinerum de tribus centenis cum
+                        dimidio asserum siue tabularum<lb break="yes"/>quercinarum / de dimidio
+                        centum <del>he</del> Remorum / de xiij <foreign xml:lang="sc"
+                            >clapholt'</foreign> / et de xxx albe<gap reason="damage"/><lb
+                            break="yes"/>carcat' in naue Dauid law / que bona <del>asser</del>
+                        prefatus hans cremar' et Sim<supplied reason="conservation">on</supplied><lb
+                            break="yes"/>prelocutor suis asseruerunt fuisse et esse Johannis
+                        bornholm magistri dicte Nauis<lb break="yes"/>et mercatorum suorum eiusdem
+                        Nauis / quamuis prefatus hans cremar' <foreign xml:lang="sc"
+                            >steir'man</foreign> in<lb break="yes"/>absencia magistri predicti
+                        alleget se magistrum dicte nauis et ipsius potestatem<lb break="yes"/>habere
+                        / Vnde allegacionibus predictis et vtriusque partis diligenter
+                            consideratis<lb break="yes"/>et eisdem partibus postquam fuerant remoti
+                            <del>m</del> remittis Datum fuit pro Judicio<lb break="yes"/>per os
+                        Willelmj modane Judicatoris curie quod prefati naute gallici non tenentur<lb
+                            break="yes"/>sibi nomine quo supra Respondere / in causa supradicta / et
+                        quod idem hans cremar'<lb break="yes"/>est in amerciamento curie pro eo quos
+                        minus iuste absque mandato extendit plegium<lb break="yes"/>supradictum / et
+                        prefati gallici quieti a calumpnia dicti hans cremar' quousque<lb
+                            break="yes"/>de nouo attachientur et cetera</p>
+                </div>
+            </div>
+            <div type="court">
+                <p><date when="1460-09-18" cert="high"/></p>
+                <div type="heading" xml:id="ARO-5-0401-03" xml:lang="la">
+                    <p><lb break="yes"/>Curia balliuorum burgi de Abirdene tenta per balliuos in
+                        pretorio eiusdem xviij die mensis<lb break="yes"/>Septembris Anno Domini et
+                        cetera <del>and sext</del> sexagesimo // Quo die sectis vocatis et
+                        cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0401-04" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Alexander lesly tutor datiuus patricij berclai de
+                        garntuly / nomine quo<lb break="yes"/>supra prosequibatur et pecijt a
+                        Ricardo Kintor iiij lib' monete scocie quas dictus<lb break="yes"/>Alexander
+                        dixit dictum Ricardum iniuste detinere ab eodem nomine quo supra / de
+                            ref<gap reason="conservation"/><lb break="yes"/>pensionis prefato
+                        patricio debit' annuatim de firmis dicti burgi de terminis Ja<gap
+                            reason="conservation"/><lb break="yes"/>diu elapsis / et eodem Ricardo
+                        dictam iniustam detencionem negante posita fuit<lb break="yes"/>ad assisam
+                        proborum virorum / Qui mature avisati decreuerunt et deliberarunt<lb
+                            break="yes"/>dictum Ricardum quita de iniusta detencione dictarum iiij
+                        lib'</p>
+                </div>
+            </div>
+            <pb n="402" break="yes"/>
+            <div type="court">
+                <p><date when="1460-09-19" cert="high"/></p>
+                <div type="heading" xml:id="ARO-5-0402-01" xml:lang="la">
+                    <p><lb break="yes"/>Curia bal<supplied reason="damage">livorum</supplied>
+                        <gap reason="damage"/> xix<hi rend="superscript">m</hi> die mensis
+                            septembris<lb break="yes"/>Anno Domini et cetera <supplied
+                            reason="damage">lx<hi rend="superscript">o</hi></supplied> quo die
+                        sectis vocatis et curia affimata absentes patent inferius</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0402-02" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die Johannes bullok Inuenit Andream de Ruthirfurde
+                        plegium legalem pro se<lb break="yes"/>et parte sua quod Johannes ormysby
+                        erit indempnis de se et parte sua tota aliter quam per viam</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0402-03" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes ormysby Inuenit magistrum Johannem cadyow
+                        plegium legalem quod Johannes<lb break="yes"/>bullok erit indempnis de se et
+                        parte sua tota aliter quam per viam juris .</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0402-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Andreas murrave et Ricardus hill quilibet eorum in
+                        amerciamento curie pro iniusta<lb break="yes"/>perturbacione adinuicem / Et
+                        per prepositum et consules dictus Andreas et Ricardus<lb break="yes"/>facti
+                        sunt amicj et pacificatj et preterea est eis inuictum quod de cetero
+                            obseruent<lb break="yes"/>inter se amiciciam et pacem sub pena xl s'
+                        leuand' ad fabricam ecclesie de parte<lb break="yes"/>frangen' pacem
+                        predictam absque remissione et cetera</p>
+                </div>
+            </div>
+            <pb n="403" break="yes"/>
+            <div type="unidentified">
+                <p><date when="1460" cert="medium"/></p>
+                <div type="entry" xml:id="ARO-5-0403-02" xml:lang="la">
+                    <p><lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180618T112042+0100" comment="NOTE: There appear to be at least two illegible lines underneath the conservation paper, but there may have been more."?><gap
+                            reason="damage"/><?oxy_comment_end?><lb break="yes"/><gap
+                            reason="damage"/><lb break="yes"/>vn<gap reason="damage"/><lb
+                            break="yes"/>Abirdonensis ad memoriam r<gap reason="conservation"/>ando
+                            qu<gap reason="covered"/><lb break="yes"/>mensis vltimo preterito
+                        magister Walterus Idil canonicus abirdonensis alt<gap reason="conservation"
+                        /> ex<gap reason="conservation"/><lb break="yes"/>et ipse coram preposito et
+                        consulibus huius burgi comparuerunt et sufficienter probau<gap
+                            reason="conservation"/>erit<lb break="yes"/>quod tam dictus quondam
+                        magister henricus <del>et ipse</del> dum vixerat in humanis et post eius<lb
+                            break="yes"/>decessum ipsi executores debitam fecerunt diligenciam et
+                        processum de et super redempcione<lb break="yes"/>et obpigneracionis
+                        diuersorum vadiorum et pignerum prefato quondam magistro impig<lb break="no"
+                        />nerant / Et <add place="above">licet</add>
+                        <del>quod</del> depost ex superhabundante de avisiamento et deliberacione
+                            dictorum<lb break="yes"/>prepositi et consulum ipsi fecerunt generales
+                        premuniciones <del>d</del> et moniciones in ecclesia<lb break="yes"
+                        />parrochiali huius burgi quod illi <del>quod</del> qui huiusmodi pignera
+                        spectabant et pertinebant <del>ill</del> ipsa<lb break="yes"/>pignera citra
+                        istum hodiernum diem redimerent / quod si non facerent nuncquam desuper<lb
+                            break="yes"/>redimere curauit vnde prefati executor sollempniter fuerant
+                            protestati<lb break="yes"/>quod amplius ammodo super dictis pigneribus
+                        cuiuis respondere tenerentur aut<lb break="yes"/>desuper vexarentur in
+                        futurum</p>
+                </div>
+            </div>
+            <pb n="404" break="yes"/>
+            <div type="other">
+                <p><date when="1460" cert="medium"/></p>
+                <div type="heading" xml:id="ARO-5-0404-01" xml:lang="la">
+                    <p><lb break="yes"/><gap reason="damage"/> per <gap reason="rubbing"/><lb
+                            break="yes"/><gap reason="damage"/>s communitatis citate ad
+                            obsidionem<lb break="yes"/><gap reason="damage"/> presencia tocius
+                            communitatis<lb break="yes"/><cb n="1"/>Willelmus Rolland<lb break="yes"
+                        />patricius badenach'<lb break="yes"/>Johannes andirson'<lb break="yes"/><cb
+                            n="2"/>Andreas Alaneson'<lb break="yes"/>Alexander blyndseil<lb
+                            break="yes"/>Dauid symson'</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0404-02" xml:lang="mul">
+                    <p><lb break="yes"/>The Crukit <expan>quartar'</expan><lb break="yes"/><cb n="1"
+                        />heres Willelmi caleman <del>3</del> iij s'<lb break="yes"
+                            /><expan>Duncane</expan> talyhour <del>5</del> iiij s'<lb break="yes"
+                        />henricus Walkar' maior <del>2</del> ij s'<lb break="yes"/>Johannes
+                        Crukschank <del>3 5</del> iij s'<lb break="yes"/><del>Robert boide</del><lb
+                            break="yes"/>Alexander Rolland <del><unclear reason="hand"
+                            >6</unclear></del> vj s'<lb break="yes"/>Rob cole <del>2</del> ij s'<lb
+                            break="yes"/>Johannes Irwyne <del>5</del> v s'<lb break="yes"/>Walterus
+                        blyndseil <del>3 5</del> v s'<lb break="yes"/>Will Ros' <del>3</del> ij
+                            s'<lb break="yes"/>Sym mason'
+                            <del><?oxy_comment_start author="his252" timestamp="20180618T113821+0100" comment="NOTE&apos; &apos;2&apos; overwrites &apos;3&apos;."?>2<?oxy_comment_end?></del>
+                        ij s'<lb break="yes"/>Dauid symson' <del>10</del> x s'<lb break="yes"/>Adam
+                        of Cardeny <del>5</del> v s'<lb break="yes"/><expan>Robert</expan> Culane
+                            <del>12</del> xij s'<lb break="yes"/>Dauid blabre <del>13 4</del> xiij
+                        s' iiij d'<lb break="yes"/>Johannes Catnes <del>13 4</del> xiij s iiij d'<lb
+                            break="yes"/>Johannes nachti <del>20 15</del> xvi s'<lb break="yes"
+                        />Johannes Duncaneson <del>8</del> viij s'<lb break="yes"/>Johannes
+                        henrison' culane <del>20</del> xxv s'<lb break="yes"/>thom of Culane
+                            <del>10</del> vjj s'<lb break="yes"/>Andreas culane Junior <del>5</del>
+                        v s'<lb break="yes"/>helene of Clat <del>10</del> x s'<lb break="yes"
+                        />Andreas chapman <del>8</del> viij s'<lb break="yes"/><del>W</del> Johannes
+                        michaelson' <del>6 d'</del> iiij s'<lb break="yes"/>Willelmus scherar'
+                            <del>10</del> x s'<lb break="yes"/>balliuus <del>Andreas
+                            scherar</del><lb break="yes"/><add place="margin">+</add>
+                        <del>Nichol club 12 d'</del><lb break="yes"/><cb n="2"/>Johannes stokkar'
+                            <gap reason="deleted"/><del> 12</del> xiij s' iiij d'<lb break="yes"
+                            /><expan>thom</expan> lamby <del>3</del> iij s'<lb break="yes"/>Will
+                        Edyndeach' <del>8</del> viij s'<lb break="yes"/>Will vmfraison' <del>3</del>
+                        iij s'<lb break="yes"/><expan>thom</expan> Alaneson' <del>2</del> ij s'<lb
+                            break="yes"/>Johannes scrogis filius <del>10</del> x s'<lb break="yes"
+                        />henri nicholson' <del>5</del> v s'<lb break="yes"/>Adam Craufurd'
+                            <del>10</del> x s'<lb break="yes"/>Johannes Edwardson' <del>8</del> viij
+                            s'<lb break="yes"/><add place="margin">+</add>
+                        <del>huchoune allirdes</del><lb break="yes"/>Alane smyth' <del>3</del> ij
+                            s'<lb break="yes"/>henri craufurd' <del>2</del> ij s'<lb break="yes"
+                        />Will moor' <del>5</del> v s'<lb break="yes"/><expan>Robert</expan> Club
+                            <del>5</del> v s'<lb break="yes"/>Sandi <expan>skynnar'</expan>
+                        <del>5</del> v s'<lb break="yes"/><expan>gilbert</expan> leiche
+                            <del>10</del> x s'<lb break="yes"/>Alexander leiche <del>10</del> x
+                            s'<lb break="yes"/>Johannes litstar' <del>20</del> xx s'<lb break="yes"
+                        />Cristi litstar' <del>5</del> iij s'<lb break="yes"/><add place="margin"
+                            >+</add>
+                        <del>Johannes patonson'</del> thom quelp xjj s'<lb break="yes"
+                            /><del>kay</del><lb break="yes"/>Will louson' <del>10</del> x s'<lb
+                            break="yes"/>Wat piot <del>2</del> ij s'<lb break="yes"/>Dauid farquhar'
+                            <del>4 5</del>
+                        <del>v s'</del> iiij s'<lb break="yes"/>Johannes swan webstar' <del>2</del>
+                        ij s' <pb n="405" break="yes"/>
+                        <lb break="yes"/><cb n="1"/><gap reason="damage"/><lb break="yes"
+                            />Anab<supplied reason="damage">e</supplied>l cassy 3 <gap
+                            reason="damage"/><lb break="yes"/>Johannes gillespy <del>10</del> x
+                            s'<lb break="yes"/>Matheu fichet <del>13</del> xv s'<lb break="yes"
+                            /><del>Dauid <expan>buttirgask</expan></del><lb break="yes"/>Andreas
+                        Murrave <del>13 4</del> xiij s' iiij d'<lb break="yes"/>Ricardus Stephin
+                            <del>10 x s'</del> viij s'<lb break="yes"/>Thom of fife <del>5</del> v
+                            s'<lb break="yes"/>Thom of <expan>chavmer</expan>
+                        <del>5</del> v s'<lb break="yes"/>Dauid hill <del>5</del> v s'<lb
+                            break="yes"/>Will adamson' <del>12</del> xij s'<lb break="yes"/>Will
+                            <expan>andirson'</expan>
+                        <del>3</del> iij s'<lb break="yes"/>huchoune fleschar' <del>5</del> v s'<lb
+                            break="yes"/>Johannes fauside Junior <del>3</del> iij s'<lb break="yes"
+                        />Johannes Walkar' of <expan>Drum</expan>
+                        <del>2</del> ij s'<lb break="yes"/><cb n="2"/><gap reason="damage"/>or'
+                        baxstar' <gap reason="damage"/><lb break="yes"/>Adam Kynnore <del>3</del>
+                        <gap reason="damage"/><lb break="yes"/>Johannes of Dijs' <del>2</del> ij
+                            <supplied reason="damage">s'</supplied><lb break="yes"
+                            /><expan>Robert</expan> barbour' <del>2</del> ij s'<lb break="yes"/>Thom
+                        Imlach' <del>5</del> v s'<lb break="yes"/>patricius smyth' <del>2</del> ij
+                            s'<lb break="yes"/><expan>patrik</expan> quhite <del>2</del> ij s'<lb
+                            break="yes"/>James <expan>andirson</expan>
+                        <del>13 4</del> xiij s' iiij d'<lb break="yes"/>John Wilboyson' <del>3</del>
+                        iij s'<lb break="yes"/>John' of <expan>lundoris</expan>
+                        <expan>taylyour</expan> xij d' <add place="margin">24 <gap reason="damage"
+                            /></add><lb break="yes"/>Alexander of leis <del>2</del> ij s' <add
+                            place="margin">d' <gap reason="damage"/></add><lb break="yes"/>Will
+                        stephinson' of <expan>Kynnellor'</expan> vj s' viij d'<lb break="yes"
+                        />Mawnys Wormote ij s'<lb break="yes"/>Jonet quhite ij s'<lb break="yes"
+                            /><lb break="yes"/>Summa huius quarterij xxiiij lib' xij s' iiij d'<lb
+                            break="yes"/><lb break="yes"/>The evin <expan>quartar'</expan><lb
+                            break="yes"/><cb n="3"/>Dauid <expan>patrikson'</expan>
+                        <del>6 8</del> vj s' viij d'<lb break="yes"/>Johannes huchouneson'
+                            <del>3</del> iij s'<lb break="yes"/>Johannes stewart broune
+                            <del>10</del> x s'<lb break="yes"/>Duncanus lundoris <del>4</del> iiij
+                            s'<lb break="yes"/>Ricardus hill <del>10</del> x s'<lb break="yes"
+                            /><expan>Duncane</expan> straloch' <del>5</del> v s'<lb break="yes"
+                        />Dauid colison' <del>10</del> x s'<lb break="yes"/>Dauid matheuson'
+                            <del>5</del> iiij s'<lb break="yes"/>Will of cantuli <del>10</del> x
+                            s'<lb break="yes"/>Wat vmfraison' <del>2</del> ij s'<lb break="yes"
+                        />Johannes voket <del>10</del> x s'<lb break="yes"/><expan>Robert</expan>
+                        prat ij s'<lb break="yes"/><cb n="4"/>Andreas culane <del>2</del> xxvj s'
+                        viij d'<lb break="yes"/><expan>Robert</expan> Irnside <del>2</del> ij s'<lb
+                            break="yes"/><expan>Edmunde</expan> louson' <del>10</del> viij s'<lb
+                            break="yes"/><del>Marioune <expan>glenny</expan></del><lb break="yes"
+                        />Johannes bertlotson' ij s'<lb break="yes"/>Johannes Wod <del>10</del> x
+                            s'<lb break="yes"/>Will voket <del>10</del> x s'<lb break="yes"/>Adam
+                        moor <del>8</del> viij s'<lb break="yes"/>Will rolland' <del>20</del> xx
+                            s'<lb break="yes"/>Johannes mathouson' <del>12</del> xij s'<lb
+                            break="yes"/><del>Sandy talyhour'</del><lb break="yes"/>fergus'
+                            <expan>chapman</expan>
+                        <del>3</del> iij s'<lb break="yes"/>Johannes marr' bet <del>10</del> x s'
+                            <pb n="406" break="yes"/>
+                        <lb break="yes"/>
+                        <cb n="1"
+                            /><?oxy_comment_start author="his252" timestamp="20180618T115724+0100" comment="NOTE: It is unclear whether there were any more lines above this which have been lost through damage."?><gap
+                            reason="damage"/><?oxy_comment_end?><lb break="yes"/>
+                        <gap reason="damage"/>
+                        <supplied reason="damage">W</supplied>alkar' iunior <del>5 10</del>
+                        <gap reason="damage"/><lb break="yes"/><gap reason="damage"/> quhithude
+                            <del>2</del> ij s'<lb break="yes"/>John' tailyhour' <del>10</del> x
+                            s'<lb break="yes"/>thome raa <del>3</del> iij s'<lb break="yes"
+                            /><del>John <expan>fraser</expan></del><lb break="yes"/>Donald
+                            <expan>skynnar'</expan>
+                        <del>6 8</del> vj s' v<unclear reason="faded">i</unclear>ij d'<lb
+                            break="yes"/>Dauid tod <expan>skynnar'</expan>
+                        <del>2</del> ij <supplied reason="damage">s'</supplied><lb break="yes"
+                            /><del>Will suerds</del><supplied reason="damage"
+                            ><del>lep</del></supplied><del>er'</del><lb break="yes"/><del>thom of
+                            spens 2</del><lb break="yes"/>thom of croudane cum matre <del>5</del> v
+                            s'<lb break="yes"/>John robertson' thrift <del>8</del> viij s'<lb
+                            break="yes"/>Wat cutlar' <del>3</del> iij s'<lb break="yes"/>Dauid
+                        Johnson' <del>5</del> v s'<lb break="yes"/>Gilbert Kintor <gap
+                            reason="deleted"/>8 viij s'<lb break="yes"/><del>Will nory
+                            tailyhour'</del><lb break="yes"/>mathou sadillar' <del>2</del> ij s'<lb
+                            break="yes"/>Androu ruthirfurde <del>10</del> x s'<lb break="yes"/>Will
+                        Duncaneson' <del>8</del> viij s'<lb break="yes"/><del>John' tailyhour'
+                            Dise</del><lb break="yes"/><add place="margin">ballivus</add> Androu
+                        alaneson' <del>10</del><lb break="yes"/>John <expan>skynnar'</expan>
+                        <del>2</del> ij s'<lb break="yes"/>mychael raneson' <del>5</del> v s'<lb
+                            break="yes"/>John stevinson' <del>10</del> x s'<lb break="yes"/>thom
+                        lorymar' iij s'<lb break="yes"/><expan>Robert</expan> lorymar' xij d'<lb
+                            break="yes"/>John howison <del>2</del> xx s'<lb break="yes"/><del>thom
+                            litistar' tailyhour'</del><lb break="yes"/><del>Will of barry</del><lb
+                            break="yes"/>John' sprount <del>5</del> v s'<lb break="yes"/><add
+                            place="margin">John</add>
+                        <del>Will</del> gregory <del>8</del> viij s'<lb break="yes"/>thom part
+                                <del><unclear reason="faded">8</unclear> 10</del> xij s'<lb
+                            break="yes"/>nichol fleger' <del>4</del> iiij s'<lb break="yes"
+                            /><del>Will of buchane'</del><lb break="yes"/>James bendseil
+                            <del>7</del> vij s'<lb break="yes"/><expan>Alexander</expan> scherar'
+                            <del>3</del> iij s'<lb break="yes"/>thomy gray <del>5</del> v s'<lb
+                            break="yes"/>Will louson' fleschar' <del>3</del> iij s'<lb break="yes"
+                            /><del>ricardus Wright'</del><lb break="yes"/><del>Adame
+                            nicholson</del><lb break="yes"/><del>Will lutar'</del><lb break="yes"
+                        />ricardus blak ij s'<lb break="yes"/>nicholl masone iiij s'<lb break="yes"
+                        />John' of fife x s'<lb break="yes"/>Sandi stille ij s'<lb break="yes"/><cb
+                            n="2"/><gap reason="damage"/><lb break="yes"/>Will of
+                            <expan>pebillis</expan>
+                        <del>2</del> ij s'<lb break="yes"/>Wa<gap reason="damage"/>tele<gap
+                            reason="faded"/>r <del>2</del> ij s'<lb break="yes"/>John of buchane
+                            <del>3</del> iij s'<lb break="yes"/>Angus' lilburn' <del>13</del> xij
+                            s'<lb break="yes"/>Thom maliceson' <del>15</del> xv s'<lb break="yes"
+                        />robert gray <del>4</del> iij s'<lb break="yes"/>Richard modane
+                            <del>4</del> iij s'<lb break="yes"/><del>thom oge</del><lb break="yes"
+                        />Robert blendseil xiij s' iiij d'<lb break="yes"/>henry Waus <del>5</del> v
+                            s'<lb break="yes"/><del>John' smytht'</del><lb break="yes"
+                            /><expan>patrik</expan> michailson' ij s'<lb break="yes"/>Adam Kemyson'
+                        ij s'<lb break="yes"/>Thom nicholson' <del>v</del> iij s'<lb break="yes"
+                        />nichol of benyng ij s'<lb break="yes"/>John' thomson
+                            <expan>tailyour</expan> ij s'<lb break="yes"/>John' Duchty <del>5</del>
+                        v s'<lb break="yes"/>ranald tailyhour' <del>16</del> xiiij<lb break="yes"
+                            /><del>the fullar'</del><lb break="yes"/><expan>John</expan> of Narn
+                            <del>13 4</del> xiij s' iiij d'<lb break="yes"/><expan>John</expan> of
+                        Mongerry xiij s' iiij d'<lb break="yes"/><lb break="yes"/>Summa huius
+                        quarterij xxv lib' xviij s' iiij d'<lb break="yes"/><lb break="yes"
+                            />ffuty<lb break="yes"/>Will huntar' ij s'<lb break="yes"/>Will
+                        adameson' ij s'<lb break="yes"/>Will of ratree <del>13 4</del> xvj s'
+                            <del>ii</del><lb break="yes"/>Thom tailyhour' ij s'<lb break="yes"
+                        />John' of <expan>glenmalyng</expan>
+                        <del>12</del> xij s'<lb break="yes"/>Will adeson' iij s'<lb break="yes"
+                        />John' girkyne' ij s'<lb break="yes"/>gib sclatar' v s'<lb break="yes"
+                        />robert gillespy iij s'<lb break="yes"/>thom benyng smytht v s'<lb
+                            break="yes"/><expan>robert</expan> Wormot<lb break="yes"/><del>John
+                            Wormot ij s'</del><lb break="yes"/>Will maliceson' <del>15</del> xv
+                            s'<lb break="yes"/>James crak <del>6 6</del>
+                        <gap reason="deleted"/> s' vj s' v<gap reason="conservation"/><lb
+                            break="yes"/>John' fichet iunior ij s'<lb break="yes"/><add
+                            place="margin">+</add><del> Dauid hervy ij s'</del><lb break="yes"/>John
+                        of sauchar' ij s' <pb n="407" break="yes"/>
+                        <lb break="yes"/>
+                        <cb n="1"
+                            /><?oxy_comment_start author="his252" timestamp="20180618T121833+0100" comment="NOTE: It is unclear whether there were any more lines above this which have been lost through damage."?><gap
+                            reason="damage"/><?oxy_comment_end?><lb break="yes"/>Joh<supplied
+                            reason="damage">n of</supplied>
+                        <expan><supplied reason="damage">scr</supplied>ogis</expan>
+                        <gap reason="damage"/><lb break="yes"/>James clerk <gap reason="damage"/>
+                            s'<lb break="yes"/>Andreu ayncroft <del>8</del> viij s'<lb break="yes"
+                        />Angus' Johnson' <del>5</del> iiij s'<lb break="yes"/><del>James
+                            betson'</del><lb break="yes"/>Androu meignes <del>10</del> x s'<lb
+                            break="yes"/>Dauid meignes <del>10</del> x s'<lb break="yes"/>John'
+                        Kymdy v s'<lb break="yes"/>James of Kintor ij s'<lb break="yes"/>John'
+                        bullok iij s'<lb break="yes"/>Theman goldsmitht v s'<lb break="yes"
+                            /><del>John stewart</del><lb break="yes"/>John' matelande <del>5</del>
+                        vj s'<lb break="yes"/>Willelmus club <del>5</del> iiij s'<lb break="yes"
+                            /><del>Will stevinson' <expan>tailyour'</expan></del><lb break="yes"
+                        />Will of lamyngton' ij s'<lb break="yes"/>Jok of <expan>lammyngton</expan>
+                        ij s'<lb break="yes"/>thom of riburn' iij s'<lb break="yes"/>John'
+                            <expan>henrison'</expan> pinour' xij d'<lb break="yes"/>John' rollande
+                            <del>ij s'</del> xij d'<lb break="yes"/>John' of gowne' iiij s'<lb
+                            break="yes"/>Will cryne' iij s'<lb break="yes"/>Duncane harpar' ij s'<lb
+                            break="yes"/><expan>robert</expan> louson' ij s'<lb break="yes"/>fynlaw
+                        fleschar' iij s'<lb break="yes"/>sandy fynlawson' ij s'<lb break="yes"/>Will
+                        matelande ij s'<lb break="yes"/><del>John <expan>henrison'</expan></del><lb
+                            break="yes"/>Alane tailyhour' v s'<lb break="yes"
+                            /><expan>Alexander</expan> Westlande ij s'<lb break="yes"/>John'
+                            <expan>penuer</expan> ij s'<lb break="yes"/>nicholl yong ij s'<lb
+                            break="yes"/>Will baxstar' ij s'<lb break="yes"/>thom <del>y</del>
+                        barkar' ij s'<lb break="yes"/>Jonet spaigne cum paulo iiij s'<lb break="yes"
+                        />Will nory iij s'<lb break="yes"/><lb break="yes"/>Summa huius x lib' xvij
+                            s'<lb break="yes"/><lb break="yes"/><gap reason="faded"/> 11 lib' 8 d'
+                            <lb break="yes"/><cb n="2"/>
+                        <supplied reason="damage">the grene</supplied><lb break="yes"/><gap
+                            reason="damage"/><lb break="yes"/><gap reason="damage"/>om litstar' <gap
+                            reason="damage"/><lb break="yes"/><supplied reason="damage"
+                        >A</supplied>dame litstar <gap reason="damage"/>j s'<lb break="yes"
+                                /><del><expan>John</expan> of ochirles'</del><lb break="yes"/>Will
+                        Webstar' ij s'<lb break="yes"/><del>John symson'</del><lb break="yes"/>litil
+                            <expan>henry</expan> Walkar' ij s'<lb break="yes"/>nichol howet ij s'<lb
+                            break="yes"/>George Walkar' ij s'<lb break="yes"/><del>John' of
+                            lig</del><lb break="yes"/><del>Sym Walkar'</del><lb break="yes"
+                        />Willelmus Dog ij s'<lb break="yes"/><del>gib of castall</del><lb
+                            break="yes"/><del>thom Joffrayson'</del><lb break="yes"/>vxor Willelmi
+                        galt vj s'<lb break="yes"/>matheus culane ij s'<lb break="yes"
+                            /><del>Willelmus lepar'</del><lb break="yes"/><del>Jok of
+                            mernes</del><lb break="yes"/>Wat of auchnef x s'<lb break="yes"/>Andreas
+                        scot ij s'<lb break="yes"/>Androu Cwmyn' ij s'<lb break="yes"/>Wat of
+                        strevilyng iij s'<lb break="yes"/><del>Will stewinson'</del> Alexander de
+                        camera x <gap reason="damage"/><lb break="yes"/><del>Thom glede</del><lb
+                            break="yes"/>Symon hobe ij s'<lb break="yes"/>mekil Donalde ij s'<lb
+                            break="yes"/>Alexander still ij s'<lb break="yes"/>John'
+                            <expan>andirson'</expan> xx<del>v</del> s'<lb break="yes"/>Duncane
+                            <expan>andirson'</expan> ij s'<lb break="yes"/>thom filp iiij s'<lb
+                            break="yes"/>Wat moryson' <del>xij s'</del> x s'<lb break="yes"
+                        />Alexander angusson' viij s'<lb break="yes"/>Thom gardenar' ij s'<lb
+                            break="yes"/>Gylbert Waus v s'<lb break="yes"/><del>Will
+                            harpar'</del><lb break="yes"/><expan>Alexander</expan> culpar iij s'<lb
+                            break="yes"/><expan>Alexander</expan> blendseil xij s'<lb break="yes"
+                        />matheus culpar' ij s'<lb break="yes"/><expan>Alexander</expan> Kyntor v
+                            s'<lb break="yes"/><del>John scuge</del><lb break="yes"/>John' red
+                        smytht ij s<lb break="yes"/><del>Alexander of chawmer</del><lb break="yes"
+                            /><expan>robert</expan> ranyson' ij s' <pb n="408" break="yes"/>
+                        <lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180618T122908+0100" comment="NOTE: It is unclear whether there were any more lines above this which have been lost through damage."?><gap
+                            reason="damage"/><?oxy_comment_end?><lb break="yes"/>John' of <gap
+                            reason="damage"/> s'<lb break="yes"/>ricardus Cry<supplied
+                            reason="damage">ne</supplied>
+                        <gap reason="damage"/><lb break="yes"/>John of parf<gap reason="damage"/><lb
+                            break="yes"/>Will giff<gap reason="damage"/><lb break="yes"/><del>paule
+                            cul Cl</del><gap reason="damage"/><lb break="yes"/>rob huntar' cum
+                            va<gap reason="damage"/><lb break="yes"/>Wat blendseil iij s'<lb
+                            break="yes"/>Duncane alo<gap reason="damage"/> iiij s'<lb break="yes"
+                        />Willelmus cuntlace vj s'<lb break="yes"/>John' of fawside ij s'<lb
+                            break="yes"/>John thomson' vebstar' ij s'<lb break="yes"/><add
+                            place="margin">Thom</add>
+                        <del>John</del> of Kege ij s'<lb break="yes"/>John blendseil ij s'<lb
+                            break="yes"/>Alexander filius Johannis thome letstar' iiij s' Item
+                        socius ij s'<lb break="yes"/>ricardus webstar' robison' ij s'<lb break="yes"
+                            /><expan>Androw</expan>
+                        <del>John'</del> baxstar' ij s'<lb break="yes"/>ricardus culpar of the grene
+                        ij s'<lb break="yes"/>Johannes thomson' vebstar' ij s'<lb break="yes"
+                            /><del>Johannes scot <expan>skynnar'</expan></del><lb break="yes"
+                            /><del>Jok nauly</del><lb break="yes"/>Edmundus banerman<lb break="yes"
+                        />Andreas galty vj s' viij d'<lb break="yes"/>Andreas rede x s'<lb
+                            break="yes"/><lb break="yes"/>Summa huius quarterij xj lib' ix s' iiij
+                        d'</p>
+                </div>
+            </div>
+            <div type="unidentified">
+                <p><date when="1460-10-12" cert="high"/></p>
+                <div type="entry" xml:id="ARO-5-0408-01" xml:lang="la">
+                    <p><lb break="yes"/>xij<hi rend="superscript">mo</hi> die mensis octobris Anno
+                        Domini et cetera lx<hi rend="superscript">mo</hi> Willelmus Rettree testis
+                        in causa infrascripta Juratus et exa<supplied reason="damage"
+                            >minatus</supplied><lb break="yes"/>causa recessus sui deposuit quod
+                        alias Alexander Crag emit ab eodem Willelmo ij vlnas cum dimidio pannj
+                            la<supplied reason="damage">nei</supplied><lb break="yes"/>nigri pro xij
+                        s' et traxit thomam prat eidem pro dicta summa in plegio / et quod ipse
+                        Willelmus in defec<gap reason="damage"/><lb break="yes"/>solucionis dicte
+                        summe recuperauit eandem a dicto thoma / et quod est de eadem per eundem
+                            satisfac<gap reason="damage"/></p>
+                </div>
+            </div>
+            <pb n="409" break="yes"/>
+            <div type="court">
+                <p><date when="1460-10-06" cert="medium"/></p>
+                <div type="heading" xml:id="ARO-5-0409-01" xml:lang="la">
+                    <p><lb break="yes"/><supplied reason="damage">Curia capitalis</supplied>
+                        <?oxy_comment_start author="his252" timestamp="20181022T160748+0100" comment="NOTE: As a result of damage, it is unclear how many lines this entry included."?><gap
+                            reason="damage"/><?oxy_comment_end?></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-02" xml:lang="la">
+                    <p><lb break="yes"
+                            /><?oxy_comment_start author="his252" timestamp="20180618T123959+0100" comment="NOTE: As a result of damage, it is unclear how many lines this entry included. "?><gap
+                            reason="damage"/><?oxy_comment_end?>us fui<gap reason="damage"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-03" xml:lang="la">
+                    <p><lb break="yes"/>Item Alexander Douglas Andreas Alaneson' andreas scherar et
+                            <gap reason="damage"/><lb break="yes"/>in balliuos dicti burgi pro vno
+                        anno prestito solito Juramento</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-04" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes Vaus Johannes tulidef laurencius thomson' et
+                        thomas Donaldson'<lb break="yes"/>electi fuerunt in officium seriendorum pro
+                        vno anno prestito solito Juramento .</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-05" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die warda et Judicium processus ducti per dominum
+                        Johannem seras' capellanum et procuratorem<lb break="yes"/>altaris beati
+                        Michaelis archangeli continuatur ut supra in eodem statu quo nunc ab
+                            usque<lb break="yes"/>proximam legalem absque preiudicio parcium</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-06" xml:lang="la">
+                    <p><lb break="yes"/>Item eodem die accedens ad barram dominus Johannes morison'
+                        capellanus et procurator altaris beati petri<lb break="yes"/>apostolorum
+                        principis cituati in ecclesia parrochiali huius burgi protestatus fuit pro
+                        quodam annuo<lb break="yes"/>redditu xxij s' eidem altari et sibi debit'
+                        annuatim de quadam terra Jacente in<lb break="yes"/>vico Nauium / inter
+                        terram Alexandri coupar' ex parte australi ex vna / et terram quondam<lb
+                            break="yes"/>Robertj gillespy ex parte boreali partibus ex altera / ad
+                        quam accedens nichil reperit<lb break="yes"/>distringibile preter terram et
+                        lapides quos presentauit in curia tanquam primo die hui<supplied
+                            reason="damage">us</supplied><lb break="yes"/>processus testibus Dauid
+                        patrikson' / gilberto leiche et Johanne tulidef seriando cum <gap
+                            reason="damage"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-07" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes gillespy constituit Robertum gillespy
+                        procuratorem suum ad prosequendum bo<gap reason="damage"/><lb break="yes"
+                        />sua in manibus Dauid blabre et Willelmj cantuly existencia et in omnibus
+                            alijs<lb break="yes"/>causis et questionibus ipsum Johannem
+                        qualitercumque contingentibus et promisit de Rat<supplied reason="damage"
+                            >o</supplied>
+                        <gap reason="damage"/><lb break="yes"/>de Judicio cisti et Judicatum solui
+                        et cetera</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-08" xml:lang="la">
+                    <p><lb break="yes"/>Item Johannes Crukschank protestatus fuit sollempniter /
+                        quod quicquid actum est uel f<gap reason="faded"/><lb break="yes"
+                        />temporibus actum erit penes terram quondam Willelmj caleman non cedat
+                        Andree caleman<lb break="yes"/>filio suo et heredi aut ipsi Johanni tanquam
+                        tutori suo testamentario in preiudicium et <gap reason="damage"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0409-09" xml:lang="la">
+                    <head><add place="margin"><supplied reason="damage"
+                        >Kin</supplied>tor</add></head>
+                    <p><lb break="yes"/>Jacobus Kintor primo die vocatus ad sectam gilbertj Kintor
+                        pro x marcis et xj hamburgh barellis salm<supplied reason="faded"
+                            >onum</supplied><lb break="yes"/>non comparuit / quare precipitur
+                        seriendo quod capto districto ab eodem ipsum summoneat et cetera</p>
+                </div>
+            </div>
+            <pb n="410" break="yes"/>
+            <div type="court">
+                <p><date when="1460" cert="medium" notBefore="1460-10-07" notAfter="2460-11-17"
+                    /></p>
+                <div type="heading" xml:id="ARO-5-0410-01" xml:lang="sc">
+                    <p><lb break="yes"/><gap reason="damage"/></p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0410-02" xml:lang="sc">
+                    <p><lb break="yes"/><gap reason="damage"/> at the saidis <gap reason="hand"/>
+                        <gap reason="damage"/><lb break="yes"/><gap reason="damage"/> or thar'
+                            <expan>factouris</expan> in the said schipe in <expan>flanderis</expan>
+                        at <gap reason="damage"/><lb break="yes"/>purly' and sympilly
+                            <expan>submittit</expan> and oblisit be the fath' of thar' body<supplied
+                            reason="conservation">is</supplied>
+                        <gap reason="damage"/><lb break="yes"/>the <expan>delyuerance</expan> of
+                        thir' <expan>persones</expan> vndir writyne beand schworn' <gap
+                            reason="damage"/><lb break="yes"/><expan>parteis</expan> that is to say
+                            <expan>Androw</expan> meignes <expan>Alexander</expan> Kintor
+                            <expan>patrik</expan>
+                        <gap reason="damage"/><lb break="yes"/>and Wil lowson'
+                            <expan>withoutyne</expan> reuocacion' or agayne sayng of ony <gap
+                            reason="damage"/><lb break="yes"/>tyme <expan><w xml:id="w_mrz_sh5_22b"
+                                >to</w><w xml:id="w_vq2_th5_22b">cum</w></expan> / and this to be
+                        endit and <expan>delyuerit</expan> betuex this and the fest of <gap
+                            reason="damage"/>chole<supplied reason="damage">s</supplied><lb
+                            break="yes"/>next <expan><w xml:id="w_f3w_wh5_22b">to</w><w
+                                xml:id="w_zcc_xh5_22b">cum</w></expan>
+                        <expan>without</expan> ony <expan>langar</expan> delay / And <add
+                            place="above">this</add> was done' in <expan>presence</expan> of a
+                            <expan>reuerend'</expan>
+                        <expan>fadir</expan>
+                        <expan>in</expan>
+                        <gap reason="damage"/><lb break="yes"/>thomas be the <expan>grace</expan> of
+                        god bischope of Abirdone <expan>maistir</expan>
+                        <expan>lowrence</expan> piot arsden' of<lb break="yes"
+                            /><expan>abirdene</expan>
+                        <expan>richard</expan> of Kintor <expan>aldirman</expan>
+                        <expan>Alexander</expan> of Duglas' <expan>androw</expan> alaneson' bailyeis
+                        of <expan>Abird<supplied reason="damage">ene</supplied></expan><lb
+                            break="yes"/><expan>with</expan>
+                        <expan>othir</expan> dyuers' and mory</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0410-03" xml:lang="la">
+                    <p><lb break="yes"/>Eodem die dictus Dauid blabre fecit constituit et <choice>
+                            <sic>ordanit</sic>
+                            <corr>ordinavit</corr>
+                        </choice> Johanne marr' et Andream cula<supplied reason="damage"
+                            >ne</supplied><lb break="yes"/>suos legittimos et indubitos procuratores
+                        coniunctim et diuisim <del>In</del> ad audiendum prescript' perso<gap
+                            reason="damage"/><lb break="yes"/>Jurare in eadem causa et in dicta
+                        prescripta <add place="above">tota</add> causa <del>predicta</del> et
+                        promisit de rato et cetera cum aliis clau<supplied reason="conservation"
+                            >sulis</supplied><lb break="yes"/>ad formam procuratorij necessario
+                        requitis <del>a in dicta causa</del></p>
+                </div>
+            </div>
+            <div type="unidentified">
+                <p><date when="1460-11-18" cert="high"/></p>
+                <div type="entry" xml:id="ARO-5-0410-04" xml:lang="sc">
+                    <p><lb break="yes"/><expan>Item</expan> the xviij dai of the moneth' of
+                            <expan>nouembre</expan> the yher' forsaid the <expan>parteis</expan>
+                            befo<gap reason="rubbing"/><lb break="yes"/>has consentit on'
+                            <expan>athir</expan> side that gif it sal happyn' at the
+                            <expan>forsaidis</expan> v <expan>personis</expan>
+                        <gap reason="rubbing"/><lb break="yes"/>the said caus' <expan>can</expan>
+                        <expan>nocht</expan> end conclud and <expan>delyuer</expan> in the caus'
+                        forsaid be thar' self thai <gap reason="conservation"/><lb break="yes"
+                            /><expan>nocht</expan> be <expan>constrenyet</expan> or compellit
+                            <expan>nothir</expan> be <expan>kyngis</expan>
+                        <expan>littrez</expan> nor sensour' of hali kirk for<gap
+                            reason="conservation"/><lb break="yes"/><expan>delyuerance</expan> of
+                        the said caus' on to the tyme <del>be</del> the <expan>saidis</expan>
+                        <expan>persones</expan> be ryply av<supplied reason="conservation"
+                            >isit</supplied><lb break="yes"/>and thai to git it furth'
+                            <expan>eftir</expan> thar' wittyng als sone as thai can be avisit <gap
+                            reason="conservation"/><lb break="yes"/>gudly power' And gif it sal
+                        happyn' at ony of the <expan>Jugis</expan> forsaide be seik o<gap
+                            reason="conservation"/><lb break="yes"/>the land / the
+                            <expan>persones</expan> at remanis sal ches' sic lyk <del>p</del> in
+                        thar' sted as p<gap reason="conservation"/><lb break="yes"/>and thai to be
+                        suorn' as thai ar to mak <expan>delyuerance</expan>
+                        <expan>in</expan> the said caus'</p>
+                </div>
+                <div type="entry" xml:id="ARO-5-0410-05" xml:lang="sc">
+                    <p><lb break="yes"/>The quhilk dai the tollis was sett till
+                            <expan>Alexander</expan> rollande for al the <expan>termez</expan>
+                        <gap reason="conservation"/><lb break="yes"/>yher' next followande the date
+                        of this wryt he payande yherly xx<gap reason="conservation"/><lb break="yes"
+                        />of vsuale monee of scotlande for the said tollis and
+                            <expan>stallangeris</expan> of th<gap reason="conservation"/><lb
+                            break="yes"/>burgh'</p>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>
