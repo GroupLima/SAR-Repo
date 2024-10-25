@@ -30,8 +30,8 @@ class EntryObject():
 
 class JSONGenerator():
 
-  volumes1_7path = './xml-files/XML files volumes 1-7' # path to XML file entries volumes 1-7
-  volume8path = './xml-files/XML files volume 8'
+  volumes1_7path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volumes 1-7').resolve() # path to XML file entries volumes 1-7
+  volume8path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volume 8').resolve()
   json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
   NS = {
       'tei' : 'http://www.tei-c.org/ns/1.0',
@@ -127,7 +127,7 @@ class JSONGenerator():
       self.add_files(volumes1_7path)
       self.add_files(volume8path)
     else:
-      print('path doesn\'t exist')
+      print('xml files don\'t exist at these directories\n', volumes1_7path, '\n', volume8path)
 
 
   def generate_json_entries(self, xml_files_dir=None, json_filepath=None):
