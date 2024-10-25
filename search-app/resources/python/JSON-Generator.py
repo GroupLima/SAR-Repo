@@ -96,14 +96,15 @@ class JSONGenerator():
                     # If the element is a <lb> tag, append a space
                     if element.tag == f'{{{self.NS["tei"]}}}lb':
                       #print('found line break tag')
-                      entry_content += ' '
+                      if entry_content and entry_content[-1] != ' ':
+                        entry_content += ' '
                     # For other tags, append the text (if present)
                     elif element.text:
-                      entry_content += re.sub(r'\s+', ' ', element.text).strip()
+                      entry_content += re.sub(r'\s+', ' ', element.text)
                       #print(re.sub(r'\s+', ' ', element.text).strip(), 'end')
                     # Handle tail text (text outside the element)
                     if element.tail:
-                        entry_content += re.sub(r'\s+', ' ', element.tail).strip()
+                        entry_content += re.sub(r'\s+', ' ', element.tail)
 
               entry_content = entry_content.strip()
 
