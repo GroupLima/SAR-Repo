@@ -29,7 +29,7 @@ class EntryObject():
     }
 
 class JSONGenerator():
-
+  #create json file for all of this information eventually?
   volumes1_7path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volumes 1-7').resolve() # path to XML file entries volumes 1-7
   volume8path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volume 8').resolve()
   json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
@@ -44,17 +44,19 @@ class JSONGenerator():
     self.entry_objects = {}
    
 
+  #add all files at current path to xml_files
   def add_files(self, path):
     for filename in os.listdir(path):
         file = os.path.join(path, filename)
         if os.path.isfile(file) and file.lower().endswith('.xml'):
           self.xml_files.append(file)
 
-  
+  #generate entry objects and add them to the object's dictionary
   def populate_entries_array(self):
     print('adding', len(self.xml_files), 'entries')
     if self.xml_files != []:
       for file_path in self.xml_files:
+        #print('filepath', file_path)
         #create an XMLReader
         tree = ET.parse(file_path)
         root = tree.getroot()
@@ -74,13 +76,10 @@ class JSONGenerator():
           for entry in entry_elements:
             #print('entry',ET.tostring(item, encoding='UTF-8', method='xml'))
             #print()
-            
-            entry_type = entry.attrib.get('type')
-            #print('entry type', entry_type)
-
-            if entry_type in JSONGenerator.entry_types:
-              entry_id = entry.attrib.get(f'{{{JSONGenerator.NS["xml"]}}}id')
+            entry_id = entry.attrib.get(f'{{{JSONGenerator.NS["xml"]}}}id')
+            if entry_id:
               #print('entry id', entry_id)
+              entry_type = entry.attrib.get('type')
               entry_language = entry.attrib.get(f'{{{JSONGenerator.NS["xml"]}}}lang')
               #first element of id is 'ARO' so can skip
               entry_volume, entry_page, entry_chapter = map(str, entry_id.split('-')[1:])
@@ -122,6 +121,7 @@ class JSONGenerator():
               self.entry_objects[entry_obj.id] = entry_obj.entry_dict()
               #self.entry_objects.append(entry_obj.entry_dict())
 
+  #check if files exist then call self.add_files on them
   def locate_files(self, volumes1_7path, volume8path):
     if os.path.exists(volumes1_7path) and os.path.exists(volume8path):
       self.add_files(volumes1_7path)
@@ -129,7 +129,7 @@ class JSONGenerator():
     else:
       print('xml files don\'t exist at these directories\n', volumes1_7path, '\n', volume8path)
 
-
+  #finalizes json path and creates the file
   def generate_json_entries(self, xml_files_dir=None, json_filepath=None):
     try:
       if xml_files_dir:
@@ -169,13 +169,16 @@ class JSONGenerator():
       print(e, '\nwasn\'t able to generate json file')
 
   def describe():
-    print("\nthis python file generates a json file consisting of entries from xml files")
-    print("the default json path is ", JSONGenerator.json_filepath)
+    print('\n********************************************')
+    print('\nthis python file generates a json file consisting of entries from xml files')
+    print('the default json path is ', JSONGenerator.json_filepath)
+    print('\n********************************************\n')
 
-
+#determines which json filepath to use based on user input
 def get_filepaths():
-  xml_dir = input('\nSpecify the xml directory (press enter to skip)> ')
+  xml_dir = input('Specify the xml directory (press enter to skip)> ')
   if xml_dir and not os.path.exists(xml_dir):
+    print('xml directory doesn\'t exist')
     return False, xml_dir, None
   
   json_file = input('Specify the json path (include filename) to write to (press enter to skip)> ')
@@ -183,7 +186,8 @@ def get_filepaths():
     print("The filename needs to end with \'.json\'.")
     return False, xml_dir, json_file
 
-  if os.path.exists(json_file) or (not json_file and os.path.exists(JSONGenerator.json_filepath)):
+  #handles file that already exists at path
+  elif os.path.exists(json_file) or (not json_file and os.path.exists(JSONGenerator.json_filepath)):
       overwrite = input('this file already exists, would you like to overwrite it? (y/n)> ')
       if overwrite.strip().lower() == 'y':
         return True, xml_dir, json_file
@@ -191,8 +195,9 @@ def get_filepaths():
         print('exiting program')
         return False, xml_dir, json_file
       
-  if json_file and not os.path.exists(os.path.dirname(json_file)):
-    print('directory doesn\'t exist')
+  #if directory not found
+  elif not os.path.exists(os.path.dirname(json_file)):
+    print('directory doesn\'t exist', os.path.dirname(json_file))
     return False, xml_dir, json_file
   
   return True, xml_dir, json_file
