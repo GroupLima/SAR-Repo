@@ -103,7 +103,7 @@ class XmlController extends Controller
 
     }
 
-    //generate entry objects and store in json file to be searched and queried through
+    //
 
 }
 

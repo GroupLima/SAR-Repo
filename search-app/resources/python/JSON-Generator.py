@@ -37,7 +37,6 @@ class JSONGenerator():
       'tei' : 'http://www.tei-c.org/ns/1.0',
       'xml' : 'http://www.w3.org/XML/1998/namespace'
     }
-  entry_types = ['heading', 'incompleteEntry', 'entry']
   
   def __init__(self):
     self.xml_files = [] # array of all XML files within every volume
@@ -119,7 +118,6 @@ class JSONGenerator():
               )
               #set id as key
               self.entry_objects[entry_obj.id] = entry_obj.entry_dict()
-              #self.entry_objects.append(entry_obj.entry_dict())
 
   #check if files exist then call self.add_files on them
   def locate_files(self, volumes1_7path, volume8path):
@@ -129,13 +127,12 @@ class JSONGenerator():
     else:
       print('xml files don\'t exist at these directories\n', volumes1_7path, '\n', volume8path)
 
-  #finalizes json path and creates the file
+  #selects json path and creates the file
   def generate_json_entries(self, xml_files_dir=None, json_filepath=None):
     try:
       if xml_files_dir:
         volumes1_7path = xml_files_dir+'/XML files volumes 1-7'
         volume8path = xml_files_dir+'/XML files volume 8'
-        #defaults to object attribute if no argument entered
       else:
         volumes1_7path = JSONGenerator.volumes1_7path
         volume8path = JSONGenerator.volume8path
