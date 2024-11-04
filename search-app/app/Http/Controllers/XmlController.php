@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 use SebastianBergmann\Type\NullType;
 
@@ -20,7 +21,11 @@ class XmlController extends Controller
         // Load and decode the JSON data
         if (file_exists($this->jsonFilePath)) {
             $this->jsonData = json_decode(file_get_contents($this->jsonFilePath), true);
+            echo "<pre>"; // Optional: Adds HTML formatting for easier reading in the browser
+            print_r($this->jsonData['ARO-1-0001-02']['filepath']);
+            echo "</pre>";
         } else {
+            echo "empty";
             $this->jsonData = []; // Initialize to an empty array if file does not exist
         }
     }
@@ -122,7 +127,7 @@ class XmlController extends Controller
     // example of displaying entries in a file
 
     // this function extracts the actual transcription of an entry and stores it in inner_text
-    public static function get_inner_text($entry){
+    public function get_inner_text($entry){
         $dom_node = dom_import_simplexml($entry);
         $inner_text = '';
 
@@ -138,97 +143,108 @@ class XmlController extends Controller
 
 
     // takes an id and uses it to find the corresponding path in the json file
-    public static function get_xml_path($entry_id){
-        if (isset($jsonData[$entry_id])) {
-            $relative_path = $jsonData[$entry_id]['file_path'];
+    public function get_xml_path($entry_id){
+        if (isset($this->jsonData[$entry_id])) {
+            $relative_path = $this->jsonData[$entry_id]['filepath'];
+        } else {
+            $relative_path = null;
         }
-        // error with path, will fix later
-        $path = File::path(base_path(), $relative_path);
-        
+        $path = base_path($relative_path);
         return $path;
     }
 
-    public static function get_entry($path, $id){
+    public function get_entry_xml($path, $id){
         // load the xml as a simple xml element
-        $xml = simplexml_load_file($path);
+        $xml_file = simplexml_load_file($path);
 
         // Register the TEI namespace
-        $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+        $xml_file->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
         
         // get entry where xml:id is $id
-        $entry = $xml->xpath("//tei:div[@xml:id='{$id}']");
+        $target_xml = $xml_file->xpath("//tei:div[@xml:id='{$id}']");
 
         // Check if the entry exists
-        if (!empty($entry)) {
-            return $entry[0]; // Return the first match (or the only match)
+        if (!empty($target_xml)) {
+            return $target_xml[0]; // Return the first match (or the only match)
         } else {
             return null; // Return null if no entry found
         }
-
-        return $entry;
+        echo $target_xml;
+        return $target_xml;
     }
 
     // this function returns a filtered list of entries based on params derived from the user's search request
     // when calling this function, assume we've already searched the transcriptions and we have the match results
     // also assume that the entries have been filtered, and all we need to do is find the corresponding xml entries
-    public static function get_all_entries($params=null, $match_results=null){
+    public function get_all_entries($params=null, $match_results=null){
         // if params is null, user has not updated their search and we can fetch recent data
         // use vue to store and retrieve user search history
 
-        $entries = [];
+        $entries_list = [];
 
         if ($match_results == null){
             // no entries
             // ...
         }
         else {
-            /*
-            for each id in results, obtain the filepath where it exists and extract the entry data
-                $path = self::get_xml_path();
-                $entries .= get_entry($path);
-            */
-           
+            foreach ($match_results as $entry_id => $match_data){
+                $path = $this->get_xml_path($entry_id);
+
+                // add new entry to the list
+                $entries_list[] = [
+                    'id' => $entry_id,
+                    'xml' => $this->get_entry_xml($path, $entry_id),
+                    // add other elements utilizing match data
+                    // ...
+                ];
+            }
         }
-        
-        // for now, we will only search a test file, but later we'll search all files
-        //$test_file = '/Users/caitlin/Documents/GitHub/SAR-Repo/search-app/storage/app/xml-files/XML files volumes 1-7/ARO-1-0001-01_ARO-1-0013-09.xml';
-        $test_id = 'ARO-1-0001-02';
-        $path = self::get_xml_path($test_id);
 
-        // add new entry to the list
-        $entries[] = self::get_entry($path, $test_id);
-
-        return $entries;
+        return $entries_list;
     }
 
     // this function provides entry data for the entries.blade.php view
-    public static function display_entries(){
+    public function display_entries(){
+
+        // test data
+        $match_results = [
+            'ARO-1-0001-01' => null,
+            'ARO-1-0001-02' => null,
+            'ARO-1-0001-05' => null,
+            'ARO-1-0218-01' => null,
+            'ARO-7-1053-04' => null,
+            'ARO-8-0033-03' => null
+        ];
+
         // assume that the entries returned have been filtered correctly
-        $entries = self::get_all_entries();
+        $entries_data = $this->get_all_entries($match_results);
 
         // initiate an empty list
-        $entry_dicts = [];
+        $entries = [];
 
-        foreach ($entries as $entry){
+        foreach ($entries_data as $entry){
 
             // put elements in a dictionary and add dictionary to entries
-            $entry_dicts[] = [
-                'xml' => nl2br(htmlentities($entry->asXML())),
-                'inner_text' => self::get_inner_text($entry),
+            $entry_dict = [
+                'xml' => nl2br(htmlentities($entry['xml']->asXML())),
+                'inner_text' => $this->get_inner_text($entry),
                 
-                // use json data or parse xml to get actual values
                 // these are just placeholder values for now
                 'entry_type' => 'example_type',
-                'id' => 'example_id' . sizeof($entry_dicts),
+                'id' => $entry['id'],
                 'volume' => 1,
                 'chapter' => 1,
                 'page' => 1,
                 'date' => '1111-11-11',
                 'language' => 'english'
+
+                // do highlighting stuff here as well
             ];
+
+            $entries[] = $entry_dict;
         }
 
-        return $entry_dicts;
+        return $entries;
 
     }
 

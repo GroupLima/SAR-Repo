@@ -61,7 +61,7 @@ class JSONGenerator():
         relative_path = Path(file_path)
         path_parts = relative_path.parts
         if 'storage' in path_parts:
-         relative_path = '/'.join(path_parts[path_parts.index('storage'):])
+         relative_path = '/' + '/'.join(path_parts[path_parts.index('storage'):])
 
         #print('filepath', file_path)
         #create an XMLReader
