@@ -8,5 +8,6 @@
             <h1>SRA 2.0</h1> 
         </div>
         @include('home-views.search')
+        @include ('layouts.entries', ['entries' => $entries]) <!-- Pass entries to the component -->
         <img src="{{ asset('images/university.png') }}" alt="University Logo" class="bottom-image">
 @endsection

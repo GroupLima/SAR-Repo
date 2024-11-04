@@ -6,7 +6,7 @@ from pathlib import Path
 
 class EntryObject():
   # initialise the entry, make params optional to declare
-  def __init__(self, id=None, volume=None, page=None, chapter=None, language=None, date=None, type=None, content=None):
+  def __init__(self, id=None, volume=None, page=None, chapter=None, language=None, date=None, type=None, content=None, filepath=None):
     self.id = id
     self.volume = volume
     self.page = page
@@ -15,6 +15,7 @@ class EntryObject():
     self.date = date
     self.type = type
     self.content = content
+    self.filepath = filepath
     
   # return the entry values as dictionary so that they can be looped through  
   def entry_dict(self):
@@ -25,13 +26,14 @@ class EntryObject():
       'lang': self.language,
       'date': self.date,
       'type': self.type,
-      'content': self.content
+      'content': self.content,
+      'filepath' : self.filepath
     }
 
 class JSONGenerator():
   #create json file for all of this information eventually?
-  volumes1_7path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volumes 1-7').resolve() # path to XML file entries volumes 1-7
-  volume8path = Path('../SAR-Repo/search-app/storage/app/xml-files/XML files volume 8').resolve()
+  volumes1_7path = Path(__file__).resolve().parent.parent.parent / 'storage/app/xml-files/XML files volumes 1-7' # path to XML file entries volumes 1-7
+  volume8path = Path(__file__).resolve().parent.parent.parent / 'storage/app/xml-files/XML files volume 8'
   json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
   NS = {
       'tei' : 'http://www.tei-c.org/ns/1.0',
@@ -55,6 +57,12 @@ class JSONGenerator():
     print('adding', len(self.xml_files), 'entries')
     if self.xml_files != []:
       for file_path in self.xml_files:
+
+        relative_path = Path(file_path)
+        path_parts = relative_path.parts
+        if 'storage' in path_parts:
+         relative_path = '/'.join(path_parts[path_parts.index('storage'):])
+
         #print('filepath', file_path)
         #create an XMLReader
         tree = ET.parse(file_path)
@@ -114,7 +122,8 @@ class JSONGenerator():
                 language = entry_language,
                 date = entry_date,
                 type = entry_type,
-                content = entry_content
+                content = entry_content,
+                filepath = relative_path
               )
               #set id as key
               self.entry_objects[entry_obj.id] = entry_obj.entry_dict()
