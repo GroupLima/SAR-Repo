@@ -14,6 +14,27 @@
 <div class="entries-col">
     @foreach ($entries as $entry)
         <div class="panel">
+            <div class="metadata">
+                Metadata
+                <div>id: {!! $entry['id'] !!}</div>
+                <div>date: {!! $entry['date'] !!}</div>
+                <div>volume: {!! $entry['volume'] !!}</div>
+                <div>chapter: {!! $entry['chapter'] !!}</div>
+                <div>page: {!! $entry['page'] !!}</div>
+                <div>language: {!! $entry['language'] !!}</div>
+                <!--
+                all entry values you can use:
+                    xml
+                    inner_text
+                    type
+                    id
+                    volume
+                    chapter
+                    page
+                    date
+                    language
+                -->
+            </div>
             <!-- xml view -->
             <pre class="language-xml">
                 <code>
@@ -28,18 +49,7 @@
                     {!! $entry['inner_text'] !!}
                 </div>
             </div>
-            <!--
-            entry keys:
-            xml
-            inner_text
-            entry_type
-            id
-            volume
-            chapter
-            page
-            date
-            language
-            -->
+            
         </div>
     @endforeach
 </div>

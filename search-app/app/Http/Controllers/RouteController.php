@@ -17,8 +17,8 @@ class RouteController extends Controller
     public function display_view($page='/'){
         if ($this->valid_route($page)){
             if ($page == 'home'){
-                $entries = $this->xmlController->display_entries();
-                return view('home', compact('entries'));
+                $entries = $this->xmlController->get_all_entries();
+                return $this->xmlController->display_entries($entries);
             }
             return view('/' . $page);
         }

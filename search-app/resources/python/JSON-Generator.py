@@ -6,7 +6,7 @@ from pathlib import Path
 
 class EntryObject():
   # initialise the entry, make params optional to declare
-  def __init__(self, id=None, volume=None, page=None, chapter=None, language=None, date=None, type=None, content=None, filepath=None):
+  def __init__(self, id=None, volume=None, page=None, chapter=None, language=None, date=None, type=None, content=None, xmlpath=None):
     self.id = id
     self.volume = volume
     self.page = page
@@ -15,7 +15,7 @@ class EntryObject():
     self.date = date
     self.type = type
     self.content = content
-    self.filepath = filepath
+    self.xmlpath = xmlpath
     
   # return the entry values as dictionary so that they can be looped through  
   def entry_dict(self):
@@ -27,7 +27,7 @@ class EntryObject():
       'date': self.date,
       'type': self.type,
       'content': self.content,
-      'filepath' : self.filepath
+      'xmlpath' : self.xmlpath
     }
 
 class JSONGenerator():
@@ -63,7 +63,7 @@ class JSONGenerator():
         if 'storage' in path_parts:
          relative_path = '/' + '/'.join(path_parts[path_parts.index('storage'):])
 
-        #print('filepath', file_path)
+        #print('xmlpath', file_path)
         #create an XMLReader
         tree = ET.parse(file_path)
         root = tree.getroot()
@@ -123,7 +123,7 @@ class JSONGenerator():
                 date = entry_date,
                 type = entry_type,
                 content = entry_content,
-                filepath = relative_path
+                xmlpath = relative_path
               )
               #set id as key
               self.entry_objects[entry_obj.id] = entry_obj.entry_dict()
