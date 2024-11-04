@@ -172,7 +172,7 @@ class XmlController extends Controller
         // search and query
         // ...
 
-        // test data
+        // test data, all results are null for now
         $match_results = [
             'ARO-1-0001-01' => null,
             'ARO-1-0001-02' => null,
