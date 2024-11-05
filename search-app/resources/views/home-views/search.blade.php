@@ -77,4 +77,4 @@
    </label>  
 </div>
 <h3>Doc ID</h3>
-<input type="search" id="doc-id-search" placeholder="ARO-1-0001-01s">
+<input type="search" id="doc-id-search" placeholder="ARO-1-0001-01">
