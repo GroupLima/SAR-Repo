@@ -14,25 +14,27 @@
 <!-- Main Section -->
 <main>
     <div class="search-section">
-        <div class="basic-search">
-            <input
-                type="text"
-                placeholder="Enter your search term" s
-                aria-label="Search" />
-            <button>SEARCH</button>
-        </div>
-        <div id="advanced" class="advanced-search-container">
-            <button class="dropdown-button" @click="toggleDropdown">
-                ADVANCED SEARCH ▼
-            </button>
-            <div v-if="isDropdownOpen" class="advanced-search-dropdown">
-                <div id="search-options">
-                    @include('home-views.search')
-                </div>
-            </div>
-
-
-
+          <div class="basic-search">
+              <input
+                  type="search"
+                  placeholder="Enter your search term"s
+                  aria-label="Search"
+              />
+              <button>SEARCH</button>
+          </div>
+          <div id="advanced" class="advanced-search-container">
+              <button class="dropdown-button" @click="toggleDropdown">
+                  ADVANCED SEARCH ▼
+               </button>
+              <div v-if="isDropdownOpen" class="advanced-search-dropdown">
+                  <div id="search-options">
+                  @include('home-views.search')
+                  <!-- sass people please make this section wider, i.e. not just the width of the button -->
+                  <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
+                  </div>
+              </div>
+          </div>
+     </div>
 </main>
 
 
