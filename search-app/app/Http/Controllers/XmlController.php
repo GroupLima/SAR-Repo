@@ -83,7 +83,7 @@ class XmlController extends Controller
                 ];
             }
         }
-        echo 'entries found' . sizeof($entries);
+        //echo 'entries found' . sizeof($entries);
         return $entries;
     }
 
