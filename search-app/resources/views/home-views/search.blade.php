@@ -63,12 +63,12 @@
        <input type="checkbox" id="volume-8" name="volume8" value="8"> 8
     </label>
 </div>
-<h3>Page Search</h3>
+<h3>Page Search</h3><!-- this needs constraints, so does any search bar -->
 <input type="search" id="page-search" placeholder="1, 69, 591...">
 <h3>Entry</h3>
 <input type="search" id="entry-search" placeholder="1, 2, 3, 4...">
-<h3>Date Range</h3>
-<div id="dates">
+<h3>Date Range</h3><!--we need to apply constraints to the date -->
+<div id="dates"> <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
    <label><!-- for some reason the label and date box display wrong way round -->
       <input type="date" id="start-date" name="start-date">from
    </label>   
