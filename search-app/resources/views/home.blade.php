@@ -16,7 +16,7 @@
       <div class="search-section">
             <div class="basic-search">
                 <input
-                    type="text"
+                    type="search"
                     placeholder="Enter your search term"s
                     aria-label="Search"
                 />
@@ -29,6 +29,8 @@
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     <div id="search-options">
                     @include('home-views.search')
+                    <!-- sass people please make this section wider, i.e. not just the width of the button -->
+                    <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
                     </div>
                 </div>
  
