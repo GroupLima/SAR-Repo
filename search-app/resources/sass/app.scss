@@ -1,0 +1,221 @@
+//standard variables
+$primary-color: #8B0000;
+$secondary-color: #600000;
+$light-gray: #ccc;
+$dark-gray: #4a4a4a;
+$white-color: white;
+$font-family: Arial, sans-serif;
+$logo-font-family: Times, serif;
+$max-width: 1200px;
+$border-radius: 4px;
+$box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+//mixin for flexbox alignment
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+//global reset and box-sizing
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//body styling
+body {
+    font-family: $font-family;
+    background-color: $primary-color;
+}
+
+//navbar styling
+.navbar {
+    font-weight: bold;
+    background-color: $primary-color;
+    padding: 20px;
+    border-bottom: 1px solid $secondary-color;
+
+    .nav-content {
+        @include flex-space-between;
+        max-width: $max-width;
+        margin: 0 auto;
+    }
+    .text-container {
+      display: flex; /* Use flexbox for the text container */
+      flex-direction: column; /* Stack text elements vertically */
+    }
+    .logo-section {
+        color: $white-color;
+        display: flex; /* Use flexbox layout */
+        align-items: center; /* Center items vertically */
+        .logo-text {
+            font-size: 5.5em;
+            font-weight: bold;
+            font-family: $logo-font-family;
+        }
+
+        .logo-subtext {
+            font-family: $logo-font-family;
+            font-size: 1em;
+            font-style: italic;
+            margin-top: -1em;
+            color: $light-gray;
+        }
+    }
+
+    .nav-links a {
+        color: $white-color;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 1.1em;
+
+        &:hover {
+        text-decoration: underline;
+        }
+    }
+}
+
+//header section styling
+header {
+    background-color: $primary-color;
+    padding: 20px;
+
+    .header-content {
+        @include flex-space-between;
+        max-width: $max-width;
+        margin: 0 auto;
+    }
+
+    .aro-description {
+        color: $white-color;
+        padding: 20px;
+        font-size: 1.5em;
+        flex: 1;
+    }
+
+    .blog-page-button {
+        background-color: $secondary-color;
+        color: $white-color;
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+}
+
+    //main section styling
+    main {
+    background-color: $primary-color;
+    padding: 20px;
+    min-height: calc(100vh - 300px);
+
+    .search-section {
+        max-width: $max-width;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+
+        .basic-search {
+            display: flex;
+            width: 100%;
+            margin-bottom: 10px;
+
+            input {
+                flex: 1;
+                padding: 12px;
+                border: 1px solid $light-gray;
+                border-radius: $border-radius;
+                font-size: 16px;
+            }
+
+            button {
+                background-color: $secondary-color;
+                color: $white-color;
+                padding: 12px 24px;
+                border: none;
+                margin-left: 10px;
+                border-radius: $border-radius;
+                cursor: pointer;
+                font-weight: bold;
+            }
+        }
+    }
+
+  .dropdown-button {
+        background-color: $dark-gray;
+        color: $white-color;
+        padding: 10px 20px;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        margin-bottom: 5px;
+        text-align: left;
+        width: 200px;
+        position: relative;
+  }
+
+  .advanced-search-container {
+    position: relative;
+
+    .advanced-search-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $white-color;
+        border: 1px solid $light-gray;
+        border-radius: $border-radius;
+        width: 200px;
+        box-shadow: $box-shadow;
+        z-index: 1000;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                padding: 10px;
+                cursor: pointer;
+                color: #333;
+                
+                &:hover {
+                    background-color: #f5f5f5;
+                }
+            }
+
+        label {
+            display: block;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+//footer section styling
+footer {
+    background-color: $secondary-color;
+    padding: 20px;
+    color: $white-color;
+
+    .footer-links {
+        @include flex-space-between;
+        max-width: $max-width;
+        margin: 0 auto;
+
+        a {
+            color: $white-color;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
