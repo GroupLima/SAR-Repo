@@ -34,6 +34,7 @@
                   </div>
               </div>
           </div>
+          @include('layouts.entries')
      </div>
 </main>
 
