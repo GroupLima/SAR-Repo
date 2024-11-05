@@ -30,6 +30,7 @@
                     <div id="search-options">
                     @include('home-views.search')
                     <!-- sass people please make this section wider, i.e. not just the width of the button -->
+                    <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
                     </div>
                 </div>
             </div>

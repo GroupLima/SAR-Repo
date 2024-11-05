@@ -3,18 +3,24 @@
 
 <div id="search-methods-radio"> 
     <h3>Search Method</h3>
-    <input type="radio" id="keywords" name="search-method">
-    <label for keywords>Keywords</label>
-    <input type="radio" id="phrase" name="search-method">
-    <label for phrase>Phrase</label>
-    <input type="radio" id="regularex" name="search-method">
-    <label for regularex>Regular Expression</label>
-    <input type="radio" id="word-start" name="search-method">
-    <label for word-start>Word Start</label>
-    <input type="radio" id="word-middle" name="search-method">
-    <label for word-middle>Word Middle</label>
-    <input type="radio" id="word-end" name="search-method">
-    <label for word-end>Word End</label>
+    <label>
+      <input type="radio" id="keywords" name="search-method">Keywords
+    </label>
+    <label>
+      <input type="radio" id="phrase" name="search-method">Phrase
+    </label>
+    <label>
+      <input type="radio" id="regularex" name="search-method">Regular Expression
+    </label>
+    <label>
+      <input type="radio" id="word-start" name="search-method">Word Start
+    </label>
+    <label>
+      <input type="radio" id="word-middle" name="search-method">Word Middle
+    </label>
+    <label>
+      <input type="radio" id="word-end" name="search-method">Word End
+    </label>
 </div>    
 <h3>Languages</h3>
 <select id="language">
@@ -58,7 +64,17 @@
     </label>
 </div>
 <h3>Page Search</h3>
-<input type="search" placeholder="1, 69, 591...">
+<input type="search" id="page-search" placeholder="1, 69, 591...">
 <h3>Entry</h3>
-<input type="search" placeholder="1, 2, 3, 4...">
-<!-- still need to add date range and doc id -->
+<input type="search" id="entry-search" placeholder="1, 2, 3, 4...">
+<h3>Date Range</h3>
+<div id="dates">
+   <label><!-- for some reason the label and date box display wrong way round -->
+      <input type="date" id="start-date" name="start-date">from
+   </label>   
+   <label>
+      <input type="date" id="end-date" name="end-date">to
+   </label>  
+</div>
+<h3>Doc ID</h3>
+<input type="search" id="doc-id-search" placeholder="ARO-1-0001-01s">
