@@ -63,6 +63,11 @@ body {
             margin-top: -1em;
             color: $light-gray;
         }
+
+        .logo-image {
+            height: 100px;
+            width: 100px;
+        }
     }
 
     .nav-links a {
@@ -160,7 +165,7 @@ header {
     position: relative;
 
     .advanced-search-dropdown {
-        position: absolute;
+        position: relative;
         top: 100%;
         left: 0;
         background-color: $white-color;
@@ -195,6 +200,10 @@ header {
             margin-right: 10px;
         }
       }
+    }
+
+    .advanced-search-dropdown.active {
+        display: block;
     }
   }
 }

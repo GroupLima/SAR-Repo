@@ -31,11 +31,6 @@ body {
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center items vertically */
 }
-
-.navbar img {
-  height: 100px;
-  width: 100px;
-}
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
   font-weight: bold;
@@ -46,6 +41,11 @@ body {
   font-size: 1em;
   font-style: italic;
   margin-top: -1em;
+  color: #ccc;
+}
+.navbar .logo-section .logo-image {
+  height: 100px;
+  width: 100px;
 }
 .navbar .nav-links a {
   color: white;
@@ -132,7 +132,7 @@ main .advanced-search-container {
   position: relative;
 }
 main .advanced-search-container .advanced-search-dropdown {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
   background-color: white;
@@ -162,6 +162,9 @@ main .advanced-search-container .advanced-search-dropdown ul label {
 }
 main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
   margin-right: 10px;
+}
+main .advanced-search-container .advanced-search-dropdown.active {
+  display: block;
 }
 
 footer {
