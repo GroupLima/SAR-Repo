@@ -31,6 +31,11 @@ body {
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center items vertically */
 }
+
+.navbar img {
+  height: 100px;
+  width: 100px;
+}
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
   font-weight: bold;
@@ -41,7 +46,6 @@ body {
   font-size: 1em;
   font-style: italic;
   margin-top: -1em;
-  color: #ccc;
 }
 .navbar .nav-links a {
   color: white;
