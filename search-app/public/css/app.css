@@ -25,22 +25,29 @@ body {
 .navbar .text-container {
   display: flex; /* Use flexbox for the text container */
   flex-direction: column; /* Stack text elements vertically */
+  min-width: max-content
 }
 .navbar .logo-section {
   color: white;
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items vertically */
+  align-items: stretch; 
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.logo-image {
+  height: 90px;
 }
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
   font-weight: bold;
   font-family: Times, serif;
+  line-height: 0.8;  
 }
 .navbar .logo-section .logo-subtext {
   font-family: Times, serif;
   font-size: 1em;
   font-style: italic;
-  margin-top: -1em;
+
 }
 .navbar .nav-links a {
   color: white;
