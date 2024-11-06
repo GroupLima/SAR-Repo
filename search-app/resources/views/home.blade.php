@@ -28,9 +28,10 @@
                </button>
               <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                   <div id="search-options">
-                  @include('home-views.search')
-                  <!-- sass people please make this section wider, i.e. not just the width of the button -->
-                  <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
+                    @include('home-views.search')
+                    <!-- sass people please make this section wider, i.e. not just the width of the button -->
+                    <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
+                     <!-- also shouldnt cover content when it pops up -->
                   </div>
               </div>
           </div>
