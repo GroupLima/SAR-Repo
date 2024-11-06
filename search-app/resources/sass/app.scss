@@ -166,9 +166,10 @@ header {
         background-color: $white-color;
         border: 1px solid $light-gray;
         border-radius: $border-radius;
-        width: 200px;
         box-shadow: $box-shadow;
         z-index: 1000;
+        width: 100%;
+        padding: 24px;
 
         ul {
             list-style: none;

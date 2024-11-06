@@ -13,9 +13,11 @@
         </div>
         <div class="nav-links">
             <a href='/home'>Home</a>
-            <a href='/browse'>Browse</a>
-            <a href='/xquery'>XQuery</a>
             <a href='/about'>About</a>
+            <a href='/xquery'>XQuery</a>
+            <a href='/browse'>Browse</a>
+            
+            
         </div>
     </div>
 </nav>

@@ -133,9 +133,10 @@ main .advanced-search-container .advanced-search-dropdown {
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 200px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  width: 100%;
+  padding: 24px;
 }
 main .advanced-search-container .advanced-search-dropdown ul {
   list-style: none;
@@ -176,6 +177,4 @@ footer .footer-links a {
 }
 footer .footer-links a:hover {
   text-decoration: underline;
-}
-
-/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=app.css.map */
