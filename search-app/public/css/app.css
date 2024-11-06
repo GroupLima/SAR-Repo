@@ -21,15 +21,17 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  height: 100px;
 }
 .navbar .text-container {
-  display: flex; /* Use flexbox for the text container */
-  flex-direction: column; /* Stack text elements vertically */
+  display: flex; 
+  flex-direction: column; 
 }
 .navbar .logo-section {
   color: white;
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items vertically */
+  display: flex; 
+  align-items: center;
+
 }
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
