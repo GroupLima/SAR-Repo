@@ -4,22 +4,22 @@
 <div id="search-methods-radio"> 
     <h3>Search Method</h3>
     <label>
-      <input type="radio" id="keywords" name="search-method">Keywords
+      <input type="radio" id="keywords" name="search-method"> Keywords
     </label>
     <label>
-      <input type="radio" id="phrase" name="search-method">Phrase
+      <input type="radio" id="phrase" name="search-method"> Phrase
     </label>
     <label>
-      <input type="radio" id="regularex" name="search-method">Regular Expression
+      <input type="radio" id="regularex" name="search-method"> Regular Expression
     </label>
     <label>
-      <input type="radio" id="word-start" name="search-method">Word Start
+      <input type="radio" id="word-start" name="search-method"> Word Start
     </label>
     <label>
-      <input type="radio" id="word-middle" name="search-method">Word Middle
+      <input type="radio" id="word-middle" name="search-method"> Word Middle
     </label>
     <label>
-      <input type="radio" id="word-end" name="search-method">Word End
+      <input type="radio" id="word-end" name="search-method"> Word End
     </label>
 </div>    
 <h3>Languages</h3>
@@ -70,10 +70,10 @@
 <h3>Date Range</h3><!--we need to apply constraints to the date -->
 <div id="dates"> <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
    <label><!-- for some reason the label and date box display wrong way round -->
-      <input type="date" id="start-date" name="start-date">from
+      <input type="date" id="start-date" name="start-date"> from
    </label>   
    <label>
-      <input type="date" id="end-date" name="end-date">to
+      <input type="date" id="end-date" name="end-date"> to
    </label>  
 </div>
 <h3>Doc ID</h3>

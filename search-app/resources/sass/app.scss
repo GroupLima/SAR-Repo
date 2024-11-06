@@ -166,7 +166,8 @@ header {
         background-color: $white-color;
         border: 1px solid $light-gray;
         border-radius: $border-radius;
-        width: 200px;
+        width: 100%;
+        padding: 24px;
         box-shadow: $box-shadow;
         z-index: 1000;
 
