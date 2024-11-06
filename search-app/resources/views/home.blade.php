@@ -7,7 +7,6 @@
 <header>
     <div class="header-content">
         <div class="aro-description">ARO DESCRIPTION</div>
-        <button class="blog-page-button">BLOG PAGE</button>
     </div>
 </header>
 
@@ -53,8 +52,6 @@
         <a href="#">UNIVERSITY ARO PAGE</a>
         <a href="#">ACKNOWLEDGMENTS</a>
     </div>
-
-
 </footer>
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
