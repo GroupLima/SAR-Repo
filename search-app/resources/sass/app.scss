@@ -1,9 +1,8 @@
 //standard variables
-$primary-color: #8B0000;
-$secondary-color: #600000;
+$primary-colour: #6E0D25;
+$secondary-colour: #ffffff;
 $light-gray: #ccc;
 $dark-gray: #4a4a4a;
-$white-color: white;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
 $max-width: 1200px;
@@ -27,15 +26,14 @@ $box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 //body styling
 body {
     font-family: $font-family;
-    background-color: $primary-color;
+    background-color: $secondary-colour;
 }
 
 //navbar styling
 .navbar {
     font-weight: bold;
-    background-color: $primary-color;
+    background-color: $primary-colour;
     padding: 20px;
-    border-bottom: 1px solid $secondary-color;
 
     .nav-content {
         @include flex-space-between;
@@ -47,7 +45,7 @@ body {
       flex-direction: column; /* Stack text elements vertically */
     }
     .logo-section {
-        color: $white-color;
+        color: $secondary-colour;
         display: flex; /* Use flexbox layout */
         align-items: center; /* Center items vertically */
         .logo-text {
@@ -63,10 +61,15 @@ body {
             margin-top: -1em;
             color: $light-gray;
         }
+
+        .logo-image {
+            height: 100px;
+            width: 100px;
+        }
     }
 
     .nav-links a {
-        color: $white-color;
+        color: $secondary-colour;
         text-decoration: none;
         margin: 0 10px;
         font-size: 1.1em;
@@ -79,7 +82,7 @@ body {
 
 //header section styling
 header {
-    background-color: $primary-color;
+    background-color: $secondary-colour;
     padding: 20px;
 
     .header-content {
@@ -89,25 +92,16 @@ header {
     }
 
     .aro-description {
-        color: $white-color;
+        color: $primary-colour;
         padding: 20px;
         font-size: 1.5em;
         flex: 1;
-    }
-
-    .blog-page-button {
-        background-color: $secondary-color;
-        color: $white-color;
-        padding: 15px 30px;
-        border: none;
-        cursor: pointer;
-        margin-left: 20px;
     }
 }
 
     //main section styling
     main {
-    background-color: $primary-color;
+    background-color: $secondary-colour;
     padding: 20px;
     min-height: calc(100vh - 300px);
 
@@ -125,14 +119,14 @@ header {
             input {
                 flex: 1;
                 padding: 12px;
-                border: 1px solid $light-gray;
+                border: 1px solid $dark-gray;
                 border-radius: $border-radius;
                 font-size: 16px;
             }
 
             button {
-                background-color: $secondary-color;
-                color: $white-color;
+                background-color: $primary-colour;
+                color: $secondary-colour;
                 padding: 12px 24px;
                 border: none;
                 margin-left: 10px;
@@ -145,7 +139,7 @@ header {
 
   .dropdown-button {
         background-color: $dark-gray;
-        color: $white-color;
+        color: $secondary-colour;
         padding: 10px 20px;
         border: none;
         border-radius: $border-radius;
@@ -160,13 +154,14 @@ header {
     position: relative;
 
     .advanced-search-dropdown {
-        position: absolute;
+        position: relative;
         top: 100%;
         left: 0;
-        background-color: $white-color;
-        border: 1px solid $light-gray;
+        background-color: $secondary-colour;
+        border: 1px solid $dark-gray;
         border-radius: $border-radius;
-        width: 200px;
+        width: 100%;
+        padding: 24px;
         box-shadow: $box-shadow;
         z-index: 1000;
 
@@ -195,14 +190,32 @@ header {
         }
       }
     }
+
+    .advanced-search-dropdown.active {
+        display: block;
+    }
+  }
+
+  .about-section {
+    
+    .about-column {
+        float: left;
+        width: 33.33%;
+    }
+
+    .about-row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
   }
 }
 
 //footer section styling
 footer {
-    background-color: $secondary-color;
+    background-color: $primary-colour;
     padding: 20px;
-    color: $white-color;
+    color: $secondary-colour;
 
     .footer-links {
         @include flex-space-between;
@@ -210,7 +223,7 @@ footer {
         margin: 0 auto;
 
         a {
-            color: $white-color;
+            color: $secondary-colour;
             text-decoration: none;
 
             &:hover {

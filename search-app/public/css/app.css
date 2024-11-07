@@ -6,14 +6,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #8B0000;
+  background-color: #ffffff;
 }
 
 .navbar {
   font-weight: bold;
-  background-color: #8B0000;
+  background-color: #6E0D25;
   padding: 20px;
-  border-bottom: 1px solid #600000;
 }
 .navbar .nav-content {
   display: flex;
@@ -27,14 +26,9 @@ body {
   flex-direction: column; /* Stack text elements vertically */
 }
 .navbar .logo-section {
-  color: white;
+  color: #ffffff;
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center items vertically */
-}
-
-.navbar img {
-  height: 100px;
-  width: 100px;
 }
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
@@ -46,9 +40,14 @@ body {
   font-size: 1em;
   font-style: italic;
   margin-top: -1em;
+  color: #ccc;
+}
+.navbar .logo-section .logo-image {
+  height: 100px;
+  width: 100px;
 }
 .navbar .nav-links a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
   font-size: 1.1em;
@@ -58,7 +57,7 @@ body {
 }
 
 header {
-  background-color: #8B0000;
+  background-color: #ffffff;
   padding: 20px;
 }
 header .header-content {
@@ -69,22 +68,14 @@ header .header-content {
   margin: 0 auto;
 }
 header .aro-description {
-  color: white;
+  color: #6E0D25;
   padding: 20px;
   font-size: 1.5em;
   flex: 1;
 }
-header .blog-page-button {
-  background-color: #600000;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
-}
 
 main {
-  background-color: #8B0000;
+  background-color: #ffffff;
   padding: 20px;
   min-height: calc(100vh - 300px);
 }
@@ -102,13 +93,13 @@ main .search-section .basic-search {
 main .search-section .basic-search input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #4a4a4a;
   border-radius: 4px;
   font-size: 16px;
 }
 main .search-section .basic-search button {
-  background-color: #600000;
-  color: white;
+  background-color: #6E0D25;
+  color: #ffffff;
   padding: 12px 24px;
   border: none;
   margin-left: 10px;
@@ -118,7 +109,7 @@ main .search-section .basic-search button {
 }
 main .dropdown-button {
   background-color: #4a4a4a;
-  color: white;
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -132,13 +123,14 @@ main .advanced-search-container {
   position: relative;
 }
 main .advanced-search-container .advanced-search-dropdown {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #4a4a4a;
   border-radius: 4px;
-  width: 200px;
+  width: 100%;
+  padding: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
@@ -162,11 +154,23 @@ main .advanced-search-container .advanced-search-dropdown ul label {
 main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
   margin-right: 10px;
 }
+main .advanced-search-container .advanced-search-dropdown.active {
+  display: block;
+}
+main .about-section .about-column {
+  float: left;
+  width: 33.33%;
+}
+main .about-section .about-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 footer {
-  background-color: #600000;
+  background-color: #6E0D25;
   padding: 20px;
-  color: white;
+  color: #ffffff;
 }
 footer .footer-links {
   display: flex;
@@ -176,11 +180,9 @@ footer .footer-links {
   margin: 0 auto;
 }
 footer .footer-links a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
 }
 footer .footer-links a:hover {
   text-decoration: underline;
-}
-
-/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=app.css.map */
