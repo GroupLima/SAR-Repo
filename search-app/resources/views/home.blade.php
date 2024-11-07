@@ -8,6 +8,7 @@
     <div class="header-content">
         <div class="aro-description">ARO DESCRIPTION</div>
     </div>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 </header>
 
 <!-- Main Section -->

@@ -70,10 +70,10 @@
 <h3>Date Range</h3><!--we need to apply constraints to the date -->
 <div id="dates"> <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
    <label><!-- for some reason the label and date box display wrong way round -->
-      <input type="date" id="start-date" name="start-date"> from
+      from <input type="date" id="start-date" name="start-date">
    </label>   
    <label>
-      <input type="date" id="end-date" name="end-date"> to
+      to <input type="date" id="end-date" name="end-date">
    </label>  
 </div>
 <h3>Doc ID</h3>
