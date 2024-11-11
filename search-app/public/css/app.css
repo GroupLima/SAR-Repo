@@ -7,6 +7,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+  opacity: 0; /* Initially hidden */
 }
 
 .navbar {

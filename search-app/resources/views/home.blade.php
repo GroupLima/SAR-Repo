@@ -5,7 +5,7 @@
 @section('content')
 <!-- Header Section -->
 <header>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="header-content">
         <div class="aro-description">Discover 8 Volumes</div>
     <p>Some text explaining search</p>
@@ -66,18 +66,7 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="{{ asset('compiled-js/home.js') }}"></script>
-<script>
-window.transitionToPage = function(href) {
-    document.querySelector('body').style.opacity = 0
-    setTimeout(function() { 
-        window.location.href = href
-    }, 500)
-}
 
-window.addEventListener("load", (event) => {
-    document.querySelector('body').style.opacity = 1
-})
-
-    </script>
 </body>
+
 @endsection

@@ -26,6 +26,7 @@ $box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 body {
     font-family: $font-family;
     background-color: $secondary-colour;
+
 }
 
 //navbar styling
@@ -103,6 +104,8 @@ header {
 
     //main section styling
     main {
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+    opacity: 0; /* Initially hidden */
     background-color: $secondary-colour;
     min-height: calc(100vh - 300px);
 
