@@ -5,8 +5,11 @@
 @section('content')
 <!-- Header Section -->
 <header>
+<br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="header-content">
-        <div class="aro-description">ARO DESCRIPTION</div>
+        <div class="aro-description">Discover 8 Volumes</div>
+    <p>Some text explaining search</p>
+    <br><br>
     </div>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 </header>
@@ -29,19 +32,25 @@
             <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                 <div id="search-options">
                     @include('home-views.search')
-                    <!-- sass people please make this section wider, i.e. not just the width of the button -->
+                    <!-- sass people ffffffffplease make this section wider, i.e. not just the width of the button -->
                     <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
                     <!-- also shouldnt cover content when it pops up -->
                 </div>
             </div>
         </div>
-        @include('layouts.entries')
+        
+        
+    </div>
+    <br><br>
+    <div class="image-container">
+    <img src="{{ asset('images/sample.png') }}" alt="sample text" style = "overflow: hidden;">
+    </div>
+    @include('layouts.entries')
         <script>
                 function toggleDropdown() {
                 document.getElementById("advanced-search-dropdown").classList.toggle("active");
                 }
         </script>
-    </div>
 </main>
 
 
@@ -57,4 +66,18 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="{{ asset('compiled-js/home.js') }}"></script>
+<script>
+window.transitionToPage = function(href) {
+    document.querySelector('body').style.opacity = 0
+    setTimeout(function() { 
+        window.location.href = href
+    }, 500)
+}
+
+window.addEventListener("load", (event) => {
+    document.querySelector('body').style.opacity = 1
+})
+
+    </script>
+</body>
 @endsection

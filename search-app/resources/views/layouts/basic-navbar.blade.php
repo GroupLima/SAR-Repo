@@ -3,7 +3,7 @@
 <!-- this can be changed later on by the sass team -->
 <nav id="navbar" class="navbar">    
     <div class="nav-content">
-        <div class="logo-section">
+        <div class="logo-section" onclick="window.location.href='/home';p">
 
             <div class="text-container"> <!-- New container for text -->    
                 <div class="logo-text">SAR</div>

@@ -1,12 +1,11 @@
 //standard variables
 $primary-colour: #6E0D25;
 $secondary-colour: #ffffff;
-$light-gray: #ccc;
 $dark-gray: #4a4a4a;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
-$max-width: 1200px;
-$border-radius: 4px;
+$max-width: 1000px;
+$border-radius: 50px;
 $box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 //mixin for flexbox alignment
@@ -33,7 +32,12 @@ body {
 .navbar {
     font-weight: bold;
     background-color: $primary-colour;
-    padding: 20px;
+    padding: 40px;
+    position: fixed;
+    width: 100%; 
+    top: 0;         
+    left: 0;
+    z-index: 1000;
 
     .nav-content {
         @include flex-space-between;
@@ -59,7 +63,6 @@ body {
             font-size: 1em;
             font-style: italic;
             margin-top: -1em;
-            color: $light-gray;
         }
 
         .logo-image {
@@ -83,32 +86,29 @@ body {
 //header section styling
 header {
     background-color: $secondary-colour;
-    padding: 20px;
 
     .header-content {
-        @include flex-space-between;
         max-width: $max-width;
         margin: 0 auto;
-    }
+    
 
-    .aro-description {
-        color: $primary-colour;
-        padding: 20px;
-        font-size: 1.5em;
-        flex: 1;
+        .aro-description {
+            font-size: 3em;
+            flex: 1;
+            font-family: $logo-font-family;
+            font-style: italic;
+        }
     }
 }
 
     //main section styling
     main {
     background-color: $secondary-colour;
-    padding: 20px;
     min-height: calc(100vh - 300px);
 
     .search-section {
         max-width: $max-width;
         margin: 0 auto;
-        padding: 20px;
         position: relative;
 
         .basic-search {
@@ -136,6 +136,16 @@ header {
             }
         }
     }
+    .image-container {
+        height: 300px;
+        width: auto;
+        display: flex;
+        align-items: flex-end;
+ 
+    }
+  
+    
+  
 
   .dropdown-button {
         background-color: $dark-gray;
