@@ -5,10 +5,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
   transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
   opacity: 0; /* Initially hidden */
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
 }
 
 .navbar {
@@ -74,6 +74,7 @@ header .header-content .aro-description {
   flex: 1;
   font-family: Times, serif;
   font-style: italic;
+  font-weight: bold;
 }
 
 main {
@@ -93,7 +94,7 @@ main .search-section .basic-search {
 main .search-section .basic-search input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #4a4a4a;
+  border: 2px solid #4a4a4a;
   border-radius: 50px;
   font-size: 16px;
 }
