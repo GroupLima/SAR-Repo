@@ -69,6 +69,7 @@ return example:
 """
 
 # Perform main search of compiled entry data
+# Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class MatchData():
     
     entries_file = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
@@ -125,6 +126,36 @@ class MatchData():
     
     def get_matches(self):
         return self.entries
+    
+    # Search for exact matches of register - easy values such as ID, volume, page etc.
+    def exact_search(self, entry_id=None, volume=None, page=None, chapter=None, lang=None, date=None):
+        self.entry_id = entry_id # These are more for later use as a class, not needed in just a function
+        self.volume = volume
+        self.page = page
+        self.chapter = chapter
+        self.lang = lang
+        self.date = date
+                
+        if entry_id != None and entry_id.isalnum(): # If they know exact entry ID just return the content for that, also small error checking
+            return self.json_data[entry_id]['content']
+
+        for entry_id, entry in self.json_data.items():
+            # Need to check if the volume, page, chapter, lang, date are none. if not then go through every entry and add the json_data[entry_id] to a list. Need to ensure there is no repetition as if volume and page are specified then it should only return the entry once
+            match_conditions = [
+                (self.date is not None and str(self.date) == entry.get('date')),
+                (self.volume is not None and str(self.volume) == entry.get('volume')),
+                (self.page is not None and str(self.page) == entry.get('page')),
+                (self.chapter is not None and str(self.chapter) == entry.get('chapter')),
+                (self.lang is not None and str(self.lang) == entry.get('lang'))
+            ]
+
+            # If all conditions are true add the entry to the results
+            if all(match_conditions):
+                if entry_id not in self.entries:
+                    self.entries[entry_id] = []
+                self.entries[entry_id].append(entry)
+
+
 
 class VarianceError(Exception): 
     def __init__(self, variance_limit):
@@ -132,5 +163,6 @@ class VarianceError(Exception):
         super().__init__(self.message)      
 
 if __name__ == '__main__':
-    cust_search = MatchData('holly')
-    cust_search.find_matches()
+    # cust_search = MatchData('holly')
+    # cust_search.find_matches()
+    
