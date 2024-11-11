@@ -27,4 +27,22 @@
         <a href="#">ACKNOWLEDGMENTS</a>
     </div>
 </footer>
+<script>
+    // Function to transition to a new page with fade out effect
+    window.transitionToPage = function(href) {
+        // Fade out the body
+        document.querySelector('body').style.opacity = 0;
+
+        // After 500ms (duration of the fade-out), navigate to the new page
+        setTimeout(function() { 
+            window.location.href = href;
+        }, 500); // This timeout should match the fade-out duration
+    }
+
+    // When the page is fully loaded, fade it in
+    window.addEventListener("load", (event) => {
+        // Fade in the body
+        document.querySelector('body').style.opacity = 1;
+    });
+</script>
 @endsection
