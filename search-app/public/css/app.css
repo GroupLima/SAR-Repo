@@ -139,7 +139,7 @@ main .advanced-search-container .advanced-search-dropdown {
   width: 100%;
   padding: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 900;
 }
 main .advanced-search-container .advanced-search-dropdown ul {
   list-style: none;
