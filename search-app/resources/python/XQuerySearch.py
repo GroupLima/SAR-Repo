@@ -35,8 +35,8 @@ class XQuerySearch():
 if __name__ == "__main__":
   xquery = XQuerySearch(str(Path("storage/app/test-xml-files"))) # Allows cross-platform pathing, likely deployed on Linux but development is on Windows/Mac
   xquery.search("for $id in //@xml:id return $id") 
-  print(xquery.results)
-  
+  for result in xquery.results: # Prints query result with formatting
+        print(result)  
   
   r"""
   Talk zone here
