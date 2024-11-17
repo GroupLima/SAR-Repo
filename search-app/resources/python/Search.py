@@ -68,6 +68,14 @@ return example:
     }
 """
 
+def load_data(self, entries_file):
+    try:
+        with open(entries_file, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(entries_file + " not found")
+        return None
+
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class MatchData():
@@ -80,14 +88,6 @@ class MatchData():
         self.entries = None # returned data from search
         #variance limit must be greater than 1
         self.variance_limit = 5
-                
-    def load_data(self, entries_file):
-        try:
-            with open(entries_file, "r") as f:
-                return json.load(f)
-        except FileNotFoundError:
-            print(entries_file + " not found")
-            return None
             
     def find_variances(self):
         # Uses 
@@ -123,8 +123,50 @@ class MatchData():
             print(self.entries)
         except:
             pass
+
+    def apply_advanced_search(self, entry_id, date_from, date_to, language, volume, page, paragraph):
+        # apply filters in order, return none if param is empty or nothing to filter
+        json_data = load_data()
+        # call advanced search from python file
+        pass
     
-    def get_matches(self):
+    
+    def get_matches(self, usery_query, search_method, variance):
+
+        """
+        #params: user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
+        
+        search query steps:
+            1. get search tools params
+            2. page: get page, display results per page (params: results per page)
+            3. where: filter advanced search (params: entry, date from, date to, volume, page, paragraph)
+                order in which to filter the entries
+                1. date
+                2. language
+                3. volume
+                4. page
+                6. paragraph
+            4. match: find matches of similarity using simple search params (params: user query, search method, variance)
+                search methods
+                1. regex
+                2. exact matcg
+                3. begins with
+                4. part of
+                5. ends with
+            5. order: order matches by params
+                sort types:
+                    1. volume
+                    2. page
+                    3. date
+                sort methods using sort types:
+                    0. most relevant first
+                    1. asc volume, page (first to last)
+                    2. desc volume, page (last to first)
+                    3. asc date (chronological order)
+                    4. desc date (most recent)
+            6. highlight: set highlight tags around content matches
+            7. suggest: enable suggestions
+        """
         return self.entries
     
     # Search for exact matches of register - easy values such as ID, volume, page etc.

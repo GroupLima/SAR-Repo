@@ -20,6 +20,7 @@ class EntryObject():
   # return the entry values as dictionary so that they can be looped through  
   def entry_dict(self):
     return {
+      'id': self.id,
       'volume': self.volume,
       'page': self.page,
       'chapter' : self.chapter,
