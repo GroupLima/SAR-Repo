@@ -1,6 +1,7 @@
 
 import json
 from pathlib import Path
+import sys
 """
 we using resources/json/entries.json to find matches
 
@@ -81,14 +82,30 @@ def load_data(self, entries_file):
 class MatchData():
     
     entries_file = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
+
+    search_methods = {
+        0: 'sort_by_relevance',
+        1: 'volume_[age]'
+    }
     
-    def __init__(self, user_input):
+    def __init__(self, params):
         self.json_data = self.load_data(MatchData.entries_file)
-        self.user_input = user_input # User string search
+        #self.user_input = user_input # User string search
         self.entries = None # returned data from search
+        self.params = params
+        
+        #basic search params
         #variance limit must be greater than 1
-        self.variance_limit = 5
+        self.search_method = 0
+        self.variance = 0 # exact match
+        self.results_per_page = 5 # default is 5 results per page
+        self.order_by = 0 # most relevant first
             
+
+    def dynamic_sort(self, entry, sort_criteria):
+        # sort entries by sort criteria
+        pass
+
     def find_variances(self):
         # Uses 
         pass
@@ -119,7 +136,7 @@ class MatchData():
                     # find more matches
                     for v in range(self.variance_limit-1, 0, -1):
                         matches.extend(self.find_matches_by_variance(content, v))
-
+                
             print(self.entries)
         except:
             pass
@@ -168,6 +185,14 @@ class MatchData():
             7. suggest: enable suggestions
         """
         return self.entries
+                           
+    
+    def get_basic_search_params(self, params):
+
+        # default number of results per page
+        result_per_page = params['r']
+
+        params['r']
     
     # Search for exact matches of register - easy values such as ID, volume, page etc.
     def exact_search(self, entry_id=None, volume=None, page=None, chapter=None, lang=None, date=None):
@@ -207,4 +232,9 @@ class VarianceError(Exception):
 if __name__ == '__main__':
     # cust_search = MatchData('holly')
     # cust_search.find_matches()
+    if len(sys.argv > 1):
+        params = sys.argv[1]
+        obj = MatchData(params)
+        matches = obj.find_matches()
+        json.dumps(matches) # return the matches data in a JSON object
     pass

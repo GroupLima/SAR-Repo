@@ -20,7 +20,7 @@ class AdvancedSearch():
             for key, value in params.items():
                 function_name = cls.function_names.get(key)
 
-                # check if key ecists in entry_data
+                # check if key exists in entry_data
                 entry_value = entry_data.get(key)
                 if entry_value is None:
                     valid_entry = False
@@ -45,7 +45,7 @@ def is_after_date(value, date_from):
 def is_before_date(value, date_to):
     pass
 
-def is_valid_language(cvalue, language):
+def is_valid_language(value, language):
     pass
 
 def is_valid_volume(value, volume):
