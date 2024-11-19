@@ -5,6 +5,10 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\SearchController;
 
 
+/*
+put all application routes here with their corresponding functions
+*/
+
 //Default route for the home page
 Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home');
 

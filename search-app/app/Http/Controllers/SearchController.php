@@ -120,8 +120,9 @@ class SearchController extends Controller
         // params: user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
         $params = $request->query(); // insert params from request here
         $permitted = $this->simplify_search_params($params);
-        $python_search_file = './search-app/resources/python/Search.py ' . $params;
+        $python_search_file = './search-app/resources/python/Search.py ' . $permitted;
         $matches = shell_exec('python3 ' . $python_search_file);
+        return $matches;
     }
 
     

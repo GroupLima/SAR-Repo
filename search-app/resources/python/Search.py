@@ -1,122 +1,152 @@
-
-import json
-from pathlib import Path
 import sys
+from rapidfuzz import process, fuzz
 """
 we using resources/json/entries.json to find matches
 
-input: user input
-return values: should return a dictionary of entry_ids 
-where each entry has a dictionary of variances. each variance key 
-has a list value containing the start and end indexes of each match
-
 return example:
     {
-    'ARO-1-0001-03' : [
-        variance value 1: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 2: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 3: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        etc...
-        ],
+    'ARO-1-0001-03' : {
+        'accuracy score' : value,
+        'match freq' : value
+        'matches' : [
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end)
+        ]
+    }
     'ARO-1-0001-04' : [
-        variance value 1: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 2: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 3: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        ],
+        'accuracy score' : value,
+        'match freq' : value
+        'matches' : [
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end)
+        ]
      'ARO-6-0001-01' : [
-        variance value 1: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 2: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        variance value 3: [
-            (start index, end index),
-            (start index, end index),
-            (start index, end index),
-            ],
-        etc...
-        ],
+        'accuracy score' : value,
+        'match freq' : value
+        'matches' : [
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end),
+            (variance, start, end)
+        ]
     etc...
     }
 """
-
-def load_data(self, entries_file):
-    try:
-        with open(entries_file, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(entries_file + " not found")
-        return None
 
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class MatchData():
     
-    entries_file = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
-
     search_methods = {
-        0: 'sort_by_relevance',
-        1: 'volume_[age]'
+        0: 'regex',
+        1: ''
     }
     
-    def __init__(self, params):
-        self.json_data = self.load_data(MatchData.entries_file)
+    def __init__(self, params, json_entries):
         #self.user_input = user_input # User string search
-        self.entries = None # returned data from search
+        
+        self.json_entries = json_entries # returned data from search
         self.params = params
         
         #basic search params
-        #variance limit must be greater than 1
         self.search_method = 0
-        self.variance = 0 # exact match
+        self.variance = 100 # default similarity of 100 (exact match) 
+        self.transpositions = False # disable for more accurate results
+        self.variance_limit = 50 # experiment with variance limit?
         self.results_per_page = 5 # default is 5 results per page
-        self.order_by = 0 # most relevant first
-            
+        
+        self.matches = [] # return to search controller
 
-    def dynamic_sort(self, entry, sort_criteria):
-        # sort entries by sort criteria
+        # initialize query and its length
+
+        self.query = ''
+        self.qlen = 0
+        self.window_size = 5
+
+        self.init_attributes()
+
+
+    def init_attributes(self):
+        try:
+            self.query = self.params['q']
+            self.qlen = len(self.qlen)
+            if self.qlen <= 5:
+                self.window_size = self.qlen
+            else:
+                self.window_size = self.qlen - (self.qlen / 2)
+        except KeyError:
+            raise KeyError()
+
+    def convert_variance(self, perc_variance):
+        """
+        ranges from 0%-100% lower is closer to exact match; limit 100% has a low similarily of 50? experiment
+        1. convert percentage to float value
+        ex. 0% -> 100; 100% -> self.variance_limit
+        2. assign result to self.variance
+        """
+        # write code here
+        
+
         pass
 
-    def find_variances(self):
-        # Uses 
+
+    def order_by(self, match, sort_criteria):
+        """
+        sort entries by sort criteria (tuple)
+        direction criteria: ascending, descending
+        params criteria: volume, page, date
+        date and volume are mutally exclusive
+        possible combinations:  (volume, page, ascending),
+                                (volume, page, descending),
+                                (date, ascending), #oldest to most recent
+                                (date, descending) #most recent to oldest
+                                (frequency in result)
+                                (best matches)
+        if volume, page are the same or date is the same, then sort by best match
+        if frequency in result is the same, then sort by best match
+        if match accuracy is the same, then sort by frequency
+        if sort_criteria not frequency_in_result: (criteria, matches accuracy descending, frequency descending)
+        if sort_criteria is frequency_in_result: (frequency descending, accuracy)
+        """
+        # write code here
+
+
         pass
 
-    def find_matches_by_variance(self, content, variance):
-        # use regex
+    def calculate_accuracy_heuristic(self, match):
+        """
+        if exact match found, return 1
+
+        """
+        # write code here
+
+
         pass
+
+    
+    def find_matches(self, content):
+        """
+        use rapidfuzz for speed, scalability, and functionality
+
+        """
+        strings_to_compare = []
+        #iterate through the whole content using self.window_size step
+        for i in range(0, len(content), self.window_size):
+            string = content[i:i + self.window_size]
+            strings_to_compare.append(string)
+        matches = process.extract(self.query, strings_to_compare, scorer=fuzz.ratio, score_cutoff=self.variance)
     
     # finds all matches
     def find_matches(self):
-        #json_data = self.load_data(""ntries_file)
+       
+        
         try:
             # loops through the json
             for entry_id in self.json_data:
