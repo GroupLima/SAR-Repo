@@ -89,7 +89,7 @@ return example:
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
-    
+
     search_classes = {
         # key = search method : value = tuple(class name, init variables)
         'phrase/keyword' : 'PhraseKeywordSearch',
@@ -169,7 +169,7 @@ class Search():
         """
         eg. self.entry_id = self.params['entry_id']
         convert the values in the params to their types
-        convert the values in each json entry to their types
+        convert the values in each json entry to their types (could be done in json generator?)
         """
         # write code here
 
@@ -179,7 +179,8 @@ class Search():
 
     def parse_date(self):
         """
-        convert string date into a 
+        convert string date into a tuple of ints.
+        note that later on we'll have to to consider multiple dates with certainty levels 
         """
         # write code here
 
@@ -289,6 +290,7 @@ class Search():
 
     def init_sort_params(self):
         """
+        index params using 'ob' to get the string value of the sort type
         assign self.sort_criteria tuple values value of the values and whether its ascending or descending
         eg. self.sort_criteria = (  
                                     (date, ascending), 
