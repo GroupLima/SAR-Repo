@@ -13,6 +13,7 @@ class AdvancedSearch():
     }
 
     # loop through all json entries
+    # filter values of the json entries that match the param values
     def filter_entries(cls, json_objs, params=None):
         valid_entries = {}
         for entry_id, entry_data in json_objs.items():
@@ -36,22 +37,88 @@ class AdvancedSearch():
         
         return valid_entries
 
-def is_valid_entry_id(value, id_pattern):
-    return value in id_pattern
+def is_valid_entry_id(entry_id, id_pattern_param):
+    """
+    parameters: entry_id (string), id_pattern_param (string)
+    assume entry_id and id_pattern_param are not None
 
-def is_after_date(value, date_from):
+    check if pattern is valid using regex
+    eg. pattern is 'ARO-8'
+    valid entry_id is 'ARO-8-0021-03'
+    """
+    #write code here
+
+
+    
     pass
 
-def is_before_date(value, date_to):
+def is_after_date(date, date_from):
+    """
+    parameters: date (tuple of ints: (year, month, date)), date_from (tuple of ints: (year, month, date))
+    assume date_from is not None
+
+    date value is in the form of a tuple of ints: (year, month, date)
+    keep in mind some dates only have the year and month or even just the year
+    """
+    # write code here
+
+
+
     pass
 
-def is_valid_language(value, language):
+def is_before_date(date, date_to):
+    """
+    parameters: date (tuple of ints: (year, month, date)), date_to (tuple of ints: (year, month, date))
+    assume date_to is not None
+
+    date value is in the form of a tuple of ints: (year, month, date)
+    keep in mind some dates only have the year and month or even just the year
+    """
+    # write code here
+    
+
+
     pass
 
-def is_valid_volume(value, volume):
+def is_valid_language(language, language_param):
+    """
+    parameters: language (string), language_param (string) 
+    assume language and language_param are not None
+
+    return true if the language_param is any
+    otherwise return true if language matches the user param
+    """
+    # write code here
+    
+
+
     pass
 
-def is_valid_page(value, page):
+def is_valid_volume(volume, volume_param):
+    """
+    parameters: volume (int), volume_param (int)
+    assume volume_param is not None
+
+    return true if volume matches volume param
+    """
+    # write code here
+    
+
+
+    pass
+
+def is_valid_page(page, page_param):
+    """
+    parameters: page (int), page_param (tuple of page ints: (1, 40, 28))
+    assume page and page_param are not None
+    
+    if the page_param is invalid, handle appropriately
+    check if page is in page_param
+    """
+    # write code here
+    
+
+
     pass
 
 # add more functions if required

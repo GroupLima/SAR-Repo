@@ -100,6 +100,19 @@ class SearchController extends Controller
         }
     }
 
+    
+    function search(Request $request){
+        // extracts params from request
+        // deals with both basic and advanced search
+        // params is a dictionary of key value pairs
+        // params: user query, results per page, variance, order by asc/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
+        $params = $request->query(); // insert params from request here
+        $permitted = $this->simplify_search_params($params);
+        $python_search_file = './search-app/resources/python/Search.py ' . $permitted;
+        $matches = shell_exec('python3 ' . $python_search_file);
+        return $matches;
+    }
+
     function simplify_search_params($params){
         //params: user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
         $param_keys = ['query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
@@ -110,19 +123,6 @@ class SearchController extends Controller
             }
         }
         return $permitted;
-    }
-
-    
-    function search(Request $request){
-        // extracts params from request
-        // deals with both basic and advanced search
-        // params is a dictionary of key value pairs
-        // params: user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $params = $request->query(); // insert params from request here
-        $permitted = $this->simplify_search_params($params);
-        $python_search_file = './search-app/resources/python/Search.py ' . $permitted;
-        $matches = shell_exec('python3 ' . $python_search_file);
-        return $matches;
     }
 
     
