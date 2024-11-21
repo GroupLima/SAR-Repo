@@ -5,15 +5,22 @@
 }
 
 body {
+<<<<<<< Updated upstream
   transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
   opacity: 0; /* Initially hidden */
+=======
+>>>>>>> Stashed changes
   font-family: Arial, sans-serif;
   background-color: #ffffff;
 }
 
 .navbar {
   font-weight: bold;
+<<<<<<< Updated upstream
   background-color: #6E0D25;
+=======
+  background-color: #6e0d25;
+>>>>>>> Stashed changes
   padding: 40px;
   position: fixed;
   width: 100%;
@@ -75,6 +82,14 @@ header .header-content .aro-description {
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
+<<<<<<< Updated upstream
+=======
+}
+
+.content-wrapper {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+>>>>>>> Stashed changes
 }
 
 main {
@@ -99,7 +114,11 @@ main .search-section .basic-search input {
   font-size: 16px;
 }
 main .search-section .basic-search button {
+<<<<<<< Updated upstream
   background-color: #6E0D25;
+=======
+  background-color: #6e0d25;
+>>>>>>> Stashed changes
   color: #ffffff;
   padding: 12px 24px;
   border: none;
@@ -136,10 +155,16 @@ main .advanced-search-container .advanced-search-dropdown {
   background-color: #ffffff;
   border: 1px solid #4a4a4a;
   border-radius: 50px;
+<<<<<<< Updated upstream
   width: 100%;
   padding: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 900;
+=======
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+>>>>>>> Stashed changes
 }
 main .advanced-search-container .advanced-search-dropdown ul {
   list-style: none;
@@ -175,7 +200,11 @@ main .about-section .about-row:after {
 }
 
 footer {
+<<<<<<< Updated upstream
   background-color: #6E0D25;
+=======
+  background-color: #6e0d25;
+>>>>>>> Stashed changes
   padding: 20px;
   color: #ffffff;
 }

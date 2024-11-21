@@ -24,8 +24,8 @@ $box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 //body styling
 body {
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
-    opacity: 0; /* Initially hidden */
+    //transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+    //opacity: 0; /* Initially hidden */
     font-family: $font-family;
     background-color: $secondary-colour;
 
@@ -104,10 +104,20 @@ header {
         }
     }
 }
+<<<<<<< Updated upstream
 
     //main section styling
     main {
 
+=======
+.content-wrapper {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+//main section styling
+main {
+    
+>>>>>>> Stashed changes
     background-color: $secondary-colour;
     min-height: calc(100vh - 300px);
 

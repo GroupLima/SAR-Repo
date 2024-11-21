@@ -12,13 +12,14 @@
             <img src="{{ asset('images/town.png') }}" alt="Town Logo" class="logo-image">
         </div>
         <div class="nav-links">
-            <a href="/home" onclick="navigateToPage('/home'); return false;">Home</a>
-            <a href="/browse" onclick="navigateToPage('/browse'); return false;">Browse</a>
-            <a href="/xquery" onclick="navigateToPage('/xquery'); return false;">XQuery</a>
-            <a href="/about" onclick="navigateToPage('/about'); return false;">About</a>
+            <a href="/home" class="transition">Home</a>
+            <a href="/browse" class="transition">Browse</a>
+            <a href="/xquery" class="transition">XQuery</a>
+            <a href="/about" class="transition">About</a>
         </div>
     </div>
 </nav>
+<<<<<<< Updated upstream
 <script>
     // Function to transition to a new page with fade-out effect
     function navigateToPage(url) {
@@ -37,3 +38,5 @@
         document.querySelector('body').style.opacity = 1;
     });
 </script>
+=======
+>>>>>>> Stashed changes

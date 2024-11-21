@@ -1,9 +1,11 @@
 <!-- resources/views/home.blade.php -->
 
-@extends('layouts.app')
 @section('title', 'Home Page')
 @section('content')
+<div id="content-wrapper">
+@extends('layouts.app')
 <!-- Header Section -->
+
 <header>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="header-content">
@@ -16,6 +18,8 @@
 
 <!-- Main Section -->
 <main>
+    
+
     <div class="search-section">
         <div class="basic-search">
             <input
@@ -65,10 +69,13 @@
         <a href="#">ACKNOWLEDGMENTS</a>
     </div>
 </footer>
-
+</div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="{{ asset('compiled-js/home.js') }}"></script>
-
 </body>
+<<<<<<< Updated upstream
 
 @endsection
+=======
+@endsection
+>>>>>>> Stashed changes

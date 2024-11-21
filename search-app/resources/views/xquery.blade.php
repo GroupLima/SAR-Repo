@@ -1,8 +1,10 @@
 <!-- resources/views/xquery.blade.php -->
 
-@extends('layouts.app')
 @section('title', 'Xquery Page')
 @section('content')
+<div id="content-wrapper">
+@extends('layouts.app')
+
 <!-- how on earth does it need so many <br>s :0 -->
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
 <header>
@@ -31,5 +33,5 @@
         </code>
     </div>
 </main>
-
+</div>
 @endsection
