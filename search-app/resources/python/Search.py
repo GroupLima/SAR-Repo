@@ -7,7 +7,7 @@ from basic_search_methods.search_phrase_starts_with import PhraseStartsWithSearc
 from basic_search_methods.search_phrase_contains import PhraseContainsSearch
 from basic_search_methods.search_phrase_ends_with import PhraseEndsWithSearch
 from basic_search_methods.search_regex import RegexSearch
-
+import json_parser as jp
 
 """
 we using resources/json/entries.json to find matches
@@ -86,6 +86,51 @@ return example:
     }
 """
 
+# for basic search and autocomplete
+def basic_search(params):
+    try:
+        # write code here
+        # find matches using search method chosen by user
+        search = Search(params)
+        search.init_basic_search_params()
+        search.apply_basic_search()
+
+        # sort entries by criteria param
+        search.init_sort_params()
+        search.order_by(search.sort_criteria)
+        return search.get_matches()
+    except Exception as e:
+        print(
+            f"Error initializing parameters or applying search. "
+            f"Check parameter key names or search method. Details: {e}"
+        )
+
+    
+
+def advanced_search(params):
+    try:
+        # write code here
+        # filter which entries to find matches for
+        search = Search(params)
+        search.init_advanced_search_params()
+        search.apply_advanced_search()
+
+        # find matches using search method chosen by user
+        search.init_basic_search_params()
+        search.apply_basic_search()
+
+        # sort entries by criteria param
+        search.init_sort_params()
+        search.order_by(search.sort_criteria)
+
+        return search.get_matches()
+    except Exception as e:
+        print(
+            f"Error initializing parameters or applying search. "
+            f"Check parameter key names or search method. Details: {e}"
+        )
+
+
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
@@ -101,12 +146,12 @@ class Search():
     
     def __init__(self, params, json_entries, search_type):
         #self.user_input = user_input # User string search
-        self.json_entries = json_entries # returned data from search
+        
         self.params = params
-        self.search_type = search_type
-        # $param_keys = ['query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
+        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
         # default advanced search params
+        self.json_entries = None
         self.entry_id = ''
         self.date_from = None
         self.date_to = None
@@ -130,62 +175,36 @@ class Search():
         self.matches = {} # return to search controller
 
 
-    def search(self):
-        try:
-            match self.search_type:
-                case 'basic' | 'autocomplete_query':
-                    # find matches using search method chosen by user
-                    self.init_basic_search_params()
-                    self.apply_basic_search()
-
-                    # sort entries by criteria param
-                    self.init_sort_params()
-                    self.order_by(self.sort_criteria)
-                case 'advanced':
-                    # filter which entries to find matches for
-                    self.init_advanced_search_params()
-                    self.apply_advanced_search()
-
-                    # find matches using search method chosen by user
-                    self.init_basic_search_params()
-                    self.apply_basic_search()
-
-                    # sort entries by criteria param
-                    self.init_sort_params()
-                    self.order_by(self.sort_criteria)
-                case 'autocomplete_entry':
-                    self.apply_entry_id_search()
-                case _:
-                    raise SearchTypeNotFoundError(self.search_type)
-        except Exception as e:
-            print(
-                f"Error initializing parameters or applying search. "
-                f"Check parameter key names or search method. Details: {e}"
-            )
-
-
-
     def init_advanced_search_params(self):
         """
-        eg. self.entry_id = self.params['entry_id']
+        eg. self.entry_id = self.params['entry_id'] = 'ARO-6-'
         convert the values in the params to their types
         convert the values in each json entry to their types (could be done in json generator?)
         """
         # write code here
+        raw_json_entries = self.params.get('json')
+        if raw_json_entries:
+            jp.parse_json(raw_json_entries)
+            
 
+        self.entry_id = self.params.get('entry_id')
+
+        date_to_string = self.params.get('date_to')
+        if date_to_string:
+            self.date_to = jp.parse_date(date_to_string)
+
+        date_to_string = self.params.get('date_to')
+
+        vol_string = self.params.get('vol')
+        if vol_string:
+            jp.parse_num(vol_string)
+            
+        pg_string = self.params.get('pg')
+
+        lang_string = self.params.get('lang')
 
         pass
-
-
-    def parse_date(self):
-        """
-        convert string date into a tuple of ints.
-        note that later on we'll have to to consider multiple dates with certainty levels 
-        """
-        # write code here
-
-
-        pass
+  
 
 
     def apply_advanced_search(self, entry_id, date_from, date_to, language, volume, page, paragraph):
@@ -195,6 +214,7 @@ class Search():
         use advanced_search.py
         """
         # write code here
+        
 
         
         pass
@@ -322,23 +342,13 @@ class Search():
         if sort_criteria is frequency_in_result: (frequency descending, accuracy)
         """
         # write code here
-
-
-        pass
-
-    def apply_entry_id_search(self):
-        """
-        return possible matching entry ids using self.results_per_page and self.entry_id
-        """
-        #write code here
-        
+            
 
         pass
 
 
     def get_matches(self):
         return self.matches
-
 
 
 class VarianceError(Exception): 
@@ -362,6 +372,6 @@ if __name__ == '__main__':
     if len(sys.argv > 1):
         params = sys.argv[1]
         obj = Search(params)
-        matches = obj.find_matches()
+        matches = obj.get_matches()
         json.dumps(matches) # return the matches data in a JSON object
     pass

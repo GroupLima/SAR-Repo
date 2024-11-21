@@ -1,4 +1,4 @@
-
+import re
 # this file contains advanced search methods
 
 class AdvancedSearch():
@@ -6,9 +6,9 @@ class AdvancedSearch():
         'entry_id' : 'is_valid_entry_id',
         'date_from' : 'is_after_date',
         'date_to' : 'is_before_date',
-        'language' : 'is_valid_language',
-        'volume' : 'is_valid_volume',
-        'page' : 'is_valid_page',
+        'lang' : 'is_valid_language',
+        'vol' : 'is_valid_volume',
+        'pg' : 'is_valid_page',
         # add more functions names if required
     }
 
@@ -37,22 +37,23 @@ class AdvancedSearch():
         
         return valid_entries
 
-def is_valid_entry_id(entry_id, id_pattern_param):
+def is_valid_entry_id(entry_id, id_pattern_param) -> bool:
     """
     parameters: entry_id (string), id_pattern_param (string)
     assume entry_id and id_pattern_param are not None
 
     check if pattern is valid using regex
-    eg. pattern is 'ARO-8'
-    valid entry_id is 'ARO-8-0021-03'
+    eg. if id_pattern_pattern is 'ARO-8'
+    then a valid entry_id would be 'ARO-8-0021-03'
     """
     #write code here
-
-
+    if re.match(entry_id, id_pattern_param):
+        return True
+    else:
+        return False
     
-    pass
 
-def is_after_date(date, date_from):
+def is_after_date(date, date_from) -> bool:
     """
     parameters: date (tuple of ints: (year, month, date)), date_from (tuple of ints: (year, month, date))
     assume date_from is not None
@@ -61,12 +62,13 @@ def is_after_date(date, date_from):
     keep in mind some dates only have the year and month or even just the year
     """
     # write code here
+    
 
 
 
     pass
 
-def is_before_date(date, date_to):
+def is_before_date(date, date_to) -> bool:
     """
     parameters: date (tuple of ints: (year, month, date)), date_to (tuple of ints: (year, month, date))
     assume date_to is not None
@@ -74,13 +76,15 @@ def is_before_date(date, date_to):
     date value is in the form of a tuple of ints: (year, month, date)
     keep in mind some dates only have the year and month or even just the year
     """
-    # write code here
-    
+    # compares every entry to find if the user entered date is before 
+    # return true if date is less than date_to
+    match len(date_to):
+        case 2:
+            pass
+        case 3 | 1:
+            return date < date_to
 
-
-    pass
-
-def is_valid_language(language, language_param):
+def is_valid_language(language, language_param) -> bool:
     """
     parameters: language (string), language_param (string) 
     assume language and language_param are not None
@@ -89,12 +93,12 @@ def is_valid_language(language, language_param):
     otherwise return true if language matches the user param
     """
     # write code here
-    
+    if language == language_param:
+        return True
+    else:
+        return False
 
-
-    pass
-
-def is_valid_volume(volume, volume_param):
+def is_valid_volume(volume, volume_param) -> bool:
     """
     parameters: volume (int), volume_param (int)
     assume volume_param is not None
@@ -102,12 +106,12 @@ def is_valid_volume(volume, volume_param):
     return true if volume matches volume param
     """
     # write code here
-    
+    if volume == volume_param:
+        return True
+    else:
+        return False
 
-
-    pass
-
-def is_valid_page(page, page_param):
+def is_valid_page(page, page_param) -> bool:
     """
     parameters: page (int), page_param (tuple of page ints: (1, 40, 28))
     assume page and page_param are not None

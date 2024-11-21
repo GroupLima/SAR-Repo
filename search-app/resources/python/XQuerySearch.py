@@ -3,6 +3,7 @@ import os
 from BaseXClient import BaseXClient
 from pathlib import Path
 import time
+import uuid
 
 # Creating session to be able to query XML files - aka database
 
@@ -20,7 +21,8 @@ class XQuerySearch():
     # Conduct XQuery on every XML file
     def search(self, user_xquery):
         try:
-            self.db_name = "temp-xquery-db"
+            # Also add a unique id
+            self.db_name = f"xquery_db-{uuid.uuid4()}"
             # Create the database
             self.session.execute(f"create db {self.db_name}")
 
