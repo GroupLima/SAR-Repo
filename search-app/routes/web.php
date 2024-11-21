@@ -10,7 +10,8 @@ put all application routes here with their corresponding functions
 */
 
 //Default route for the home page
-Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home');
+// added bool to detect if xml should be displayed
+Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home', false);
 
 //route when user goes to a page
 Route::get('/{page}', [RouteController::class, 'display_view']);

@@ -18,7 +18,7 @@ class XmlController extends Controller
     {
         // Set the path to the JSON file
         $this->jsonFilePath = resource_path('json/entries.json');
-        
+
         // Load and decode the JSON data
         if (file_exists($this->jsonFilePath)) {
             $this->jsonData = json_decode(file_get_contents($this->jsonFilePath), true);
@@ -137,7 +137,7 @@ class XmlController extends Controller
 
         // Register the TEI namespace
         $xml_file->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
-        
+
         // get entry where xml:id is $id
         $target_xml = $xml_file->xpath("//tei:div[@xml:id='{$entry_id}']");
 
@@ -164,7 +164,7 @@ class XmlController extends Controller
             $inner_text .= $dom_node->ownerDocument->saveHTML($child);
         }
         return $inner_text;
-    } 
+    }
 
 
     public function get_match_results(){
@@ -188,7 +188,7 @@ class XmlController extends Controller
         return $match_results;
     }
 
-    
+
 }
 
 

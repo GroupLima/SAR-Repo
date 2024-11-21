@@ -14,10 +14,14 @@ class RouteController extends Controller
     }
 
     //take in a string variable $page and returns the route if it exists
-    public function display_view($page='/'){
+    // added check so that xml isn't displayed on home page for no reason :)
+    public function display_view($page='/', $displayEasterEgg = false){
         if ($this->valid_route($page)){
             if ($page == 'home'){
-                $entries = $this->xmlController->get_all_entries();
+                $entries = [];
+                if ($displayEasterEgg == true){
+                    $entries = $this->xmlController->get_all_entries();
+                }
                 return $this->xmlController->display_entries($entries);
             }
             return view('/' . $page);
@@ -27,7 +31,7 @@ class RouteController extends Controller
     }
 
     public function valid_route($page){
-        
+
         if (view()->exists($page)){
             return true;
         }
@@ -37,5 +41,5 @@ class RouteController extends Controller
         // if did not pass any of the validation checks, return false
         return false;
     }
-    
+
 }
