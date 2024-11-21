@@ -1,12 +1,12 @@
 //standard variables
-$primary-colour: #6E0D25;
+$primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
 $dark-gray: #4a4a4a;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
 $max-width: 1000px;
 $border-radius: 50px;
-$box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+$box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 //mixin for flexbox alignment
 @mixin flex-space-between {
@@ -28,7 +28,6 @@ body {
     opacity: 0; /* Initially hidden */
     font-family: $font-family;
     background-color: $secondary-colour;
-
 }
 
 //navbar styling
@@ -37,8 +36,8 @@ body {
     background-color: $primary-colour;
     padding: 40px;
     position: fixed;
-    width: 100%; 
-    top: 0;         
+    width: 100%;
+    top: 0;
     left: 0;
     z-index: 1000;
 
@@ -48,13 +47,14 @@ body {
         margin: 0 auto;
     }
     .text-container {
-      display: flex; /* Use flexbox for the text container */
-      flex-direction: column; /* Stack text elements vertically */
+        display: flex; /* Use flexbox for the text container */
+        flex-direction: column; /* Stack text elements vertically */
     }
     .logo-section {
         color: $secondary-colour;
         display: flex; /* Use flexbox layout */
         align-items: center; /* Center items vertically */
+
         .logo-text {
             font-size: 5.5em;
             font-weight: bold;
@@ -81,7 +81,7 @@ body {
         font-size: 1.1em;
 
         &:hover {
-        text-decoration: underline;
+            text-decoration: underline;
         }
     }
 }
@@ -93,7 +93,6 @@ header {
     .header-content {
         max-width: $max-width;
         margin: 0 auto;
-    
 
         .aro-description {
             font-size: 3em;
@@ -105,9 +104,8 @@ header {
     }
 }
 
-    //main section styling
-    main {
-
+//main section styling
+main {
     background-color: $secondary-colour;
     min-height: calc(100vh - 300px);
 
@@ -146,13 +144,9 @@ header {
         width: auto;
         display: flex;
         align-items: flex-end;
- 
     }
-  
-    
-  
 
-  .dropdown-button {
+    .dropdown-button {
         background-color: $dark-gray;
         color: $secondary-colour;
         padding: 10px 20px;
@@ -163,67 +157,66 @@ header {
         text-align: left;
         width: 200px;
         position: relative;
-  }
+    }
 
-  .advanced-search-container {
-    position: relative;
-
-    .advanced-search-dropdown {
+    .advanced-search-container {
         position: relative;
-        top: 100%;
-        left: 0;
-        background-color: $secondary-colour;
-        border: 1px solid $dark-gray;
-        border-radius: $border-radius;
-        width: 100%;
-        padding: 24px;
-        box-shadow: $box-shadow;
-        z-index: 900;
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .advanced-search-dropdown {
+            position: relative;
+            top: 100%;
+            left: 0;
+            background-color: $secondary-colour;
+            border: 1px solid $dark-gray;
+            border-radius: $border-radius;
+            width: 100%;
+            padding: 24px;
+            box-shadow: $box-shadow;
+            z-index: 900;
 
-            li {
-                padding: 10px;
-                cursor: pointer;
-                color: #333;
-                
-                &:hover {
-                    background-color: #f5f5f5;
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding: 10px;
+                    cursor: pointer;
+                    color: #333;
+
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
+                }
+
+                label {
+                    display: block;
+                    cursor: pointer;
+                }
+
+                input[type="radio"] {
+                    margin-right: 10px;
                 }
             }
+        }
 
-        label {
+        .advanced-search-dropdown.active {
             display: block;
-            cursor: pointer;
+        }
+    }
+
+    .about-section {
+        .about-column {
+            float: left;
+            width: 33.33%;
         }
 
-        input[type="radio"] {
-            margin-right: 10px;
+        .about-row:after {
+            content: "";
+            display: table;
+            clear: both;
         }
-      }
     }
-
-    .advanced-search-dropdown.active {
-        display: block;
-    }
-  }
-
-  .about-section {
-    
-    .about-column {
-        float: left;
-        width: 33.33%;
-    }
-
-    .about-row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-  }
 }
 
 //footer section styling

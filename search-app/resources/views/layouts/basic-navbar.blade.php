@@ -1,11 +1,11 @@
 <!-- resources/views/layouts/basic-navbar.blade.php -->
 
 <!-- this can be changed later on by the sass team -->
-<nav id="navbar" class="navbar">    
+<nav id="navbar" class="navbar">
     <div class="nav-content">
         <div class="logo-section" onclick="navigateToPage('/home');">
 
-            <div class="text-container"> <!-- New container for text -->    
+            <div class="text-container"> <!-- New container for text -->
                 <div class="logo-text">SAR</div>
                 <div class="logo-subtext">Search Aberdeen Registers</div>
             </div>
@@ -26,7 +26,7 @@
         document.querySelector('body').style.opacity = 0;
 
         // After 500ms (duration of the fade-out), navigate to the new page
-        setTimeout(function() { 
+        setTimeout(function() {
             window.location.href = url;
         }, 500); // This timeout should match the fade-out duration
     }
