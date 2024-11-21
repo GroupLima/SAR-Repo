@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
     <br><br>
     <div class="image-container">
@@ -52,7 +52,7 @@
         document.getElementById("advanced-search-dropdown").classList.toggle("active");
         }
     </script> -->
-    
+
 </main>
 
 

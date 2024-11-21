@@ -110,12 +110,19 @@ main .search-section .basic-search button {
     cursor: pointer;
     font-weight: bold;
 }
+
 main .image-container {
-    height: 300px;
-    width: auto;
-    display: flex;
-    align-items: flex-end;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
+
+main .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 main .dropdown-button {
     background-color: #4a4a4a;
     color: #ffffff;

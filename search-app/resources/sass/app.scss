@@ -169,10 +169,9 @@ main {
             background-color: $secondary-colour;
             border: 1px solid $dark-gray;
             border-radius: $border-radius;
-            width: 100%;
-            padding: 24px;
+            width: 200px;
             box-shadow: $box-shadow;
-            z-index: 900;
+            z-index: 1000;
 
             ul {
                 list-style: none;
