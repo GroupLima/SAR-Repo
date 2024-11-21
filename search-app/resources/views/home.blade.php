@@ -20,7 +20,7 @@
                 placeholder="Enter your search term"s
                 aria-label="Search"
             />
-            <button>SEARCH</button>
+            <button @dataStored>SEARCH</button>
         </div>
         <div id="advanced" class="advanced-search-container">
             <button class="dropdown-button" @click="toggleDropdown">
