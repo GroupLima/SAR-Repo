@@ -20,10 +20,11 @@
         <div class="basic-search">
             <input
                 type="search"
-                placeholder="Enter your search term"s
+                placeholder="Enter your search term"
                 aria-label="Search"
+                id="search-box"
             />
-            <button>SEARCH</button>
+            <button id="search-button">SEARCH</button>
         </div>
         <div id="advanced" class="advanced-search-container">
             <button class="dropdown-button" @click="toggleDropdown">
@@ -32,9 +33,6 @@
             <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                 <div id="search-options">
                     @include('home-views.search')
-                    <!-- sass people ffffffffplease make this section wider, i.e. not just the width of the button -->
-                    <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
-                    <!-- also shouldnt cover content when it pops up -->
                 </div>
             </div>
         </div>
@@ -43,14 +41,18 @@
     </div>
     <br><br>
     <div class="image-container">
-    <img src="{{ asset('images/sample.png') }}" alt="sample text" style = "overflow: hidden;">
+        <img src="{{ asset('images/sample.png') }}" alt="sample text" style = "overflow: hidden;">
     </div>
     @include('layouts.entries')
-        <script>
-                function toggleDropdown() {
-                document.getElementById("advanced-search-dropdown").classList.toggle("active");
-                }
-        </script>
+    <!-- this script isn't actually doing anyhing because it is linked to a class, not an id, so it
+        doesn't work. Removing it has no effect because the vue script linked at the bottom is fully in
+        control of the dropdown functionality. I don't think we need this.-->
+    <!-- <script>
+        function toggleDropdown() {
+        document.getElementById("advanced-search-dropdown").classList.toggle("active");
+        }
+    </script> -->
+    
 </main>
 
 
