@@ -155,4 +155,9 @@ class SearchController extends Controller
     function chart_wordstart_date(){
         // uses search
     }
+
+    // for vue people, call this function when the user fills in one of the search input fields
+    function insert_param(){
+
+    }
 }
