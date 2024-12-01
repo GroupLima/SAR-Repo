@@ -1,3 +1,4 @@
+
 <!-- resources/views/search.blade.php -->
 <!-- put search components here -->
 

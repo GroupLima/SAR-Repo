@@ -20,3 +20,6 @@ Route::get('/search', [SearchController::class, 'search']);
 
 //execute xquery
 Route::get('/xquery', [SearchController::class, 'xquery']);
+
+Route::post('/xquery', [SearchController::class, 'runXQuery']);
+

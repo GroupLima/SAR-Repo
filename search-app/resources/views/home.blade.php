@@ -1,5 +1,3 @@
-<!-- resources/views/home.blade.php -->
-
 @extends('layouts.app')
 @section('title', 'Home Page')
 @section('content')
@@ -24,7 +22,7 @@
                 aria-label="Search"
                 id="search-box"
             />
-            <button id="search-button">SEARCH</button>
+
         </div>
         <div id="advanced" class="advanced-search-container">
             <button class="dropdown-button" @click="toggleDropdown">
@@ -36,8 +34,7 @@
                 </div>
             </div>
         </div>
-        
-        
+
     </div>
     <br><br>
     <div class="image-container">
@@ -55,7 +52,6 @@
     
 </main>
 
-
 <!-- Footer Section -->
 <footer>
     <div class="footer-links">
@@ -68,7 +64,3 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="{{ asset('compiled-js/home.js') }}"></script>
-
-</body>
-
-@endsection

@@ -6,6 +6,25 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+  protected $jsonFilePath;
+  protected $jsonData;
+
+  // initializes the xml controller
+  public function __construct()
+  {
+      // Set the path to the JSON file
+      $this->jsonFilePath = resource_path('json/entries.json');
+
+      // Load and decode the JSON data
+      if (file_exists($this->jsonFilePath)) {
+          $this->jsonData = json_decode(file_get_contents($this->jsonFilePath), true);
+      } else {
+          //echo "empty";
+          $this->jsonData = []; // Initialize to an empty array if file does not exist
+      }
+  }
+
+  
     /* 
     Search Process:
 
@@ -39,6 +58,9 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         vue         ->  17. vue includes results in relevant views (entries.blade.php, search.blade.php, etc)
     sass+html           18. html and css are applied to style the views
             
+
+    
+  /*
     XML file naming system: 
     ARO-(beginning_volume)-(beginning_page)-(beginning_chapter)_ARO-(ending_volume)-(ending_page)-(ending_chapter).xml
     
@@ -46,12 +68,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     2. returns results found for entries:
         a. entry id of each entry
         b. match in each result
-
-    */
-
-    //python functions here
-
-    /*
     xml filters (queries according to user input):
     1. dates
     2. language (Latin, Scots, Dutch)
@@ -72,8 +88,10 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
  - Two altered characters from query (rephrase)
     */
 
-    protected $match_results = [];
     
+
+    protected $match_results = [];
+  
     function search(Request $request){
         // extracts params from request
         // deals with both basic and advanced search
@@ -83,6 +101,30 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted = $this->simplify_search_params($params);
         $python_search_file = $this->get_search_path($permitted) . $permitted;
         $matches = shell_exec('python3 ' . $python_search_file);
+      
+         // Validate the incoming request
+        $validated = $request->validate([
+            'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
+            'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
+            'language' => 'required|string',            // Required, must be a string
+            'variant' => 'required|string',             // Required, must be a string
+            'volumes' => 'array',                       // Optional, must be an array
+            'pageSearch' => 'nullable|string',          // Optional, must be a string
+            'entrySearch' => 'nullable|string',         // Optional, must be a string
+            'startDate' => 'nullable|date',             // Optional, must be a valid date
+            'endDate' => 'nullable|date',               // Optional, must be a valid date
+            'docId' => 'nullable|string',               // Optional, must be a string
+        ]);
+
+        // Process validated data
+        // Example: You can add custom processing logic here
+
+        // Return the JSON response with the validated data
+        return response()->json([
+            'success' => true,
+            'data' => $validated,
+        ]);
+      
         /*
         an example of what $matches looks like:
         {
@@ -130,6 +172,28 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         return $display_results;
     }
+  
+  
+  /**
+     * Handles search requests by validating and accessing parameters.
+     */
+    public function runXQuery(Request $request)
+    {
+        // Log or process the received data
+        $data = $request->all(); // Get all incoming request data
+        \Log::info('Received data:', $data);
+        
+        // Placeholder function call
+        $response = $this->sayHello();
+
+        // Return the response
+        return response()->json(['message' => $response]);
+    }
+
+    private function sayHello()
+    {
+        return "We love you fariha";
+    }
 
     
 
@@ -146,7 +210,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         }
         return $permitted;
     }
-
     function get_search_path($params){
         $query_type = $params['qt'];
         if (strpos($query_type, $query_type) === 'xquery search'){
@@ -205,5 +268,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         }
         return $highlighted_content;
     }
-    
+
 }
+
