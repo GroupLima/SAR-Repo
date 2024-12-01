@@ -1,3 +1,6 @@
+import axios from 'axios';
+axios.defaults.baseURL = 'https://your-api-base-url.com';
+
 const xqueryApp = Vue.createApp({
     data() {
         return {
