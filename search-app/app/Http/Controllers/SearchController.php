@@ -93,38 +93,53 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     protected $match_results = [];
   
     function search(Request $request){
-        // extracts params from request
-        // deals with both basic and advanced search
-        // params is a dictionary of key value pairs
-        // params: user query, results per page, variance, order by asc/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $params = $request->query(); // insert params from request here
-        $permitted = $this->simplify_search_params($params);
-        $python_search_file = $this->get_search_path($permitted) . $permitted;
-        $matches = shell_exec('python3 ' . $python_search_file);
-      
-         // Validate the incoming request
-        $validated = $request->validate([
-            'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
-            'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
-            'language' => 'required|string',            // Required, must be a string
-            'variant' => 'required|string',             // Required, must be a string
-            'volumes' => 'array',                       // Optional, must be an array
-            'pageSearch' => 'nullable|string',          // Optional, must be a string
-            'entrySearch' => 'nullable|string',         // Optional, must be a string
-            'startDate' => 'nullable|date',             // Optional, must be a valid date
-            'endDate' => 'nullable|date',               // Optional, must be a valid date
-            'docId' => 'nullable|string',               // Optional, must be a string
-        ]);
+        
+        try {
+            // Validate the incoming request
+            $validated = $request->validate([
+                'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
+                'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
+                'language' => 'required|string',            // Required, must be a string
+                'variant' => 'required|string',             // Required, must be a string
+                'volumes' => 'array',                       // Optional, must be an array
+                'pageSearch' => 'nullable|string',          // Optional, must be a string
+                'entrySearch' => 'nullable|string',         // Optional, must be a string
+                'startDate' => 'nullable|date',             // Optional, must be a valid date
+                'endDate' => 'nullable|date',               // Optional, must be a valid date
+                'docId' => 'nullable|string',               // Optional, must be a string
+            ]);
+            //get request parameters
+            $params = $request->query();
+            
+            //convert vue data params to backend params eg. endDate -> end_date
+            $permitted = $this->simplify_search_params($params);
 
-        // Process validated data
-        // Example: You can add custom processing logic here
+            //get query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
+            $python_search_file = $this->get_search_path($permitted) . $permitted;
 
-        // Return the JSON response with the validated data
-        return response()->json([
-            'success' => true,
-            'data' => $validated,
-        ]);
-      
+            //get matches from any type of search
+            $matches = shell_exec('python3 ' . $python_search_file);
+
+            //store matches
+            $this->match_results = $matches;
+
+            //format results with convert relevent text to html,  highlights,filter by page, etc
+            $display_results = $this->apply($permitted);
+
+            // Return the JSON response with the validated data
+            return response()->json([
+                'success' => true,
+                'data' => $display_results,
+            ]);
+          
+        
+        } catch (ValidationException $e){
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid parameters, add an error view instead of this message',
+                //route to valid error page eventually
+            ]); 
+        }
         /*
         an example of what $matches looks like:
         {
@@ -164,19 +179,9 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         etc...
         }
         */
-        //store matches
-        $this->match_results = $matches;
-
-        //format html results with highlights, filter by page, etc
-        $display_results = $this->apply($permitted);
-
-        return $display_results;
     }
-  
-  
-  /**
-     * Handles search requests by validating and accessing parameters.
-     */
+
+    
     public function runXQuery(Request $request)
     {
         // Log or process the received data

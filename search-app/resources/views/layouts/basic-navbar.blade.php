@@ -36,4 +36,6 @@
         // Fade in the body
         document.querySelector('body').style.opacity = 1;
     });
+
+
 </script>

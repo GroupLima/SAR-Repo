@@ -3,13 +3,18 @@
 @section('content')
 
 <div class="container">
+<script>
+    console.log("HTML content loaded successfully");
+</script>
     <header>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="header-content">
             <h1 id="xq-title">XQuery Search</h1>
             <p>Search through XML documents using XQuery</p>
         </div>
     </header>
-    
+    console.log("Vue is initializing...");
+
     <main id="app">
         <div class="search-section">
             <input 
@@ -40,7 +45,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    
+console.log("Vue is initializing...");
 document.addEventListener('DOMContentLoaded', () => {
     const { createApp } = Vue;
     
