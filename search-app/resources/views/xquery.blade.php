@@ -28,6 +28,7 @@
         <div class="results-section mt-3">
             <h2 class="results-title">Results</h2>
             <pre v-if="results" id="xq-results" class="xml-results">@{{ results }}</pre>
+            <p>Debug: @{{ results }}</p>
         </div>
     </main>
 </div>
@@ -36,7 +37,9 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script>
+    
 document.addEventListener('DOMContentLoaded', () => {
     const { createApp } = Vue;
     
@@ -50,22 +53,24 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         methods: {
             async runQuery() {
+                console.log("Run Query button clicked!");
                 try {
                     this.results = null;
                     this.error = null;
 
-                    const response = await axios.post('/api/xquery', {
+                    const response = await axios.post('/xquery', {
                         query: this.query,
                     });
 
-                    this.results = response.data.results;
+                    console.log("Response received:", response);
+                    this.results = response.data.message;
                 } catch (error) {
-                    console.error(error);
+                    console.error("Error occurred:", error);
                     this.error = error.response?.data?.error || 'An unexpected error occurred';
                 }
-            },
-        },
+}           }
+
     }).mount('#app');
 });
 </script>
-@endsection="{{ asset('compiled-js/home.js') }}"></script>
+
