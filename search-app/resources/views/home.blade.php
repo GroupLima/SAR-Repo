@@ -1,5 +1,3 @@
-<!-- resources/views/home.blade.php -->
-
 @extends('layouts.app')
 @section('title', 'Home Page')
 @section('content')
@@ -20,7 +18,7 @@
                 placeholder="Enter your search term"s
                 aria-label="Search"
             />
-            <button @dataStored>SEARCH</button>
+            <button @click="dataStored">SEARCH</button> <!-- Fixed @dataStored to @click="dataStored" -->
         </div>
         <div id="advanced" class="advanced-search-container">
             <button class="dropdown-button" @click="toggleDropdown">
@@ -36,14 +34,8 @@
             </div>
         </div>
         @include('layouts.entries')
-        <script>
-                function toggleDropdown() {
-                document.getElementById("advanced-search-dropdown").classList.toggle("active");
-                }
-        </script>
     </div>
 </main>
-
 
 <!-- Footer Section -->
 <footer>

@@ -1,5 +1,9 @@
 import axios from 'axios';
-const navbarApp = Vue.createApp({
+import { createApp } from 'vue';
+
+axios.defaults.baseURL = 'https://your-api-base-url.com';
+
+const navbarApp = createApp({
     data() {
         return {
             isDropdownOpen: false, // State to manage dropdown visibility
@@ -13,14 +17,13 @@ const navbarApp = Vue.createApp({
             startDate: "",
             endDate: "",
             docId: "",
-
         };
     },
     methods: {
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen; // Toggle dropdown visibility
         },
-        dataStored(){
+        dataStored() {
             const dataUser = {
                 basicSearch: this.basicSearch,
                 methodSearch: this.methodSearch,
@@ -35,13 +38,13 @@ const navbarApp = Vue.createApp({
             };
 
             axios.post('/search', dataUser)
-            .then(response => {
-                // Handle successful response, like showing results
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+                .then(response => {
+                    // Handle successful response, like showing results
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     },
 });
