@@ -281,23 +281,7 @@ class XmlController extends Controller
             return NAN;
         }
     }  
-    public function runXQuery(Request $request)
-    {
-        // Log or process the received data
-        $data = $request->all(); // Get all incoming request data
-        \Log::info('Received data:', $data);
-        
-        // Placeholder function call
-        $response = $this->sayHello();
 
-        // Return the response
-        return response()->json(['message' => $response]);
-    }
-
-    private function sayHello()
-    {
-        return "We love you fariha";
-    }
 }
 
 
