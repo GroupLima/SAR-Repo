@@ -6,12 +6,103 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    /**
-     * Handles search requests by validating and accessing parameters.
-     */
-    public function search(Request $request)
-    {
-        // Validate the incoming request
+  protected $jsonFilePath;
+  protected $jsonData;
+
+  // initializes the xml controller
+  public function __construct()
+  {
+      // Set the path to the JSON file
+      $this->jsonFilePath = resource_path('json/entries.json');
+
+      // Load and decode the JSON data
+      if (file_exists($this->jsonFilePath)) {
+          $this->jsonData = json_decode(file_get_contents($this->jsonFilePath), true);
+      } else {
+          //echo "empty";
+          $this->jsonData = []; // Initialize to an empty array if file does not exist
+      }
+  }
+
+  
+    /* 
+    Search Process:
+
+                                        CLIENT SIDE
+        html        ->   1. user interface allows users to input in input fields
+        vue         ->   2. vue constantly gets input and stores it in correct data container
+        vue         ->   3. for autocomplete, as user is typing, vue automatically collects the stored data 
+                            in input field and sends an async request to the search controller
+        vue         ->   4. for search button, vue collects stored data (already stored in vue) from all 
+                            relevant input fields and sends an async request to the search controller
+                                        SERVER SIDE
+route_controller    ->   5. url request is routed through route controller
+route_controller    ->   6. route controller validates request for security
+route_controller    ->   7. valid request sent back to search controller
+search_controller   ->   8. search controller calls search function and validates parameters and calls 
+                            relevant python script, passing in the json_data and formatted parameters object
+python(xquery)           9. xquery does stuff and returns matches (refer to example of what $matches 
+                            should look like in function search() in SearchController.php)
+python(other search)->  10. if not autocomplete, python filter entries through advanced search to comply 
+                            with the filters
+python(other search)->  11. python searches string matches within filtered entries using python and stores 
+                            match data in dictionary
+python(other search)->  12. python sorts the entries by desired criteria
+python              ->  13. python returns results to search controller and stored
+search_controller   ->  14. results are limited to results per page, then converted to html, and highlighted 
+                            where there are matches
+search_controller   ->  15. sorted results (html text, other match data, entry data, etc.) are returned and 
+                            sent back to vue as a json response, completing the async request
+                                        CLIENT SIDE
+        vue         ->  16. vue gets response with results
+        vue         ->  17. vue includes results in relevant views (entries.blade.php, search.blade.php, etc)
+    sass+html           18. html and css are applied to style the views
+            
+
+    
+  /*
+    XML file naming system: 
+    ARO-(beginning_volume)-(beginning_page)-(beginning_chapter)_ARO-(ending_volume)-(ending_page)-(ending_chapter).xml
+    
+    python functionality:
+    2. returns results found for entries:
+        a. entry id of each entry
+        b. match in each result
+    xml filters (queries according to user input):
+    1. dates
+    2. language (Latin, Scots, Dutch)
+    3. Volume
+    4. Page
+    5. Paragraph
+    6. Entry ID
+    7. results per page
+    8. spelling variants
+        a. Use number and description e.g., 1 - One altered character from query, 2
+    9. queries matches according to
+        a. spelling variants
+        b. exact match
+        c. phrase
+        d. begins with
+        e. contains
+        f. ends with
+ - Two altered characters from query (rephrase)
+    */
+
+    
+
+    protected $match_results = [];
+  
+    function search(Request $request){
+        // extracts params from request
+        // deals with both basic and advanced search
+        // params is a dictionary of key value pairs
+        // params: user query, results per page, variance, order by asc/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
+        $params = $request->query(); // insert params from request here
+        $permitted = $this->simplify_search_params($params);
+        $python_search_file = $this->get_search_path($permitted) . $permitted;
+        $matches = shell_exec('python3 ' . $python_search_file);
+      
+         // Validate the incoming request
         $validated = $request->validate([
             'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
             'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
@@ -33,7 +124,59 @@ class SearchController extends Controller
             'success' => true,
             'data' => $validated,
         ]);
+      
+        /*
+        an example of what $matches looks like:
+        {
+        'ARO-1-0001-03' : {
+            'accuracy_score' : value,
+            'match_frequency' : value
+            'matches' : [
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                ]
+            }
+        'ARO-1-0001-04' : {
+            'accuracy_score' : value,
+            'match_freq' : value
+            'matches' : [
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                ]
+            }
+        'ARO-6-0001-01' : {
+            'accuracy_score' : value,
+            'match_freq' : value
+            'matches' : [
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                (string, similarity score, start index),
+                ]
+            }
+        etc...
+        }
+        */
+        //store matches
+        $this->match_results = $matches;
+
+        //format html results with highlights, filter by page, etc
+        $display_results = $this->apply($permitted);
+
+        return $display_results;
     }
+  
+  
+  /**
+     * Handles search requests by validating and accessing parameters.
+     */
     public function runXQuery(Request $request)
     {
         // Log or process the received data
@@ -51,132 +194,15 @@ class SearchController extends Controller
     {
         return "We love you fariha";
     }
-}
-
-
-/*
-
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class SearchController extends Controller
-{
-    /* 
-    Search Process:
-    1. xmlcontroller takes in search parameters
-    2. searches ALL the entries using python
-    3. python class returns a data structure with info for each entry such as number of matches found, their indexes, etc
-    4. query results to display ones that match the filters
-    
-    XML file naming system: 
-    ARO-(beginning_volume)-(beginning_page)-(beginning_chapter)_ARO-(ending_volume)-(ending_page)-(ending_chapter).xml
-    
-    python functionality:
-    2. returns results found for entries:
-        a. entry id of each entry
-        b. index, length, and spelling variant of each match in each result
-
-    */
-    /*
-
-    //python functions here
-    function search_entries($content){
-        // look through every single entry and return matches of every variance
-        // loop through all entries and have an array of tags for each entry
-        
-    }
-*/
-    /*
-    xml filters (queries according to user input):
-    1. dates
-    2. language (Latin, Scots, Dutch)
-    3. Volume
-    4. Page
-    5. Paragraph
-    6. Entry ID
-    7. results per page
-    8. spelling variants
-        a. Use number and description e.g., 1 - One altered character from query, 2
-    9. queries matches according to
-        a. spelling variants
-        b. exact match
-        c. phrase
-        d. begins with
-        e. contains
-        f. ends with
- - Two altered characters from query (rephrase)
-    */
-    /*
-
-    //should be called after matches found
-    //! WORK IN PROGRESS
-    function query_results(Request $filter_args, $results) {
-    //handles user params which is a dictionary of filters
-        /*ex.  $filter_args = [ 
-                        'language' => 'latin',
-                        'page' => '5, 18, 9',
-                        'paragraph' => None, 
-                        etc...
-                    ];
-        filter_args['language']; will return 'latin'
-        */
-
- /*      
-        $params = [
-            'date' => get_date($filter_args->input('date')),
-            'language' => get_language($filter_args->input('language')),
-            'volume' => get_volume($filter_args->input('volume')),
-            'page' => get_page($filter_args->input('page')),
-            'paragraph' => get_paragraph($filter_args->input('paragraph')),
-            'entry_id' => get_entry_id($filter_args->input('entry_id')),
-        ];
-        // return something
-
-        function get_date($date_param){
-            return NAN;
-        }
-
-        function get_language($language_param){
-            return NAN;
-        }
-
-        function get_volume($volume_param){
-            return NAN;
-        }
-
-        function get_page($page_param){
-            return NAN;
-        }
-
-        function get_paragraph($paragraph_param){
-            return NAN;
-        }
-
-        function get_entry_id($entry_id_param){
-            return NAN;
-        }
-    }
 
     
-    function search(Request $request){
-        // extracts params from request
-        // deals with both basic and advanced search
-        // params is a dictionary of key value pairs
-        // params: user query, results per page, variance, order by asc/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $params = $request->query(); // insert params from request here
-        $permitted = $this->simplify_search_params($params);
-        $python_search_file = './search-app/resources/python/Search.py ' . $permitted;
-        $matches = shell_exec('python3 ' . $python_search_file);
-        return $matches;
-    }
 
     function simplify_search_params($params){
-        //params: user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
-        $ermitted = [];
+        //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
+        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
+        
+        $permitted = [];
+        //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
             if (isset($params[$param])) {
                 $permitted[$param] = $params[$param];
@@ -184,8 +210,51 @@ class SearchController extends Controller
         }
         return $permitted;
     }
+    function get_search_path($params){
+        $query_type = $params['qt'];
+        if (strpos($query_type, $query_type) === 'xquery search'){
+            //hardcoded for now
+            return './search-app/resources/python/XQuerySearch.py '; 
+        } else {
+            return './search-app/resources/python/Search.py ' ;
+        }
+    }
 
-    
+    function apply($permitted) {
+        //get results to display
+        $this->get_results_for_page($permitted['rpp'], 0);
+
+        $query_type = $permitted['qt'];
+
+        /*
+        
+        foreach ($results as &result) {
+            if (isset($result->text) && isset($result->matches)){
+                //convert to html
+            }
+        }
+        */
+
+        //if not autocomplete, highlight the html
+        if (strpos($query_type, 'autocomplete') !== false ){
+            return $this->match_results;
+        }
+        
+        
+
+        //return false if parametters couldnt be applied
+    }
+
+    //get chunk of results (if user requested 10 results per page, get the first 10 results)
+    function get_results_for_page($rpp, $page){
+        //use modulus to determine which chunk of results to return according to rpp (results per page)
+        return null;
+    }
+
+    function convert_to_html($content){
+        $html = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+        return $html;
+    }
 
     // add highlight tags to content
     function highlight($text, $matches){
@@ -199,23 +268,6 @@ class SearchController extends Controller
         }
         return $highlighted_content;
     }
-    // autocomplete for user query
-    function autocomplete(){
-        // uses search
-        // min length to apply autocomplete: 2
-    }
 
-    // autocomplete for entry ID
-    function autocomplete_entry(){
-        // uses search
-        // min length to apply autocomplete: 2
-    }
-
-
-    function chart_wordstart_date(){
-        // uses search
-    }
 }
 
-
-*/

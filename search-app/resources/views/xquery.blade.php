@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'XQuery Search')
 @section('content')
+
 <div class="container">
     <header>
         <div class="header-content">
@@ -73,4 +74,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }).mount('#app');
 });
 </script>
-

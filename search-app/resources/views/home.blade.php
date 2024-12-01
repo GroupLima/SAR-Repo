@@ -3,8 +3,11 @@
 @section('content')
 <!-- Header Section -->
 <header>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="header-content">
-        <div class="aro-description">ARO DESCRIPTION</div>
+        <div class="aro-description">Discover 8 Volumes</div>
+    <p>Some text explaining search</p>
+    <br><br>
     </div>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 </header>
@@ -15,10 +18,11 @@
         <div class="basic-search">
             <input
                 type="search"
-                placeholder="Enter your search term"s
+                placeholder="Enter your search term"
                 aria-label="Search"
+                id="search-box"
             />
-            <button @click="dataStored">SEARCH</button> <!-- Fixed @dataStored to @click="dataStored" -->
+
         </div>
         <div id="advanced" class="advanced-search-container">
             <button class="dropdown-button" @click="toggleDropdown">
@@ -27,14 +31,25 @@
             <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                 <div id="search-options">
                     @include('home-views.search')
-                    <!-- sass people please make this section wider, i.e. not just the width of the button -->
-                    <!-- it truly looks so sad and squished rn, so the empty space needs utilised -->
-                    <!-- also shouldnt cover content when it pops up -->
                 </div>
             </div>
         </div>
-        @include('layouts.entries')
+
     </div>
+    <br><br>
+    <div class="image-container">
+        <img src="{{ asset('images/sample.png') }}" alt="sample text" style = "overflow: hidden;">
+    </div>
+    @include('layouts.entries')
+    <!-- this script isn't actually doing anyhing because it is linked to a class, not an id, so it
+        doesn't work. Removing it has no effect because the vue script linked at the bottom is fully in
+        control of the dropdown functionality. I don't think we need this.-->
+    <!-- <script>
+        function toggleDropdown() {
+        document.getElementById("advanced-search-dropdown").classList.toggle("active");
+        }
+    </script> -->
+    
 </main>
 
 <!-- Footer Section -->
@@ -49,4 +64,3 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="{{ asset('compiled-js/home.js') }}"></script>
-@endsection
