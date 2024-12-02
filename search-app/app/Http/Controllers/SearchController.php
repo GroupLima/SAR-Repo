@@ -105,22 +105,50 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         
         if ($queryType === "xquery") {
             // Do something
-            $queryResults = [
-                'ARO-8-1290-9' => '<div>working</div>',
-                'ARO-8-1730-9' => '<div>hello world</div>',
-                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
-                'ARO-8-4391-2' => '<div>hi hello implent andreas code here </div>',
-            ];
 
-            $numberOfXQuery = count($queryResults);
+
+            // use the $query to run the xquery python
+            //just return results with the query nymber 
+            // Run the Python script with the escaped query
+            $temp = shell_exec('python3 ' . 'XQuerySearch.py ' . $query);
+            echo "temp: " . $temp . "nothing";
+            echo " a space";
+
+            // python3 search-app/resources/python/XQuerySearch.py 'for $i in //ns:div[@xml:lang="la"] return $i'
+            // source ./SAR_Venv/Scripts/activate
+            // if this fails we need to chmod +x ./SAR_Venv/Scripts/activate (add permission)
+            
+            // Decode the JSON output from the Python script
+            // $decoded = json_decode($temp, true);
+            
+            // if ($decoded) {
+            //     // Assign the query results and number of results
+            //     $queryResults = $decoded['matches'];
+            //     $numberOfXQuery = count($queryResults);
+
+            //     // Example output for debugging
+            //     echo "Number of Results: " . $numberOfXQuery . "\n";
+            //     echo "Query Results: \n";
+            //     print_r($queryResults);  // Or process as needed
+            // } else {
+            //     echo "Error: No valid JSON returned from Python script.";
+            // }
+            //$queryResults, $numberOfXQuery = $temp;
+            //$queryResults = [
+            //     'ARO-8-1290-9' => '<div>working</div>',
+            //     'ARO-8-1730-9' => '<div>hello world</div>',
+            //     'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
+            //     'ARO-8-4391-2' => '<div>hi hello implent andreas code here </div>',
+            // ];
+            
 
             // Create a response structure
-            $response = [
-                'numberOfXQuery' => $numberOfXQuery,
-                'queryResults' => $queryResults,
-            ];
+            //$response = [
+            //    'numberOfXQuery' => $numberOfXQuery,
+             //   'queryResults' => $queryResults,
+            //];
             // Return the response
-            return response()->json(['message' => $response]);
+            //return response()->json(['message' => $response]);
         //********** BAD PIOTR CODE ********************* */
         }else{
 

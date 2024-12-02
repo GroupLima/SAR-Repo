@@ -100,7 +100,7 @@ class XQuerySearch():
         return (results_dict, result_count)
 
 
-def main(user_xquery):
+def main():
     if len(sys.argv) < 2:
         print("Error: Please provide an XQuery as a command-line argument.")
         sys.exit(1)
