@@ -96,9 +96,15 @@ class XQuerySearch:
 
 
 def main():
+    # data = {
+    # 'key1': 'value1',
+    # 'key2': 'value2'}
+    # print(json.dumps(data))
+    # print("I RAN")
+
     if len(sys.argv) < 2:
-        raise ValueError("Please provide an XQuery to search for.")
-        sys.exit(1)
+       raise ValueError("Please provide an XQuery to search for.")
+       sys.exit(1)
 
     user_xquery = sys.argv[1]
     try:

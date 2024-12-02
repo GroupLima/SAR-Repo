@@ -26,46 +26,46 @@ class SearchController extends Controller
       }
   }
 
-  
-    /* 
+
+    /*
     Search Process:
 
                                         CLIENT SIDE
         html        ->   1. user interface allows users to input in input fields
         vue         ->   2. vue constantly gets input and stores it in correct data container
-        vue         ->   3. for autocomplete, as user is typing, vue automatically collects the stored data 
+        vue         ->   3. for autocomplete, as user is typing, vue automatically collects the stored data
                             in input field and sends an async request to the search controller
-        vue         ->   4. for search button, vue collects stored data (already stored in vue) from all 
+        vue         ->   4. for search button, vue collects stored data (already stored in vue) from all
                             relevant input fields and sends an async request to the search controller
                                         SERVER SIDE
 route_controller    ->   5. url request is routed through route controller
 route_controller    ->   6. route controller validates request for security
 route_controller    ->   7. valid request sent back to search controller
-search_controller   ->   8. search controller calls search function and validates parameters and calls 
+search_controller   ->   8. search controller calls search function and validates parameters and calls
                             relevant python script, passing in the json_data and formatted parameters object
-python(xquery)           9. xquery does stuff and returns matches (refer to example of what $matches 
+python(xquery)           9. xquery does stuff and returns matches (refer to example of what $matches
                             should look like in function search() in SearchController.php)
-python(other search)->  10. if not autocomplete, python filter entries through advanced search to comply 
+python(other search)->  10. if not autocomplete, python filter entries through advanced search to comply
                             with the filters
-python(other search)->  11. python searches string matches within filtered entries using python and stores 
+python(other search)->  11. python searches string matches within filtered entries using python and stores
                             match data in dictionary
 python(other search)->  12. python sorts the entries by desired criteria
 python              ->  13. python returns results to search controller and stored
-search_controller   ->  14. results are limited to results per page, then converted to html, and highlighted 
+search_controller   ->  14. results are limited to results per page, then converted to html, and highlighted
                             where there are matches
-search_controller   ->  15. sorted results (html text, other match data, entry data, etc.) are returned and 
+search_controller   ->  15. sorted results (html text, other match data, entry data, etc.) are returned and
                             sent back to vue as a json response, completing the async request
                                         CLIENT SIDE
         vue         ->  16. vue gets response with results
         vue         ->  17. vue includes results in relevant views (entries.blade.php, search.blade.php, etc)
     sass+html           18. html and css are applied to style the views
-            
 
-    
+
+
   /*
-    XML file naming system: 
+    XML file naming system:
     ARO-(beginning_volume)-(beginning_page)-(beginning_chapter)_ARO-(ending_volume)-(ending_page)-(ending_chapter).xml
-    
+
     python functionality:
     2. returns results found for entries:
         a. entry id of each entry
@@ -90,37 +90,58 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
  - Two altered characters from query (rephrase)
     */
 
-    
+
 
     protected $match_results = [];
-  
+
     function search(Request $request){
         // *************BAD PIOTR CODE *******************
         // Log or process the received data
+        // echo __DIR__;
+        // echo getcwd();
         $data = $request->all(); // Get all incoming request data
         \Log::info('Received data:', $data);
 
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
-        
+
         if ($queryType === "xquery") {
             // Do something
 
 
             // use the $query to run the xquery python
-            //just return results with the query nymber 
+            //just return results with the query nymber
             // Run the Python script with the escaped query
-            $temp = shell_exec('python3 ' . 'XQuerySearch.py ' . $query);
-            echo "temp: " . $temp . "nothing";
-            echo " a space";
+            //$output = shell_exec($command);
+            //echo $output;
+            $output = shell_exec('python3 scuff2.py');
+            // $jsonData = json_decode($output, true);
+            // echo '$jsonData';
+            // echo $output;
+            // echo 'so sad';
+            echo $output;
 
-            // python3 search-app/resources/python/XQuerySearch.py 'for $i in //ns:div[@xml:lang="la"] return $i'
+
+            //$temp = exec('XQuerySearch-SCUFFED.py');
+            // $jsonData = json_decode($temp, true);
+            //echo($temp);
+
+            // if (json_last_error() === JSON_ERROR_NONE) {
+            //     echo $query;
+            //     echo "temp: ";
+            //     print_r($jsonData);
+            //     echo "nothing";
+            //     echo " a space";
+            // } else {
+            //     echo "Error decoding JSON: " . json_last_error_msg();
+            // }
+         // python3 search-app/resources/python/XQuerySearch.py 'for $i in //ns:div[@xml:lang="la"] return $i'
             // source ./SAR_Venv/Scripts/activate
             // if this fails we need to chmod +x ./SAR_Venv/Scripts/activate (add permission)
-            
+
             // Decode the JSON output from the Python script
             // $decoded = json_decode($temp, true);
-            
+
             // if ($decoded) {
             //     // Assign the query results and number of results
             //     $queryResults = $decoded['matches'];
@@ -140,7 +161,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //     'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
             //     'ARO-8-4391-2' => '<div>hi hello implent andreas code here </div>',
             // ];
-            
+
 
             // Create a response structure
             //$response = [
@@ -149,7 +170,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //];
             // Return the response
             //return response()->json(['message' => $response]);
-        //********** BAD PIOTR CODE ********************* */
         }else{
 
             try {
@@ -175,14 +195,14 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                     'endDate' => 'nullable|date',               // Optional, must be a valid date
                     //entry_id
                     'docId' => 'nullable|string',               // Optional, must be a string
-                    
+
                     //still need the following data:
                     //rpp (results per page)
                     //ob (order by criteria)
                 ]);
                 //get request parameters
                 $params = $request->query();
-                
+
 
                 //convert vue data params to backend params eg. endDate -> end_date
                 $permitted = $this->simplify_search_params($params);
@@ -211,14 +231,14 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                     'success' => true,
                     'data' => $display_results,
                 ]);
-            
-            
+
+
             } catch (ValidationException $e){
                 return response()->json([
                     'success' => false,
                     'message' => 'Invalid parameters, add an error view instead of this message',
                     //route to valid error page eventually
-                ]); 
+                ]);
             }
         }
         /*
@@ -262,13 +282,13 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         */
     }
 
-    
+
     public function runXQuery(Request $request)
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
         \Log::info('Received data:', $data);
-        
+
         //print_r("\n");
         //print_r($data.query.type);
         //print_r($data.query.type);
@@ -294,30 +314,30 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // Define your query results (replace with actual logic as needed)
 
         // Calculate the number of results dynamically
-        $numberOfXQuery = count($queryResults);
+        // $numberOfXQuery = count($queryResults);
 
-        // Create a response structure
-        $response = [
-            'numberOfXQuery' => $numberOfXQuery,
-            'queryResults' => $queryResults,
-        ];
+        // // Create a response structure
+        // $response = [
+        //     'numberOfXQuery' => $numberOfXQuery,
+        //     'queryResults' => $queryResults,
+        // ];
 
         // Return the response
         return response()->json(['message' => $response]);
     }
 
-    
 
 
 
 
-    
+
+
 
     function simplify_search_params($params){
 
         //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
         $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
-        
+
         $permitted = [];
 
         /*
@@ -345,7 +365,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $query_type = $params['qt'];
         if (strtolower($query_type) == 'xquery'){
             //hardcoded for now
-            return './search-app/resources/python/XQuerySearch.py '; 
+            return './search-app/resources/python/XQuerySearch.py ';
         } else {
             return './search-app/resources/python/Search.py ' ;
         }
@@ -359,12 +379,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         if (strtolower($query_type) == 'xquery'){
             // display dict_of_results.items() display the data values, have the keys as a tag on the divs of the displayed result chunks
-            
+
             //store tag and match pairs in $xquery_matches
             $xquery_matches = [];
 
             $result_dict = $this->match_results[0];
-            
+
             //not needed? needed because previous team returned number of tresults too
             $num_results = $this->match_results[1];
 
@@ -385,7 +405,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             $this->match_results = $xquery_matches;
         }
         /*
-        
+
         foreach ($results as &result) {
             if (isset($result->text) && isset($result->matches)){
                 //convert to html
@@ -397,8 +417,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         if (strpos($query_type, 'autocomplete') !== false ){
             return $this->match_results;
         }
-        
-        
+
+
 
         //return false if parametters couldnt be applied
     }
@@ -428,4 +448,3 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
 }
-

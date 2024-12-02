@@ -1,7 +1,6 @@
 import os
 import sys
 import uuid
-import json
 from pathlib import Path
 from BaseXClient import BaseXClient
 
@@ -104,7 +103,7 @@ def main():
     try:
         xquery = XQuerySearch()
         results = xquery.search(user_xquery)
-        print(json.dumps(results))
+        return results
     except Exception as e:
         print(f"An error occurred: {e}")
         sys.exit(1)
