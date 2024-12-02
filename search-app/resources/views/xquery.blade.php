@@ -16,14 +16,16 @@
     
     <main id="app">
         <div class="search-section">
+            <div class="input">
             <input 
                 type="search"
                 placeholder="Enter your XQuery"
                 v-model="query"
-                id="xq-box"
-                class="form-control"
             />
-            <button id="xq-button" @click="runQuery" class="btn btn-primary">Run Query</button>   
+            </div>
+            <div class = "button">
+            <button  @click="runQuery">Run Query</button>   
+            </div>
         </div>
         
         <div v-if="error" class="alert alert-danger mt-3">
