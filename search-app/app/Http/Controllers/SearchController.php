@@ -127,6 +127,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //get request parameters
             $params = $request->query();
             
+
             //convert vue data params to backend params eg. endDate -> end_date
             $permitted = $this->simplify_search_params($params);
 
@@ -210,6 +211,15 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
         \Log::info('Received data:', $data);
+        
+        //print_r("\n");
+        //print_r($data.query.type);
+        //print_r($data.query.type);
+        $queryType = $data['query_type']; // "xquery"
+        $query = $data['query'];         // "hello cait"
+
+        print_r($queryType);
+        print_r($query);
 
         // Define your query results (replace with actual logic as needed)
         $queryResults = [

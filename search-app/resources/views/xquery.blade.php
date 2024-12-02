@@ -79,9 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Send request with query data
                     const response = await axios.post('/xquery', {
+                        query_type: "xquery",
                         query: this.query, // Sending the query entered by the user
                     });
-
+                    
                     console.log("Response received:", response);
 
                     // Check if the response contains data
