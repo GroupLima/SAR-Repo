@@ -1,21 +1,6 @@
-@extends('layouts.app')
-@section('title', 'XQuery Search')
-@section('content')
+<!-- ./resources/vue/xquery.vue -->
 
-<div class="container">
-<script>
-    console.log("HTML content loaded successfully");
-</script>
-    <header>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class="header-content">
-            <h1 id="xq-title">XQuery Search</h1>
-            <p>Search through XML documents using XQuery</p>
-        </div>
-    </header>
-    console.log("Vue is initializing...");
-
-    <main id="app">
+<template>
     <div class="search-section">
         <input 
             type="search"
@@ -36,20 +21,11 @@
             <pre v-if="results" id="xq-results" class="xml-results">@{{ results }}</pre>
             <p>Debug: @{{ results }}</p>
         </div>
-    </main>
-</div>
-@endsection
-
-@section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</template>
 
 <script>
-console.log("Vue is initializing...");
-document.addEventListener('DOMContentLoaded', () => {
-    const { createApp } = Vue;
-    
-    createApp({
+    import axios from 'axios';
+    export default {
         data() {
             return {
                 query: '',
@@ -74,8 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error("Error occurred:", error);
                     this.error = error.response?.data?.error || 'An unexpected error occurred';
                 }
-}           }
-
-    }).mount('#app');
-});
+            }          
+        }
+    }
 </script>
+
+<style scoped>
+/* Add your styles for this component here */
+</style>
