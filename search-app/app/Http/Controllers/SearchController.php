@@ -114,12 +114,25 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             // Run the Python script with the escaped query
             //$output = shell_exec($command);
             //echo $output;
-            $output = shell_exec('python3 scuff2.py');
+
+
+            // echo shell_exec('source ../../SAR_Venv/Scripts/activate && echo baba');
+            // echo shell_exec('echo $VIRTUAL_ENV');
+            //$output = shell_exec('python3 ../resources/python/XQuerySearch.py ');
+            //echo exec('basexserver -p49888 -S');
+            //sleep(5);
+            //echo exec('ss -tuln | grep 49888');
+            $output = exec('python3 ../resources/python/XQuerySearch.py "for $i in //ns:div[@xml:lang="la"] return $i"');
+            echo $output;
+            //sleep
+            //echo exec('basexserver -p49888 stop');
+
+            #$output = shell_exec('source ../../SAR-Venv/Scripts/activate && python3 ../../../search-app/resources/python/scuff2.py');
             // $jsonData = json_decode($output, true);
             // echo '$jsonData';
             // echo $output;
             // echo 'so sad';
-            echo $output;
+            //echo $output;
 
 
             //$temp = exec('XQuerySearch-SCUFFED.py');
