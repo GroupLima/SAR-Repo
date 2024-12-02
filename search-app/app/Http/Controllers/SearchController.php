@@ -209,8 +209,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-        Log::info('Received data:', $data);
-        
+        \Log::info('Received data:', $data);
+
         // Define your query results (replace with actual logic as needed)
         $queryResults = [
             'ARO-8-1290-9' => '<div>hello</div>',
@@ -218,16 +218,20 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
             'ARO-8-4391-2' => '<div>hi hello</div>',
         ];
-    
+
         // Calculate the number of results dynamically
-        $numberofxquery = count($queryResults);
-        
-        // Return the response correctly
-        return response()->json([
-            'numberOfXQuery' => $numberofxquery,  // Return the number of xqueries
-            'data' => $queryResults,              // Return the query results
-        ]);
+        $numberOfXQuery = count($queryResults);
+
+        // Create a response structure
+        $response = [
+            'numberOfXQuery' => $numberOfXQuery,
+            'queryResults' => $queryResults,
+        ];
+
+        // Return the response
+        return response()->json(['message' => $response]);
     }
+
     
 
 
