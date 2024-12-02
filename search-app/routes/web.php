@@ -19,5 +19,5 @@ Route::get('/{page}', [RouteController::class, 'display_view']);
 Route::get('/search', [SearchController::class, 'search']);
 
 //execute xquery
-Route::post('/xquery', [SearchController::class, 'runXQuery']);
+Route::post('/xquery', [SearchController::class, 'search']);
 

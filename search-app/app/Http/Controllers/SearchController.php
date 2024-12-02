@@ -95,74 +95,103 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     protected $match_results = [];
   
     function search(Request $request){
+        // *************BAD PIOTR CODE *******************
+        // Log or process the received data
+        $data = $request->all(); // Get all incoming request data
+        \Log::info('Received data:', $data);
+
+        $queryType = $data['query_type']; // "xquery"
+        $query = $data['query'];         // "hello cait"
         
-        try {
-            // Validate the incoming request
-            $validated = $request->validate([
-                //q
-                'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
-                //sm
-                'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
-                //lang
-                'language' => 'required|string',            // Required, must be a string
-                //var
-                'variant' => 'required|string',             // Required, must be a string
-                //vol
-                'volumes' => 'array',                       // Optional, must be an array
-                //page
-                'pageSearch' => 'nullable|string',          // Optional, must be a string
-                //pr gets every nth entry from every specified page from every specified volume
-                'entrySearch' => 'nullable|string',         // Optional, must be a string
-                //start_date
-                'startDate' => 'nullable|date',             // Optional, must be a valid date
-                //end_data
-                'endDate' => 'nullable|date',               // Optional, must be a valid date
-                //entry_id
-                'docId' => 'nullable|string',               // Optional, must be a string
+        if ($queryType === "xquery") {
+            // Do something
+            $queryResults = [
+                'ARO-8-1290-9' => '<div>working</div>',
+                'ARO-8-1730-9' => '<div>hello world</div>',
+                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
+                'ARO-8-4391-2' => '<div>hi hello implent andreas code here </div>',
+            ];
+
+            $numberOfXQuery = count($queryResults);
+
+            // Create a response structure
+            $response = [
+                'numberOfXQuery' => $numberOfXQuery,
+                'queryResults' => $queryResults,
+            ];
+            // Return the response
+            return response()->json(['message' => $response]);
+        //********** BAD PIOTR CODE ********************* */
+        }else{
+
+            try {
+                // Validate the incoming request
+                $validated = $request->validate([
+                    //q
+                    'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
+                    //sm
+                    'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
+                    //lang
+                    'language' => 'required|string',            // Required, must be a string
+                    //var
+                    'variant' => 'required|string',             // Required, must be a string
+                    //vol
+                    'volumes' => 'array',                       // Optional, must be an array
+                    //page
+                    'pageSearch' => 'nullable|string',          // Optional, must be a string
+                    //pr gets every nth entry from every specified page from every specified volume
+                    'entrySearch' => 'nullable|string',         // Optional, must be a string
+                    //start_date
+                    'startDate' => 'nullable|date',             // Optional, must be a valid date
+                    //end_data
+                    'endDate' => 'nullable|date',               // Optional, must be a valid date
+                    //entry_id
+                    'docId' => 'nullable|string',               // Optional, must be a string
+                    
+                    //still need the following data:
+                    //rpp (results per page)
+                    //ob (order by criteria)
+                ]);
+                //get request parameters
+                $params = $request->query();
                 
-                //still need the following data:
-                //rpp (results per page)
-                //ob (order by criteria)
-            ]);
-            //get request parameters
-            $params = $request->query();
+
+                //convert vue data params to backend params eg. endDate -> end_date
+                $permitted = $this->simplify_search_params($params);
+
+                $permitted['query'] = 'for $i in //ns:div[@xml:lang="la"] return $i'; //put query here
+                //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
+                $python_search_file = $this->get_search_path($permitted) . $permitted;
+
+
+                //get matches from any type of search
+                $matches = shell_exec('python3 ' . $python_search_file);
+
+            //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
+            //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
+            //     $command .= ' ' . $additional_argument;
+            // }
+
+                //store matches
+                $this->match_results = $matches;
+
+                //format results with convert relevent text to html, add highlights, filter by page, etc
+                $display_results = $this->filter_and_format($permitted);
+
+                // Return the JSON response with the validated data
+                return response()->json([
+                    'success' => true,
+                    'data' => $display_results,
+                ]);
             
-
-            //convert vue data params to backend params eg. endDate -> end_date
-            $permitted = $this->simplify_search_params($params);
-
-            $permitted['query'] = 'for $i in //ns:div[@xml:lang="la"] return $i'; //put query here
-            //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
-            $python_search_file = $this->get_search_path($permitted) . $permitted;
-
-
-            //get matches from any type of search
-            $matches = shell_exec('python3 ' . $python_search_file);
-
-        //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
-        //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
-        //     $command .= ' ' . $additional_argument;
-        // }
-
-            //store matches
-            $this->match_results = $matches;
-
-            //format results with convert relevent text to html, add highlights, filter by page, etc
-            $display_results = $this->filter_and_format($permitted);
-
-            // Return the JSON response with the validated data
-            return response()->json([
-                'success' => true,
-                'data' => $display_results,
-            ]);
-          
-        
-        } catch (ValidationException $e){
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid parameters, add an error view instead of this message',
-                //route to valid error page eventually
-            ]); 
+            
+            } catch (ValidationException $e){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid parameters, add an error view instead of this message',
+                    //route to valid error page eventually
+                ]); 
+            }
         }
         /*
         an example of what $matches looks like:
@@ -218,16 +247,23 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
 
-        print_r($queryType);
-        print_r($query);
-
+        //print_r($queryType);
+        //print_r($query);
+        if ($queryType === "xquery") {
+            // Do something
+            $queryResults = [
+                'ARO-8-1290-9' => '<div>working</div>',
+                'ARO-8-1730-9' => '<div>hello world</div>',
+                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
+                'ARO-8-4391-2' => '<div>hi hello</div>',
+            ];
+        }else{
+            $queryResults = [
+            'ARO-8-1290-9' => '<div>i want to cry</div>',
+            'ARO-8-1730-9' => '<div>we we we </div>',
+            ];
+        }
         // Define your query results (replace with actual logic as needed)
-        $queryResults = [
-            'ARO-8-1290-9' => '<div>hello</div>',
-            'ARO-8-1730-9' => '<div>hello world</div>',
-            'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
-            'ARO-8-4391-2' => '<div>hi hello</div>',
-        ];
 
         // Calculate the number of results dynamically
         $numberOfXQuery = count($queryResults);
