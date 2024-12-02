@@ -3,11 +3,10 @@
 @section('content')
 
 <div class="container">
-<<<<<<< Updated upstream
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-=======
-    <br><br><br><br><br><br><br><br><br><br><br>
->>>>>>> Stashed changes
+
+
     <header>
         <div class="header-content">
             <h1 id="xq-title">XQuery Search</h1>
