@@ -86,19 +86,32 @@ return example:
     }
 """
 
+def search(params, json_entries):
+    query_type = params['qt']
+    match query_type:
+        case 'basic_search':
+            return basic_search(params, json_entries)
+        case 'advanced_search':
+            return advanced_search(params, json_entries)
+        case _:
+            print('search not found')
+            return None
+            
+
+
 # for basic search and autocomplete
-def basic_search(params):
+def basic_search(params, json_entries):
     try:
         # write code here
         # find matches using search method chosen by user
-        search = Search(params)
+        search = Search(params, json_entries)
         search.init_basic_search_params()
-        search.apply_basic_search()
+        search.matches = search.apply_basic_search()
 
         # sort entries by criteria param
         search.init_sort_params()
         search.order_by(search.sort_criteria)
-        return search.get_matches()
+        return search
     except Exception as e:
         print(
             f"Error initializing parameters or applying search. "
@@ -107,22 +120,21 @@ def basic_search(params):
 
     
 
-def advanced_search(params):
+def advanced_search(params, json_entries):
     try:
         # write code here
         # filter which entries to find matches for
-        search = Search(params)
+        search = Search(params, json_entries)
         search.init_advanced_search_params()
         search.apply_advanced_search()
 
         # find matches using search method chosen by user
         search.init_basic_search_params()
-        search.apply_basic_search()
+        search.matches = search.apply_basic_search()
 
         # sort entries by criteria param
         search.init_sort_params()
         search.order_by(search.sort_criteria)
-
         return search.get_matches()
     except Exception as e:
         print(
@@ -144,14 +156,14 @@ class Search():
         'regex' : 'RegexSearch',
     }
     
-    def __init__(self, params, json_entries, search_type):
+    def __init__(self, params, json_entries):
         #self.user_input = user_input # User string search
         
         self.params = params
         # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
         # default advanced search params
-        self.json_entries = None
+        self.json_entries = json_entries
         self.entry_id = ''
         self.date_from = None
         self.date_to = None
@@ -160,11 +172,14 @@ class Search():
         self.lang = None
         
         # default basic search params
-        self.search_method = 'exact match'
-        self.search_class
+        self.search_method = 'phrase/keyword'
+        self.search_class = ''
         self.query = ''
         self.qlen = 0
         self.window_size = 5
+        self.min_step_size = 1 # non inclusive
+        self.max_step_size = 6 # non inclusive
+        self.step_size = 5 # always ranges between 2 and 5 inclusive
         self.results_per_page = 5 # default is 5 results per page
         self.variance = 100 # default similarity of 100 (exact match)
         self.variance_limit = 50 # experiment with variance limit?
@@ -174,7 +189,6 @@ class Search():
         
         self.matches = {} # return to search controller
 
-
     def init_advanced_search_params(self):
         """
         eg. self.entry_id = self.params['entry_id'] = 'ARO-6-'
@@ -182,30 +196,13 @@ class Search():
         convert the values in each json entry to their types (could be done in json generator?)
         """
         # write code here
-        raw_json_entries = self.params.get('json')
-        if raw_json_entries:
-            jp.parse_json(raw_json_entries)
-            
-
         self.entry_id = self.params.get('entry_id')
-
-        date_to_string = self.params.get('date_to')
-        if date_to_string:
-            self.date_to = jp.parse_date(date_to_string)
-
-        date_to_string = self.params.get('date_to')
-
-        vol_string = self.params.get('vol')
-        if vol_string:
-            jp.parse_num(vol_string)
-            
-        pg_string = self.params.get('pg')
-
-        lang_string = self.params.get('lang')
-
-        pass
+        self.date_to = jp.parse_date(self.params.get('date_to'))
+        self.date_from = jp.parse_date(self.params.get('date_from'))
+        self.vol = jp.parse_num(self.params.get('vol'))
+        self.pg = jp.parse_num(self.params.get('pg'))
+        self.lang = jp.parse_num(self.params.get('lang'))
   
-
 
     def apply_advanced_search(self, entry_id, date_from, date_to, language, volume, page, paragraph):
         """
@@ -221,6 +218,7 @@ class Search():
 
     def get_args(self):
         args = {
+            'json_entries' : self.json_entries,
             'entry_id': self.entry_id,
             'date_from': self.date_from,
             'date_to': self.date_to,
@@ -234,12 +232,12 @@ class Search():
             'results_per_page': self.result_per_page,
             'variance': self.variance,
             'variance_limit': self.variance_limit,
-            'sort_criteria': self.sort_criteria
+            'ob': self.sort_criteria
         }
         return args
 
 
-    def init_basic_search_params(self, params):
+    def init_basic_search_params(self):
         """
         basic search params: query, var, sm, entry_id
         """
@@ -248,20 +246,18 @@ class Search():
 
         # raise an error if the search method is not a key in search functions
         self.search_class = Search.search_classes.get(self.search_method)
-        if not self.search_function:
+        if not self.search_method:
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-
         if self.query != 'regex':
-            self.qlen = len(self.query)
-            self.set_window_size()
+            self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
-        self.convert_variance(params['var'])
+        self.convert_variance(self.params['var'])
 
 
-    def set_window_size(self):
+    def set_window_and_step(self):
         """
         sets the value for what length the substring will cover over the text. It slides over the content
         
@@ -281,12 +277,15 @@ class Search():
         then the query will be compared with each of the substrings and determine if its a match
         """
         # write code here
+        self.qlen = len(self.query)
+        self.window_size = max(len(self.query), 1)
+        self.step_size = max(self.min_step_size, min(self.window_size, self.max_step_size))
 
 
         pass
         
 
-    def convert_variance(self, perc_variance):
+    def convert_variance(self, variance):
         """
         ranges from 0%-100% lower is closer to exact match; limit 100% has a low similarily of 50? experiment
         1. convert percentage to variance
@@ -294,9 +293,8 @@ class Search():
         2. assign result to self.variance
         """
         # write code here
-        
-
-        pass
+        print(abs(variance*10 - 100))
+        self.variance = abs(variance*10 - 100)
 
     
     def apply_basic_search(self):
@@ -305,7 +303,7 @@ class Search():
         """
         args = self.get_args()
         self.search_instance = globals()[self.search_class](**args)
-        self.search_instance.get_matches()
+        return self.search_instance.get_matches()
 
 
     def init_sort_params(self):
@@ -369,9 +367,12 @@ class SearchMethodDoesNotExistError(Exception):
 if __name__ == '__main__':
     # cust_search = MatchData('holly')
     # cust_search.find_matches()
-    if len(sys.argv > 1):
+    if len(sys.argv > 2):
         params = sys.argv[1]
-        obj = Search(params)
+        json_entries = sys.argv[2]
+        obj = Search(params, json_entries)
         matches = obj.get_matches()
         json.dumps(matches) # return the matches data in a JSON object
+    else:
+        print('nnot enough arguments. need filepath, parameters, and json entries')
     pass

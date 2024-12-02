@@ -96,9 +96,9 @@ class XQuerySearch():
 
 def main():
     # Allows cross-platform pathing, likely deployed on Linux but development is on Windows/Mac
-    xquery = XQuerySearch()
-    user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
-    xquery_results, xquery_count = xquery.search(user_xquery)
+    # xquery = XQuerySearch()
+    # user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
+    # xquery_results, xquery_count = xquery.search(user_xquery)
     # xquery_count = xquery.count_results()
     # print(xquery_count)
     # for keys, content in xquery_results.items():

@@ -1,36 +1,39 @@
 from rapidfuzz import process, fuzz
-from basic_search import BasicSearch
+from basic_search_methods.basic_search import BasicSearch
+import re
 
 class PhraseStartsWithSearch(BasicSearch):
 
     def __init__(self, **kwargs):
-        self.query = kwargs.get('query'),
-        self.qlen = kwargs.get('qlen')
-        self.entries = kwargs.get('entries'),
-        self.window_size = kwargs.get('window_size'),
+        self.query = kwargs.get('query')
+        self.normalized_query = re.sub(r'\s+', '', self.query.strip())
+        self.qlen = max(1, kwargs.get('qlen', 1))
+        self.json_entries = kwargs.get('json_entries')
+        self.window_size = kwargs.get('window_size')
+        self.step_size = kwargs.get('step_size')
         self.variance = kwargs.get('variance')
-        
         super().__init__()
 
         self.populate_matches_dict()
         
-        
     def find_matches_in(self, content):
-        strings_to_compare = []
+        # Extract words and their start indices
+        strings_to_compare = [(match.group(), match.start()) for match in re.finditer(r'\b\w+\b', content)]
+
+        #print(strings_to_compare)
+        #print(strings_to_compare)
         #iterate through the whole content using self.window_size step
         #qlen is the length of the query
         # should be a match if query of specified variance is at the start of the substring
 
         #work in progress :')
-        for i in range(0, len(content) - self.window_size + 1, self.window_size):
-            string = content[i:i+self.window_size]
-            strings_to_compare.append(string)
-        matches = process.extract(self.query, strings_to_compare, scorer=fuzz.partial_ratio, score_cutoff=self.variance)
-        for match, score, index in matches:
-            string = strings_to_compare[index]
-            if string.startswith(match):
-                # write code here
-
-                
-                pass
-        return matches
+        results = []
+        for substring, index in strings_to_compare:
+            if not substring or len(substring) < self.qlen-2:
+                continue
+            # Check similarity score for strings starting with the query
+            score = fuzz.ratio(self.normalized_query, substring[:min(len(self.normalized_query), len(substring))])
+            #score = self.calculate_combined_score(self.query.strip(), substring[:len(self.query.strip())])
+            if score >= self.variance:
+                results.append((substring, score, index))
+        return results

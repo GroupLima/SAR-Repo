@@ -23,7 +23,8 @@ class BasicSearch(ABC):
         if find_matches_in returns en empty list, don't add anything to the self.matches dictionary
         otherwise, create a new key value pair in self.matches with entry_id as the key and matches as the value
         """
-        for entry_id, data in self.entries:
+        for entry_id, data in self.json_entries.items():
+            
             content = data['content']
             matches = self.find_matches_in(content)
             if matches:
@@ -46,10 +47,16 @@ class BasicSearch(ABC):
 
     def calculate_accuracy_heuristic(self, matches):
         """
-        if exact match found, return 1
+        if exact match found, return 100
 
         """
         # write code here
-        
-
-        pass
+        n = len(matches)
+        total_score = 0
+        for match in matches:
+            similarity_score = match[1]
+            if similarity_score == 100:
+                return 100
+            else:
+                total_score += similarity_score
+        return total_score / n

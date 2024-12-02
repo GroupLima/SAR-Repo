@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class SearchController extends Controller
 {
@@ -207,19 +209,29 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-        \Log::info('Received data:', $data);
+        Log::info('Received data:', $data);
         
-        // Placeholder function call
-        $response = $this->sayHello();
-
-        // Return the response
-        return response()->json(['message' => $response]);
+        // Define your query results (replace with actual logic as needed)
+        $queryResults = [
+            'ARO-8-1290-9' => '<div>hello</div>',
+            'ARO-8-1730-9' => '<div>hello world</div>',
+            'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
+            'ARO-8-4391-2' => '<div>hi hello</div>',
+        ];
+    
+        // Calculate the number of results dynamically
+        $numberofxquery = count($queryResults);
+        
+        // Return the response correctly
+        return response()->json([
+            'numberOfXQuery' => $numberofxquery,  // Return the number of xqueries
+            'data' => $queryResults,              // Return the query results
+        ]);
     }
+    
 
-    private function sayHello()
-    {
-        return "We love you fariha";
-    }
+
+
 
     
 
@@ -229,6 +241,18 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
         
         $permitted = [];
+
+        /*
+
+        for basic search example, we need:
+
+            1. (qt) query type: 'basic_search'
+            2. (query) query
+            3. (var) variance
+            4. (sm) search method: 'start with'
+            5. (rpp) results per page
+
+        */
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
             if (isset($params[$param])) {
@@ -255,16 +279,32 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         $query_type = $permitted['qt'];
 
-        if (strtolower($query_type) = 'xquery'){
-            //do stuff to match results for xquery
-            // dict(results), int(number_of_results)
-            // dict(results) = {"ARO-8...": "<div>...."}
-            // display dict(results).items() display the data values, have the keys as a tag on the divs of the displayed result chunks
+        if (strtolower($query_type) == 'xquery'){
+            // display dict_of_results.items() display the data values, have the keys as a tag on the divs of the displayed result chunks
+            
+            //store tag and match pairs in $xquery_matches
+            $xquery_matches = [];
+
+            $result_dict = $this->match_results[0];
+            
+            //not needed? needed because previous team returned number of tresults too
+            $num_results = $this->match_results[1];
+
+            foreach ($result_dict as $tag => $content)
             {
-                'tag' : 'ARO-8...',
-                'match' : '<div>...'
+                $xquery_matches[$tag] = $content;
             }
-            $this->match_results
+            /*
+                xquery return example:
+                {
+                    {'tag' = 'ARO-8-1290-9', 'content' = '<div>hello</div>'},
+                    {'tag' = 'ARO-8-1730-9', 'content' = '<div>hello world</div>'},
+                    {'tag' = 'ARO-8-2989-1', 'content' = '<div>hello i like chocolate milk</div>'},
+                    {'tag' = 'ARO-8-4391-2', 'content' = '<div>hi hello</div>'},
+                }
+            */
+            //set $match_results to new dictionary format
+            $this->match_results = $xquery_matches;
         }
         /*
         
