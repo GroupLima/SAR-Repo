@@ -83,7 +83,7 @@
 <!-- We need a constraint to restrict between 1 and the number of entries -->
 <div class="advanced-option">
    <h3 class="option-title">Entry</h3>
-   <input type="search" id="entry-search" placeholder="1, 2, 3, 4...">
+   <input type="search" id="entry-search" placeholder="1,2,3,4...">
 </div>
 <!-- We need to apply constraints to limit date between 1398 and 1510 -->
 <div id="dates" class="option-title">

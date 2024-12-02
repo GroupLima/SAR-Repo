@@ -97,16 +97,30 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         try {
             // Validate the incoming request
             $validated = $request->validate([
+                //q
                 'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
+                //sm
                 'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
+                //lang
                 'language' => 'required|string',            // Required, must be a string
+                //var
                 'variant' => 'required|string',             // Required, must be a string
+                //vol
                 'volumes' => 'array',                       // Optional, must be an array
+                //page
                 'pageSearch' => 'nullable|string',          // Optional, must be a string
+                //pr gets every nth entry from every specified page from every specified volume
                 'entrySearch' => 'nullable|string',         // Optional, must be a string
+                //start_date
                 'startDate' => 'nullable|date',             // Optional, must be a valid date
+                //end_data
                 'endDate' => 'nullable|date',               // Optional, must be a valid date
+                //entry_id
                 'docId' => 'nullable|string',               // Optional, must be a string
+                
+                //still need the following data:
+                //rpp (results per page)
+                //ob (order by criteria)
             ]);
             //get request parameters
             $params = $request->query();
@@ -114,17 +128,24 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //convert vue data params to backend params eg. endDate -> end_date
             $permitted = $this->simplify_search_params($params);
 
-            //get query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
+            $permitted['query'] = 'for $i in //ns:div[@xml:lang="la"] return $i'; //put query here
+            //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
             $python_search_file = $this->get_search_path($permitted) . $permitted;
+
 
             //get matches from any type of search
             $matches = shell_exec('python3 ' . $python_search_file);
 
+        //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
+        //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
+        //     $command .= ' ' . $additional_argument;
+        // }
+
             //store matches
             $this->match_results = $matches;
 
-            //format results with convert relevent text to html,  highlights,filter by page, etc
-            $display_results = $this->apply($permitted);
+            //format results with convert relevent text to html, add highlights, filter by page, etc
+            $display_results = $this->filter_and_format($permitted);
 
             // Return the JSON response with the validated data
             return response()->json([
@@ -203,6 +224,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     
 
     function simplify_search_params($params){
+
         //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
         $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
         
@@ -215,9 +237,11 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         }
         return $permitted;
     }
+
+
     function get_search_path($params){
         $query_type = $params['qt'];
-        if (strpos($query_type, $query_type) === 'xquery search'){
+        if (strtolower($query_type) == 'xquery'){
             //hardcoded for now
             return './search-app/resources/python/XQuerySearch.py '; 
         } else {
@@ -225,12 +249,23 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         }
     }
 
-    function apply($permitted) {
+    function filter_and_format($permitted) {
         //get results to display
         $this->get_results_for_page($permitted['rpp'], 0);
 
         $query_type = $permitted['qt'];
 
+        if (strtolower($query_type) = 'xquery'){
+            //do stuff to match results for xquery
+            // dict(results), int(number_of_results)
+            // dict(results) = {"ARO-8...": "<div>...."}
+            // display dict(results).items() display the data values, have the keys as a tag on the divs of the displayed result chunks
+            {
+                'tag' : 'ARO-8...',
+                'match' : '<div>...'
+            }
+            $this->match_results
+        }
         /*
         
         foreach ($results as &result) {
