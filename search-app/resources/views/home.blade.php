@@ -16,28 +16,8 @@
 
 <!-- Main Section -->
 <main>
-    <div class="search-section">
-        <div class="basic-search">
-            <input
-                type="search"
-                placeholder="Enter your search term"
-                aria-label="Search"
-                id="search-box"
-            />
-            <button id="search-button">SEARCH</button>
-        </div>
-        <div id="advanced" class="advanced-search-container">
-            <button class="dropdown-button" @click="toggleDropdown">
-                ADVANCED SEARCH ▼
-            </button>
-            <div v-if="isDropdownOpen" class="advanced-search-dropdown">
-                <div id="search-options">
-                    @include('home-views.search')
-                </div>
-            </div>
-        </div>
-        
-        
+    <div id="app" class="search-section">
+        <search-component>Hello</search-component>
     </div>
     <br><br>
     <div class="image-container">

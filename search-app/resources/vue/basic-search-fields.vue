@@ -7,16 +7,16 @@
                 type="search"
                 v-model="params.query"
                 placeholder="Enter your search term"
+                @change="updateQuery(placeholder)"
                 aria-label="Search"
                 id="search-box"
             />
-            <button id="search-button">SEARCH</button>
+            <button @click="search" id="search-button">SEARCH</button>
         </div>
         </div>
 </template>
 
 <script>
-    import axios from 'axios';
     export default {
         data() {
             return {
@@ -26,12 +26,16 @@
                     'var' : 1,
                     rpp : 10,
                     sm : 'starts with',
-
                 },
                 results: null,
                 error: null,
             };
         },
+        methods: {
+            
+            updateQuery(query) { this.$emit('update-query', query); },
+            search() { this.$emit('runSearch', this.params); },
+        }
     }
 </script>
 
