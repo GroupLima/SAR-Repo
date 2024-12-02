@@ -1,4 +1,4 @@
-import os, time
+import os, time, uuid, sys
 from pathlib import Path
 from BaseXClient import BaseXClient
 from pathlib import Path
@@ -7,15 +7,20 @@ from pathlib import Path
 
 class XQuerySearch():
     def __init__(self):
-        # Creating session to be able to query XML files - aka database
-        # Change standard port for security - also should create encrypred credentials later
-        self.session = BaseXClient.Session("localhost", 49888, "admin", "admin")
-        self.working_directory = Path(__file__).resolve().parent.parent.parent / Path("storage/app/xml-files")
+        try:
+            # Creating session to be able to query XML files - aka database
+            # Change standard port for security - also should create encrypred credentials later
+            self.session = BaseXClient.Session("localhost", 49888, "admin", "admin")
+            self.working_directory = Path(__file__).resolve().parent.parent.parent / Path("storage/app/xml-files")
+        except Exception as e:
+            # Error handling in case of failure to connect to BaseX server
+            print(e)
 
     # Conduct XQuery on every XML file
     def search(self, user_xquery):
         try:
-            db_name = "temp-xquery-db"
+            # Create a unique database name to prevent conflicts when multiple users are searching
+            db_name = "temp-xquery-db"+str(uuid.uuid4())
             # Create the database
             self.session.execute(f"create db {db_name}")
 
@@ -47,6 +52,7 @@ class XQuerySearch():
             return self.parse_results(actual_results)
         except Exception as e:
             print(e)  # Error handling in case of search failure
+            raise e
 
     def clean_query(self, user_xquery):
         # Clean up the query to ensure it is valid
@@ -91,23 +97,22 @@ class XQuerySearch():
             entry_id = id_part.strip()
             results_dict[entry_id] = content.strip()
 
-        return results_dict, result_count
+        return (results_dict, result_count)
 
 
-def main():
-    # Allows cross-platform pathing, likely deployed on Linux but development is on Windows/Mac
-    # xquery = XQuerySearch()
-    # user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
-    # xquery_results, xquery_count = xquery.search(user_xquery)
-    # xquery_count = xquery.count_results()
-    # print(xquery_count)
-    # for keys, content in xquery_results.items():
-    #     print(keys, content)
-        # print(xquery_results[keys])
-        # print("\n\n\n")
-    # print(xquery_results, "\n\n\n")
-    # print(xquery_count)
-    pass
+def main(user_xquery):
+    if len(sys.argv) < 2:
+        print("Error: Please provide an XQuery as a command-line argument.")
+        sys.exit(1)
+
+    user_xquery = sys.argv[1]
+    try:
+        xquery = XQuerySearch()
+        # returns tuple with dictionary of results and count of results
+        results =xquery.search(user_xquery)
+        return results
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
