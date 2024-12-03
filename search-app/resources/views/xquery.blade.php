@@ -35,7 +35,7 @@
         <!-- Display the results dynamically -->    
         <div class="results-section mt-3">
             <h2 class="results-title">Results</h2>
-            <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p>
+            <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             
             <div v-if="results" class="result-item" v-for="(content, id) in results" :key="id">
                  
@@ -87,12 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Check if the response contains data
                     if (response.data.message) {
-                        const { numberOfXQuery, queryResults } = response.data.message;
+                        // const { numberOfXQuery, queryResults } = response.data.message;
+                        const { queryResults } = response.data.message;
+
 
                         // Handle the response data (assuming it's structured like this)
                         this.results = queryResults;
-                        this.numberOfXQuery = numberOfXQuery
-                        console.log("Number of results:", numberOfXQuery);
+                        // this.numberOfXQuery = numberOfXQuery
+                        // console.log("Number of results:", numberOfXQuery);
                     } else {
                         // Handle the case where the message is empty or malformed
                         this.error = "No results found!";

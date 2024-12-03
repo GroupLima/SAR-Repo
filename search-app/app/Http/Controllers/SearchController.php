@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\Process\Process;
+
 
 class SearchController extends Controller
 {
@@ -104,7 +107,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
-
+        
         if ($queryType === "xquery") {
             // Do something
 
@@ -122,8 +125,24 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //echo exec('basexserver -p49888 -S');
             //sleep(5);
             //echo exec('ss -tuln | grep 49888');
-            $output = exec('python3 ../resources/python/XQuerySearch.py "for $i in //ns:div[@xml:lang="la"] return $i"');
-            echo $output;
+            
+            
+            
+            $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
+            $process->run();
+            echo $process->getOutput();
+            // Output the result
+            if ($process->isSuccessful()) {
+                echo $process->getOutput();
+            } else {
+                echo $process->getErrorOutput();
+            }
+            
+            // $response = Http::post('http://localhost:5000/query', [
+            //     'xquery' => 'for $i in //ns:div[@xml:lang="la"] return $i',
+            // ]);
+            // $result = $response->json();
+            
             //sleep
             //echo exec('basexserver -p49888 stop');
 
