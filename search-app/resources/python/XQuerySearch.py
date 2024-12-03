@@ -4,26 +4,25 @@ try:
     import uuid
     import json
     import traceback
-    import logging  
+    import logging
     from pathlib import Path
     from BaseXClient import BaseXClient
-    
+
     class XQuerySearch:
         def __init__(self):
             try:
-                print("iran")
                 # Creating session to be able to query XML files - aka database
                 # Change standard port for security - also should create encrypted credentials later
-                self.session = BaseXClient.Session("localhost", 1984, "admin", "admin")
+                self.session = BaseXClient.Session("localhost", 49888, "admin", "admin")
                 self.working_directory = Path(__file__).resolve().parent.parent.parent / Path("storage/app/xml-files")
             except Exception as e:
-                print(f"Error: THIS IS THE ERROR Unable to connect to BaseX server. Pleaseeeeeeeeeeeee ensure the server is running. {e}")
+                print(f"Error: Unable to connect to BaseX server. Ensure the server is running. {e}")
                 raise e
 
         # Conduct XQuery on every XML file
-        print('iran 2')
         def search(self, user_xquery):
             try:
+                # Create a unique database name to prevent conflicts with other users
                 db_name = "temp-xquery-db" + str(uuid.uuid4())
                 # Create the database
                 self.session.execute(f"create db {db_name}")
@@ -35,7 +34,7 @@ try:
                         if file.endswith(".xml"):
                             # Add each XML file to the database
                             self.session.execute(f"add to {db_name} {Path(root) / file}")
-                
+
                 # Process query, then execute it on the database
                 user_xquery = self.clean_query(user_xquery)
                 actual_results = self.session.query(user_xquery).execute()
@@ -47,7 +46,7 @@ try:
                 # Return the results in a dictionary format
                 return self.parse_results(actual_results)
             except BaseXClient.Error as e:
-                print(f"Error: Invalid XQuery provided. {e}")
+                print(f"Error: Invalid XQuery provided. {e}") # Error handling in case of invalid XQuery
                 raise e
             except Exception as e:
                 print('is it this'+str(e))  # Error handling in case of search failure
@@ -63,7 +62,7 @@ try:
             let $results := ({user_xquery})
             let $count := count($results)
             return (
-                '<--COUNT=' || $count || '-->', 
+                '<--COUNT=' || $count || '-->',
                 for $result in $results
                 let $id := $result/@xml:id
                 return (
@@ -100,30 +99,31 @@ try:
 
 
     def main():
-        logging.basicConfig(level=logging.ERROR)  # Set the logging level
-        if len(sys.argv) < 2:
-            print("Please provide an XQuery to search for.")
-            sys.exit(1)
+        # logging.basicConfig(level=logging.ERROR)  # Set the logging level
+        # if len(sys.argv) < 2:
+        #     print("Please provide an XQuery to search for.")
+        #     sys.exit(1)
 
-        user_xquery = sys.argv[1]
+        # user_xquery = sys.argv[1]
+        user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
         try:
             xquery = XQuerySearch()
             results = xquery.search(user_xquery)
             # print(json.dumps(results))
-            print(results)
+            print(results[0])
+            print(f"Number of results: {results[1]}")
         except Exception as e:
-             # Get a full traceback for detailed context
+            # Get a full traceback for detailed context
             tb = traceback.format_exc()
-            logging.error("An error occurred working for piotr", exc_info=True)
-            print(f"An error occurred working for piotr: {e.__class__.__name__}: {e}")
+            logging.error("An error occurred: ", exc_info=True)
+            print(f"An error occurred: {e.__class__.__name__}: {e}")
             print(f"Traceback:\n{tb}")
             sys.exit(1)
 
 
     if __name__ == "__main__":
         main()
-    # print("iran")
 
 
 except ImportError as e:
-    print(f"wowwwwwwww {e}")
+    print(f"Import Error: {e}")
