@@ -24,7 +24,7 @@ class RouteController extends Controller
                 }
                 return $this->xmlController->display_entries($entries);
             }
-            return view('/' . $page);
+            return view($page); //changed
         }
         //if the route doesn't exists, return a 404 error or a custom error page
         abort(404);
@@ -41,5 +41,13 @@ class RouteController extends Controller
         // if did not pass any of the validation checks, return false
         return false;
     }
-
+    // Route for search (added this method to integrate SearchController)
+    /*
+    public function search(Request $request)
+    {
+        $searchController = new SearchController();
+        return $searchController->search($request);
+    }*/
 }
+
+

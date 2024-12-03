@@ -1,13 +1,13 @@
 from rapidfuzz import process, fuzz
-from basic_search import BasicSearch
+from basic_search_methods.basic_search import BasicSearch
 
 class PhraseEndsWithSearch(BasicSearch):
     
     def __init__(self, **kwargs):
-        self.query = kwargs.get('query'),
+        self.query = kwargs.get('query')
         self.qlen = kwargs.get('qlen')
-        self.entries = kwargs.get('entries'),
-        self.window_size = kwargs.get('window_size'),
+        self.json_entries = kwargs.get('json_entries')
+        self.window_size = kwargs.get('window_size')
         self.variance = kwargs.get('variance')
         
         super().__init__()

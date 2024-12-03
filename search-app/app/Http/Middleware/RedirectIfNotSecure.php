@@ -16,7 +16,7 @@ class RedirectIfNotSecure
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->secure() && env('APP_ENV') !== 'local'){
-            redirect()->secure($request->getRequestUri());
+            return $next($request);
         }
         return $next($request);
     }

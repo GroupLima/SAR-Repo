@@ -10,14 +10,17 @@ put all application routes here with their corresponding functions
 */
 
 //Default route for the home page
-// added bool to detect if xml should be displayed
-Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home', false);
-
-//route when user goes to a page
-Route::get('/{page}', [RouteController::class, 'display_view']);
+Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home');
+Route::get('/home', [RouteController::class, 'display_view'])->defaults('page', 'home');
 
 //execute search function
 Route::get('/search', [SearchController::class, 'search']);
 
 //execute xquery
-Route::get('/xquery', [SearchController::class, 'xquery']);
+Route::post('/xquery', [SearchController::class, 'runXQuery']);
+
+//execute run basic
+Route::get('/runBasic', [SearchController::class, 'runBasic']);
+
+//(always put on bottom so it doesn't override other routes)
+//Route::get('/{page}', [RouteController::class, 'display_view']);

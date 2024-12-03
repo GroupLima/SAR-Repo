@@ -239,3 +239,33 @@ footer {
         }
     }
 }
+#app {
+    max-width: $max-width;
+    margin: 0 auto;
+    .search-section {
+        .input{
+            padding: 10px 0px;
+            input {
+                width: 100%;  // Ensures the input takes the full width of the container
+                padding: 12px;
+                border: 2px solid $dark-gray;
+                border-radius: $border-radius;
+                font-size: 16px;
+                font-family: Arial, sans-serif;
+            }
+        }
+        .button{
+            padding: 10px 0px;
+            button {
+                background-color: $primary-colour;
+                color: $secondary-colour;
+                padding: 12px 24px;
+                border: none;
+                border-radius: $border-radius;
+                font-weight: bold;
+                font-size: 16px;
+            
+            }
+        }
+    }
+}

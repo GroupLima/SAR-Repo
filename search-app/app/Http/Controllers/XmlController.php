@@ -187,9 +187,4 @@ class XmlController extends Controller
 
         return $match_results;
     }
-
-
 }
-
-
-

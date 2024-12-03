@@ -205,4 +205,34 @@ footer .footer-links a {
 }
 footer .footer-links a:hover {
     text-decoration: underline;
-} /*# sourceMappingURL=app.css.map */
+}
+
+#app {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+#app .search-section .input {
+    padding: 10px 0px;
+}
+#app .search-section .input input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4a4a4a;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+#app .search-section .button {
+    padding: 10px 0px;
+}
+#app .search-section .button button {
+    background-color: #6e0d25;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/*# sourceMappingURL=app.css.map */

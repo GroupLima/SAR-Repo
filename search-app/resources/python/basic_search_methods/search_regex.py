@@ -1,12 +1,12 @@
 from rapidfuzz import process, fuzz
-from basic_search import BasicSearch
+from basic_search_methods.basic_search import BasicSearch
 import re
 
 class RegexSearch(BasicSearch):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query'),
-        self.entries = kwargs.get('entries'),
+        self.json_entries = kwargs.get('json_entries'),
         self.window_size = kwargs.get('window_size'),
         self.variance = kwargs.get('variance')
         

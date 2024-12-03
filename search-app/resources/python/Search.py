@@ -7,6 +7,10 @@ from basic_search_methods.search_phrase_starts_with import PhraseStartsWithSearc
 from basic_search_methods.search_phrase_contains import PhraseContainsSearch
 from basic_search_methods.search_phrase_ends_with import PhraseEndsWithSearch
 from basic_search_methods.search_regex import RegexSearch
+import json_parser as jp
+
+from pathlib import Path
+
 
 
 """
@@ -86,9 +90,67 @@ return example:
     }
 """
 
+def search(params):
+    query_type = params['qt']
+    match query_type:
+        case 'basic_search':
+            return basic_search(params)
+        case 'advanced_search':
+            return advanced_search(params)
+        case _:
+            print('search not found')
+            return None
+            
+
+
+# for basic search and autocomplete
+def basic_search(params):
+    try:
+        # write code here
+        # find matches using search method chosen by user
+        search = Search(params)
+        search.init_basic_search_params()
+        search.matches = search.apply_basic_search()
+        #print(search.matches)
+        # sort entries by criteria param
+        search.init_sort_params()
+        search.order_by(search.sort_criteria)
+        return search
+    except Exception as e:
+        print(
+            f"Error initializing parameters or applying search. "
+            f"Check parameter key names or search method. Details: {e}"
+        )
+
+    
+
+def advanced_search(params):
+    try:
+        # write code here
+        # filter which entries to find matches for
+        search = Search(params)
+        search.init_advanced_search_params()
+        search.apply_advanced_search()
+
+        # find matches using search method chosen by user
+        search.init_basic_search_params()
+        search.matches = search.apply_basic_search()
+
+        # sort entries by criteria param
+        search.init_sort_params()
+        search.order_by(search.sort_criteria)
+        return search.get_matches()
+    except Exception as e:
+        print(
+            f"Error initializing parameters or applying search. "
+            f"Check parameter key names or search method. Details: {e}"
+        )
+
+
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
+    
 
     search_classes = {
         # key = search method : value = tuple(class name, init variables)
@@ -99,14 +161,14 @@ class Search():
         'regex' : 'RegexSearch',
     }
     
-    def __init__(self, params, json_entries, search_type):
+    def __init__(self, params, json_entries=None):
         #self.user_input = user_input # User string search
-        self.json_entries = json_entries # returned data from search
+        
         self.params = params
-        self.search_type = search_type
-        # $param_keys = ['query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
+        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
         # default advanced search params
+        self.json_entries = json_entries or self.load_json()
         self.entry_id = ''
         self.date_from = None
         self.date_to = None
@@ -115,11 +177,14 @@ class Search():
         self.lang = None
         
         # default basic search params
-        self.search_method = 'exact match'
-        self.search_class
+        self.search_method = 'phrase/keyword'
+        self.search_class = ''
         self.query = ''
         self.qlen = 0
         self.window_size = 5
+        self.min_step_size = 1 # non inclusive
+        self.max_step_size = 6 # non inclusive
+        self.step_size = 5 # always ranges between 2 and 5 inclusive
         self.results_per_page = 5 # default is 5 results per page
         self.variance = 100 # default similarity of 100 (exact match)
         self.variance_limit = 50 # experiment with variance limit?
@@ -129,64 +194,26 @@ class Search():
         
         self.matches = {} # return to search controller
 
-
-    def search(self):
-        try:
-            match self.search_type:
-                case 'basic' | 'autocomplete_query':
-                    # find matches using search method chosen by user
-                    self.init_basic_search_params()
-                    self.apply_basic_search()
-
-                    # sort entries by criteria param
-                    self.init_sort_params()
-                    self.order_by(self.sort_criteria)
-                case 'advanced':
-                    # filter which entries to find matches for
-                    self.init_advanced_search_params()
-                    self.apply_advanced_search()
-
-                    # find matches using search method chosen by user
-                    self.init_basic_search_params()
-                    self.apply_basic_search()
-
-                    # sort entries by criteria param
-                    self.init_sort_params()
-                    self.order_by(self.sort_criteria)
-                case 'autocomplete_entry':
-                    self.apply_entry_id_search()
-                case _:
-                    raise SearchTypeNotFoundError(self.search_type)
-        except Exception as e:
-            print(
-                f"Error initializing parameters or applying search. "
-                f"Check parameter key names or search method. Details: {e}"
-            )
-
-
+    def load_json(self):
+        json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
+        with open(json_filepath, 'r') as json_file:
+            json_entries = json.load(json_file)
+        return json_entries
 
     def init_advanced_search_params(self):
         """
-        eg. self.entry_id = self.params['entry_id']
+        eg. self.entry_id = self.params['entry_id'] = 'ARO-6-'
         convert the values in the params to their types
         convert the values in each json entry to their types (could be done in json generator?)
         """
         # write code here
-
-
-        pass
-
-
-    def parse_date(self):
-        """
-        convert string date into a tuple of ints.
-        note that later on we'll have to to consider multiple dates with certainty levels 
-        """
-        # write code here
-
-
-        pass
-
+        self.entry_id = self.params.get('entry_id')
+        self.date_to = jp.parse_date(self.params.get('date_to'))
+        self.date_from = jp.parse_date(self.params.get('date_from'))
+        self.vol = jp.parse_num(self.params.get('vol'))
+        self.pg = jp.parse_num(self.params.get('pg'))
+        self.lang = jp.parse_num(self.params.get('lang'))
+  
 
     def apply_advanced_search(self, entry_id, date_from, date_to, language, volume, page, paragraph):
         """
@@ -195,12 +222,14 @@ class Search():
         use advanced_search.py
         """
         # write code here
+        
 
         
         pass
 
     def get_args(self):
         args = {
+            'json_entries' : self.json_entries,
             'entry_id': self.entry_id,
             'date_from': self.date_from,
             'date_to': self.date_to,
@@ -214,34 +243,31 @@ class Search():
             'results_per_page': self.result_per_page,
             'variance': self.variance,
             'variance_limit': self.variance_limit,
-            'sort_criteria': self.sort_criteria
+            'ob': self.sort_criteria
         }
         return args
 
 
-    def init_basic_search_params(self, params):
+    def init_basic_search_params(self):
         """
         basic search params: query, var, sm, entry_id
         """
         # default number of results per page
         self.search_method = self.params['sm']
-
         # raise an error if the search method is not a key in search functions
         self.search_class = Search.search_classes.get(self.search_method)
-        if not self.search_function:
+        if not self.search_method:
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-
         if self.query != 'regex':
-            self.qlen = len(self.query)
-            self.set_window_size()
+            self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
-        self.convert_variance(params['var'])
+        self.convert_variance(self.params['var'])
 
 
-    def set_window_size(self):
+    def set_window_and_step(self):
         """
         sets the value for what length the substring will cover over the text. It slides over the content
         
@@ -261,12 +287,15 @@ class Search():
         then the query will be compared with each of the substrings and determine if its a match
         """
         # write code here
+        self.qlen = len(self.query)
+        self.window_size = max(len(self.query), 1)
+        self.step_size = max(self.min_step_size, min(self.window_size, self.max_step_size))
 
 
         pass
         
 
-    def convert_variance(self, perc_variance):
+    def convert_variance(self, variance):
         """
         ranges from 0%-100% lower is closer to exact match; limit 100% has a low similarily of 50? experiment
         1. convert percentage to variance
@@ -274,9 +303,9 @@ class Search():
         2. assign result to self.variance
         """
         # write code here
-        
-
-        pass
+        variance = int(variance)
+        #print(abs(variance*10 - 100))
+        self.variance = abs(variance*10 - 100)
 
     
     def apply_basic_search(self):
@@ -285,7 +314,7 @@ class Search():
         """
         args = self.get_args()
         self.search_instance = globals()[self.search_class](**args)
-        self.search_instance.get_matches()
+        return self.search_instance.get_matches()
 
 
     def init_sort_params(self):
@@ -322,23 +351,13 @@ class Search():
         if sort_criteria is frequency_in_result: (frequency descending, accuracy)
         """
         # write code here
-
-
-        pass
-
-    def apply_entry_id_search(self):
-        """
-        return possible matching entry ids using self.results_per_page and self.entry_id
-        """
-        #write code here
-        
+            
 
         pass
 
 
     def get_matches(self):
         return self.matches
-
 
 
 class VarianceError(Exception): 
@@ -357,11 +376,18 @@ class SearchMethodDoesNotExistError(Exception):
         super().__init__(self.message) 
 
 if __name__ == '__main__':
-    # cust_search = MatchData('holly')
-    # cust_search.find_matches()
-    if len(sys.argv > 1):
-        params = sys.argv[1]
-        obj = Search(params)
-        matches = obj.find_matches()
-        json.dumps(matches) # return the matches data in a JSON object
-    pass
+    if len(sys.argv) > 1:
+        permitted = json.loads(sys.argv[1])
+        obj = search(permitted)
+        matches = obj.get_matches()
+        if matches:
+            results = {"message": "matches found", "results": matches}
+        else:
+            results = {"message": "no matches found", "results": None}
+        print(json.dumps(results)) # return the matches data in a JSON object
+    else:
+        arglen = len(sys.argv)
+        results = {"message":  "Not enough arguments. Need parameters.", "results": arglen}
+        print(json.dumps(results))
+        #print(json.dumps({"error": "Not enough arguments. Need parameters."}))
+    
