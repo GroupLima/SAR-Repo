@@ -105,7 +105,10 @@ try:
         #     sys.exit(1)
 
         # user_xquery = sys.argv[1]
-        user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
+        # user_xquery = 'for $i in //ns:div[@xml:lang="la"] return $i'
+        # user_xquery = 'for $i in //ns:div[@xml:lang="sc"] return $i'
+        # user_xquery = 'for $i in //ns:div[@xml:lang="la"] where $i/ancestor::ns:div//ns:date[@when="1501-10-20"] return $i'
+        user_xquery = 'for $i in //ns:div[@xml:lang="sc"] where $i/ancestor::ns:div//ns:date[@when >"1501-1-1"][@when <"1502-12-31"] return $i'
         try:
             xquery = XQuerySearch()
             results = xquery.search(user_xquery)
