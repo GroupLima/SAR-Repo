@@ -120,13 +120,21 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         //store matches
         $this->match_results = $output['results'];
+        // Check if $this->match_results is not null and is an array
+        $total_results = (is_array($this->match_results) && count($this->match_results) > 0) ? count($this->match_results) : 0;
+
         //format results with convert relevent text to html, add highlights, filter by page, etc
         $display_results = $this->filter_and_format($permitted);
+        $num_results = (is_array($display_results) && count($display_results) > 0) ? count($display_results) : 0;
+        $variant = $permitted['var'];
         // Return the JSON response with the validated data
         return response()->json([
             'success' => true,
+            'num_results' => $num_results,
+            'total_results' => $total_results,
             'results' => $display_results,
-            'message' => $output['message']
+            'message' => $output['message'],
+            'variant' => $variant
         ]);
 
         $xquery_doesnt_work = "no";
@@ -454,7 +462,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['qt'] = $params['query_type'];
         $permitted['var'] = $params['variant'];
         $permitted['sm'] = $params['methodSearch'];
-        $permitted['rpp'] = 10;
+        $permitted['rpp'] = 20;
         
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
@@ -477,8 +485,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
     function filter_and_format($permitted) {
-        //get results to display
-        $this->get_results_for_page($permitted['rpp'], 0);
 
         $query_type = $permitted['qt'];
 
@@ -509,14 +515,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //set $match_results to new dictionary format
             $this->match_results = $xquery_matches;
         }
-        /*
-
-        foreach ($results as &result) {
-            if (isset($result->text) && isset($result->matches)){
-                //convert to html
-            }
-        }
-        */
+        
 
         //if not autocomplete, highlight the html
         elseif (strpos($query_type, 'autocomplete') !== false ){
@@ -525,7 +524,38 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         else {
             //format the basic/advanced search results
-            return $this->match_results;
+            
+            $display_results = [];
+
+            // Check if match_results are available and not empty
+            if (empty($this->match_results)) {
+                return []; // No results to display
+            }
+            
+            uasort($this->match_results, function($a, $b) {
+                if ($a['accuracy_score'] == $b['accuracy_score']) {
+                    // If accuracy is the same, compare by match_frequency
+                    return $b['match_frequency'] - $a['match_frequency']; // Highest frequency first
+                }
+                return $b['accuracy_score'] - $a['accuracy_score']; // Highest accuracy first
+            });
+            
+            $rpp = $this->get_results_for_page($permitted['rpp'], 0);
+            // Limit the number of entries (e.g., top 5 entries), considering the total number of available entries
+            $top_entries_count = min(count($this->match_results), $rpp); // Ensure we don't exceed the number of available entries
+            $top_entries = array_slice($this->match_results, 0, $top_entries_count);
+            
+            if ($top_entries != null){
+                foreach ($top_entries as $entry_id => $entry) {
+                    $content = $this->jsonData[$entry_id]['content'];
+                    $htmlcontent = $this->convert_to_html($content);
+                    $matches = $entry['matches'];
+                    $highlighted_html = $this->highlight($htmlcontent, $matches);
+                    $display_results[$entry_id] = $highlighted_html;
+                }
+            }
+            
+            return $display_results;
         }
         
 
@@ -537,7 +567,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     //get chunk of results (if user requested 10 results per page, get the first 10 results)
     function get_results_for_page($rpp, $page){
         //use modulus to determine which chunk of results to return according to rpp (results per page)
-        return null;
+        return $rpp;
     }
 
     function convert_to_html($content){
@@ -546,16 +576,24 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
     // add highlight tags to content
-    function highlight($text, $matches){
+    function highlight($htmltext, $matches){
         // can highlight either whole word (word start, word middle, word end)
         // or can highlight the specific match
-        $opening_tag = '<strong>';
-        $closing_tag = '</strong>';
+        $opening_tag = '<span style="background-color: yellow;">';
+        $closing_tag = '</span>';
+        //$highlighted_htmlcontent = $htmltext;
         foreach ($matches as $match){
-            $escaped_text = preg_quote($match, '/');
-            $highlighted_content = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $text);
+            $substring = $match[0];
+            //echo $substring . ' ';
+            $escaped_text = preg_quote($substring, '/');
+            //echo 'escaped text: ' . $escaped_text . ' ';
+            //$highlighted_htmlcontent = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $highlighted_htmlcontent);
+            $pattern = '/\b' . $escaped_text . '\b/i';
+            $htmltext = preg_replace($pattern, "$opening_tag$substring$closing_tag", $htmltext);
+
+            //echo 'highlights: ' . $htmltext . '; <br>';
         }
-        return $highlighted_content;
+        return $htmltext;
     }
 
 }

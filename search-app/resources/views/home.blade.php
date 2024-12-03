@@ -44,15 +44,14 @@
     <div class="results-section mt-3">
         <h2 class="results-title">Results</h2>
         <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
-        
+        <p v-if="total_results > 0">Showing @{{ num_results }} / @{{ total_results }} entries where the start of matches are limited to @{{ frozen_variant }}% variance</p>
+
         <div v-if="results" class="result-item" v-for="(content, id) in results" :key="id">
-                
             <h4>@{{ id }}</h4>
             
             <div v-html="content"></div> <!-- This will render the HTML content inside the div -->
             <br> 
         </div>
-        
         <p>Debug: @{{ results }}</p>
     </div>
 
@@ -147,7 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         const results = response.data.results;
                         console.log("debug results", results);
                         // Handle the response data (assuming it's structured like this)
-                        this.results = results;
+                        this.results = results || [];
+                        this.num_results = response.data.num_results;
+                        this.total_results = response.data.total_results || 0;
+                        this.frozen_variant = response.data.variant*10;
                         // this.numberOfXQuery = numberOfXQuery
                         // console.log("Number of results:", numberOfXQuery);
                     } else {

@@ -17,7 +17,8 @@ class PhraseStartsWithSearch(BasicSearch):
         
     def find_matches_in(self, content):
         # Extract words and their start indices
-        strings_to_compare = [(match.group(), match.start()) for match in re.finditer(r'\b\w+\b', content)]
+        #strings_to_compare = [(match.group(), match.start()) for match in re.finditer(r'\b\w+\b', content)]
+        strings_to_compare = [(match.group(), match.start()) for match in re.finditer(r'\S+', content)]
 
         #print(strings_to_compare)
         #print(strings_to_compare)
