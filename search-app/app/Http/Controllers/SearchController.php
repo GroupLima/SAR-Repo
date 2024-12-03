@@ -97,18 +97,58 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
     protected $match_results = [];
 
-    function search(Request $request){
+    public function search(Request $request){
         // *************BAD PIOTR CODE *******************
         // Log or process the received data
         // echo __DIR__;
         // echo getcwd();
-        $data = $request->all(); // Get all incoming request data
-        \Log::info('Received data:', $data);
 
-        $queryType = $data['query_type']; // "xquery"
-        $query = $data['query'];         // "hello cait"
+        //get request parameters
+        $params = $request->all();
+        echo "printing parameters";
+        echo 'queryType --->>>>';
+        $queryType = $params['query_type'];  
+        echo $queryType;
+        echo '****WORKS*****';
+
+        //convert vue data params to backend params eg. endDate -> end_date
+        $permitted = $this->simplify_search_params($params);
+
+        echo "converted parameter keys to valid keys";
+        //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
+        $python_search_file = $this->get_search_path($permitted['qt']);
+        echo "python script to ecxecute --->>>>>";
+        echo $python_search_file;
+        //get matches from any type of search
+        $permitted = 'hi';
+        $permitted_params = escapeshellarg($permitted);
+        $json_entries = escapeshellarg(json_encode($this->jsonData));
+        $command = "python3 hello $permitted_params $json_entries";
+        $output = shell_exec($command);
+        echo 'executed python basic search';
+        //extracts the json object
+        $matches = json_decode($output, true);
+        echo 'extracted json dictionary from the python output';
         
-        if ($queryType === "xquery") {
+    //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
+    //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
+    //     $command .= ' ' . $additional_argument;
+    // }
+
+        //store matches
+        $this->match_results = $matches;
+
+        //format results with convert relevent text to html, add highlights, filter by page, etc
+        $display_results = $this->filter_and_format($permitted);
+
+        // Return the JSON response with the validated data
+        return response()->json([
+            'success' => true,
+            'data' => $display_results,
+        ]);
+
+        $xquery_doesnt_work = "no";
+        if ($xquery_doesnt_work === "xquery") {
             // Do something
 
 
@@ -127,7 +167,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //echo exec('ss -tuln | grep 49888');
             
             
-            
+            #THIS ACTRUALLT MADE IT RUN
             $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
             $process->run();
             echo $process->getOutput();
@@ -205,6 +245,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         }else{
 
             try {
+                /*
                 // Validate the incoming request
                 $validated = $request->validate([
                     //q
@@ -232,38 +273,9 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                     //rpp (results per page)
                     //ob (order by criteria)
                 ]);
-                //get request parameters
-                $params = $request->query();
 
-
-                //convert vue data params to backend params eg. endDate -> end_date
-                $permitted = $this->simplify_search_params($params);
-
-                $permitted['query'] = 'for $i in //ns:div[@xml:lang="la"] return $i'; //put query here
-                //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
-                $python_search_file = $this->get_search_path($permitted) . $permitted;
-
-
-                //get matches from any type of search
-                $matches = shell_exec('python3 ' . $python_search_file);
-
-            //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
-            //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
-            //     $command .= ' ' . $additional_argument;
-            // }
-
-                //store matches
-                $this->match_results = $matches;
-
-                //format results with convert relevent text to html, add highlights, filter by page, etc
-                $display_results = $this->filter_and_format($permitted);
-
-                // Return the JSON response with the validated data
-                return response()->json([
-                    'success' => true,
-                    'data' => $display_results,
-                ]);
-
+                */
+                
 
             } catch (ValidationException $e){
                 return response()->json([
@@ -328,7 +340,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $query = $data['query'];         // "hello cait"
 
         //print_r($queryType);
-        //print_r($query);
+        //print_r($query);  
         if ($queryType === "xquery") {
             // Do something
             $queryResults = [
@@ -346,18 +358,91 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // Define your query results (replace with actual logic as needed)
 
         // Calculate the number of results dynamically
-        // $numberOfXQuery = count($queryResults);
+         $numberOfXQuery = count($queryResults);
 
         // // Create a response structure
-        // $response = [
-        //     'numberOfXQuery' => $numberOfXQuery,
-        //     'queryResults' => $queryResults,
-        // ];
+         $response = [
+             'numberOfXQuery' => $numberOfXQuery,
+             'queryResults' => $queryResults,
+         ];
 
         // Return the response
         return response()->json(['message' => $response]);
     }
 
+    public function runBasic(Request $request)
+    {
+        // Log or process the received data
+        $data = $request->all(); // Get all incoming request data
+        \Log::info('Received data:', $data);
+        //echo $data;
+        //print_r("\n");
+        //print_r($data.query.type);
+        //print_r($data.query.type);
+        $queryType     = $data['query_type'];
+        $basicSearch   = $data['basicSearch'];
+        $methodSearch  = $data['methodSearch'];
+        $language      = $data['language'];
+        $variant       = $data['variant'];
+        $volumes       = $data['volumes'];
+        $pageSearch    = $data['pageSearch'];
+        $entrySearch   = $data['entrySearch'];
+        $startDate     = $data['startDate'];
+        $endDate       = $data['endDate'];
+        $docId         = $data['docId'];
+        echo "\nqueryType";
+        echo $queryType;
+        echo "\nbasicSearch";
+        echo $basicSearch;
+        echo "\nmethodSearch";
+        echo $methodSearch;
+        echo "\nlanguage";
+        echo $language;
+        echo "\nvariant";
+        echo $variant;
+        echo "\nvolumes";
+        echo $volumes;
+        echo "\npageSearch";
+        echo $entrySearch;
+        echo "\nentrySearch";
+        echo $entrySearch;
+        echo "\nstartDate";
+        echo $startDate;
+        echo "\nendDate";
+        echo $endDate;
+        echo "\ndocId";
+        echo $docId;
+        echo "\n";
+   
+        
+        if ($queryType === "xquery") {
+            // Do somethin
+            $queryResults = [
+                'ARO-8-1290-9' => '<div>working</div>',
+                'ARO-8-1730-9' => '<div>hello world</div>',
+                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
+                'ARO-8-4391-2' => '<div>hi hello</div>',
+            ];
+        }else{
+            $queryResults = [
+            'ARO-8-1290-9' => '<div>ha ha ha caitlin</div>',
+            'ARO-8-1730-9' => '<div>we we we </div>',
+            ];
+        }
+        // Define your query results (replace with actual logic as needed)
+
+        // Calculate the number of results dynamically
+         $numberOfXQuery = count($queryResults);
+
+        // // Create a response structure
+         $response = [
+             'numberOfXQuery' => $numberOfXQuery,
+             'queryResults' => $queryResults,
+         ];
+
+        // Return the response
+        return response()->json(['message' => $response]);
+    }
 
 
 
@@ -382,7 +467,13 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             4. (sm) search method: 'start with'
             5. (rpp) results per page
 
-        */
+        */ //left is python right is vue
+        $permitted['query'] = $params['basicSearch'];
+        $permitted['qt'] = $params['query_type'];
+        $permitted['var'] = $params['variant'];
+        $permitted['sm'] = $params['methodSearch'];
+        $permitted['rpp'] = 10;
+        
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
             if (isset($params[$param])) {
@@ -393,12 +484,13 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
 
-    function get_search_path($params){
-        $query_type = $params['qt'];
+    function get_search_path($query_type){
+        //$query_type = $permitted['qt'];
         if (strtolower($query_type) == 'xquery'){
             //hardcoded for now
             return './search-app/resources/python/XQuerySearch.py ';
         } else {
+            echo "using ./search-app/resources/python/Search.py ";
             return './search-app/resources/python/Search.py ' ;
         }
     }

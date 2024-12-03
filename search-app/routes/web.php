@@ -16,8 +16,11 @@ Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'hom
 Route::get('/{page}', [RouteController::class, 'display_view']);
 
 //execute search function
-Route::get('/search', [SearchController::class, 'search']);
+Route::post('/search', [SearchController::class, 'search']);
 
 //execute xquery
-Route::post('/xquery', [SearchController::class, 'search']);
+Route::post('/xquery', [SearchController::class, 'runXQuery']);
+
+//execute run basic
+Route::post('/runBasic', [SearchController::class, 'runBasic']);
 
