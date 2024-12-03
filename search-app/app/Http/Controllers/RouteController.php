@@ -38,11 +38,12 @@ class RouteController extends Controller
         return false;
     }
     // Route for search (added this method to integrate SearchController)
+    /*
     public function search(Request $request)
     {
         $searchController = new SearchController();
         return $searchController->search($request);
-    }
+    }*/
 }
 
 

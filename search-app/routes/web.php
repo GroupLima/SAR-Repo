@@ -11,16 +11,17 @@ put all application routes here with their corresponding functions
 
 //Default route for the home page
 Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home');
-
-//route when user goes to a page
-Route::get('/{page}', [RouteController::class, 'display_view']);
+Route::get('/home', [RouteController::class, 'display_view'])->defaults('page', 'home');
 
 //execute search function
-Route::post('/search', [SearchController::class, 'search']);
+Route::get('/search', [SearchController::class, 'search']);
 
 //execute xquery
 Route::post('/xquery', [SearchController::class, 'runXQuery']);
 
 //execute run basic
-Route::post('/runBasic', [SearchController::class, 'runBasic']);
+Route::get('/runBasic', [SearchController::class, 'runBasic']);
+
+//(always put on bottom so it doesn't override other routes)
+//Route::get('/{page}', [RouteController::class, 'display_view']);
 

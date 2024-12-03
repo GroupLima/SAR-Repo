@@ -13,8 +13,7 @@ class SearchController extends Controller
 {
   protected $jsonFilePath;
   protected $jsonData;
-
-  // initializes the xml controller
+  // initializes the xml json data and project root path
   public function __construct()
   {
       // Set the path to the JSON file
@@ -105,46 +104,29 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         //get request parameters
         $params = $request->all();
-        echo "printing parameters";
-        echo 'queryType --->>>>';
-        $queryType = $params['query_type'];  
-        echo $queryType;
-        echo '****WORKS*****';
 
         //convert vue data params to backend params eg. endDate -> end_date
         $permitted = $this->simplify_search_params($params);
-
-        echo "converted parameter keys to valid keys";
         //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
         $python_search_file = $this->get_search_path($permitted['qt']);
-        echo "python script to ecxecute --->>>>>";
-        echo $python_search_file;
         //get matches from any type of search
-        $permitted = 'hi';
-        $permitted_params = escapeshellarg($permitted);
-        $json_entries = escapeshellarg(json_encode($this->jsonData));
-        $command = "python3 hello $permitted_params $json_entries";
-        $output = shell_exec($command);
-        echo 'executed python basic search';
-        //extracts the json object
-        $matches = json_decode($output, true);
-        echo 'extracted json dictionary from the python output';
-        
-    //     if (strpos($python_search_file, 'XQuerySearch.py') !== false) {
-    //     $additional_argument = escapeshellarg(json_encode($permitted)); // Pass parameters as JSON
-    //     $command .= ' ' . $additional_argument;
-    // }
+        $permitted_params = escapeshellarg(json_encode($permitted));
+        //$command = "python3 $python_search_file_arg $permitted_params";
+        $command = "python3 $python_search_file $permitted_params";
+        //extracts the json output object
+        $raw_output = shell_exec($command);
+        //echo "raw output: " . $raw_output;
+        $output = json_decode($raw_output, true);
 
         //store matches
-        $this->match_results = $matches;
-
+        $this->match_results = $output['results'];
         //format results with convert relevent text to html, add highlights, filter by page, etc
         $display_results = $this->filter_and_format($permitted);
-
         // Return the JSON response with the validated data
         return response()->json([
             'success' => true,
-            'data' => $display_results,
+            'results' => $display_results,
+            'message' => $output['message']
         ]);
 
         $xquery_doesnt_work = "no";
@@ -326,7 +308,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         */
     }
 
-
+/*
     public function runXQuery(Request $request)
     {
         // Log or process the received data
@@ -369,12 +351,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // Return the response
         return response()->json(['message' => $response]);
     }
-
+*/
     public function runBasic(Request $request)
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-        \Log::info('Received data:', $data);
+       // \Log::info('Received data:', $data);
         //echo $data;
         //print_r("\n");
         //print_r($data.query.type);
@@ -488,10 +470,9 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         //$query_type = $permitted['qt'];
         if (strtolower($query_type) == 'xquery'){
             //hardcoded for now
-            return './search-app/resources/python/XQuerySearch.py ';
+            return '../resources/python/XQuerySearch.py';
         } else {
-            echo "using ./search-app/resources/python/Search.py ";
-            return './search-app/resources/python/Search.py ' ;
+            return '../resources/python/Search.py' ;
         }
     }
 
@@ -538,9 +519,15 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         */
 
         //if not autocomplete, highlight the html
-        if (strpos($query_type, 'autocomplete') !== false ){
+        elseif (strpos($query_type, 'autocomplete') !== false ){
             return $this->match_results;
         }
+
+        else {
+            //format the basic/advanced search results
+            return $this->match_results;
+        }
+        
 
 
 

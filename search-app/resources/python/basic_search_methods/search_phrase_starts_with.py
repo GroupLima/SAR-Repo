@@ -13,7 +13,6 @@ class PhraseStartsWithSearch(BasicSearch):
         self.step_size = kwargs.get('step_size')
         self.variance = kwargs.get('variance')
         super().__init__()
-
         self.populate_matches_dict()
         
     def find_matches_in(self, content):

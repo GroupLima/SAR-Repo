@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return {
                 isDropdownOpen: false,
                 basicSearch: "per ka",
-                methodSearch: "start with",
+                methodSearch: "starts with",
                 language: "any",
                 variant: "1",
                 volumes: "",
@@ -123,33 +123,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     console.log('dataUser');
                     console.log(dataUser);
-                    const response = await axios.post('/search', {
-                        query_type: "basic_search", //basic , adnvaced etc...
-                        basicSearch: this.basicSearch,
-                        methodSearch: this.methodSearch,
-                        language: this.language,
-                        variant: this.variant,
-                        volumes: this.volumes,
-                        pageSearch: this.pageSearch,
-                        entrySearch: this.entrySearch,
-                        startDate: this.startDate,
-                        endDate: this.endDate,
-                        docId: this.docId,// Sending the query entered by the user
+                    const response = await axios.get('/search', {
+                        params: {
+                            query_type: "basic_search", //basic , adnvaced etc...
+                            basicSearch: this.basicSearch,
+                            methodSearch: this.methodSearch,
+                            language: this.language,
+                            variant: this.variant,
+                            volumes: this.volumes,
+                            pageSearch: this.pageSearch,
+                            entrySearch: this.entrySearch,
+                            startDate: this.startDate,
+                            endDate: this.endDate,
+                            docId: this.docId,// Sending the query entered by the user
+                        },
+                        
                     });
-
                     console.log("Response received:", response);
-
+                    console.log("success?", response.data.success);
                     // Check if the response contains data
-                    if (response.data.message) {
+                    if (response.data.success) {
                         // const { numberOfXQuery, queryResults } = response.data.message;
-                        const { queryResults } = response.data.message;
-
-
+                        const results = response.data.results;
+                        console.log("debug results", results);
                         // Handle the response data (assuming it's structured like this)
-                        this.results = queryResults;
+                        this.results = results;
                         // this.numberOfXQuery = numberOfXQuery
                         // console.log("Number of results:", numberOfXQuery);
                     } else {
+                        console.log("no debug results");
                         // Handle the case where the message is empty or malformed
                         this.error = "No results found!";
                     }

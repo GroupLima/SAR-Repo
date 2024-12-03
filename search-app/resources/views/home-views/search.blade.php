@@ -19,7 +19,7 @@
       <input type="radio" v-model="methodSearch" value="regularex" id="regularex" name="search-method"> Regular Expression
    </label>
    <label>
-      <input type="radio" v-model="methodSearch" value="word-start" id="word-start" name="search-method"> Word Start
+      <input type="radio" v-model="methodSearch" value="starts with" id="word-start" name="search-method"> Word Start
    </label>
    <label>
       <input type="radio" v-model="methodSearch" value="word-middle" id="word-middle" name="search-method"> Word Middle
@@ -39,12 +39,12 @@
 </div>   
 <div class="advanced-option">
    <h3 class="option-title">Spelling Variants</h3>
-   <select v-model="variants" id="variants">
-      <option value="zero">0</option>
-      <option value="one">1</option>
-      <option value="two">2</option>
-      <option value="one">3</option>
-      <option value="two">4</option>
+   <select v-model="variant" id="variant">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
    </select>
 </div>   
 <div id=volume-select class="advanced-option">

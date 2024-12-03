@@ -9,6 +9,10 @@ from basic_search_methods.search_phrase_ends_with import PhraseEndsWithSearch
 from basic_search_methods.search_regex import RegexSearch
 import json_parser as jp
 
+from pathlib import Path
+
+
+
 """
 we using resources/json/entries.json to find matches
 
@@ -86,13 +90,13 @@ return example:
     }
 """
 
-def search(params, json_entries):
+def search(params):
     query_type = params['qt']
     match query_type:
         case 'basic_search':
-            return basic_search(params, json_entries)
+            return basic_search(params)
         case 'advanced_search':
-            return advanced_search(params, json_entries)
+            return advanced_search(params)
         case _:
             print('search not found')
             return None
@@ -100,14 +104,14 @@ def search(params, json_entries):
 
 
 # for basic search and autocomplete
-def basic_search(params, json_entries):
+def basic_search(params):
     try:
         # write code here
         # find matches using search method chosen by user
-        search = Search(params, json_entries)
+        search = Search(params)
         search.init_basic_search_params()
         search.matches = search.apply_basic_search()
-
+        #print(search.matches)
         # sort entries by criteria param
         search.init_sort_params()
         search.order_by(search.sort_criteria)
@@ -120,11 +124,11 @@ def basic_search(params, json_entries):
 
     
 
-def advanced_search(params, json_entries):
+def advanced_search(params):
     try:
         # write code here
         # filter which entries to find matches for
-        search = Search(params, json_entries)
+        search = Search(params)
         search.init_advanced_search_params()
         search.apply_advanced_search()
 
@@ -146,6 +150,7 @@ def advanced_search(params, json_entries):
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
+    
 
     search_classes = {
         # key = search method : value = tuple(class name, init variables)
@@ -156,14 +161,14 @@ class Search():
         'regex' : 'RegexSearch',
     }
     
-    def __init__(self, params, json_entries):
+    def __init__(self, params, json_entries=None):
         #self.user_input = user_input # User string search
         
         self.params = params
         # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
         # default advanced search params
-        self.json_entries = json_entries
+        self.json_entries = json_entries or self.load_json()
         self.entry_id = ''
         self.date_from = None
         self.date_to = None
@@ -188,6 +193,12 @@ class Search():
         self.sort_criteria = ''
         
         self.matches = {} # return to search controller
+
+    def load_json(self):
+        json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
+        with open(json_filepath, 'r') as json_file:
+            json_entries = json.load(json_file)
+        return json_entries
 
     def init_advanced_search_params(self):
         """
@@ -243,7 +254,6 @@ class Search():
         """
         # default number of results per page
         self.search_method = self.params['sm']
-
         # raise an error if the search method is not a key in search functions
         self.search_class = Search.search_classes.get(self.search_method)
         if not self.search_method:
@@ -293,7 +303,8 @@ class Search():
         2. assign result to self.variance
         """
         # write code here
-        print(abs(variance*10 - 100))
+        variance = int(variance)
+        #print(abs(variance*10 - 100))
         self.variance = abs(variance*10 - 100)
 
     
@@ -365,14 +376,18 @@ class SearchMethodDoesNotExistError(Exception):
         super().__init__(self.message) 
 
 if __name__ == '__main__':
-    # cust_search = MatchData('holly')
-    # cust_search.find_matches()
-    if len(sys.argv > 2):
-        params = sys.argv[1]
-        json_entries = sys.argv[2]
-        obj = Search(params, json_entries)
+    if len(sys.argv) > 1:
+        permitted = json.loads(sys.argv[1])
+        obj = search(permitted)
         matches = obj.get_matches()
-        json.dumps(matches) # return the matches data in a JSON object
+        if matches:
+            results = {"message": "matches found", "results": matches}
+        else:
+            results = {"message": "no matches found", "results": None}
+        print(json.dumps(results)) # return the matches data in a JSON object
     else:
-        print('nnot enough arguments. need filepath, parameters, and json entries')
-    pass
+        arglen = len(sys.argv)
+        results = {"message":  "Not enough arguments. Need parameters.", "results": arglen}
+        print(json.dumps(results))
+        #print(json.dumps({"error": "Not enough arguments. Need parameters."}))
+    
