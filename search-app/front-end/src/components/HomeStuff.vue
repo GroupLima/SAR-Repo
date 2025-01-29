@@ -1,12 +1,13 @@
 <script setup>
 import SearchFields from '@/components/SearchFields.vue';
-import SearchResults from '@/components/SearchResults.vue'
+import SearchResults from '@/components/SearchResults.vue';
+import cursiveLatin from '@/assets/images/sample.png';
 import { defineProps } from 'vue';
 
 const props = defineProps({
     displayResults: {
         type: Boolean,
-        default: false
+        default: true
     },
     queryParams: []
 });
@@ -29,10 +30,14 @@ const props = defineProps({
         <!-- Main Section -->
         <div>
             <SearchFields />
-            <div v-if="props.displayResults">
+            <div v-if="displayResults">
                 <SearchResults :queryParams="queryParams"/>
             </div>
         </div>
+
+        <div class="image-container">
+            <img :src="cursiveLatin" alt="sample text" style="overflow: hidden;">
+        </div> 
 
         <!-- Footer Section -->
         <footer>

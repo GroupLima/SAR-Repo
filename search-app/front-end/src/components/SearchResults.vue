@@ -1,7 +1,6 @@
 <script setup>
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import { reactive } from 'vue';
-import cursiveLatin from '@/assets/images/sample.png'
+import { reactive, onMounted } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
@@ -18,7 +17,9 @@ const state = reactive({
 });
 
 const search = async() => {
+    console.log("results");
     try {
+        
         const request = "" // construct request using queryParams
         const response = await axios.get(request); // insert route to back end to get 
         if (response.data.success) {
@@ -33,11 +34,12 @@ const search = async() => {
         } else {
             console.log("no debug results");
             // Handle the case where the message is empty or malformed
-            state.error = "No results found!";
+            //state.error = "No results found!";
         }
     } catch (error) {
         console.error("error fetching results", error);
     } finally {
+        console.log("setting load value to false");
         state.isLoading = false;
     }
 }
@@ -63,8 +65,6 @@ onMounted(search);
                 
         </div>
 
-        <div class="image-container">
-            <img :src="cursiveLatin" alt="sample text" style="overflow: hidden;">
-        </div>           
+                 
     </div>
 </template>
