@@ -19,9 +19,24 @@ const state = reactive({
 const search = async() => {
     console.log("results");
     try {
+        const response = await axios.get('/sar-db/search', {
+            params: {
+                query_type: "basic_search", //basic , adnvaced etc...
+                basicSearch: state.results.basicSearch,
+                methodSearch: state.results.methodSearch,
+                language: state.results.language,
+                variant: state.results.variant,
+                volumes: state.results.volumes,
+                pageSearch: state.results.pageSearch,
+                entrySearch: state.results.entrySearch,
+                startDate: state.results.startDate,
+                endDate: state.results.endDate,
+                docId: state.results.docId,// Sending the query entered by the user
+            },
         
-        const request = "" // construct request using queryParams
-        const response = await axios.get(request); // insert route to back end to get 
+        }); 
+        
+        
         if (response.data.success) {
             // const { numberOfXQuery, queryResults } = response.data.message;
             state.results = response.data.results;
@@ -30,9 +45,10 @@ const search = async() => {
             state.results = results || [];
             state.num_results = response.data.num_results;
             state.total_results = response.data.total_results || 0;
-            //this.frozen_variant = response.data.variant*10;
+            //state.results.frozen_variant = response.data.variant*10;
         } else {
             console.log("no debug results");
+            console.log(response);
             // Handle the case where the message is empty or malformed
             //state.error = "No results found!";
         }

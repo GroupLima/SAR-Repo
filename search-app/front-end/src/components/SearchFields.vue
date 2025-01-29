@@ -79,7 +79,7 @@ const toggleDropdown = () => {
             <div class="basic-search"> <!-- this is the basic search bar -->
                 <input type="search" placeholder="Enter your search term" aria-label="Search" id="search-box"/>
                 <!-- we need something that looks like a button here: "SEARCH"-->
-                <RouterLink :to="{path: '/', query: { displayResults: true, queryParams: null}}" id="search-button">SEARCH</RouterLink>
+                <RouterLink :to="{path: '/', query: { displayResults: true, queryParams: inputFields}}" id="search-button">SEARCH</RouterLink>
                 <!-- need constriction so that user cannot search with empty bar -->
             </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->

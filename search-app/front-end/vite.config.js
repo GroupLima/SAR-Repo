@@ -11,16 +11,21 @@ export default defineConfig({
     vueDevTools(),
   ],
   build: {
-    outDir: '../back-end/public/vue', //directly output to laravel's public folder when running npm run build
+    outDir: '../laravel-server/public/vue', //directly output to laravel's public folder when running npm run build
     emptyOutDir: true,
   },
   server: {
     port: 5173,
     proxy: {
-      'back-end': {
+      'laravel-server': {
         target: 'http://localhost:5173/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/back-end/, '')
+        rewrite: (path) => path.replace(/^\/laravel-server/, '')
+      },
+      'sar-db': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/sar-api/, 'api')
       },
     },
   },
