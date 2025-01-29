@@ -1,20 +1,26 @@
+<!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
+import { RouterLink } from 'vue-router';
+import axios from 'axios';
 
 const props = defineProps({
     inputFields: {
-
+        isDropdownOpen: {
+            type: Boolean,
+            default: false // don't display dropdown initally
+        },
         basicSearch: {
             type: String,
             default: "holly"
         },
-        methodSearch: {
+        methodSearch: { // default type of string matching for basic search
             type: String,
             default: "starts with"
         },
         language: {
             type: String,
-            default: ""
+            default: "any"
         },
         variant: {
             type: String,
@@ -23,6 +29,9 @@ const props = defineProps({
         volumes: {
             type: String,
             default: ""
+            // need to fix the problem of all boxes being selected
+            //type: Array,  
+            //default: () => []
         },
         pageSearch: {
             type: String,
@@ -44,35 +53,29 @@ const props = defineProps({
             type: String,
             default: ""
         },
-        methodSearch: {
-            type: String,
-            default: ""
-        },
     }
 });
 
-//update v-model values into props
 
 </script>
 
 <template>
     <div>
-        <!-- resources/views/search.blade.php -->
-        <!-- put search components here -->
 
         <!-- SASS people please read!
-      I have used ids, rather than classes, to identify each form option, because the purpose of ids is to identify single, unique elements.
-      Hopefully its enough so that the search class people can link it all together.
-      Classes are for grouping multiple elements together so i used them to identify areas that might have similar styling and behaviour to
-      each other. -->
+        I have used IDs, rather than classes, to identify each form option, because the purpose of ids is to identify single, unique elements.
+        Hopefully its enough so that the search class people can link it all together.
+        Classes are for grouping multiple elements together so i used them to identify areas that might have similar styling and behaviour to
+        each other. -->
 
         <div class="search-section">
-            <div class="basic-search">
+            <div class="basic-search"> <!-- this is the basic search bar -->
                 <input type="search" placeholder="Enter your search term" aria-label="Search" id="search-box"
                     v-model="basicSearch" />
-                <button id="search-button" @click="runQuery">SEARCH</button>
+                <!-- we need something that looks like a button here: "SEARCH"-->
+                <RouterLink to="/home" id="search-button">SEARCH</RouterLink>
             </div>
-            <div id="advanced" class="advanced-search-container">
+            <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
                 <button class="dropdown-button" @click="toggleDropdown">
                     ADVANCED SEARCH ▼
                 </button>
