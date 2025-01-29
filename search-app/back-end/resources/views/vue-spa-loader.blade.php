@@ -13,7 +13,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lima SAR</title>
-    @vite(['resources/sass/app.scss']) <!-- Include Laravel styles if needed -->
 
     <!-- Load Vue CSS files dynamically -->
     @foreach($cssFiles as $css)

@@ -6,15 +6,9 @@ import Navbar from './components/Navbar.vue';
 
 <template>
   <div >
-    <Navbar class="example"/>
+    <Navbar/>
     <div>
       <RouterView />
     </div>
   </div>
 </template>
-
-<style scope>
-.example {
-  background: #6e0d25;
-}
-</style>
