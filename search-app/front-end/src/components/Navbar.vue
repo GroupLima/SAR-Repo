@@ -13,7 +13,7 @@ import townLogo from '@/assets/images/town.png';
                     <div class="logo-text">SAR</div>
                     <div class="logo-subtext">Search Aberdeen Registers</div>
                 </div>
-                <img :src="townLogo" alt="Town Logo" class="logo-image">
+                <!-- <img :src="townLogo" alt="Town Logo" class="logo-image"> -->
             </RouterLink>
             <div class="nav-links">
                 <RouterLink to="/">

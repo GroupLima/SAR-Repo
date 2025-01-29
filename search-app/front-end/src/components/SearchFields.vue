@@ -56,6 +56,11 @@ const props = defineProps({
     }
 });
 
+const isDropdownOpen = ref(false);
+
+const toggleDropdown = () => {
+    isDropdownOpen.value = !isDropdownOpen.value;
+}
 
 </script>
 
