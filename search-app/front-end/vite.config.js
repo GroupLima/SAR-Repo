@@ -10,6 +10,16 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  server: {
+    port: 5173,
+    proxy: {
+      'back-end': {
+        target: 'http://localhost:5173/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/back-end/, '')
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
