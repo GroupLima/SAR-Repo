@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as o,o as r}from"./index-CgiB-cSt.js";const c={};function s(t,n){return r(),o("div",null," This is browse view ")}const a=e(c,[["render",s]]);export{a as default};

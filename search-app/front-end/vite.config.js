@@ -10,6 +10,10 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  build: {
+    outDir: '../back-end/public/vue', //directly output to laravel's public folder when running npm run build
+    emptyOutDir: true,
+  },
   server: {
     port: 5173,
     proxy: {

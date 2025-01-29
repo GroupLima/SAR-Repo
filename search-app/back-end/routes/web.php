@@ -9,6 +9,12 @@ use App\Http\Controllers\SearchController;
 put all application routes here with their corresponding functions
 */
 
+//comment this block of code out if you want to see old routes
+Route::get('/{any}', function () {
+    return view('vue-spa-loader');
+})->where('any', '.*');
+
+
 //Default route for the home page
 Route::get('/', [RouteController::class, 'display_view'])->defaults('page', 'home');
 Route::get('/home', [RouteController::class, 'display_view'])->defaults('page', 'home');
