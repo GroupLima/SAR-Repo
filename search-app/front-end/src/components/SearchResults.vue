@@ -4,8 +4,10 @@ import { reactive, onMounted } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
-    queryParams: Object
-    
+    queryParams: {
+        type: Object,
+        required: true
+    }
 });
 
 const state = reactive({
@@ -16,29 +18,35 @@ const state = reactive({
     isLoading: true
 });
 
+const mapArray = (val) => {
+    return val.map(val => `${encodeURIComponent(key)}[]=${encodeURIComponent(val)}`).join('&');
+}
+
+// const serializeParams = (params) => {
+//     const queryString = object.keys(params)
+//         .map(key => {
+//             const value = params[key];
+//             if (Array.isArray(value)){
+//                 return value.map(val => `${encodeURIComponent(key)}[]=${encodeURIComponent(val)}`).join('&');
+//             } else {)
+//             }
+//         })
+// }
+
 const search = async() => {
     try {
+
         console.log('im in search results');
         const response = await axios.get('/sar-db/search', {
-            params: {
-                query_type: "basic_search", //basic , adnvaced etc...
-                basicSearch: state.results.basicSearch,
-                methodSearch: state.results.methodSearch,
-                language: state.results.language,
-                variant: state.results.variant,
-                volumes: state.results.volumes,
-                pageSearch: state.results.pageSearch,
-                entrySearch: state.results.entrySearch,
-                startDate: state.results.startDate,
-                endDate: state.results.endDate,
-                docId: state.results.docId,// Sending the query entered by the user
-            },
+            params: props.queryparams,
+            // paramsSerializer: (params) => {
+            //     return  querySerializer.stringify(params, {arrayFormat: 'brackets'})
+            // },
         
         }); 
         console.log("results");
         console.log(response.data);
         if (response.data.success) {
-            // const { numberOfXQuery, queryResults } = response.data.message;
             state.results = response.data.results;
             console.log("debug results", results);
             // Handle the response data (assuming it's structured like this)
@@ -60,7 +68,8 @@ const search = async() => {
     }
 }
 
-onMounted(search);
+onMounted();
+//search
 </script>
 
 <template>

@@ -31,6 +31,7 @@ const passFormValues = () => {
 }
 
 const getSearchType = () => {
+    const query_type = 
     form.language !== "any" || 
     form.volumes.length > 0 || 
     form.pageSearch !== "" || 
@@ -40,6 +41,8 @@ const getSearchType = () => {
     form.docId !== ""
     ? "advanced_search"  //select advanced search if at least one of the advanced search fields is filled out
     : "basic_search";
+
+    return query_type
 }
 
 const handleSearch = () => {
