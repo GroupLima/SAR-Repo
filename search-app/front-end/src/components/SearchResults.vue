@@ -14,6 +14,7 @@ const state = reactive({
     results: [],
     num_results: 0,
     total_results: 0, //dummy data
+    frozen_variant: 0,
     error: "",
     isLoading: true
 });
@@ -27,12 +28,11 @@ const search = async() => {
         console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;
-            console.log("debug results", results);
             // Handle the response data (assuming it's structured like this)
             state.results = response.data.results || [];
             state.num_results = response.data.num_results;
             state.total_results = response.data.total_results || 0;
-            //state.results.frozen_variant = response.data.variant*10;
+            state.frozen_variant = response.data.variant*10;
         } else {
             console.log("no debug results");
             console.log(response);
@@ -58,10 +58,10 @@ onMounted(search);
             <h2 class="results-title">Results</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             <div v-if="!state.isLoading">
-                <p>Showing {{ state.num_results }} / {{ state.total_results }} entries where the start of matches are limited to @{{ frozen_variant }}% variance</p>
+                <p>Showing {{ state.num_results }} / {{ state.total_results }} entries where the start of matches are limited to {{ state.frozen_variant }}% variance</p>
                 <!-- show message if result exists -->
-                <SearchResultCard class="result-item" v-for="(content, id) in results" :key="id" />
-                <p>Debug: {{ state.results }}</p>
+                <SearchResultCard class="result-item" v-for="(content, docId) in state.results" :key="docId" :id="docId" :htmlContent="content"/>
+                <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
             <div v-else>
                 loading...
