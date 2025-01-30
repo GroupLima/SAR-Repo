@@ -89,10 +89,11 @@ const allValidInput = () => {
         Hopefully its enough so that the search class people can link it all together.
         Classes are for grouping multiple elements together so i used them to identify areas that might have similar styling and behaviour to
         each other. -->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <div class="search-section">
             <div class="basic-search"> <!-- this is the basic search bar -->
-                <input type="search" placeholder="Enter your search term" aria-label="Search" id="search-box"/>
+                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box"/>
                 <!-- we need something that looks like a button here: "SEARCH"-->
                 <button id="search-button" @click="handleSearch">
                     SEARCH
