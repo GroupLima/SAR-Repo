@@ -18,7 +18,7 @@ const state = reactive({
 
 const search = async() => {
     try {
-        
+        console.log('im in search results');
         const response = await axios.get('/sar-db/search', {
             params: {
                 query_type: "basic_search", //basic , adnvaced etc...
