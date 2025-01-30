@@ -25,7 +25,7 @@ export default defineConfig({
       'sar-db': {
         target: 'http://localhost:8000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/sar-api/, 'api')
+        rewrite: (path) => path.replace(/^\/sar-db/, 'api')
       },
     },
   },

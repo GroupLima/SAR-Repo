@@ -18,10 +18,13 @@ const isValidQuery = (params) => {
 onMounted(() => {
     const route = useRoute();
     const queryParams = route.query;
+    console.log("query num:", Object.keys(queryParams).length);
     const hasQueryParams = Object.keys(queryParams).length > 0;
     if (hasQueryParams && isValidQuery(queryParams)){
         state.displayResults = true;
+        state.queryParams = queryParams;
     }
+    console.log(state.displayResults);
 });
 // console.log(props.queryParams);
 </script>
@@ -42,8 +45,8 @@ onMounted(() => {
         <!-- Main Section -->
         <div>
             <SearchFields />
-            <div v-if="displayResults">
-                <SearchResults :queryParams="queryParams"/>
+            <div v-if="state.displayResults">
+                <SearchResults :queryParams="state.queryParams"/>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: '/laravel-server',
+    baseURL: '/back-end',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

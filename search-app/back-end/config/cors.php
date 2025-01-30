@@ -12,11 +12,12 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    //'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*'],
     'allowed_methods' => ['*'],
     'allowed_origins' => [
         /*put production app url here */
-        'http://locahost:5173'
+        'http://localhost:5173','http://localhost:8000'
     ],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],

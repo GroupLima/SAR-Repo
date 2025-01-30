@@ -18,39 +18,18 @@ const state = reactive({
     isLoading: true
 });
 
-const mapArray = (val) => {
-    return val.map(val => `${encodeURIComponent(key)}[]=${encodeURIComponent(val)}`).join('&');
-}
-
-// const serializeParams = (params) => {
-//     const queryString = object.keys(params)
-//         .map(key => {
-//             const value = params[key];
-//             if (Array.isArray(value)){
-//                 return value.map(val => `${encodeURIComponent(key)}[]=${encodeURIComponent(val)}`).join('&');
-//             } else {)
-//             }
-//         })
-// }
-
 const search = async() => {
+    const baseSearchUrl = 'http://localhost:8000/api/search'
+    console.log('im in search results');
     try {
-
-        console.log('im in search results');
-        const response = await axios.get('/sar-db/search', {
-            params: props.queryparams,
-            // paramsSerializer: (params) => {
-            //     return  querySerializer.stringify(params, {arrayFormat: 'brackets'})
-            // },
-        
-        }); 
+        const response = await axios.get(baseSearchUrl, { params: props.queryParams,});
         console.log("results");
-        console.log(response.data);
+        console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;
             console.log("debug results", results);
             // Handle the response data (assuming it's structured like this)
-            state.results = results || [];
+            state.results = response.data.results || [];
             state.num_results = response.data.num_results;
             state.total_results = response.data.total_results || 0;
             //state.results.frozen_variant = response.data.variant*10;
@@ -68,7 +47,7 @@ const search = async() => {
     }
 }
 
-onMounted();
+onMounted(search);
 //search
 </script>
 
@@ -79,10 +58,10 @@ onMounted();
             <h2 class="results-title">Results</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             <div v-if="!state.isLoading">
-                <p>Showing {{ num_results }} / {{ total_results }} entries where the start of matches are limited to @{{ frozen_variant }}% variance</p>
+                <p>Showing {{ state.num_results }} / {{ state.total_results }} entries where the start of matches are limited to @{{ frozen_variant }}% variance</p>
                 <!-- show message if result exists -->
                 <SearchResultCard class="result-item" v-for="(content, id) in results" :key="id" />
-                <p>Debug: @{{ results }}</p>
+                <p>Debug: {{ state.results }}</p>
             </div>
             <div v-else>
                 loading...
