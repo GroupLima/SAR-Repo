@@ -1,14 +1,14 @@
 <!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
-import { reactive } from 'vue';
+import { reactive, ref, toRaw } from 'vue';
 
 const form = reactive({
     query_type: "basic_search",
     basicSearch: "holly",
     methodSearch: "starts with", // default type of string matching for basic search
     language: "any",
-    variant: "",
+    variant: "0",
     volumes: [],
     pageSearch: "",
     entrySearch: "",
@@ -24,8 +24,10 @@ const toggleDropdown = () => {
 }
 
 const passFormValues = () => {
-    const pathToSearchPage = '/' // change this to search page eventually
-    router.push({ path: pathToSearchPage, query: {searchForm: form }})
+    const rawForm = toRaw(form);
+    const queryParams = new URLSearchParams(form).toString(rawForm);
+    console.log(queryParams);
+    router.push({ path: '/search', query: rawForm }); 
 }
 
 const getSearchType = () => {
@@ -41,7 +43,9 @@ const getSearchType = () => {
 }
 
 const handleSearch = () => {
+    
     if (allValidInput){
+        
         form.query_type = getSearchType();
         // const queryParams = {
         //     query_type: searchType,
@@ -58,8 +62,9 @@ const handleSearch = () => {
         // };
         try {
             passFormValues();
+            
         } catch (error){
-            console.error("error with pushing route");
+            console.error("error with search form", error);
         }
     }
 }
@@ -129,7 +134,7 @@ const allValidInput = () => {
                         </div>
                         <div class="advanced-option">
                             <h3 class="option-title">Languages</h3>
-                            <select v-model="language" id="language">
+                            <select v-model="form.language" id="language">
                                 <option value="any" selected>Any</option>
                                 <option value="latin">Latin</option>
                                 <option value="scots">Middle Scots</option>
@@ -138,7 +143,7 @@ const allValidInput = () => {
                         </div>
                         <div class="advanced-option">
                             <h3 class="option-title">Spelling Variants</h3>
-                            <select v-model="variant" id="variant">
+                            <select v-model="form.variant" id="variant">
                                 <option value="0" selected>0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>

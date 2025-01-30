@@ -2,18 +2,26 @@
 import SearchFields from '@/components/SearchFields.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import cursiveLatin from '@/assets/images/sample.png';
-import { defineProps, onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
+import { useRoute } from 'vue-router';
 
-const props = defineProps({
-    displayResults: {
-        type: Boolean,
-        default: true
-    },
-    queryParams: Object
+const state = reactive({
+    displayResults: false,
+    queryParams: []
 });
 
+const isValidQuery = (params) => {
+    return true
+}
+
+
 onMounted(() => {
-    console.log("props.queryParams");
+    const route = useRoute();
+    const queryParams = route.query;
+    const hasQueryParams = Object.keys(queryParams).length > 0;
+    if (hasQueryParams && isValidQuery(queryParams)){
+        state.displayResults = true;
+    }
 });
 // console.log(props.queryParams);
 </script>
@@ -33,10 +41,10 @@ onMounted(() => {
 
         <!-- Main Section -->
         <div>
-            <!-- <SearchFields /> -->
-            <!-- <div v-if="displayResults">
+            <SearchFields />
+            <div v-if="displayResults">
                 <SearchResults :queryParams="queryParams"/>
-            </div> -->
+            </div>
         </div>
 
         <div class="image-container">
