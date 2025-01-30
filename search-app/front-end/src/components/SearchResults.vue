@@ -4,7 +4,7 @@ import { reactive, onMounted } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
-    queryParams: [],
+    queryParams: Object
     
 });
 
@@ -17,8 +17,8 @@ const state = reactive({
 });
 
 const search = async() => {
-    console.log("results");
     try {
+        
         const response = await axios.get('/sar-db/search', {
             params: {
                 query_type: "basic_search", //basic , adnvaced etc...
@@ -35,8 +35,8 @@ const search = async() => {
             },
         
         }); 
-        
-        
+        console.log("results");
+        console.log(response.data);
         if (response.data.success) {
             // const { numberOfXQuery, queryResults } = response.data.message;
             state.results = response.data.results;

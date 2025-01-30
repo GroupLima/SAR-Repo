@@ -2,7 +2,7 @@
 import SearchFields from '@/components/SearchFields.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import cursiveLatin from '@/assets/images/sample.png';
-import { defineProps } from 'vue';
+import { defineProps, onMounted } from 'vue';
 
 const props = defineProps({
     displayResults: {
@@ -12,6 +12,10 @@ const props = defineProps({
     queryParams: Object
 });
 
+onMounted(() => {
+    console.log("props.queryParams");
+});
+// console.log(props.queryParams);
 </script>
 
 <template>
@@ -29,10 +33,10 @@ const props = defineProps({
 
         <!-- Main Section -->
         <div>
-            <SearchFields />
-            <div v-if="displayResults">
+            <!-- <SearchFields /> -->
+            <!-- <div v-if="displayResults">
                 <SearchResults :queryParams="queryParams"/>
-            </div>
+            </div> -->
         </div>
 
         <div class="image-container">
