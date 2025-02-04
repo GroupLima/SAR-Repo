@@ -10,6 +10,16 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
 }
+.dark{
+  background-color: #333;
+  color: #ccc;
+  color-scheme: dark;
+}
+.light{
+  background-color: #ffffff;
+  color: black;
+  color-scheme: light;
+}
 
 .navbar {
   font-weight: bold;
@@ -63,6 +73,16 @@ body {
 .navbar .nav-links a:hover {
   text-decoration: underline;
 }
+.navbar .dark-mode-button {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #6e0d25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 header {
   background-color: #ffffff;
@@ -71,12 +91,13 @@ header .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
-header .header-content .aro-description {
+.aro-description {
   font-size: 3em;
   flex: 1;
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
+  margin-top: 200px;
 }
 
 main {
