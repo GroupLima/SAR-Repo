@@ -11,15 +11,12 @@ import cursiveLatin from '@/assets/images/sample.png';
     <div>
          <!-- Header Section -->
         <header>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <div class="header-content">
-                <div class="aro-description">Discover 8 Volumes</div>
-            <p>Some text explaining search</p>
-            <br><br>
-            </div>
+            <div class="header-content"></div>
         </header>
 
         <!-- Main Section -->
+        <div class="aro-description">Discover 8 Volumes</div>
+        <p>Some text explaining search</p>
         <div>
             <SearchFields />
         </div>
