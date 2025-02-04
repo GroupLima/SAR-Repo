@@ -89,12 +89,13 @@ header .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
-header .header-content .aro-description {
+.aro-description {
   font-size: 3em;
   flex: 1;
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
+  margin-top: 200px;
 }
 
 main {
