@@ -1,9 +1,11 @@
 <script setup>
-
+import BrowseContent from '@/components/BrowseContent.vue';
 </script>
 
 <template>
-    <div>
-      This is browse view
-    </div>
+  <div>
+    <BrowseContent />
+  </div>
 </template>
+
+
