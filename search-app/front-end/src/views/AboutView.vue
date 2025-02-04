@@ -1,5 +1,5 @@
 <script setup>
-
+import HomeStuff from '@/components/HomeStuff.vue'
 </script>
 
 <template>

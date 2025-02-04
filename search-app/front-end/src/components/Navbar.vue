@@ -22,8 +22,8 @@ import townLogo from '@/assets/images/town.png';
                 <RouterLink to="/browse">
                     Browse
                 </RouterLink>
-                <RouterLink to="/xquery">
-                    Xquery
+                <RouterLink to="/xQuery">
+                    XQuery
                 </RouterLink>
                 <RouterLink to="/about">
                     About
