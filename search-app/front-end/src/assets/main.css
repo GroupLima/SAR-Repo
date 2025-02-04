@@ -13,10 +13,12 @@ body {
 .dark{
   background-color: #333;
   color: #ccc;
+  color-scheme: dark;
 }
 .light{
   background-color: #ffffff;
   color: black;
+  color-scheme: light;
 }
 
 .navbar {
