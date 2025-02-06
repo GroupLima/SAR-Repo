@@ -1,17 +1,16 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.basic_search import BasicSearch
+from basic_search_methods.Basic_Search_Interface import BasicSearch
 
-class PhraseContainsSearch(BasicSearch):
+class Search_Word_End(BasicSearch):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query')
+        self.qlen = kwargs.get('qlen')
         self.json_entries = kwargs.get('json_entries')
         self.window_size = kwargs.get('window_size')
         self.variance = kwargs.get('variance')
         
         super().__init__()
-
-        self.populate_matches_dict()
 
 
     def find_matches_in(self, content):

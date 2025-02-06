@@ -39,8 +39,8 @@ const getSearchType = () => {
     form.startDate !== "" ||
     form.endDate !== "" ||
     form.docId !== ""
-    ? "advanced_search"  //select advanced search if at least one of the advanced search fields is filled out
-    : "basic_search";
+    ? "advanced"  //select advanced search if at least one of the advanced search fields is filled out
+    : "basic";
 
     return query_type
 }

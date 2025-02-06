@@ -3,8 +3,8 @@ A model that contains only the arguments required for Advanced Search. This will
 which search functions need to be executed.
 """
 
-class AdvancedSearchModel(user_input, variants, number_results, order_by, search_method, language, page, volume paragraph, entry_id, from_date, to_date):
-    def __init__():
+class AdvancedSearchModel():
+    def __init__(self, user_input, variants, number_results, order_by, search_method, language, page, volume, paragraph, entry_id, from_date, to_date):
         self.user_input = user_input # String
         self.variants = variants # Integer
         self.number_results = number_results # Integer

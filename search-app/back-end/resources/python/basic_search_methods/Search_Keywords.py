@@ -1,7 +1,7 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.basic_search import BasicSearch
+from basic_search_methods.Basic_Search_Interface import BasicSearch
 
-class PhraseKeywordsSearch(BasicSearch):
+class Search_Keywords(BasicSearch):
     def __init__(self, **kwargs):
         self.query = kwargs.get('query')
         self.json_entries = kwargs.get('json_entries')
@@ -9,8 +9,6 @@ class PhraseKeywordsSearch(BasicSearch):
         self.variance = kwargs.get('variance')
         
         super().__init__()
-
-        self.populate_matches_dict()
 
 
     def find_matches_in(self, content):
