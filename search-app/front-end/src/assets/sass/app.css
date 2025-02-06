@@ -5,8 +5,8 @@
 }
 
 body {
-  transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
-  opacity: 0; /* Initially hidden */
+  /*transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+  /*opacity: 0; /* Initially hidden */
   font-family: Arial, sans-serif;
   background-color: #ffffff;
 }
@@ -29,28 +29,35 @@ body {
   margin: 0 auto;
 }
 .navbar .text-container {
-  display: flex; /* Use flexbox for the text container */
-  flex-direction: column; /* Stack text elements vertically */
+  display: flex;
+  /* Use flexbox for the text container */
+  flex-direction: column;
+  /* Stack text elements vertically */
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 .navbar .logo-section {
-  color: #ffffff;
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items vertically */
+  color: white;
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
+
+.logo-image {
+  height: 90px;
+}
+
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
   font-weight: bold;
   font-family: Times, serif;
+  line-height: 0.8;
 }
 .navbar .logo-section .logo-subtext {
   font-family: Times, serif;
   font-size: 1em;
   font-style: italic;
-  margin-top: -1em;
-}
-.navbar .logo-section .logo-image {
-  height: 100px;
-  width: 100px;
 }
 .navbar .nav-links a {
   color: #ffffff;
@@ -109,10 +116,14 @@ main .search-section .basic-search button {
   font-weight: bold;
 }
 main .image-container {
-  height: 300px;
-  width: auto;
-  display: flex;
-  align-items: flex-end;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+main .image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 main .dropdown-button {
   background-color: #4a4a4a;
@@ -133,12 +144,13 @@ main .advanced-search-container .advanced-search-dropdown {
   position: relative;
   top: 100%;
   left: 0;
-  background-color: #ffffff;
-  border: 1px solid #4a4a4a;
-  border-radius: 50px;
-  width: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  width: 100%;
+  padding: 24px;
 }
 main .advanced-search-container .advanced-search-dropdown ul {
   list-style: none;
@@ -219,4 +231,17 @@ footer .footer-links a:hover {
   border-radius: 50px;
   font-weight: bold;
   font-size: 16px;
+}
+
+.about-stuff {
+  position: relative;
+  top: 200px;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 100%;
+  padding: 21px;
 }/*# sourceMappingURL=app.css.map */
