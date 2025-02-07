@@ -37,7 +37,7 @@ body {
   min-width: max-content;
 }
 .navbar .logo-section {
-  color: white;
+  color: #ffffff;
   align-items: stretch;
   display: flex;
   justify-content: space-between;
@@ -144,10 +144,10 @@ main .advanced-search-container .advanced-search-dropdown {
   position: relative;
   top: 100%;
   left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #a69f9f;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px #4a4a4a;
   z-index: 1000;
   width: 100%;
   padding: 24px;
@@ -163,7 +163,7 @@ main .advanced-search-container .advanced-search-dropdown ul li {
   color: #333;
 }
 main .advanced-search-container .advanced-search-dropdown ul li:hover {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 main .advanced-search-container .advanced-search-dropdown ul label {
   display: block;
@@ -228,10 +228,10 @@ footer .footer-links a:hover {
   position: relative;
   top: 200px;
   left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #a69f9f;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px #4a4a4a;
   width: 100%;
   padding: 25px;
 }
