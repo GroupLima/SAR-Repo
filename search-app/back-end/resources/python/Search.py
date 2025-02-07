@@ -1,13 +1,9 @@
 import sys
 import json
 from rapidfuzz import process, fuzz
-from advanced_search import AdvancedSearch
-from basic_search_methods.search_phrase_has_keywords import PhraseKeywordsSearch
-from basic_search_methods.search_phrase_starts_with import PhraseStartsWithSearch
-from basic_search_methods.search_phrase_contains import PhraseContainsSearch
-from basic_search_methods.search_phrase_ends_with import PhraseEndsWithSearch
-from basic_search_methods.search_regex import RegexSearch
-import json_parser as jp
+from advanced_search import Advanced_Search
+from basic_search import Basic_Search
+import json_parser as Json_Parser
 
 from pathlib import Path
 
@@ -90,6 +86,7 @@ return example:
     }
 """
 
+"""
 def search(params):
     query_type = params['qt']
     match query_type:
@@ -100,9 +97,11 @@ def search(params):
         case _:
             print('search not found')
             return None
+"""
+
             
 
-
+"""
 # for basic search and autocomplete
 def basic_search(params):
     try:
@@ -123,7 +122,9 @@ def basic_search(params):
         )
 
     
+"""
 
+"""
 def advanced_search(params):
     try:
         # write code here
@@ -145,6 +146,8 @@ def advanced_search(params):
             f"Error initializing parameters or applying search. "
             f"Check parameter key names or search method. Details: {e}"
         )
+
+"""
 
 
 # Perform main search of compiled entry data
@@ -177,7 +180,7 @@ class Search():
         self.lang = None
         
         # default basic search params
-        self.search_method = 'phrase/keyword'
+        self.search_method = 'word_start'
         self.search_class = ''
         self.query = ''
         self.qlen = 0
@@ -189,10 +192,38 @@ class Search():
         self.variance = 100 # default similarity of 100 (exact match)
         self.variance_limit = 50 # experiment with variance limit?
 
+
         # default sort params
         self.sort_criteria = ''
         
         self.matches = {} # return to search controller
+
+        #fix all of this later
+        self.init_basic_search_params()
+        #self.init_advanced_search_params()
+        #self.init_sort_params()
+        #self.order_by(self.sort_criteria)
+
+    def start(self):
+        results = None
+        qt = self.params['qt']
+        match(qt):
+            case 'advanced_search':
+                search = Advanced_Search() #pass in parameters for an advanced search
+            case 'basic_search':
+                search = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+                #search = Basic_Search("word_start", "holly", 0, self.json_entries)
+                results = search.find_matches()
+            case _:
+                print("search method not specified")
+        self.matches = results
+        # self.matches = {'ARO-1-0001-03' : {
+        #     'accuracy_score' : 20,
+        #     'match_frequency' : 40,
+        #     'matches' : []
+        #     }
+        # }
+        
 
     def load_json(self):
         json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
@@ -208,11 +239,11 @@ class Search():
         """
         # write code here
         self.entry_id = self.params.get('entry_id')
-        self.date_to = jp.parse_date(self.params.get('date_to'))
-        self.date_from = jp.parse_date(self.params.get('date_from'))
-        self.vol = jp.parse_num(self.params.get('vol'))
-        self.pg = jp.parse_num(self.params.get('pg'))
-        self.lang = jp.parse_num(self.params.get('lang'))
+        self.date_to = Json_Parser.parse_date(self.params.get('date_to'))
+        self.date_from = Json_Parser.parse_date(self.params.get('date_from'))
+        self.vol = Json_Parser.parse_num(self.params.get('vol'))
+        self.pg = Json_Parser.parse_num(self.params.get('pg'))
+        self.lang = Json_Parser.parse_num(self.params.get('lang'))
   
 
     def apply_advanced_search(self, entry_id, date_from, date_to, language, volume, page, paragraph):
@@ -222,11 +253,9 @@ class Search():
         use advanced_search.py
         """
         # write code here
-        
 
-        
         pass
-
+    """
     def get_args(self):
         args = {
             'json_entries' : self.json_entries,
@@ -246,6 +275,8 @@ class Search():
             'ob': self.sort_criteria
         }
         return args
+    """
+    
 
 
     def init_basic_search_params(self):
@@ -260,39 +291,42 @@ class Search():
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-        if self.query != 'regex':
-            self.set_window_and_step()
+        # if self.query != 'regex':
+        #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
         self.convert_variance(self.params['var'])
 
-
+    """
     def set_window_and_step(self):
+            """"""
+            sets the value for what length the substring will cover over the text. It slides over the content
+            
+            eg. text = 'i like chocolate milk'
+            use input = 'chalk'
+            window size = 4
+            step size = 3
+
+            start
+            iteration 0: windowed text = '[i li]ke chocolate milk', substring = 'i li'
+            iteration 1: windowed text = 'i l[ike ]chocolate milk', substring = 'ike '
+            iteration 2: windowed text = 'i like[ cho]colate milk', substring = ' cho'
+            iteration 3: windowed text = 'i like ch[ocol]ate milk', substring = 'ocol'
+            iteration 4: windowed text = 'i like choco[late] milk', substring = 'late'
+            iteration 5: windowed text = 'i like chocolat[e mi]lk', substring = 'e mi'
+            end
+
+            then the query will be compared with each of the substrings and determine if its a match
+            """"""
+            # write code here
+            self.qlen = len(self.query)
+            self.window_size = max(len(self.query), 1)
+            self.step_size = max(self.min_step_size, min(self.window_size, self.max_step_size))
+
+
+            pass
         """
-        sets the value for what length the substring will cover over the text. It slides over the content
-        
-        eg. text = 'i like chocolate milk'
-        window size = 4
-        step size = 3
-
-        start
-        iteration 0: windowed text = '[i li]ke chocolate milk', substring = 'i li'
-        iteration 1: windowed text = 'i l[ike ]chocolate milk', substring = 'ike '
-        iteration 2: windowed text = 'i like[ cho]colate milk', substring = ' cho'
-        iteration 3: windowed text = 'i like ch[ocol]ate milk', substring = 'ocol'
-        iteration 4: windowed text = 'i like choco[late] milk', substring = 'late'
-        iteration 5: windowed text = 'i like chocolat[e mi]lk', substring = 'e mi'
-        end
-
-        then the query will be compared with each of the substrings and determine if its a match
-        """
-        # write code here
-        self.qlen = len(self.query)
-        self.window_size = max(len(self.query), 1)
-        self.step_size = max(self.min_step_size, min(self.window_size, self.max_step_size))
-
-
-        pass
+    
         
 
     def convert_variance(self, variance):
@@ -307,16 +341,18 @@ class Search():
         #print(abs(variance*10 - 100))
         self.variance = abs(variance*10 - 100)
 
-    
-    def apply_basic_search(self):
-        """
-        get the matches using search_classes
-        """
+    """
+     def apply_basic_search(self):
+        
+        #get the matches using search_classes
+        
         args = self.get_args()
         self.search_instance = globals()[self.search_class](**args)
         return self.search_instance.get_matches()
 
 
+    """
+   
     def init_sort_params(self):
         """
         index params using 'ob' to get the string value of the sort type
@@ -378,8 +414,10 @@ class SearchMethodDoesNotExistError(Exception):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         permitted = json.loads(sys.argv[1])
-        obj = search(permitted)
-        matches = obj.get_matches()
+        #obj = search(permitted)
+        search = Search(permitted)
+        search.start()
+        matches = search.get_matches()
         if matches:
             results = {"message": "matches found", "results": matches}
         else:

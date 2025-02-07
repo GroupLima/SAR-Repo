@@ -104,22 +104,22 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         //get request parameters
         $params = $request->all();
-
         //convert vue data params to backend params eg. endDate -> end_date
         $permitted = $this->simplify_search_params($params);
         //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
         $python_search_file = $this->get_search_path($permitted['qt']);
+        
         //get matches from any type of search
         $permitted_params = escapeshellarg(json_encode($permitted));
+        
         //$command = "python3 $python_search_file_arg $permitted_params";
         $command = "python3 $python_search_file $permitted_params";
         //extracts the json output object
         $raw_output = shell_exec($command);
-        //echo "raw output: " . $raw_output;
         $output = json_decode($raw_output, true);
-
+        
         //store matches
-        $this->match_results = $output['results'];
+        $this->match_results = $output["results"];
         // Check if $this->match_results is not null and is an array
         $total_results = (is_array($this->match_results) && count($this->match_results) > 0) ? count($this->match_results) : 0;
 
@@ -456,7 +456,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             3. (var) variance
             4. (sm) search method: 'start with'
             5. (rpp) results per page
-
+        
         */ //left is python right is vue
         $permitted['query'] = $params['basicSearch'];
         $permitted['qt'] = $params['query_type'];

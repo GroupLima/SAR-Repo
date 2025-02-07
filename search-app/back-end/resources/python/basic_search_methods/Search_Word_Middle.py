@@ -1,7 +1,7 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.basic_search import BasicSearch
+from basic_search_methods.Search_Method_Interface import Search_Method
 
-class PhraseContainsSearch(BasicSearch):
+class Search_Word_Middle(Search_Method):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query')
@@ -10,8 +10,6 @@ class PhraseContainsSearch(BasicSearch):
         self.variance = kwargs.get('variance')
         
         super().__init__()
-
-        self.populate_matches_dict()
 
 
     def find_matches_in(self, content):

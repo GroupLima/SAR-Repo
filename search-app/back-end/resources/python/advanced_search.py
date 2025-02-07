@@ -1,7 +1,7 @@
 import re
 # this file contains advanced search methods
 
-class AdvancedSearch():
+class Advanced_Search():
     function_names = {
         'entry_id' : 'is_valid_entry_id',
         'date_from' : 'is_after_date',
