@@ -208,9 +208,10 @@ class Search():
         results = None
         match(self.params['qt']):
             case 'advanced_search':
-                results = Advanced_Search() #pass in parameters for an advanced search
+                search = Advanced_Search() #pass in parameters for an advanced search
             case 'basic_search':
-                results = Basic_Search(self.search_method, self.query, self.variance, self.sort_criteria, self.json_entries) # pass in parameters for basic search
+                search = Basic_Search(self.search_method, self.query, self.variance, self.sort_criteria, self.json_entries) # pass in parameters for basic search
+                results = search.find_matches()
             case _:
                 print("search method not specified")
         self.matches = results

@@ -44,7 +44,7 @@ class Basic_Search():
                 search = Search_Regex()
             case 'keywords':
                 args = Keywords(args.query)
-                search = Search_Keywords()
+                search = Search_Keywords() 
             case _:
                 print('search method not specified')
 
