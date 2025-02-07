@@ -16,17 +16,16 @@ from basic_search_methods.Search_Keywords import Search_Keywords
 # from basic_search_methods.Search_Phrase import Search_Phrase
 
 class Basic_Search():
-    def __init__(self, search_method, user_input, variance, order_by, json_entries):
+    def __init__(self, search_method, user_input, variance, json_entries):
         self.user_input = user_input # String
         self.variance = variance # Integer
         self.search_method = search_method # String
-        self.order_by = order_by # String
         self.json_entries = json_entries
 
     def find_matches(self):
         search = None
         results = None
-        
+        print(f'\nsearch method is: {self.search_method}\n')
         match(self.search_method):
             case 'word_start':
                 #deserialize arguments for each search

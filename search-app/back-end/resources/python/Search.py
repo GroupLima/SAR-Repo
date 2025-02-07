@@ -201,20 +201,32 @@ class Search():
         #fix all of this later
         self.init_basic_search_params()
         #self.init_advanced_search_params()
-        self.init_sort_params()
-        self.order_by(self.sort_criteria)
+        #self.init_sort_params()
+        #self.order_by(self.sort_criteria)
 
     def start(self):
         results = None
-        match(self.params['qt']):
+        qt = self.params['qt']
+        print(qt)
+        match(qt):
             case 'advanced_search':
                 search = Advanced_Search() #pass in parameters for an advanced search
-            case 'basic':
-                search = Basic_Search(self.search_method, self.query, self.variance, self.sort_criteria, self.json_entries) # pass in parameters for basic search
+            case 'basic_search':
+                print('****** found basic search ******')
+                search = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+                #search = Basic_Search("word_start", "holly", 0, self.json_entries)
                 results = search.find_matches()
+                print('THESE ARE THE RESULTS', results)
+                
             case _:
                 print("search method not specified")
         self.matches = results
+        # self.matches = {'ARO-1-0001-03' : {
+        #     'accuracy_score' : 20,
+        #     'match_frequency' : 40,
+        #     'matches' : []
+        #     }
+        # }
         
 
     def load_json(self):
@@ -414,10 +426,12 @@ if __name__ == '__main__':
             results = {"message": "matches found", "results": matches}
         else:
             results = {"message": "no matches found", "results": None}
-        #print(json.dumps(results)) # return the matches data in a JSON object
+        print(json.dumps(results)) # return the matches data in a JSON object
+        sys.stdout.flush()
     else:
         arglen = len(sys.argv)
         results = {"message":  "Not enough arguments. Need parameters.", "results": arglen}
-        #print(json.dumps(results))
+        print(json.dumps(results))
+        sys.stdout.flush()
         #print(json.dumps({"error": "Not enough arguments. Need parameters."}))
     

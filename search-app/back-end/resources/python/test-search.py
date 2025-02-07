@@ -10,7 +10,7 @@ with open(json_filepath, 'r') as json_file:
 # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
 params = {
-    'qt' : 'basic',
+    'qt' : 'basic_search',
     'query' : 'pre ka',
     'rpp' : 5,
     'var' : 2,
@@ -21,7 +21,7 @@ params = {
 
 """
 params = {
-    'qt' : 'basic',
+    'qt' : 'basic_search',
     'query' : 'collic',
     'rpp' : 5,
     'var' : 4,
@@ -30,7 +30,7 @@ params = {
 """
 """
 params = {
-    'qt' : 'basic',
+    'qt' : 'basic_search',
     'query' : 'culum pn',
     'rpp' : 5,
     'var' : 2,
@@ -40,7 +40,7 @@ params = {
 
 """
 params = {
-    'qt' : 'basic',
+    'qt' : 'basic_search',
     'query' : 'aberdeen',
     'rpp' : 5,
     'var' : 3,

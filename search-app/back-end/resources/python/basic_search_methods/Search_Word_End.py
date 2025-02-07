@@ -1,5 +1,6 @@
 from rapidfuzz import process, fuzz
 from basic_search_methods.Search_Method_Interface import Search_Method
+import re
 
 class Search_Word_End(Search_Method):
     
@@ -31,7 +32,7 @@ class Search_Word_End(Search_Method):
                 continue
             # Check similarity score for words that may or may not match with the query
             # gets the first x number of characters of the word
-            score = fuzz.ratio(self.query, word[len(word)-qlen:])
+            score = fuzz.ratio(self.query, word[len(word)-self.qlen:])
 
             if score >= self.variance:
                 results.append((word, score, index))
