@@ -1,23 +1,76 @@
 <script setup>
 import router from '@/router';
-
-
 </script>
 
 <template>
-
-  <div>
-    <h1>About Us</h1>
-    <div>
-      <div>
-        <h2>Our Mission</h2>
-        <p>blah blah blah</p>
+  <div class="about-stuff">
+    <div class="row">
+      <div class="column">
+        <h2>Aberdeen Burgh Registers</h2>
+        <div>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+        </div>
       </div>
-      <div>
-        <h2>Our Vision</h2>
-        <p>blah blah blah</p>
+      <div class="column">
+        <h2>Meet the Team</h2>
+        <div>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+          <p>blah blah blah</p>
+        </div>
       </div>
     </div>
   </div>
-
 </template>

@@ -3,7 +3,7 @@ import AboutStuff from '@/components/AboutStuff.vue'
 </script>
 
 <template>
-    <div class = "about-stuff">
+    <div>
       <AboutStuff/>
     </div>
 </template>

@@ -175,15 +175,6 @@ main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
 main .advanced-search-container .advanced-search-dropdown.active {
   display: block;
 }
-main .about-section .about-column {
-  float: left;
-  width: 33.33%;
-}
-main .about-section .about-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 footer {
   background-color: #6e0d25;
@@ -241,7 +232,19 @@ footer .footer-links a:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   width: 100%;
-  padding: 21px;
+  padding: 25px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }/*# sourceMappingURL=app.css.map */
