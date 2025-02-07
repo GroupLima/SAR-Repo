@@ -25,7 +25,6 @@ class Basic_Search():
     def find_matches(self):
         search = None
         results = None
-        print(f'\nsearch method is: {self.search_method}\n')
         match(self.search_method):
             case 'word_start':
                 #deserialize arguments for each search

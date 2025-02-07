@@ -117,11 +117,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $command = "python3 $python_search_file $permitted_params";
         //extracts the json output object
         $raw_output = shell_exec($command);
+        echo " THE START OF PHP OUTPUT ";
         echo "raw output: " . $raw_output;
         $output = json_decode($raw_output, true);
-        echo $output;
+        
         //store matches
-        $this->match_results = $output['results'];
+        $this->match_results = $output["results"];
         // Check if $this->match_results is not null and is an array
         $total_results = (is_array($this->match_results) && count($this->match_results) > 0) ? count($this->match_results) : 0;
 

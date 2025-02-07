@@ -207,17 +207,13 @@ class Search():
     def start(self):
         results = None
         qt = self.params['qt']
-        print(qt)
         match(qt):
             case 'advanced_search':
                 search = Advanced_Search() #pass in parameters for an advanced search
             case 'basic_search':
-                print('****** found basic search ******')
                 search = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
                 #search = Basic_Search("word_start", "holly", 0, self.json_entries)
                 results = search.find_matches()
-                print('THESE ARE THE RESULTS', results)
-                
             case _:
                 print("search method not specified")
         self.matches = results
@@ -427,11 +423,9 @@ if __name__ == '__main__':
         else:
             results = {"message": "no matches found", "results": None}
         print(json.dumps(results)) # return the matches data in a JSON object
-        sys.stdout.flush()
     else:
         arglen = len(sys.argv)
         results = {"message":  "Not enough arguments. Need parameters.", "results": arglen}
         print(json.dumps(results))
-        sys.stdout.flush()
         #print(json.dumps({"error": "Not enough arguments. Need parameters."}))
     
