@@ -4,22 +4,13 @@ import re
 
 class Search_Word_End(Search_Method):
     
-    def __init__(self, **kwargs):
-        self.query = kwargs.get('query')
-        self.qlen = kwargs.get('qlen')
-        self.json_entries = kwargs.get('json_entries')
-        self.window_size = kwargs.get('window_size')
-        self.variance = kwargs.get('variance')
+    def __init__(self, query, qlen, variance, json_entries):
+        self.query = query
+        self.qlen = qlen
+        self.variance = variance # Integer
+        self.json_entries = json_entries
         
         super().__init__()
-
-
-    def find_matches_in(self, content):
-        """
-        use rapid fuzz to extract all the matches in a single entry content
-        specifically, use process.extract function and return the result
-        """
-        # write code here
 
     def find_matches_in(self, content):
         # Extract words and their start indices

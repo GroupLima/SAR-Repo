@@ -35,8 +35,8 @@ class Basic_Search():
                 args = Word_Middle(args.query)
                 search = Search_Word_Middle()
             case 'word_end':
-                args = Word_End(args.query)
-                search = Search_Word_End()
+                args = Word_End(self.user_input)
+                search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries)
             case 'regex':
                 args = Regex(args.query)
                 search = Search_Regex()
