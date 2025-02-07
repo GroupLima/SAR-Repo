@@ -1,7 +1,7 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.Basic_Search_Interface import BasicSearch
+from basic_search_methods.Search_Method_Interface import Search_Method
 
-class Search_Word_End(BasicSearch):
+class Search_Word_End(Search_Method):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query')

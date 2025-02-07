@@ -1,8 +1,8 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.Basic_Search_Interface import BasicSearch
+from basic_search_methods.Search_Method_Interface import Search_Method
 import re
 
-class Search_Word_Start(BasicSearch):
+class Search_Word_Start(Search_Method):
 
     def __init__(self, query, qlen, variance, json_entries):
         self.query = query

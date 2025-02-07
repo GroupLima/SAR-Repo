@@ -209,7 +209,7 @@ class Search():
         match(self.params['qt']):
             case 'advanced_search':
                 search = Advanced_Search() #pass in parameters for an advanced search
-            case 'basic_search':
+            case 'basic':
                 search = Basic_Search(self.search_method, self.query, self.variance, self.sort_criteria, self.json_entries) # pass in parameters for basic search
                 results = search.find_matches()
             case _:
@@ -283,8 +283,8 @@ class Search():
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-        if self.query != 'regex':
-            self.set_window_and_step()
+        # if self.query != 'regex':
+        #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
         self.convert_variance(self.params['var'])
@@ -414,10 +414,10 @@ if __name__ == '__main__':
             results = {"message": "matches found", "results": matches}
         else:
             results = {"message": "no matches found", "results": None}
-        print(json.dumps(results)) # return the matches data in a JSON object
+        #print(json.dumps(results)) # return the matches data in a JSON object
     else:
         arglen = len(sys.argv)
         results = {"message":  "Not enough arguments. Need parameters.", "results": arglen}
-        print(json.dumps(results))
+        #print(json.dumps(results))
         #print(json.dumps({"error": "Not enough arguments. Need parameters."}))
     

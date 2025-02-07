@@ -1,4 +1,4 @@
-import Search
+from Search import Search
 from pathlib import Path
 import json
 
@@ -10,41 +10,41 @@ with open(json_filepath, 'r') as json_file:
 # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
 params = {
-    'qt' : 'basic_search',
+    'qt' : 'basic',
     'query' : 'pre ka',
     'rpp' : 5,
     'var' : 2,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 
 
 
 """
 params = {
-    'qt' : 'basic_search',
+    'qt' : 'basic',
     'query' : 'collic',
     'rpp' : 5,
     'var' : 4,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 """
 params = {
-    'qt' : 'basic_search',
+    'qt' : 'basic',
     'query' : 'culum pn',
     'rpp' : 5,
     'var' : 2,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 
 """
 params = {
-    'qt' : 'basic_search',
+    'qt' : 'basic',
     'query' : 'aberdeen',
     'rpp' : 5,
     'var' : 3,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 
@@ -65,7 +65,8 @@ params = {
 # so, converted variance = abs(variance*10 - 100)
 
 print('searching')
-search_obj = Search.search(params, json_entries)
+search_obj = Search(params, json_entries)
+search_obj.start()
 matches = search_obj.get_matches()
 
 if matches != None:

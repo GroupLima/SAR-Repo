@@ -57,17 +57,20 @@ class Basic_Search():
         if find_matches_in returns an empty list, don't add anything to the self.matches dictionary
         otherwise, create a new key value pair in self.matches with entry_id as the key and matches as the value
         """
+        results = {}
         for entry_id, data in self.json_entries.items():
             content = data['content']
             matches = search.find_matches_in(content)
             if matches:
                 accuracy_score = self.calculate_accuracy_heuristic(matches)
                 match_frequency = len(matches)
-                self.matches[entry_id] = {
+                results[entry_id] = {
                     'accuracy_score' : accuracy_score,
                     'match_frequency' : match_frequency,
                     'matches' : matches
                 }
+        
+        return results
 
     def calculate_accuracy_heuristic(self, matches):
         """

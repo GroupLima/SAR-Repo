@@ -1,8 +1,8 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.Basic_Search_Interface import BasicSearch
+from basic_search_methods.Search_Method_Interface import Search_Method
 import re
 
-class Search_Regex(BasicSearch):
+class Search_Regex(Search_Method):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query'),

@@ -8,7 +8,7 @@ any class that inherits this interface MUST
 implement its own version of the required 
 functions aka anything that says @abstractmethod
 """
-class BasicSearch(ABC):
+class Search_Method(ABC):
 
     @abstractmethod
     def find_matches_in(self, content):

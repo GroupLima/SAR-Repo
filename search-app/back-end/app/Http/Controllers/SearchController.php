@@ -117,7 +117,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $raw_output = shell_exec($command);
         //echo "raw output: " . $raw_output;
         $output = json_decode($raw_output, true);
-
+        echo "hello";
         //store matches
         $this->match_results = $output['results'];
         // Check if $this->match_results is not null and is an array
