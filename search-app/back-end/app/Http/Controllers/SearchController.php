@@ -104,7 +104,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         //get request parameters
         $params = $request->all();
-        echo json_encode($params);
         //convert vue data params to backend params eg. endDate -> end_date
         $permitted = $this->simplify_search_params($params);
         //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
@@ -117,8 +116,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $command = "python3 $python_search_file $permitted_params";
         //extracts the json output object
         $raw_output = shell_exec($command);
-        echo " THE START OF PHP OUTPUT ";
-        echo "raw output: " . $raw_output;
         $output = json_decode($raw_output, true);
         
         //store matches
