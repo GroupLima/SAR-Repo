@@ -60,8 +60,17 @@ onMounted(search);
             <div v-if="!state.isLoading">
                 <p>Showing {{ state.num_results }} / {{ state.total_results }} entries where the start of matches are limited to {{ state.frozen_variant }}% variance</p>
                 <!-- show message if result exists -->
-                <SearchResultCard class="result-item" v-for="(content, docId) in state.results" :key="docId" :id="docId" :htmlContent="content"/>
-                <!-- <p>Debug: {{ state.results }}</p> -->
+                <SearchResultCard 
+                    class="result-item" 
+                    v-for="(result, docId) in state.results"
+                    :key="docId"
+                    :id="docId"
+                    :htmlContent="result.highlighted_content"
+                    :htmlvolume="result.volume" 
+                    :htmlpage="result.page"
+                    :htmldate="result.date"
+                />
+                <p>Debug: {{ state.results }}</p>
             </div>
             <div v-else>
                 loading...

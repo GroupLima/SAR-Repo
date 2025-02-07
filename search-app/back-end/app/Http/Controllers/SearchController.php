@@ -548,10 +548,23 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             if ($top_entries != null){
                 foreach ($top_entries as $entry_id => $entry) {
                     $content = $this->jsonData[$entry_id]['content'];
+                    $volume = $this->jsonData[$entry_id]['volume'];
+                    $page = $this->jsonData[$entry_id]['page'];
+                    $date = $this->jsonData[$entry_id]['date'];
+
                     $htmlcontent = $this->convert_to_html($content);
+                    $htmlvolume = $this->convert_to_html($volume);
+                    $htmlpage = $this->convert_to_html($page);
+                    $htmldate = $this->convert_to_html($date);
+                    
                     $matches = $entry['matches'];
                     $highlighted_html = $this->highlight($htmlcontent, $matches);
-                    $display_results[$entry_id] = $highlighted_html;
+                    $display_results[$entry_id] = [
+                        'highlighted_html' => $highlighted_html,
+                        'volume' => $htmlvolume,
+                        'page' => $htmlpage,
+                        'date' => $htmldate,
+                    ];
                 }
             }
             

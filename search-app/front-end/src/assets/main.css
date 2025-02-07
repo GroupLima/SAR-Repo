@@ -11,14 +11,43 @@ body {
   background-color: #ffffff;
 }
 .dark{
-  background-color: #333;
+  background-color: #333030;
   color: #ccc;
   color-scheme: dark;
 }
-.light{
-  background-color: #ffffff;
-  color: black;
-  color-scheme: light;
+::selection {
+  background: #6e0d25;
+  color: #ffffff;
+}
+
+.results-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.result-item{
+  padding: 1em;
+  margin: 1em;
+  border: 5px solid #6e0d25;
+  border-radius: 10px;
+}
+
+/* S */
+@media (max-width: 600px) {
+  .results-section {width: 250px;}
+}
+/* M */
+@media (min-width: 601px) and (max-width: 800px) {
+  .results-section {width: 400px;}
+}
+/* L */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .results-section {width: 600px;}
+}
+/* XL */
+@media (min-width: 1001px) {
+  .results-section {width: 800px;}
 }
 
 .navbar {
