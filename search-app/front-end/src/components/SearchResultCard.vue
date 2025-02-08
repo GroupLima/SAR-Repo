@@ -3,23 +3,23 @@ import { defineProps } from 'vue';
 
 const props = defineProps({
     id: {
-        type: Object,
+        type: String,
         required: true
     },
     htmlContent: {
-        type: Object,
+        type: String,
         required: true
     },
     htmlvolume: { 
-        type: Object,
+        type: String,
         required: true
     },
     htmlpage: {
-        type: Object,
+        type: String,
         required: true
     },
     htmldate: {
-        type: Object,
+        type: String,
         required: true
     }
 })
@@ -28,12 +28,11 @@ const props = defineProps({
 <!-- view for one entry of the results -->
 <template>
     <div>
-        <h4>{{ id }}</h4>
-        <div v-html="htmlContent"></div> <!-- This will render the HTML content inside the div -->
+        <div v-html="htmlContent"></div>
         <br>
-        <div v-html="volumeHtml"></div>
-        <div v-html="pageHtml"></div>
-        <div v-html="dateHtml"></div>
-    
+        <p>ID: {{ id }},
+        Volume: {{ htmlvolume }}, 
+        Page: {{ htmlpage }},
+        Date: {{ htmldate }}</p>
     </div>
 </template>

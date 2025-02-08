@@ -65,12 +65,12 @@ onMounted(search);
                     v-for="(result, docId) in state.results"
                     :key="docId"
                     :id="docId"
-                    :htmlContent="result.highlighted_content"
+                    :htmlContent="result.highlighted_html"
                     :htmlvolume="result.volume" 
                     :htmlpage="result.page"
                     :htmldate="result.date"
                 />
-                <p>Debug: {{ state.results }}</p>
+                <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
             <div v-else>
                 loading...
