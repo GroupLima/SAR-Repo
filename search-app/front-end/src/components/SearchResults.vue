@@ -1,6 +1,6 @@
 <script setup>
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, computed } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
@@ -16,14 +16,23 @@ const state = reactive({
     total_results: 0, //dummy data
     frozen_variant: 0,
     error: "",
-    isLoading: true
+    isLoading: true,
+    current_page: 1,
+    results_per_page: 5,
+    total_pages: 1
 });
 
 const search = async() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
     const baseSearchUrl = 'http://localhost:8000/api/search'
     console.log('im in search results');
+    const searchParams = {
+        ...props.queryParams,
+        page: state.current_page,
+        rpp: state.results_per_page
+    };
     try {
-        const response = await axios.get(baseSearchUrl, { params: props.queryParams,});
+        const response = await axios.get(baseSearchUrl, { params: searchParams,});
         console.log("results");
         console.log("data", response.data);
         if (response.data.success) {
@@ -33,6 +42,7 @@ const search = async() => {
             state.num_results = response.data.num_results;
             state.total_results = response.data.total_results || 0;
             state.frozen_variant = response.data.variant*10;
+            state.total_pages = Math.ceil(state.total_results / state.results_per_page);
         } else {
             console.log("no debug results");
             console.log(response);
@@ -49,6 +59,31 @@ const search = async() => {
 
 onMounted(search);
 //search
+
+// Next page
+function nextPage() {
+    if (state.current_page < state.total_pages) {
+        state.current_page++;
+        search();
+    }
+}
+// Previous page
+function prevPage() {
+    if (state.current_page > 1) {
+        state.current_page--;
+        search();
+    }
+}
+
+// first result of page
+const firstResultOfPage = computed(() => 
+    ((state.current_page - 1) * state.results_per_page) + 1
+);
+// last result of page
+const lastResultOfPage = computed(() =>
+    Math.min(state.current_page * state.results_per_page, state.total_results)
+);
+
 </script>
 
 <template>
@@ -58,7 +93,7 @@ onMounted(search);
             <h2 class="results-title">Results</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             <div v-if="!state.isLoading">
-                <p>Showing {{ state.num_results }} / {{ state.total_results }} entries where the start of matches are limited to {{ state.frozen_variant }}% variance</p>
+                <p>Showing {{ firstResultOfPage }} to {{ lastResultOfPage }} of {{ state.total_results }} entries with {{ state.frozen_variant }}% variance</p>
                 <!-- show message if result exists -->
                 <SearchResultCard 
                     class="result-item" 
@@ -71,6 +106,21 @@ onMounted(search);
                     :htmldate="result.date"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
+
+                <!-- Changing Pages -->
+                 <div class="page-changer">
+                    <button 
+                        @click="prevPage"
+                        :disabled="state.current_page <= 1">
+                        Previous
+                    </button>
+                    <span>Page {{ state.current_page }} of {{ state.total_pages }}</span>
+                    <button 
+                        @click="nextPage" 
+                        :disabled="state.current_page >= state.total_pages">
+                        Next
+                    </button>
+                 </div>
             </div>
             <div v-else>
                 loading...

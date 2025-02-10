@@ -462,7 +462,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['qt'] = $params['query_type'];
         $permitted['var'] = $params['variant'];
         $permitted['sm'] = $params['methodSearch'];
-        $permitted['rpp'] = 20;
+        $permitted['rpp'] = 5;
         
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
@@ -487,6 +487,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function filter_and_format($permitted) {
 
         $query_type = $permitted['qt'];
+        $current_page = $permitted['page'];
+        $results_per_page = $permitted['rpp'];
 
         if (strtolower($query_type) == 'xquery'){
             // display dict_of_results.items() display the data values, have the keys as a tag on the divs of the displayed result chunks
@@ -540,13 +542,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                 return $b['accuracy_score'] - $a['accuracy_score']; // Highest accuracy first
             });
             
-            $rpp = $this->get_results_for_page($permitted['rpp'], 0);
-            // Limit the number of entries (e.g., top 5 entries), considering the total number of available entries
-            $top_entries_count = min(count($this->match_results), $rpp); // Ensure we don't exceed the number of available entries
-            $top_entries = array_slice($this->match_results, 0, $top_entries_count);
+            $start_of_page = ($current_page-1) * $results_per_page;
+            // get results from the array of match_results staring at $start_of_page for length of $results_per_page
+            $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);
             
-            if ($top_entries != null){
-                foreach ($top_entries as $entry_id => $entry) {
+            if ($page_results != null){
+                foreach ($page_results as $entry_id => $entry) {
                     $content = $this->jsonData[$entry_id]['content'];
                     $volume = $this->jsonData[$entry_id]['volume'];
                     $page = $this->jsonData[$entry_id]['page'];
@@ -592,7 +593,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function highlight($htmltext, $matches){
         // can highlight either whole word (word start, word middle, word end)
         // or can highlight the specific match
-        $opening_tag = '<span style="background-color: yellow;">';
+        $opening_tag = '<span class="highlight">';
         $closing_tag = '</span>';
         //$highlighted_htmlcontent = $htmltext;
         foreach ($matches as $match){
