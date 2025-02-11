@@ -2,16 +2,9 @@
 **/.DS_Store
 .DS_Store
 
-# Ignore Windows files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
 # Ignore IDE config files
 /.idea
 .vscode/
-*.sublime-project
-*.sublime-workspace
 
 # Ignore vendor directory
 /vendor
