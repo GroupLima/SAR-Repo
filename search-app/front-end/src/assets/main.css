@@ -10,9 +10,10 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
 }
-.dark{
-  background-color: #333030;
-  color: #ccc;
+
+.dark {
+  background-color: #141313;
+  color: #ffffff;
   color-scheme: dark;
 }
 .dark .highlight {
@@ -26,25 +27,39 @@ body {
   color: #ffffff;
 }
 
-.page-changer {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-}
-
-.result-item {
-  position: relative;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  padding: 24px;
-  margin: 24px 0;}
-
 .results-section {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+}
+.result-item {
+  position: relative;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.page-changer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.page-changer button {
+  background-color: transparent;
+  padding: 10px 20px;
+  border: 1px solid #ffffff;
+}
+.page-changer button:hover:enabled {
+  background-color: #6e0d25;
+  color: #ffffff;
+  cursor: pointer;
+}
+.page-changer .page-number:disabled {
+  background-color: #6e0d25;
+  color: #ffffff;
 }
 
 /* XS */
