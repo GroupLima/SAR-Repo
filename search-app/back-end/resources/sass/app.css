@@ -5,20 +5,10 @@
 }
 
 body {
-  /*transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
-  /*opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+  opacity: 0; /* Initially hidden */
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-}
-.dark{
-  background-color: #333;
-  color: #ccc;
-  color-scheme: dark;
-}
-.light{
-  background-color: #ffffff;
-  color: black;
-  color-scheme: light;
 }
 
 .navbar {
@@ -41,28 +31,26 @@ body {
 .navbar .text-container {
   display: flex; /* Use flexbox for the text container */
   flex-direction: column; /* Stack text elements vertically */
-  min-width: max-content;
 }
 .navbar .logo-section {
-  color: white;
-  align-items: stretch;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-.logo-image {
-  height: 90px;
+  color: #ffffff;
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
 }
 .navbar .logo-section .logo-text {
   font-size: 5.5em;
   font-weight: bold;
   font-family: Times, serif;
-  line-height: 0.8;
 }
 .navbar .logo-section .logo-subtext {
   font-family: Times, serif;
   font-size: 1em;
   font-style: italic;
+  margin-top: -1em;
+}
+.navbar .logo-section .logo-image {
+  height: 100px;
+  width: 100px;
 }
 .navbar .nav-links a {
   color: #ffffff;
@@ -73,16 +61,6 @@ body {
 .navbar .nav-links a:hover {
   text-decoration: underline;
 }
-.navbar .dark-mode-button {
-  height: 50px;
-  width: 50px;
-  padding: 0;
-  border-radius: 50%;
-  background-color: #6e0d25;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 header {
   background-color: #ffffff;
@@ -91,13 +69,12 @@ header .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
-.aro-description {
+header .header-content .aro-description {
   font-size: 3em;
   flex: 1;
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
-  margin-top: 200px;
 }
 
 main {
@@ -131,19 +108,12 @@ main .search-section .basic-search button {
   cursor: pointer;
   font-weight: bold;
 }
-
 main .image-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  height: 300px;
+  width: auto;
+  display: flex;
+  align-items: flex-end;
 }
-
-main .image-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 main .dropdown-button {
   background-color: #4a4a4a;
   color: #ffffff;
@@ -163,13 +133,12 @@ main .advanced-search-container .advanced-search-dropdown {
   position: relative;
   top: 100%;
   left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #4a4a4a;
+  border-radius: 50px;
+  width: 200px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  width: 100%;
-  padding: 24px;
 }
 main .advanced-search-container .advanced-search-dropdown ul {
   list-style: none;
@@ -188,11 +157,7 @@ main .advanced-search-container .advanced-search-dropdown ul label {
   display: block;
   cursor: pointer;
 }
-main
-  .advanced-search-container
-  .advanced-search-dropdown
-  ul
-  input[type="radio"] {
+main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
   margin-right: 10px;
 }
 main .advanced-search-container .advanced-search-dropdown.active {
@@ -254,6 +219,4 @@ footer .footer-links a:hover {
   border-radius: 50px;
   font-weight: bold;
   font-size: 16px;
-}
-
-/*sourceMappingURL=app.css.map*/
+}/*# sourceMappingURL=app.css.map */

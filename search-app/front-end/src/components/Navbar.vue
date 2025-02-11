@@ -26,8 +26,8 @@ const toggleDark = useToggle(isDark);
                 <RouterLink to="/browse">
                     Browse
                 </RouterLink>
-                <RouterLink to="/xquery">
-                    Xquery
+                <RouterLink to="/xQuery">
+                    XQuery
                 </RouterLink>
                 <RouterLink to="/about">
                     About

@@ -1,10 +1,10 @@
 <script setup>
-
+import AboutStuff from '@/components/AboutStuff.vue'
 </script>
 
 <template>
     <div>
-      This is about view
+      <AboutStuff/>
     </div>
 </template>
 
