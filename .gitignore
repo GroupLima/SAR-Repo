@@ -1,5 +1,28 @@
+# Ignore all .DS_Store (MacOS) files
 **/.DS_Store
 .DS_Store
+
+# Ignore IDE config files
 /.idea
+.vscode/
+
+# Ignore vendor directory
 /vendor
+
+# Ignore storage directory
 /storage
+
+# Ignore Python bytecode cacheß files
+/__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore everything in the virtual environment directory
+venv_sar/*
+
+# Whitelist specific files and directories in virtual environment directory
+!venv_sar/bin/
+!venv_sar/lib/
+!venv_sar/include/
+!venv_sar/requirements.txt
