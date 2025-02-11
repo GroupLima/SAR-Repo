@@ -21,17 +21,13 @@ import cursiveLatin from '@/assets/images/sample.png';
             <SearchFields />
         </div>
 
-        <div class="image-container">
-            <img :src="cursiveLatin" alt="sample text" style="overflow: hidden;">
-        </div> 
-
         <!-- Footer Section -->
         <footer>
             <div class="footer-links">
-                <a href="#">IMPORTANT LINKS</a>
-                <a href="#">BLOG PAGE</a>
-                <a href="#">UNIVERSITY ARO PAGE</a>
-                <a href="#">ACKNOWLEDGMENTS</a>
+                <a href="https://www.abdn.ac.uk/aro/" target="_blank">Aberdeen Registers Online</a>
+                <a href="https://www.abdn.ac.uk/" target="_blank">Aberdeen University</a>
+                <a href="https://sar.abdn.ac.uk/" target="_blank">Old Website</a>
+                <a href="https://github.com/GroupLima/SAR-Repo" target="_blank">About Us</a>
             </div>
         </footer>
 
