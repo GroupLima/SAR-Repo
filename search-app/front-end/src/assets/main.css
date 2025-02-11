@@ -11,14 +11,61 @@ body {
   background-color: #ffffff;
 }
 .dark{
-  background-color: #333;
+  background-color: #333030;
   color: #ccc;
   color-scheme: dark;
 }
-.light{
-  background-color: #ffffff;
-  color: black;
-  color-scheme: light;
+.dark .highlight {
+  background-color: #6e0d25;
+}
+.highlight {
+  background-color: yellow;
+}
+::selection {
+  background: #6e0d25;
+  color: #ffffff;
+}
+
+.page-changer {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.result-item {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 24px;
+  margin: 24px 0;}
+
+.results-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* XS */
+@media (max-width: 600px) {
+  .results-section {width: 250px;}
+}
+/* S */
+@media (min-width: 601px) and (max-width: 800px) {
+  .results-section {width: 400px;}
+}
+/* M */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .results-section {width: 600px;}
+}
+/* L */
+@media (min-width: 1001px) and (max-width: 1200px) {
+  .results-section {width: 800px;}
+}
+/* XL */
+@media (min-width: 1201px) {
+  .results-section {width: 1000px;}
 }
 
 .navbar {
