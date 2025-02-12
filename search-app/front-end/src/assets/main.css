@@ -41,6 +41,22 @@ body {
   padding: 24px;
   margin: 24px 0;
 }
+.result-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.result-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.result-buttons svg {
+  fill: #6e0d25;
+  height: 30px;
+  width: 30px;
+}
 
 .page-changer {
   display: flex;
@@ -51,6 +67,8 @@ body {
   background-color: transparent;
   padding: 10px 20px;
   border: 1px solid #ffffff;
+  border-radius: 4px;
+  border-color: darkgrey;
 }
 .page-changer button:hover:enabled {
   background-color: #6e0d25;
