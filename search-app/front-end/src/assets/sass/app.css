@@ -9,11 +9,15 @@ body {
   /*opacity: 0; /* Initially hidden */
   font-family: Arial, sans-serif;
   background-color: #ffffff;
+  padding-top: 170px; /* padding for the navbar */
 }
 .dark{
   background-color: #333030;
   color: #ccc;
   color-scheme: dark;
+}
+.dark .advanced-search-container .advanced-search-dropdown {
+  background-color: #333030;
 }
 .dark .highlight {
   background-color: #6e0d25;
@@ -145,7 +149,7 @@ header .header-content {
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
 main {
@@ -160,7 +164,7 @@ main .search-section {
 main .search-section .basic-search {
   display: flex;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 main .search-section .basic-search input {
   flex: 1;
@@ -299,9 +303,8 @@ footer .footer-links a:hover {
 
 .about-stuff {
   position: relative;
-  top: 200px;
+  top: 20px;
   left: 0;
-  background-color: #ffffff;
   border: 1px solid #a69f9f;
   border-radius: 4px;
   box-shadow: 0 2px 5px #4a4a4a;
