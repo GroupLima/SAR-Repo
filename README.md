@@ -2,6 +2,7 @@
 
 New Search Aberdeen Registers (SAR) search tool web application project
 <br>A modernised, maintainable version of [sar.abdn.ac.uk](sar.abdn.ac.uk)
+<br> Project implementation seen at [sar2.andreasmaita.com](http://sar2.andreasmaita.com)
 <br> We are going to get an A1!!
 <br> ☆*: .｡. o(≧▽≦)o .｡.:*☆
 
@@ -18,15 +19,19 @@ Now, you will need to install a few packages and dependencies in order to run th
 
 ### Download PHP, Laravel and Composer:
 
-1. `sudo apt update`
-2. `sudo apt upgrade`
-3. `sudo apt install nodejs`
-4. `sudo apt install unzip`
-5. Install PHP for your system (ONLY ONE OF THESE)
-   - Linux: `/bin/bash -c "$(curl -fsSL https://php.new/install/linux)"`
-   - MaxOS:`/bin/bash -c "$(curl -fsSL https://php.new/install/mac)"`
+#### Linux (Debian-based)
 
-`sudo apt-get install php-mbstring php-xml php-json php-zip php-curl`
+1. `sudo apt update && sudo apt upgrade`
+2. `sudo apt install nodejs unzip`
+3. Install PHP for your system `/bin/bash -c "$(curl -fsSL https://php.new/install/linux)"`
+4. `sudo apt-get install php-mbstring php-xml php-json php-zip php-curl`
+
+#### MacOS
+
+1. Assuming you have [homebrew](https://docs.brew.sh/Installation) installed, otherwise substitute `brew` in the following commands for your package manager
+2. `brew upgrade`
+3. Install system requirements `brew install nodejs unzip php-mbstring php-xml php-json php-zip php-curl` (NOT ACCURATE, SOME PACKAGES NOT ON HOMEBREW - TO DO)
+4. Install PHP for your system `/bin/bash -c "$(curl -fsSL https://php.new/install/mac)"`
 
 ### Running the Project
 
@@ -43,5 +48,8 @@ Now, you will need to install a few packages and dependencies in order to run th
 1. Open second terminal, keeping the first running
 2. Go to the front-end directory `cd search-app/front-end`
 3. Install NPM requirements (only on first setup/run) `npm install`
-4. Run Vite Server with Vue tooling
-   1. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev`
+4. Run Vite Server with Vue tooling:
+   1. Deploy site and run regularly with:
+      1. Compile site only on first run / site changes being made `npm run build`
+      2. Run with `npm run preview`
+   2. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev`
