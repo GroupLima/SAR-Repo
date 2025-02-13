@@ -8,8 +8,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: {
-        host: "0.0.0.0",
-        allowedHosts: ["sar2.andreasmaita.com"],
-    },
 });
