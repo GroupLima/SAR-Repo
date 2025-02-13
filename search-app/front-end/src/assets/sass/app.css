@@ -7,8 +7,88 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
+  padding-top: 170px;
+  /* padding for the navbar */
 }
 
+.dark {
+  background-color: #333030;
+  color: #ccc;
+  color-scheme: dark;
+}
+.dark .advanced-search-container .advanced-search-dropdown {
+  background-color: #333030;
+}
+.dark .highlight {
+  background-color: #6e0d25;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+::-moz-selection {
+  background: #6e0d25;
+  color: #ffffff;
+}
+
+::selection {
+  background: #6e0d25;
+  color: #ffffff;
+}
+
+.page-changer {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.result-item {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px #4a4a4a;
+  width: 100%;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.results-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* XS */
+@media (max-width: 600px) {
+  .results-section {
+    width: 250px;
+  }
+}
+/* S */
+@media (min-width: 601px) and (max-width: 800px) {
+  .results-section {
+    width: 400px;
+  }
+}
+/* M */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .results-section {
+    width: 600px;
+  }
+}
+/* L */
+@media (min-width: 1001px) and (max-width: 1200px) {
+  .results-section {
+    width: 800px;
+  }
+}
+/* XL */
+@media (min-width: 1201px) {
+  .results-section {
+    width: 1000px;
+  }
+}
 .navbar {
   font-weight: bold;
   background-color: #6e0d25;
@@ -67,6 +147,12 @@ body {
 .navbar .nav-links a:hover {
   text-decoration: underline;
 }
+.navbar .dark-mode-button {
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  background-color: #6e0d25;
+}
 
 header {
   background-color: #ffffff;
@@ -76,12 +162,14 @@ header {
   max-width: 1000px;
   margin: 0 auto;
 }
-.header-content .aro-description {
+
+.aro-description {
   font-size: 3em;
   flex: 1;
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 main {
@@ -101,7 +189,7 @@ main {
 .search-section .basic-search {
   display: flex;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 .search-section .basic-search input {
   flex: 1;
@@ -127,9 +215,13 @@ main {
   height: auto;
 }
 .image-container img {
-  width: 100%;
-  height: auto;
   display: block;
+  min-width: 100%;
+  margin: auto;
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
 }
 
 .dropdown-button {
@@ -155,7 +247,7 @@ main {
   background-color: #ffffff;
   border: 1px solid #a69f9f;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px #4a4a4a;
   z-index: 1000;
   width: 100%;
   padding: 24px;
@@ -199,9 +291,11 @@ main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
 footer {
   background-color: #6e0d25;
   padding: 20px;
-  color: #6e0d25;
-  bottom: 0%;
-  position: relative;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .footer-links {
@@ -214,6 +308,11 @@ footer {
 .footer-links a {
   color: #ffffff;
   text-decoration: none;
+  display: flex;
+  height: 40px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
 }
 .footer-links a:hover {
   text-decoration: underline;
@@ -268,12 +367,11 @@ footer {
 
 .container-browser {
   position: relative;
-  top: 200px;
+  top: 20px;
   left: 0;
-  background-color: #ffffff;
   border: 1px solid #a69f9f;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px #4a4a4a;
   z-index: 1000;
   width: 100%;
   padding: 24px;
@@ -406,7 +504,7 @@ footer {
   margin-right: 5px;
 }
 
-.about-stuff {
+.about {
   position: relative;
   top: 200px;
   left: 0;
@@ -414,21 +512,9 @@ footer {
   border: 1px solid #a69f9f;
   border-radius: 4px;
   box-shadow: 0 2px 5px #4a4a4a;
+  z-index: 1000;
   width: 100%;
-  padding: 25px;
-}
-
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-  height: 100%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+  padding: 24px;
 }
 
 /*sourceMappingURL=app.css.map*//*# sourceMappingURL=app.css.map */
