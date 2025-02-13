@@ -222,6 +222,16 @@ $box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       }
     }
   }
+  .UserManual {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    padding: 12px 24px;
+    border: none;
+    margin-left: 10px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-weight: bold; 
+}
   
   footer {
     background-color: $primary-colour;
@@ -244,6 +254,24 @@ $box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
       }
     }
+  }
+  .UserManual {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    padding: 12px 24px;
+    border: none;
+    border-radius: $border-radius;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0%;
+    right: 20px;
+    z-index: 10;
   }
   
   #app {
@@ -277,6 +305,154 @@ $box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
           font-size: 16px;
         }
       }
+    }
+  }
+  .container-browser {
+    position: relative;
+    top: 200px;
+    left: 0;
+    background-color: $secondary-colour;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    z-index: 1000;
+    width: 100%;
+    padding: 24px;
+  }
+  
+  .header {
+    background-color: $secondary-colour;
+    padding: 20px;
+    border-bottom: 1px solid $light-gray;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  
+    h1 {
+      margin-right: 20px;
+    }
+  
+    input {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+    }
+  }
+  
+  .search-btn {
+    padding: 10px 20px;
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: $primary-colour;
+    }
+  }
+  
+  .main-content {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .volume-nav {
+    width: 200px;
+    margin-right: 20px;
+  }
+  
+  .volume-item {
+    margin-bottom: 10px;
+  
+    button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      background-color: $secondary-colour;
+      cursor: pointer;
+  
+      &.active {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+      }
+    }
+  }
+  
+  .pages-list {
+    margin-top: 10px;
+  
+    button {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      background-color: $secondary-colour;
+      cursor: pointer;
+  
+      &.active {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+      }
+    }
+  }
+  
+  .content-area {
+    flex: 1;
+  }
+  
+  .current-page-info {
+    margin-bottom: 20px;
+  }
+  
+  .records {
+    border-top: 1px solid $light-gray;
+    padding-top: 20px;
+  }
+  
+  .record-item {
+    border-bottom: 1px solid $light-gray;
+    padding: 10px 0;
+  }
+  
+  .record-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .record-content {
+    margin-bottom: 10px;
+  }
+  
+  .record-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .xml-btn {
+    padding: 5px 10px;
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: $primary-colour;
+    }
+  }
+  
+  .select-record {
+    display: flex;
+    align-items: center;
+  
+    input {
+      margin-right: 5px;
     }
   }
   
