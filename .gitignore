@@ -17,13 +17,3 @@
 *.pyc
 *.pyo
 *.pyd
-
-# Ignore everything in the virtual environment directory
-venv_sar/*
-
-# Whitelist specific files and directories in virtual environment directory
-!venv_sar/bin/
-!venv_sar/lib/
-!venv_sar/include/
-!venv_sar/requirements.txt
-!venv_sar/pyvenv.cfg
