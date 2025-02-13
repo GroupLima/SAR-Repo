@@ -553,17 +553,27 @@ footer {
   }
 }
 
-.about {
+.about-stuff {
   position: relative;
-  top: 200px;
+  top: 20px;
   left: 0;
   background-color: $secondary-colour;
   border: 1px solid $light-gray;
   border-radius: 4px;
-  box-shadow: $box-shadow;
-  z-index: 1000;
+  box-shadow: 0 2px 5px $dark-gray;
   width: 100%;
-  padding: 24px;
+  padding: 25px;
 }
 
-/*sourceMappingURL=app.css.map*/
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
