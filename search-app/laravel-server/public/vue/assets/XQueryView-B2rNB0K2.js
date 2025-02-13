@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as r,o as c}from"./index-DnK8Oiz1.js";const o={};function t(n,s){return c(),r("div",null," This is xquery view ")}const a=e(o,[["render",t]]);export{a as default};
