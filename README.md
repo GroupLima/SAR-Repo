@@ -35,25 +35,20 @@ Now, you will need to install a few packages and dependencies in order to run th
 
 ### Running the Project
 
-1. Change directory to the search app `cd search-app`
-
 #### Back-End
 
-1. Change directory to back-end with `cd back-end`
-2. Create the python virtual environment `python3 -m venv venv_sar` (need to make a new venv for each system, don't need to remake it if it is already there but make sure it is all entirely ignored by the repo)
-3. Source the python virtual environment `source venv_sar/bin/activate`
-4. Install the python requirements (only on first setup/run) `pip install -r requirements-pip.txt`
-5. Go to the back-end directory `cd search-app/back-end`
-6. Install the composer requirements (only on first setup/run) `composer install`
-7. Run PHP server using `php artisan serve`
+1. Source the python virtual environment `source venv_sar/bin/activate` (this is relative to the repository, so assumes you are in the root directory of the repository)
+2. Install the python requirements (only on first setup/run) `pip install -r venv_sar/requirements.txt`
+3. Go to the back-end directory `cd search-app/back-end`
+4. Install the composer requirements (only on first setup/run) `composer install`
+5. Run PHP server using `php artisan serve`
 
 #### Front-end
 
-1. Change directory to front-end (assuming currently in back-end) with `cd ../front-end`
-2. Open second terminal, keeping the first running
-3. Go to the front-end directory `cd search-app/front-end`
-4. Install NPM requirements (only on first setup/run) `npm install`
-5. Run Vite Server with Vue tooling:
+1. Open second terminal, keeping the first running
+2. Go to the front-end directory `cd search-app/front-end`
+3. Install NPM requirements (only on first setup/run) `npm install`
+4. Run Vite Server with Vue tooling:
    1. Deploy site and run regularly with:
       1. Compile site only on first run / site changes being made `npm run build`
       2. Run with `npm run preview`
