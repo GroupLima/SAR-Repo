@@ -29,6 +29,11 @@ const router = createRouter({
       name: 'xquery',
       component: () => import('../views/XQueryView.vue'),
     },
+    {
+      path: '/usermanual',
+      name: 'usermanual',
+      component: () => import('../views/UserManualView.vue'),
+    },
   ],
 })
 

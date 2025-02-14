@@ -2,16 +2,9 @@
 **/.DS_Store
 .DS_Store
 
-# Ignore Windows files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
 # Ignore IDE config files
 /.idea
 .vscode/
-*.sublime-project
-*.sublime-workspace
 
 # Ignore vendor directory
 /vendor
@@ -24,12 +17,3 @@ Desktop.ini
 *.pyc
 *.pyo
 *.pyd
-
-# Ignore everything in the virtual environment directory
-venv_sar/*
-
-# Whitelist specific files and directories in virtual environment directory
-!venv_sar/bin/
-!venv_sar/lib/
-!venv_sar/include/
-!venv_sar/requirements.txt

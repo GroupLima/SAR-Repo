@@ -1,8 +1,0 @@
-#!/Users/a-p-maita/Documents/0_Uni_Work/Year_3/CS3028-Principles_of_Software_Engineering/Projects-CS3028/SAR-Repo/venv_sar/bin/python3.13
-# -*- coding: utf-8 -*-
-import re
-import sys
-from sample import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())

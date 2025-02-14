@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const sarApiClient = axios.create({
-    baseURL: 'http://localhost:8000/api', // Set base URL
+    baseURL: '/sar-db', // Set base URL
     timeout: 5000, // Optional: Set a timeout
 });
 

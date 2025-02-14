@@ -6,7 +6,7 @@ import { reactive, ref, toRaw } from 'vue';
 const form = reactive({
     query_type: "basic_search",
     basicSearch: "holly",
-    methodSearch: "starts with", // default type of string matching for basic search
+    methodSearch: "word_start", // default type of string matching for basic search
     language: "any",
     variant: "0",
     volumes: [],
@@ -89,7 +89,6 @@ const allValidInput = () => {
         Hopefully its enough so that the search class people can link it all together.
         Classes are for grouping multiple elements together so i used them to identify areas that might have similar styling and behaviour to
         each other. -->
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <div class="search-section">
             <div class="basic-search"> <!-- this is the basic search bar -->
@@ -117,22 +116,22 @@ const allValidInput = () => {
                                 Phrase
                             </label>
                             <label>
-                                <input type="radio" v-model="form.methodSearch" value="regularex" id="regularex"
+                                <input type="radio" v-model="form.methodSearch" value="regex" id="regularex"
                                     name="search-method"> Regular
                                 Expression
                             </label>
                             <label>
-                                <input type="radio" v-model="form.methodSearch" value="starts with" id="word-start"
+                                <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start"
                                     name="search-method" checked> Word
                                 Start
                             </label>
                             <label>
-                                <input type="radio" v-model="form.methodSearch" value="word-middle" id="word-middle"
+                                <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle"
                                     name="search-method"> Word
                                 Middle
                             </label>
                             <label>
-                                <input type="radio" v-model="form.methodSearch" value="word-end" id="word-end"
+                                <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end"
                                     name="search-method"> Word End
                             </label>
                         </div>
