@@ -1,9 +1,9 @@
 <script setup>
-
+import XQueryStuff from '@/components/XQueryStuff.vue'
 </script>
 
 <template>
     <div>
-      This is xquery view
+     <XQueryStuff >This is home view</XQueryStuff>
     </div>
 </template>
