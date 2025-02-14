@@ -7,8 +7,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  padding-top: 170px;
-  /* padding for the navbar */
+  padding-top: 170px; /* padding for the navbar */
+  padding-bottom: 100px; /* padding for the footer */
 }
 
 .dark {
@@ -89,6 +89,14 @@ body {
     width: 1000px;
   }
 }
+/* height */
+@media (max-height: 750px) {
+  .image-container img {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+}
+
 .navbar {
   font-weight: bold;
   background-color: #6e0d25;
@@ -222,6 +230,8 @@ main {
   bottom: 80px;
   left: 0;
   right: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .dropdown-button {
