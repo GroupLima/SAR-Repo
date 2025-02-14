@@ -316,12 +316,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         */
     }
 
-/*
+
     public function runXQuery(Request $request)
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-        \Log::info('Received data:', $data);
+
 
         //print_r("\n");
         //print_r($data.query.type);
@@ -341,25 +341,64 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             ];
         }else{
             $queryResults = [
-            'ARO-8-1290-9' => '<div>i want to cry</div>',
+            'ARO-8-1290-9' => '<div>i want to cry this isnt xquery  </div>',
             'ARO-8-1730-9' => '<div>we we we </div>',
             ];
         }
+        //ok lets try
+        /*
+        $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
+        $process->run();
+        echo $process->getOutput();
+        // Output the result
+        if ($process->isSuccessful()) {
+            echo $process->getOutput();
+        } else {
+            echo $process->getErrorOutput();
+        }
+        */
         // Define your query results (replace with actual logic as needed)
 
-        // Calculate the number of results dynamically
-         $numberOfXQuery = count($queryResults);
+
+        error_log( 'Hello');
+        // XQuery to fetch <item> elements from XML files in the collection
+
+        //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
+        $xquery = $query;
+        error_log($xquery);
+        // Initialize cURL session
+        $ch = curl_init();
+
+        // Set the cURL options for running the XQuery
+        curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD, "admin:password"); // Basic authentication
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/x-www-form-urlencoded"]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['_query' => $xquery]));
+
+        // Execute the cURL request and get the response
+        $response = curl_exec($ch);
+        
+        // Check for errors
+        if(curl_errno($ch)) {
+            error_log('Errorrrrrrrr:' . curl_error($ch));
+        } else {
+            error_log('Responceeeeee:' . $response); // Print the query result
+        }
+
 
         // // Create a response structure
-         $response = [
-             'numberOfXQuery' => $numberOfXQuery,
-             'queryResults' => $queryResults,
-         ];
+    
+        $response = [
+            'queryResults' => $response,
+        ];
 
         // Return the response
         return response()->json(['message' => $response]);
     }
-*/
+
     public function runBasic(Request $request)
     {
         // Log or process the received data
