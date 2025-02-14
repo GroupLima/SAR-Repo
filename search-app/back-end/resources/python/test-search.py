@@ -1,4 +1,4 @@
-import Search
+from Search import Search
 from pathlib import Path
 import json
 
@@ -14,7 +14,7 @@ params = {
     'query' : 'pre ka',
     'rpp' : 5,
     'var' : 2,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 
 
@@ -25,7 +25,7 @@ params = {
     'query' : 'collic',
     'rpp' : 5,
     'var' : 4,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 """
@@ -34,7 +34,7 @@ params = {
     'query' : 'culum pn',
     'rpp' : 5,
     'var' : 2,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 
@@ -44,7 +44,7 @@ params = {
     'query' : 'aberdeen',
     'rpp' : 5,
     'var' : 3,
-    'sm' : 'starts with' 
+    'sm' : 'word_start' 
 }
 """
 
@@ -65,7 +65,8 @@ params = {
 # so, converted variance = abs(variance*10 - 100)
 
 print('searching')
-search_obj = Search.search(params, json_entries)
+search_obj = Search(params, json_entries)
+search_obj.start()
 matches = search_obj.get_matches()
 
 if matches != None:

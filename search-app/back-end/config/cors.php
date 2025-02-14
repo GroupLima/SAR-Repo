@@ -16,7 +16,7 @@ return [
     'paths' => ['api/*'],
     'allowed_methods' => ['*'],
     'allowed_origins' => [
-        /*put production app url here */
+        /*put development and production app url here */
         'http://localhost:5173','http://localhost:8000'
     ],
     'allowed_origins_patterns' => [],

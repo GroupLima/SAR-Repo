@@ -1,8 +1,8 @@
 from rapidfuzz import process, fuzz
-from basic_search_methods.basic_search import BasicSearch
+from basic_search_methods.Search_Method_Interface import Search_Method
 import re
 
-class RegexSearch(BasicSearch):
+class Search_Regex(Search_Method):
     
     def __init__(self, **kwargs):
         self.query = kwargs.get('query'),
@@ -12,8 +12,6 @@ class RegexSearch(BasicSearch):
         
         super().__init__()
 
-        self.populate_matches_dict()
-
 
     def find_matches_in(self, content):
         """
@@ -21,7 +19,6 @@ class RegexSearch(BasicSearch):
         specifically, use process.extract function and return the result
         """
         # write code here
-
 
         
         pass
