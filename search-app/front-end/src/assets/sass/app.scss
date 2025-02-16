@@ -2,6 +2,7 @@
 $primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
 $dark-gray: #4a4a4a;
+$dark-mode: #323232;
 $light-gray: #a69f9f;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
@@ -22,12 +23,16 @@ body {
 }
 
 .dark {
-  background-color: #333030;
-  color: #ccc;
+  background-color: $dark-mode;
+  color: $secondary-colour;
   color-scheme: dark;
 
   .advanced-search-container .advanced-search-dropdown {
-    background-color: #333030;
+    background-color: $dark-mode;
+  }
+
+  .result-buttons svg {
+    fill: $secondary-colour;
   }
 
   .highlight {
@@ -44,15 +49,9 @@ body {
   color: $secondary-colour;
 }
 
-.page-changer {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-}
-
 .result-item {
   position: relative;
-  border: 1px solid #ccc;
+  border: 1px solid $secondary-colour;
   border-radius: 4px;
   box-shadow: $box-shadow;
   width: 100%;
@@ -64,6 +63,45 @@ body {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.result-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.result-buttons svg {
+  fill: $primary-colour;
+  height: 30px;
+  width: 30px;
+}
+
+.page-changer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.page-changer button {
+  background-color: transparent;
+  padding: 10px 20px;
+  border: 1px solid $dark-gray;
+  border-radius: 10px;
+}
+.page-changer button:hover:enabled {
+  background-color: $primary-colour;
+  color: $secondary-colour;
+  cursor: pointer;
+}
+.page-changer .page-number:disabled {
+  background-color: $primary-colour;
+  color: $secondary-colour;
 }
 
 /* XS */
@@ -412,13 +450,11 @@ footer {
   border: 1px solid $light-gray;
   border-radius: 4px;
   box-shadow: $box-shadow;
-  z-index: 1000;
   width: 100%;
   padding: 24px;
 }
 
 .header {
-  background-color: $secondary-colour;
   padding: 20px;
   border-bottom: 1px solid $light-gray;
 }
@@ -470,7 +506,7 @@ footer {
     padding: 10px;
     border: 1px solid $light-gray;
     border-radius: 4px;
-    background-color: $secondary-colour;
+    background-color: transparent;
     cursor: pointer;
 
     &.active {
@@ -557,7 +593,6 @@ footer {
   position: relative;
   top: 20px;
   left: 0;
-  background-color: $secondary-colour;
   border: 1px solid $light-gray;
   border-radius: 4px;
   box-shadow: 0 2px 5px $dark-gray;
