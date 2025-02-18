@@ -32,8 +32,8 @@ class Basic_Search():
                 #pass deserialized arguments into corresponding function
                 search = Search_Word_Start(args.query, args.qlen, self.variance, self.json_entries)
             case 'word_middle':
-                args = Word_Middle(args.query)
-                search = Search_Word_Middle()
+                args = Word_Middle(self.user_input)                  
+                search = Search_Word_Middle(args.query, args.qlen, self.variance, self.json_entries)
             case 'word_end':
                 args = Word_End(self.user_input)
                 search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries)
