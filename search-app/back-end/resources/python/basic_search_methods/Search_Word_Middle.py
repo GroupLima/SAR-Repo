@@ -25,9 +25,15 @@ class Search_Word_Middle(Search_Method):
         for word, index in words_to_compare:
             if not word or len(word) < self.qlen-2:
                 continue
+
+            window_size = self.qlen
+            word_size = len(word)
             # Check similarity score for words that may or may not match with the query
-            # rapidfuzz searches within the whole word
-            score = fuzz.partial_ratio(self.query, word)
-            if score >= self.variance:
-                results.append((word, score, index))
+            # look through each word with steps and window size to find matching string
+            for i in range(word_size-window_size+2):
+                score = fuzz.ratio(self.query, word[i:])
+
+                if score >= self.variance:
+                    results.append((word, score, index))
+                    break
         return results
