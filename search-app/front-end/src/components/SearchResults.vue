@@ -60,6 +60,26 @@ const search = async() => {
 onMounted(search);
 //search
 
+// return an array of all page numbers
+const pageNumbers = computed(() => {
+    const numbers = [];
+    for (let i = 1; i <= state.total_pages; i++) {
+        numbers.push(i);
+    }
+    return numbers;
+});
+// returns the 4 numbers above and below the current page
+const displayedPageNumbers = computed(() => {
+    const startPage = Math.max(1, state.current_page-4);
+    const endPage = Math.min(state.total_pages, state.current_page+4);
+    return pageNumbers.value.slice(startPage-1, endPage,);
+});
+
+// SelectedPage
+function selectedPage(pageNumber) {
+    state.current_page = pageNumber;
+    search();
+}
 // Next page
 function nextPage() {
     if (state.current_page < state.total_pages) {
@@ -74,7 +94,6 @@ function prevPage() {
         search();
     }
 }
-
 // first result of page
 const firstResultOfPage = computed(() => 
     ((state.current_page - 1) * state.results_per_page) + 1
@@ -90,7 +109,7 @@ const lastResultOfPage = computed(() =>
     <div>
         <!-- Display the results dynamically -->
         <div class="results-section mt-3">
-            <h2 class="results-title">Results</h2>
+            <h2 class="results-title">Results page {{ state.current_page }}</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             <div v-if="!state.isLoading">
                 <p>Showing {{ firstResultOfPage }} to {{ lastResultOfPage }} of {{ state.total_results }} entries with {{ state.frozen_variant }}% variance</p>
@@ -109,12 +128,23 @@ const lastResultOfPage = computed(() =>
 
                 <!-- Changing Pages -->
                  <div class="page-changer">
+                    <!-- previous button -->
                     <button 
                         @click="prevPage"
                         :disabled="state.current_page <= 1">
                         Previous
                     </button>
-                    <span>Page {{ state.current_page }} of {{ state.total_pages }}</span>
+                    <!-- numbered buttons -->
+                    <button
+                        class="page-number"
+                        v-for="activePage in displayedPageNumbers"
+                        :key="activePage"
+                        :class="{ active: activePage === state.current_page }"
+                        @click="selectedPage(activePage)"
+                        :disabled="activePage === state.current_page">
+                        {{ activePage }}
+                    </button>
+                    <!-- next button -->
                     <button 
                         @click="nextPage" 
                         :disabled="state.current_page >= state.total_pages">
