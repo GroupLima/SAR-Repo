@@ -30,8 +30,8 @@ class Search_Word_Middle(Search_Method):
             word_size = len(word)
             # Check similarity score for words that may or may not match with the query
             # look through each word with steps and window size to find matching string
-            for i in range(word_size-window_size+2):
-                score = fuzz.ratio(self.query, word[i:])
+            for i in range(word_size-window_size+1):
+                score = fuzz.ratio(self.query, word[i:i+window_size])
 
                 if score >= self.variance:
                     results.append((word, score, index))
