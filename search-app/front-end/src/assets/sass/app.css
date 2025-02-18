@@ -164,8 +164,12 @@ header {
 }
 
 .aro-description {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.aro-description h1 {
   font-size: 3em;
-  flex: 1;
   font-family: Times, serif;
   font-style: italic;
   font-weight: bold;
@@ -210,18 +214,15 @@ main {
 }
 
 .image-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  overflow: hidden;
+  margin-top: clamp(15vh, 21vh, 21vh);
+  height: 227px;
+  min-width: 360px;
 }
+
 .image-container img {
   display: block;
   min-width: 100%;
-  margin: auto;
-  position: fixed;
-  bottom: 80px;
-  left: 0;
-  right: 0;
 }
 
 .dropdown-button {
@@ -291,25 +292,18 @@ main .advanced-search-container .advanced-search-dropdown ul input[type=radio] {
 footer {
   background-color: #6e0d25;
   padding: 20px;
-  height: 80px;
-  position: fixed;
   width: 100%;
-  bottom: 0;
-  left: 0;
+  min-width: 360px;
 }
 
 .footer-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 .footer-links a {
   color: #ffffff;
   text-decoration: none;
-  display: flex;
-  height: 40px;
   font-weight: bold;
   margin: 0 auto;
   padding: 10px;
@@ -338,7 +332,6 @@ footer {
 }
 
 #app {
-  max-width: 1000px;
   margin: 0 auto;
 }
 #app .search-section .input {
