@@ -14,7 +14,9 @@ export default defineConfig({
  server: {
   port: 5173,
   // host: "0.0.0.0",
-  allowedHosts: [process.env.DOMAIN_URL || "localhost"],
+  allowedHosts: [
+   process.env.DOMAIN_URL || "localhost" || "sar2.andreasmaita.com",
+  ],
   proxy: {
    "laravel-server": {
     target: process.env.APP_URL || "http://localhost:8000",
