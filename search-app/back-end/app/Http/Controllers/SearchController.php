@@ -373,7 +373,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_USERPWD, "admin:password"); // Basic authentication
+        curl_setopt($ch, CURLOPT_USERPWD, "admin:"); // Basic authentication
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/x-www-form-urlencoded"]);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['_query' => $xquery]));

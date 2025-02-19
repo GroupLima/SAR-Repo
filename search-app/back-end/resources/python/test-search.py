@@ -9,13 +9,22 @@ with open(json_filepath, 'r') as json_file:
 
 # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'pre ka',
+#     'rpp' : 5,
+#     'var' : 2,
+#     'sm' : 'word_start' 
+# }
+
 params = {
     'qt' : 'basic_search',
-    'query' : 'pre ka',
+    'query' : 'a',
     'rpp' : 5,
-    'var' : 2,
-    'sm' : 'word_start' 
+    'var' : 0,
+    'sm' : 'word_middle' 
 }
+
 
 
 
