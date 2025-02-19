@@ -15,17 +15,27 @@ export default defineConfig({
   port: 5173,
   // host: "0.0.0.0",
   allowedHosts: [
-   process.env.DOMAIN_URL || "localhost" || "sar2.andreasmaita.com",
-   "http://sar2.andreasmaita.com",
+   process.env.DOMAIN_URL ||
+    "localhost" ||
+    "sar2.andreasmaita.com" ||
+    "http://sar2.andreasmaita.com",
   ],
   proxy: {
    "laravel-server": {
-    target: process.env.APP_URL || "http://localhost:8000",
+    target:
+     process.env.APP_URL ||
+     "http://localhost:8000" ||
+     "sar2.andreasmaita.com:8000" ||
+     "http://sar2.andreasmaita.com:8000",
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/laravel-server/, ""),
    },
    "sar-db": {
-    target: process.env.APP_URL || "http://localhost:8000",
+    target:
+     process.env.APP_URL ||
+     "http://localhost:8000" ||
+     "sar2.andreasmaita.com:8000" ||
+     "http://sar2.andreasmaita.com:8000",
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/sar-db/, "api"),
    },
