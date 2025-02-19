@@ -14,15 +14,15 @@ export default defineConfig({
  server: {
   port: 5173,
   // host: "0.0.0.0",
-  allowedHosts: ["sar2.andreasmaita.com"],
+  allowedHosts: [process.env.DOMAIN_URL || "localhost"],
   proxy: {
    "laravel-server": {
-    target: "http://localhost:5173/",
+    target: process.env.APP_URL || "http://localhost:8000",
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/laravel-server/, ""),
    },
    "sar-db": {
-    target: "http://localhost:8000",
+    target: process.env.APP_URL || "http://localhost:8000",
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/sar-db/, "api"),
    },

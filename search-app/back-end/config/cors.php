@@ -20,7 +20,10 @@ return [
 
     // Specify the origins allowed to access your API.
     // For development, allow only the Vite dev server URL.
-    'allowed_origins' => ['http://localhost:5173', 'http://localhost:8000'],
+    'allowed_origins' => [
+        env('APP_URL', 'http://sar2.andreasmaita.com:8000'),
+        env('DOMAIN_URL', 'http://sar2.andreasmaita.com:5173')
+    ],
 
     // If you need to use regex patterns for origins, you can use this.
     'allowed_origins_patterns' => [],

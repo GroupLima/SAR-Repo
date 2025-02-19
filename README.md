@@ -52,4 +52,4 @@ Now, you will need to install a few packages and dependencies in order to run th
    1. Deploy site and run regularly with:
       1. Compile site only on first run / site changes being made `npm run build`
       2. Run with `npm run preview`
-   2. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev`
+   2. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev --host sar2.andreasmaita.com`

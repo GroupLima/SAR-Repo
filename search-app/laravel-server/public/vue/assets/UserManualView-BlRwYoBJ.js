@@ -1,0 +1,1 @@
+import{_ as n}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{a as o,b as a,o as r}from"./index-DvTLCTRz.js";const s={name:"UserManualView"};function t(l,e,u,p,c,m){return r(),o("div",null,e[0]||(e[0]=[a("h1",null,"User Manual",-1),a("p",null,"Welcome to the user manual page.",-1)]))}const _=n(s,[["render",t]]);export{_ as default};
