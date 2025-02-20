@@ -39,7 +39,7 @@ class Basic_Search():
                 search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries)
             case 'regex':
                 args = Regex(self.user_input)
-                search = Search_Regex(args.query, args.qlen, self.variance, self.json_entries)
+                search = Search_Regex(args.query, args.qlen, self.json_entries)
             case 'keywords':
                 args = Keywords(args.query)
                 search = Search_Keywords() 

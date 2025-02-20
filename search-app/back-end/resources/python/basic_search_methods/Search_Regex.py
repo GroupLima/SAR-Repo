@@ -4,12 +4,10 @@ import re
 
 class Search_Regex(Search_Method):
     
-    def __init__(self, query, qlen, variance, json_entries):
+    def __init__(self, query, qlen, json_entries):
         self.query = query
         self.qlen = qlen
-        self.variance = variance # Integer
         self.json_entries = json_entries
-        
         
         super().__init__()
 
@@ -19,7 +17,10 @@ class Search_Regex(Search_Method):
         use rapid fuzz to extract all the matches in a single entry content
         specifically, use process.extract function and return the result
         """
-
-        #check if we have a match
-        text = 
-        match = re.search(self.query, text)
+        
+        results = []
+        matches = re.finditer(self.query, content)
+        for match in  matches:
+            results.append((match.group(), 100, match.span()[0]))
+        return results
+        
