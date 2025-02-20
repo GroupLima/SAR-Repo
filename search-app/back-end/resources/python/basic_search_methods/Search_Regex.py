@@ -4,9 +4,8 @@ import re
 
 class Search_Regex(Search_Method):
     
-    def __init__(self, query, qlen, json_entries):
+    def __init__(self, query, json_entries):
         self.query = query
-        self.qlen = qlen
         self.json_entries = json_entries
         
         super().__init__()
@@ -14,10 +13,8 @@ class Search_Regex(Search_Method):
 
     def find_matches_in(self, content):
         """
-        use rapid fuzz to extract all the matches in a single entry content
-        specifically, use process.extract function and return the result
+        takes each entry and applys regex query
         """
-        
         results = []
         matches = re.finditer(self.query, content)
         for match in  matches:
