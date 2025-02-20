@@ -18,8 +18,6 @@ body {
   font-family: $font-family;
   background-color: $secondary-colour;
   padding-top: 170px;
-
-  /* padding for the navbar */
 }
 
 .dark {
@@ -212,26 +210,24 @@ body {
   }
 }
 
-header {
-  background-color: $secondary-colour;
-}
-
 .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .aro-description {
-  font-size: 3em;
-  flex: 1;
-  font-family: $logo-font-family;
-  font-style: italic;
-  font-weight: bold;
-  margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  h1 {
+    font-size: 3em;
+    font-family: $logo-font-family;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
+  }
 }
 
 main {
-  background-color: $secondary-colour;
   min-height: calc(100vh - 300px);
 }
 
@@ -271,18 +267,14 @@ main {
 }
 
 .image-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  overflow: hidden;
+  margin-top: clamp(15vh, 21vh, 21vh);
+  height: 227px;
+  min-width: 360px;
 
   img {
     display: block;
     min-width: 100%;
-    margin: auto;
-    position: fixed;
-    bottom: 80px;
-    left: 0;
-    right: 0;
   }
 }
 
@@ -361,11 +353,8 @@ main .advanced-search-container .advanced-search-dropdown ul input[type="radio"]
 footer {
   background-color: $primary-colour;
   padding: 20px;
-  height: 80px;
-  position: fixed;
   width: 100%;
-  bottom: 0;
-  left: 0;
+  min-width: 360px;
 }
 
 .footer-links {
@@ -378,10 +367,7 @@ footer {
   a {
     color: $secondary-colour;
     text-decoration: none;
-    display: flex;
-    height: 40px;
     font-weight: bold;
-    margin: 0 auto;
     padding: 10px;
 
     &:hover {
@@ -410,7 +396,6 @@ footer {
 }
 
 #app {
-  max-width: 1000px;
   margin: 0 auto;
 
   .search-section {
@@ -444,6 +429,8 @@ footer {
 }
 
 .container-browser {
+  max-width: 1000px;
+  margin: 0 auto;
   position: relative;
   top: 20px;
   left: 0;
@@ -590,6 +577,8 @@ footer {
 }
 
 .about-stuff {
+  max-width: 1000px;
+  margin: 0 auto;
   position: relative;
   top: 20px;
   left: 0;
