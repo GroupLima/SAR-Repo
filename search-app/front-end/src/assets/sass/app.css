@@ -6,8 +6,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  padding-top: 170px;
-  /* padding for the navbar */ }
+  padding-top: 170px; }
 
 .dark {
   background-color: #323232;
@@ -152,27 +151,21 @@ body {
   border-radius: 50%;
   background-color: #6e0d25; }
 
-header {
-  background-color: #ffffff; }
-
 .header-content {
   max-width: 1000px;
   margin: 0 auto; }
 
 .aro-description {
   max-width: 1000px;
-  margin: 0 auto;
-}
-
-.aro-description h1 {
-  font-size: 3em;
-  font-family: Times, serif;
-  font-style: italic;
-  font-weight: bold;
-  margin-top: 20px; }
+  margin: 0 auto; }
+  .aro-description h1 {
+    font-size: 3em;
+    font-family: Times, serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px; }
 
 main {
-  background-color: #ffffff;
   min-height: calc(100vh - 300px); }
 
 .search-content {
@@ -206,13 +199,10 @@ main {
   overflow: hidden;
   margin-top: clamp(15vh, 21vh, 21vh);
   height: 227px;
-  min-width: 360px;
-}
-
-.image-container img {
-  display: block;
-  min-width: 100%;
-}
+  min-width: 360px; }
+  .image-container img {
+    display: block;
+    min-width: 100%; }
 
 .dropdown-button {
   background-color: #4a4a4a;
@@ -271,24 +261,21 @@ footer {
   background-color: #6e0d25;
   padding: 20px;
   width: 100%;
-  min-width: 360px;
-}
+  min-width: 360px; }
 
 .footer-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.footer-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 auto;
-  padding: 10px;
-}
-.footer-links a:hover {
-  text-decoration: underline;
-}
+  max-width: 1000px;
+  margin: 0 auto; }
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px; }
+    .footer-links a:hover {
+      text-decoration: underline; }
 
 .UserManual {
   background-color: #6e0d25;
@@ -331,6 +318,8 @@ footer {
       font-size: 16px; }
 
 .container-browser {
+  max-width: 1000px;
+  margin: 0 auto;
   position: relative;
   top: 20px;
   left: 0;
@@ -442,6 +431,8 @@ footer {
     margin-right: 5px; }
 
 .about-stuff {
+  max-width: 1000px;
+  margin: 0 auto;
   position: relative;
   top: 20px;
   left: 0;
