@@ -20,10 +20,10 @@ with open(json_filepath, 'r') as json_file:
 
 params = {
     'qt' : 'basic_search',
-    'query' : 'holly',
+    'query' : 'henricus',
     'rpp' : 5,
-    'var' : 3,
-    'sm' : 'word_middle' 
+    'var' : 0,
+    'sm' : 'word_start' 
 }
 
 
@@ -100,6 +100,6 @@ if matches != None:
 
     for entry_id, match_data in matches.items():
         print(entry_id, match_data)
-sorted_match = sort_methods.sort_frequency(matches)
-print('sorted matches')
-print(sorted_match)
+# sorted_match = sort_methods.sort_frequency(matches)
+# print('sorted matches')
+# print(sorted_match)
