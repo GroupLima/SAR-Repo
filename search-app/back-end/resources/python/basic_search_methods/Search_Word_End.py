@@ -7,11 +7,11 @@ class Search_Word_End(Search_Method):
     def __init__(self, query, qlen, variance, json_entries, case_sensitive=False):
         self.query = query
         self.qlen = qlen
-        self.variance = variance # Integer
+        self.variance = variance
         self.json_entries = json_entries
         self.case_sensitive = case_sensitive
         super().__init__()
-        
+
 
     def find_matches_in(self, content):
         """
@@ -29,10 +29,12 @@ class Search_Word_End(Search_Method):
                 continue
             # Check similarity score for words that may or may not match with the query
             # gets the first x number of characters of the word
-            score = fuzz.ratio(self.query, word[len(word)-self.qlen:])
+            if not self.case_sensitive:
+                score = fuzz.ratio(self.query.lower(), word.lower()[:min(len(self.query), len(word))])
+            else:
+                score = fuzz.ratio(self.query, word[:min(len(self.query), len(word))])
 
             if score >= self.variance:
                 results.append((word, score, index))
         return results
         
-        pass

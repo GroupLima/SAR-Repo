@@ -18,7 +18,6 @@ class Search_Word_Middle(Search_Method):
         use rapid fuzz to extract all the matches in a single entry content
         specifically, use process.extract function and return the result
         """
-        _content = content.lower() if self.case_sensitive else content
         # Extract words and their start indices
         words_to_compare = [(word.group(), word.start()) for word in re.finditer(r'\S+', content)]
 
@@ -33,7 +32,11 @@ class Search_Word_Middle(Search_Method):
             # Check similarity score for words that may or may not match with the query
             # look through each word with steps and window size to find matching string
             for i in range(word_size-window_size+1):
-                score = fuzz.ratio(self.query, word[i:i+window_size])
+            
+                if not self.case_sensitive:
+                    score = fuzz.ratio(self.query.lower(), word.lower()[:min(len(self.query), len(word))])
+                else:
+                    score = fuzz.ratio(self.query, word[:min(len(self.query), len(word))])
 
                 if score >= self.variance:
                     results.append((word, score, index))
