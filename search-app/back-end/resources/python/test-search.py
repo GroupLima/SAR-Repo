@@ -1,5 +1,6 @@
 from Search import Search
 from pathlib import Path
+import sort_methods
 import json
 
 json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
@@ -19,13 +20,28 @@ with open(json_filepath, 'r') as json_file:
 
 params = {
     'qt' : 'basic_search',
-    'query' : 'a',
+    'query' : 'holly',
     'rpp' : 5,
-    'var' : 0,
+    'var' : 3,
     'sm' : 'word_middle' 
 }
 
 
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'a',
+#     'rpp' : 5,
+#     'var' : 0,
+#     'sm' : 'word_middle' 
+# }
+
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'william',
+#     'rpp' : 5,
+#     'var' : 0,
+#     'sm' : 'regex' 
+# }
 
 
 """
@@ -77,9 +93,13 @@ print('searching')
 search_obj = Search(params, json_entries)
 search_obj.start()
 matches = search_obj.get_matches()
+print(matches)
 
 if matches != None:
     json.dumps(matches, indent=4)
 
     for entry_id, match_data in matches.items():
         print(entry_id, match_data)
+sorted_match = sort_methods.sort_frequency(matches)
+print('sorted matches')
+print(sorted_match)
