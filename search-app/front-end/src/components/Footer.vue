@@ -1,6 +1,6 @@
 <template>
   <div class="image-container">
-    <img src="@/assets/images/sample.png" alt="Cursive Latin"/>
+    <img src="@/assets/images/new-scripture.png" alt="Cursive Latin"/>
   </div>
   <footer>
     <div class="footer-links">

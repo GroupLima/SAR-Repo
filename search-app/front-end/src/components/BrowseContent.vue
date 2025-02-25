@@ -2,59 +2,58 @@
 import router from '@/router';
 
 
-
-  export default {
-    data() {
-      return {
-        searchQuery: '',
-        activeVolume: null,
-        showPages: false,
-        currentVolume: null,
-        currentPage: null,
-        volumes: [
-          { id: 1, pages: Array.from({ length: 20 }, (_, i) => i + 1) },
-          { id: 2, pages: Array.from({ length: 15 }, (_, i) => i + 1) },
-          { id: 4, pages: Array.from({ length: 25 }, (_, i) => i + 1) },
-          { id: 5, pages: Array.from({ length: 18 }, (_, i) => i + 1) },
-          { id: 6, pages: Array.from({ length: 22 }, (_, i) => i + 1) },
-          { id: 7, pages: Array.from({ length: 16 }, (_, i) => i + 1) },
-          { id: 8, pages: Array.from({ length: 19 }, (_, i) => i + 1) },
-        ],
-        records: [
-          {
-            id: 'ARO-1-0001-01',
-            date: '1398-09-30',
-            language: 'Latin',
-            content: 'H Processus Curiarum Balliuorum Isti Sunt...',
-            selected: false
-          },
-          {
-            id: 'ARO-1-0001-02',
-            date: '1398-09-30',
-            language: 'Latin',
-            content: 'Quo die Willelmus de Camera pater cum...',
-            selected: false
-          }
-        ]
+export default {
+  data() {
+    return {
+      searchQuery: '',
+      activeVolume: null,
+      showPages: false,
+      currentVolume: null,
+      currentPage: null,
+      volumes: [
+        { id: 1, pages: Array.from({ length: 20 }, (_, i) => i + 1) },
+        { id: 2, pages: Array.from({ length: 15 }, (_, i) => i + 1) },
+        { id: 4, pages: Array.from({ length: 25 }, (_, i) => i + 1) },
+        { id: 5, pages: Array.from({ length: 18 }, (_, i) => i + 1) },
+        { id: 6, pages: Array.from({ length: 22 }, (_, i) => i + 1) },
+        { id: 7, pages: Array.from({ length: 16 }, (_, i) => i + 1) },
+        { id: 8, pages: Array.from({ length: 19 }, (_, i) => i + 1) },
+      ],
+      records: [
+        {
+          id: 'ARO-1-0001-01',
+          date: '1398-09-30',
+          language: 'Latin',
+          content: 'H Processus Curiarum Balliuorum Isti Sunt...',
+          selected: false
+        },
+        {
+          id: 'ARO-1-0001-02',
+          date: '1398-09-30',
+          language: 'Latin',
+          content: 'Quo die Willelmus de Camera pater cum...',
+          selected: false
+        }
+      ]
+    }
+  },
+  methods: {
+    toggleVolume(volumeId) {
+      if (this.activeVolume === volumeId) {
+        this.showPages = !this.showPages
+      } else {
+        this.activeVolume = volumeId
+        this.showPages = true
       }
     },
-    methods: {
-      toggleVolume(volumeId) {
-        if (this.activeVolume === volumeId) {
-          this.showPages = !this.showPages
-        } else {
-          this.activeVolume = volumeId
-          this.showPages = true
-        }
-      },
-      selectPage(volumeId, page) {
-        this.currentVolume = volumeId
-        this.currentPage = page
-        // Here you would typically fetch the records for this page
-      }
+    selectPage(volumeId, page) {
+      this.currentVolume = volumeId
+      this.currentPage = page
+      // Here you would typically fetch the records for this page
     }
   }
-  </script>
+}
+</script>
   
   
   <template>
@@ -128,6 +127,7 @@ import router from '@/router';
         </div>
       </div>
     </div>
+    
   </template>
   
   
