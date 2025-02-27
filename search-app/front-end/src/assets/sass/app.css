@@ -104,7 +104,17 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000; }
+  z-index: 1000;
+  transition: 0.3s; }
+
+.navbar.scrolled {
+  padding: 10px; }
+  .navbar.scrolled .logo-image {
+    height: 50px; }
+  .navbar.scrolled .logo-section .logo-text {
+    font-size: 4em; }
+  .navbar.scrolled .logo-section .logo-subtext {
+    display: none; }
 
 .nav-content {
   display: flex;
@@ -382,7 +392,6 @@ footer {
     padding: 5px;
     border: 1px solid #a69f9f;
     border-radius: 4px;
-    background-color: #ffffff;
     cursor: pointer; }
     .pages-list button.active {
       background-color: #6e0d25;
