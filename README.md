@@ -54,9 +54,15 @@ Now, you will need to install a few packages and dependencies in order to run th
       2. Run with `npm run preview`
    2. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev`
 
-## Docker run
+#### Docker run
 
 The following are instructions to run the project with docker, do not run the front & back end as well as this simultaneously - only either the docker or both the front and back end being ran will serve the project
 
 1. Ensure you have docker installed using the official guide [Docker Installation](https://docs.docker.com/engine/install/ubuntu/)
 2. From the root of the project (SAR-Repo) run the command `docker-compse up --build`
+
+##### Maintenance
+1. Stop the containers with `docker-compose down`
+2. Enter a specific container within the project (back/front-end)
+   1. List running containers with `docker ps`
+   2. Enter the shell of the container with `docker exec -it <container_id_or_name> /bin/sh`, replacing the variable with the desired container id or name
