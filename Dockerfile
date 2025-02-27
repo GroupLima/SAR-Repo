@@ -36,4 +36,4 @@ RUN composer install
 EXPOSE 3000 8000
 
 # Start both front-end and back-end services
-CMD ["sh", "-c", "cd /app/search-app/front-end && npm run dev & cd /app/search-app/back-end && source venv_sar/bin/activate && php artisan serve --host=0.0.0.0"]
+CMD ["sh", "-c", "cd /app/search-app/front-end && npm run dev & cd /app/search-app/back-end && source venv_sar/bin/activate && php artisan serve --host=0.0.0.0 --port=8000"]
