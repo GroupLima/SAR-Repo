@@ -13,7 +13,7 @@ export default defineConfig({
  },
  server: {
   port: 5173,
-  // host: "0.0.0.0",
+  host: "0.0.0.0",
   allowedHosts: ["sar2.andreasmaita.com"],
   proxy: {
    "laravel-server": {

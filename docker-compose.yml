@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    volumes:
+      - ./search-app/front-end:/app/search-app/front-end
+      - /app/search-app/front-end/node_modules
+    ports:
+      - "5173:5173"
+    working_dir: /app/search-app/front-end
+    command: sh -c "npm install && npm run dev"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    volumes:
+      - ./search-app/back-end:/app/search-app/back-end
+      - ./search-app/back-end/venv_sar:/app/search-app/back-end/venv_sar
+    ports:
+      - "8000:8000"
+    working_dir: /app/search-app/back-end
+    command: sh -c ". venv_sar/bin/activate && php artisan serve --host=0.0.0.0 --port=8000"
