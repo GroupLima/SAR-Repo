@@ -53,3 +53,10 @@ Now, you will need to install a few packages and dependencies in order to run th
       1. Compile site only on first run / site changes being made `npm run build`
       2. Run with `npm run preview`
    2. NOT FOR DEPLOYMENT BECAUSE HAS DEV PRIVILLEGES `npm run dev`
+
+## Docker run
+
+The following are instructions to run the project with docker, do not run the front & back end as well as this simultaneously - only either the docker or both the front and back end being ran will serve the project
+
+1. Ensure you have docker installed using the official guide [Docker Installation](https://docs.docker.com/engine/install/ubuntu/)
+2. From the root of the project (SAR-Repo) run the command `docker-compse up --build`
