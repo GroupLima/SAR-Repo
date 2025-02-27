@@ -146,6 +146,22 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
+  transition: 0.3s ;
+}
+
+.navbar.scrolled {
+    padding: 10px;
+    .logo-image {
+      height: 50px;
+    }
+    .logo-section{
+      .logo-text {
+        font-size: 4em;
+      }
+      .logo-subtext {
+        display: none;        
+      }
+    }
 }
 
 .nav-content {
@@ -511,7 +527,6 @@ footer {
     padding: 5px;
     border: 1px solid $light-gray;
     border-radius: 4px;
-    background-color: $secondary-colour;
     cursor: pointer;
 
     &.active {

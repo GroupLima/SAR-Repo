@@ -6,6 +6,16 @@ const isDark = useDark({
     selector: 'body',
 })
 const toggleDark = useToggle(isDark);
+
+// Adds class scrolled when y position > 0
+window.onscroll = function() {
+    var navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+}
 </script>
 
 <template>
