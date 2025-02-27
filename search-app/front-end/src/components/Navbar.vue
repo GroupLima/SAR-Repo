@@ -1,11 +1,14 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { inject, computed } from 'vue';
 import townLogo from '@/assets/images/town.png';
 import { useDark, useToggle } from '@vueuse/core'
 const isDark = useDark({
     selector: 'body',
 })
 const toggleDark = useToggle(isDark);
+const selectedRecords = inject('selectedRecords');
+const hasSelectedRecords = computed(() => selectedRecords.value.length > 0);
 </script>
 
 <template>
@@ -31,6 +34,10 @@ const toggleDark = useToggle(isDark);
                 </RouterLink>
                 <RouterLink to="/about">
                     About
+                </RouterLink>
+                <!-- Only show Selected link when items are selected -->
+                <RouterLink v-if="hasSelectedRecords" to="/selected">
+                Selected ({{ selectedRecords.length }})
                 </RouterLink>
             </div>
             <button
