@@ -72,13 +72,17 @@ body {
 .result-buttons button {
   background-color: transparent;
   border: none;
+  border-radius: 30px;
   cursor: pointer;
-  padding: 5px;
+}
+.result-buttons button:hover {
+  background-color: $light-gray;
 }
 .result-buttons svg {
-  fill: $primary-colour;
+  fill: black;
   height: 30px;
   width: 30px;
+  margin: 5px;
 }
 
 .page-changer {
