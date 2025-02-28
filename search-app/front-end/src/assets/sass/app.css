@@ -64,14 +64,19 @@ body {
 .result-buttons button {
   background-color: transparent;
   border: none;
-  cursor: pointer;
-  padding: 5px;
+  border-radius: 30px;
+  cursor: pointer; 
+}
+
+.result-buttons button:hover {
+  background-color: #a69f9f; 
 }
 
 .result-buttons svg {
-  fill: #6e0d25;
+  fill: black;
   height: 30px;
   width: 30px;
+  margin: 5px; 
 }
 
 .page-changer {
