@@ -27,7 +27,9 @@ const passFormValues = () => {
     const rawForm = toRaw(form);
     const queryParams = new URLSearchParams(form).toString(rawForm);
     console.log(queryParams);
-    router.push({ path: '/search', query: rawForm }); 
+    router.push({ path: '/search', query: rawForm }).then(() => {
+        window.location.reload();
+    });
 }
 
 const getSearchType = () => {
