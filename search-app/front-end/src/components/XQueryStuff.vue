@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
+import Footer from '@/components/Footer.vue';
 const props = defineProps({
     queryParams: {
         type: Object,
@@ -85,4 +86,9 @@ const runQuery = async () => {
             </div>
         </main>
     </div>
+
+    <div>
+      <Footer />
+    </div>
+
 </template>
