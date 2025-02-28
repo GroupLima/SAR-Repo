@@ -81,6 +81,12 @@ const allValidInput = () => {
     return true //remove once implemented
 }
 
+const handleEnterKey = (event) => {
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+}
+
 </script>
 
 <template>
@@ -94,7 +100,7 @@ const allValidInput = () => {
 
         <div class="search-section">
             <div class="basic-search"> <!-- this is the basic search bar -->
-                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box"/>
+                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box" @keyup="handleEnterKey"/>
                 <!-- we need something that looks like a button here: "SEARCH"-->
                 <button id="search-button" @click="handleSearch">
                     SEARCH
