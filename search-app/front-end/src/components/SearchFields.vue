@@ -88,6 +88,18 @@ const setSearchBoxValue = () => {
     form.docId = urlParams.get('docId') || form.docId;
 }
 
+const resetAdvancedSearch = () => {
+    form.methodSearch = "word_start";
+    form.language = "any";
+    form.variant = "0";
+    form.volumes = [];
+    form.pageSearch = "";
+    form.entrySearch = "";
+    form.startDate = "";
+    form.endDate = "";
+    form.docId = "";
+}
+
 onMounted(() => {
     setSearchBoxValue();
 });
@@ -217,7 +229,9 @@ onMounted(() => {
                             <h3 class="option-title">Doc ID</h3>
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
                         </div>
-
+                        <div class="advanced-option" style="margin-top: 10px;">
+                            <button @click="resetAdvancedSearch">Reset Field Values</button>
+                        </div>
                     </div>
                 </div>
             </div>
