@@ -132,33 +132,32 @@ onMounted(() => {
                     <div id="search-options">
                         <div id="search-methods-radio" class="advanced-option">
                             <h3 class="option-title">Search Method</h3>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="keywords" id="keywords"
-                                    name="search-method"> Keywords
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="phrase" id="phrase" name="search-method">
-                                Phrase
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="regex" id="regularex"
-                                    name="search-method"> Regular
-                                Expression
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start"
-                                    name="search-method" checked> Word
-                                Start
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle"
-                                    name="search-method"> Word
-                                Middle
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end"
-                                    name="search-method"> Word End
-                            </label>
+                            <div class="horizontal-list">
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="keywords" id="keywords" name="search-method"> 
+                                    <span>Keywords</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="phrase" id="phrase" name="search-method">
+                                    <span>Phrase</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="regex" id="regularex" name="search-method"> 
+                                    <span>Regular Expression</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start" name="search-method" checked> 
+                                    <span>Word Start</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle" name="search-method"> 
+                                    <span>Word Middle</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end" name="search-method"> 
+                                    <span>Word End</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="advanced-option">
                             <h3 class="option-title">Languages</h3>
@@ -179,30 +178,31 @@ onMounted(() => {
                                 <option value="4">4</option>
                             </select>
                         </div>
-                        <div id=volume-select class="advanced-option">
-                            <!-- Maybe a toggle button to automatically select all would be good-->
+                        <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-1" name="volume1" value="1"> 1
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-2" name="volume2" value="2"> 2
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-4" name="volume4" value="4"> 4
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-5" name="volume5" value="5"> 5
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-6" name="volume6" value="6"> 6
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-7" name="volume7" value="7"> 7
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-8" name="volume8" value="8"> 8
-                            </label>
+                            <div class="horizontal-list">
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-1" name="volume1" value="1"> 1
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-2" name="volume2" value="2"> 2
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-4" name="volume4" value="4"> 4
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-5" name="volume5" value="5"> 5
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-6" name="volume6" value="6"> 6
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-7" name="volume7" value="7"> 7
+                                </label>
+                                <label>
+                                    <input type="checkbox" v-model="form.volumes" id="volume-8" name="volume8" value="8"> 8
+                                </label>
+                            </div>
                         </div>
                         <!-- We need a constraint to restrict between 1 and the max page number -->
                         <div class="advanced-option">
@@ -238,3 +238,70 @@ onMounted(() => {
         </div>
     </div>
 </template>
+<!-- 
+<style scoped>
+.advanced-search-dropdown {
+    background-color: #ffffff;
+    border: 1px solid #a69f9f;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px #4a4a4a;
+    padding: 24px;
+}
+
+.advanced-option {
+    margin-bottom: 20px;
+}
+
+.advanced-option h3 {
+    color: #6e0d25;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.advanced-option label,
+.advanced-option select,
+.advanced-option input {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #4a4a4a;
+}
+
+.advanced-option input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.advanced-option button {
+    background-color: #6e0d25;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.advanced-option button:hover {
+    background-color: #4a4a4a;
+}
+
+.horizontal-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.radio-label {
+    display: none;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.radio-container input[type="radio"] {
+    margin: 0;
+}
+</style> -->
