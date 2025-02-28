@@ -77,6 +77,15 @@ const handleEnterKey = (event) => {
 const setSearchBoxValue = () => {
     const urlParams = new URLSearchParams(window.location.search);
     form.basicSearch = urlParams.get('basicSearch') || form.basicSearch;
+    form.methodSearch = urlParams.get('methodSearch') || form.methodSearch;
+    form.language = urlParams.get('language') || form.language;
+    form.variant = urlParams.get('variant') || form.variant;
+    form.volumes = urlParams.getAll('volumes') || form.volumes;
+    form.pageSearch = urlParams.get('pageSearch') || form.pageSearch;
+    form.entrySearch = urlParams.get('entrySearch') || form.entrySearch;
+    form.startDate = urlParams.get('startDate') || form.startDate;
+    form.endDate = urlParams.get('endDate') || form.endDate;
+    form.docId = urlParams.get('docId') || form.docId;
 }
 
 onMounted(() => {
