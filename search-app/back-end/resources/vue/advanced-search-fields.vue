@@ -42,6 +42,9 @@
 <div id=volume-select class="advanced-option">
    <!-- Maybe a toggle button to automatically select all would be good-->
    <h3 class="option-title">Volume</h3>
+   <button @click="toggleSelectAll">
+      {{ allSelected ? "Deselect All" : "Select All" }}
+    </button>
    <label>
       <input type="checkbox" id="volume-1" name="volume1" value="1"> 1
    </label>
@@ -101,11 +104,18 @@
             updateVariance(variance) { this.$emit('update-variance'.toString(), variance) },
             updateLanguage(language) { this.$emit('update-language', language) },
 
-            search() { this.$emit('runSearch', this.params); }
-        }
+            search() { this.$emit('runSearch', this.params); },
+            toggleSelectAll() {
+      if (this.allSelected) {
+        this.selectedVolumes = []; // Deselect all
+      } else {
+        this.selectedVolumes = ["1", "2", "3", "4", "5", "6", "7", "8"]; // Select all
+      }
     }
+  }
+};
+        
 </script>
-
 <style scoped>
 /* Add your styles for this component here */
 </style>

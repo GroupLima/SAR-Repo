@@ -137,7 +137,16 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-}
+  transition: 0.3s; }
+
+.navbar.scrolled {
+  padding: 10px; }
+  .navbar.scrolled .logo-image {
+    height: 50px; }
+  .navbar.scrolled .logo-section .logo-text {
+    font-size: 4em; }
+  .navbar.scrolled .logo-section .logo-subtext {
+    display: none; }
 
 .nav-content {
   display: flex;
