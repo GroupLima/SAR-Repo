@@ -1,11 +1,11 @@
 <!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
-import { reactive, ref, toRaw } from 'vue';
+import { reactive, ref, toRaw, onMounted } from 'vue';
 
 const form = reactive({
     query_type: "basic_search",
-    basicSearch: "holly",
+    basicSearch: "",
     methodSearch: "word_start", // default type of string matching for basic search
     language: "any",
     variant: "0",
@@ -52,19 +52,6 @@ const handleSearch = () => {
     if (allValidInput){
         
         form.query_type = getSearchType();
-        // const queryParams = {
-        //     query_type: searchType,
-        //     basicSearch: searchType,
-        //     methodSearch: "starts with", // default type of string matching for basic search
-        //     language: "any",
-        //     variant: "",
-        //     volumes: [],
-        //     pageSearch: "",
-        //     entrySearch: "",
-        //     startDate: "",
-        //     endDate: "",
-        //     docId: ""
-        // };
         try {
             passFormValues();
             
@@ -86,6 +73,15 @@ const handleEnterKey = (event) => {
         handleSearch();
     }
 }
+
+const setSearchBoxValue = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    form.basicSearch = urlParams.get('basicSearch') || form.basicSearch;
+}
+
+onMounted(() => {
+    setSearchBoxValue();
+});
 
 </script>
 
