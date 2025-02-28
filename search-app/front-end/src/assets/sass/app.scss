@@ -2,7 +2,7 @@
 $primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
 $dark-gray: #4a4a4a;
-$dark-mode: #323232;
+$dark-mode: #202020;
 $light-gray: #a69f9f;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
@@ -177,6 +177,10 @@ body {
   flex-direction: column;
   min-width: -moz-max-content;
   min-width: max-content;
+
+  img {
+    height: 90px;
+  }
 }
 
 .logo-section {
@@ -284,13 +288,15 @@ main {
 
 .image-container {
   overflow: hidden;
-  margin-top: clamp(15vh, 21vh, 21vh);
-  height: 227px;
+  margin-top: 45px;
+  height: 180px;
   min-width: 360px;
 
   img {
     display: block;
     min-width: 100%;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -351,19 +357,6 @@ main .advanced-search-container .advanced-search-dropdown ul input[type="radio"]
 
 .advanced-search-container .advanced-search-dropdown.active {
   display: block;
-}
-
-.about-section {
-  .about-column {
-    float: left;
-    width: 33.33%;
-  }
-
-  .about-row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 }
 
 footer {
@@ -609,6 +602,12 @@ footer {
   width: 50%;
   padding: 10px;
   height: 100%;
+  text-align: justify;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .row:after {
