@@ -13,7 +13,7 @@ export default defineConfig({
  },
  server: {
   port: 5173,
-  // host: "0.0.0.0",
+  host: process.env.VITE_HOST || 'localhost',
   allowedHosts: ["sar2.andreasmaita.com"],
   proxy: {
    "laravel-server": {
@@ -26,6 +26,18 @@ export default defineConfig({
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/sar-db/, "api"),
    },
+  },
+  middlewareMode: 'html',
+  setupMiddlewares: (middlewares, { app }) => {
+   app.use((req, res, next) => {
+    try {
+     next();
+    } catch (error) {
+     console.error('Error in middleware:', error);
+     res.status(500).send('Internal Server Error');
+    }
+   });
+   return middlewares;
   },
  },
  resolve: {
