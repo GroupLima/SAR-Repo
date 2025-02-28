@@ -1,23 +1,26 @@
 {
-  "name": "front-end",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@vueuse/core": "^12.5.0",
-    "axios": "^1.7.9",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "sass": "^1.84.0",
-    "vite": "^6.0.11",
-    "vite-plugin-vue-devtools": "^7.7.0"
-  }
+ "name": "front-end",
+ "version": "0.0.0",
+ "private": true,
+ "type": "module",
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+ },
+ "dependencies": {
+  "@vueuse/core": "^12.5.0",
+  "axios": "^1.7.9",
+  "vue": "^3.5.13",
+  "vue-router": "^4.5.0"
+ },
+ "devDependencies": {
+  "@vitejs/plugin-vue": "^5.2.1",
+  "sass": "^1.84.0",
+  "vite": "^6.1.0",
+  "vite-plugin-vue-devtools": "^7.7.0"
+ },
+ "overrides": {
+  "esbuild": "^0.25.0"
+ }
 }
