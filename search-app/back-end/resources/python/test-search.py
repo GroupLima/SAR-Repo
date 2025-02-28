@@ -108,5 +108,16 @@ params = {
 # print(sorted_match)
 
 
-score = search_word_middle.get_fuzzy_score('hollly', 0, 6, 'holly')
+score = search_word_middle.get_fuzzy_score('hollly', 0, 5, 'holly')
 print(score)
+score = search_word_middle.get_fuzzy_score('holi', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holee', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holy', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('colly', 0, 5, 'holly')
+print(score)
+
+#shorter words should be more lenient
+# the longer the word
