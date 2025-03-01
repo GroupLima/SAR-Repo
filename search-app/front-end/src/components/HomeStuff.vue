@@ -6,19 +6,16 @@ import Footer from '@/components/Footer.vue';
 
 <template>
     <div>
-        <!-- Header Section -->
-        <header>
-            <div class="header-content">
+        <!-- Main Section -->
+        <main>
+            <div class="home-description">
                 <h1>Discover 8 Volumes</h1>
                 <p>Some text explaining search</p>
             </div>
-        </header>
-
-        <!-- Main Section -->
-        <div>
-            <SearchFields />
-        </div>
-
+            <div>
+                <SearchFields />
+            </div>
+        </main>
         <!-- Footer Section -->
         <div>
             <Footer />
