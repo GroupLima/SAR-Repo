@@ -363,7 +363,8 @@ footer {
         .container-browser .header .header-left .search-btn:hover {
           background-color: #4a4a4a; }
   .container-browser .main-content {
-    display: flex; }
+    display: flex;
+    margin-top: 20px; }
     .container-browser .main-content .volume-nav {
       width: 200px;
       margin-right: 20px; }
