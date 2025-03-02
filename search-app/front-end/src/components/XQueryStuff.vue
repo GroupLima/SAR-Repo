@@ -77,7 +77,7 @@ const runQuery = async () => {
                 {{ state.error }}
             </div>
             
-            <div>
+            <div class="results-section mt-3">
                 <h2>Results</h2>
                 <div v-if="!state.isLoading">
                      <pre>{{ state.results }}</pre>

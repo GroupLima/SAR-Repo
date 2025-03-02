@@ -318,6 +318,7 @@ footer {
   }
 }
 
+.xquery-page, // to allow xquery page to use results styling
 // search page
 .search-page {
   .results-section {
@@ -332,7 +333,7 @@ footer {
       box-shadow: $box-shadow;
       width: 100%;
       padding: 24px;
-      margin: 24px 0;
+      margin: 24px auto;
 
       .highlight {
         background-color: yellow;
@@ -365,7 +366,7 @@ footer {
   }
 
   // result section sizing
-  .results-section {
+  .results-section .result-item {
 
     /* XS */
     @media (max-width: 600px) {
