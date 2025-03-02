@@ -106,7 +106,7 @@ const lastResultOfPage = computed(() =>
 </script>
 
 <template>
-    <div>
+    <div class="search-page">
         <!-- Display the results dynamically -->
         <div class="results-section mt-3">
             <h2 class="results-title">Results page {{ state.current_page }}</h2>

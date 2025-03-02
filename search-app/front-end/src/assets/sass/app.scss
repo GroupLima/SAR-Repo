@@ -14,32 +14,27 @@ $box-shadow: 0 2px 5px #4a4a4a;
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   font-family: $font-family;
   background-color: $secondary-colour;
   padding-top: 170px;
-}
 
-#app {
-  margin: 0 auto;
-}
-
-.dark {
-  background-color: $dark-mode;
-  color: $secondary-colour;
-  color-scheme: dark;
-
-  .results-section .result-item .result-footer .result-buttons svg {
-    fill: $secondary-colour;
+  #app {
+    margin: 0 auto;
   }
 
-  .results-section .result-item .highlight {
-    background-color: $primary-colour;
+  &.dark {
+    background-color: $dark-mode;
+    color: $secondary-colour;
+    color-scheme: dark;
+
+    .results-section .result-item .result-footer .result-buttons svg {
+      fill: $secondary-colour;
+    }
+
+    .results-section .result-item .highlight {
+      background-color: $primary-colour;
+    }
   }
 }
 
@@ -54,6 +49,14 @@ body {
   left: 0;
   z-index: 1000;
   transition: 0.3s;
+
+  &.scrolled {
+    padding: 10px;
+
+    .nav-content .logo-section .text-container img {
+      height: 70px;
+    }
+  }
 
   .nav-content {
     display: flex;
@@ -102,318 +105,9 @@ body {
   }
 }
 
-.navbar.scrolled {
-  padding: 10px;
-
-  .nav-content .logo-section .text-container img {
-    height: 70px;
-  }
-}
-
-// search results page
-.results-section {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-
-  .result-item {
-    position: relative;
-    border: 1px solid $secondary-colour;
-    border-radius: 4px;
-    box-shadow: $box-shadow;
-    width: 100%;
-    padding: 24px;
-    margin: 24px 0;
-
-    .highlight {
-      background-color: yellow;
-    }
-
-    .result-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .result-buttons svg {
-        fill: black;
-        height: 30px;
-        width: 30px;
-        margin: 5px;
-      }
-
-      .result-buttons button {
-        background-color: transparent;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $light-gray;
-        }
-      }
-    }
-  }
-}
-
-// result section sizing
-.results-section {
-
-  /* XS */
-  @media (max-width: 600px) {
-    width: 250px;
-  }
-
-  /* S */
-  @media (min-width: 601px) and (max-width: 800px) {
-    width: 400px;
-  }
-
-  /* M */
-  @media (min-width: 801px) and (max-width: 1000px) {
-    width: 600px;
-  }
-
-  /* L */
-  @media (min-width: 1001px) and (max-width: 1200px) {
-    width: 800px;
-  }
-
-  /* XL */
-  @media (min-width: 1201px) {
-    width: 1000px;
-  }
-}
-
-.page-changer {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 24px;
-
-  button {
-    background-color: transparent;
-    padding: 10px 20px;
-    border: 1px solid $dark-gray;
-    border-radius: 10px;
-
-    &:hover:enabled {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-      cursor: pointer;
-    }
-  }
-
-  .page-number:disabled {
-    background-color: $primary-colour;
-    color: $secondary-colour;
-  }
-}
-
-// home page
-.home-description {
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 20px;
-
-  h1 {
-    font-size: 3em;
-    font-family: $logo-font-family;
-    font-style: italic;
-    font-weight: bold;
-  }
-}
-
-// home searchbar
-.search-section {
-  max-width: 1000px;
-  margin: 0 auto;
-
-  .basic-search {
-    display: flex;
-    width: 100%;
-    margin: 20px 0;
-
-    input {
-      flex: 1;
-      padding: 12px;
-      border: 2px solid $dark-gray;
-      border-radius: 50px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-      padding: 12px 24px;
-      border: none;
-      margin-left: 10px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  }
-}
-
-// advanced search dropdown
-.advanced-search-container {
-  position: relative;
-
-  .dropdown-button {
-    background-color: $dark-gray;
-    color: $secondary-colour;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-bottom: 5px;
-    text-align: left;
-    width: 200px;
-    position: relative;
-  }
-
-  .advanced-search-dropdown {
-    position: relative;
-    top: 100%;
-    left: 0;
-    border: 1px solid $light-gray;
-    border-radius: 4px;
-    box-shadow: $box-shadow;
-    width: 100%;
-    padding: 24px;
-
-    .active {
-      display: block;
-    }
-
-
-    #search-options {
-      .advanced-option {
-        margin-bottom: 20px;
-
-        h3 {
-          color: $primary-colour;
-          font-size: 1.2em;
-          margin-bottom: 10px;
-        }
-
-        .horizontal-list {
-          display: flex;
-          flex-direction: row;
-          gap: 10px;
-
-          .radio-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-
-            input[type="radio"] {
-              margin: 0;
-            }
-          }
-        }
-
-        button {
-          background-color: $primary-colour;
-          color: $secondary-colour;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $dark-gray;
-          }
-        }
-      }
-
-      #dates {
-        .option-title {
-          color: $primary-colour;
-          font-size: 1.2em;
-          margin-bottom: 10px;
-        }
-
-        label {
-          display: inline-block;
-          margin-right: 10px;
-          font-size: 1em;
-          color: $dark-gray;
-        }
-
-        input[type="date"] {
-          display: inline-block;
-          margin-right: 10px;
-          font-size: 1em;
-          color: $dark-gray;
-          border: 1px solid $light-gray;
-          border-radius: 4px;
-          padding: 5px;
-        }
-      }
-    }
-
-    .advanced-option {
-
-      label,
-      select,
-      input {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1em;
-      }
-    }
-
-    .advanced-option input[type="checkbox"] {
-      display: inline-block;
-      margin-right: 5px;
-    }
-  }
-}
-
-// xquery page
-.xquery-page {
-  max-width: 1000px;
-  margin: 0 auto;
-
-  .header-content {
-    margin-top: 20px;
-
-    h1 {
-      font-size: 3em;
-      font-family: $logo-font-family;
-      font-style: italic;
-      font-weight: bold;
-    }
-  }
-
-  .xquery-search {
-    display: flex;
-    width: 100%;
-    margin: 20px 0;
-
-    input {
-      flex: 1;
-      padding: 12px;
-      border: 2px solid $dark-gray;
-      border-radius: 50px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-      padding: 12px 24px;
-      border: none;
-      margin-left: 10px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  }
-}
-
 // footer
 footer {
-  margin-top: 5rem;
+  margin-top: 45px;
 
   .image-container {
     overflow: hidden;
@@ -455,28 +149,277 @@ footer {
   }
 }
 
-// user manual
-.UserManual {
-  background-color: $primary-colour;
-  color: $secondary-colour;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 50px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0%;
-  right: 20px;
-  z-index: 10;
+// home page
+.home-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 47vh; //homepage height minus navbar and content
+
+  main {
+    flex: 1;
+  }
+
+  .home-description {
+    margin-top: 20px;
+
+    h1 {
+      font-size: 3em;
+      font-family: $logo-font-family;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+
+  .advanced-search-container {
+    position: relative;
+
+    .dropdown-button {
+      background-color: $dark-gray;
+      color: $secondary-colour;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      text-align: left;
+      width: 200px;
+      position: relative;
+    }
+
+    .advanced-search-dropdown {
+      position: relative;
+      top: 100%;
+      left: 0;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      box-shadow: $box-shadow;
+      width: 100%;
+      padding: 24px;
+
+      .active {
+        display: block;
+      }
+
+      #search-options {
+        .advanced-option {
+          margin-bottom: 20px;
+
+          h3 {
+            color: $primary-colour;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+          }
+
+          .horizontal-list {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            .radio-container {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+
+              input[type="radio"] {
+                margin: 0;
+              }
+            }
+          }
+
+          button {
+            background-color: $primary-colour;
+            color: $secondary-colour;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $dark-gray;
+            }
+          }
+        }
+
+        #dates {
+          .option-title {
+            color: $primary-colour;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+          }
+
+          label {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1em;
+            color: $dark-gray;
+          }
+
+          input[type="date"] {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1em;
+            color: $dark-gray;
+            border: 1px solid $light-gray;
+            border-radius: 4px;
+            padding: 5px;
+          }
+        }
+      }
+
+      .advanced-option {
+
+        label,
+        select,
+        input {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 1em;
+        }
+      }
+
+      .advanced-option input[type="checkbox"] {
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+// global - so home, search and xquery pages can use it
+.search-section {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .basic-search {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid $dark-gray;
+      border-radius: 50px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+      padding: 12px 24px;
+      border: none;
+      margin-left: 10px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+}
+
+// search page
+.search-page {
+  .results-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .result-item {
+      position: relative;
+      border: 1px solid $secondary-colour;
+      border-radius: 4px;
+      box-shadow: $box-shadow;
+      width: 100%;
+      padding: 24px;
+      margin: 24px 0;
+
+      .highlight {
+        background-color: yellow;
+      }
+
+      .result-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .result-buttons svg {
+          fill: black;
+          height: 30px;
+          width: 30px;
+          margin: 5px;
+        }
+
+        .result-buttons button {
+          background-color: transparent;
+          border: none;
+          border-radius: 30px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $light-gray;
+          }
+        }
+      }
+    }
+  }
+
+  // result section sizing
+  .results-section {
+
+    /* XS */
+    @media (max-width: 600px) {
+      width: 250px;
+    }
+
+    /* S */
+    @media (min-width: 601px) and (max-width: 800px) {
+      width: 400px;
+    }
+
+    /* M */
+    @media (min-width: 801px) and (max-width: 1000px) {
+      width: 600px;
+    }
+
+    /* L */
+    @media (min-width: 1001px) and (max-width: 1200px) {
+      width: 800px;
+    }
+
+    /* XL */
+    @media (min-width: 1201px) {
+      width: 1000px;
+    }
+  }
+
+  .page-changer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+
+    button {
+      background-color: transparent;
+      padding: 10px 20px;
+      border: 1px solid $dark-gray;
+      border-radius: 10px;
+
+      &:hover:enabled {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+        cursor: pointer;
+      }
+    }
+
+    .page-number:disabled {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+    }
+  }
 }
 
 // browser page
-.container-browser {
+.browse-page {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
@@ -623,8 +566,32 @@ footer {
   }
 }
 
+// xquery page
+.xquery-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 47vh; // xquery page height minus navbar and content
+
+  main {
+    flex: 1;
+  }
+
+  .header-content {
+    margin-top: 20px;
+
+    h1 {
+      font-size: 3em;
+      font-family: $logo-font-family;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+}
+
 // about page
-.about-stuff {
+.about-page {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
@@ -654,4 +621,24 @@ footer {
     display: table;
     clear: both;
   }
+}
+
+// user manual
+.UserManual {
+  background-color: $primary-colour;
+  color: $secondary-colour;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0%;
+  right: 20px;
+  z-index: 10;
 }

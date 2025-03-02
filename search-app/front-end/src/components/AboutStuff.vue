@@ -4,7 +4,7 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-  <div class="about-stuff">
+  <div class="about-page">
     <div class="row">
       <div class="column">
         <h2>Aberdeen Burgh Registers</h2>

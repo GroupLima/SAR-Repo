@@ -62,13 +62,15 @@ const runQuery = async () => {
         </header>
         
         <main>
-            <div class="xquery-search">
-                <input 
-                    type="search"
-                    placeholder="Enter your XQuery"
-                    v-model="state.query"
-                />
-                <button @click="runQuery">Run Query</button>   
+            <div class="search-section">
+                <div class="basic-search">
+                    <input 
+                        type="search"
+                        placeholder="Enter your XQuery"
+                        v-model="state.query"
+                    />
+                    <button @click="runQuery">Run Query</button>   
+                </div>
             </div>
             
             <div v-if="state.error" class="alert alert-danger mt-3">
