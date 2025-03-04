@@ -14,13 +14,14 @@ describe('SearchResults', () => {
     const mockSearchResponse = {
         data: {
             success: true,
-            results: [{
-                id: 'ARO-1-0001-01',
-                highlighted_html: 'test result',
-                htmlvolume: '1',
-                htmlpage: '0001',
-                htmldate: '1398-09-30'
-            }],
+            results: {
+                "ARO-1-0001-01": { 
+                    highlighted_html: 'test result', 
+                    volume: '1', 
+                    page: '0001', 
+                    date: '1398-09-30'
+                },
+            },
             total_results: 10
         }
     }
@@ -42,7 +43,6 @@ describe('SearchResults', () => {
     })
 
     // tests page changing
-    console.log("this is before the page changing")
     it('page changing', async () => {
         axios.get.mockResolvedValue(mockSearchResponse)
         const wrapper = mount(SearchResults, {
