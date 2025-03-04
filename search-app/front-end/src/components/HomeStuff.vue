@@ -5,25 +5,23 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-    
-    <div>
-         <!-- Header Section -->
+    <div class="home-page">
+        <!-- Header Section -->
         <header>
-            <div class="header-content"></div>
+            <div class="home-description">
+                <h1>Discover 8 Volumes</h1>
+                <p>Some text explaining search</p>
+            </div>
         </header>
-
         <!-- Main Section -->
-        <div class="aro-description">
-            <h1>Discover 8 Volumes</h1>
-            <p>Some text explaining search</p>
-        </div>
-        <div>
-            <SearchFields />
-        </div>
-
-        <div>
-            <Footer />
-        </div>
-
+        <main>
+            <div>
+                <SearchFields />
+            </div>
+        </main>
+    </div>
+    <!-- Footer Section -->
+    <div>
+        <Footer />
     </div>
 </template>

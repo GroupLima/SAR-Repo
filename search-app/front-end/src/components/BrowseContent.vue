@@ -57,7 +57,7 @@ export default {
   
   
   <template>
-    <div class="container-browser">
+    <div class="browse-page">
       <!-- Header -->
       <div class="header">
         <div class="header-left">
