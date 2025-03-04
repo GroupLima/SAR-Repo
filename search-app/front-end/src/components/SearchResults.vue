@@ -25,7 +25,7 @@ const state = reactive({
 const search = async() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
     const baseSearchUrl = 'http://localhost:8000/api/search'
-    console.log('im in search results');
+    //console.log('im in search results');
     const searchParams = {
         ...props.queryParams,
         page: state.current_page,
@@ -33,8 +33,8 @@ const search = async() => {
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
-        console.log("results");
-        console.log("data", response.data);
+        //console.log("results");
+        //console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;
             // Handle the response data (assuming it's structured like this)
@@ -52,7 +52,7 @@ const search = async() => {
     } catch (error) {
         console.error("error fetching results", error);
     } finally {
-        console.log("setting load value to false");
+        //console.log("setting load value to false");
         state.isLoading = false;
     }
 }
