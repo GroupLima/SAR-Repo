@@ -2,10 +2,14 @@
 import { RouterLink } from 'vue-router';
 import townLogo from '@/assets/images/town.png';
 import { useDark, useToggle } from '@vueuse/core'
+import { inject, computed } from 'vue';
 const isDark = useDark({
     selector: 'body',
 })
 const toggleDark = useToggle(isDark);
+
+const selectedRecords = inject('selectedRecords');
+const hasSelectedRecords = computed(() => selectedRecords.value.length > 0);
 
 // Adds class scrolled when y position > 50
 window.onscroll = function() {
@@ -38,6 +42,9 @@ window.onscroll = function() {
                 </RouterLink>
                 <RouterLink to="/about">
                     About
+                </RouterLink>
+                <RouterLink v-if="hasSelectedRecords" to="/selected">
+                Selected ({{ selectedRecords.length }})
                 </RouterLink>
             </div>
             <button

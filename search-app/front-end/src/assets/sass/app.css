@@ -492,8 +492,6 @@ footer {
 }
 
 .container-browser {
-  max-width: 1000px;
-  margin: 0 auto;
   position: relative;
   top: 20px;
   left: 0;
@@ -513,9 +511,11 @@ footer {
   display: flex;
   align-items: center;
 }
+
 .header-left h1 {
   margin-right: 20px;
 }
+
 .header-left input {
   padding: 10px;
   margin-right: 10px;
@@ -531,6 +531,7 @@ footer {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .search-btn:hover {
   background-color: #6e0d25;
 }
@@ -545,9 +546,40 @@ footer {
   margin-right: 20px;
 }
 
+.split-view {
+  display: flex;
+  gap: 1rem;
+  height: calc(100vh - 200px);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.image-viewer {
+  flex: 1;
+  min-width: 400px;
+  max-width: 50%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.page-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.records-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  max-width: 50%;
+}
+
 .volume-item {
   margin-bottom: 10px;
 }
+
 .volume-item button {
   width: 100%;
   padding: 10px;
@@ -556,24 +588,17 @@ footer {
   background-color: transparent;
   cursor: pointer;
 }
+
 .volume-item button.active {
   background-color: #6e0d25;
   color: #ffffff;
 }
 
-.pages-list {
-  margin-top: 10px;
-}
-.pages-list button {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #a69f9f;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.pages-list button.active {
-  background-color: #6e0d25;
-  color: #ffffff;
+.volume-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  min-width: 150px;
 }
 
 .content-area {
@@ -617,16 +642,124 @@ footer {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .xml-btn:hover {
-  background-color: #6e0d25;
+  background-color: #c44b69;
+}
+
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .select-record {
   display: flex;
   align-items: center;
 }
+
 .select-record input {
   margin-right: 5px;
+}
+
+.dark .container-browser {
+  background-color: #333030;
+  color: #ccc;
+  border-color: #555;
+}
+
+.dark .header {
+  background-color: #333030;
+  border-bottom-color: #555;
+}
+
+.dark .header-left h1 {
+  color: #ccc;
+}
+
+.dark .header-left input {
+  background-color: #444;
+  color: #ccc;
+  border-color: #555;
+}
+
+.dark .search-btn {
+  background-color: #6e0d25;
+  color: #ccc;
+}
+
+.dark .main-content {
+  background-color: #333030;
+}
+
+.dark .volume-nav {
+  background-color: #333030;
+}
+
+.dark .volume-item button {
+  background-color: #444;
+  color: #ccc;
+  border-color: #555;
+}
+
+.dark .volume-item button.active {
+  background-color: #6e0d25;
+  color: #ccc;
+}
+
+.dark .pages-list button {
+  background-color: #444;
+  color: #ccc;
+  border-color: #555;
+}
+
+.dark .pages-list button.active {
+  background-color: #6e0d25;
+  color: #ccc;
+}
+
+.dark .content-area {
+  background-color: #333030;
+}
+
+.dark .current-page-info h2 {
+  color: #ccc;
+}
+
+.dark .records {
+  border-top-color: #555;
+}
+
+.dark .record-item {
+  border-bottom-color: #555;
+}
+
+.dark .record-header {
+  color: #ccc;
+}
+
+.dark .record-content {
+  color: #ccc;
+}
+
+.dark .xml-btn {
+  background-color: #6e0d25;
+  color: #ccc;
+}
+
+.dark .select-record {
+  color: #ccc;
+}
+
+.dark .about-stuff {
+  background-color: #333030;
+  border-color: #555;
+  color: #ccc;
+}
+
+.dark .column {
+  color: #ccc;
 }
 
 .about-stuff {
