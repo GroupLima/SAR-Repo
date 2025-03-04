@@ -65,18 +65,18 @@ body {
   background-color: transparent;
   border: none;
   border-radius: 30px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .result-buttons button:hover {
-  background-color: #a69f9f; 
+  background-color: #a69f9f;
 }
 
 .result-buttons svg {
   fill: black;
   height: 30px;
   width: 30px;
-  margin: 5px; 
+  margin: 5px;
 }
 
 .page-changer {
@@ -500,38 +500,37 @@ footer {
   box-shadow: 0 2px 5px #4a4a4a;
   width: 100%;
   padding: 24px;
+  font-family: Arial, sans-serif;
 }
 
 .header {
   padding: 20px;
   border-bottom: 1px solid #a69f9f;
 }
-
 .header-left {
   display: flex;
   align-items: center;
 }
-
 .header-left h1 {
   margin-right: 20px;
+  font-family: Times, serif;
 }
-
 .header-left input {
   padding: 10px;
   margin-right: 10px;
   border: 1px solid #a69f9f;
   border-radius: 4px;
+  font-family: Arial, sans-serif;
 }
 
 .search-btn {
   padding: 10px 20px;
-  background-color: #6e0d25;
-  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #6e0d25;
+  color: #ffffff;
 }
-
 .search-btn:hover {
   background-color: #6e0d25;
 }
@@ -544,6 +543,22 @@ footer {
 .volume-nav {
   width: 200px;
   margin-right: 20px;
+}
+.volume-nav-item {
+  margin-bottom: 10px;
+}
+.volume-nav-item button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #a69f9f;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+.volume-nav-item button.active {
+  background-color: #6e0d25;
+  color: #ffffff;
 }
 
 .split-view {
@@ -562,36 +577,38 @@ footer {
   overflow: hidden;
   background-color: #f9f9f9;
 }
-
-.page-image {
+.image-viewer-page {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
+.records {
+  border-top: 1px solid #a69f9f;
+  padding-top: 20px;
+}
 .records-container {
   flex: 1;
   overflow-y: auto;
   padding: 15px;
   max-width: 50%;
 }
-
-.volume-item {
+.records-item {
+  border-bottom: 1px solid #a69f9f;
+  padding: 10px 0;
+}
+.records-header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
-
-.volume-item button {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #a69f9f;
-  border-radius: 4px;
-  background-color: transparent;
-  cursor: pointer;
+.records-content {
+  margin-bottom: 10px;
 }
-
-.volume-item button.active {
-  background-color: #6e0d25;
-  color: #ffffff;
+.records-actions {
+  display: flex;
+  justify-content: space-between;
 }
 
 .volume-select {
@@ -599,6 +616,7 @@ footer {
   border: 1px solid #ddd;
   border-radius: 3px;
   min-width: 150px;
+  font-family: Arial, sans-serif;
 }
 
 .content-area {
@@ -609,42 +627,16 @@ footer {
   margin-bottom: 20px;
 }
 
-.records {
-  border-top: 1px solid #a69f9f;
-  padding-top: 20px;
-}
-
-.record-item {
-  border-bottom: 1px solid #a69f9f;
-  padding: 10px 0;
-}
-
-.record-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.record-content {
-  margin-bottom: 10px;
-}
-
-.record-actions {
-  display: flex;
-  justify-content: space-between;
-}
-
 .xml-btn {
-  padding: 5px 10px;
-  background-color: #6e0d25;
-  color: #ffffff;
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #6e0d25;
+  color: #ffffff;
 }
-
 .xml-btn:hover {
-  background-color: #c44b69;
+  background-color: #b2153c;
 }
 
 .page-navigation {
@@ -658,111 +650,78 @@ footer {
   display: flex;
   align-items: center;
 }
-
 .select-record input {
   margin-right: 5px;
 }
 
 .dark .container-browser {
-  background-color: #333030;
-  color: #ccc;
-  border-color: #555;
+  background-color: #202020;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
-
 .dark .header {
-  background-color: #333030;
-  border-bottom-color: #555;
+  background-color: #202020;
+  border-bottom-color: #a69f9f;
 }
-
 .dark .header-left h1 {
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .header-left input {
-  background-color: #444;
-  color: #ccc;
-  border-color: #555;
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
-
 .dark .search-btn {
   background-color: #6e0d25;
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .main-content {
-  background-color: #333030;
+  background-color: #202020;
 }
-
 .dark .volume-nav {
-  background-color: #333030;
+  background-color: #202020;
 }
-
-.dark .volume-item button {
-  background-color: #444;
-  color: #ccc;
-  border-color: #555;
+.dark .volume-nav-item button {
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
-
-.dark .volume-item button.active {
+.dark .volume-nav-item button.active {
   background-color: #6e0d25;
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .pages-list button {
-  background-color: #444;
-  color: #ccc;
-  border-color: #555;
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
-
 .dark .pages-list button.active {
   background-color: #6e0d25;
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .content-area {
-  background-color: #333030;
+  background-color: #202020;
 }
-
 .dark .current-page-info h2 {
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .records {
-  border-top-color: #555;
+  border-top-color: #a69f9f;
 }
-
-.dark .record-item {
-  border-bottom-color: #555;
+.dark .records-item {
+  border-bottom-color: #a69f9f;
 }
-
-.dark .record-header {
-  color: #ccc;
+.dark .records-header, .dark .records-content {
+  color: #ffffff;
 }
-
-.dark .record-content {
-  color: #ccc;
-}
-
 .dark .xml-btn {
   background-color: #6e0d25;
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .select-record {
-  color: #ccc;
+  color: #ffffff;
 }
-
 .dark .about-stuff {
-  background-color: #333030;
-  border-color: #555;
-  color: #ccc;
-}
-
-.dark .column {
-  color: #ccc;
-}
-
-.about-stuff {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
@@ -774,20 +733,18 @@ footer {
   width: 100%;
   padding: 25px;
 }
-
-.column {
+.dark .column {
   float: left;
   width: 50%;
   padding: 10px;
   height: 100%;
   text-align: justify;
 }
-.column img {
+.dark .column img {
   width: 100%;
   height: auto;
 }
-
-.row:after {
+.dark .row:after {
   content: "";
   display: table;
   clear: both;
