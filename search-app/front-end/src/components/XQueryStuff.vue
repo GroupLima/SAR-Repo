@@ -1,7 +1,8 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
-import SearchResultCard from '@/components/SearchResultCard.vue';
+import Footer from '@/components/Footer.vue';
+
 const props = defineProps({
     queryParams: {
         type: Object,
@@ -31,11 +32,14 @@ const runQuery = async () => {
                 query: state.query,
             },
         });
-        
         console.log("Response received:", response);
         if (response.data.message) {
             // Directly map response to state.results
-            state.results = response.data.message
+            const xmlString = response.data.message.queryResults;
+            console.log(typeof xmlString, xmlString);
+            const xmlPretty = window.vkbeautify.xml(xmlString, 5);
+            state.results = xmlPretty;
+            console.log("happy",state.results);
         } else {
             state.error = "No results found!";
         }
@@ -75,7 +79,7 @@ const runQuery = async () => {
             <div class="results-section mt-3">
                 <h2 class="results-title">Results</h2>
                 <div v-if="!state.isLoading">
-                    <p>Showing results {{ state.results }}</p>
+                     <pre>{{ state.results }}</pre>
             </div>
                 <div v-else>
                     Loading...
@@ -83,4 +87,9 @@ const runQuery = async () => {
             </div>
         </main>
     </div>
+
+    <div>
+      <Footer />
+    </div>
+
 </template>

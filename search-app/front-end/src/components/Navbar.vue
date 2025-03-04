@@ -6,6 +6,16 @@ const isDark = useDark({
     selector: 'body',
 })
 const toggleDark = useToggle(isDark);
+
+// Adds class scrolled when y position > 50
+window.onscroll = function() {
+    var navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+}
 </script>
 
 <template>
@@ -13,11 +23,8 @@ const toggleDark = useToggle(isDark);
         <div class="nav-content">
             <RouterLink to="/" class="logo-section">
                 <div class="text-container">
-                    <!-- New container for text -->
-                    <div class="logo-text">SAR</div>
-                    <div class="logo-subtext">Search Aberdeen Registers</div>
+                    <img src="@/assets/images/logo-current.png" alt="SAR Logo"/>
                 </div>
-                <img :src="townLogo" alt="Town Logo" class="logo-image">
             </RouterLink>
             <div class="nav-links">
                 <RouterLink to="/">

@@ -1,6 +1,8 @@
 from Search import Search
 from pathlib import Path
+import sort_methods
 import json
+import basic_search_methods.Search_Word_Middle as search_word_middle
 
 json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
 json_entries = []
@@ -9,14 +11,38 @@ with open(json_filepath, 'r') as json_file:
 
 # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page']
 
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'pre ka',
+#     'rpp' : 5,
+#     'var' : 2,
+#     'sm' : 'word_start' 
+# }
+
 params = {
     'qt' : 'basic_search',
-    'query' : 'pre ka',
+    'query' : 'hollly',
     'rpp' : 5,
     'var' : 2,
-    'sm' : 'word_start' 
+    'sm' : 'word_middle' 
 }
 
+
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'a',
+#     'rpp' : 5,
+#     'var' : 0,
+#     'sm' : 'word_middle' 
+# }
+
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'william',
+#     'rpp' : 5,
+#     'var' : 0,
+#     'sm' : 'regex' 
+# }
 
 
 """
@@ -64,13 +90,34 @@ params = {
 # 4 variance = at least 60 similarity score
 # so, converted variance = abs(variance*10 - 100)
 
-print('searching')
-search_obj = Search(params, json_entries)
-search_obj.start()
-matches = search_obj.get_matches()
+# print('searching')
+# search_obj = Search(params, json_entries)
+# search_obj.start()
+# matches = search_obj.get_matches()
+# print(matches)
 
-if matches != None:
-    json.dumps(matches, indent=4)
+# if matches != None:
+#     json.dumps(matches, indent=4)
 
-    for entry_id, match_data in matches.items():
-        print(entry_id, match_data)
+#     for entry_id, match_data in matches.items():
+#         print(entry_id, match_data)
+
+
+# sorted_match = sort_methods.sort_frequency(matches)
+# print('sorted matches')
+# print(sorted_match)
+
+
+score = search_word_middle.get_fuzzy_score('hollly', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holi', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holee', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holy', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('colly', 0, 5, 'holly')
+print(score)
+
+#shorter words should be more lenient
+# the longer the word

@@ -6,7 +6,6 @@ from data_models.model_word_start import Word_Start
 from data_models.model_word_middle import Word_Middle
 from data_models.model_word_end import Word_End
 # from model_phrase import Phrase
-from data_models.model_regex import Regex
 from data_models.model_keywords import Keywords
 from basic_search_methods.Search_Word_Start import Search_Word_Start
 from basic_search_methods.Search_Word_Middle import Search_Word_Middle
@@ -32,14 +31,13 @@ class Basic_Search():
                 #pass deserialized arguments into corresponding function
                 search = Search_Word_Start(args.query, args.qlen, self.variance, self.json_entries)
             case 'word_middle':
-                args = Word_Middle(args.query)
-                search = Search_Word_Middle()
+                args = Word_Middle(self.user_input)                  
+                search = Search_Word_Middle(args.query, args.qlen, self.variance, self.json_entries)
             case 'word_end':
                 args = Word_End(self.user_input)
                 search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries)
             case 'regex':
-                args = Regex(args.query)
-                search = Search_Regex()
+                search = Search_Regex(self.user_input, self.json_entries)
             case 'keywords':
                 args = Keywords(args.query)
                 search = Search_Keywords() 
