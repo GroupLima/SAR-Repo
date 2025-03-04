@@ -421,9 +421,20 @@ footer {
 }
 
 // browser page
-.browse-page {
-  max-width: 1000px;
-  margin: 0 auto;
+// Using existing variables
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin button-base {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container-browser {
   position: relative;
   top: 20px;
   left: 0;
@@ -432,163 +443,270 @@ footer {
   box-shadow: $box-shadow;
   width: 100%;
   padding: 24px;
+  font-family: $font-family;
+}
 
-  .header {
-    padding: 20px;
-    border-bottom: 1px solid $light-gray;
+.header {
+  padding: 20px;
+  border-bottom: 1px solid $light-gray;
 
-    .header-left {
-      display: flex;
-      align-items: center;
+  &-left {
+    @include flex-center;
 
-      h1 {
-        margin-right: 20px;
-      }
+    h1 {
+      margin-right: 20px;
+      font-family: $logo-font-family;
+    }
 
-      input {
-        padding: 10px;
-        margin-right: 10px;
-        border: 1px solid $light-gray;
-        border-radius: 4px;
-      }
-
-      .search-btn {
-        padding: 10px 20px;
-        background-color: $primary-colour;
-        color: $secondary-colour;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $dark-gray;
-        }
-      }
+    input {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      font-family: $font-family;
     }
   }
+}
 
-  .main-content {
-    display: flex;
-    margin-top: 20px;
+.search-btn {
+  @include button-base;
+  background-color: $primary-colour;
+  color: $secondary-colour;
 
-    .volume-nav {
-      width: 200px;
-      margin-right: 20px;
+  &:hover {
+    background-color: $primary-colour;
+  }
+}
 
-      .volume-item {
-        margin-bottom: 10px;
+.main-content {
+  display: flex;
+  margin-top: 20px;
+}
 
-        button {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid $light-gray;
-          border-radius: 4px;
-          background-color: transparent;
-          cursor: pointer;
+.volume-nav {
+  width: 200px;
+  margin-right: 20px;
 
-          &.active {
-            background-color: $primary-colour;
-            color: $secondary-colour;
-          }
-        }
+  &-item {
+    margin-bottom: 10px;
 
-        .pages-list {
-          margin-top: 10px;
+    button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      background-color: transparent;
+      cursor: pointer;
+      font-family: $font-family;
 
-          button {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid $light-gray;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &.active {
-              background-color: $primary-colour;
-              color: $secondary-colour;
-            }
-          }
-        }
-      }
-    }
-
-    .content-area {
-      flex: 1;
-
-      .current-page-info {
-        margin-bottom: 20px;
-      }
-
-      .records {
-        border-top: 1px solid $light-gray;
-        padding-top: 20px;
-
-        .record-item {
-          border-bottom: 1px solid $light-gray;
-          padding: 10px 0;
-
-          .record-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-          }
-
-          .record-content {
-            margin-bottom: 10px;
-          }
-
-          .record-actions {
-            display: flex;
-            justify-content: space-between;
-
-            .xml-btn {
-              padding: 5px 10px;
-              background-color: $primary-colour;
-              color: $secondary-colour;
-              border: none;
-              border-radius: 4px;
-              cursor: pointer;
-
-              &:hover {
-                background-color: $dark-gray;
-              }
-            }
-
-            .select-record {
-              display: flex;
-              align-items: center;
-
-              input {
-                margin-right: 5px;
-              }
-            }
-          }
-        }
+      &.active {
+        background-color: $primary-colour;
+        color: $secondary-colour;
       }
     }
   }
 }
 
-// xquery page
-.xquery-page {
-  max-width: 1000px;
-  margin: 0 auto;
+.split-view {
   display: flex;
-  flex-direction: column;
-  min-height: 47vh; // xquery page height minus navbar and content
+  gap: 1rem;
+  height: calc(100vh - 200px);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-  main {
+.image-viewer {
+  flex: 1;
+  min-width: 400px;
+  max-width: 50%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+
+  &-page {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.records {
+  &-container {
     flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    max-width: 50%;
   }
 
-  .header-content {
-    margin-top: 20px;
+  border-top: 1px solid $light-gray;
+  padding-top: 20px;
 
-    h1 {
-      font-size: 3em;
-      font-family: $logo-font-family;
-      font-style: italic;
-      font-weight: bold;
+  &-item {
+    border-bottom: 1px solid $light-gray;
+    padding: 10px 0;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &-content {
+    margin-bottom: 10px;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.volume-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  min-width: 150px;
+  font-family: $font-family;
+}
+
+.content-area {
+  flex: 1;
+}
+
+.current-page-info {
+  margin-bottom: 20px;
+}
+
+.xml-btn {
+  @include button-base;
+  background-color: $primary-colour;
+  color: $secondary-colour;
+
+  &:hover {
+    background-color: lighten($primary-colour, 15%);
+  }
+}
+
+.page-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.select-record {
+  @include flex-center;
+
+  input {
+    margin-right: 5px;
+  }
+}
+
+// Dark mode styles
+.dark {
+  .container-browser {
+    background-color: $dark-mode;
+    color: $secondary-colour;
+    border-color: $light-gray;
+  }
+
+  .header {
+    background-color: $dark-mode;
+    border-bottom-color: $light-gray;
+
+    &-left {
+      h1 {
+        color: $secondary-colour;
+      }
+
+      input {
+        background-color: darken($dark-mode, 5%);
+        color: $secondary-colour;
+        border-color: $light-gray;
+      }
     }
+  }
+
+  .search-btn {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+  }
+
+  .main-content {
+    background-color: $dark-mode;
+  }
+
+  .volume-nav {
+    background-color: $dark-mode;
+
+    &-item {
+      button {
+        background-color: darken($dark-mode, 5%);
+        color: $secondary-colour;
+        border-color: $light-gray;
+
+        &.active {
+          background-color: $primary-colour;
+          color: $secondary-colour;
+        }
+      }
+    }
+  }
+
+  .pages-list {
+    button {
+      background-color: darken($dark-mode, 5%);
+      color: $secondary-colour;
+      border-color: $light-gray;
+
+      &.active {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+      }
+    }
+  }
+
+  .content-area {
+    background-color: $dark-mode;
+  }
+
+  .current-page-info {
+    h2 {
+      color: $secondary-colour;
+    }
+  }
+
+  .records {
+    border-top-color: $light-gray;
+
+    &-item {
+      border-bottom-color: $light-gray;
+    }
+
+    &-header,
+    &-content {
+      color: $secondary-colour;
+    }
+  }
+
+  .xml-btn {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+  }
+
+  .select-record {
+    color: $secondary-colour;
+  }
+
+  .about-stuff {
+    background-color: $dark-mode;
+    border-color: $light-gray;
+    color: $secondary-colour;
+  }
+
+  .column {
+    color: $secondary-colour;
   }
 }
 
