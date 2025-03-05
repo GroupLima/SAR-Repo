@@ -27,14 +27,6 @@ body {
     background-color: $dark-mode;
     color: $secondary-colour;
     color-scheme: dark;
-
-    .results-section .result-item .result-footer .result-buttons svg {
-      fill: $secondary-colour;
-    }
-
-    .results-section .result-item .highlight {
-      background-color: $primary-colour;
-    }
   }
 }
 
@@ -336,30 +328,53 @@ footer {
       padding: 24px;
       margin: 24px auto;
 
-      .highlight {
-        background-color: yellow;
+      .result-content {
+        margin-bottom: 24px;
+
+        .highlight {
+          background-color: yellow;
+
+          body.dark & {
+            background-color: $primary-colour;
+          }
+        }
       }
 
       .result-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-top: 1px solid $light-gray;
+        padding-top: 5px;
 
-        .result-buttons svg {
-          fill: black;
-          height: 30px;
-          width: 30px;
-          margin: 5px;
-        }
+        .result-buttons {
+          display: flex;
+          gap: 5px;
 
-        .result-buttons button {
-          background-color: transparent;
-          border: none;
-          border-radius: 30px;
-          cursor: pointer;
+          svg {
+            fill: $dark-gray;
+            height: 26px;
+            width: 26px;
+            margin: 5px;
 
-          &:hover {
-            background-color: $light-gray;
+            body.dark & {
+              fill: $light-gray;
+            }
+          }
+
+          button {
+            background-color: transparent;
+            border: none;
+            border-radius: 26px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $light-gray;
+
+              body.dark & {
+                background-color: $dark-gray;
+              }
+            }
           }
         }
       }
