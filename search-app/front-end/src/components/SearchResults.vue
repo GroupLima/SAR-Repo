@@ -2,6 +2,7 @@
 import SearchResultCard from '@/components/SearchResultCard.vue';
 import { reactive, onMounted, computed } from 'vue';
 import axios from 'axios';
+import Footer from '@/components/Footer.vue';
 
 const props = defineProps({
     queryParams: {
@@ -160,4 +161,9 @@ const lastResultOfPage = computed(() =>
 
                  
     </div>
+
+    <div>
+        <Footer />
+    </div>
+
 </template>
