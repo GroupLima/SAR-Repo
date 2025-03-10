@@ -1,7 +1,13 @@
+<script setup>
+import { useDark } from '@vueuse/core'
+const isDark = useDark({selector: 'body'})
+</script>
+
 <template>
   <footer>
     <div class="image-container">
-      <img src="@/assets/images/new-scripture.png" alt="Cursive Latin" />
+      <img v-if="isDark" src="@/assets/images/new-scripture-dark.png" alt="Cursive Latin" />
+      <img v-else src="@/assets/images/new-scripture.png" alt="Cursive Latin" />
     </div>
     <div class="footer-links-container">
       <div class="footer-links">
