@@ -35,7 +35,7 @@ const searchMethods = [
 ];
 const varOptions = [0, 1, 2, 3, 4];
 const rrpOptions = [5, 10, 20, 30, 50];
-const ordOptions = [':)', ':(', '<|°_°|>', 'o(≧▽≦)o'];
+const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
 function filterChange() {
     state.current_page = 1;
@@ -184,7 +184,7 @@ const lastResultOfPage = computed(() =>
         </div>
 
         <!-- Changing Pages -->
-        <div v-if="state.total_pages > 1" class="page-changer">
+        <div v-if="state.total_pages > 1 & !state.isLoading" class="page-changer">
             <!-- previous button -->
             <button @click="prevPage" :disabled="state.current_page <= 1">
                 Previous

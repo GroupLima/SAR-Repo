@@ -1,7 +1,7 @@
 <!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
-import { reactive, ref, toRaw, onMounted } from 'vue';
+import { reactive, ref, toRaw, onMounted, computed } from 'vue';
 
 const form = reactive({
     query_type: "basic_search",
@@ -45,6 +45,18 @@ const getSearchType = () => {
     : "basic_search";
 
     return query_type
+}
+
+const isAllSelected = computed(() => {
+    return form.volumes.length === 7;
+});
+
+const toggleAllVolumes = () => {
+    if ( isAllSelected.value ) {
+        form.volumes = [];
+    } else {
+        form.volumes = ['1', '2', '4', '5', '6', '7', '8'];
+    }
 }
 
 const handleSearch = () => {
@@ -181,26 +193,11 @@ onMounted(() => {
                         <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-1" name="volume1" value="1"> 1
+                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume">
+                                    <input type="checkbox" v-model="form.volumes" :id="'volume-'+volume" :name="'volume'+volume" :value="volume"> {{ volume }}
                                 </label>
                                 <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-2" name="volume2" value="2"> 2
-                                </label>
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-4" name="volume4" value="4"> 4
-                                </label>
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-5" name="volume5" value="5"> 5
-                                </label>
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-6" name="volume6" value="6"> 6
-                                </label>
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-7" name="volume7" value="7"> 7
-                                </label>
-                                <label>
-                                    <input type="checkbox" v-model="form.volumes" id="volume-8" name="volume8" value="8"> 8
+                                    <input type="checkbox" :checked="isAllSelected" @change="toggleAllVolumes"> All
                                 </label>
                             </div>
                         </div>
