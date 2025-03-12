@@ -20,8 +20,8 @@ const state = reactive({
     current_page: 1,
     results_per_page: 5,
     total_pages: 1,
-    searchMethod: props.queryParams.sm || 'word_start',
-    variants: props.queryParams.var || '0'
+    searchMethod: props.queryParams.methodSearch || 'word_start',
+    variants: props.queryParams.variant || '0'
 });
 
 // preferences
@@ -37,7 +37,7 @@ const varOptions = [0, 1, 2, 3, 4];
 const rrpOptions = [5, 10, 20, 30, 50];
 const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
-function filterChange() {
+const filterChange = () => {
     state.current_page = 1;
     state.isLoading = true;
     search();
@@ -51,8 +51,8 @@ const search = async() => {
         ...props.queryParams,
         page: state.current_page,
         rpp: state.results_per_page,
-        var: state.variants,
-        sm: state.searchMethod
+        variant: state.variants,
+        methodSearch: state.searchMethod
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
@@ -99,19 +99,19 @@ const displayedPageNumbers = computed(() => {
 });
 
 // SelectedPage
-function selectedPage(pageNumber) {
+const selectedPage = (pageNumber) => {
     state.current_page = pageNumber;
     search();
 }
 // Next page
-function nextPage() {
+const nextPage = () => {
     if (state.current_page < state.total_pages) {
         state.current_page++;
         search();
     }
 }
 // Previous page
-function prevPage() {
+const prevPage = () => {
     if (state.current_page > 1) {
         state.current_page--;
         search();

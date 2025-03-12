@@ -194,7 +194,7 @@ onMounted(() => {
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
                                 <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume">
-                                    <input type="checkbox" v-model="form.volumes" :id="'volume-'+volume" :name="'volume'+volume" :value="volume"> {{ volume }}
+                                    <input type="checkbox" v-model="form.volumes" :id="volume" :value="volume"> {{ volume }}
                                 </label>
                                 <label>
                                     <input type="checkbox" :checked="isAllSelected" @change="toggleAllVolumes"> All
