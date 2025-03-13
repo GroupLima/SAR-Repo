@@ -39,9 +39,13 @@
     </div>
   </template>
   
+  <script setup>
+  import '@/assets/sass/app.scss';
+  </script>
+  
   <script>
   import { inject } from 'vue';
-  import jsPDF from 'jspdf';
+  import { PDFDocument, rgb } from 'pdf-lib';
   
   export default {
     setup() {
@@ -70,38 +74,68 @@
         linkElement.click();
       };
   
-      const exportToPDF = () => {
-        const doc = new jsPDF();
+      const exportToPDF = async () => {
+        const pdfDoc = await PDFDocument.create();
+        const page = pdfDoc.addPage();
+        const { width, height } = page.getSize();
+        let yPos = height - 40;
   
-       
-        let yPos = 20;
+        page.drawText('Selected Records', {
+          x: 50,
+          y: yPos,
+          size: 18,
+          color: rgb(0, 0, 0),
+        });
+        yPos -= 30;
   
-        
-        doc.setFontSize(18);
-        doc.text('Selected Records', 10, yPos);
-        yPos += 10;
-  
-        // Loop through selected records and add them to the PDF
         selectedRecords.value.forEach((record, index) => {
-          doc.setFontSize(12);
-          doc.text(`Record ${index + 1}:`, 10, yPos);
-          yPos += 10;
+          page.drawText(`Record ${index + 1}:`, {
+            x: 50,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 20;
   
-          doc.text(`ID: ${record.id}`, 15, yPos);
-          yPos += 10;
+          page.drawText(`ID: ${record.id}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 20;
   
-          doc.text(`Date: ${record.date}`, 15, yPos);
-          yPos += 10;
+          page.drawText(`Date: ${record.date}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 20;
   
-          doc.text(`Language: ${record.language}`, 15, yPos);
-          yPos += 10;
+          page.drawText(`Language: ${record.language}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 20;
   
-          doc.text(`Content: ${record.content}`, 15, yPos);
-          yPos += 15; // Add extra space between records
+          page.drawText(`Content: ${record.content}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 30;
         });
   
-        // Save the PDF
-        doc.save('selected-records.pdf');
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'selected-records.pdf';
+        link.click();
       };
       
       return {

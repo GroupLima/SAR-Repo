@@ -1,8 +1,10 @@
 <script setup>
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import { reactive, onMounted, computed } from 'vue';
+import { reactive, onMounted, computed, ref } from 'vue';
 import axios from 'axios';
 import Footer from '@/components/Footer.vue';
+import '@/assets/sass/app.scss';
+import router from '@/router';
 
 const props = defineProps({
     queryParams: {
@@ -24,6 +26,8 @@ const state = reactive({
     searchMethod: props.queryParams.methodSearch || 'word_start',
     variants: props.queryParams.variant || '0'
 });
+
+const goToPageNumber = ref(1);
 
 // preferences
 const searchMethods = [
@@ -127,6 +131,34 @@ const lastResultOfPage = computed(() =>
     Math.min(state.current_page * state.results_per_page, state.total_results)
 );
 
+const goToSpecificPage = () => {
+    if (goToPageNumber.value < 1) {
+        goToPageNumber.value = 1;
+        state.current_page = 1;
+    } else if (goToPageNumber.value > state.total_pages) {
+        goToPageNumber.value = state.total_pages;
+        state.current_page = state.total_pages;
+    } else {
+        state.current_page = goToPageNumber.value;
+    }
+    search();
+};
+
+const handleKeyPress = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        goToSpecificPage();
+    }
+};
+
+const handleInput = (event) => {
+    event.target.value = event.target.value.replace(/\D/g, '');
+};
+
+const showHelpPage = () => {
+    const routeUrl = router.resolve({ name: 'help' }).href;
+    window.open(routeUrl, '_blank');
+};
+
 </script>
 
 <template>
@@ -202,10 +234,15 @@ const lastResultOfPage = computed(() =>
             </button>
         </div>
 
+        <!-- Go to specific page -->
+        <div class="go-to-page">
+            <input type="number" v-model="goToPageNumber" min="1" :max="state.total_pages" @keypress="handleKeyPress" @input="handleInput" />
+            <button @click="goToSpecificPage">Go to page</button>
+        </div>
+
     </div>
 
     <div>
         <Footer />
     </div>
-
 </template>
