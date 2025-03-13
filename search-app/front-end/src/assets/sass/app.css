@@ -83,6 +83,50 @@ body.dark {
   height: 90px;
 }
 
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.burger-menu span {
+  background-color: #ffffff;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #6e0d25;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+  }
+  .nav-links a {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+}
 footer {
   margin-top: 45px;
 }
@@ -96,6 +140,8 @@ footer .image-container img {
   min-width: 100%;
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 footer .footer-links-container {
   background-color: #6e0d25;
@@ -109,12 +155,15 @@ footer .footer-links-container .footer-links {
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 footer .footer-links-container .footer-links a {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
   padding: 10px;
+  flex: 1 1 auto;
+  text-align: center;
 }
 footer .footer-links-container .footer-links a:hover {
   text-decoration: underline;
@@ -165,6 +214,19 @@ footer .footer-links-container .footer-links a:hover {
   border-radius: 50px;
   cursor: pointer;
   font-weight: bold;
+}
+@media (max-width: 768px) {
+  .search-section .basic-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-section .basic-search input {
+    margin-bottom: 10px;
+  }
+  .search-section .basic-search button {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .search-section .preferences {
   display: flex;
@@ -886,4 +948,18 @@ body.dark #search-options .advanced-option #dates input[type=date] {
   background-color: #131313;
   color: #ffffff;
   border-color: #a69f9f;
+}
+
+@media (max-width: 768px) {
+  footer .image-container {
+    height: auto;
+    min-width: 100%;
+  }
+  footer .footer-links-container {
+    padding: 10px;
+  }
+  footer .footer-links-container .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
 }/*# sourceMappingURL=app.css.map */

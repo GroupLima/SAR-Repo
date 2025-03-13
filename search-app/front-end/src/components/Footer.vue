@@ -19,3 +19,20 @@ const isDark = useDark({selector: 'body'})
     </div>
   </footer>
 </template>
+
+<style scoped>
+.image-container img {
+  object-fit: cover; /* Ensure the image fits within the container without stretching */
+  width: 100%;
+  height: auto;
+}
+
+.footer-links-container {
+  padding: 10px; /* Adjust padding for smaller screens */
+}
+
+.footer-links {
+  flex-direction: column; /* Stack links vertically on smaller screens */
+  align-items: center;
+}
+</style>

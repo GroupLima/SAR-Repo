@@ -116,6 +116,50 @@ body {
   }
 }
 
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  span {
+    background-color: $secondary-colour;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: $primary-colour;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    a {
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+}
+
 // footer
 footer {
   margin-top: 45px;
@@ -130,6 +174,7 @@ footer {
       min-width: 100%;
       height: 100%;
       width: 100%;
+      object-fit: cover; // Ensure the image fits within the container without stretching
     }
   }
 
@@ -145,12 +190,15 @@ footer {
       align-items: center;
       max-width: 1000px;
       margin: 0 auto;
+      flex-wrap: wrap; // Allow links to wrap to the next line if needed
 
       a {
         color: $secondary-colour;
         text-decoration: none;
         font-weight: bold;
         padding: 10px;
+        flex: 1 1 auto; // Allow links to grow and shrink as needed
+        text-align: center; // Center align text
 
         &:hover {
           text-decoration: underline;
@@ -211,6 +259,20 @@ footer {
       border-radius: 50px;
       cursor: pointer;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+
+      input {
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0; // Remove left margin for smaller screens
+      }
     }
   }
 
@@ -1018,6 +1080,24 @@ footer {
           color: $secondary-colour;
           border-color: $light-gray;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    .image-container {
+      height: auto; // Adjust height for smaller screens
+      min-width: 100%; // Ensure the image container fits the screen width
+    }
+
+    .footer-links-container {
+      padding: 10px; // Adjust padding for smaller screens
+
+      .footer-links {
+        flex-direction: column; // Stack links vertically on smaller screens
+        align-items: center;
       }
     }
   }
