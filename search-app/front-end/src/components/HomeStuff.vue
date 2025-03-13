@@ -10,7 +10,6 @@ import Footer from '@/components/Footer.vue';
         <header>
             <div class="home-description">
                 <h1>Discover 8 Volumes</h1>
-                <p>Some text explaining search</p>
             </div>
         </header>
         <!-- Main Section -->

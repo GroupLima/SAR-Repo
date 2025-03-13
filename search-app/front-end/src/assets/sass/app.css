@@ -166,6 +166,23 @@ footer .footer-links-container .footer-links a:hover {
   cursor: pointer;
   font-weight: bold;
 }
+.search-section .preferences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+.search-section .preferences .preference-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-section .preferences .preference-item label {
+  font-weight: bold;
+}
+.search-section .preferences .preference-item select {
+  cursor: pointer;
+}
 .search-section .advanced-search-container {
   position: relative;
 }
@@ -196,6 +213,7 @@ footer .footer-links-container .footer-links a:hover {
 }
 .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option {
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option h3 {
   color: #6e0d25;
