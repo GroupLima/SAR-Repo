@@ -1212,52 +1212,23 @@ footer {
   }
 }
 
-.help-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+// Combine repeated page classes into a single class
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-.content {
+  main {
     flex: 1;
+  }
 }
 
-.about-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.selected-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.search-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.xquery-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
+// Apply the combined class to all relevant pages
+.help-page,
+.about-page,
+.selected-page,
+.search-page,
+.xquery-page,
 .browse-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.xquery-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.xquery-page main {
-    flex: 1;
+  @extend .page;
 }
