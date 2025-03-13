@@ -205,8 +205,8 @@ footer {
         display: inline-block;
         margin-right: 5px; }
 
-.xquery-page .results-section,
-.search-page .results-section {
+.xquery-page,
+.search-page {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto; }
@@ -257,53 +257,69 @@ footer {
             body.dark .xquery-page .results-section .result-item .result-footer .result-buttons button:hover,
             body.dark .search-page .results-section .result-item .result-footer .result-buttons button:hover {
               background-color: #4a4a4a; }
-.xquery-page .results-section .result-item,
-.search-page .results-section .result-item {
-  /* XS */
-  /* S */
-  /* M */
-  /* L */
-  /* XL */ }
-  @media (max-width: 600px) {
-    .xquery-page .results-section .result-item,
-    .search-page .results-section .result-item {
-      width: 250px; } }
-  @media (min-width: 601px) and (max-width: 800px) {
-    .xquery-page .results-section .result-item,
-    .search-page .results-section .result-item {
-      width: 400px; } }
-  @media (min-width: 801px) and (max-width: 1000px) {
-    .xquery-page .results-section .result-item,
-    .search-page .results-section .result-item {
-      width: 600px; } }
-  @media (min-width: 1001px) and (max-width: 1200px) {
-    .xquery-page .results-section .result-item,
-    .search-page .results-section .result-item {
-      width: 800px; } }
-  @media (min-width: 1201px) {
-    .xquery-page .results-section .result-item,
-    .search-page .results-section .result-item {
-      width: 1000px; } }
-.xquery-page .page-changer,
-.search-page .page-changer {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 24px; }
-  .xquery-page .page-changer button,
-  .search-page .page-changer button {
-    background-color: transparent;
-    padding: 10px 20px;
-    border: 1px solid #4a4a4a;
-    border-radius: 10px; }
-    .xquery-page .page-changer button:hover:enabled,
-    .search-page .page-changer button:hover:enabled {
+  .xquery-page .preferences,
+  .search-page .preferences {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px; }
+    .xquery-page .preferences .preference-item,
+    .search-page .preferences .preference-item {
+      display: flex;
+      gap: 10px; }
+      .xquery-page .preferences .preference-item label,
+      .search-page .preferences .preference-item label {
+        font-weight: bold; }
+      .xquery-page .preferences .preference-item select,
+      .search-page .preferences .preference-item select {
+        cursor: pointer; }
+  .xquery-page .page-changer,
+  .search-page .page-changer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px; }
+    .xquery-page .page-changer button,
+    .search-page .page-changer button {
+      background-color: transparent;
+      padding: 10px 20px;
+      border: 1px solid #4a4a4a;
+      border-radius: 10px; }
+      .xquery-page .page-changer button:hover:enabled,
+      .search-page .page-changer button:hover:enabled {
+        background-color: #6e0d25;
+        color: #ffffff;
+        cursor: pointer; }
+    .xquery-page .page-changer .page-number:disabled,
+    .search-page .page-changer .page-number:disabled {
       background-color: #6e0d25;
-      color: #ffffff;
-      cursor: pointer; }
-  .xquery-page .page-changer .page-number:disabled,
-  .search-page .page-changer .page-number:disabled {
-    background-color: #6e0d25;
-    color: #ffffff; }
+      color: #ffffff; }
+  .xquery-page .results-section .result-item,
+  .search-page .results-section .result-item {
+    /* XS */
+    /* S */
+    /* M */
+    /* L */
+    /* XL */ }
+    @media (max-width: 600px) {
+      .xquery-page .results-section .result-item,
+      .search-page .results-section .result-item {
+        width: 250px; } }
+    @media (min-width: 601px) and (max-width: 800px) {
+      .xquery-page .results-section .result-item,
+      .search-page .results-section .result-item {
+        width: 400px; } }
+    @media (min-width: 801px) and (max-width: 1000px) {
+      .xquery-page .results-section .result-item,
+      .search-page .results-section .result-item {
+        width: 600px; } }
+    @media (min-width: 1001px) and (max-width: 1200px) {
+      .xquery-page .results-section .result-item,
+      .search-page .results-section .result-item {
+        width: 800px; } }
+    @media (min-width: 1201px) {
+      .xquery-page .results-section .result-item,
+      .search-page .results-section .result-item {
+        width: 1000px; } }
 
 .browse-page {
   max-width: 1000px;
