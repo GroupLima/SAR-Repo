@@ -75,6 +75,16 @@ body {
       }
     }
 
+    .nav-links a.user-manual-link {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .nav-links a.help-link {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
     .dark-mode-button {
       min-height: 50px;
       min-width: 50px;
@@ -835,8 +845,8 @@ footer {
   }
 }
 
-// user manual
-.UserManual {
+// Help Page
+.HelpPage {
   background-color: $primary-colour;
   color: $secondary-colour;
   padding: 12px 24px;

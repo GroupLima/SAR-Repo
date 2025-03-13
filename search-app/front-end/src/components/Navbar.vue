@@ -32,6 +32,7 @@ window.onscroll = function() {
                 <RouterLink to="/browse">Browse</RouterLink>
                 <RouterLink to="/xQuery">XQuery</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
+                <RouterLink to="/help" class="help-link">Help</RouterLink>
                 <RouterLink v-if="hasSelectedRecords" to="/selected">
                 Selected ({{ selectedRecords.length }})
                 </RouterLink>
@@ -46,3 +47,17 @@ window.onscroll = function() {
         </div>
     </nav>
 </template>
+
+<script>
+import router from '@/router';
+
+export default {
+  name: 'Navbar',
+  methods: {
+    showHelp() {
+      const routeUrl = router.resolve({ name: 'help' }).href;
+      window.open(routeUrl, '_blank');
+    }
+  }
+};
+</script>

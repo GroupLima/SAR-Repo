@@ -176,26 +176,6 @@
   
   
   
-  .UserManual {
-    background-color: #6e0d25;
-    color: #ffffff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    position:absolute;
-    top: 550px; /* Adjust this value to position the button vertically */
-    right: 20px; /* Adjust this value to position the button horizontally */
-    z-index: 10; /* Ensure the button is above the image */
-  }
-  
-  
   .dropdown-button {
     background-color: #4a4a4a;
     color: #ffffff;
@@ -315,6 +295,25 @@
     border-radius: 50px;
     font-weight: bold;
     font-size: 16px;
+  }
+  
+  .HelpPage {
+    background-color: #6e0d25;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0%;
+    right: 20px;
+    z-index: 10;
   }
   
   /*sourceMappingURL=app.css.map*/

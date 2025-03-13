@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/usermanual',
       name: 'usermanual',
-      component: () => import('../views/UserManualView.vue'),
+      component: () => import('../views/HelpPageView.vue'),
     },
     {
       path: '/selected',

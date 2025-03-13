@@ -4,6 +4,7 @@ import { reactive, onMounted, computed, ref } from 'vue';
 import axios from 'axios';
 import Footer from '@/components/Footer.vue';
 import '@/assets/sass/app.scss';
+import router from '@/router';
 
 const props = defineProps({
     queryParams: {
@@ -153,6 +154,11 @@ const handleInput = (event) => {
     event.target.value = event.target.value.replace(/\D/g, '');
 };
 
+const showHelpPage = () => {
+    const routeUrl = router.resolve({ name: 'help' }).href;
+    window.open(routeUrl, '_blank');
+};
+
 </script>
 
 <template>
@@ -239,5 +245,4 @@ const handleInput = (event) => {
     <div>
         <Footer />
     </div>
-
 </template>

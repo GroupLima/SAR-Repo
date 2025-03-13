@@ -51,6 +51,14 @@ body.dark {
 .navbar .nav-content .nav-links a:hover {
   text-decoration: underline;
 }
+.navbar .nav-content .nav-links a.user-manual-link {
+  margin-left: 10px;
+  font-weight: bold;
+}
+.navbar .nav-content .nav-links a.help-link {
+  margin-left: 10px;
+  font-weight: bold;
+}
 .navbar .nav-content .dark-mode-button {
   min-height: 50px;
   min-width: 50px;
@@ -728,7 +736,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   clear: both;
 }
 
-.UserManual {
+.HelpPage {
   background-color: #6e0d25;
   color: #ffffff;
   padding: 12px 24px;

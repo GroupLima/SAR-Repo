@@ -3,7 +3,7 @@
 import { RouterView } from 'vue-router'
 import { ref, provide } from 'vue'
 import Navbar from './components/Navbar.vue';
-import UserManual from './components/UserManual.vue';
+import HelpPage from './components/HelpPage.vue';
 
 const selectedRecords = ref([]);
 provide('selectedRecords', selectedRecords);
