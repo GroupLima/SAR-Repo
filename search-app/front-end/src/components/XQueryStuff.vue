@@ -61,7 +61,7 @@ const runQuery = async () => {
             </div>
         </header>
         
-        <main>
+        <main class="content">
             <div class="search-section">
                 <div class="basic-search">
                     <input 
@@ -80,17 +80,14 @@ const runQuery = async () => {
             <div class="results-section mt-3">
                 <h2>Results</h2>
                 <div v-if="!state.isLoading">
-                     <pre>{{ state.results }}</pre>
-            </div>
+                    <pre>{{ state.results }}</pre>
+                </div>
                 <div v-else>
                     Loading...
                 </div>
             </div>
         </main>
+        <!-- Footer Section -->
+        <Footer />
     </div>
-
-    <div>
-      <Footer />
-    </div>
-
 </template>

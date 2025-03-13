@@ -6,7 +6,7 @@ import Footer from '@/components/Footer.vue';
 <template>
     <div class="browse-page">
         <!-- Main Section -->
-        <main>
+        <main class="content">
             <BrowseContent />
         </main>
         <!-- Footer Section -->

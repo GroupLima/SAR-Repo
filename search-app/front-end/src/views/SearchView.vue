@@ -30,7 +30,7 @@ onMounted(() => {
 <template>
     <div class="search-page">
         <!-- Main Section -->
-        <main>
+        <main class="content">
             <SearchFields />
             <div v-if="state.displayResults">
                 <SearchResults :queryParams="state.queryParams"/>

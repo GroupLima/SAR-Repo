@@ -6,7 +6,7 @@ import Footer from '@/components/Footer.vue';
 <template>
     <div class="about-page">
         <!-- Main Section -->
-        <main>
+        <main class="content">
             <AboutStuff />
         </main>
         <!-- Footer Section -->

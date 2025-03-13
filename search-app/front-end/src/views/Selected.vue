@@ -6,7 +6,7 @@ import Footer from '@/components/Footer.vue';
 <template>
     <div class="selected-page">
         <!-- Main Section -->
-        <main>
+        <main class="content">
             <Selected />
         </main>
         <!-- Footer Section -->

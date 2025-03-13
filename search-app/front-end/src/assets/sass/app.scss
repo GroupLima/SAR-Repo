@@ -248,6 +248,7 @@ body {
 // footer
 footer {
   margin-top: 45px;
+  width: 100%; // Ensure footer spans the entire page width
 
   .image-container {
     overflow: hidden;
@@ -538,6 +539,16 @@ footer {
 }
 
 .xquery-page,
+.xquery-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .content {
+        flex: 1;
+    }
+}
+
 // to allow xquery page to use results styling
 // search page
 .search-page {
@@ -1199,4 +1210,44 @@ footer {
       }
     }
   }
+}
+
+.help-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.about-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.selected-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.search-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.xquery-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.browse-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
