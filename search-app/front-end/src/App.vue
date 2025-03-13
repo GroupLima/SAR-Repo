@@ -1,4 +1,3 @@
-
 <script setup>
 import { RouterView } from 'vue-router'
 import { ref, provide } from 'vue'
@@ -16,7 +15,7 @@ provide('selectedRecords', selectedRecords);
       <RouterView />
     </div>
     <div>
-      <UserManual/>
+      <HelpPage/>
     </div>
   </div>
 </template>
