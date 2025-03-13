@@ -135,6 +135,45 @@ body {
 
 @media (max-width: 768px) {
   .navbar {
+    padding: 10px; // Reduce padding for smaller screens
+
+    &.scrolled {
+      padding: 5px; // Reduce padding when scrolled in mobile view
+
+      .nav-content .logo-section .text-container img {
+        height: 40px; // Adjust the height for smaller screens when scrolled
+      }
+    }
+
+    .nav-content {
+      flex-direction: column;
+      align-items: center;
+
+      .logo-section {
+        .text-container {
+          img {
+            height: 50px; // Adjust the height for smaller screens
+          }
+        }
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        a {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  .home-page {
+    padding-top: 20px; // Adjust padding to reduce space between navbar and content
+  }
+
+  .navbar {
     padding: 20px;
 
     .nav-content {

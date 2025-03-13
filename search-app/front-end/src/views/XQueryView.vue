@@ -1,9 +1,15 @@
 <script setup>
-import XQueryStuff from '@/components/XQueryStuff.vue'
+import XQueryStuff from '@/components/XQueryStuff.vue';
+import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-    <div>
-     <XQueryStuff >This is home view</XQueryStuff>
+    <div class="xquery-page">
+        <!-- Main Section -->
+        <main>
+            <XQueryStuff />
+        </main>
+        <!-- Footer Section -->
+        <Footer />
     </div>
 </template>

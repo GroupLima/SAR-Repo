@@ -1,8 +1,3 @@
-<template>
-    <div>
-    </div>
-</template>
-
 <script>
 import router from '@/router';
 export default {
@@ -16,3 +11,8 @@ export default {
 };
 </script>
 
+<template>
+    <div>
+        <Footer />
+    </div>
+</template>

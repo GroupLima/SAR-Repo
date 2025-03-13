@@ -1,69 +1,3 @@
-<template>
-  <div class="container-browser">
-    <div class="volume-nav">
-      <select class="volume-select" v-model="currentVolume" @change="handleVolumeChange">
-        <option v-for="(pageCount, volId) in volumes" :key="volId" :value="Number(volId)">
-          Volume {{ volId }}
-        </option>
-      </select>
-    </div>
-    
-    <div class="split-view">
-      <div class="image-viewer">
-        <img :src="pageImage" alt="Page Image" class="page-image" />
-      </div>
-      
-      <div class="records-container">
-        <div class="page-navigation">
-          <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
-          <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
-          <div class="page-number">Page {{ currentPage }}</div>
-          <button class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
-          <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
-        </div>
-        
-        <div class="records">
-          <div v-for="record in records" :key="record.id" class="record-item">
-            <div class="record-header">
-              <div class="record-field">
-                <span class="record-label">ID:</span>
-                <span>{{ record.id }}</span>
-              </div>
-              <div class="record-field">
-                <span class="record-label">Date:</span>
-                <span>{{ record.date }}</span>
-              </div>
-              <div class="record-field">
-                <span class="record-label">Language:</span>
-                <span>{{ record.language }}</span>
-              </div>
-            </div>
-            <div class="record-content">
-              {{ record.content }}
-            </div>
-            <div class="record-actions">
-              <button class="xml-btn" @click="viewXML(record.id)">XML</button>
-              <div class="checkbox-container">
-                <input 
-                type="checkbox" 
-                :id="`record-${record.id}-checkbox`" 
-                :checked="isRecordSelected(record.id)"
-                @change="toggleRecordSelection(record)"
-              >
-                <label :for="`record-${record.id}-checkbox`">Add to selected</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <Footer />
-  </div>
-  
-</template>
-
 <script>
 import router from '@/router';
 import pageImage from '@/assets/images/try_one.jpeg';
@@ -170,3 +104,69 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="container-browser">
+    <div class="volume-nav">
+      <select class="volume-select" v-model="currentVolume" @change="handleVolumeChange">
+        <option v-for="(pageCount, volId) in volumes" :key="volId" :value="Number(volId)">
+          Volume {{ volId }}
+        </option>
+      </select>
+    </div>
+    
+    <div class="split-view">
+      <div class="image-viewer">
+        <img :src="pageImage" alt="Page Image" class="page-image" />
+      </div>
+      
+      <div class="records-container">
+        <div class="page-navigation">
+          <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
+          <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
+          <div class="page-number">Page {{ currentPage }}</div>
+          <button class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
+          <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
+        </div>
+        
+        <div class="records">
+          <div v-for="record in records" :key="record.id" class="record-item">
+            <div class="record-header">
+              <div class="record-field">
+                <span class="record-label">ID:</span>
+                <span>{{ record.id }}</span>
+              </div>
+              <div class="record-field">
+                <span class="record-label">Date:</span>
+                <span>{{ record.date }}</span>
+              </div>
+              <div class="record-field">
+                <span class="record-label">Language:</span>
+                <span>{{ record.language }}</span>
+              </div>
+            </div>
+            <div class="record-content">
+              {{ record.content }}
+            </div>
+            <div class="record-actions">
+              <button class="xml-btn" @click="viewXML(record.id)">XML</button>
+              <div class="checkbox-container">
+                <input 
+                type="checkbox" 
+                :id="`record-${record.id}-checkbox`" 
+                :checked="isRecordSelected(record.id)"
+                @change="toggleRecordSelection(record)"
+              >
+                <label :for="`record-${record.id}-checkbox`">Add to selected</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+      <Footer />
+  </div>
+  
+</template>
