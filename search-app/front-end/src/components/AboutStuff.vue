@@ -18,7 +18,7 @@ import Footer from '@/components/Footer.vue';
         <h2>Meet the Team</h2>
         <div>
           <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Purus porttitor dapibus eros platea vitae quam nulla. Senectus ligula suspendisse ad; scelerisque ad sagittis. Bibendum non euismod at; facilisis dui diam tempus. Vel inceptos vestibulum hac arcu sed diam ullamcorper justo. Molestie cubilia taciti; amet augue egestas varius. Porta porttitor potenti arcu; lorem quam non. Rhoncus maecenas ante commodo vivamus non risus nostra varius amet. Sagittis proin habitant ultricies lacinia pharetra dapibus vivamus finibus dignissim. Eros class dui pulvinar maecenas suspendisse dui. Cras curae quis natoque facilisis interdum montes. Ante in turpis eros pharetra maximus ligula adipiscing.</p>
-          <br
+          <br>
         </div>
       </div>
     </div>
