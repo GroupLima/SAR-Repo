@@ -405,6 +405,8 @@ footer {
     display: flex;
     justify-content: center;
     padding-bottom: 24px;
+    gap: 10px; // Add gap between buttons
+    flex-wrap: wrap; // Allow buttons to wrap to the next line if needed
 
     button {
       background-color: transparent;
