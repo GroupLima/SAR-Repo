@@ -87,7 +87,9 @@ const runQuery = async () => {
                 </div>
             </div>
         </main>
-        <!-- Footer Section -->
+    </div>
+    <!-- Footer Section -->
+    <div>
         <Footer />
     </div>
 </template>
