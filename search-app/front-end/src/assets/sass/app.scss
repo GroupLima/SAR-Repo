@@ -224,13 +224,36 @@ footer {
       display: flex;
       align-items: center;
       gap: 10px;
+      padding: 10px;
 
       label {
         font-weight: bold;
+        color: $dark-gray;
       }
 
       select {
         cursor: pointer;
+        padding: 5px;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        background-color: $secondary-colour;
+        color: $dark-gray;
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        select {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
       }
     }
   }
@@ -239,7 +262,7 @@ footer {
     position: relative;
 
     .dropdown-button {
-      background-color: $dark-gray;
+      background-color: $primary-colour;
       color: $secondary-colour;
       padding: 10px 20px;
       border: none;
@@ -267,11 +290,10 @@ footer {
 
       #search-options {
         .advanced-option {
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           margin-top: 10px;
 
           h3 {
-            color: $primary-colour;
             font-size: 1.2em;
             margin-bottom: 10px;
           }
@@ -304,48 +326,64 @@ footer {
               background-color: $dark-gray;
             }
           }
-        }
 
-        #dates {
-          .option-title {
-            color: $primary-colour;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+          label,
+          select,
+          input {
+            display: block;
+            font-size: 1em;
           }
 
-          label {
+          input[type="checkbox"] {
             display: inline-block;
-            margin-right: 10px;
-            font-size: 1em;
-            color: $dark-gray;
+            margin-right: 5px;
           }
 
-          input[type="date"] {
-            display: inline-block;
-            margin-right: 10px;
-            font-size: 1em;
-            color: $dark-gray;
-            border: 1px solid $light-gray;
+          #dates {
+            background-color: $secondary-colour;
+            border: 1px solid $dark-gray;
             border-radius: 4px;
-            padding: 5px;
+            padding: 10px;
+
+            .option-title {
+              font-size: 1.2em;
+              margin-bottom: 10px;
+            }
+
+            label {
+              display: inline-block;
+              margin-right: 10px;
+              font-size: 1em;
+              color: $dark-gray;
+            }
+
+            input[type="date"] {
+              display: inline-block;
+              margin-right: 10px;
+              font-size: 1em;
+              color: $dark-gray;
+              border: 1px solid $light-gray;
+              border-radius: 4px;
+              padding: 5px;
+              background-color: $secondary-colour;
+            }
+
+            body.dark & {
+              background-color: $dark-mode;
+              border-color: $light-gray;
+
+              label {
+                color: $secondary-colour;
+              }
+
+              input[type="date"] {
+                background-color: color.adjust($dark-mode, $lightness: -5%);
+                color: $secondary-colour;
+                border-color: $light-gray;
+              }
+            }
           }
         }
-      }
-
-      .advanced-option {
-
-        label,
-        select,
-        input {
-          display: block;
-          margin-bottom: 10px;
-          font-size: 1em;
-        }
-      }
-
-      .advanced-option input[type="checkbox"] {
-        display: inline-block;
-        margin-right: 5px;
       }
     }
   }
@@ -886,4 +924,101 @@ footer {
   bottom: 0%;
   right: 20px;
   z-index: 10;
+}
+#search-options {
+  .advanced-option {
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .horizontal-list {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      .radio-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        input[type="radio"] {
+          margin: 0;
+        }
+      }
+    }
+
+    button {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $dark-gray;
+      }
+    }
+
+    label,
+    select,
+    input {
+      display: block;
+      font-size: 1em;
+    }
+
+    input[type="checkbox"] {
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    #dates {
+      background-color: $secondary-colour;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+      padding: 10px;
+
+      .option-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+      }
+
+      input[type="date"] {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+        border: 1px solid $light-gray;
+        border-radius: 4px;
+        padding: 5px;
+        background-color: $secondary-colour;
+      }
+
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        input[type="date"] {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
+  }
 }

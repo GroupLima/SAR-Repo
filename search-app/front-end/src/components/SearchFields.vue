@@ -225,10 +225,10 @@ onMounted(() => {
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
                             <label>
-                                from <input type="date" v-model="form.startDate" id="start-date" name="start-date">
+                                From: <input type="date" v-model="form.startDate" id="start-date" name="start-date">
                             </label>
                             <label>
-                                to <input type="date" v-model="form.endDate" id="end-date" name="end-date">
+                                To: <input type="date" v-model="form.endDate" id="end-date" name="end-date">
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->

@@ -176,18 +176,38 @@ footer .footer-links-container .footer-links a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px;
 }
 .search-section .preferences .preference-item label {
   font-weight: bold;
+  color: #4a4a4a;
 }
 .search-section .preferences .preference-item select {
   cursor: pointer;
+  padding: 5px;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #4a4a4a;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+body.dark .search-section .preferences .preference-item {
+  background-color: #202020;
+  border-color: #a69f9f;
+}
+body.dark .search-section .preferences .preference-item label {
+  color: #ffffff;
+}
+body.dark .search-section .preferences .preference-item select {
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
 .search-section .advanced-search-container {
   position: relative;
 }
 .search-section .advanced-search-container .dropdown-button {
-  background-color: #4a4a4a;
+  background-color: #6e0d25;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -212,11 +232,10 @@ footer .footer-links-container .footer-links a:hover {
   display: block;
 }
 .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option h3 {
-  color: #6e0d25;
   font-size: 1.2em;
   margin-bottom: 10px;
 }
@@ -244,18 +263,33 @@ footer .footer-links-container .footer-links a:hover {
 .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option button:hover {
   background-color: #4a4a4a;
 }
-.search-section .advanced-search-container .advanced-search-dropdown #search-options #dates .option-title {
-  color: #6e0d25;
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option label,
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option select,
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option input {
+  display: block;
+  font-size: 1em;
+}
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option input[type=checkbox] {
+  display: inline-block;
+  margin-right: 5px;
+}
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates {
+  background-color: #ffffff;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  padding: 10px;
+}
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates .option-title {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
-.search-section .advanced-search-container .advanced-search-dropdown #search-options #dates label {
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates label {
   display: inline-block;
   margin-right: 10px;
   font-size: 1em;
   color: #4a4a4a;
 }
-.search-section .advanced-search-container .advanced-search-dropdown #search-options #dates input[type=date] {
+.search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates input[type=date] {
   display: inline-block;
   margin-right: 10px;
   font-size: 1em;
@@ -263,17 +297,19 @@ footer .footer-links-container .footer-links a:hover {
   border: 1px solid #a69f9f;
   border-radius: 4px;
   padding: 5px;
+  background-color: #ffffff;
 }
-.search-section .advanced-search-container .advanced-search-dropdown .advanced-option label,
-.search-section .advanced-search-container .advanced-search-dropdown .advanced-option select,
-.search-section .advanced-search-container .advanced-search-dropdown .advanced-option input {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1em;
+body.dark .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates {
+  background-color: #202020;
+  border-color: #a69f9f;
 }
-.search-section .advanced-search-container .advanced-search-dropdown .advanced-option input[type=checkbox] {
-  display: inline-block;
-  margin-right: 5px;
+body.dark .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates label {
+  color: #ffffff;
+}
+body.dark .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates input[type=date] {
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }
 
 .xquery-page,
@@ -769,4 +805,85 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   bottom: 0%;
   right: 20px;
   z-index: 10;
+}
+
+#search-options .advanced-option {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#search-options .advanced-option h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+#search-options .advanced-option .horizontal-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#search-options .advanced-option .horizontal-list .radio-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#search-options .advanced-option .horizontal-list .radio-container input[type=radio] {
+  margin: 0;
+}
+#search-options .advanced-option button {
+  background-color: #6e0d25;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#search-options .advanced-option button:hover {
+  background-color: #4a4a4a;
+}
+#search-options .advanced-option label,
+#search-options .advanced-option select,
+#search-options .advanced-option input {
+  display: block;
+  font-size: 1em;
+}
+#search-options .advanced-option input[type=checkbox] {
+  display: inline-block;
+  margin-right: 5px;
+}
+#search-options .advanced-option #dates {
+  background-color: #ffffff;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  padding: 10px;
+}
+#search-options .advanced-option #dates .option-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+#search-options .advanced-option #dates label {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1em;
+  color: #4a4a4a;
+}
+#search-options .advanced-option #dates input[type=date] {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1em;
+  color: #4a4a4a;
+  border: 1px solid #a69f9f;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #ffffff;
+}
+body.dark #search-options .advanced-option #dates {
+  background-color: #202020;
+  border-color: #a69f9f;
+}
+body.dark #search-options .advanced-option #dates label {
+  color: #ffffff;
+}
+body.dark #search-options .advanced-option #dates input[type=date] {
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
 }/*# sourceMappingURL=app.css.map */
