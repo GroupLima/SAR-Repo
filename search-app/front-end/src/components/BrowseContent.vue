@@ -1,7 +1,5 @@
 <script>
-import router from '@/router';
 import pageImage from '@/assets/images/try_one.jpeg';
-import Footer from '@/components/Footer.vue';
 import { inject, computed } from 'vue';
 
 export default {
@@ -164,9 +162,6 @@ export default {
         </div>
       </div>
     </div>
-  </div>
-  <div>
-      <Footer />
   </div>
   
 </template>

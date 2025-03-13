@@ -1,6 +1,5 @@
 <script setup>
 import AboutStuff from '@/components/AboutStuff.vue';
-import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
@@ -9,8 +8,6 @@ import Footer from '@/components/Footer.vue';
         <main class="content">
             <AboutStuff />
         </main>
-        <!-- Footer Section -->
-        <Footer />
     </div>
 </template>
 

@@ -1,6 +1,5 @@
 <script setup>
 import Selected from '@/components/Selected.vue';
-import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
@@ -9,7 +8,5 @@ import Footer from '@/components/Footer.vue';
         <main class="content">
             <Selected />
         </main>
-        <!-- Footer Section -->
-        <Footer />
     </div>
 </template>

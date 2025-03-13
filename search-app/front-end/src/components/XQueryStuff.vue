@@ -1,7 +1,6 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
-import Footer from '@/components/Footer.vue';
 
 const props = defineProps({
     queryParams: {
@@ -87,9 +86,5 @@ const runQuery = async () => {
                 </div>
             </div>
         </main>
-    </div>
-    <!-- Footer Section -->
-    <div>
-        <Footer />
     </div>
 </template>

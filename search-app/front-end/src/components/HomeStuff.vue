@@ -1,6 +1,5 @@
 <script setup>
 import SearchFields from '@/components/SearchFields.vue';
-import Footer from '@/components/Footer.vue';
 // console.log(props.queryParams);
 </script>
 
@@ -18,9 +17,5 @@ import Footer from '@/components/Footer.vue';
                 <SearchFields />
             </div>
         </main>
-    </div>
-    <!-- Footer Section -->
-    <div>
-        <Footer />
     </div>
 </template>

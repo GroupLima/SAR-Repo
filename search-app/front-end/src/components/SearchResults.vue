@@ -2,7 +2,6 @@
 import SearchResultCard from '@/components/SearchResultCard.vue';
 import { reactive, onMounted, computed, ref } from 'vue';
 import axios from 'axios';
-import Footer from '@/components/Footer.vue';
 import '@/assets/sass/app.scss';
 import router from '@/router';
 
@@ -214,7 +213,4 @@ const showHelpPage = () => {
 
     </div>
 
-    <div>
-        <Footer />
-    </div>
 </template>

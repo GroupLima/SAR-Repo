@@ -1,7 +1,6 @@
 <script setup>
 import SearchFields from '@/components/SearchFields.vue';
 import SearchResults from '@/components/SearchResults.vue';
-import Footer from '@/components/Footer.vue';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -36,7 +35,5 @@ onMounted(() => {
                 <SearchResults :queryParams="state.queryParams"/>
             </div>
         </main>
-        <!-- Footer Section -->
-        <Footer />
     </div>
 </template>

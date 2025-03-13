@@ -1,6 +1,5 @@
 <script setup>
 import BrowseContent from '@/components/BrowseContent.vue';
-import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
@@ -9,8 +8,6 @@ import Footer from '@/components/Footer.vue';
         <main class="content">
             <BrowseContent />
         </main>
-        <!-- Footer Section -->
-        <Footer />
     </div>
 </template>
 
