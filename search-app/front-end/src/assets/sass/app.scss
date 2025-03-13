@@ -65,6 +65,7 @@ body {
     align-items: center;
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
 
     .nav-links a {
       color: $secondary-colour;
@@ -75,11 +76,6 @@ body {
       &:hover {
         text-decoration: underline;
       }
-    }
-
-    .nav-links a.help-link {
-      margin-left: 10px;
-      font-weight: bold;
     }
 
     .nav-links a.help-link {
@@ -110,6 +106,56 @@ body {
 
         img {
           height: 90px;
+        }
+      }
+    }
+
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      span {
+        background-color: $secondary-colour;
+        height: 3px;
+        width: 25px;
+        margin: 4px 0;
+        transition: 0.4s;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .burger-menu {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+
+    .nav-content {
+      flex-direction: column;
+      align-items: center;
+
+      .logo-section {
+        .text-container {
+          img {
+            height: 50px; // Adjust the height for smaller screens
+          }
+        }
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        a {
+          margin: 5px 0;
         }
       }
     }
@@ -236,6 +282,7 @@ footer {
 .search-section {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 10px; // Add padding to prevent stretching
 
   .basic-search {
     display: flex;
@@ -1098,6 +1145,18 @@ footer {
       .footer-links {
         flex-direction: column; // Stack links vertically on smaller screens
         align-items: center;
+      }
+    }
+  }
+}
+
+.nav-links a,
+.dark-mode-button {
+  // Add styles to hide the burger menu when clicked
+  @media (max-width: 768px) {
+    &:active {
+      .nav-links {
+        display: none;
       }
     }
   }

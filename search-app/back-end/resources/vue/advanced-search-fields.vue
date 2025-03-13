@@ -116,6 +116,3 @@
 };
         
 </script>
-<style scoped>
-/* Add your styles for this component here */
-</style>
