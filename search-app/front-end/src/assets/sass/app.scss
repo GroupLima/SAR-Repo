@@ -8,6 +8,13 @@ $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
 $box-shadow: 0 2px 5px #4a4a4a;
 
+@mixin button-base {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -427,6 +434,61 @@ footer {
     }
   }
 
+  .go-to-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+
+    input[type="number"] {
+        width: 60px;
+        padding: 10px;
+        border: 1px solid #4a4a4a;
+        /* border-radius: 50px; */
+        font-size: 16px;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50px;
+        background-color: #6e0d25;
+        color: #ffffff;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: lighten(#6e0d25, 15%);
+        }
+    }
+  }
+
+  .go-to-page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+    }
+
+    button {
+      @include button-base;
+      background-color: $primary-colour;
+      color: $secondary-colour;
+
+      &:hover {
+        background-color: lighten($primary-colour, 15%);
+      }
+    }
+  }
+
   // result section sizing
   .results-section .result-item {
 
@@ -462,13 +524,6 @@ footer {
 @mixin flex-center {
   display: flex;
   align-items: center;
-}
-
-@mixin button-base {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .container-browser {

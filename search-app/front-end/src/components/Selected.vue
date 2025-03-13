@@ -39,6 +39,10 @@
     </div>
   </template>
   
+  <script setup>
+  import '@/assets/sass/app.scss';
+  </script>
+  
   <script>
   import { inject } from 'vue';
   import { PDFDocument, rgb } from 'pdf-lib';
