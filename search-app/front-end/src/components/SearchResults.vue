@@ -45,6 +45,13 @@ const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, des
 const filterChange = () => {
     state.current_page = 1;
     state.isLoading = true;
+    router.push({ 
+        query: { 
+            ...props.queryParams, 
+            methodSearch: state.searchMethod, 
+            variant: state.variants 
+        }
+    });
     search();
 }
 
