@@ -314,11 +314,11 @@ footer {
 // to allow xquery page to use results styling
 // search page
 .search-page {
-  .results-section {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 
+  .results-section {
     .result-item {
       position: relative;
       border: 1px solid $secondary-colour;
@@ -381,6 +381,50 @@ footer {
     }
   }
 
+  .preferences {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+
+    .preference-item {
+      display: flex;
+      gap: 10px;
+
+      label {
+        font-weight: bold;
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .page-changer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+
+    button {
+      background-color: transparent;
+      padding: 10px 20px;
+      border: 1px solid $dark-gray;
+      border-radius: 10px;
+
+      &:hover:enabled {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+        cursor: pointer;
+      }
+    }
+
+    .page-number:disabled {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+    }
+  }
+
   // result section sizing
   .results-section .result-item {
 
@@ -407,30 +451,6 @@ footer {
     /* XL */
     @media (min-width: 1201px) {
       width: 1000px;
-    }
-  }
-
-  .page-changer {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 24px;
-
-    button {
-      background-color: transparent;
-      padding: 10px 20px;
-      border: 1px solid $dark-gray;
-      border-radius: 10px;
-
-      &:hover:enabled {
-        background-color: $primary-colour;
-        color: $secondary-colour;
-        cursor: pointer;
-      }
-    }
-
-    .page-number:disabled {
-      background-color: $primary-colour;
-      color: $secondary-colour;
     }
   }
 }

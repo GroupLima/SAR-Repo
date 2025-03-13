@@ -2,6 +2,7 @@
 import SearchResultCard from '@/components/SearchResultCard.vue';
 import { reactive, onMounted, computed } from 'vue';
 import axios from 'axios';
+import Footer from '@/components/Footer.vue';
 
 const props = defineProps({
     queryParams: {
@@ -19,8 +20,29 @@ const state = reactive({
     isLoading: true,
     current_page: 1,
     results_per_page: 5,
-    total_pages: 1
+    total_pages: 1,
+    searchMethod: props.queryParams.methodSearch || 'word_start',
+    variants: props.queryParams.variant || '0'
 });
+
+// preferences
+const searchMethods = [
+    { value: 'keywords', text: 'Keywords' },
+    { value: 'phrase', text: 'Phrase' },
+    { value: 'regex', text: 'Regex' },
+    { value: 'word_start', text: 'Word Start' },
+    { value: 'word_middle', text: 'Word Middle' },
+    { value: 'word_end', text: 'Word End' }
+];
+const varOptions = [0, 1, 2, 3, 4];
+const rrpOptions = [5, 10, 20, 30, 50];
+const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
+
+const filterChange = () => {
+    state.current_page = 1;
+    state.isLoading = true;
+    search();
+}
 
 const search = async() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -29,7 +51,9 @@ const search = async() => {
     const searchParams = {
         ...props.queryParams,
         page: state.current_page,
-        rpp: state.results_per_page
+        rpp: state.results_per_page,
+        variant: state.variants,
+        methodSearch: state.searchMethod
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
@@ -76,19 +100,19 @@ const displayedPageNumbers = computed(() => {
 });
 
 // SelectedPage
-function selectedPage(pageNumber) {
+const selectedPage = (pageNumber) => {
     state.current_page = pageNumber;
     search();
 }
 // Next page
-function nextPage() {
+const nextPage = () => {
     if (state.current_page < state.total_pages) {
         state.current_page++;
         search();
     }
 }
 // Previous page
-function prevPage() {
+const prevPage = () => {
     if (state.current_page > 1) {
         state.current_page--;
         search();
@@ -107,7 +131,36 @@ const lastResultOfPage = computed(() =>
 
 <template>
     <div class="search-page">
-        <!-- Display the results dynamically -->
+
+        <!-- Preferences -->
+        <div class="preferences">
+            <div class="preference-item">
+                <label>Search method:</label>
+                <select id="searchMethod" v-model="state.searchMethod" @change="filterChange">
+                    <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Variants:</label>
+                <select id="variants" v-model="state.variants" @change="filterChange">
+                    <option v-for="variants in varOptions" :key="variants" :value="variants">{{ variants }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Results per page:</label>
+                <select id="resultsPerPage" v-model="state.results_per_page" @change="filterChange">
+                    <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Sort by:</label>
+                <select>
+                    <option v-for="ord in ordOptions">{{ ord }}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Results -->
         <div class="results-section mt-3">
             <h2 class="results-title">Results page {{ state.current_page }}</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
@@ -125,39 +178,34 @@ const lastResultOfPage = computed(() =>
                     :htmldate="result.date"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
-
-                <!-- Changing Pages -->
-                 <div class="page-changer">
-                    <!-- previous button -->
-                    <button 
-                        @click="prevPage"
-                        :disabled="state.current_page <= 1">
-                        Previous
-                    </button>
-                    <!-- numbered buttons -->
-                    <button
-                        class="page-number"
-                        v-for="activePage in displayedPageNumbers"
-                        :key="activePage"
-                        :class="{ active: activePage === state.current_page }"
-                        @click="selectedPage(activePage)"
-                        :disabled="activePage === state.current_page">
-                        {{ activePage }}
-                    </button>
-                    <!-- next button -->
-                    <button 
-                        @click="nextPage" 
-                        :disabled="state.current_page >= state.total_pages">
-                        Next
-                    </button>
-                 </div>
             </div>
             <div v-else>
                 loading...
             </div>
-                
         </div>
 
-                 
+        <!-- Changing Pages -->
+        <div v-if="state.total_pages > 1 & !state.isLoading" class="page-changer">
+            <!-- previous button -->
+            <button @click="prevPage" :disabled="state.current_page <= 1">
+                Previous
+            </button>
+            <!-- numbered buttons -->
+            <button class="page-number" v-for="activePage in displayedPageNumbers" :key="activePage"
+                :class="{ active: activePage === state.current_page }" @click="selectedPage(activePage)"
+                :disabled="activePage === state.current_page">
+                {{ activePage }}
+            </button>
+            <!-- next button -->
+            <button @click="nextPage" :disabled="state.current_page >= state.total_pages">
+                Next
+            </button>
+        </div>
+
     </div>
+
+    <div>
+        <Footer />
+    </div>
+
 </template>
