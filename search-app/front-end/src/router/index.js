@@ -30,8 +30,8 @@ const router = createRouter({
       component: () => import('../views/XQueryView.vue'),
     },
     {
-      path: '/usermanual',
-      name: 'usermanual',
+      path: '/help',
+      name: 'help',
       component: () => import('../views/HelpPageView.vue'),
     },
     {

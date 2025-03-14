@@ -51,7 +51,7 @@ body.dark {
 .navbar .nav-content .nav-links a:hover {
   text-decoration: underline;
 }
-.navbar .nav-content .nav-links a.user-manual-link {
+.navbar .nav-content .nav-links a.help-link {
   margin-left: 10px;
   font-weight: bold;
 }
@@ -561,15 +561,13 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
      object-fit: contain;
 }
 
-.records {
-  border-top: 1px solid #a69f9f;
-  padding-top: 20px;
-}
 .records-container {
   flex: 1;
   overflow-y: auto;
   padding: 15px;
   max-width: 50%;
+  border-top: 1px solid #a69f9f;
+  padding-top: 20px;
 }
 .records-item {
   border-bottom: 1px solid #a69f9f;
