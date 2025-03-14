@@ -8,7 +8,7 @@ import SearchFields from '@/components/SearchFields.vue';
         <!-- Header Section -->
         <header>
             <div class="home-description">
-                <h1>Discover 8 Volumes</h1>
+                <h1>Discover 7 Volumes</h1>
             </div>
         </header>
         <!-- Main Section -->

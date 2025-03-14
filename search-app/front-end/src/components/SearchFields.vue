@@ -190,7 +190,7 @@ onMounted(() => {
                                 <option value="dutch">Dutch</option>
                             </select>
                         </div>
-                        <div class="advanced-option">
+                        <!-- <div class="advanced-option">
                             <h3 class="option-title">Spelling Variants</h3>
                             <select v-model="form.variant" id="variant">
                                 <option value="0" selected>0</option>
@@ -199,7 +199,7 @@ onMounted(() => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
