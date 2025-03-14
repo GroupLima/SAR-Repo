@@ -127,23 +127,37 @@ body.dark {
   .home-page {
     padding-top: 20px;
   }
-  .navbar {
-    padding: 20px;
+  footer .image-container {
+    height: auto;
+    min-width: 100%;
   }
-  .navbar .nav-content {
+  footer .footer-links-container {
+    padding: 10px;
+  }
+  footer .footer-links-container .footer-links {
     flex-direction: column;
     align-items: center;
   }
-  .navbar .nav-content .logo-section .text-container img {
-    height: 50px;
+  .burger-menu {
+    display: flex;
   }
-  .navbar .nav-content .nav-links {
+  .nav-links {
+    display: none;
     flex-direction: column;
-    align-items: center;
     width: 100%;
+    background-color: #6e0d25;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
   }
-  .navbar .nav-content .nav-links a {
-    margin: 5px 0;
+  .nav-links a {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links.active {
+    display: flex;
   }
 }
 .burger-menu {
@@ -953,7 +967,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   background-color: #ffffff;
   border: 1px solid #4a4a4a;
   border-radius: 4px;
-  padding: 5px;
+  padding: 10px;
 }
 #search-options .advanced-option #language .option-title {
   font-size: 1.2em;
