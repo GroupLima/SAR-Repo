@@ -39,8 +39,8 @@ class Basic_Search():
             case 'regex':
                 search = Search_Regex(self.user_input, self.json_entries)
             case 'keywords':
-                args = Keywords(args.query)
-                search = Search_Keywords() 
+                args = Keywords(self.user_input)
+                search = Search_Keywords(args.query, self.variance, self.json_entries) 
             case _:
                 print('search method not specified')
 
