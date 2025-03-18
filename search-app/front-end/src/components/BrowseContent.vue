@@ -57,6 +57,22 @@
         </div>
       </div>
     </div>
+    
+    <!-- XML Modal -->
+    <div v-if="showXmlModal" class="xml-modal-overlay">
+      <div class="xml-modal">
+        <div class="xml-modal-header">
+          <h3>XML Content: {{ currentXmlRecordId }}</h3>
+          <button class="close-btn" @click="closeXmlModal">×</button>
+        </div>
+        <div class="xml-modal-body">
+          <pre class="xml-content">{{ currentXmlContent }}</pre>
+        </div>
+        <div class="xml-modal-footer">
+          <button class="copy-btn" @click="copyXmlContent">Copy XML</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <Footer />
@@ -70,6 +86,9 @@ import Footer from '@/components/Footer.vue';
 import { inject, computed } from 'vue';
 
 export default {
+  components: {
+    Footer  
+  },
   data() {
     return {
       pageImage,
@@ -97,7 +116,15 @@ export default {
           language: 'Latin',
           content: 'Quo die Willelmus de Camera pater cum...'
         }
-      ]
+      ],
+      // XML Modal properties
+      showXmlModal: false,
+      currentXmlRecordId: '',
+      currentXmlContent: '',
+      xmlData: {
+        'ARO-1-0001-01': '<div type="heading" xml:id="ARO-1-0001-01" xml:lang="lat">\n  <head>Processus Curiarum Balliuorum Isti Sunt</head>\n  <p><lb break="yes"/>qui incipiunt die lune  proximo  post festum beati michaelis archangeli Anno<lb break="yes"/>Domini Millesimo  ccc<hi rend="superscript">mo</hi>  nonogesimo  Octauo .</p>\n</div>',
+        'ARO-1-0001-02': '<div type="heading" xml:id="ARO-1-0001-02" xml:lang="lat">\n  <head>Quo die Willelmus de Camera pater</head>\n  <p><lb break="yes"/>cum pertinentiis quibuscumque...</p>\n</div>'
+      }
     }
   },
   setup() {
@@ -158,8 +185,23 @@ export default {
       this.loadRecords();
     },
     viewXML(recordId) {
+      this.currentXmlRecordId = recordId;
+      this.currentXmlContent = this.xmlData[recordId] || 'XML content not found';
+      this.showXmlModal = true;
       console.log(`Viewing XML for record ${recordId}`);
-      // Here you would typically show XML content in a modal or new view
+    },
+    closeXmlModal() {
+      this.showXmlModal = false;
+    },
+    copyXmlContent() {
+      navigator.clipboard.writeText(this.currentXmlContent)
+        .then(() => {
+          alert('XML content copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          alert('Failed to copy XML content. Please try again.');
+        });
     },
     loadRecords() {
       console.log(`Loading records for Volume ${this.currentVolume}, Page ${this.currentPage}`);
@@ -169,3 +211,4 @@ export default {
   }
 }
 </script>
+
