@@ -7,11 +7,11 @@
         </option>
       </select>
     </div>
-    
+  
     <div class="split-view">
-      <div class="image-viewer">
+      <!--div class="image-viewer"-->
         <img :src="pageImage" alt="Page Image" class="page-image" />
-      </div>
+      
       
       <div class="records-container">
         <div class="page-navigation">
@@ -45,11 +45,11 @@
               <button class="xml-btn" @click="viewXML(record.id)">XML</button>
               <div class="checkbox-container">
                 <input 
-                type="checkbox" 
-                :id="`record-${record.id}-checkbox`" 
-                :checked="isRecordSelected(record.id)"
-                @change="toggleRecordSelection(record)"
-              >
+                  type="checkbox" 
+                  :id="`record-${record.id}-checkbox`" 
+                  :checked="isRecordSelected(record.id)"
+                  @change="toggleRecordSelection(record)"
+                >
                 <label :for="`record-${record.id}-checkbox`">Add to selected</label>
               </div>
             </div>
@@ -61,7 +61,6 @@
   <div>
     <Footer />
   </div>
-  
 </template>
 
 <script>
