@@ -5,14 +5,14 @@ which search functions need to be executed.
 from data_models.model_word_start import Word_Start
 from data_models.model_word_middle import Word_Middle
 from data_models.model_word_end import Word_End
-# from model_phrase import Phrase
+from data_models.model_phrase import Phrase
 from data_models.model_keywords import Keywords
 from basic_search_methods.Search_Word_Start import Search_Word_Start
 from basic_search_methods.Search_Word_Middle import Search_Word_Middle
 from basic_search_methods.Search_Word_End import Search_Word_End
 from basic_search_methods.Search_Regex import Search_Regex
 from basic_search_methods.Search_Keywords import Search_Keywords
-# from basic_search_methods.Search_Phrase import Search_Phrase
+from basic_search_methods.Search_Phrase import Search_Phrase
 
 class Basic_Search():
     def __init__(self, search_method, user_input, variance, json_entries):
@@ -41,6 +41,9 @@ class Basic_Search():
             case 'keywords':
                 args = Keywords(self.user_input)
                 search = Search_Keywords(args.query, self.variance, self.json_entries) 
+            case 'phrase':
+                args = Phrase(self.user_input)
+                search = Search_Phrase(args.query, args.qlen, self.variance, self.json_entries)
             case _:
                 print('search method not specified')
 
