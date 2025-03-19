@@ -7,7 +7,7 @@
     </div>
     
     <div v-else class="selected-records">
-      <div v-for="record in selectedRecords" :key="record.id" class="record-item">
+      <div v-for="record in selectedRecords" :key="record.id" class="record-item-s">
         <div class="record-header">
           <div class="record-field">
             <span class="record-label">ID:</span>
@@ -26,14 +26,14 @@
           {{ record.content }}
         </div>
         <div class="record-actions">
-          <button class="remove-btn" @click="removeRecord(record.id)">Remove</button>
+          <button data-tooltip="Remove Item from Selected" class="remove-btn" @click="removeRecord(record.id)">Remove</button>
         </div>
       </div>
       
       <div class="actions">
-        <button class="clear-btn" @click="clearAll">Clear All</button>
-        <button class="export-btn" @click="exportRecords">Export as JSON</button>
-        <button class="export-pdf-btn" @click="exportToPDF">Export as PDF</button>
+        <button data-tooltip = "Clear all Item from Selected" class="clear-btn" @click="clearAll">Clear All</button>
+        <!--<button class="export-btn" @click="exportRecords">Export as JSON</button> -->
+        <button data-tooltip ="Download the Selected Items in PDF" class="export-pdf-btn" @click="exportToPDF">Export as PDF</button>
       </div>
     </div>
   </div>
