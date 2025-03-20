@@ -1,7 +1,6 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
-import Footer from '@/components/Footer.vue';
 import vkbeautify from 'vkbeautify';
 
 const props = defineProps({
@@ -18,6 +17,12 @@ const state = reactive({
     error: "",
     isLoading: false
 });
+
+const handleEnterKey = (event) => {
+    if (event.key === 'Enter') {
+        runQuery();
+    }
+};
 
 const runQuery = async () => {
     const XQeuryURL = 'http://localhost:8000/api/xquery'
@@ -66,9 +71,7 @@ const runQuery = async () => {
             <div class="search-section">
                 <div class="basic-search">
                     <input 
-                        type="search"
-                        placeholder="Enter your XQuery"
-                        v-model="state.query"
+                        type="search" v-model="state.query" placeholder="Enter your search term" id="search-box" @keyup="handleEnterKey"
                     />
                     <button @click="runQuery">Run Query</button>   
                 </div>
