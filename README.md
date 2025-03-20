@@ -30,7 +30,7 @@ Now, you will need to install a few packages and dependencies in order to run th
 
 1. Assuming you have [homebrew](https://docs.brew.sh/Installation) installed, otherwise substitute `brew` in the following commands for your package manager
 2. `brew upgrade`
-3. Install system requirements `brew install nodejs unzip php-mbstring php-xml php-json php-zip php-curl` (NOT ACCURATE, SOME PACKAGES NOT ON HOMEBREW - TO DO)
+3. Install system requirements `brew install nodejs unzip php-mbstring php-xml php-json php-zip php-curl`
 4. Install PHP for your system `/bin/bash -c "$(curl -fsSL https://php.new/install/mac)"`
 
 ### Running the Project
@@ -60,7 +60,7 @@ Now, you will need to install a few packages and dependencies in order to run th
 The following are instructions to run the project with docker, do not run the front & back end as well as this simultaneously - only either the docker or both the front and back end being ran will serve the project
 
 1. Ensure you have docker installed using the official guide [Docker Installation](https://docs.docker.com/engine/install/ubuntu/)
-2. From the root of the project (SAR-Repo) run the command `docker-compse up --build`
+2. From the root of the project (SAR-Repo) run the command `docker-compose up --build`
 
 ##### Maintenance
 1. Stop the containers with `docker-compose down`

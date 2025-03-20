@@ -19,8 +19,8 @@ services:
       target: backend
     volumes:
       - ./search-app/back-end:/app/search-app/back-end
-      - ./search-app/back-end/venv_sar:/app/search-app/back-end/venv_sar
+      - ./search-app/back-end/venv-sar:/app/search-app/back-end/venv-sar
     ports:
       - "8000:8000"
     working_dir: /app/search-app/back-end
-    command: sh -c ". venv_sar/bin/activate && php artisan serve --host=0.0.0.0 --port=8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
