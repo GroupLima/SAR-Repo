@@ -1,8 +1,3 @@
-<script setup>
-import router from '@/router';
-import Footer from '@/components/Footer.vue';
-</script>
-
 <template>
   <div class="about-page">
     <div class="row">
@@ -23,11 +18,5 @@ import Footer from '@/components/Footer.vue';
       </div>
     </div>
   </div>
-
-  <div>
-      <Footer />
-  </div>
-
-  <Footer />
 
 </template>

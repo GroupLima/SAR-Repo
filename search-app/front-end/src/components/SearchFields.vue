@@ -14,14 +14,16 @@ const form = reactive({
     entrySearch: "",
     startDate: "",
     endDate: "",
-    docId: ""
+    docId: "",
+    resultsPerPage: 10,
+    sortBy: "Frequency within result"
 });
 
-const isDropdownOpen = ref(false); // don't display dropdown initally
+const isDropdownOpen = ref(false); // don't display dropdown initially
 
 const toggleDropdown = () => {
     isDropdownOpen.value = !isDropdownOpen.value;
-}
+};
 
 const passFormValues = () => {
     const rawForm = toRaw(form);
@@ -30,7 +32,7 @@ const passFormValues = () => {
     router.push({ path: '/search', query: rawForm }).then(() => {
         window.location.reload();
     });
-}
+};
 
 const getSearchType = () => {
     const query_type = 
@@ -44,47 +46,44 @@ const getSearchType = () => {
     ? "advanced_search"  //select advanced search if at least one of the advanced search fields is filled out
     : "basic_search";
 
-    return query_type
-}
+    return query_type;
+};
 
 const isAllSelected = computed(() => {
     return form.volumes.length === 7;
 });
 
 const toggleAllVolumes = () => {
-    if ( isAllSelected.value ) {
+    if (isAllSelected.value) {
         form.volumes = [];
     } else {
         form.volumes = ['1', '2', '4', '5', '6', '7', '8'];
     }
-}
+};
 
 const handleSearch = () => {
-    
-    if (allValidInput){
-        
+    if (allValidInput) {
         form.query_type = getSearchType();
         try {
             passFormValues();
-            
-        } catch (error){
+        } catch (error) {
             console.error("error with search form", error);
         }
     }
-}
+};
 
 const allValidInput = () => {
     //return true if all inputs are valid
     //return false otherwise and apply appropriate action
 
-    return true //remove once implemented
-}
+    return true; //remove once implemented
+};
 
 const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
         handleSearch();
     }
-}
+};
 
 const setSearchBoxValue = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -98,7 +97,7 @@ const setSearchBoxValue = () => {
     form.startDate = urlParams.get('startDate') || form.startDate;
     form.endDate = urlParams.get('endDate') || form.endDate;
     form.docId = urlParams.get('docId') || form.docId;
-}
+};
 
 const resetAdvancedSearch = () => {
     form.methodSearch = "word_start";
@@ -110,7 +109,20 @@ const resetAdvancedSearch = () => {
     form.startDate = "";
     form.endDate = "";
     form.docId = "";
-}
+};
+
+const searchMethods = [
+    { value: 'keywords', text: 'Keywords' },
+    { value: 'phrase', text: 'Phrase' },
+    { value: 'regex', text: 'Regex' },
+    { value: 'word_start', text: 'Word Start' },
+    { value: 'word_middle', text: 'Word Middle' },
+    { value: 'word_end', text: 'Word End' }
+];
+
+const varOptions = [0, 1, 2, 3, 4];
+const rrpOptions = [5, 10, 20, 30, 50];
+const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
 onMounted(() => {
     setSearchBoxValue();
@@ -136,41 +148,39 @@ onMounted(() => {
                 </button>
                 <!-- need constriction so that user cannot search with empty bar -->
             </div>
+            <div class="preferences" style="text-align: center;">
+                <div class="preference-item">
+                    <label>Search method:</label>
+                    <select v-model="form.methodSearch">
+                        <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
+                    </select>
+                </div>
+                <div class="preference-item">
+                    <label>Variants:</label>
+                    <select v-model="form.variant">
+                        <option v-for="variant in varOptions" :key="variant" :value="variant">{{ variant }}</option>
+                    </select>
+                </div>
+                <div class="preference-item">
+                    <label>Results per page:</label>
+                    <select v-model="form.resultsPerPage">
+                        <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
+                    </select>
+                </div>
+                <div class="preference-item">
+                    <label>Sort by:</label>
+                    <select v-model="form.sortBy">
+                        <option v-for="ord in ordOptions" :key="ord" :value="ord">{{ ord }}</option>
+                    </select>
+                </div>
+            </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
                 <button class="dropdown-button" @click="toggleDropdown">
                     ADVANCED SEARCH ▼
                 </button>
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     <div id="search-options">
-                        <div id="search-methods-radio" class="advanced-option">
-                            <h3 class="option-title">Search Method</h3>
-                            <div class="horizontal-list">
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="keywords" id="keywords" name="search-method"> 
-                                    <span>Keywords</span>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="phrase" id="phrase" name="search-method">
-                                    <span>Phrase</span>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="regex" id="regularex" name="search-method"> 
-                                    <span>Regular Expression</span>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start" name="search-method" checked> 
-                                    <span>Word Start</span>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle" name="search-method"> 
-                                    <span>Word Middle</span>
-                                </div>
-                                <div class="radio-container">
-                                    <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end" name="search-method"> 
-                                    <span>Word End</span>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Removed title and radio buttons from advanced search drop-down -->
                         <div class="advanced-option">
                             <h3 class="option-title">Languages</h3>
                             <select v-model="form.language" id="language">
@@ -180,7 +190,7 @@ onMounted(() => {
                                 <option value="dutch">Dutch</option>
                             </select>
                         </div>
-                        <div class="advanced-option">
+                        <!-- <div class="advanced-option">
                             <h3 class="option-title">Spelling Variants</h3>
                             <select v-model="form.variant" id="variant">
                                 <option value="0" selected>0</option>
@@ -189,7 +199,7 @@ onMounted(() => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
@@ -215,10 +225,10 @@ onMounted(() => {
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
                             <label>
-                                from <input type="date" v-model="form.startDate" id="start-date" name="start-date">
+                                From: <input type="date" v-model="form.startDate" id="start-date" name="start-date">
                             </label>
                             <label>
-                                to <input type="date" v-model="form.endDate" id="end-date" name="end-date">
+                                To: <input type="date" v-model="form.endDate" id="end-date" name="end-date">
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->
@@ -226,7 +236,7 @@ onMounted(() => {
                             <h3 class="option-title">Doc ID</h3>
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
                         </div>
-                        <div class="advanced-option" style="margin-top: 10px;">
+                        <div class="advanced-option">
                             <button @click="resetAdvancedSearch">Reset Field Values</button>
                         </div>
                     </div>

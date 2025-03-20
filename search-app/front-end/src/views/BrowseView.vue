@@ -3,9 +3,12 @@ import BrowseContent from '@/components/BrowseContent.vue';
 </script>
 
 <template>
-  <div>
-    <BrowseContent />
-  </div>
+    <div class="browse-page">
+        <!-- Main Section -->
+        <main class="content">
+            <BrowseContent />
+        </main>
+    </div>
 </template>
 
 
