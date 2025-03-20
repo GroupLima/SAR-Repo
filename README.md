@@ -37,11 +37,12 @@ Now, you will need to install a few packages and dependencies in order to run th
 
 #### Back-End
 
-1. Source the python virtual environment `source venv_sar/bin/activate` (this is relative to the repository, so assumes you are in the root directory of the repository)
-2. Install the python requirements (only on first setup/run) `pip install -r venv_sar/requirements.txt`
-3. Go to the back-end directory `cd search-app/back-end`
-4. Install the composer requirements (only on first setup/run) `composer install`
-5. Run PHP server using `php artisan serve`
+1. Go to the back-end directory `cd search-app/back-end`
+2. If this is the first time running, or a python virtual environment is not set up then run the command `python3 -m venv venv-sar`
+3. Source the python virtual environment `source venv-sar/bin/activate` or if not working then `. venv-sar/bin/activate`
+4. Install the python requirements (only on first setup/run) `pip install -r requirements.txt`
+5. Install the composer requirements (only on first setup/run) `composer install`
+6. Run PHP server using `php artisan serve`
 
 #### Front-end
 
