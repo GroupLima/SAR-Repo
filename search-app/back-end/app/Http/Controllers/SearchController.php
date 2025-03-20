@@ -360,11 +360,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         let \$results := {$query}  (: Store full results first :)
         let \$totalCount := count(\$results) (: Get total number of results :)
-        let \$pagedResults := subsequence(\$results, $exist_start, $exist_count)
+        let \$start := xs:integer($exist_start) (: Ensure integer type :)
+        let \$count := xs:integer($exist_count) (: Ensure integer type :)
+        let \$pagedResults := subsequence(\$results, \$start, \$count)
 
         return 
-            <response>
-                <total>{\$totalCount}</total>
+            <response exist:hits="{\$totalCount}" exist:start="{\$start}" exist:count="{\$count}">
                 <results>{\$pagedResults}</results>
             </response>
         XQUERY;
