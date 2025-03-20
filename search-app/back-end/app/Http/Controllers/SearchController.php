@@ -351,12 +351,22 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // XQuery to fetch <item> elements from XML files in the collection
 
         //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
+        //$query = '//ns:div[@xml:lang="la"]';
+
         $xquery = <<<XQUERY
         xquery version "3.1";
         declare namespace ns = "http://www.tei-c.org/ns/1.0";
         declare option exist:output-size-limit "-1";
-        {$query}
+
+        let \$all-items := {$query}
+        let \$count := count(\$all-items)
+        return
+            <results>
+                <count>{\$count}</count>
+                <items>{\$all-items}</items>
+            </results>
         XQUERY;
+
         // Initialize cURL session
         $ch = curl_init();
 
@@ -373,11 +383,11 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $response = curl_exec($ch);
         
         // Check for errors
-        if(curl_errno($ch)) {
-            error_log('Errorrrrrrrr:' . curl_error($ch));
-        } else {
-            error_log('Responceeeeee:' . $response); // Print the query result
-        }
+        //if(curl_errno($ch)) {
+        //    error_log('Errorrrrrrrr:' . curl_error($ch));
+        //} else {
+        //    error_log('Responceeeeee:' . $response); // Print the query result
+        //}
 
 
         // // Create a response structure
