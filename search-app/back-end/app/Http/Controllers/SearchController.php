@@ -345,27 +345,18 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             'ARO-8-1730-9' => '<div>we we we </div>',
             ];
         }
-        //ok lets try
-        /*
-        $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
-        $process->run();
-        echo $process->getOutput();
-        // Output the result
-        if ($process->isSuccessful()) {
-            echo $process->getOutput();
-        } else {
-            echo $process->getErrorOutput();
-        }
-        */
-        // Define your query results (replace with actual logic as needed)
-
+       
 
         error_log( 'Hello');
         // XQuery to fetch <item> elements from XML files in the collection
 
         //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
-        $xquery = $query;
-        error_log($xquery);
+        $xquery = <<<XQUERY
+        xquery version "3.1";
+        declare namespace ns = "http://www.tei-c.org/ns/1.0";
+        declare option exist:output-size-limit "-1";
+        {$query}
+        XQUERY;
         // Initialize cURL session
         $ch = curl_init();
 
