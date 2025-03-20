@@ -1,12 +1,9 @@
 <template>
-    <div>
-      <h1>Help Page</h1>
-      <p>Welcome to the help page.</p>
+    <div class="help-page">
+        <!-- Main Section -->
+        <main class="content">
+            <h1>Help Page</h1>
+            <p>Welcome to the help page.</p>
+        </main>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "HelpPageView",
-  };
-  </script>
+</template>

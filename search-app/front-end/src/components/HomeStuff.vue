@@ -1,6 +1,5 @@
 <script setup>
 import SearchFields from '@/components/SearchFields.vue';
-import Footer from '@/components/Footer.vue';
 // console.log(props.queryParams);
 </script>
 
@@ -9,8 +8,7 @@ import Footer from '@/components/Footer.vue';
         <!-- Header Section -->
         <header>
             <div class="home-description">
-                <h1>Discover 8 Volumes</h1>
-                <p>Some text explaining search</p>
+                <h1>Discover 7 Volumes</h1>
             </div>
         </header>
         <!-- Main Section -->
@@ -19,9 +17,5 @@ import Footer from '@/components/Footer.vue';
                 <SearchFields />
             </div>
         </main>
-    </div>
-    <!-- Footer Section -->
-    <div>
-        <Footer />
     </div>
 </template>

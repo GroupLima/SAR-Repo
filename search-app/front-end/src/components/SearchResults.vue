@@ -2,7 +2,6 @@
 import SearchResultCard from '@/components/SearchResultCard.vue';
 import { reactive, onMounted, computed, ref } from 'vue';
 import axios from 'axios';
-import Footer from '@/components/Footer.vue';
 import '@/assets/sass/app.scss';
 import router from '@/router';
 
@@ -171,34 +170,6 @@ const showHelpPage = () => {
 <template>
     <div class="search-page">
 
-        <!-- Preferences -->
-        <div class="preferences">
-            <div class="preference-item">
-                <label>Search method:</label>
-                <select id="searchMethod" v-model="state.searchMethod" @change="filterChange">
-                    <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
-                </select>
-            </div>
-            <div class="preference-item">
-                <label>Variants:</label>
-                <select id="variants" v-model="state.variants" @change="filterChange">
-                    <option v-for="variants in varOptions" :key="variants" :value="variants">{{ variants }}</option>
-                </select>
-            </div>
-            <div class="preference-item">
-                <label>Results per page:</label>
-                <select id="resultsPerPage" v-model="state.results_per_page" @change="filterChange">
-                    <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
-                </select>
-            </div>
-            <div class="preference-item">
-                <label>Sort by:</label>
-                <select>
-                    <option v-for="ord in ordOptions">{{ ord }}</option>
-                </select>
-            </div>
-        </div>
-
         <!-- Results -->
         <div class="results-section mt-3">
             <h2 class="results-title">Results page {{ state.current_page }}</h2>
@@ -249,7 +220,4 @@ const showHelpPage = () => {
 
     </div>
 
-    <div>
-        <Footer />
-    </div>
 </template>
