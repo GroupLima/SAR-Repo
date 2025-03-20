@@ -39,6 +39,65 @@ body {
   }
 }
 
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+  
+  // Don't show tooltip when select is open/active
+  &:focus::before,
+  &:focus::after {
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+  &::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 160px;
+    max-width: 300px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+    pointer-events: none;
+  }
+  
+  &:hover::before,
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
 // navbar
 .navbar {
   font-weight: bold;
@@ -611,6 +670,7 @@ footer {
   border-bottom: 1px solid $light-gray;
   padding: 10px 0;
   margin-bottom: 10px;
+  margin: 10% ;
 }
 
 .record-header {

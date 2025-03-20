@@ -1,7 +1,7 @@
 <template>
   <div class="container-browser">
-    <div class="volume-nav">
-      <select class="volume-select" v-model="currentVolume" @change="handleVolumeChange">
+    <div  class="volume-nav">
+      <select data-tooltip="Select the Preferred Volume" class="volume-select" v-model="currentVolume" @change="handleVolumeChange">
         <option v-for="(pageCount, volId) in volumes" :key="volId" :value="Number(volId)">
           Volume {{ volId }}
         </option>
@@ -15,11 +15,11 @@
       
       <div class="records-container">
         <div class="page-navigation">
-          <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
-          <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
+          <button data-tooltip="Click Here to go to the First Page of the Volume" class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
+          <button data-tooltip="Click here for the previous Pgae"class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
           <div class="page-number">Page {{ currentPage }}</div>
-          <button class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
-          <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
+          <button data-tooltip="Click Here for the Next Page" class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
+          <button data-tooltip="Click here to go the Last Page of the Volume" class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
         </div>
         
         <div class="records">
@@ -42,8 +42,8 @@
               {{ record.content }}
             </div>
             <div class="record-actions">
-              <button class="xml-btn" @click="viewXML(record.id)">XML</button>
-              <div class="checkbox-container">
+              <button data-tooltip="Click Here to See the XML Format of the Content" class="xml-btn" @click="viewXML(record.id)">XML</button>
+              <div data-tooltip="Click Here to Add the Content to the Selected Page" class="checkbox-container">
                 <input 
                   type="checkbox" 
                   :id="`record-${record.id}-checkbox`" 
@@ -69,7 +69,7 @@
           <pre class="xml-content">{{ currentXmlContent }}</pre>
         </div>
         <div class="xml-modal-footer">
-          <button class="copy-btn" @click="copyXmlContent">Copy XML</button>
+          <button data-tooltip="Copy XML" class="copy-btn" @click="copyXmlContent">Copy XML</button>
         </div>
       </div>
     </div>
