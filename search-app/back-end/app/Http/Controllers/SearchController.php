@@ -328,6 +328,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         //print_r($data.query.type);
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
+        $exist_start = $data['exist_start'];  // get start 
+        $exist_count = $data['exist_count']; // and count
 
         //print_r($queryType);
         //print_r($query);  
@@ -345,32 +347,38 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             'ARO-8-1730-9' => '<div>we we we </div>',
             ];
         }
-        //ok lets try
-        /*
-        $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
-        $process->run();
-        echo $process->getOutput();
-        // Output the result
-        if ($process->isSuccessful()) {
-            echo $process->getOutput();
-        } else {
-            echo $process->getErrorOutput();
-        }
-        */
-        // Define your query results (replace with actual logic as needed)
 
 
         error_log( 'Hello');
         // XQuery to fetch <item> elements from XML files in the collection
 
-        //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
-        $xquery = $query;
-        error_log($xquery);
+        // Construct the paginated XQuery
+        $namespaceDeclaration = 'declare namespace ns = "http://www.tei-c.org/ns/1.0";';
+        $xquery = <<<XQUERY
+        xquery version "3.1";
+        declare namespace ns = "http://www.tei-c.org/ns/1.0";
+
+        let \$results := {$query}  (: Store full results first :)
+        let \$totalCount := count(\$results) (: Get total number of results :)
+        let \$pagedResults := subsequence(\$results, $exist_start, $exist_count)
+
+        return 
+            <response>
+                <total>{\$totalCount}</total>
+                <results>{\$pagedResults}</results>
+            </response>
+        XQUERY;
+        
+
+        error_log($xquery); // Debug the generated XQuery
         // Initialize cURL session
         $ch = curl_init();
 
         // Set the cURL options for running the XQuery
         curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");
+        // Build the URL with pagination parameters
+        // Construct the eXist-db query URL
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, "admin:"); // Basic authentication
@@ -381,7 +389,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         // Execute the cURL request and get the response
         $response = curl_exec($ch);
         
-        // Check for errors
+        //Check for errors
         if(curl_errno($ch)) {
             error_log('Errorrrrrrrr:' . curl_error($ch));
         } else {

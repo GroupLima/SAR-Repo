@@ -15,7 +15,9 @@ const state = reactive({
     num_results: 0,
     total_results: 0,
     error: "",
-    isLoading: false
+    isLoading: false,
+    start: 1,    // Default start index
+    count: 10,    // Default count per page
 });
 
 const runQuery = async () => {
@@ -30,6 +32,8 @@ const runQuery = async () => {
             params: {
                 query_type: "xquery",
                 query: state.query,
+                exist_start: state.start,  // Pass start value
+                exist_count: state.count   // Pass count value
             },
         });
         console.log("Response received:", response);
@@ -56,10 +60,12 @@ const runQuery = async () => {
     <div class="xquery-page">
         <header>
             <div class="header-content">
+                <br><br><br><br>
                 <h1>XQuery Search</h1>
                 <p>Search through XML documents using XQuery</p>
             </div>
         </header>
+        
         
         <main>
             <div class="search-section">
@@ -70,6 +76,14 @@ const runQuery = async () => {
                         v-model="state.query"
                     />
                     <button @click="runQuery">Run Query</button>   
+                </div>
+                <!-- Start & Count Inputs -->
+                <div class="pagination-controls">
+                    <label for="start">Start:</label>
+                    <input type="number" id="start" v-model="state.start" min="1" max="20571">
+
+                    <label for="count">Count:</label>
+                    <input type="number" id="count" v-model="state.count" min="1" max="100">
                 </div>
             </div>
             
