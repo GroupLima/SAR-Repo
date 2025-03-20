@@ -1,25 +1,20 @@
-# Use an official Node.js runtime as a parent image
+# Use an official Node.js runtime as a parent image for the front-end
 FROM node:18 AS frontend
-
-# Set the working directory for the front-end
 WORKDIR /app/search-app/front-end
-
-# Install front-end dependencies
 COPY search-app/front-end/package*.json ./
 RUN npm install
 
-# Use an official PHP runtime as a parent image
+# Use an official PHP runtime as a parent image for the back-end
 FROM php:8.2-cli AS backend
 
-# Install system dependencies
+# Install system dependencies, including Python and necessary tools
 RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     python3 \
     python3-venv \
     python3-pip \
-    && docker-php-ext-install zip \
-    || (brew update && brew install unzip libzip python3 && pip3 install virtualenv)
+    && docker-php-ext-install zip
 
 # Set the working directory for the back-end
 WORKDIR /app/search-app/back-end
@@ -30,14 +25,15 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy the back-end source code
 COPY search-app/back-end .
 
-# Create and activate the virtual environment
-RUN python3 -m venv venv-sar && . venv-sar/bin/activate
+# Create a Python virtual environment and install dependencies
+RUN python3 -m venv /opt/venv && \
+    /opt/venv/bin/pip install --upgrade pip && \
+    /opt/venv/bin/pip install -Ur requirements.txt
 
-# Install Python dependencies
-COPY search-app/back-end/requirements.txt .
-RUN . venv-sar/bin/activate && pip install -r requirements.txt
+# Ensure that the virtual environment’s binaries are used
+ENV PATH="/opt/venv/bin:$PATH"
 
-# Install back-end dependencies
+# Install PHP dependencies with Composer
 RUN composer install
 
 # Expose ports for front-end and back-end
