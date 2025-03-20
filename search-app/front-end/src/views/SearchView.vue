@@ -1,7 +1,6 @@
 <script setup>
 import SearchFields from '@/components/SearchFields.vue';
 import SearchResults from '@/components/SearchResults.vue';
-import cursiveLatin from '@/assets/images/sample.png';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -11,9 +10,8 @@ const state = reactive({
 });
 
 const isValidQuery = (params) => {
-    return true
-}
-
+    return true;
+};
 
 onMounted(() => {
     const route = useRoute();
@@ -26,20 +24,16 @@ onMounted(() => {
     }
     console.log(state.displayResults);
 });
-// console.log(props.queryParams);
 </script>
 
 <template>
-    
-    <div>
-
+    <div class="search-page">
         <!-- Main Section -->
-        <div>
+        <main class="content">
             <SearchFields />
             <div v-if="state.displayResults">
                 <SearchResults :queryParams="state.queryParams"/>
             </div>
-        </div>
-
+        </main>
     </div>
 </template>

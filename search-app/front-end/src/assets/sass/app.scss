@@ -124,6 +124,7 @@ body {
     align-items: center;
     max-width: 1000px;
     margin: 0 auto;
+    position: relative;
 
     .nav-links a {
       color: $secondary-colour;
@@ -134,11 +135,6 @@ body {
       &:hover {
         text-decoration: underline;
       }
-    }
-
-    .nav-links a.help-link {
-      margin-left: 10px;
-      font-weight: bold;
     }
 
     .nav-links a.help-link {
@@ -172,12 +168,160 @@ body {
         }
       }
     }
+
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      span {
+        background-color: $secondary-colour;
+        height: 3px;
+        width: 25px;
+        margin: 4px 0;
+        transition: 0.4s;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .burger-menu {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px; // Reduce padding for smaller screens
+
+    &.scrolled {
+      padding: 5px; // Reduce padding when scrolled in mobile view
+
+      .nav-content .logo-section .text-container img {
+        height: 40px; // Adjust the height for smaller screens when scrolled
+      }
+    }
+
+    .nav-content {
+      flex-direction: column;
+      align-items: center;
+
+      .logo-section {
+        .text-container {
+          img {
+            height: 50px; // Adjust the height for smaller screens
+          }
+        }
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        a {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  .home-page {
+    padding-top: 20px; // Adjust padding to reduce space between navbar and content
+  }
+
+  footer {
+    .image-container {
+      height: auto; // Adjust height for smaller screens
+      min-width: 100%; // Ensure the image container fits the screen width
+    }
+
+    .footer-links-container {
+      padding: 10px; // Adjust padding for smaller screens
+
+      .footer-links {
+        flex-direction: column; // Stack links vertically on smaller screens
+        align-items: center;
+      }
+    }
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: $primary-colour;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+
+    a {
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  span {
+    background-color: $secondary-colour;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: $primary-colour;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    a {
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.nav-links.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
   }
 }
 
 // footer
 footer {
   margin-top: 45px;
+  width: 100%; // Ensure footer spans the entire page width
 
   .image-container {
     overflow: hidden;
@@ -189,6 +333,7 @@ footer {
       min-width: 100%;
       height: 100%;
       width: 100%;
+      object-fit: cover; // Ensure the image fits within the container without stretching
     }
   }
 
@@ -204,12 +349,15 @@ footer {
       align-items: center;
       max-width: 1000px;
       margin: 0 auto;
+      flex-wrap: wrap; // Allow links to wrap to the next line if needed
 
       a {
         color: $secondary-colour;
         text-decoration: none;
         font-weight: bold;
         padding: 10px;
+        flex: 1 1 auto; // Allow links to grow and shrink as needed
+        text-align: center; // Center align text
 
         &:hover {
           text-decoration: underline;
@@ -225,7 +373,6 @@ footer {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 47vh; //homepage height minus navbar and content
 
   main {
     flex: 1;
@@ -247,6 +394,7 @@ footer {
 .search-section {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 10px; // Add padding to prevent stretching
 
   .basic-search {
     display: flex;
@@ -271,13 +419,71 @@ footer {
       cursor: pointer;
       font-weight: bold;
     }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+
+      input {
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0; // Remove left margin for smaller screens
+      }
+    }
+  }
+
+  .preferences {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+
+    .preference-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+
+      label {
+        font-weight: bold;
+        color: $dark-gray;
+      }
+
+      select {
+        cursor: pointer;
+        padding: 5px;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        background-color: $secondary-colour;
+        color: $dark-gray;
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        select {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
   }
 
   .advanced-search-container {
     position: relative;
 
     .dropdown-button {
-      background-color: $dark-gray;
+      background-color: $primary-colour;
       color: $secondary-colour;
       padding: 10px 20px;
       border: none;
@@ -305,10 +511,10 @@ footer {
 
       #search-options {
         .advanced-option {
-          margin-bottom: 20px;
+          margin-bottom: 10px;
+          margin-top: 10px;
 
           h3 {
-            color: $primary-colour;
             font-size: 1.2em;
             margin-bottom: 10px;
           }
@@ -341,54 +547,78 @@ footer {
               background-color: $dark-gray;
             }
           }
-        }
 
-        #dates {
-          .option-title {
-            color: $primary-colour;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+          label,
+          select,
+          input {
+            display: block;
+            font-size: 1em;
           }
 
-          label {
+          input[type="checkbox"] {
             display: inline-block;
-            margin-right: 10px;
-            font-size: 1em;
-            color: $dark-gray;
+            margin-right: 5px;
           }
 
-          input[type="date"] {
-            display: inline-block;
-            margin-right: 10px;
-            font-size: 1em;
-            color: $dark-gray;
-            border: 1px solid $light-gray;
+          #dates {
+            background-color: $secondary-colour;
+            border: 1px solid $dark-gray;
             border-radius: 4px;
-            padding: 5px;
+            padding: 10px;
+
+            .option-title {
+              font-size: 1.2em;
+              margin-bottom: 10px;
+            }
+
+            label {
+              display: inline-block;
+              margin-right: 10px;
+              font-size: 1em;
+              color: $dark-gray;
+            }
+
+            input[type="date"] {
+              display: inline-block;
+              margin-right: 10px;
+              font-size: 1em;
+              color: $dark-gray;
+              border: 1px solid $light-gray;
+              border-radius: 4px;
+              padding: 5px;
+              background-color: $secondary-colour;
+            }
+
+            body.dark & {
+              background-color: $dark-mode;
+              border-color: $light-gray;
+
+              label {
+                color: $secondary-colour;
+              }
+
+              input[type="date"] {
+                background-color: color.adjust($dark-mode, $lightness: -5%);
+                color: $secondary-colour;
+                border-color: $light-gray;
+              }
+            }
           }
         }
-      }
-
-      .advanced-option {
-
-        label,
-        select,
-        input {
-          display: block;
-          margin-bottom: 10px;
-          font-size: 1em;
-        }
-      }
-
-      .advanced-option input[type="checkbox"] {
-        display: inline-block;
-        margin-right: 5px;
       }
     }
   }
 }
 
-.xquery-page,
+.xquery-page {
+    display: flex;
+    flex-direction: column;
+
+    .content {
+        flex: 1;
+    }
+}
+
 // to allow xquery page to use results styling
 // search page
 .search-page {
@@ -708,7 +938,7 @@ footer {
   cursor: pointer;
  
   &:hover {
-    background-color: lighten($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: 10%);
   }
 }
 
@@ -800,7 +1030,7 @@ footer {
     cursor: pointer;
     
     &:hover {
-      background-color: lighten($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
 }
@@ -819,7 +1049,7 @@ footer {
   }
  
   .image-viewer {
-    background-color: darken($dark-mode, 3%);
+    background-color: color.adjust($dark-mode, $lightness: -3%);
   }
   
   .records-container {
@@ -828,7 +1058,7 @@ footer {
   }
   
   .nav-btn {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
    
@@ -855,7 +1085,7 @@ footer {
     color: $secondary-colour;
    
     &:hover {
-      background-color: lighten($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
   
@@ -868,7 +1098,7 @@ footer {
   }
   
   .volume-select {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
@@ -890,7 +1120,7 @@ footer {
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
-      background-color: darken($dark-mode, 3%);
+      background-color: color.adjust($dark-mode, $lightness: -3%);
     }
   }
   
@@ -902,7 +1132,7 @@ footer {
       color: $secondary-colour;
       
       &:hover {
-        background-color: lighten($primary-colour, 10%);
+        background-color: color.adjust($primary-colour, $lightness: 10%);
       }
     }
   }
@@ -1037,7 +1267,7 @@ footer {
   color: $secondary-colour;
   
   &:hover {
-    background-color: lighten($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: 10%);
   }
 }
 
@@ -1046,7 +1276,7 @@ footer {
   color: $secondary-colour;
   
   &:hover {
-    background-color: lighten($primary-colour, 20%);
+    background-color: color.adjust($primary-colour, $lightness: 20%);
   }
 }
 
@@ -1055,7 +1285,7 @@ footer {
   color: $secondary-colour;
   
   &:hover {
-    background-color: lighten($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: 10%);
   }
 }
 
@@ -1073,7 +1303,7 @@ footer {
 
   .selected-records {
     .record-item {
-      background-color: darken($dark-mode, 3%);
+      background-color: color.adjust($dark-mode, $lightness: -3%);
       border-color: $light-gray;
     }
 
@@ -1082,7 +1312,7 @@ footer {
     }
 
     .record-content {
-      background-color: darken($dark-mode, 5%);
+      background-color: color.adjust($dark-mode, $lightness: -5%);
       color: $secondary-colour;
       border-color: $light-gray;
     }
@@ -1093,7 +1323,7 @@ footer {
     color: $secondary-colour;
     
     &:hover {
-      background-color: lighten($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
 
@@ -1102,7 +1332,289 @@ footer {
     color: $secondary-colour;
     
     &:hover {
-      background-color: lighten($primary-colour, 5%);
+      background-color: color.adjust($primary-colour, $lightness: 5%);
     }
   }
+}
+#search-options {
+  .advanced-option {
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .horizontal-list {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      .radio-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        input[type="radio"] {
+          margin: 0;
+        }
+      }
+    }
+
+    button {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $dark-gray;
+      }
+    }
+
+    label,
+    select,
+    input {
+      display: block;
+      font-size: 1em;
+    }
+
+    input[type="checkbox"] {
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    #language {
+      background-color: $secondary-colour;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+      padding: 10px;
+      
+      .option-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+      }
+      
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        input[type="date"] {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
+
+    #dates {
+      background-color: $secondary-colour;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+      padding: 10px;
+
+      .option-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+      }
+
+      input[type="date"] {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+        border: 1px solid $light-gray;
+        border-radius: 4px;
+        padding: 5px;
+        background-color: $secondary-colour;
+      }
+
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        input[type="date"] {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
+  }
+}
+
+.advanced-search-dropdown {
+  #search-options {
+    .advanced-option {
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .horizontal-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .radio-container {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          input[type="radio"] {
+            margin: 0;
+          }
+        }
+      }
+
+      button {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $dark-gray;
+        }
+      }
+
+      label,
+      select,
+      input {
+        display: block;
+        font-size: 1em;
+      }
+
+      input[type="checkbox"] {
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      #dates {
+        background-color: $secondary-colour;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        padding: 10px;
+
+        .option-title {
+          font-size: 1.2em;
+          margin-bottom: 10px;
+        }
+
+        label {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 1em;
+          color: $dark-gray;
+        }
+
+        input[type="date"] {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 1em;
+          color: $dark-gray;
+          border: 1px solid $light-gray;
+          border-radius: 4px;
+          padding: 5px;
+          background-color: $secondary-colour;
+        }
+
+        body.dark & {
+          background-color: $dark-mode;
+          border-color: $light-gray;
+
+          label {
+            color: $secondary-colour;
+          }
+
+          input[type="date"] {
+            background-color: color.adjust($dark-mode, $lightness: -5%);
+            color: $secondary-colour;
+            border-color: $light-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    .image-container {
+      height: auto; // Adjust height for smaller screens
+      min-width: 100%; // Ensure the image container fits the screen width
+    }
+
+    .footer-links-container {
+      padding: 10px; // Adjust padding for smaller screens
+
+      .footer-links {
+        flex-direction: column; // Stack links vertically on smaller screens
+        align-items: center;
+      }
+    }
+  }
+}
+
+.nav-links a,
+.dark-mode-button {
+  // Add styles to hide the burger menu when clicked
+  @media (max-width: 768px) {
+    &:active {
+      .nav-links {
+        display: none;
+      }
+    }
+  }
+}
+
+// Combine repeated page classes into a single class
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 45vh;
+
+  main {
+    flex: 1;
+  }
+}
+
+// Apply the combined class to all relevant pages
+.help-page,
+.about-page,
+.selected-page,
+.search-page,
+.xquery-page,
+.browse-page {
+  @extend .page;
 }

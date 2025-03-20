@@ -1,10 +1,13 @@
 <script setup>
-import AboutStuff from '@/components/AboutStuff.vue'
+import AboutStuff from '@/components/AboutStuff.vue';
 </script>
 
 <template>
     <div>
-      <AboutStuff/>
+        <!-- Main Section -->
+        <main class="content">
+            <AboutStuff />
+        </main>
     </div>
 </template>
 

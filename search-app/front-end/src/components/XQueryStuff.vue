@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
-import Footer from '@/components/Footer.vue';
+import vkbeautify from 'vkbeautify';
 
 const props = defineProps({
     queryParams: {
@@ -17,6 +17,12 @@ const state = reactive({
     error: "",
     isLoading: false
 });
+
+const handleEnterKey = (event) => {
+    if (event.key === 'Enter') {
+        runQuery();
+    }
+};
 
 const runQuery = async () => {
     const XQeuryURL = 'http://localhost:8000/api/xquery'
@@ -37,7 +43,7 @@ const runQuery = async () => {
             // Directly map response to state.results
             const xmlString = response.data.message.queryResults;
             console.log(typeof xmlString, xmlString);
-            const xmlPretty = window.vkbeautify.xml(xmlString, 5);
+            const xmlPretty = vkbeautify.xml(xmlString, 5);
             state.results = xmlPretty;
             console.log("happy",state.results);
         } else {
@@ -61,13 +67,11 @@ const runQuery = async () => {
             </div>
         </header>
         
-        <main>
+        <main class="content">
             <div class="search-section">
                 <div class="basic-search">
                     <input 
-                        type="search"
-                        placeholder="Enter your XQuery"
-                        v-model="state.query"
+                        type="search" v-model="state.query" placeholder="Enter your search term" id="search-box" @keyup="handleEnterKey"
                     />
                     <button @click="runQuery">Run Query</button>   
                 </div>
@@ -80,17 +84,12 @@ const runQuery = async () => {
             <div class="results-section mt-3">
                 <h2>Results</h2>
                 <div v-if="!state.isLoading">
-                     <pre>{{ state.results }}</pre>
-            </div>
+                    <pre>{{ state.results }}</pre>
+                </div>
                 <div v-else>
                     Loading...
                 </div>
             </div>
         </main>
     </div>
-
-    <div>
-      <Footer />
-    </div>
-
 </template>
