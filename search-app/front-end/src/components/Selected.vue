@@ -32,14 +32,12 @@
       
       <div class="actions">
         <button data-tooltip = "Clear all Item from Selected" class="clear-btn" @click="clearAll">Clear All</button>
-        <!--<button class="export-btn" @click="exportRecords">Export as JSON</button> -->
+        <button class="export-btn" @click="exportRecords">Export as JSON</button> 
         <button data-tooltip ="Download the Selected Items in PDF" class="export-pdf-btn" @click="exportToPDF">Export as PDF</button>
       </div>
     </div>
   </div>
-  <div>
-    <Footer />  
-  </div>
+ 
 </template>
 
 <script>
