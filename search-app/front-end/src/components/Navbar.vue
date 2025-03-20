@@ -44,7 +44,7 @@ window.onscroll = function() {
             <div :class="['nav-links', { active: isMenuOpen }]">
                 <RouterLink to="/" @click="closeMenu">Home</RouterLink>
                 <RouterLink to="/browse" @click="closeMenu">Browse</RouterLink>
-                <RouterLink to="/xQuery" @click="closeMenu">XQuery</RouterLink>
+                <RouterLink to="/xquery" @click="closeMenu">XQuery</RouterLink>
                 <RouterLink to="/about" @click="closeMenu">About</RouterLink>
                 <RouterLink to="/help" class="help-link" @click="closeMenu">Help</RouterLink>
                 <RouterLink v-if="hasSelectedRecords" to="/selected" @click="closeMenu">
@@ -61,17 +61,3 @@ window.onscroll = function() {
         </div>
     </nav>
 </template>
-
-<script>
-import router from '@/router';
-
-export default {
-  name: 'Navbar',
-  methods: {
-    showHelp() {
-      const routeUrl = router.resolve({ name: 'help' }).href;
-      window.open(routeUrl, '_blank');
-    }
-  }
-};
-</script>
