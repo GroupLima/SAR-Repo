@@ -7,8 +7,8 @@ New Search Aberdeen Registers (SAR) search tool web application project
 <br> ☆*: .｡. o(≧▽≦)o .｡.:*☆
 
 <p align="center">
-  <img src="path/to/SAR_2-Homepage.png" alt="SAR 2 Homepage" width="45%">
-  <img src="path/to/SAR_2-Homepage_Dark.png" alt="SAR 2 Homepage Dark" width="45%">
+  <img src="SAR_2-Homepage.png" alt="SAR 2 Homepage" width="45%">
+  <img src="SAR_2-Homepage_Dark.png" alt="SAR 2 Homepage Dark" width="45%">
 </p>
 
 ## Team Lima
