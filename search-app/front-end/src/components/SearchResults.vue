@@ -1,7 +1,10 @@
 <script setup>
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import { reactive, onMounted, computed } from 'vue';
+import { reactive, onMounted, computed, ref } from 'vue';
 import axios from 'axios';
+import Footer from '@/components/Footer.vue';
+import '@/assets/sass/app.scss';
+import router from '@/router';
 
 const props = defineProps({
     queryParams: {
@@ -19,22 +22,54 @@ const state = reactive({
     isLoading: true,
     current_page: 1,
     results_per_page: 5,
-    total_pages: 1
+    total_pages: 1,
+    searchMethod: props.queryParams.methodSearch || 'word_start',
+    variants: props.queryParams.variant || '0'
 });
+
+const goToPageNumber = ref(1);
+
+// preferences
+const searchMethods = [
+    { value: 'keywords', text: 'Keywords' },
+    { value: 'phrase', text: 'Phrase' },
+    { value: 'regex', text: 'Regex' },
+    { value: 'word_start', text: 'Word Start' },
+    { value: 'word_middle', text: 'Word Middle' },
+    { value: 'word_end', text: 'Word End' }
+];
+const varOptions = [0, 1, 2, 3, 4];
+const rrpOptions = [5, 10, 20, 30, 50];
+const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
+
+const filterChange = () => {
+    state.current_page = 1;
+    state.isLoading = true;
+    router.push({ 
+        query: { 
+            ...props.queryParams, 
+            methodSearch: state.searchMethod, 
+            variant: state.variants 
+        }
+    });
+    search();
+}
 
 const search = async() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
     const baseSearchUrl = 'http://localhost:8000/api/search'
-    console.log('im in search results');
+    //console.log('im in search results');
     const searchParams = {
         ...props.queryParams,
         page: state.current_page,
-        rpp: state.results_per_page
+        rpp: state.results_per_page,
+        variant: state.variants,
+        methodSearch: state.searchMethod
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
-        console.log("results");
-        console.log("data", response.data);
+        //console.log("results");
+        //console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;
             // Handle the response data (assuming it's structured like this)
@@ -52,7 +87,7 @@ const search = async() => {
     } catch (error) {
         console.error("error fetching results", error);
     } finally {
-        console.log("setting load value to false");
+        //console.log("setting load value to false");
         state.isLoading = false;
     }
 }
@@ -76,19 +111,19 @@ const displayedPageNumbers = computed(() => {
 });
 
 // SelectedPage
-function selectedPage(pageNumber) {
+const selectedPage = (pageNumber) => {
     state.current_page = pageNumber;
     search();
 }
 // Next page
-function nextPage() {
+const nextPage = () => {
     if (state.current_page < state.total_pages) {
         state.current_page++;
         search();
     }
 }
 // Previous page
-function prevPage() {
+const prevPage = () => {
     if (state.current_page > 1) {
         state.current_page--;
         search();
@@ -103,11 +138,68 @@ const lastResultOfPage = computed(() =>
     Math.min(state.current_page * state.results_per_page, state.total_results)
 );
 
+const goToSpecificPage = () => {
+    if (goToPageNumber.value < 1) {
+        goToPageNumber.value = 1;
+        state.current_page = 1;
+    } else if (goToPageNumber.value > state.total_pages) {
+        goToPageNumber.value = state.total_pages;
+        state.current_page = state.total_pages;
+    } else {
+        state.current_page = goToPageNumber.value;
+    }
+    search();
+};
+
+const handleKeyPress = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        goToSpecificPage();
+    }
+};
+
+const handleInput = (event) => {
+    event.target.value = event.target.value.replace(/\D/g, '');
+};
+
+const showHelpPage = () => {
+    const routeUrl = router.resolve({ name: 'help' }).href;
+    window.open(routeUrl, '_blank');
+};
+
 </script>
 
 <template>
-    <div>
-        <!-- Display the results dynamically -->
+    <div class="search-page">
+
+        <!-- Preferences -->
+        <div class="preferences">
+            <div class="preference-item">
+                <label>Search method:</label>
+                <select id="searchMethod" v-model="state.searchMethod" @change="filterChange">
+                    <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Variants:</label>
+                <select id="variants" v-model="state.variants" @change="filterChange">
+                    <option v-for="variants in varOptions" :key="variants" :value="variants">{{ variants }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Results per page:</label>
+                <select id="resultsPerPage" v-model="state.results_per_page" @change="filterChange">
+                    <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
+                </select>
+            </div>
+            <div class="preference-item">
+                <label>Sort by:</label>
+                <select>
+                    <option v-for="ord in ordOptions">{{ ord }}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Results -->
         <div class="results-section mt-3">
             <h2 class="results-title">Results page {{ state.current_page }}</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
@@ -125,39 +217,39 @@ const lastResultOfPage = computed(() =>
                     :htmldate="result.date"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
-
-                <!-- Changing Pages -->
-                 <div class="page-changer">
-                    <!-- previous button -->
-                    <button 
-                        @click="prevPage"
-                        :disabled="state.current_page <= 1">
-                        Previous
-                    </button>
-                    <!-- numbered buttons -->
-                    <button
-                        class="page-number"
-                        v-for="activePage in displayedPageNumbers"
-                        :key="activePage"
-                        :class="{ active: activePage === state.current_page }"
-                        @click="selectedPage(activePage)"
-                        :disabled="activePage === state.current_page">
-                        {{ activePage }}
-                    </button>
-                    <!-- next button -->
-                    <button 
-                        @click="nextPage" 
-                        :disabled="state.current_page >= state.total_pages">
-                        Next
-                    </button>
-                 </div>
             </div>
             <div v-else>
                 loading...
             </div>
-                
         </div>
 
-                 
+        <!-- Changing Pages -->
+        <div v-if="state.total_pages > 1 & !state.isLoading" class="page-changer">
+            <!-- previous button -->
+            <button @click="prevPage" :disabled="state.current_page <= 1">
+                Previous
+            </button>
+            <!-- numbered buttons -->
+            <button class="page-number" v-for="activePage in displayedPageNumbers" :key="activePage"
+                :class="{ active: activePage === state.current_page }" @click="selectedPage(activePage)"
+                :disabled="activePage === state.current_page">
+                {{ activePage }}
+            </button>
+            <!-- next button -->
+            <button @click="nextPage" :disabled="state.current_page >= state.total_pages">
+                Next
+            </button>
+        </div>
+
+        <!-- Go to specific page -->
+        <div class="go-to-page">
+            <input type="number" v-model="goToPageNumber" min="1" :max="state.total_pages" @keypress="handleKeyPress" @input="handleInput" />
+            <button @click="goToSpecificPage">Go to page</button>
+        </div>
+
+    </div>
+
+    <div>
+        <Footer />
     </div>
 </template>

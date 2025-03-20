@@ -1,6 +1,8 @@
 <script setup>
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
+import Footer from '@/components/Footer.vue';
+
 const props = defineProps({
     queryParams: {
         type: Object,
@@ -51,8 +53,7 @@ const runQuery = async () => {
 </script>
 
 <template>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="container">
+    <div class="xquery-page">
         <header>
             <div class="header-content">
                 <h1>XQuery Search</h1>
@@ -62,12 +63,14 @@ const runQuery = async () => {
         
         <main>
             <div class="search-section">
-                <input 
-                    type="search"
-                    placeholder="Enter your XQuery"
-                    v-model="state.query"
-                />
-                <button @click="runQuery">Run Query</button>   
+                <div class="basic-search">
+                    <input 
+                        type="search"
+                        placeholder="Enter your XQuery"
+                        v-model="state.query"
+                    />
+                    <button @click="runQuery">Run Query</button>   
+                </div>
             </div>
             
             <div v-if="state.error" class="alert alert-danger mt-3">
@@ -75,7 +78,7 @@ const runQuery = async () => {
             </div>
             
             <div class="results-section mt-3">
-                <h2 class="results-title">Results</h2>
+                <h2>Results</h2>
                 <div v-if="!state.isLoading">
                      <pre>{{ state.results }}</pre>
             </div>
@@ -85,4 +88,9 @@ const runQuery = async () => {
             </div>
         </main>
     </div>
+
+    <div>
+      <Footer />
+    </div>
+
 </template>

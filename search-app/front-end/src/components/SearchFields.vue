@@ -1,11 +1,11 @@
 <!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
-import { reactive, ref, toRaw } from 'vue';
+import { reactive, ref, toRaw, onMounted, computed } from 'vue';
 
 const form = reactive({
     query_type: "basic_search",
-    basicSearch: "holly",
+    basicSearch: "",
     methodSearch: "word_start", // default type of string matching for basic search
     language: "any",
     variant: "0",
@@ -27,7 +27,9 @@ const passFormValues = () => {
     const rawForm = toRaw(form);
     const queryParams = new URLSearchParams(form).toString(rawForm);
     console.log(queryParams);
-    router.push({ path: '/search', query: rawForm }); 
+    router.push({ path: '/search', query: rawForm }).then(() => {
+        window.location.reload();
+    });
 }
 
 const getSearchType = () => {
@@ -45,24 +47,23 @@ const getSearchType = () => {
     return query_type
 }
 
+const isAllSelected = computed(() => {
+    return form.volumes.length === 7;
+});
+
+const toggleAllVolumes = () => {
+    if ( isAllSelected.value ) {
+        form.volumes = [];
+    } else {
+        form.volumes = ['1', '2', '4', '5', '6', '7', '8'];
+    }
+}
+
 const handleSearch = () => {
     
     if (allValidInput){
         
         form.query_type = getSearchType();
-        // const queryParams = {
-        //     query_type: searchType,
-        //     basicSearch: searchType,
-        //     methodSearch: "starts with", // default type of string matching for basic search
-        //     language: "any",
-        //     variant: "",
-        //     volumes: [],
-        //     pageSearch: "",
-        //     entrySearch: "",
-        //     startDate: "",
-        //     endDate: "",
-        //     docId: ""
-        // };
         try {
             passFormValues();
             
@@ -79,6 +80,42 @@ const allValidInput = () => {
     return true //remove once implemented
 }
 
+const handleEnterKey = (event) => {
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+}
+
+const setSearchBoxValue = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    form.basicSearch = urlParams.get('basicSearch') || form.basicSearch;
+    form.methodSearch = urlParams.get('methodSearch') || form.methodSearch;
+    form.language = urlParams.get('language') || form.language;
+    form.variant = urlParams.get('variant') || form.variant;
+    form.volumes = urlParams.getAll('volumes') || form.volumes;
+    form.pageSearch = urlParams.get('pageSearch') || form.pageSearch;
+    form.entrySearch = urlParams.get('entrySearch') || form.entrySearch;
+    form.startDate = urlParams.get('startDate') || form.startDate;
+    form.endDate = urlParams.get('endDate') || form.endDate;
+    form.docId = urlParams.get('docId') || form.docId;
+}
+
+const resetAdvancedSearch = () => {
+    form.methodSearch = "word_start";
+    form.language = "any";
+    form.variant = "0";
+    form.volumes = [];
+    form.pageSearch = "";
+    form.entrySearch = "";
+    form.startDate = "";
+    form.endDate = "";
+    form.docId = "";
+}
+
+onMounted(() => {
+    setSearchBoxValue();
+});
+
 </script>
 
 <template>
@@ -92,7 +129,7 @@ const allValidInput = () => {
 
         <div class="search-section">
             <div class="basic-search"> <!-- this is the basic search bar -->
-                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box"/>
+                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box" @keyup="handleEnterKey"/>
                 <!-- we need something that looks like a button here: "SEARCH"-->
                 <button id="search-button" @click="handleSearch">
                     SEARCH
@@ -107,33 +144,32 @@ const allValidInput = () => {
                     <div id="search-options">
                         <div id="search-methods-radio" class="advanced-option">
                             <h3 class="option-title">Search Method</h3>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="keywords" id="keywords"
-                                    name="search-method"> Keywords
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="phrase" id="phrase" name="search-method">
-                                Phrase
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="regex" id="regularex"
-                                    name="search-method"> Regular
-                                Expression
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start"
-                                    name="search-method" checked> Word
-                                Start
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle"
-                                    name="search-method"> Word
-                                Middle
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end"
-                                    name="search-method"> Word End
-                            </label>
+                            <div class="horizontal-list">
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="keywords" id="keywords" name="search-method"> 
+                                    <span>Keywords</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="phrase" id="phrase" name="search-method">
+                                    <span>Phrase</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="regex" id="regularex" name="search-method"> 
+                                    <span>Regular Expression</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_start" id="word-start" name="search-method" checked> 
+                                    <span>Word Start</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_middle" id="word-middle" name="search-method"> 
+                                    <span>Word Middle</span>
+                                </div>
+                                <div class="radio-container">
+                                    <input type="radio" v-model="form.methodSearch" value="word_end" id="word-end" name="search-method"> 
+                                    <span>Word End</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="advanced-option">
                             <h3 class="option-title">Languages</h3>
@@ -154,30 +190,16 @@ const allValidInput = () => {
                                 <option value="4">4</option>
                             </select>
                         </div>
-                        <div id=volume-select class="advanced-option">
-                            <!-- Maybe a toggle button to automatically select all would be good-->
+                        <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-1" name="volume1" value="1"> 1
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-2" name="volume2" value="2"> 2
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-4" name="volume4" value="4"> 4
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-5" name="volume5" value="5"> 5
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-6" name="volume6" value="6"> 6
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-7" name="volume7" value="7"> 7
-                            </label>
-                            <label>
-                                <input type="checkbox" v-model="form.volumes" id="volume-8" name="volume8" value="8"> 8
-                            </label>
+                            <div class="horizontal-list">
+                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume">
+                                    <input type="checkbox" v-model="form.volumes" :id="volume" :value="volume"> {{ volume }}
+                                </label>
+                                <label>
+                                    <input type="checkbox" :checked="isAllSelected" @change="toggleAllVolumes"> All
+                                </label>
+                            </div>
                         </div>
                         <!-- We need a constraint to restrict between 1 and the max page number -->
                         <div class="advanced-option">
@@ -204,7 +226,9 @@ const allValidInput = () => {
                             <h3 class="option-title">Doc ID</h3>
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
                         </div>
-
+                        <div class="advanced-option" style="margin-top: 10px;">
+                            <button @click="resetAdvancedSearch">Reset Field Values</button>
+                        </div>
                     </div>
                 </div>
             </div>

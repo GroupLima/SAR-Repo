@@ -22,13 +22,13 @@ class RouteControllerTest extends TestCase
     {
         $response = $this->get('/about');
         $response->assertStatus(200);
-        $response->assertSee('IMPORTANT LINKS');
+        $response->assertSee('Team');
     }
     
     public function test_search_page(): void
     {
         $response = $this->get('/xquery');
         $response->assertStatus(200);
-        $response->assertSee('search');
+        $response->assertSee('Search');
     }
 }
