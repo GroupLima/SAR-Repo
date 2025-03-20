@@ -1,22 +1,22 @@
 <template>
   <div class="container-browser">
-    <div  class="volume-nav">
+    <div class="volume-nav">
       <select data-tooltip="Select the Preferred Volume" class="volume-select" v-model="currentVolume" @change="handleVolumeChange">
         <option v-for="(pageCount, volId) in volumes" :key="volId" :value="Number(volId)">
           Volume {{ volId }}
         </option>
       </select>
     </div>
-  
+    
     <div class="split-view">
-      <!--div class="image-viewer"-->
+      <div class="image-viewer">
         <img :src="pageImage" alt="Page Image" class="page-image" />
-      
+      </div>
       
       <div class="records-container">
         <div class="page-navigation">
           <button data-tooltip="Click Here to go to the First Page of the Volume" class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
-          <button data-tooltip="Click here for the previous Pgae"class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
+          <button data-tooltip="Click here for the previous Page" class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
           <div class="page-number">Page {{ currentPage }}</div>
           <button data-tooltip="Click Here for the Next Page" class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
           <button data-tooltip="Click here to go the Last Page of the Volume" class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
@@ -54,22 +54,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- XML Modal -->
-    <div v-if="showXmlModal" class="xml-modal-overlay">
-      <div class="xml-modal">
-        <div class="xml-modal-header">
-          <h3>XML Content: {{ currentXmlRecordId }}</h3>
-          <button class="close-btn" @click="closeXmlModal">×</button>
-        </div>
-        <div class="xml-modal-body">
-          <pre class="xml-content">{{ currentXmlContent }}</pre>
-        </div>
-        <div class="xml-modal-footer">
-          <button data-tooltip="Copy XML" class="copy-btn" @click="copyXmlContent">Copy XML</button>
         </div>
       </div>
     </div>

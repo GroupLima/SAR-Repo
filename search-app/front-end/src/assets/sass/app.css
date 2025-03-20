@@ -1013,6 +1013,127 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   z-index: 10;
 }
 
+.selected-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #a69f9f;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px #4a4a4a;
+  font-family: Arial, sans-serif;
+}
+
+.no-records {
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+  color: #4a4a4a;
+}
+
+.selected-records .record-item {
+  border: 1px solid #a69f9f;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+}
+.selected-records .record-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.selected-records .record-field {
+  margin-right: 15px;
+}
+.selected-records .record-field .record-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.selected-records .record-content {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #a69f9f;
+  border-radius: 3px;
+}
+.selected-records .record-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.remove-btn, .clear-btn, .export-btn, .export-pdf-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background-color: #6e0d25;
+  color: #ffffff;
+}
+.remove-btn:hover {
+  background-color: #9c1234;
+}
+
+.clear-btn {
+  background-color: #6e0d25;
+  color: #ffffff;
+}
+.clear-btn:hover {
+  background-color: #c91844;
+}
+
+.export-btn, .export-pdf-btn {
+  background-color: #6e0d25;
+  color: #ffffff;
+}
+.export-btn:hover, .export-pdf-btn:hover {
+  background-color: #9c1234;
+}
+
+.dark .selected-container {
+  background-color: #202020;
+  color: #ffffff;
+  border-color: #a69f9f;
+}
+.dark .no-records {
+  color: #a69f9f;
+}
+.dark .selected-records .record-item {
+  background-color: #181818;
+  border-color: #a69f9f;
+}
+.dark .selected-records .record-header, .dark .selected-records .record-label {
+  color: #ffffff;
+}
+.dark .selected-records .record-content {
+  background-color: #131313;
+  color: #ffffff;
+  border-color: #a69f9f;
+}
+.dark .remove-btn {
+  background-color: #6e0d25;
+  color: #ffffff;
+}
+.dark .remove-btn:hover {
+  background-color: #9c1234;
+}
+.dark .clear-btn {
+  background-color: #6e0d25;
+  color: #ffffff;
+}
+.dark .clear-btn:hover {
+  background-color: #85102d;
+}
+
 #search-options .advanced-option {
   margin-bottom: 10px;
   margin-top: 10px;
