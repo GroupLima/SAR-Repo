@@ -58,19 +58,13 @@
       </div>
     </div>
   </div>
-  <div>
-    <Footer />
-  </div>
 </template>
 
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
-import { inject, computed } from 'vue';
+import { inject } from 'vue';
 
 export default {
-  components: {
-    Footer  
-  },
   data() {
     return {
       pageImage,
