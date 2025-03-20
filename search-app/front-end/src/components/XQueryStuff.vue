@@ -2,6 +2,7 @@
 import { reactive, onMounted } from 'vue';
 import axios from 'axios';
 import Footer from '@/components/Footer.vue';
+import vkbeautify from 'vkbeautify';
 
 const props = defineProps({
     queryParams: {
@@ -37,7 +38,7 @@ const runQuery = async () => {
             // Directly map response to state.results
             const xmlString = response.data.message.queryResults;
             console.log(typeof xmlString, xmlString);
-            const xmlPretty = window.vkbeautify.xml(xmlString, 5);
+            const xmlPretty = vkbeautify.xml(xmlString, 5);
             state.results = xmlPretty;
             console.log("happy",state.results);
         } else {
