@@ -67,3 +67,24 @@ The following are instructions to run the project with docker, do not run the fr
 2. Enter a specific container within the project (back/front-end)
    1. List running containers with `docker ps`
    2. Enter the shell of the container with `docker exec -it <container_id_or_name> /bin/sh`, replacing the variable with the desired container id or name
+
+### existDB setup
+1. On first time installing existdb we have to download it from the web
+   1. Use this https://github.com/eXist-db/exist/releases/tag/eXist-6.3.0
+   2. Please download exist-distribution-6.3.0-unix.tar.bz2
+   3. Navigate to where you downloaded the folder.
+   4. run this `tar -xvjf exist-distribution-6.3.0-unix.tar.bz2`
+   5. this should create a folder called this; exist-distribution-6.3.0
+   6. cd to this folder on the terminal
+   7. run `bin/startup.sh`
+   8. Now, open http://localhost:8080/exist/
+   9. Click on eXide - Xquery IDE
+   10. Click file, then Manage
+   11. The username is `admin`
+   12. the password is `` (blank)
+   13. somewhere create a new folder called xmlfiles 
+   14. put both xml 1-7 and volume 8 directories from into it called search-app/back-end/storage/app/xml-files
+   15. then go to file, manage, upload, then directories and upload this xmlfiles folder
+   16. Once uploaded click close. 
+   17. now try out the existdb site!!!
+2. If installed just filed the existdb folder in terminal and run `bin/startup.sh`and procee
