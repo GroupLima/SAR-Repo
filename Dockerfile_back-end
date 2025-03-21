@@ -1,11 +1,5 @@
-# Use an official Node.js runtime as a parent image for the front-end
-FROM node:18 AS frontend
-WORKDIR /app/search-app/front-end
-COPY search-app/front-end/package*.json ./
-RUN npm install
-
 # Use an official PHP runtime as a parent image for the back-end
-FROM php:8.2-cli AS backend
+FROM php:8.4.5-cli AS backend
 
 # Install system dependencies, including Python and necessary tools
 RUN apt-get update && apt-get install -y \
@@ -36,8 +30,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Install PHP dependencies with Composer
 RUN composer install
 
-# Expose ports for front-end and back-end
-EXPOSE 3000 8000
+# Expose ports for back-end
+EXPOSE 8000
 
 # Start the PHP server
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

@@ -1,0 +1,8 @@
+# Use an official Node.js runtime as a parent image for the front-end
+FROM node:23.10.0 AS frontend
+WORKDIR /app/search-app/front-end
+COPY search-app/front-end/package*.json ./
+RUN npm install
+
+# Expose ports for front-end
+EXPOSE 3000
