@@ -22,5 +22,25 @@ services:
       - ./search-app/back-end/venv-sar:/app/search-app/back-end/venv-sar
     ports:
       - "8000:8000"
+    links:
+      - frontend
     working_dir: /app/search-app/back-end
     command: php artisan serve --host=0.0.0.0 --port=8000
+
+  exist:
+    build:
+      context: .
+      dockerfile: Dockerfile_exist
+      target: exist
+    volumes:
+      - ./search-app/exist-data:/app/search-app/exist-data
+      - ./search-app/back-end/storage/app/xml-files:/app/search-app/back-end/storage/app/xml-files
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    depends_on:
+      - backend
+    links:
+      - backend
+    working_dir: /app/search-app/exist-data
+    command: java -jar start.jar

@@ -1,0 +1,6 @@
+# Use official ExistDB as the parent image for the back-end XQuery jobs
+FROM existdb/existdb:6.3.0 AS exist
+WORKDIR /app/search-app/exist-data
+COPY search-app/back-end/storage/app/xml-files/* ./
+EXPOSE 8080 8443
+CMD ["java", "-jar", "start.jar", "client", "-q", "-u", "admin", "-P", "", "-x", "sm:passwd('admin', '123')"]

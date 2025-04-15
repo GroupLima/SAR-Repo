@@ -32,6 +32,3 @@ RUN composer install
 
 # Expose ports for back-end
 EXPOSE 8000
-
-# Start the PHP server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
