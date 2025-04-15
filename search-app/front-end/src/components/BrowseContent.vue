@@ -1,3 +1,4 @@
+
 <template>
   <div class="container-browser">
     <div class="volume-nav">
@@ -9,8 +10,16 @@
     </div>
     
     <div class="split-view">
-      <div class="image-viewer">
-        <img :src="pageImage" alt="Page Image" class="page-image" />
+      <div class="image-viewer" ref="imageViewer">
+        <img 
+          :src="pageImage" 
+          alt="Page Image" 
+          class="page-image" 
+          @mousemove="handleZoom" 
+          @mouseleave="resetZoom"
+          ref="pageImageRef"
+          :style="imageStyle"
+        />
       </div>
       
       <div class="records-container">
@@ -59,17 +68,17 @@
     </div>
     
     <!-- XML Modal -->
-    <div v-if="showXmlModal" class="xml-modal-overlay" @click.self="closeXmlModal">
+    <div v-if="showXmlModal" class="xml-modal-overlay">
       <div class="xml-modal">
         <div class="xml-modal-header">
-          <h3>XML Content for {{ currentXmlRecordId }}</h3>
+          <h3>XML Content: {{ currentXmlRecordId }}</h3>
           <button class="close-btn" @click="closeXmlModal">&times;</button>
         </div>
         <div class="xml-modal-body">
           <pre class="xml-content">{{ currentXmlContent }}</pre>
         </div>
         <div class="xml-modal-footer">
-          <button class="copy-btn" @click="copyXmlContent">Copy XML</button>
+          <button class="copy-btn" @click="copyXmlContent">Copy to Clipboard</button>
         </div>
       </div>
     </div>
@@ -78,7 +87,7 @@
 
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
-import { inject } from 'vue';
+import { inject, ref, computed } from 'vue';
 
 export default {
   data() {
@@ -116,12 +125,20 @@ export default {
       xmlData: {
         'ARO-1-0001-01': '<div type="heading" xml:id="ARO-1-0001-01" xml:lang="lat">\n  <head>Processus Curiarum Balliuorum Isti Sunt</head>\n  <p><lb break="yes"/>qui incipiunt die lune  proximo  post festum beati michaelis archangeli Anno<lb break="yes"/>Domini Millesimo  ccc<hi rend="superscript">mo</hi>  nonogesimo  Octauo .</p>\n</div>',
         'ARO-1-0001-02': '<div type="heading" xml:id="ARO-1-0001-02" xml:lang="lat">\n  <head>Quo die Willelmus de Camera pater</head>\n  <p><lb break="yes"/>cum pertinentiis quibuscumque...</p>\n</div>'
-      }
+      },
+      // Zoom properties
+      zoomScale: 2, // Scale factor when zooming
+      isZooming: false,
+      zoomX: 0,
+      zoomY: 0,
+      transformOrigin: '0% 0%'
     }
   },
   setup() {
     // Inject the shared selectedRecords state
-    const selectedRecords = inject('selectedRecords');
+    const selectedRecords = inject('selectedRecords', ref([]));
+    const pageImageRef = ref(null);
+    const imageViewer = ref(null);
     
     // Check if a record is selected
     const isRecordSelected = (recordId) => {
@@ -144,8 +161,26 @@ export default {
     return {
       selectedRecords,
       isRecordSelected,
-      toggleRecordSelection
+      toggleRecordSelection,
+      pageImageRef,
+      imageViewer
     };
+  },
+  computed: {
+    imageStyle() {
+      if (!this.isZooming) {
+        return {
+          transform: 'scale(1)',
+          transformOrigin: 'center center'
+        };
+      }
+      
+      return {
+        transform: `scale(${this.zoomScale})`,
+        transformOrigin: this.transformOrigin,
+        transition: 'transform 0.1s ease-out'
+      };
+    }
   },
   mounted() {
     this.loadRecords();
@@ -199,6 +234,22 @@ export default {
       console.log(`Loading records for Volume ${this.currentVolume}, Page ${this.currentPage}`);
       // Here you would typically fetch records from an API
       // For now we'll just use the static records in data()
+    },
+    
+    // Direct image zoom methods
+    handleZoom(event) {
+      if (!this.$refs.pageImageRef) return;
+      
+      const rect = this.$refs.pageImageRef.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      
+      this.transformOrigin = `${x}% ${y}%`;
+      this.isZooming = true;
+    },
+    
+    resetZoom() {
+      this.isZooming = false;
     }
   }
 }
