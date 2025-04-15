@@ -57,6 +57,22 @@
         </div>
       </div>
     </div>
+    
+    <!-- XML Modal -->
+    <div v-if="showXmlModal" class="xml-modal-overlay" @click.self="closeXmlModal">
+      <div class="xml-modal">
+        <div class="xml-modal-header">
+          <h3>XML Content for {{ currentXmlRecordId }}</h3>
+          <button class="close-btn" @click="closeXmlModal">&times;</button>
+        </div>
+        <div class="xml-modal-body">
+          <pre class="xml-content">{{ currentXmlContent }}</pre>
+        </div>
+        <div class="xml-modal-footer">
+          <button class="copy-btn" @click="copyXmlContent">Copy XML</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -187,4 +203,3 @@ export default {
   }
 }
 </script>
-
