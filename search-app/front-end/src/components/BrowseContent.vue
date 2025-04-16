@@ -1,4 +1,3 @@
-
 <template>
   <div class="container-browser">
     <div class="volume-nav">
@@ -26,7 +25,22 @@
         <div class="page-navigation">
           <button data-tooltip="Click Here to go to the First Page of the Volume" class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
           <button data-tooltip="Click here for the previous Page" class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
-          <div class="page-number">Page {{ currentPage }}</div>
+          
+          <!-- Updated page number search component -->
+          <div class="page-number-search">
+            <span class="page-label">Page</span>
+            <input 
+              type="number" 
+              v-model.number="currentPage" 
+              class="page-number-input" 
+              min="1" 
+              :max="volumes[currentVolume]"
+              @keyup.enter="goToSpecificPage"
+            />
+            <span class="page-total">of {{ volumes[currentVolume] }}</span>
+            <button class="page-go-btn" @click="goToSpecificPage" data-tooltip="Go to specified page">Go</button>
+          </div>
+          
           <button data-tooltip="Click Here for the Next Page" class="nav-btn" @click="goToNextPage" :disabled="currentPage >= volumes[currentVolume]">&gt;</button>
           <button data-tooltip="Click here to go the Last Page of the Volume" class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
         </div>
@@ -209,6 +223,18 @@ export default {
     },
     goToLastPage() {
       this.currentPage = this.volumes[this.currentVolume];
+      this.loadRecords();
+    },
+    goToSpecificPage() {
+      // Ensure the page is within valid range
+      const maxPage = this.volumes[this.currentVolume];
+      
+      if (this.currentPage < 1) {
+        this.currentPage = 1;
+      } else if (this.currentPage > maxPage) {
+        this.currentPage = maxPage;
+      }
+      
       this.loadRecords();
     },
     viewXML(recordId) {
