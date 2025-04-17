@@ -1,8 +1,18 @@
 # Use an official Node.js runtime as a parent image for the front-end
-FROM node:23.10.0 AS frontend
+FROM node:23-slim AS frontend
+
+# Set working directory
 WORKDIR /app/search-app/front-end
+
+# Copy package files and install dependencies
 COPY search-app/front-end/package*.json ./
 RUN npm install
 
+# Copy the rest of the front-end source code
+COPY search-app/front-end .
+
 # Expose ports for front-end
 EXPOSE 5173
+
+# Set the command to run the development server
+CMD ["sh", "-c", "npm install && npm run dev -- --host 0.0.0.0"]

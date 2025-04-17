@@ -1,5 +1,5 @@
 # Use an official PHP runtime as a parent image for the back-end
-FROM php:8.4.5-cli AS backend
+FROM php:8.4.6-cli AS backend
 
 # Install system dependencies, including Python and necessary tools
 RUN apt-get update && apt-get install -y \
@@ -8,27 +8,37 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-venv \
     python3-pip \
-    && docker-php-ext-install zip
+    git \
+    && docker-php-ext-install zip pdo pdo_mysql
 
 # Set the working directory for the back-end
 WORKDIR /app/search-app/back-end
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Copy composer files first for better layer caching
+COPY search-app/back-end/composer.* ./
+
+# Install PHP dependencies with Composer
+RUN composer install --no-scripts --no-autoloader || echo "Initial composer install failed, will retry after copying source"
 
 # Copy the back-end source code
 COPY search-app/back-end .
 
+# Run composer install again with all scripts and generate autoloader
+RUN composer install
+
 # Create a Python virtual environment and install dependencies
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip && \
-    /opt/venv/bin/pip install -Ur requirements.txt
+    if [ -f requirements.txt ]; then /opt/venv/bin/pip install -r requirements.txt; fi
 
-# Ensure that the virtual environment’s binaries are used
+# Ensure that the virtual environment's binaries are used
 ENV PATH="/opt/venv/bin:$PATH"
-
-# Install PHP dependencies with Composer
-RUN composer install
 
 # Expose ports for back-end
 EXPOSE 8000
+
+# Set the command to start the Laravel development server
+CMD ["sh", "-c", "composer install && php artisan serve --host=0.0.0.0 --port=8000"]
