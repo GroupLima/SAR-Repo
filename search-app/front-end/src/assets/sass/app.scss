@@ -855,11 +855,14 @@ footer {
   max-width: 50%;
   overflow: hidden;
   background-color: #f9f9f9;
+  position: relative;
  
   .page-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    cursor: zoom-in;
+    transform-origin: center center;
   }
 }
 
@@ -900,7 +903,7 @@ footer {
   border-bottom: 1px solid $light-gray;
   padding: 10px 0;
   margin-bottom: 10px;
-  margin: 10% ;
+  margin: 10%;
 }
 
 .record-header {
@@ -938,7 +941,7 @@ footer {
   cursor: pointer;
  
   &:hover {
-    background-color: color.adjust($primary-colour, $lightness: 10%);
+    background-color: darken($primary-colour, 10%);
   }
 }
 
@@ -1030,7 +1033,7 @@ footer {
     cursor: pointer;
     
     &:hover {
-      background-color: color.adjust($primary-colour, $lightness: 10%);
+      background-color: darken($primary-colour, 10%);
     }
   }
 }
@@ -1049,7 +1052,7 @@ footer {
   }
  
   .image-viewer {
-    background-color: color.adjust($dark-mode, $lightness: -3%);
+    background-color: lighten($dark-mode, 3%);
   }
   
   .records-container {
@@ -1058,7 +1061,7 @@ footer {
   }
   
   .nav-btn {
-    background-color: color.adjust($dark-mode, $lightness: -5%);
+    background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
    
@@ -1085,7 +1088,7 @@ footer {
     color: $secondary-colour;
    
     &:hover {
-      background-color: color.adjust($primary-colour, $lightness: 10%);
+      background-color: darken($primary-colour, 10%);
     }
   }
   
@@ -1098,7 +1101,7 @@ footer {
   }
   
   .volume-select {
-    background-color: color.adjust($dark-mode, $lightness: -5%);
+    background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
@@ -1120,7 +1123,7 @@ footer {
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
-      background-color: color.adjust($dark-mode, $lightness: -3%);
+      background-color: darken($dark-mode, 3%);
     }
   }
   
@@ -1132,11 +1135,11 @@ footer {
       color: $secondary-colour;
       
       &:hover {
-        background-color: color.adjust($primary-colour, $lightness: 10%);
+        background-color: darken($primary-colour, 10%);
       }
     }
   }
- }
+}
 
 // about page
 .about-page {
