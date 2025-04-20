@@ -1060,8 +1060,13 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   text-align: justify;
 }
 .about-page .column img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .about-page .row:after {
   content: "";
