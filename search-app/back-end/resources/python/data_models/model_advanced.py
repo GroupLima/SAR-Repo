@@ -2,7 +2,7 @@ import re
 from errors.custom_errors import InvalidAROFormatError
 from errors.custom_errors import InvalidPageInputError
 from errors.custom_errors import InvalidVolumeInputError
-
+from errors.custom_errors import InvalidDateInputError
 """
 A model that contains only the arguments required for Advanced Search. This will be used to determine
 which search functions need to be executed.
@@ -19,10 +19,10 @@ class AdvancedSearchModel():
 
         self.language = self.get_language(language) # String or Null
         self.page = self.get_pages(page) # Integer or Null
-        self.volume = self.get_volume(volume) # Integer or Null
+        self.volumes = self.get_volume(volume) # Integer or Null
         self.entry_id = self.get_entry_id(entry_id) # String or Null
-        self.from_date = self.get_date_from(date_from) # String or Null
-        self.to_date = self.get_date_to(date_to) # String or Null
+        self.from_date = self.get_date(date_from) # String or Null
+        self.to_date = self.get_date(date_to) # String or Null
         
 
     def get_language(self, language) -> str:
@@ -82,5 +82,8 @@ class AdvancedSearchModel():
     
 
     def get_date(self, date):
-        #already 3 tuple
-        return date
+        #splits into 3 numbers: year, month, day
+        try:
+            return ([int(num) for num in date.split("-")]) if not date else None
+        except:
+            raise InvalidDateInputError(date)
