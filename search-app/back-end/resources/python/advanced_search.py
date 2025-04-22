@@ -1,4 +1,5 @@
 import re
+from data_models.model_advanced import AdvancedSearchModel
 # this file contains advanced search methods
 
 class Advanced_Search():
