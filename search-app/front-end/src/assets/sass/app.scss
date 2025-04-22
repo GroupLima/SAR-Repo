@@ -855,11 +855,14 @@ footer {
   max-width: 50%;
   overflow: hidden;
   background-color: #f9f9f9;
+  position: relative;
  
   .page-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    cursor: zoom-in;
+    transform-origin: center center;
   }
 }
 
@@ -877,6 +880,7 @@ footer {
   align-items: center;
   gap: 10px;
   margin: 10px 0 20px;
+  flex-wrap: wrap; // Allow wrapping on smaller screens
 }
 
 .nav-btn {
@@ -896,11 +900,67 @@ footer {
   font-weight: bold;
 }
 
+.page-number-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px;
+  border-radius: 4px;
+  height: 32px;
+}
+
+.page-label {
+  font-weight: 500;
+}
+
+.page-number-input {
+  width: 60px;
+  padding: 4px 8px;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+  text-align: center;
+  font-family: $font-family;
+  
+  // Remove the spinner arrows
+  &::-webkit-inner-spin-button, 
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  
+  // For Firefox
+  -moz-appearance: textfield;
+  
+  &:focus {
+    outline: 1px solid $primary-colour;
+    border-color: $primary-colour;
+  }
+}
+
+.page-total {
+  color: #666;
+}
+
+.page-go-btn {
+  padding: 4px 8px;
+  background-color: $primary-colour;
+  color: $secondary-colour;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  
+  &:hover {
+    background-color: darken($primary-colour, 10%);
+  }
+}
+
 .record-item {
   border-bottom: 1px solid $light-gray;
   padding: 10px 0;
   margin-bottom: 10px;
-  margin: 10% ;
+  margin: 10%;
 }
 
 .record-header {
@@ -938,7 +998,7 @@ footer {
   cursor: pointer;
  
   &:hover {
-    background-color: color.adjust($primary-colour, $lightness: 10%);
+    background-color: darken($primary-colour, 10%);
   }
 }
 
@@ -1030,7 +1090,7 @@ footer {
     cursor: pointer;
     
     &:hover {
-      background-color: color.adjust($primary-colour, $lightness: 10%);
+      background-color: darken($primary-colour, 10%);
     }
   }
 }
@@ -1049,7 +1109,7 @@ footer {
   }
  
   .image-viewer {
-    background-color: color.adjust($dark-mode, $lightness: -3%);
+    background-color: lighten($dark-mode, 3%);
   }
   
   .records-container {
@@ -1058,7 +1118,7 @@ footer {
   }
   
   .nav-btn {
-    background-color: color.adjust($dark-mode, $lightness: -5%);
+    background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
    
@@ -1069,6 +1129,34 @@ footer {
   
   .page-number {
     color: $secondary-colour;
+  }
+
+  .page-number-search {
+    background-color: darken($dark-mode, 3%);
+  }
+  
+  .page-label, .page-total {
+    color: $secondary-colour;
+  }
+  
+  .page-number-input {
+    background-color: darken($dark-mode, 5%);
+    color: $secondary-colour;
+    border-color: $light-gray;
+    
+    &:focus {
+      outline-color: lighten($primary-colour, 10%);
+      border-color: lighten($primary-colour, 10%);
+    }
+  }
+  
+  .page-go-btn {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    
+    &:hover {
+      background-color: darken($primary-colour, 10%);
+    }
   }
   
   .record-item {
@@ -1085,7 +1173,7 @@ footer {
     color: $secondary-colour;
    
     &:hover {
-      background-color: color.adjust($primary-colour, $lightness: 10%);
+      background-color: darken($primary-colour, 10%);
     }
   }
   
@@ -1098,7 +1186,7 @@ footer {
   }
   
   .volume-select {
-    background-color: color.adjust($dark-mode, $lightness: -5%);
+    background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
@@ -1120,7 +1208,7 @@ footer {
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
-      background-color: color.adjust($dark-mode, $lightness: -3%);
+      background-color: darken($dark-mode, 3%);
     }
   }
   
@@ -1132,11 +1220,11 @@ footer {
       color: $secondary-colour;
       
       &:hover {
-        background-color: color.adjust($primary-colour, $lightness: 10%);
+        background-color: darken($primary-colour, 10%);
       }
     }
   }
- }
+}
 
 // about page
 .about-page {
