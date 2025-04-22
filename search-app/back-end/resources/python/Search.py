@@ -205,18 +205,18 @@ class Search():
         #self.order_by(self.sort_criteria)
 
     def start(self):
-        results = None
-        qt = self.params['qt']
-        match(qt):
-            case 'advanced_search':
-                search = Advanced_Search() #pass in parameters for an advanced search
-            case 'basic_search':
-                search = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
-                #search = Basic_Search("word_start", "holly", 0, self.json_entries)
-                results = search.find_matches()
-            case _:
-                print("search method not specified")
-        self.matches = results
+        qt = self.params['qt'] # query type: basic or advanced
+        
+        search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+        self.matches = search_obj.find_matches()
+        
+        if qt == 'advanced_search':
+            advs_entries = {}
+            for entry_id,  in self.matches:
+                advs_entries[entry_id] = self.json_entries[entry_id]
+            search_obj = Advanced_Search(self.params)
+            self.matches = search_obj.filter_entries(advs_entries)
+        
         # self.matches = {'ARO-1-0001-03' : {
         #     'accuracy_score' : 20,
         #     'match_frequency' : 40,

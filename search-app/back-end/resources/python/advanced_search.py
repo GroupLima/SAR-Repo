@@ -14,7 +14,7 @@ class Advanced_Search():
             language = self.params['lang'], 
             pages = self.params['pg'], 
             volumes = self.params['vol'], 
-            entry_id = self.params['id']
+            entry_id = self.params['entry_id'],
             date_from = self.params['date_from'], 
             date_to = self.params['date_to']
         )
@@ -28,20 +28,18 @@ class Advanced_Search():
         return valid_entries
     
     def is_valid_entry(self, args, entry_data):
-        valid_entry = True
-            
         # check whether the given input arguments match the entry attributes
         if not entry_data.get('lang') or args.languages != entry_data['lang']:
             return False
-        if not entry_data.get('pg') or not args.pages or entry_data['pg'] not in args.pages:
+        if not entry_data.get('page') or not args.pages or entry_data['page'] not in args.pages:
             return False
-        if not entry_data.get('vol') or not args.volumes or entry_data['vol'] not in args.volumes:
+        if not entry_data.get('volume') or not args.volumes or entry_data['volume'] not in args.volumes:
             return False
-        if not entry_data.get('date_from') or not args.date_from or not AdvancedSearchMethods.is_after_date(entry_data['date'], args.date_from):
+        if not entry_data.get('date') or not args.date_from or not AdvancedSearchMethods.is_after_date(entry_data['date'], args.date_from):
             return False
-        if not entry_data.get('date_to') or not args.date_to or not AdvancedSearchMethods.is_before_date(entry_data['date'], args.date_to):
+        if args.date_to or not AdvancedSearchMethods.is_before_date(entry_data['date'], args.date_to):
             return False
-        if not entry_data.get('id') or not args.entry_id:
+        if not entry_data.get('id') or not args.entry_id or args.entry_id != entry_data['id']:
             return False
         return True
 
