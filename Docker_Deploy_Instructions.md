@@ -89,3 +89,20 @@ docker logs -f container_name
 This project uses:
 - Node.js 23
 - PHP 8.4.6
+
+
+## Setup reverse proxy
+
+sudo apt install ufw -y
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow 22
+sudo ufw enable
+
+this needs to port forward :8000 and :5173 for the front and back end
+
+sudo apt update
+sudo apt install -y nginx
+
+use your DNS registrar to setup the DNS A record
+make it a flexible type SSL
