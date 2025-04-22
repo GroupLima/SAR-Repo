@@ -21,15 +21,16 @@ class Search_Phrase(Search_Method):
         # basing the length of phrase on words rather than characters should save some
         # time, i think. There will be less iterations
         for i in range(len(words_to_compare)):
-            phrase_words = []
             start_pos = words_to_compare[i][1] # start from each word in entry
             best_score = 0 # the best scorring phrase from this starting point
             best_phrase = ""
 
             for j in range(i, len(words_to_compare)):
                 # add a new word onto this phrase
-                phrase_words.append(words_to_compare[j][0])
-                phrase = " ".join(phrase_words)
+                if j == 0:
+                    phrase = words_to_compare[0][0]
+                else:
+                    phrase = phrase + " " + words_to_compare[j][0]
 
                 # some phrases will never match so might as well skip what we can
                 # otherwise, query will take ridiculous amount of time
