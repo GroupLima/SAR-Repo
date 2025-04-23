@@ -75,7 +75,7 @@ params = {
 """
 
 params = {
-    'qt' : 'advanced_search',
+    'qt' : 'basic_search',
     'query' : 'holly',
     'rpp' : 5,
     'var' : 0,
