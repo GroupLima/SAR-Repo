@@ -3,7 +3,7 @@
         <!-- Main Section -->
         <main class="content">
             <div class="container-help">
-                <h1>Help Page</h1>
+                <h1>Help</h1>
                 <p class="help-intro">Welcome to the help page. Here you can find information about how to use our search, browse, and XQuery features.</p>
                 
                 <div class="help-section">

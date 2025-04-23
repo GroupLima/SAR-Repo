@@ -483,7 +483,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function simplify_search_params($params){
 
         //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
+        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page'];
 
         $permitted = [];
 
@@ -498,18 +498,26 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             5. (rpp) results per page
         
         */ //left is python right is vue
-        $permitted['query'] = $params['basicSearch'];
-        $permitted['qt'] = $params['query_type'];
-        $permitted['var'] = $params['variant'];
-        $permitted['sm'] = $params['methodSearch'];
-        $permitted['rpp'] = 5;
+        $permitted['query'] = $params['basicSearch'] ?? '';
+        $permitted['qt'] = $params['query_type'] ?? 'basic_search';
+        $permitted['var'] = $params['variant'] ?? 0;
+        $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
+        $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
+
+        // advanced search params
+        $permitted['entry_id'] = $params['docId' ?? null];
+        $permitted['date_from'] = $params['startDate'] ?? null;
+        $permitted['date_to'] = $params['endDate'] ?? null;
+        $permitted['vol'] = $params['volumes'] ?? null;
+        $permitted['page'] = $params['pageSearch'] ?? null;
+        $permitted['lang'] = $params['language'] ?? null;
         
         //create permitted list of valid parameters relevent to the type of search the user is making
-        foreach ($param_keys as $param){
-            if (isset($params[$param])) {
-                $permitted[$param] = $params[$param];
-            }
-        }
+        // foreach ($param_keys as $param){
+        //     if (isset($params[$param])) {
+        //         $permitted[$param] = $params[$param];
+        //     }
+        // }
         return $permitted;
     }
 
@@ -527,7 +535,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function filter_and_format($permitted) {
 
         $query_type = $permitted['qt'];
-        $current_page = $permitted['page'];
+        $current_page = 1;
         $results_per_page = $permitted['rpp'];
 
         if (strtolower($query_type) == 'xquery'){

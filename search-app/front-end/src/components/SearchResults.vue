@@ -68,7 +68,7 @@ const search = async() => {
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
-        //console.log("results");
+        //console.log("results", response);
         //console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;

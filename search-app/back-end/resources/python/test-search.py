@@ -19,13 +19,13 @@ with open(json_filepath, 'r') as json_file:
 #     'sm' : 'word_start' 
 # }
 
-params = {
-    'qt' : 'basic_search',
-    'query' : 'hollly',
-    'rpp' : 5,
-    'var' : 2,
-    'sm' : 'word_middle' 
-}
+# params = {
+#     'qt' : 'basic_search',
+#     'query' : 'hollly',
+#     'rpp' : 5,
+#     'var' : 2,
+#     'sm' : 'word_middle' 
+# }
 
 
 # params = {
@@ -74,6 +74,25 @@ params = {
 }
 """
 
+params = {
+    'qt' : 'advanced_search',
+    'query' : 'ho',
+    'rpp' : 5,
+    'var' : 0,
+    'sm' : 'word_start' ,
+    'lang': 'dutch'
+}
+
+params2 = {
+    'qt' : 'advanced_search',
+    'query' : 'holly',
+    'rpp' : 5,
+    'var' : 0,
+    'sm' : 'word_start' ,
+    'lang': 'any',
+    'vol' :["4","5"]
+}
+
 #similarity scale from observations:
 # 100=exact, 
 # 90=close to exact, 
@@ -90,17 +109,28 @@ params = {
 # 4 variance = at least 60 similarity score
 # so, converted variance = abs(variance*10 - 100)
 
-# print('searching')
-# search_obj = Search(params, json_entries)
-# search_obj.start()
-# matches = search_obj.get_matches()
-# print(matches)
+print('searching')
+search_obj = Search(params, json_entries)
+search_obj.start()
+matches = search_obj.get_matches()
+print(matches)
 
-# if matches != None:
-#     json.dumps(matches, indent=4)
+if matches != None:
+    json.dumps(matches, indent=4)
 
-#     for entry_id, match_data in matches.items():
-#         print(entry_id, match_data)
+    for entry_id, match_data in matches.items():
+        print(entry_id, match_data)
+print('test 2')
+search_obj = Search(params2, json_entries)
+search_obj.start()
+matches = search_obj.get_matches()
+print(matches)
+
+if matches != None:
+    json.dumps(matches, indent=4)
+
+    for entry_id, match_data in matches.items():
+        print(entry_id, match_data)
 
 
 # sorted_match = sort_methods.sort_frequency(matches)
