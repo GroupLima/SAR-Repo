@@ -1232,13 +1232,19 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  top: 20px;
-  left: 0;
-  border: 1px solid $light-gray;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px $dark-gray;
-  width: 100%;
-  padding: 25px;
+  padding: 20px;
+  
+  .container-about {
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    padding: 25px;
+    margin-top: 20px;
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+  }
 
   .column {
     float: left;
