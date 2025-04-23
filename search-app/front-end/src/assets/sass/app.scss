@@ -419,6 +419,10 @@ footer {
       border-radius: 50px;
       cursor: pointer;
       font-weight: bold;
+
+      &:hover {
+        background-color: color.adjust($primary-colour, $lightness: -10%);
+      }
     }
 
     @media (max-width: 768px) {
@@ -545,7 +549,7 @@ footer {
             cursor: pointer;
 
             &:hover {
-              background-color: darken($primary-colour, 10%);
+              background-color: color.adjust($primary-colour, $lightness: -10%);
             }
           }
 
@@ -678,7 +682,7 @@ footer {
             cursor: pointer;
 
             &:hover {
-              background-color: darken($primary-colour, 10%);
+              background-color: color.adjust($primary-colour, $lightness: -10%);
             }
 
               body.dark & {
@@ -725,7 +729,7 @@ footer {
       border-radius: 10px;
 
       &:hover:enabled {
-        background-color: $primary-colour;
+        background-color: color.adjust($primary-colour, $lightness: -10%);
         color: $secondary-colour;
         cursor: pointer;
       }
@@ -745,46 +749,20 @@ footer {
     margin-top: 20px;
 
     input[type="number"] {
-        width: 60px;
-        padding: 10px;
-        border: 1px solid #4a4a4a;
-        /* border-radius: 50px; */
-        font-size: 16px;
-        text-align: center;
-    }
-
-    button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 50px;
-        background-color: #6e0d25;
-        color: #ffffff;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-
-        &:hover {
-            background-color: color.adjust(#6e0d25, $lightness: 15%);
-        }
-    }
-  }
-
-  .go-to-page {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    input[type="number"] {
       width: 60px;
       padding: 5px;
       border: 1px solid $dark-gray;
       border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
     }
 
     button {
       @include button-base;
       background-color: $primary-colour;
       color: $secondary-colour;
+      padding: 10px 20px;
+      border-radius: 50px;
 
       &:hover {
         background-color: color.adjust($primary-colour, $lightness: 15%);
@@ -954,7 +932,7 @@ footer {
   font-size: 0.9rem;
   
   &:hover {
-    background-color: darken($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: -10%);
   }
 }
 
@@ -1000,7 +978,7 @@ footer {
   cursor: pointer;
  
   &:hover {
-    background-color: darken($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: -10%);
   }
 }
 
@@ -1092,7 +1070,7 @@ footer {
     cursor: pointer;
     
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
 }
@@ -1111,7 +1089,7 @@ footer {
   }
  
   .image-viewer {
-    background-color: lighten($dark-mode, 3%);
+    background-color: color.adjust($dark-mode, $lightness: 3%);
   }
   
   .records-container {
@@ -1120,7 +1098,7 @@ footer {
   }
   
   .nav-btn {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
    
@@ -1134,7 +1112,7 @@ footer {
   }
 
   .page-number-search {
-    background-color: darken($dark-mode, 3%);
+    background-color: color.adjust($dark-mode, $lightness: -3%);
   }
   
   .page-label, .page-total {
@@ -1142,13 +1120,13 @@ footer {
   }
   
   .page-number-input {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
     
     &:focus {
-      outline-color: lighten($primary-colour, 10%);
-      border-color: lighten($primary-colour, 10%);
+      outline-color: color.adjust($primary-colour, $lightness: 10%);
+      border-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
   
@@ -1157,7 +1135,7 @@ footer {
     color: $secondary-colour;
     
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
   
@@ -1175,7 +1153,7 @@ footer {
     color: $secondary-colour;
    
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
   
@@ -1188,7 +1166,7 @@ footer {
   }
   
   .volume-select {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
@@ -1210,7 +1188,7 @@ footer {
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
-      background-color: darken($dark-mode, 3%);
+      background-color: color.adjust($dark-mode, $lightness: -3%);
     }
   }
   
@@ -1222,7 +1200,7 @@ footer {
       color: $secondary-colour;
       
       &:hover {
-        background-color: darken($primary-colour, 10%);
+        background-color: color.adjust($primary-colour, $lightness: -10%);
       }
     }
   }
@@ -1313,7 +1291,7 @@ footer {
     align-items: center;
     
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
     
     .dropdown-arrow {
@@ -1625,7 +1603,7 @@ body.dark {
       cursor: pointer;
 
       &:hover {
-        background-color: darken($primary-colour, 10%);
+        background-color: color.adjust($primary-colour, $lightness: -10%);
       }
     }
 
