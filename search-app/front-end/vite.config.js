@@ -12,11 +12,19 @@ export default defineConfig({
   host: "0.0.0.0",
   proxy: {
    "/api": {
-    target: "http://localhost:8000",
+    target: "http://backend:8000", // Use Docker container name for better networking
     changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/api/, ""),
+    // REMOVE this rewrite line:
+    // rewrite: (path) => path.replace(/^\/api/, ""),
    },
   },
+  // Add this to allow your domain
+  hmr: {
+    clientPort: 443,
+    protocol: 'wss'
+  },
+  // Add the allowedHosts configuration
+  allowedHosts: ['sar2.andreasmaita.com', 'localhost']
  },
  resolve: {
   alias: {
