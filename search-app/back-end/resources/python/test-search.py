@@ -75,13 +75,12 @@ params = {
 """
 
 params = {
-    'qt' : 'basic_search',
-    'query' : 'holly',
+    'qt' : 'advanced_search',
+    'query' : 'ha',
     'rpp' : 5,
     'var' : 0,
     'sm' : 'word_start' ,
-    'vol' : ['4', '5'],
-    'lang' : 'any'
+    'pg': "1"
 }
 
 #similarity scale from observations:

@@ -50,14 +50,15 @@ class AdvancedSearchModel():
 
     def get_volume(self, volumes):
         """
-        parameters: volumes (tuple)
+        parameters: volumes (list)
         assume volumes is not None
 
         set all volumes to int type and return if in valid volumes
         """
         # write code here
-        valid_volumes = {1, 2, 4, 5, 6, 7, 8} # volume 3 does not exist
 
+        valid_volumes = {1, 2, 4, 5, 6, 7, 8} # volume 3 does not exist
+        if volumes is None: volumes = [1, 2, 4, 5, 6, 7, 8]
         try:
             volume_list = [int(volume) for volume in volumes]
             return set(volume for volume in volume_list if volume in valid_volumes) if volume_list else None

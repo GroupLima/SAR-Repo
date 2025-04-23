@@ -498,19 +498,19 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             5. (rpp) results per page
         
         */ //left is python right is vue
-        $permitted['query'] = $params['basicSearch'];
-        $permitted['qt'] = $params['query_type'];
-        $permitted['var'] = $params['variant'];
-        $permitted['sm'] = $params['methodSearch'];
-        $permitted['rpp'] = 5;
+        $permitted['query'] = $params['basicSearch'] ?? '';
+        $permitted['qt'] = $params['query_type'] ?? 'basic_search';
+        $permitted['var'] = $params['variant'] ?? 0;
+        $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
+        $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
 
         // advanced search params
-        $permitted['entry_id'] = $params['docId'];
-        $permitted['date_from'] = $params['startDate'];
-        $permitted['date_to'] = $params['endDate'];
-        $permitted['vol'] = $params['volumes'];
-        $permitted['page'] = $params['pageSearch'];
-        $permitted['lang'] = $params['language'];
+        $permitted['entry_id'] = $params['docId' ?? null];
+        $permitted['date_from'] = $params['startDate'] ?? null;
+        $permitted['date_to'] = $params['endDate'] ?? null;
+        $permitted['vol'] = $params['volumes'] ?? null;
+        $permitted['page'] = $params['pageSearch'] ?? null;
+        $permitted['lang'] = $params['language'] ?? null;
         
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
