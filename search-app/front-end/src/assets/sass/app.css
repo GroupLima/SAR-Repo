@@ -113,6 +113,7 @@ body.dark {
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
+  margin-left: 20px;
 }
 .navbar .nav-content .logo-section {
   color: #ffffff;
@@ -308,7 +309,7 @@ footer .footer-links-container .footer-links a:hover {
   flex: 1;
 }
 .home-page .home-description {
-  margin-top: 20px;
+  margin: 20px;
 }
 .home-page .home-description h1 {
   font-size: 3em;
@@ -1049,13 +1050,17 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  top: 20px;
-  left: 0;
+  padding: 20px;
+}
+.about-page .container-about {
   border: 1px solid #a69f9f;
   border-radius: 4px;
   box-shadow: 0 2px 5px #4a4a4a;
-  width: 100%;
   padding: 25px;
+  margin-top: 20px;
+}
+.about-page .container-about h1 {
+  margin-bottom: 20px;
 }
 .about-page .column {
   float: left;
