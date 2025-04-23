@@ -85,12 +85,12 @@ params = {
 
 params2 = {
     'qt' : 'advanced_search',
-    'query' : 'holly',
+    'query' : 'ho',
     'rpp' : 5,
     'var' : 0,
     'sm' : 'word_start' ,
-    'lang': 'any',
-    'vol' :["4","5"]
+    'lang': 'latin',
+    'vol' :[7]
 }
 
 #similarity scale from observations:
@@ -131,7 +131,7 @@ if matches != None:
 
     for entry_id, match_data in matches.items():
         print(entry_id, match_data)
-
+print(len(matches))
 
 # sorted_match = sort_methods.sort_frequency(matches)
 # print('sorted matches')
