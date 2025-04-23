@@ -88,16 +88,20 @@
                             
                             <h3>XQuery Syntax</h3>
                             <p>Basic XQuery expressions follow this format:</p>
-                            <pre>for $x in collection("documents")
-where $x/title contains text "keyword"
-return $x</pre>
+                            <pre>...</pre>
                             
                             <h3>Examples</h3>
-                            <p>Here are some example queries you can modify for your needs:</p>
+                            <p>Here are some example queries:</p>
                             <ul>
-                                <li>Search by date: <code>where $x/date >= "1800-01-01" and $x/date <= "1900-12-31"</code></li>
-                                <li>Search by author: <code>where $x/author = "Smith"</code></li>
-                                <li>Combine conditions: <code>where $x/title contains text "history" and $x/language = "english"</code></li>
+                                <li>Return all records in Latin: 
+                                    <br>
+                                    <code>declare namespace ns = "http://www.tei-c.org/ns/1.0";
+                                    for $i in //ns:div[@xml:lang="la"] return $i</code></li>
+                                    <br>
+                                    <li>Return all records in Scots: 
+                                    <br>
+                                    <code>declare namespace ns = "http://www.tei-c.org/ns/1.0";
+                                    for $i in //ns:div[@xml:lang="sc"] return $i</code></li>
                             </ul>
                         </div>
                     </div>
