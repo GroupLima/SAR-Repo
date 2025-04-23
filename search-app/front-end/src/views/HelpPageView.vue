@@ -37,10 +37,14 @@
 
                             <ul>
                                 <ul><b>Languages</b>: Filter by language (Any, Latin, Middle Scots, or Dutch)</ul>
-                                <ul><b>Variants</b>: Select the level of spelling variants to include (0-4)</ul>
-                                <ul><b>Results per page</b>: Choose how many results to display (5, 10, 20, 30, or 50)</ul>
-                                <ul><b>Sort by</b>: Select how to order your results (Frequency within result, Volume ascending/descending, or Chronological)</ul>
+                                <ul><b>Volume</b>: Select specific volumes to search (1, 2, 4, 5, 6, 7, 8) or choose "All"</ul>
+                                <ul><b>Page Search</b>: Find content on specific pages (enter page numbers)</ul>
+                                <ul><b>Entry</b>: Search for specific entry numbers</ul>
+                                <ul><b>Date Range</b>: Filter results by date (use the date pickers)</ul>
+                                <ul><b>Doc ID</b>: Search for a specific document ID (e.g., ARO-1-0001-01)</ul>
                             </ul>
+
+                            <p>Use "Reset Field Values" to clear all advanced search filters.</p>
                             
                         </div>
                     </div>
@@ -64,6 +68,10 @@
                             
                             <h3>XML View</h3>
                             <p>Click the "View XML" button to see the XML structure of a record.</p>
+
+                            <h3>Export PDF</h3>
+                            <p>Click the "Add to selected" checkbox and navigate to the nes "Selected" tab in the navigation bar to view all selected records.</p>
+                            <p>Click the "Export as PDF" button to download a PDF of the selected records, the "Remove" button to clear the corresponding record, or the "Clear All" button to clear all selected records.</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +84,7 @@
                     <div class="help-dropdown-content" :class="{ 'active': openSections.xquery }">
                         <div class="help-content">
                             <h3>Using XQuery</h3>
-                            <p>XQuery is a powerful query language for searching XML data. Use it to create complex queries for our database.</p>
+                            <p>XQuery is a powerful query language for searching XML data. Use it to create complex queries for the ARO database.</p>
                             
                             <h3>XQuery Syntax</h3>
                             <p>Basic XQuery expressions follow this format:</p>
