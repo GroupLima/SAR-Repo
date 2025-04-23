@@ -1,5 +1,5 @@
 # Use an official PHP runtime as a parent image for the back-end
-FROM php:8.4.6-cli AS backend
+FROM php:8.3.20-cli AS backend
 
 # Install system dependencies, including Python and necessary tools
 RUN apt-get update && apt-get install -y \

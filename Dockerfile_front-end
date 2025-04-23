@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image for the front-end
-FROM node:23-slim AS frontend
+FROM node:lts-slim AS frontend
 
 # Set working directory
 WORKDIR /app/search-app/front-end
@@ -10,6 +10,9 @@ RUN npm install
 
 # Copy the rest of the front-end source code
 COPY search-app/front-end .
+
+# Create a volume for node_modules
+VOLUME /app/search-app/front-end/node_modules
 
 # Expose ports for front-end
 EXPOSE 5173
