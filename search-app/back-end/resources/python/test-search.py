@@ -78,7 +78,7 @@ params = {
     'qt' : 'advanced_search',
     'query' : 'holly',
     'rpp' : 5,
-    'var' : 3,
+    'var' : 0,
     'sm' : 'word_start' ,
     'vol' : ['4', '5'],
     'lang' : 'any'

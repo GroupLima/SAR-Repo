@@ -215,7 +215,10 @@ class Search():
             for entry_id in self.matches.keys():
                 advs_entries[entry_id] = self.json_entries[entry_id]
             search_obj = Advanced_Search(self.lang, self.page, self.vol, self.entry_id, self.date_from, self.date_to)
-            self.matches = search_obj.filter_entries(advs_entries)
+            adv_matches = search_obj.filter_entries(advs_entries)
+            for id in list(self.matches):
+                if id not in adv_matches:
+                    del self.matches[id]
         
         # self.matches = {'ARO-1-0001-03' : {
         #     'accuracy_score' : 20,
