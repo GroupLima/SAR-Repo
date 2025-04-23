@@ -188,6 +188,7 @@ onMounted(() => {
                                 <option value="latin">Latin</option>
                                 <option value="scots">Middle Scots</option>
                                 <option value="dutch">Dutch</option>
+                                <option value="multiple">Multiple</option>
                             </select>
                         </div>
                         <!-- <div class="advanced-option">
@@ -217,7 +218,7 @@ onMounted(() => {
                             <input type="search" v-model="form.pageSearch" id="page-search" placeholder="1, 69, 591...">
                         </div>
                         <!-- We need a constraint to restrict between 1 and the number of entries -->
-                        <div class="advanced-option">
+                        <div class="advanced-option" style="display: none;">
                             <h3 class="option-title">Entry</h3>
                             <input type="search" v-model="form.entrySearch" id="entry-search" placeholder="1, 2, 3, 4...">
                         </div>

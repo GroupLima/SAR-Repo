@@ -23,6 +23,10 @@ const props = defineProps({
     htmldate: {
         type: String,
         required: true
+    },
+    htmllang: {
+        type: String,
+        required: true
     }
 })
 
@@ -58,7 +62,8 @@ const openContentInBrowse = () => {
                 ID: {{ id }},
                 Volume: {{ htmlvolume }}, 
                 Page: {{ htmlpage }},
-                Date: {{ htmldate }}
+                Date: {{ htmldate }},
+                Language: {{ htmllang }}
             </p>
             <div class="result-buttons">
                 <button v-if="!isCopied"

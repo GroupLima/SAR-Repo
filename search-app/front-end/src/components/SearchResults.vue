@@ -186,6 +186,7 @@ const showHelpPage = () => {
                     :htmlvolume="result.volume" 
                     :htmlpage="result.page"
                     :htmldate="result.date"
+                    :htmllang="result.lang"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
