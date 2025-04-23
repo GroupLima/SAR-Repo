@@ -544,7 +544,7 @@ footer {
             cursor: pointer;
 
             &:hover {
-              background-color: $dark-gray;
+              background-color: darken($primary-colour, 10%);
             }
           }
 
@@ -677,7 +677,8 @@ footer {
             cursor: pointer;
 
             &:hover {
-              background-color: $light-gray;
+              background-color: darken($primary-colour, 10%);
+            }
 
               body.dark & {
                 background-color: $dark-gray;
@@ -818,7 +819,7 @@ footer {
       width: 1000px;
     }
   }
-}
+
 
 // browser page
 // Using existing variables
@@ -1247,14 +1248,13 @@ footer {
     text-align: justify;
 
     img {
-      width: auto;
-      height: 300px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      width: 100%;
+      max-width: 600px; /* or any max width you prefer */
+      height: auto;
+      display: block; /* ensures margin centering works */
       margin-left: auto;
       margin-right: auto;
-    }
+    }    
   }
 
   .row:after {
@@ -1265,23 +1265,177 @@ footer {
 }
 
 // Help Page
-.HelpPage {
-  background-color: $primary-colour;
-  color: $secondary-colour;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 50px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0%;
-  right: 20px;
-  z-index: 10;
+.help-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+  
+  .container-help {
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    padding: 25px;
+    margin-top: 20px;
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+    
+    .help-intro {
+        margin-bottom: 30px;
+    }
+  }
+  
+  .help-section {
+    margin-bottom: 20px;
+  }
+  
+  .help-dropdown-button {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    padding: 12px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &:hover {
+      background-color: darken($primary-colour, 10%);
+    }
+    
+    .dropdown-arrow {
+      transition: transform 0.3s;
+      font-size: 0.8em;
+      
+      &.open {
+          transform: rotate(180deg);
+      }
+    }
+  }
+  
+  .help-dropdown-content {
+      display: none;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      
+      &.active {
+          display: block;
+          max-height: 1000px;
+          border: 1px solid $light-gray;
+          border-top: none;
+          border-radius: 0 0 4px 4px;
+      }
+      
+      .help-content {
+          padding: 20px;
+          
+          h3 {
+              margin-top: 15px;
+              margin-bottom: 10px;
+              color: $dark-gray;
+              
+              &:first-child {
+                  margin-top: 0;
+              }
+          }
+          
+          p {
+              margin-bottom: 15px;
+          }
+          
+          ul {
+              padding-left: 20px;
+              margin-bottom: 15px;
+              
+              li {
+                  margin-bottom: 5px;
+              }
+          }
+          
+          pre, code {
+              background-color: #f5f5f5;
+              padding: 8px;
+              border-radius: 4px;
+              overflow-x: auto;
+              font-family: monospace;
+              margin: 10px 0;
+              border: 1px solid $light-gray;
+          }
+          
+          code {
+              padding: 2px 5px;
+              display: inline;
+          }
+      }
+  }
+}
+
+// Dark mode styles
+body.dark {
+  .help-page {
+      .container-help {
+          background-color: $dark-mode;
+          border-color: $light-gray;
+          
+          h1 {
+              color: $secondary-colour;
+          }
+      }
+      
+      .help-dropdown-button {
+          background-color: $primary-colour;
+          
+          &:hover {
+              background-color: color.adjust($primary-colour, $lightness: 10%);
+          }
+      }
+      
+      .help-dropdown-content {
+          border-color: $light-gray;
+          
+          .help-content {
+              background-color: $dark-mode;
+              color: $secondary-colour;
+              
+              h3 {
+                  color: $secondary-colour;
+              }
+              
+              pre, code {
+                  background-color: color.adjust($dark-mode, $lightness: -5%);
+                  color: $secondary-colour;
+                  border-color: $light-gray;
+              }
+          }
+      }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .help-page {
+      padding: 10px;
+      
+      .container-help {
+          padding: 15px;
+      }
+      
+      .help-dropdown-button {
+          padding: 10px 15px;
+      }
+      
+      .help-dropdown-content .help-content {
+          padding: 15px;
+      }
+  }
 }
 
 
@@ -1464,7 +1618,7 @@ footer {
       cursor: pointer;
 
       &:hover {
-        background-color: $dark-gray;
+        background-color: darken($primary-colour, 10%);
       }
     }
 
