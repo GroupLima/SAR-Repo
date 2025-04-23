@@ -44,7 +44,7 @@ class AdvancedSearchModel():
         convert into list of integer pages, removing spaces and commas
         """
         try:
-            return set([int(page.strip()) for page in pages.split(",")]) if pages else None
+            return set([page.strip() for page in pages.split(",")]) if pages else None
         except:
             raise InvalidPageInputError(pages)
 
@@ -90,6 +90,5 @@ class AdvancedSearchModel():
             parts = [int(num) for num in date.split("-")]
             if len(parts) != 3:
                 return parts 
-            raise InvalidDateInputError(date)
         except:
             raise InvalidDateInputError(date)

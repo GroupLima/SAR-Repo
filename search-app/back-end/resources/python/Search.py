@@ -244,7 +244,7 @@ class Search():
         self.date_to = self.params.get('date_to')
         self.date_from = self.params.get('date_from')
         self.vol = self.params.get('vol')
-        self.pg = self.params.get('page')
+        self.page = self.params.get('page')
         self.lang = self.params.get('lang')
 
 

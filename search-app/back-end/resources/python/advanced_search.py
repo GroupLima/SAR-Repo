@@ -37,7 +37,7 @@ class Advanced_Search():
         # check whether the given input arguments match the entry attributes
         if args.language: 
             if not entry_data.get('lang') and args.language != entry_data['lang']:
-                return False #hmohhhoops sorryyyyyy
+                return False
         if args.pages:
             if not entry_data.get('page') or entry_data['page'] not in args.pages:
                 return False
@@ -47,8 +47,9 @@ class Advanced_Search():
         if args.date_from:
             if not entry_data.get('date') or not AdvancedSearchMethods.is_after_date(entry_data['date'], args.date_from):
                 return False
-        if args.date_to and not AdvancedSearchMethods.is_before_date(entry_data['date'], args.date_to):
-            return False
+        if args.date_to:
+            if not entry_data.get('date') or not AdvancedSearchMethods.is_before_date(entry_data['date'], args.date_to):
+                return False
         if args.entry_id:
             if not entry_data.get('id') or args.entry_id != entry_data['id']:
                 return False

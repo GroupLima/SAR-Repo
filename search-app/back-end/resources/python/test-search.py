@@ -76,11 +76,21 @@ params = {
 
 params = {
     'qt' : 'advanced_search',
-    'query' : 'ha',
+    'query' : 'ho',
     'rpp' : 5,
     'var' : 0,
     'sm' : 'word_start' ,
-    'pg': "1"
+    'lang': 'dutch'
+}
+
+params2 = {
+    'qt' : 'advanced_search',
+    'query' : 'holly',
+    'rpp' : 5,
+    'var' : 0,
+    'sm' : 'word_start' ,
+    'lang': 'any',
+    'page' :'0333'
 }
 
 #similarity scale from observations:
@@ -101,6 +111,17 @@ params = {
 
 print('searching')
 search_obj = Search(params, json_entries)
+search_obj.start()
+matches = search_obj.get_matches()
+print(matches)
+
+if matches != None:
+    json.dumps(matches, indent=4)
+
+    for entry_id, match_data in matches.items():
+        print(entry_id, match_data)
+print('test 2')
+search_obj = Search(params2, json_entries)
 search_obj.start()
 matches = search_obj.get_matches()
 print(matches)

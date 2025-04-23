@@ -483,7 +483,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function simplify_search_params($params){
 
         //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'pg', 'pr', 'lang', 'page'];
+        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page'];
 
         $permitted = [];
 
@@ -535,7 +535,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function filter_and_format($permitted) {
 
         $query_type = $permitted['qt'];
-        $current_page = $permitted['page'];
+        $current_page = 1;
         $results_per_page = $permitted['rpp'];
 
         if (strtolower($query_type) == 'xquery'){
