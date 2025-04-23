@@ -9,7 +9,7 @@ which search functions need to be executed.
 """
 
 class AdvancedSearchModel():
-    def __init__(self, language, page, volume, entry_id, date_from, date_to):
+    def __init__(self, language, pages, volumes, entry_id, date_from, date_to):
         #self.user_input = user_input # String
         #self.variants = variants # Integer
         #self.number_results = number_results # Integer
@@ -18,14 +18,14 @@ class AdvancedSearchModel():
         #self.paragraph = paragraph # String or Null
 
         self.language = self.get_language(language) # String or Null
-        self.page = self.get_pages(page) # Integer or Null
-        self.volumes = self.get_volume(volume) # Integer or Null
+        self.pages = self.get_pages(pages) # Integer or Null
+        self.volumes = self.get_volume(volumes) # Integer or Null
         self.entry_id = self.get_entry_id(entry_id) # String or Null
-        self.from_date = self.get_date(date_from) # String or Null
-        self.to_date = self.get_date(date_to) # String or Null
+        self.date_from = self.get_date(date_from) # String or Null
+        self.date_to = self.get_date(date_to) # String or Null
         
 
-    def get_language(self, language) -> str:
+    def get_language(self, language):
         """
         parameters: language (string)
         assume language and is not None
@@ -34,9 +34,9 @@ class AdvancedSearchModel():
         otherwise return 'any' where no language filtering is required
         """
         valid_languages = {'latin', 'middle scots', 'dutch'}
-        return language if language.lower() in valid_languages else 'any' # case insensitive
+        return language if language and language.lower() in valid_languages else 'any' # case insensitive
     
-    def get_pages(self, pages) -> set:
+    def get_pages(self, pages):
         """
         parameters: pages (string of page ints: "1, 40, 28")
         assume page is not None
@@ -44,11 +44,11 @@ class AdvancedSearchModel():
         convert into list of integer pages, removing spaces and commas
         """
         try:
-            return set([int(page.strip()) for page in pages.split(",")])
+            return set([int(page.strip()) for page in pages.split(",")]) if pages else None
         except:
             raise InvalidPageInputError(pages)
 
-    def get_volume(self, volumes) -> set:
+    def get_volume(self, volumes):
         """
         parameters: volumes (tuple)
         assume volumes is not None
@@ -59,11 +59,12 @@ class AdvancedSearchModel():
         valid_volumes = {1, 2, 4, 5, 6, 7, 8} # volume 3 does not exist
 
         try:
-            return set([int(volume) for volume in volumes if int(volume) in valid_volumes])
+            volume_list = [int(volume) for volume in volumes]
+            return set(volume for volume in volume_list if volume in valid_volumes) if volume_list else None
         except:
             raise InvalidVolumeInputError(volumes)
 
-    def get_entry_id(self, entry_id) -> str:
+    def get_entry_id(self, entry_id):
         """
         parameters: entry_id (string), id_pattern_param (string)
         assume entry_id and id_pattern_param are not None
@@ -75,8 +76,8 @@ class AdvancedSearchModel():
         
         #write code here
         id_pattern = '^ARO-\d-\d{1,4}-\d{2}$'
-        
-        if re.match(entry_id, id_pattern) or not entry_id:
+        if not entry_id: return None
+        if re.match(id_pattern, entry_id):
             return entry_id
         raise InvalidAROFormatError(entry_id)
     
@@ -84,6 +85,10 @@ class AdvancedSearchModel():
     def get_date(self, date):
         #splits into 3 numbers: year, month, day
         try:
-            return ([int(num) for num in date.split("-")]) if not date else None
+            if not date: return None
+            parts = [int(num) for num in date.split("-")]
+            if len(parts) != 3:
+                return parts 
+            raise InvalidDateInputError(date)
         except:
             raise InvalidDateInputError(date)

@@ -503,6 +503,14 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['var'] = $params['variant'];
         $permitted['sm'] = $params['methodSearch'];
         $permitted['rpp'] = 5;
+
+        // advanced search params
+        $permitted['entry_id'] = $params['docId'];
+        $permitted['date_from'] = $params['startDate'];
+        $permitted['date_to'] = $params['endDate'];
+        $permitted['vol'] = $params['volumes'];
+        $permitted['page'] = $params['pageSearch'];
+        $permitted['lang'] = $params['language'];
         
         //create permitted list of valid parameters relevent to the type of search the user is making
         foreach ($param_keys as $param){
