@@ -513,11 +513,11 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['lang'] = $params['language'] ?? null;
         
         //create permitted list of valid parameters relevent to the type of search the user is making
-        foreach ($param_keys as $param){
-            if (isset($params[$param])) {
-                $permitted[$param] = $params[$param];
-            }
-        }
+        // foreach ($param_keys as $param){
+        //     if (isset($params[$param])) {
+        //         $permitted[$param] = $params[$param];
+        //     }
+        // }
         return $permitted;
     }
 

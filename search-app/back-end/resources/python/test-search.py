@@ -90,7 +90,7 @@ params2 = {
     'var' : 0,
     'sm' : 'word_start' ,
     'lang': 'any',
-    'page' :'0333'
+    'vol' :["4","5"]
 }
 
 #similarity scale from observations:
