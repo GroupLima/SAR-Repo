@@ -68,7 +68,7 @@ const search = async() => {
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});
-        //console.log("results", response);
+        console.log("results", response);
         //console.log("data", response.data);
         if (response.data.success) {
             state.results = response.data.results;
@@ -78,6 +78,7 @@ const search = async() => {
             state.total_results = response.data.total_results || 0;
             state.frozen_variant = response.data.variant*10;
             state.total_pages = Math.ceil(state.total_results / state.results_per_page);
+            //console.log('date', state.results['ARO-5-0333-01'].date);
         } else {
             console.log("no debug results");
             console.log(response);
@@ -186,7 +187,8 @@ const showHelpPage = () => {
                     :htmlContent="result.highlighted_html"
                     :htmlvolume="result.volume" 
                     :htmlpage="result.page"
-                    :htmldate="result.date"
+                    :date="result.date"
+                    :htmllang="result.lang"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
             </div>

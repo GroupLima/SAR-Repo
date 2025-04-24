@@ -35,8 +35,8 @@ class Advanced_Search():
     
     def is_valid_entry(self, args, entry_data):
         # check whether the given input arguments match the entry attributes
-        if args.language: 
-            if not entry_data.get('lang') and args.language != entry_data['lang']:
+        if args.language and args.language != 'any': 
+            if not entry_data.get('lang') or args.language != entry_data['lang']:
                 return False
         if args.pages:
             if not entry_data.get('page') or entry_data['page'] not in args.pages:
