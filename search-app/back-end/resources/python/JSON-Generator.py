@@ -96,8 +96,21 @@ class JSONGenerator():
 
               # include content from the <head> tag, as part of content
               head_tag = entry.find('./tei:head', namespaces=JSONGenerator.NS)
-              if head_tag and head_tag.text:
-                  entry_content += re.sub(r'\s+', ' ', head_tag.text) + ' '
+              if head_tag is not None:
+                  # Extract text content and any text directly within <head>
+                  head_text_parts = []
+                  if head_tag.text:
+                      head_text_parts.append(head_tag.text.strip())
+                  for element in head_tag:
+                      # Capture text within child elements
+                      if element.text:
+                          head_text_parts.append(element.text.strip())
+                      # Capture tail text of child elements
+                      if element.tail:
+                          head_text_parts.append(element.tail.strip())
+                  if head_text_parts:
+                      entry_content += re.sub(r'\s+', ' ', ' '.join(head_text_parts)).strip() + ' '
+
 
               content_tags = entry.findall('./tei:p', namespaces=JSONGenerator.NS)
               #print(content_tags)
