@@ -614,17 +614,24 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                     $htmlcontent = $this->convert_to_html($content);
                     $htmlvolume = $this->convert_to_html($volume);
                     $htmlpage = $this->convert_to_html($page);
-                    $htmldate = $this->convert_to_html($date);
+                    //$htmldate = $this->convert_to_html($date);
                     $htmllang = $this->convert_to_html($language_full);
                     
                     $matches = $entry['matches'];
                     $highlighted_html = $this->highlight($htmlcontent, $matches);
+                    // $display_results[$entry_id] = [
+                    //     'highlighted_html' => $highlighted_html,
+                    //     'volume' => $htmlvolume,
+                    //     'page' => $htmlpage,
+                    //     'date' => $htmldate,
+                    //     'lang' => $htmllang,
+                    // ];
                     $display_results[$entry_id] = [
                         'highlighted_html' => $highlighted_html,
-                        'volume' => $htmlvolume,
-                        'page' => $htmlpage,
-                        'date' => $htmldate,
-                        'lang' => $htmllang,
+                        'volume' => $volume,
+                        'page' => $page,
+                        'date' => $date,
+                        'lang' => $language_full,
                     ];
                 }
             }
