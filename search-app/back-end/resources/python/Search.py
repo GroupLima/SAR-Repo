@@ -211,7 +211,7 @@ class Search():
         self.matches = search_obj.find_matches()
         
         if qt == 'advanced_search':
-            if self.query == "*":
+            if self.query == ".*":
                 for entry_id in self.json_entries.keys():
                     self.matches[entry_id] = {
                         'accuracy_score' : 100,
