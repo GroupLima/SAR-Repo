@@ -33,8 +33,8 @@ class AdvancedSearchModel():
         return the language if it is in list of valid languages
         otherwise return 'any' where no language filtering is required
         """
-        valid_languages = {'latin', 'middle scots', 'dutch'}
-        return language if language and language.lower() in valid_languages else 'any' # case insensitive
+        valid_languages = {'latin':'la', 'scots':'sc', 'dutch':'nl', 'multiple':'mul'}
+        return valid_languages[language] if language and language.lower() in valid_languages else 'any' # case insensitive
     
     def get_pages(self, pages):
         """

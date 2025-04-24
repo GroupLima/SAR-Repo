@@ -595,25 +595,44 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             // get results from the array of match_results staring at $start_of_page for length of $results_per_page
             $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);
             
+            $language_map = [ // better names of languages to be displayed
+                'sc' => 'Middle Scots',
+                'la' => 'Latin',
+                'mul' => 'Multiple'
+            ];
+
             if ($page_results != null){
                 foreach ($page_results as $entry_id => $entry) {
                     $content = $this->jsonData[$entry_id]['content'];
                     $volume = $this->jsonData[$entry_id]['volume'];
                     $page = $this->jsonData[$entry_id]['page'];
                     $date = $this->jsonData[$entry_id]['date'];
+                    $language_code = $this->jsonData[$entry_id]['lang'];
+
+                    // Map the language code to a full name
+                    $language_full = $language_map[$language_code] ?? $language_code;
 
                     $htmlcontent = $this->convert_to_html($content);
                     $htmlvolume = $this->convert_to_html($volume);
                     $htmlpage = $this->convert_to_html($page);
-                    $htmldate = $this->convert_to_html($date);
+                    //$htmldate = $this->convert_to_html($date);
+                    $htmllang = $this->convert_to_html($language_full);
                     
                     $matches = $entry['matches'];
                     $highlighted_html = $this->highlight($htmlcontent, $matches);
+                    // $display_results[$entry_id] = [
+                    //     'highlighted_html' => $highlighted_html,
+                    //     'volume' => $htmlvolume,
+                    //     'page' => $htmlpage,
+                    //     'date' => $htmldate,
+                    //     'lang' => $htmllang,
+                    // ];
                     $display_results[$entry_id] = [
                         'highlighted_html' => $highlighted_html,
-                        'volume' => $htmlvolume,
-                        'page' => $htmlpage,
-                        'date' => $htmldate,
+                        'volume' => $volume,
+                        'page' => $page,
+                        'date' => $date,
+                        'lang' => $language_full,
                     ];
                 }
             }

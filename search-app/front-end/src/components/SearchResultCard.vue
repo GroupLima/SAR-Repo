@@ -1,6 +1,6 @@
 <script setup>
 import router from '@/router';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 
 const props = defineProps({
@@ -20,7 +20,11 @@ const props = defineProps({
         type: String,
         required: true
     },
-    htmldate: {
+    date: {
+        type: Object,
+        required: true
+    },
+    htmllang: {
         type: String,
         required: true
     }
@@ -48,6 +52,36 @@ const openContentInBrowse = () => {
     });
 }
 
+// return date string and date certainty
+const formatDate = () => {
+    const certainty = props.date?.cert ?? null;
+    const when = props.date?.when ?? null;
+    let dateStr = "unknown";
+
+    if (when){
+        dateStr = when;
+    } else{
+        const from = props.date?.from ?? null;
+        const to = props.date?.to ?? null;
+        if (from && to){
+            dateStr = `${from} - ${to}`;
+        } else if (from){
+            dateStr = from;
+        } else if (to){
+            dateStr = to;
+        }
+    }
+    console.log(date, certainty);
+    return {date: dateStr, certainty: certainty};
+}
+const date = ref("");
+const certainty = ref("");
+
+onMounted(() =>{
+    const dateResult = formatDate();
+    date.value = dateResult.date;
+    certainty.value = dateResult.certainty;
+});
 </script>
 <!-- view for one entry of the results -->
 <template>
@@ -58,7 +92,9 @@ const openContentInBrowse = () => {
                 ID: {{ id }},
                 Volume: {{ htmlvolume }}, 
                 Page: {{ htmlpage }},
-                Date: {{ htmldate }}
+                Date: {{ date }},
+                Certainty Level: {{ certainty }},
+                Language: {{ htmllang }}
             </p>
             <div class="result-buttons">
                 <button v-if="!isCopied"

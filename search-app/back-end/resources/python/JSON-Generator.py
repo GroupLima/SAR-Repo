@@ -34,7 +34,7 @@ class EntryObject():
 class JSONGenerator():
   #create json file for all of this information eventually?
   volumes1_7path = Path(__file__).resolve().parent.parent.parent / 'storage/app/xml-files/XML files volumes 1-7' # path to XML file entries volumes 1-7
-  volume8path = Path(__file__).resolve().parent.parent.parent / 'storage/app/xml-files/XML files volume 8'
+  volume8path = Path(__file__).resolve().parent.parent.parent / 'storage/app/xml-files/XML files volume 8' # path to XML file entries volume 8
   json_filepath = Path(__file__).resolve().parent.parent / 'json' / 'entries.json'
   NS = {
       'tei' : 'http://www.tei-c.org/ns/1.0',
@@ -53,9 +53,33 @@ class JSONGenerator():
         if os.path.isfile(file) and file.lower().endswith('.xml'):
           self.xml_files.append(file)
 
+  def get_date(self, entry_date):
+    date_obj = {}
+      # date can either be when or from/to
+    date_when = entry_date.attrib.get('when')
+    if date_when:
+      date_obj['when'] = date_when
+
+    else:
+      date_from = entry_date.attrib.get('from')
+      if date_from:
+        date_obj['from'] = date_from
+
+      date_to = entry_date.attrib.get('to')
+      if date_to:
+        date_obj['to'] = date_to
+
+    date_cert = entry_date.attrib.get('cert')
+    if date_cert:
+      date_obj['cert'] = date_cert
+
+    return date_obj
+              
+
+
   #generate entry objects and add them to the object's dictionary
   def populate_entries_array(self):
-    print('adding', len(self.xml_files), 'entries')
+    print('adding', len(self.xml_files), 'xml files')
     if self.xml_files != []:
       for file_path in self.xml_files:
 
@@ -76,7 +100,8 @@ class JSONGenerator():
 
           #set date if date exists
           entry_date = item.find('tei:p/tei:date', namespaces=JSONGenerator.NS)
-          entry_date = entry_date.attrib.get('when') if entry_date is not None else None
+          if entry_date is not None:
+            entry_date = self.get_date(entry_date)
 
           #print('date', entry_date)
           entry_elements = item.findall('tei:div', namespaces=JSONGenerator.NS)
@@ -93,6 +118,25 @@ class JSONGenerator():
               entry_volume, entry_page, entry_chapter = map(str, entry_id.split('-')[1:])
 
               entry_content = ''
+
+              # include content from the <head> tag, as part of content
+              head_tag = entry.find('./tei:head', namespaces=JSONGenerator.NS)
+              if head_tag is not None:
+                  # Extract text content and any text directly within <head>
+                  head_text_parts = []
+                  if head_tag.text:
+                      head_text_parts.append(head_tag.text.strip())
+                  for element in head_tag:
+                      # Capture text within child elements
+                      if element.text:
+                          head_text_parts.append(element.text.strip())
+                      # Capture tail text of child elements
+                      if element.tail:
+                          head_text_parts.append(element.tail.strip())
+                  if head_text_parts:
+                      entry_content += re.sub(r'\s+', ' ', ' '.join(head_text_parts)).strip() + ' '
+
+
               content_tags = entry.findall('./tei:p', namespaces=JSONGenerator.NS)
               #print(content_tags)
               if content_tags:
@@ -168,7 +212,7 @@ class JSONGenerator():
           #print('file exists')
           #print(self.entry_objects)
           json.dump(self.entry_objects, json_file, indent=4)
-        print('\nentries successfully generated in ', json_filepath)
+        print('\nentry data successfully written to ', json_filepath)
 
     except FileNotFoundError as e:
       print(f'Error: {e}')
@@ -176,7 +220,7 @@ class JSONGenerator():
       print(e, '\nwasn\'t able to generate json file')
 
   def describe():
-    print('\n********************************************')
+    print('\n*************ABOUT PROGRAM******************')
     print('\nthis python file generates a json file consisting of entries from xml files')
     print('the default json path is ', JSONGenerator.json_filepath)
     print('\n********************************************\n')
@@ -217,10 +261,10 @@ def main():
       if xml_dir == '':
         xml_dir == None
       if json_file == '':
-        print('...\ngenerating entries at ', JSONGenerator.json_filepath)
+        print('...\nwriting entry data to ', JSONGenerator.json_filepath)
         json_file == None
       else:
-        print('...\ngenerating entries at ', json_file)
+        print('...\nwriting entry data to ', json_file)
       #loop through xml and create an Entry object for each entry. return a dictionary of objects inside a json file
       generator = JSONGenerator()
       generator.generate_json_entries(xml_dir, json_file)

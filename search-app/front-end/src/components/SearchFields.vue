@@ -65,9 +65,12 @@ const toggleAllVolumes = () => {
 };
 
 const handleSearch = () => {
-    if (allValidInput) {
+    if (allValidInput()) {
         form.query_type = getSearchType();
         try {
+            if (form.basicSearch.trim() === "") {
+                form.basicSearch = ".*" // allow searching though all docs with no query
+            }
             passFormValues();
         } catch (error) {
             console.error("error with search form", error);
@@ -78,6 +81,13 @@ const handleSearch = () => {
 const allValidInput = () => {
     //return true if all inputs are valid
     //return false otherwise and apply appropriate action
+    const searchType = getSearchType();
+    
+    // if basic search, require a non-empty search bar input
+    if (searchType === "basic_search" && form.basicSearch.trim() === "") {
+        alert("Please enter a query in the search bar or select an Advanced Search option");
+        return false;
+    }
 
     return true; //remove once implemented
 };
@@ -192,6 +202,7 @@ onMounted(() => {
                                 <option value="latin">Latin</option>
                                 <option value="scots">Middle Scots</option>
                                 <option value="dutch">Dutch</option>
+                                <option value="multiple">Multiple</option>
                             </select>
                         </div>
                         <!-- <div class="advanced-option">
@@ -221,7 +232,7 @@ onMounted(() => {
                             <input type="search" v-model="form.pageSearch" id="page-search" placeholder="1, 69, 591...">
                         </div>
                         <!-- We need a constraint to restrict between 1 and the number of entries -->
-                        <div class="advanced-option">
+                        <div class="advanced-option" style="display: none;">
                             <h3 class="option-title">Entry</h3>
                             <input type="search" v-model="form.entrySearch" id="entry-search" placeholder="1, 2, 3, 4...">
                         </div>
