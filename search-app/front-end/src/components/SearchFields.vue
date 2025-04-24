@@ -2,6 +2,9 @@
 <script setup>
 import router from '@/router';
 import { reactive, ref, toRaw, onMounted, computed } from 'vue';
+import { useRoute } from 'vue-router'; // Import the useRoute hook
+
+const route = useRoute();
 
 const form = reactive({
     query_type: "basic_search",
@@ -97,6 +100,7 @@ const setSearchBoxValue = () => {
     form.startDate = urlParams.get('startDate') || form.startDate;
     form.endDate = urlParams.get('endDate') || form.endDate;
     form.docId = urlParams.get('docId') || form.docId;
+    form.resultsPerPage = Number(route.query.resultsPerPage) || form.resultsPerPage;
 };
 
 const resetAdvancedSearch = () => {
