@@ -205,13 +205,10 @@ class Search():
         #self.order_by(self.sort_criteria)
 
     def start(self):
-        if self.query == "":
-            self.query = "*"
         qt = self.params['qt'] # query type: basic or advanced
-        
-        if self.query != "*":  
-            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
-            self.matches = search_obj.find_matches()
+          
+        search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+        self.matches = search_obj.find_matches()
         
         if qt == 'advanced_search':
             if self.query == "*":
