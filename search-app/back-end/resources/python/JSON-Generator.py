@@ -93,6 +93,12 @@ class JSONGenerator():
               entry_volume, entry_page, entry_chapter = map(str, entry_id.split('-')[1:])
 
               entry_content = ''
+
+              # include content from the <head> tag, as part of content
+              head_tag = entry.find('./tei:head', namespaces=JSONGenerator.NS)
+              if head_tag and head_tag.text:
+                  entry_content += re.sub(r'\s+', ' ', head_tag.text) + ' '
+
               content_tags = entry.findall('./tei:p', namespaces=JSONGenerator.NS)
               #print(content_tags)
               if content_tags:
