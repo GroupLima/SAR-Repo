@@ -85,12 +85,11 @@ params = {
 
 params2 = {
     'qt' : 'advanced_search',
-    'query' : 'ho',
+    'query' : 'holly',
     'rpp' : 5,
     'var' : 0,
-    'sm' : 'word_start' ,
-    'lang': 'latin',
-    'vol' :[7]
+    'sm' : 'word_start',
+    'date_from' : '1457-10-12'
 }
 
 #similarity scale from observations:
@@ -110,16 +109,16 @@ params2 = {
 # so, converted variance = abs(variance*10 - 100)
 
 print('searching')
-search_obj = Search(params, json_entries)
-search_obj.start()
-matches = search_obj.get_matches()
-print(matches)
+# search_obj = Search(params, json_entries)
+# search_obj.start()
+# matches = search_obj.get_matches()
+# print(matches)
 
-if matches != None:
-    json.dumps(matches, indent=4)
+# if matches != None:
+#     json.dumps(matches, indent=4)
 
-    for entry_id, match_data in matches.items():
-        print(entry_id, match_data)
+#     for entry_id, match_data in matches.items():
+#         print(entry_id, match_data)
 print('test 2')
 search_obj = Search(params2, json_entries)
 search_obj.start()

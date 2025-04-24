@@ -88,7 +88,8 @@ class AdvancedSearchModel():
         try:
             if not date: return None
             parts = [int(num) for num in date.split("-")]
-            if len(parts) != 3:
+            if len(parts) == 3:
                 return parts 
+            raise InvalidDateInputError(date)
         except:
             raise InvalidDateInputError(date)

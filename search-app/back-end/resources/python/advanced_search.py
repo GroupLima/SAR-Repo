@@ -23,7 +23,7 @@ class Advanced_Search():
             date_from = self.date_from, 
             date_to = self.date_to
         )
-
+        #print('date to', args.date_to)
         # loop through all json entries
         valid_entries = {}
         for entry_id, entry_data in json_entries.items():
@@ -47,24 +47,17 @@ class Advanced_Search():
         if args.date_from:
             if not entry_data.get('date') or not AdvancedSearchMethods.is_after_date(entry_data['date'], args.date_from):
                 return False
+        #print(entry_data.get('date'), end="")
+        #print(f' is none or after { args.date_from }')
         if args.date_to:
             if not entry_data.get('date') or not AdvancedSearchMethods.is_before_date(entry_data['date'], args.date_to):
                 return False
+        #print(entry_data.get('date'), end="")
+        #print(f' is none or before {args.date_to}')
         if args.entry_id:
             if not entry_data.get('id') or args.entry_id != entry_data['id']:
                 return False
         return True
-
-
-
-def get_date_int(date):
-    date_int = 0
-    date_int += date[0] << 7
-    if len(date) > 1:
-        date_int += date[1] << 3
-        if len(date) > 2:
-            date_int += date[2]
-    return date_int
 
 
 # add more functions if required
