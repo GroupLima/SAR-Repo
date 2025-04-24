@@ -20,7 +20,7 @@ const state = reactive({
     error: "",
     isLoading: true,
     current_page: 1,
-    results_per_page: 5,
+    results_per_page: Number(props.queryParams.resultsPerPage) || 5,
     total_pages: 1,
     searchMethod: props.queryParams.methodSearch || 'word_start',
     variants: props.queryParams.variant || '0'
