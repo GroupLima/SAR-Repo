@@ -503,7 +503,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['var'] = $params['variant'] ?? 0;
         $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
         $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
-        $permitted['pageNo'] = $params['pageNo'];
+        $permitted['pageNo'] = $params['page'];
 
         // advanced search params
         $permitted['entry_id'] = $params['docId' ?? null];

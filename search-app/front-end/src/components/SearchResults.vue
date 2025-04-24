@@ -60,7 +60,7 @@ const search = async() => {
     //console.log('im in search results');
     const searchParams = {
         ...props.queryParams,
-        pageNo: state.current_page,
+        page: state.current_page,
         rpp: state.results_per_page,
         variant: state.variants,
         methodSearch: state.searchMethod
