@@ -92,7 +92,7 @@ onMounted(() =>{
                 ID: {{ id }},&nbsp;
                 Volume: {{ htmlvolume }},&nbsp;
                 Page: {{ htmlpage }},&nbsp;
-                Date: {{ date }} (Certainty: {{ certainty.charAt(0).toUpperCase() + certainty.slice(1) }}),&nbsp;
+                Date: {{ date }} (Certainty: {{ certainty ? certainty.charAt(0).toUpperCase() + certainty.slice(1): '' }}),&nbsp;
                 Language: {{ htmllang }}
             </p>
             <div class="result-buttons">
