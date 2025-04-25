@@ -10,9 +10,12 @@
   "test": "vitest"
  },
  "dependencies": {
+  "@popperjs/core": "^2.11.8",
+  "@vuepic/vue-datepicker": "^11.0.2",
   "@vueuse/core": "^12.5.0",
   "axios": "^1.7.9",
   "pdf-lib": "^1.17.1",
+  "v-calendar": "^3.1.2",
   "vkbeautify": "^0.99.3",
   "vue": "^3.5.13",
   "vue-router": "^4.5.0"

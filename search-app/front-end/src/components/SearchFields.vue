@@ -3,8 +3,13 @@
 import router from '@/router';
 import { reactive, ref, toRaw, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router'; // Import the useRoute hook
+import DatePicker from '@/components/DatePicker.vue';
+
 
 const route = useRoute();
+
+const dateFrom = ref();
+const dateTo = ref();
 
 const form = reactive({
     query_type: "basic_search",
@@ -88,8 +93,47 @@ const allValidInput = () => {
         alert("Please enter a query in the search bar or select an Advanced Search option");
         return false;
     }
+    if (form.startDate !="" && !validStartDate()){
+        alert("Please enter a valid 'To' date");
+        return false;
+    }
+    if (form.endDate !="" && !validEndDate()){
+        alert("Please enter a valid 'From' date");
+        return false;
+    }
+    
 
     return true; //remove once implemented
+};
+
+const validStartDate = () => {
+    // check that at least year is selected. then if month selected, check day
+    const parts = form.startDate.split("-");
+    const validInts = parts.every(p => /^\d+$/.test(p));
+    if (!validInts) {
+        return false;
+    }
+    if (parts.length === 1){
+        form.startDate = parts[0] + "-01-01";
+    } else if (parts.length === 2){
+        form.startDate = parts[0] + "-" + parts[1] + "-01";
+    }
+    return true;
+};
+
+const validEndDate = () => {
+    // check that at least year is selected. then if month selected, check day
+    const parts = form.endDate.split("-");
+    const validInts = parts.every(p => /^\d+$/.test(p));
+    if (!validInts) {
+        return false;
+    }
+    if (parts.length === 1){
+        form.endDate = parts[0] + "-12-31";
+    } else if (parts.length === 2){
+        form.endDate = parts[0] + "-" + parts[1] + "-31";
+    }
+    return true;
 };
 
 const handleEnterKey = (event) => {
@@ -121,7 +165,9 @@ const resetAdvancedSearch = () => {
     form.pageSearch = "";
     form.entrySearch = "";
     form.startDate = "";
+    dateFrom.value?.clearInput();
     form.endDate = "";
+    dateTo.value?.clearInput();
     form.docId = "";
 };
 
@@ -240,10 +286,10 @@ onMounted(() => {
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
                             <label>
-                                From: <input type="date" v-model="form.startDate" id="start-date" name="start-date">
+                                From: <DatePicker ref="dateFrom" v-model="form.startDate" id="start-date" name="start-date" :yearAscending="true"/>
                             </label>
                             <label>
-                                To: <input type="date" v-model="form.endDate" id="end-date" name="end-date">
+                                To: <DatePicker ref="dateTo" v-model="form.endDate" id="end-date" name="end-date"/>
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->
