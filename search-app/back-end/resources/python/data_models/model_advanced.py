@@ -21,8 +21,8 @@ class AdvancedSearchModel():
         self.pages = self.get_pages(pages) # Integer or Null
         self.volumes = self.get_volume(volumes) # Integer or Null
         self.entry_id = self.get_entry_id(entry_id) # String or Null
-        self.date_from = self.get_date(date_from) # String or Null
-        self.date_to = self.get_date(date_to) # String or Null
+        self.date_from = self.get_date_from(date_from) # String or Null
+        self.date_to = self.get_date_to(date_to) # String or Null
         
 
     def get_language(self, language):
@@ -81,15 +81,47 @@ class AdvancedSearchModel():
         if re.match(id_pattern, entry_id):
             return entry_id
         raise InvalidAROFormatError(entry_id)
-    
 
-    def get_date(self, date):
+    def get_date_from(self, date_from):
         #splits into 3 numbers: year, month, day
         try:
-            if not date: return None
-            parts = [int(num) for num in date.split("-")]
+            if not date_from: return None
+            parts = [int(num) for num in date_from.split("-")]
             if len(parts) == 3:
                 return parts 
-            raise InvalidDateInputError(date)
+            elif len(parts) == 2:
+                return [parts[0], parts[1], 1]
+            elif len(parts) == 1:
+                return [parts[0], 1, 1]
+            raise InvalidDateInputError(date_from)
         except:
-            raise InvalidDateInputError(date)
+            raise InvalidDateInputError(date_from)
+
+    def get_date_to(self, date_to):
+        #splits into 3 numbers: year, month, day
+        try:
+            if not date_to: return None
+            parts = [int(num) for num in date_to.split("-")]
+            if len(parts) == 3:
+                return parts 
+            elif len(parts) == 2:
+                day = self.get_last_day_of_month(date[0], date[1])
+                return [parts[0], parts[1], day]
+            elif len(parts) == 1:
+                return [parts[0], 12, 31]
+            raise InvalidDateInputError(date_to)
+        except:
+            raise InvalidDateInputError(date_to)
+
+    def get_last_day_of_month(self, year, month):
+        """
+        parameters: year (int), month (int)
+        assume year and month are not None
+
+        return the last day of the month
+        """
+        if month == 2: 
+            return 29 if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) else 28
+        elif month in [4, 6, 9, 11]: 
+            return 30
+        return 31

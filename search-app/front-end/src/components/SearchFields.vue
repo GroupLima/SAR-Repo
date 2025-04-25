@@ -110,30 +110,14 @@ const validStartDate = () => {
     // check that at least year is selected. then if month selected, check day
     const parts = form.startDate.split("-");
     const validInts = parts.every(p => /^\d+$/.test(p));
-    if (!validInts) {
-        return false;
-    }
-    if (parts.length === 1){
-        form.startDate = parts[0] + "-01-01";
-    } else if (parts.length === 2){
-        form.startDate = parts[0] + "-" + parts[1] + "-01";
-    }
-    return true;
+    return validInts;
 };
 
 const validEndDate = () => {
     // check that at least year is selected. then if month selected, check day
     const parts = form.endDate.split("-");
     const validInts = parts.every(p => /^\d+$/.test(p));
-    if (!validInts) {
-        return false;
-    }
-    if (parts.length === 1){
-        form.endDate = parts[0] + "-12-31";
-    } else if (parts.length === 2){
-        form.endDate = parts[0] + "-" + parts[1] + "-31";
-    }
-    return true;
+    return validInts;
 };
 
 const handleEnterKey = (event) => {
