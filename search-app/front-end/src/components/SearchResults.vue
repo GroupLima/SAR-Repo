@@ -196,24 +196,6 @@ const showHelpPage = () => {
             </div>
         </div>
 
-        <!-- Changing Pages -->
-        <div v-if="state.total_pages > 1 & !state.isLoading" class="page-changer">
-            <!-- previous button -->
-            <button @click="prevPage" :disabled="state.current_page <= 1">
-                Previous
-            </button>
-            <!-- numbered buttons -->
-            <button class="page-number" v-for="activePage in displayedPageNumbers" :key="activePage"
-                :class="{ active: activePage === state.current_page }" @click="selectedPage(activePage)"
-                :disabled="activePage === state.current_page">
-                {{ activePage }}
-            </button>
-            <!-- next button -->
-            <button @click="nextPage" :disabled="state.current_page >= state.total_pages">
-                Next
-            </button>
-        </div>
-
         <!-- Go to specific page -->
         <div class="go-to-page">
             <input type="number" v-model="goToPageNumber" min="1" :max="state.total_pages" @keypress="handleKeyPress" @input="handleInput" />
