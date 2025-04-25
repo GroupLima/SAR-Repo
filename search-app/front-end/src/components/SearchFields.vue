@@ -106,7 +106,6 @@ const allValidInput = () => {
 
 const validDate = (dateField) => {
     // check that numbers in date are valid
-    console.log("start date", form[dateField]);
     const parts = form[dateField].split("-");
     let dateLength = 0;
     for (let i = 0; i < 3; i++) {
