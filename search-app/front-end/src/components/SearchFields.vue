@@ -93,32 +93,36 @@ const allValidInput = () => {
         alert("Please enter a query in the search bar or select an Advanced Search option");
         return false;
     }
-    if (form.startDate !="" && !validStartDate()){
-        alert("Please enter a valid 'To' date");
-        return false;
-    }
-    if (form.endDate !="" && !validEndDate()){
+    if (form.startDate != "" && !validDate("startDate")){
         alert("Please enter a valid 'From' date");
         return false;
     }
-    
-
+    if (form.endDate !="" && !validDate("endDate")){
+        alert("Please enter a valid 'To' date");
+        return false;
+    }
     return true; //remove once implemented
 };
 
-const validStartDate = () => {
-    // check that at least year is selected. then if month selected, check day
-    const parts = form.startDate.split("-");
-    const validInts = parts.every(p => /^\d+$/.test(p));
-    return validInts;
+const validDate = (dateField) => {
+    // check that numbers in date are valid
+    console.log("start date", form[dateField]);
+    const parts = form[dateField].split("-");
+    let dateLength = 0;
+    for (let i = 0; i < 3; i++) {
+        const part = parts[i];
+        if (!part || part === "undefined" || !/^\d+$/.test(part)) break;
+
+        dateLength++;
+    }
+    if (dateLength > 0){
+        form[dateField] = parts.slice(0, dateLength).join("-");
+        return true;
+    }
+    return false;
 };
 
-const validEndDate = () => {
-    // check that at least year is selected. then if month selected, check day
-    const parts = form.endDate.split("-");
-    const validInts = parts.every(p => /^\d+$/.test(p));
-    return validInts;
-};
+
 
 const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
