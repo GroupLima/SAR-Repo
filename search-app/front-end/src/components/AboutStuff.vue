@@ -25,7 +25,7 @@
               <br>
               <p>We’ve had the privilege of working closely with <b>Dr. Jackson Armstrong</b>, who has been invaluable in guiding the development of this project.</p>
               <br>
-              <p>Our team members: Haziel Osunde, Piotr Smialek, Andreas Maita, Caitlin Thaeler, Fariha Ibnat, Rebekah Leslie and Dermot Stelfox.</p>
+              <p>Our team members: Haziel Osunde, Piotr Śmiałek, Andreas Maita, Caitlin Thaeler, Holly Sinclair, Fariha Ibnat, Rebekah Leslie and Dermot Stelfox.</p>
               <br>
               <p>Together, we’ve combined our skills in software development and user interface design to bring this tool to life. We're proud to contribute to making Aberdeen’s rich archival history more accessible to researchers, students, and the public.</p>
               <br>
