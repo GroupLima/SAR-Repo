@@ -74,7 +74,7 @@ const handleSearch = () => {
         form.query_type = getSearchType();
         try {
             if (form.basicSearch.trim() === "") {
-                form.basicSearch = ".*" // allow searching though all docs with no query
+                form.basicSearch = "*" // allow searching though all docs with no query
             }
             passFormValues();
         } catch (error) {

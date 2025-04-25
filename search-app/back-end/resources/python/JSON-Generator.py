@@ -116,6 +116,7 @@ class JSONGenerator():
               entry_language = entry.attrib.get(f'{{{JSONGenerator.NS["xml"]}}}lang')
               #first element of id is 'ARO' so can skip
               entry_volume, entry_page, entry_chapter = map(str, entry_id.split('-')[1:])
+              entry_page = entry_page.lstrip('0') or '0' # get rid of leading zeros
 
               entry_content = ''
 
