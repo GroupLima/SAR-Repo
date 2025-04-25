@@ -89,11 +89,10 @@ onMounted(() =>{
         <div class="result-content" v-html="htmlContent"></div>
         <div class="result-footer">
             <p class="result-info">
-                ID: {{ id }},
-                Volume: {{ htmlvolume }}, 
-                Page: {{ htmlpage }},
-                Date: {{ date }},
-                Certainty Level: {{ certainty }},
+                ID: {{ id }},&nbsp;
+                Volume: {{ htmlvolume }},&nbsp;
+                Page: {{ htmlpage }},&nbsp;
+                Date: {{ date }} (Certainty: {{ certainty.charAt(0).toUpperCase() + certainty.slice(1) }}),&nbsp;
                 Language: {{ htmllang }}
             </p>
             <div class="result-buttons">
