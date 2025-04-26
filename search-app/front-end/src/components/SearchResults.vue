@@ -21,6 +21,7 @@ const state = reactive({
     isLoading: true,
     current_page: 1,
     results_per_page: Number(props.queryParams.resultsPerPage) || 5,
+    sort_by: props.queryParams.sortBy || 'Frequency in result',
     total_pages: 1,
     searchMethod: props.queryParams.methodSearch || 'word_start',
     variants: props.queryParams.variant || '0'
@@ -39,7 +40,7 @@ const searchMethods = [
 ];
 const varOptions = [0, 1, 2, 3, 4];
 const rrpOptions = [5, 10, 20, 30, 50];
-const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
+const ordOptions = ['Frequency within result', 'Best match', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
 const filterChange = () => {
     state.current_page = 1;
@@ -63,7 +64,8 @@ const search = async() => {
         page: state.current_page,
         rpp: state.results_per_page,
         variant: state.variants,
-        methodSearch: state.searchMethod
+        methodSearch: state.searchMethod,
+        sort_by: state.sortBy,
     };
     try {
         const response = await axios.get(baseSearchUrl, { params: searchParams,});

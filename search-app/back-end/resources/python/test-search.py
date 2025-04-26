@@ -84,12 +84,12 @@ params = {
 }
 
 params2 = {
-    'qt' : 'advanced_search',
+    'qt' : 'basic_search',
     'query' : 'holly',
     'rpp' : 5,
-    'var' : 0,
+    'var' : 3,
     'sm' : 'word_start',
-    'date_from' : '1457-10-12'
+    'sort': 'Frequency within result',
 }
 
 #similarity scale from observations:

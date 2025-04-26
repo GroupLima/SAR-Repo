@@ -4,6 +4,7 @@ from rapidfuzz import process, fuzz
 from advanced_search import Advanced_Search
 from basic_search import Basic_Search
 import json_parser as Json_Parser
+import sort_methods
 
 from pathlib import Path
 
@@ -168,7 +169,7 @@ class Search():
         #self.user_input = user_input # User string search
         
         self.params = params
-        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page']
+        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page', 'sort']
 
         # default advanced search params
         self.json_entries = json_entries or self.load_json()
@@ -194,7 +195,8 @@ class Search():
 
 
         # default sort params
-        self.sort_criteria = ''
+        self.sort_criteria = ()
+        self.sort = 'Frequency within result'
         
         self.matches = {} # return to search controller
 
@@ -225,7 +227,9 @@ class Search():
             adv_matches = search_obj.filter_entries(advs_entries)
             for id in list(self.matches):
                 if id not in adv_matches:
-                    del self.matches[id]
+                    del self.matches[id] # remove entires that didnt pass the advv filters
+
+        self.matches = self.sort_matches(self.matches)
         
         # self.matches = {'ARO-1-0001-03' : {
         #     'accuracy_score' : 20,
@@ -272,6 +276,7 @@ class Search():
         #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
+        self.sort = self.params['sort']
         self.convert_variance(self.params['var'])
 
 
@@ -326,6 +331,15 @@ class Search():
 
         pass
 
+    def sort_matches(self, matches):
+        # frequency, best, volumeasc, volumedsc, chronological
+        match self.sort:
+            case 'frequency':
+                return sort_methods.sort_frequency(matches)
+            case 'best':
+                return sort_methods.sort_best_matches(matches)
+            case _:
+                return sort_methods.sort_best_matches(matches)
 
     def get_matches(self):
         return self.matches

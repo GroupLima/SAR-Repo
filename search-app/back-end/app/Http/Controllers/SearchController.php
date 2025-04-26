@@ -420,6 +420,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $startDate     = $data['startDate'];
         $endDate       = $data['endDate'];
         $docId         = $data['docId'];
+        $sortBy        = $data['sortBy'];
         echo "\nqueryType";
         echo $queryType;
         echo "\nbasicSearch";
@@ -443,6 +444,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         echo "\ndocId";
         echo $docId;
         echo "\n";
+        echo "\nsortBy";
+        echo $sortBy;
    
         
         if ($queryType === "xquery") {
@@ -482,8 +485,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
     function simplify_search_params($params){
 
-        //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'pageNo'];
+        //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number, sort
+        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'pageNo', 'sort'];
 
         $permitted = [];
 
@@ -504,6 +507,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
         $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
         $permitted['pageNo'] = $params['page'];
+        $permitted['sort'] = $params['sortBy'];
 
         // advanced search params
         $permitted['entry_id'] = $params['docId' ?? null];
@@ -582,7 +586,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             if (empty($this->match_results)) {
                 return []; // No results to display
             }
-            
+            /*
             uasort($this->match_results, function($a, $b) {
                 if ($a['accuracy_score'] == $b['accuracy_score']) {
                     // If accuracy is the same, compare by match_frequency
@@ -590,7 +594,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                 }
                 return $b['accuracy_score'] - $a['accuracy_score']; // Highest accuracy first
             });
-            
+            */
             $start_of_page = ($current_page-1) * $results_per_page;
             // get results from the array of match_results staring at $start_of_page for length of $results_per_page
             $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);

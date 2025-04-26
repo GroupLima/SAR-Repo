@@ -41,13 +41,11 @@ return example:
 #works
 def sort_best_matches(matches):
     sorted_matches = dict(sorted(matches.items(), key=lambda item: (item[1]['accuracy_score'], item[1]['match_frequency']),reverse=True))
-    print("i sort by best match")
     return sorted_matches
 
 #works
 def sort_frequency(matches):
     sorted_matches = dict(sorted(matches.items(), key=lambda item: (item[1]['match_frequency'], item[1]['accuracy_score']),reverse=True))
-    print("i sort by best match")
     return sorted_matches
 
 #requires volume and page

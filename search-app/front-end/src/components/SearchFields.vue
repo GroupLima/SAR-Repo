@@ -5,7 +5,6 @@ import { reactive, ref, toRaw, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router'; // Import the useRoute hook
 import DatePicker from '@/components/DatePicker.vue';
 
-
 const route = useRoute();
 
 const dateFrom = ref();
@@ -24,7 +23,7 @@ const form = reactive({
     endDate: "",
     docId: "",
     resultsPerPage: 10,
-    sortBy: "Frequency within result"
+    sortBy: 'frequency'
 });
 
 const isDropdownOpen = ref(false); // don't display dropdown initially
@@ -121,8 +120,6 @@ const validDate = (dateField) => {
     return false;
 };
 
-
-
 const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
         handleSearch();
@@ -141,13 +138,13 @@ const setSearchBoxValue = () => {
     form.startDate = urlParams.get('startDate') || form.startDate;
     form.endDate = urlParams.get('endDate') || form.endDate;
     form.docId = urlParams.get('docId') || form.docId;
+    form.sortBy = urlParams.get('sortBy') || form.sortBy;
     form.resultsPerPage = Number(route.query.resultsPerPage) || form.resultsPerPage;
+    
 };
 
 const resetAdvancedSearch = () => {
-    form.methodSearch = "word_start";
     form.language = "any";
-    form.variant = "0";
     form.volumes = [];
     form.pageSearch = "";
     form.entrySearch = "";
@@ -169,7 +166,15 @@ const searchMethods = [
 
 const varOptions = [0, 1, 2, 3, 4];
 const rrpOptions = [5, 10, 20, 30, 50];
-const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
+
+const ordOptions = ["frequency", "best", "volumeasc", "volumedsc", "chronological"]
+const ordDisplayOptions = [
+    'Frequency within result',
+    'Best match',
+    'Volume, ascending',
+    'Volume, descending',
+    'Chronological'];
+
 
 onMounted(() => {
     setSearchBoxValue();
@@ -217,7 +222,7 @@ onMounted(() => {
                 <div class="preference-item">
                     <label>Sort by:</label>
                     <select v-model="form.sortBy">
-                        <option v-for="ord in ordOptions" :key="ord" :value="ord">{{ ord }}</option>
+                        <option v-for="(ord, index) in ordOptions" :key="ord" :value="ord">{{ ordDisplayOptions[index] }}</option>
                     </select>
                 </div>
             </div>
