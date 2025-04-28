@@ -285,7 +285,7 @@ onMounted(() => {
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
                         </div>
                         <div class="advanced-option">
-                            <button @click="resetAdvancedSearch">Reset Field Values</button>
+                            <button @click="resetAdvancedSearch" class="reset-button">Reset Field Values</button>
                         </div>
                     </div>
                 </div>

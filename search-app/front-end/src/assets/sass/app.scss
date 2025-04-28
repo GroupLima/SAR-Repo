@@ -523,7 +523,7 @@ footer {
       border-radius: 50px; // Primary action button
       margin-bottom: 5px;
       text-align: left;
-      width: 200px;
+      width: 190px;
       position: relative;
     }
 
@@ -566,8 +566,8 @@ footer {
             }
           }
 
-          button {
-            @include button-base;
+          .reset-button {
+            @include primary-button;
             background-color: $primary-colour;
             color: $secondary-colour;
 
