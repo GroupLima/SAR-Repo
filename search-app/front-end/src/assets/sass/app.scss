@@ -741,9 +741,11 @@ footer {
 
     button {
       @include button-base;
+      
       background-color: transparent;
       border: 1px solid $dark-gray;
-
+      color: $dark-gray; // Explicitly set text color to ensure visibility
+      
       &:hover:enabled {
         background-color: $primary-colour;
         color: $secondary-colour;
@@ -774,12 +776,13 @@ footer {
 
     button {
       @include button-base;
+      
       background-color: $primary-colour;
       color: $secondary-colour;
-      border-radius: 50px; // Primary action button
+      border-radius: 50px;
 
       &:hover {
-        background-color: color.adjust($primary-colour, $lightness: 15%);
+        background-color: lighten($primary-colour, 15%);
       }
     }
   }
