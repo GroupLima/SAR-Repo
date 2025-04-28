@@ -1,4 +1,3 @@
-<!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
 import { reactive, ref, toRaw, onMounted, computed } from 'vue';
@@ -223,7 +222,8 @@ onMounted(() => {
             </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
                 <button class="dropdown-button" @click="toggleDropdown">
-                    ADVANCED SEARCH ▼
+                    ADVANCED SEARCH
+                    <span class="dropdown-arrow" :class="{ 'open': isDropdownOpen }">▼</span>
                 </button>
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     <div id="search-options">
