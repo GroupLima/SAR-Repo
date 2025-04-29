@@ -1,0 +1,30 @@
+name: Run front-end tests
+
+on:
+  push:
+    branches:
+      - main
+      
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: node:20
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: clean install 
+        working-directory: ./search-app/front-end
+        run: npm ci
+      - name: build project
+        working-directory: ./search-app/front-end
+        run: npm run build
+      - name: run tests
+        working-directory: ./search-app/front-end
+        run: npm run test

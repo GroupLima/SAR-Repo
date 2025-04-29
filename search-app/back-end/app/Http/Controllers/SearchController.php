@@ -483,7 +483,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function simplify_search_params($params){
 
         //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page'];
+        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'pageNo'];
 
         $permitted = [];
 
@@ -503,6 +503,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $permitted['var'] = $params['variant'] ?? 0;
         $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
         $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
+        $permitted['pageNo'] = $params['page'];
 
         // advanced search params
         $permitted['entry_id'] = $params['docId' ?? null];
@@ -535,7 +536,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     function filter_and_format($permitted) {
 
         $query_type = $permitted['qt'];
-        $current_page = 1;
+        $current_page = $permitted['pageNo'];
         $results_per_page = $permitted['rpp'];
 
         if (strtolower($query_type) == 'xquery'){
@@ -646,7 +647,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
     //get chunk of results (if user requested 10 results per page, get the first 10 results)
-    function get_results_for_page($rpp, $page){
+    function get_results_for_page($rpp, $pageNo){
         //use modulus to determine which chunk of results to return according to rpp (results per page)
         return $rpp;
     }

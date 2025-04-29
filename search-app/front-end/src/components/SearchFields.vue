@@ -2,6 +2,14 @@
 <script setup>
 import router from '@/router';
 import { reactive, ref, toRaw, onMounted, computed } from 'vue';
+import { useRoute } from 'vue-router'; // Import the useRoute hook
+import DatePicker from '@/components/DatePicker.vue';
+
+
+const route = useRoute();
+
+const dateFrom = ref();
+const dateTo = ref();
 
 const form = reactive({
     query_type: "basic_search",
@@ -62,9 +70,12 @@ const toggleAllVolumes = () => {
 };
 
 const handleSearch = () => {
-    if (allValidInput) {
+    if (allValidInput()) {
         form.query_type = getSearchType();
         try {
+            if (form.basicSearch.trim() === "") {
+                form.basicSearch = ".*" // allow searching though all docs with no query
+            }
             passFormValues();
         } catch (error) {
             console.error("error with search form", error);
@@ -75,9 +86,42 @@ const handleSearch = () => {
 const allValidInput = () => {
     //return true if all inputs are valid
     //return false otherwise and apply appropriate action
-
+    const searchType = getSearchType();
+    
+    // if basic search, require a non-empty search bar input
+    if (searchType === "basic_search" && form.basicSearch.trim() === "") {
+        alert("Please enter a query in the search bar or select an Advanced Search option");
+        return false;
+    }
+    if (form.startDate != "" && !validDate("startDate")){
+        alert("Please enter a valid 'From' date");
+        return false;
+    }
+    if (form.endDate !="" && !validDate("endDate")){
+        alert("Please enter a valid 'To' date");
+        return false;
+    }
     return true; //remove once implemented
 };
+
+const validDate = (dateField) => {
+    // check that numbers in date are valid
+    const parts = form[dateField].split("-");
+    let dateLength = 0;
+    for (let i = 0; i < 3; i++) {
+        const part = parts[i];
+        if (!part || part === "undefined" || !/^\d+$/.test(part)) break;
+
+        dateLength++;
+    }
+    if (dateLength > 0){
+        form[dateField] = parts.slice(0, dateLength).join("-");
+        return true;
+    }
+    return false;
+};
+
+
 
 const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
@@ -97,6 +141,7 @@ const setSearchBoxValue = () => {
     form.startDate = urlParams.get('startDate') || form.startDate;
     form.endDate = urlParams.get('endDate') || form.endDate;
     form.docId = urlParams.get('docId') || form.docId;
+    form.resultsPerPage = Number(route.query.resultsPerPage) || form.resultsPerPage;
 };
 
 const resetAdvancedSearch = () => {
@@ -107,7 +152,9 @@ const resetAdvancedSearch = () => {
     form.pageSearch = "";
     form.entrySearch = "";
     form.startDate = "";
+    dateFrom.value?.clearInput();
     form.endDate = "";
+    dateTo.value?.clearInput();
     form.docId = "";
 };
 
@@ -226,10 +273,10 @@ onMounted(() => {
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
                             <label>
-                                From: <input type="date" v-model="form.startDate" id="start-date" name="start-date">
+                                From: <DatePicker ref="dateFrom" v-model="form.startDate" id="start-date" name="start-date" :yearAscending="true"/>
                             </label>
                             <label>
-                                To: <input type="date" v-model="form.endDate" id="end-date" name="end-date">
+                                To: <DatePicker ref="dateTo" v-model="form.endDate" id="end-date" name="end-date"/>
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->

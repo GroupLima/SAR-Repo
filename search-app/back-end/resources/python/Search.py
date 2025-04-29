@@ -206,10 +206,18 @@ class Search():
 
     def start(self):
         qt = self.params['qt'] # query type: basic or advanced
+          
         search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
         self.matches = search_obj.find_matches()
         
         if qt == 'advanced_search':
+            if self.query == ".*":
+                for entry_id in self.json_entries.keys():
+                    self.matches[entry_id] = {
+                        'accuracy_score' : 100,
+                        'match_frequency' : 0,
+                        'matches' : []}
+
             advs_entries = {}
             for entry_id in self.matches.keys():
                 advs_entries[entry_id] = self.json_entries[entry_id]
