@@ -1,4 +1,4 @@
-//standard variables
+// Standard variables
 $primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
 $dark-gray: #4a4a4a;
@@ -7,14 +7,29 @@ $light-gray: #a69f9f;
 $font-family: Arial, sans-serif;
 $logo-font-family: Times, serif;
 $box-shadow: 0 2px 5px #4a4a4a;
+$container-padding: 24px;
+$container-max-width: 1200px; // Consistent max-width for all pages
 
 @use "sass:color";
 
 @mixin button-base {
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+}
+
+@mixin primary-button {
+  @include button-base;
+  background-color: $primary-colour;
+  color: $secondary-colour;
+  border-radius: 50px; // Rounder buttons for primary actions
+}
+
+@mixin secondary-button {
+  @include button-base;
+  background-color: transparent;
+  border: 1px solid $dark-gray;
+  border-radius: 4px; // Rectangular for secondary actions
 }
 
 * {
@@ -39,11 +54,84 @@ body {
   }
 }
 
+// Set consistent max-width and padding for all pages
+.home-page,
+.search-page,
+.about-page,
+.help-page,
+.selected-page,
+.browse-page {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding; // Consistent padding
+}
+
+// Updated .container-browser to take full width
+.container-browser {
+  position: relative;
+  top: 20px;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  width: 100%; // Take full width of parent
+  padding: $container-padding;
+  font-family: $font-family;
+
+  .split-view {
+    display: flex;
+    gap: 1rem;
+    height: calc(100vh - 200px);
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%; // Ensure full width
+  }
+}
+
+// Updated .selected-container to take full width
+.selected-container {
+  width: 100%; // Take full width of parent
+  padding: $container-padding;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  font-family: $font-family;
+
+  .selected-records {
+    width: 100%; // Ensure full width
+    .record-item {
+      border: 1px solid $light-gray;
+      border-radius: 4px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+// Button styles
+.search-section .basic-search button,
+.advanced-search-container .dropdown-button,
+.help-page .help-dropdown-button,
+.page-changer button,
+.page-go-btn,
+.xml-btn,
+.remove-btn,
+.clear-btn,
+.export-btn,
+.export-pdf-btn {
+  @include primary-button; // Rounder buttons matching home page
+}
+
+.nav-btn,
+.page-changer button {
+  @include secondary-button;
+}
+
 [data-tooltip] {
   position: relative;
   cursor: pointer;
   
-  // Don't show tooltip when select is open/active
   &:focus::before,
   &:focus::after {
     visibility: hidden;
@@ -97,8 +185,7 @@ body {
   }
 }
 
-
-// navbar
+// Navbar
 .navbar {
   font-weight: bold;
   background-color: $primary-colour;
@@ -122,24 +209,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1155px; // Updated to 1300px
     margin: 0 auto;
     position: relative;
 
-    .nav-links a {
-      color: $secondary-colour;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 1.1em;
+    .nav-links {
+      display: flex;
+      align-items: center;
 
-      &:hover {
-        text-decoration: underline;
+      a {
+        color: $secondary-colour;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 1.1em;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
-    }
 
-    .nav-links a.help-link {
-      margin-left: 10px;
-      font-weight: bold;
+      a.help-link {
+        margin-left: 10px;
+        font-weight: bold;
+      }
     }
 
     .dark-mode-button {
@@ -161,7 +253,6 @@ body {
       .text-container {
         display: flex;
         flex-direction: column;
-        min-width: -moz-max-content;
         min-width: max-content;
 
         img {
@@ -176,6 +267,7 @@ body {
       cursor: pointer;
       position: absolute;
       right: 0;
+
       span {
         background-color: $secondary-colour;
         height: 3px;
@@ -184,24 +276,18 @@ body {
         transition: 0.4s;
       }
     }
-
-    @media (max-width: 768px) {
-      .burger-menu {
-        display: flex;
-      }
-    }
   }
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 10px; // Reduce padding for smaller screens
+    padding: 10px;
 
     &.scrolled {
-      padding: 5px; // Reduce padding when scrolled in mobile view
+      padding: 5px;
 
       .nav-content .logo-section .text-container img {
-        height: 40px; // Adjust the height for smaller screens when scrolled
+        height: 40px;
       }
     }
 
@@ -209,120 +295,63 @@ body {
       flex-direction: column;
       align-items: center;
 
-      .logo-section {
-        .text-container {
-          img {
-            height: 50px; // Adjust the height for smaller screens
-          }
-        }
+      .logo-section .text-container img {
+        height: 50px;
       }
 
       .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
         width: 100%;
+        background-color: $primary-colour;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 999;
 
         a {
+          padding: 10px;
+          width: 100%;
+          text-align: center;
           margin: 5px 0;
         }
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .burger-menu {
+        display: flex;
       }
     }
   }
 
   .home-page {
-    padding-top: 20px; // Adjust padding to reduce space between navbar and content
+    padding-top: 20px;
   }
 
   footer {
     .image-container {
-      height: auto; // Adjust height for smaller screens
-      min-width: 100%; // Ensure the image container fits the screen width
+      height: auto;
+      min-width: 100%;
     }
 
     .footer-links-container {
-      padding: 10px; // Adjust padding for smaller screens
+      padding: 10px;
 
       .footer-links {
-        flex-direction: column; // Stack links vertically on smaller screens
+        flex-direction: column;
         align-items: center;
       }
     }
   }
-
-  .burger-menu {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: $primary-colour;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 999;
-
-    a {
-      padding: 10px;
-      width: 100%;
-      text-align: center;
-    }
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
 }
 
-.burger-menu {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  span {
-    background-color: $secondary-colour;
-    height: 3px;
-    width: 25px;
-    margin: 4px 0;
-    transition: 0.4s;
-  }
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: $primary-colour;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 999;
-    a {
-      padding: 10px;
-      width: 100%;
-      text-align: center;
-    }
-  }
-}
-
-.nav-links.active {
-  display: flex;
-}
-
-@media (max-width: 768px) {
-  .burger-menu {
-    display: flex;
-  }
-}
-
-// footer
+// Footer
 footer {
   margin-top: 45px;
-  width: 100%; // Ensure footer spans the entire page width
+  width: 100%;
 
   .image-container {
     overflow: hidden;
@@ -334,13 +363,13 @@ footer {
       min-width: 100%;
       height: 100%;
       width: 100%;
-      object-fit: cover; // Ensure the image fits within the container without stretching
+      object-fit: cover;
     }
   }
 
   .footer-links-container {
     background-color: $primary-colour;
-    padding: 20px;
+    padding: $container-padding;
     width: 100%;
     min-width: 360px;
 
@@ -348,17 +377,17 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1000px;
+      max-width: $container-max-width; // Updated to 1300px
       margin: 0 auto;
-      flex-wrap: wrap; // Allow links to wrap to the next line if needed
+      flex-wrap: wrap;
 
       a {
         color: $secondary-colour;
         text-decoration: none;
         font-weight: bold;
         padding: 10px;
-        flex: 1 1 auto; // Allow links to grow and shrink as needed
-        text-align: center; // Center align text
+        flex: 1 1 auto;
+        text-align: center;
 
         &:hover {
           text-decoration: underline;
@@ -368,10 +397,8 @@ footer {
   }
 }
 
-// home page
+// Home Page
 .home-page {
-  max-width: 1000px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 
@@ -391,11 +418,9 @@ footer {
   }
 }
 
-// search section used by home, search and xquery pages
+// Search Section
 .search-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 10px; // Add padding to prevent stretching
+  padding: 0 $container-padding;
 
   .basic-search {
     display: flex;
@@ -411,13 +436,12 @@ footer {
     }
 
     button {
+      @include button-base;
       background-color: $primary-colour;
       color: $secondary-colour;
       padding: 12px 24px;
-      border: none;
       margin-left: 10px;
-      border-radius: 50px;
-      cursor: pointer;
+      border-radius: 50px; // Primary action button
       font-weight: bold;
     }
 
@@ -431,7 +455,7 @@ footer {
 
       button {
         width: 100%;
-        margin-left: 0; // Remove left margin for smaller screens
+        margin-left: 0;
       }
     }
   }
@@ -483,16 +507,23 @@ footer {
   .advanced-search-container {
     position: relative;
 
+    .dropdown-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    
+    .dropdown-arrow.open {
+        transform: rotate(180deg);
+    }
+
     .dropdown-button {
+      @include button-base;
       background-color: $primary-colour;
       color: $secondary-colour;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
+      border-radius: 50px; // Primary action button
       margin-bottom: 5px;
       text-align: left;
-      width: 200px;
+      width: 190px;
       position: relative;
     }
 
@@ -504,7 +535,7 @@ footer {
       border-radius: 4px;
       box-shadow: $box-shadow;
       width: 100%;
-      padding: 24px;
+      padding: $container-padding;
 
       .active {
         display: block;
@@ -512,8 +543,7 @@ footer {
 
       #search-options {
         .advanced-option {
-          margin-bottom: 10px;
-          margin-top: 10px;
+          margin: 10px 0;
 
           h3 {
             font-size: 1.2em;
@@ -536,22 +566,17 @@ footer {
             }
           }
 
-          button {
+          .reset-button {
+            @include primary-button;
             background-color: $primary-colour;
             color: $secondary-colour;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
 
             &:hover {
               background-color: darken($primary-colour, 10%);
             }
           }
 
-          label,
-          select,
-          input {
+          label, select, input {
             display: block;
             font-size: 1em;
           }
@@ -612,20 +637,17 @@ footer {
 }
 
 .xquery-page {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    .content {
-        flex: 1;
-    }
+  .content {
+    flex: 1;
+  }
 }
 
-// to allow xquery page to use results styling
-// search page
+// Search Page
 .search-page {
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
 
   .results-section {
     .result-item {
@@ -634,7 +656,7 @@ footer {
       border-radius: 4px;
       box-shadow: $box-shadow;
       width: 100%;
-      padding: 24px;
+      padding: $container-padding;
       margin: 24px auto;
 
       .result-content {
@@ -674,16 +696,15 @@ footer {
           button {
             background-color: transparent;
             border: none;
-            border-radius: 26px;
+            border-radius: 26px; // Circular for icon buttons
             cursor: pointer;
 
             &:hover {
               background-color: darken($primary-colour, 10%);
             }
 
-              body.dark & {
-                background-color: $dark-gray;
-              }
+            body.dark & {
+              background-color: $dark-gray;
             }
           }
         }
@@ -715,19 +736,19 @@ footer {
     display: flex;
     justify-content: center;
     padding-bottom: 24px;
-    gap: 10px; // Add gap between buttons
-    flex-wrap: wrap; // Allow buttons to wrap to the next line if needed
+    gap: 10px;
+    flex-wrap: wrap;
 
     button {
+      @include button-base;
+      
       background-color: transparent;
-      padding: 10px 20px;
       border: 1px solid $dark-gray;
-      border-radius: 10px;
-
+      color: $dark-gray; // Explicitly set text color to ensure visibility
+      
       &:hover:enabled {
         background-color: $primary-colour;
         color: $secondary-colour;
-        cursor: pointer;
       }
     }
 
@@ -745,101 +766,32 @@ footer {
     margin-top: 20px;
 
     input[type="number"] {
-        width: 60px;
-        padding: 10px;
-        border: 1px solid #4a4a4a;
-        /* border-radius: 50px; */
-        font-size: 16px;
-        text-align: center;
-    }
-
-    button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 50px;
-        background-color: #6e0d25;
-        color: #ffffff;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-
-        &:hover {
-            background-color: color.adjust(#6e0d25, $lightness: 15%);
-        }
-    }
-  }
-
-  .go-to-page {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    input[type="number"] {
       width: 60px;
-      padding: 5px;
+      padding: 10px;
       border: 1px solid $dark-gray;
       border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
     }
 
     button {
       @include button-base;
+      
       background-color: $primary-colour;
       color: $secondary-colour;
+      border-radius: 50px;
 
       &:hover {
-        background-color: color.adjust($primary-colour, $lightness: 15%);
+        background-color: lighten($primary-colour, 15%);
       }
     }
   }
+}
 
-  // result section sizing
-  .results-section .result-item {
-
-    /* XS */
-    @media (max-width: 600px) {
-      width: 250px;
-    }
-
-    /* S */
-    @media (min-width: 601px) and (max-width: 800px) {
-      width: 400px;
-    }
-
-    /* M */
-    @media (min-width: 801px) and (max-width: 1000px) {
-      width: 600px;
-    }
-
-    /* L */
-    @media (min-width: 1001px) and (max-width: 1200px) {
-      width: 800px;
-    }
-
-    /* XL */
-    @media (min-width: 1201px) {
-      width: 1000px;
-    }
-  }
-
-
-// browser page
-// Using existing variables
+// Browser Page
 @mixin flex-center {
   display: flex;
   align-items: center;
-}
-
-.container-browser {
-  position: relative;
-  top: 20px;
-  left: 0;
-  border: 1px solid $light-gray;
-  border-radius: 4px;
-  box-shadow: $box-shadow;
-  width: 80%;
-  padding: 24px;
-  font-family: $font-family;
-  margin: 0 auto;
 }
 
 .split-view {
@@ -858,7 +810,7 @@ footer {
   overflow: hidden;
   background-color: #f9f9f9;
   position: relative;
- 
+
   .page-image {
     width: 100%;
     height: 100%;
@@ -882,16 +834,15 @@ footer {
   align-items: center;
   gap: 10px;
   margin: 10px 0 20px;
-  flex-wrap: wrap; // Allow wrapping on smaller screens
+  flex-wrap: wrap;
 }
 
 .nav-btn {
+  @include button-base;
   padding: 5px 10px;
   border: 1px solid $light-gray;
-  border-radius: 4px;
   background-color: #f5f5f5;
-  cursor: pointer;
- 
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
@@ -919,21 +870,18 @@ footer {
   width: 60px;
   padding: 4px 8px;
   border: 1px solid $light-gray;
-  border-radius: 3px;
+  border-radius: 4px;
   text-align: center;
   font-family: $font-family;
-  
-  // Remove the spinner arrows
-  &::-webkit-inner-spin-button, 
+
+  &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    appearance: none;
     margin: 0;
   }
-  
-  // For Firefox
+
   -moz-appearance: textfield;
-  
+
   &:focus {
     outline: 1px solid $primary-colour;
     border-color: $primary-colour;
@@ -945,14 +893,12 @@ footer {
 }
 
 .page-go-btn {
+  @include button-base;
   padding: 4px 8px;
   background-color: $primary-colour;
   color: $secondary-colour;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  
+  border-radius: 50px; // Primary action button
+
   &:hover {
     background-color: darken($primary-colour, 10%);
   }
@@ -992,13 +938,10 @@ footer {
 }
 
 .xml-btn {
-  padding: 5px 10px;
+  @include button-base;
   background-color: $primary-colour;
   color: $secondary-colour;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
- 
+
   &:hover {
     background-color: darken($primary-colour, 10%);
   }
@@ -1013,7 +956,7 @@ footer {
 .volume-select {
   padding: 8px;
   border: 1px solid $light-gray;
-  border-radius: 3px;
+  border-radius: 4px;
   min-width: 150px;
   margin-bottom: 15px;
   font-family: $font-family;
@@ -1050,11 +993,11 @@ footer {
   align-items: center;
   padding: 15px;
   border-bottom: 1px solid $light-gray;
-  
+
   h3 {
     margin: 0;
   }
-  
+
   .close-btn {
     background: none;
     border: none;
@@ -1069,7 +1012,7 @@ footer {
   flex: 1;
   overflow-y: auto;
   padding: 15px;
-  
+
   .xml-content {
     white-space: pre-wrap;
     font-family: monospace;
@@ -1082,53 +1025,50 @@ footer {
   border-top: 1px solid $light-gray;
   display: flex;
   justify-content: flex-end;
-  
+
   .copy-btn {
-    padding: 8px 15px;
+    @include button-base;
     background-color: $primary-colour;
     color: $secondary-colour;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    
+
     &:hover {
       background-color: darken($primary-colour, 10%);
     }
   }
 }
 
-// Dark mode styles
+// Dark Mode Styles
 .dark {
   .container-browser {
     background-color: $dark-mode;
     color: $secondary-colour;
     border-color: $light-gray;
   }
-  
+
   .split-view {
     border-color: $light-gray;
     background-color: $dark-mode;
   }
- 
+
   .image-viewer {
     background-color: lighten($dark-mode, 3%);
   }
-  
+
   .records-container {
     background-color: $dark-mode;
     border-left-color: $light-gray;
   }
-  
+
   .nav-btn {
     background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
-   
+
     &:disabled {
       opacity: 0.5;
     }
   }
-  
+
   .page-number {
     color: $secondary-colour;
   }
@@ -1136,91 +1076,91 @@ footer {
   .page-number-search {
     background-color: darken($dark-mode, 3%);
   }
-  
+
   .page-label, .page-total {
     color: $secondary-colour;
   }
-  
+
   .page-number-input {
     background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
-    
+
     &:focus {
       outline-color: lighten($primary-colour, 10%);
       border-color: lighten($primary-colour, 10%);
     }
   }
-  
+
   .page-go-btn {
     background-color: $primary-colour;
     color: $secondary-colour;
-    
+
     &:hover {
       background-color: darken($primary-colour, 10%);
     }
   }
-  
+
   .record-item {
     border-bottom-color: $light-gray;
     background-color: $dark-mode;
   }
-  
+
   .record-header, .record-content, .record-label {
     color: $secondary-colour;
   }
-  
+
   .xml-btn {
     background-color: $primary-colour;
     color: $secondary-colour;
-   
+
     &:hover {
       background-color: darken($primary-colour, 10%);
     }
   }
-  
+
   .checkbox-container {
     color: $secondary-colour;
-   
+
     label {
       color: $secondary-colour;
     }
   }
-  
+
   .volume-select {
     background-color: darken($dark-mode, 5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
-  
+
   .xml-modal {
     background-color: $dark-mode;
     color: $secondary-colour;
     border: 1px solid $light-gray;
   }
-  
+
   .xml-modal-header {
     border-bottom-color: $light-gray;
-    
+
     .close-btn {
       color: $secondary-colour;
     }
   }
-  
+
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
       background-color: darken($dark-mode, 3%);
     }
   }
-  
+
   .xml-modal-footer {
     border-top-color: $light-gray;
-    
+
     .copy-btn {
       background-color: $primary-colour;
       color: $secondary-colour;
-      
+
       &:hover {
         background-color: darken($primary-colour, 10%);
       }
@@ -1228,20 +1168,18 @@ footer {
   }
 }
 
-// about page
+// About Page
 .about-page {
-  max-width: 1000px;
-  margin: 0 auto;
   position: relative;
   padding: 20px;
-  
+
   .container-about {
     border: 1px solid $light-gray;
     border-radius: 4px;
     box-shadow: $box-shadow;
-    padding: 25px;
+    padding: $container-padding;
     margin-top: 20px;
-    
+
     h1 {
       margin-bottom: 20px;
     }
@@ -1256,12 +1194,12 @@ footer {
 
     img {
       width: 100%;
-      max-width: 600px; /* or any max width you prefer */
+      max-width: 600px;
       height: auto;
-      display: block; /* ensures margin centering works */
+      display: block;
       margin-left: auto;
       margin-right: auto;
-    }    
+    }
   }
 
   .row:after {
@@ -1273,184 +1211,177 @@ footer {
 
 // Help Page
 .help-page {
-  max-width: 1000px;
-  margin: 0 auto;
   position: relative;
   padding: 20px;
-  
+
   .container-help {
     border: 1px solid $light-gray;
     border-radius: 4px;
     box-shadow: $box-shadow;
-    padding: 25px;
+    padding: $container-padding;
     margin-top: 20px;
-    
+
     h1 {
       margin-bottom: 20px;
     }
-    
+
     .help-intro {
-        margin-bottom: 30px;
+      margin-bottom: 30px;
     }
   }
-  
+
   .help-section {
     margin-bottom: 20px;
   }
-  
+
   .help-dropdown-button {
+    @include button-base;
     background-color: $primary-colour;
     color: $secondary-colour;
     padding: 12px 20px;
     width: 100%;
-    border: none;
-    border-radius: 4px;
     text-align: left;
     font-weight: bold;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     &:hover {
       background-color: darken($primary-colour, 10%);
     }
-    
+
     .dropdown-arrow {
       transition: transform 0.3s;
       font-size: 0.8em;
-      
+
       &.open {
-          transform: rotate(180deg);
+        transform: rotate(180deg);
       }
     }
   }
-  
+
   .help-dropdown-content {
-      display: none;
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      
-      &.active {
-          display: block;
-          max-height: 1000px;
-          border: 1px solid $light-gray;
-          border-top: none;
-          border-radius: 0 0 4px 4px;
+    display: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &.active {
+      display: block;
+      max-height: 1000px;
+      border: 1px solid $light-gray;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .help-content {
+      padding: 20px;
+
+      h3 {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: $dark-gray;
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
-      
-      .help-content {
-          padding: 20px;
-          
-          h3 {
-              margin-top: 15px;
-              margin-bottom: 10px;
-              color: $dark-gray;
-              
-              &:first-child {
-                  margin-top: 0;
-              }
-          }
-          
-          p {
-              margin-bottom: 15px;
-          }
-          
-          ul {
-              padding-left: 20px;
-              margin-bottom: 15px;
-              
-              li {
-                  margin-bottom: 5px;
-              }
-          }
-          
-          pre, code {
-              background-color: #f5f5f5;
-              padding: 8px;
-              border-radius: 4px;
-              overflow-x: auto;
-              font-family: monospace;
-              margin: 10px 0;
-              border: 1px solid $light-gray;
-          }
-          
-          code {
-              padding: 2px 5px;
-              display: inline;
-          }
+
+      p {
+        margin-bottom: 15px;
       }
+
+      ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+
+      pre, code {
+        background-color: #f5f5f5;
+        padding: 8px;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-family: monospace;
+        margin: 10px 0;
+        border: 1px solid $light-gray;
+      }
+
+      code {
+        padding: 2px 5px;
+        display: inline;
+      }
+    }
   }
 }
 
-// Dark mode styles
 body.dark {
   .help-page {
-      .container-help {
-          background-color: $dark-mode;
+    .container-help {
+      background-color: $dark-mode;
+      border-color: $light-gray;
+
+      h1 {
+        color: $secondary-colour;
+      }
+    }
+
+    .help-dropdown-button {
+      background-color: $primary-colour;
+
+      &:hover {
+        background-color: color.adjust($primary-colour, $lightness: 10%);
+      }
+    }
+
+    .help-dropdown-content {
+      border-color: $light-gray;
+
+      .help-content {
+        background-color: $dark-mode;
+        color: $secondary-colour;
+
+        h3 {
+          color: $secondary-colour;
+        }
+
+        pre, code {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
           border-color: $light-gray;
-          
-          h1 {
-              color: $secondary-colour;
-          }
+        }
       }
-      
-      .help-dropdown-button {
-          background-color: $primary-colour;
-          
-          &:hover {
-              background-color: color.adjust($primary-colour, $lightness: 10%);
-          }
-      }
-      
-      .help-dropdown-content {
-          border-color: $light-gray;
-          
-          .help-content {
-              background-color: $dark-mode;
-              color: $secondary-colour;
-              
-              h3 {
-                  color: $secondary-colour;
-              }
-              
-              pre, code {
-                  background-color: color.adjust($dark-mode, $lightness: -5%);
-                  color: $secondary-colour;
-                  border-color: $light-gray;
-              }
-          }
-      }
+    }
   }
 }
 
-// Responsive styles
 @media (max-width: 768px) {
   .help-page {
-      padding: 10px;
-      
-      .container-help {
-          padding: 15px;
-      }
-      
-      .help-dropdown-button {
-          padding: 10px 15px;
-      }
-      
-      .help-dropdown-content .help-content {
-          padding: 15px;
-      }
+    padding: 10px;
+
+    .container-help {
+      padding: 15px;
+    }
+
+    .help-dropdown-button {
+      padding: 10px 15px;
+    }
+
+    .help-dropdown-content .help-content {
+      padding: 15px;
+    }
   }
 }
 
-
-// Selected page styles with dark mode
+// Selected Page Styles
 .selected-container {
-  max-width: 1200px;
+  max-width: $container-max-width; // Updated to 1300px
   margin: 20px auto;
-  padding: 20px;
+  padding: $container-padding;
   border: 1px solid $light-gray;
   border-radius: 4px;
   box-shadow: $box-shadow;
@@ -1482,7 +1413,7 @@ body.dark {
 
   .record-field {
     margin-right: 15px;
-    
+
     .record-label {
       font-weight: bold;
       margin-right: 5px;
@@ -1494,7 +1425,7 @@ body.dark {
     padding: 10px;
     background-color: $secondary-colour;
     border: 1px solid $light-gray;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   .record-actions {
@@ -1510,40 +1441,15 @@ body.dark {
 }
 
 .remove-btn, .clear-btn, .export-btn, .export-pdf-btn {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.remove-btn {
+  @include button-base;
   background-color: $primary-colour;
   color: $secondary-colour;
-  
+
   &:hover {
     background-color: color.adjust($primary-colour, $lightness: 10%);
   }
 }
 
-.clear-btn {
-  background-color: $primary-colour;
-  color: $secondary-colour;
-  
-  &:hover {
-    background-color: color.adjust($primary-colour, $lightness: 20%);
-  }
-}
-
-.export-btn, .export-pdf-btn {
-  background-color: $primary-colour;
-  color: $secondary-colour;
-  
-  &:hover {
-    background-color: color.adjust($primary-colour, $lightness: 10%);
-  }
-}
-
-// Dark mode for Selected page
 .dark {
   .selected-container {
     background-color: $dark-mode;
@@ -1572,287 +1478,17 @@ body.dark {
     }
   }
 
-  .remove-btn {
+  .remove-btn, .clear-btn, .export-btn, .export-pdf-btn {
     background-color: $primary-colour;
     color: $secondary-colour;
-    
+
     &:hover {
       background-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
-
-  .clear-btn {
-    background-color: $primary-colour;
-    color: $secondary-colour;
-    
-    &:hover {
-      background-color: color.adjust($primary-colour, $lightness: 5%);
-    }
-  }
-}
-#search-options {
-  .advanced-option {
-    margin-bottom: 10px;
-    margin-top: 10px;
-
-    h3 {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-
-    .horizontal-list {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-
-      .radio-container {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-
-        input[type="radio"] {
-          margin: 0;
-        }
-      }
-    }
-
-    button {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: darken($primary-colour, 10%);
-      }
-    }
-
-    label,
-    select,
-    input {
-      display: block;
-      font-size: 1em;
-    }
-
-    input[type="checkbox"] {
-      display: inline-block;
-      margin-right: 5px;
-    }
-
-    #language {
-      background-color: $secondary-colour;
-      border: 1px solid $dark-gray;
-      border-radius: 4px;
-      padding: 10px;
-      
-      .option-title {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-      }
-
-      label {
-        display: inline-block;
-        margin-right: 10px;
-        font-size: 1em;
-        color: $dark-gray;
-      }
-      
-      body.dark & {
-        background-color: $dark-mode;
-        border-color: $light-gray;
-
-        label {
-          color: $secondary-colour;
-        }
-
-        input[type="date"] {
-          background-color: color.adjust($dark-mode, $lightness: -5%);
-          color: $secondary-colour;
-          border-color: $light-gray;
-        }
-      }
-    }
-
-    #dates {
-      background-color: $secondary-colour;
-      border: 1px solid $dark-gray;
-      border-radius: 4px;
-      padding: 10px;
-
-      .option-title {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-      }
-
-      label {
-        display: inline-block;
-        margin-right: 10px;
-        font-size: 1em;
-        color: $dark-gray;
-      }
-
-      input[type="date"] {
-        display: inline-block;
-        margin-right: 10px;
-        font-size: 1em;
-        color: $dark-gray;
-        border: 1px solid $light-gray;
-        border-radius: 4px;
-        padding: 5px;
-        background-color: $secondary-colour;
-      }
-
-      body.dark & {
-        background-color: $dark-mode;
-        border-color: $light-gray;
-
-        label {
-          color: $secondary-colour;
-        }
-
-        input[type="date"] {
-          background-color: color.adjust($dark-mode, $lightness: -5%);
-          color: $secondary-colour;
-          border-color: $light-gray;
-        }
-      }
-    }
-  }
 }
 
-.advanced-search-dropdown {
-  #search-options {
-    .advanced-option {
-      margin-bottom: 10px;
-      margin-top: 10px;
-
-      h3 {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-      }
-
-      .horizontal-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        .radio-container {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-
-          input[type="radio"] {
-            margin: 0;
-          }
-        }
-      }
-
-      button {
-        background-color: $primary-colour;
-        color: $secondary-colour;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $dark-gray;
-        }
-      }
-
-      label,
-      select,
-      input {
-        display: block;
-        font-size: 1em;
-      }
-
-      input[type="checkbox"] {
-        display: inline-block;
-        margin-right: 5px;
-      }
-
-      #dates {
-        background-color: $secondary-colour;
-        border: 1px solid $dark-gray;
-        border-radius: 4px;
-        padding: 10px;
-
-        .option-title {
-          font-size: 1.2em;
-          margin-bottom: 10px;
-        }
-
-        label {
-          display: inline-block;
-          margin-right: 10px;
-          font-size: 1em;
-          color: $dark-gray;
-        }
-
-        input[type="date"] {
-          display: inline-block;
-          margin-right: 10px;
-          font-size: 1em;
-          color: $dark-gray;
-          border: 1px solid $light-gray;
-          border-radius: 4px;
-          padding: 5px;
-          background-color: $secondary-colour;
-        }
-
-        body.dark & {
-          background-color: $dark-mode;
-          border-color: $light-gray;
-
-          label {
-            color: $secondary-colour;
-          }
-
-          input[type="date"] {
-            background-color: color.adjust($dark-mode, $lightness: -5%);
-            color: $secondary-colour;
-            border-color: $light-gray;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  footer {
-    .image-container {
-      height: auto; // Adjust height for smaller screens
-      min-width: 100%; // Ensure the image container fits the screen width
-    }
-
-    .footer-links-container {
-      padding: 10px; // Adjust padding for smaller screens
-
-      .footer-links {
-        flex-direction: column; // Stack links vertically on smaller screens
-        align-items: center;
-      }
-    }
-  }
-}
-
-.nav-links a,
-.dark-mode-button {
-  // Add styles to hide the burger menu when clicked
-  @media (max-width: 768px) {
-    &:active {
-      .nav-links {
-        display: none;
-      }
-    }
-  }
-}
-
-// Combine repeated page classes into a single class
+// Combined Page Class
 .page {
   display: flex;
   flex-direction: column;
@@ -1863,12 +1499,6 @@ body.dark {
   }
 }
 
-// Apply the combined class to all relevant pages
-.help-page,
-.about-page,
-.selected-page,
-.search-page,
-.xquery-page,
-.browse-page {
+.help-page, .about-page, .selected-page, .search-page, .xquery-page, .browse-page {
   @extend .page;
 }
