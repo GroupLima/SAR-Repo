@@ -1,4 +1,3 @@
-<!-- view for all the search fields, and running the query with the given user input -->
 <script setup>
 import router from '@/router';
 import { reactive, ref, toRaw, onMounted, computed } from 'vue';
@@ -14,7 +13,7 @@ const dateTo = ref();
 const form = reactive({
     query_type: "basic_search",
     basicSearch: "",
-    methodSearch: "word_start", // default type of string matching for basic search
+    methodSearch: "keywords", // default type of string matching for basic search
     language: "any",
     variant: "0",
     volumes: [],
@@ -74,7 +73,7 @@ const handleSearch = () => {
         form.query_type = getSearchType();
         try {
             if (form.basicSearch.trim() === "") {
-                form.basicSearch = ".*" // allow searching though all docs with no query
+                form.basicSearch = "*" // allow searching though all docs with no query
             }
             passFormValues();
         } catch (error) {
@@ -168,6 +167,14 @@ const searchMethods = [
 ];
 
 const varOptions = [0, 1, 2, 3, 4];
+const displayOptions = [
+    "None",
+    "Some",
+    "Moderate",
+    "Considerable",
+    "Significant"
+];
+
 const rrpOptions = [5, 10, 20, 30, 50];
 const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
@@ -203,9 +210,11 @@ onMounted(() => {
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label>Variants:</label>
+                    <label>Variance:</label>
                     <select v-model="form.variant">
-                        <option v-for="variant in varOptions" :key="variant" :value="variant">{{ variant }}</option>
+                        <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
+                            {{ displayOptions[index] }}
+                        </option>
                     </select>
                 </div>
                 <div class="preference-item">
@@ -223,7 +232,8 @@ onMounted(() => {
             </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
                 <button class="dropdown-button" @click="toggleDropdown">
-                    ADVANCED SEARCH ▼
+                    ADVANCED SEARCH
+                    <span class="dropdown-arrow" :class="{ 'open': isDropdownOpen }">▼</span>
                 </button>
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     <div id="search-options">
@@ -285,7 +295,7 @@ onMounted(() => {
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
                         </div>
                         <div class="advanced-option">
-                            <button @click="resetAdvancedSearch">Reset Field Values</button>
+                            <button @click="resetAdvancedSearch" class="reset-button">Reset Field Values</button>
                         </div>
                     </div>
                 </div>

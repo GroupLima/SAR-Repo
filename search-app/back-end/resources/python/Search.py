@@ -206,26 +206,26 @@ class Search():
 
     def start(self):
         qt = self.params['qt'] # query type: basic or advanced
-          
-        search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
-        self.matches = search_obj.find_matches()
-        
-        if qt == 'advanced_search':
-            if self.query == ".*":
-                for entry_id in self.json_entries.keys():
+
+        if self.query != "*": # search term not empty, perform search
+            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+            self.matches = search_obj.find_matches()
+        else: # matches is all entries
+            for entry_id in self.json_entries.keys():
                     self.matches[entry_id] = {
                         'accuracy_score' : 100,
                         'match_frequency' : 0,
                         'matches' : []}
-
+        # apply advance search filters:
+        if qt == 'advanced_search':
             advs_entries = {}
-            for entry_id in self.matches.keys():
+            for entry_id in self.matches.keys(): # get json entries of the matches
                 advs_entries[entry_id] = self.json_entries[entry_id]
             search_obj = Advanced_Search(self.lang, self.page, self.vol, self.entry_id, self.date_from, self.date_to)
             adv_matches = search_obj.filter_entries(advs_entries)
             for id in list(self.matches):
                 if id not in adv_matches:
-                    del self.matches[id]
+                    del self.matches[id] # remove entires that didnt pass the advv filters
         
         # self.matches = {'ARO-1-0001-03' : {
         #     'accuracy_score' : 20,

@@ -19,7 +19,7 @@
                             <ul>
                                 <li>Enter your search term in the main search box</li>
                                 <li>Select your search method from the dropdown (Keywords, Phrase, Regex, Word Start, Word Middle, or Word End)</li>
-                                <li>Click the "SEARCH" button or press Enter</li>
+                                <li>Click the "SEARCH" button or press Enter to see the entries in the historical records that match your search term</li>
                             </ul>
 
                             <h3>Search Preferences</h3>
@@ -27,7 +27,7 @@
 
                             <ul>
                                 <ul><b>Search method</b>: Choose how your search term is matched (default is "Word Start")</ul>
-                                <ul><b>Variants</b>: Select the level of spelling variants to include (0-4)</ul>
+                                <ul><b>Variants</b>: Select the level of spelling variants to include (0 to 4)</ul>
                                 <ul><b>Results per page</b>: Choose how many results to display (5, 10, 20, 30, or 50)</ul>
                                 <ul><b>Sort by</b>: Select how to order your results (Frequency within result, Volume ascending/descending, or Chronological)</ul>
                             </ul>
@@ -36,15 +36,27 @@
                             <p>Click "ADVANCED SEARCH ▼" to access additional filters:</p>
 
                             <ul>
-                                <ul><b>Languages</b>: Filter by language (Any, Latin, Middle Scots, or Dutch)</ul>
-                                <ul><b>Volume</b>: Select specific volumes to search (1, 2, 4, 5, 6, 7, 8) or choose "All"</ul>
-                                <ul><b>Page Search</b>: Find content on specific pages (enter page numbers)</ul>
-                                <ul><b>Entry</b>: Search for specific entry numbers</ul>
-                                <ul><b>Date Range</b>: Filter results by date (use the date pickers)</ul>
-                                <ul><b>Doc ID</b>: Search for a specific document ID (e.g., ARO-1-0001-01)</ul>
+                                <ul><b>Languages</b>: Filter by language (Any, Latin, Middle Scots, Dutch, or Multiple)</ul>
+                                <ul><b>Volume</b>: Select specific volumes to search (1, 2, 4, 5, 6, 7, 8) or choose "All" to toggle all check boxes on and off</ul>
+                                <ul><b>Page Search</b>: Find content on specific page(s) (enter page numbers, separated by commas)</ul>
+                                <ul style="display: None;"><b>Entry</b>: Search for specific entry numbers</ul>
+                                <ul><b>Date Range</b>: Filter results by date using the date pickers, selecting a year only, year and month or the full date</ul>
+                                <ul><b>Doc ID</b>: Search for a specific document ID or entry (e.g., ARO-1-0001-01)</ul>
                             </ul>
 
-                            <p>Use "Reset Field Values" to clear all advanced search filters.</p>
+                            <p>You do not need to enter a search term in the bar if you have selected an advanced filter<br>Use "Reset Field Values" to clear all advanced search filters</p>
+
+                            <h3>Search Methods</h3>
+                            <p>Determine how your search term text is handled when matching with the entry texts:</p>
+
+                            <ul>
+                                <ul><b>Word Start</b>: Look for a string of characters that appears at beginning of words</ul>
+                                <ul><b>Word Middle</b>: Look for a string of characters that appears in the middle of words</ul>
+                                <ul><b>Word End</b>: Look for a string of characters that appears at end of words</ul>
+                                <ul><b>Keywords</b>: Search for individual words in the entries. You can search for multiple words at once, separating them with a space.</ul>
+                                <ul><b>Phrase</b>: Search for one or more consecutive words</ul>
+                                <ul><b>Regex</b>: Find patterns in the entries using a 'regular expression'. See <a href="https://www.w3schools.com/python/python_regex.asp">here</a> for syntax</ul>
+                            </ul>
                             
                         </div>
                     </div>
