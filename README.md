@@ -59,10 +59,10 @@ Now, you will need to install a few packages and dependencies in order to run th
 2. Go to the front-end directory: `cd search-app/front-end`
 3. Install NPM requirements (only on first setup/run): `npm install`
 4. Run Vite Server with Vue tooling:
-   1. Deploy site and run regularly with:
-      1. Compile site only on first run / site changes being made: `npm run build`
-      2. Run with: `npm run preview`
-   2. **Not for deployment because it has dev privileges:** `npm run dev`
+   1. Compile site: `npm run build`
+   2. Run preview server: `npm run preview -- --host 0.0.0.0 --port 5173`
+
+   3. **Alternative for development only (not recommended for deployment):** `npm run dev`
 
 #### ExistDB Setup
 1. On first time installing existdb we have to download it from the web
