@@ -12,7 +12,7 @@ export default defineConfig({
   host: "0.0.0.0",
   proxy: {
    "/api": {
-    target: "http://backend:8000", // Use Docker container name for better networking
+    target: "http://localhost:8000",
     changeOrigin: true,
     // REMOVE this rewrite line:
     // rewrite: (path) => path.replace(/^\/api/, ""),
@@ -24,7 +24,7 @@ export default defineConfig({
     protocol: 'wss'
   },
   // Add the allowedHosts configuration
-  allowedHosts: ['sar2.andreasmaita.com', 'localhost']
+  allowedHosts: ['sar2.andreasmaita.com', 'localhost', '0.0.0.0']
  },
  resolve: {
   alias: {

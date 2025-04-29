@@ -10,11 +10,14 @@ services:
       - frontend_node_modules:/app/search-app/front-end/node_modules
     ports:
       - "5173:5173"
+    network_mode: "host"  # Use host network mode to make the container accessible via localhost
     working_dir: /app/search-app/front-end
-    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    command: sh -c "npm install && npm run build && npm run preview -- --host 0.0.0.0 --port 5173"
     environment:
       - NODE_ENV=development
       - DOCKER_DEFAULT_PLATFORM=linux/amd64
+      - VITE_APP_URL=https://sar2.andreasmaita.com
+      - BACKEND_API_URL=https://sar2.andreasmaita.com/api
 
   backend:
     build:
