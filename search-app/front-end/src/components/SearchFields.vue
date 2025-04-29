@@ -13,7 +13,7 @@ const dateTo = ref();
 const form = reactive({
     query_type: "basic_search",
     basicSearch: "",
-    methodSearch: "word_start", // default type of string matching for basic search
+    methodSearch: "keywords", // default type of string matching for basic search
     language: "any",
     variant: "0",
     volumes: [],
@@ -73,7 +73,7 @@ const handleSearch = () => {
         form.query_type = getSearchType();
         try {
             if (form.basicSearch.trim() === "") {
-                form.basicSearch = ".*" // allow searching though all docs with no query
+                form.basicSearch = "*" // allow searching though all docs with no query
             }
             passFormValues();
         } catch (error) {
@@ -167,6 +167,14 @@ const searchMethods = [
 ];
 
 const varOptions = [0, 1, 2, 3, 4];
+const displayOptions = [
+    "None",
+    "Some",
+    "Moderate",
+    "Considerable",
+    "Significant"
+];
+
 const rrpOptions = [5, 10, 20, 30, 50];
 const ordOptions = ['Frequency within result', 'Volume, ascending', 'Volume, descending', 'Chronological'];
 
@@ -202,9 +210,11 @@ onMounted(() => {
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label>Variants:</label>
+                    <label>Variance:</label>
                     <select v-model="form.variant">
-                        <option v-for="variant in varOptions" :key="variant" :value="variant">{{ variant }}</option>
+                        <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
+                            {{ displayOptions[index] }}
+                        </option>
                     </select>
                 </div>
                 <div class="preference-item">
