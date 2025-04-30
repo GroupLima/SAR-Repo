@@ -55,7 +55,7 @@
                                 <ul><b>Word End</b>: Look for a string of characters that appears at end of words</ul>
                                 <ul><b>Keywords</b>: Search for individual words in the entries. You can search for multiple words at once, separating them with a space.</ul>
                                 <ul><b>Phrase</b>: Search for one or more consecutive words</ul>
-                                <ul><b>Regex</b>: Find patterns in the entries using a 'regular expression'. See <a href="https://www.w3schools.com/python/python_regex.asp">here</a> for syntax</ul>
+                                <ul><b>Regex</b>: Find patterns in the entries using a 'regular expression'. See <a href="https://www.w3schools.com/python/python_regex.asp">here</a> for syntax.</ul>
                             </ul>
                             
                         </div>
