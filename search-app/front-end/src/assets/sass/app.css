@@ -20,6 +20,7 @@ body.dark {
 
 .home-page,
 .search-page,
+.xquery-page,
 .about-page,
 .help-page,
 .selected-page,
@@ -38,6 +39,7 @@ body.dark {
   width: 100%;
   padding: 24px;
   font-family: Arial, sans-serif;
+  margin-top: 20px;
 }
 .container-browser .split-view {
   display: flex;
@@ -266,9 +268,6 @@ body.dark {
   }
   .navbar .nav-content .burger-menu {
     display: flex;
-  }
-  .home-page {
-    padding-top: 20px;
   }
   footer .image-container {
     height: auto;
@@ -536,6 +535,7 @@ body.dark .search-section .advanced-search-container .advanced-search-dropdown #
 .xquery-page {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
 }
 .xquery-page .content {
   flex: 1;
@@ -684,6 +684,33 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   width: 100%;
   max-width: 300px;
   font-family: Arial, sans-serif;
+
+.notification-banner {
+  background-color: #f8f9fa;
+  border-left: 4px solid #17a2b8;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.notification-text {
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.5;
+}
+.notification-text .notification-text strong {
+  color: #212529;
 }
 
 .split-view {

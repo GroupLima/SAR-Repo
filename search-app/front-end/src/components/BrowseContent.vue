@@ -1,4 +1,12 @@
 <template>
+  <div class="notification-banner">
+    <div class="notification-content">
+      <div class="notification-icon">ℹ️</div>
+      <div class="notification-text">
+        <strong>Please Note:</strong> While the Browse page UI is fully functional, it currently displays a placeholder record only. The record fetching functionality is still a work in progress and will be implemented in a future update.
+      </div>
+    </div>
+  </div>
   <div class="container-browser">
     <div class="volume-nav">
       <select data-tooltip="Select the Preferred Volume" class="volume-select" v-model="currentVolume" @change="handleVolumeChange">

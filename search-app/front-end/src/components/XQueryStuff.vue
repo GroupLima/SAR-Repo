@@ -63,7 +63,8 @@ const runQuery = async () => {
         <header>
             <div class="header-content">
                 <h1>XQuery Search</h1>
-                <p>Search through XML documents using XQuery</p>
+                <br/>
+                <p>Harness the power of XQuery to perform precise, structured searches across our collection of XML-encoded historical documents. This advanced search tool allows you to craft custom queries that target specific elements, attributes, and content patterns within the document corpus.</p>
             </div>
         </header>
         
