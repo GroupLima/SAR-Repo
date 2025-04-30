@@ -14,11 +14,19 @@
           :src="pageImage" 
           alt="Page Image" 
           class="page-image" 
+          @touchstart="handleTouchStart"
+          @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd"
           @mousemove="handleZoom" 
+          @click="toggleZoom"
           @mouseleave="resetZoom"
           ref="pageImageRef"
           :style="imageStyle"
         />
+        <div v-if="isMobile || smallScreen" class="mobile-zoom-indicator" :class="{ active: isZooming }">
+          <span v-if="isZooming">Click or double click to exit zoom</span>
+          <span v-else>Click or double click to zoom</span>
+        </div>
       </div>
       
       <div class="records-container">
@@ -26,7 +34,6 @@
           <button data-tooltip="Click Here to go to the First Page of the Volume" class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
           <button data-tooltip="Click here for the previous Page" class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
           
-          <!-- Updated page number search component -->
           <div class="page-number-search">
             <span class="page-label">Page</span>
             <input 
@@ -101,7 +108,7 @@
 
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
-import { inject, ref, computed } from 'vue';
+import { inject, ref, computed, onMounted } from 'vue';
 
 export default {
   data() {
@@ -141,11 +148,21 @@ export default {
         'ARO-1-0001-02': '<div type="heading" xml:id="ARO-1-0001-02" xml:lang="lat">\n  <head>Quo die Willelmus de Camera pater</head>\n  <p><lb break="yes"/>cum pertinentiis quibuscumque...</p>\n</div>'
       },
       // Zoom properties
-      zoomScale: 2, // Scale factor when zooming
+      zoomScale: 2.5, // Increased zoom scale for better visibility
       isZooming: false,
       zoomX: 0,
       zoomY: 0,
-      transformOrigin: '0% 0%'
+      transformOrigin: '0% 0%',
+      // Device specific properties
+      isMobile: false,
+      smallScreen: false,
+      lastTouchX: 0,
+      lastTouchY: 0,
+      lastTapTime: 0,
+      doubleTapDelay: 300, // milliseconds
+      // Track mouse position for consistent zooming
+      mouseX: 0,
+      mouseY: 0
     }
   },
   setup() {
@@ -198,8 +215,17 @@ export default {
   },
   mounted() {
     this.loadRecords();
+    this.checkDeviceSize();
+    window.addEventListener('resize', this.checkDeviceSize);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.checkDeviceSize);
   },
   methods: {
+    checkDeviceSize() {
+      this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      this.smallScreen = window.innerWidth <= 768;
+    },
     handleVolumeChange() {
       this.currentPage = 1;
       this.loadRecords();
@@ -262,20 +288,107 @@ export default {
       // For now we'll just use the static records in data()
     },
     
-    // Direct image zoom methods
+    // Zoom methods that work for both touch and mouse
     handleZoom(event) {
       if (!this.$refs.pageImageRef) return;
       
       const rect = this.$refs.pageImageRef.getBoundingClientRect();
+      
+      // Store mouse position for use in toggleZoom
+      this.mouseX = event.clientX;
+      this.mouseY = event.clientY;
+      
       const x = ((event.clientX - rect.left) / rect.width) * 100;
       const y = ((event.clientY - rect.top) / rect.height) * 100;
       
       this.transformOrigin = `${x}% ${y}%`;
-      this.isZooming = true;
+      
+      // Only auto-zoom on mousemove if not in small screen mode
+      if (!this.smallScreen && !this.isMobile) {
+        this.isZooming = true;
+      }
+    },
+    
+    // Toggle zoom on click (for both small screens and mobile)
+    toggleZoom(event) {
+      if (!this.$refs.pageImageRef) return;
+      
+      // If we're in small screen mode, toggle zoom state
+      if (this.smallScreen || this.isMobile) {
+        if (this.isZooming) {
+          // If already zooming, turn it off
+          this.isZooming = false;
+        } else {
+          // If not zooming, use the current mouse position as focal point
+          const rect = this.$refs.pageImageRef.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+          
+          this.transformOrigin = `${x}% ${y}%`;
+          this.isZooming = true;
+        }
+      }
+    },
+    
+    // Mobile touch methods
+    handleTouchStart(event) {
+      if (!this.$refs.pageImageRef) return;
+      
+      // Prevent default behavior to avoid page scrolling when zooming
+      event.preventDefault();
+      
+      // Handle single touch (positioning)
+      if (event.touches.length === 1) {
+        const touch = event.touches[0];
+        this.lastTouchX = touch.clientX;
+        this.lastTouchY = touch.clientY;
+        
+        const rect = this.$refs.pageImageRef.getBoundingClientRect();
+        const x = ((touch.clientX - rect.left) / rect.width) * 100;
+        const y = ((touch.clientY - rect.top) / rect.height) * 100;
+        
+        this.transformOrigin = `${x}% ${y}%`;
+        
+        // Toggle zoom on single tap
+        const now = new Date().getTime();
+        const timeSince = now - this.lastTapTime;
+        
+        if (timeSince < this.doubleTapDelay && timeSince > 0) {
+          // Double tap - toggle zoom
+          this.isZooming = !this.isZooming;
+        }
+        
+        this.lastTapTime = now;
+      }
+    },
+    
+    handleTouchMove(event) {
+      if (!this.$refs.pageImageRef || !this.isZooming) return;
+      
+      // Prevent default to avoid page scrolling
+      event.preventDefault();
+      
+      const touch = event.touches[0];
+      this.lastTouchX = touch.clientX;
+      this.lastTouchY = touch.clientY;
+      
+      const rect = this.$refs.pageImageRef.getBoundingClientRect();
+      const x = ((touch.clientX - rect.left) / rect.width) * 100;
+      const y = ((touch.clientY - rect.top) / rect.height) * 100;
+      
+      this.transformOrigin = `${x}% ${y}%`;
+    },
+    
+    handleTouchEnd(event) {
+      // For mobile, we don't automatically reset zoom on touch end
+      // as the zoom toggle is handled in touch start
     },
     
     resetZoom() {
-      this.isZooming = false;
+      // Only reset zoom on mouse leave if not in small screen mode
+      if (!this.smallScreen && !this.isMobile) {
+        this.isZooming = false;
+      }
     }
   }
 }
