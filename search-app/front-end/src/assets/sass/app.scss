@@ -441,6 +441,10 @@ footer {
       margin-left: 10px;
       border-radius: 50px; // Primary action button
       font-weight: bold;
+
+      &:hover {
+        background-color: color.adjust($primary-colour, $lightness: -10%);
+      }
     }
 
     @media (max-width: 768px) {
@@ -570,7 +574,7 @@ footer {
             color: $secondary-colour;
 
             &:hover {
-              background-color: darken($primary-colour, 10%);
+              background-color: color.adjust($primary-colour, $lightness: -10%);
             }
           }
 
@@ -699,7 +703,7 @@ footer {
             cursor: pointer;
 
             &:hover {
-              background-color: darken($primary-colour, 10%);
+              background-color: color.adjust($primary-colour, $lightness: -10%);
             }
 
             body.dark & {
@@ -746,7 +750,7 @@ footer {
       color: $dark-gray; // Explicitly set text color to ensure visibility
       
       &:hover:enabled {
-        background-color: $primary-colour;
+        background-color: color.adjust($primary-colour, $lightness: -10%);
         color: $secondary-colour;
       }
     }
@@ -1023,7 +1027,7 @@ $small-mobile-breakpoint: 480px;
   border-radius: 50px; // Primary action button
 
   &:hover {
-    background-color: darken($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: -10%);
   }
 }
 
@@ -1087,7 +1091,7 @@ $small-mobile-breakpoint: 480px;
   color: $secondary-colour;
 
   &:hover {
-    background-color: darken($primary-colour, 10%);
+    background-color: color.adjust($primary-colour, $lightness: -10%);
   }
 }
 
@@ -1192,7 +1196,7 @@ $small-mobile-breakpoint: 480px;
     color: $secondary-colour;
 
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
 }
@@ -1211,7 +1215,7 @@ $small-mobile-breakpoint: 480px;
   }
 
   .image-viewer {
-    background-color: lighten($dark-mode, 3%);
+    background-color: color.adjust($dark-mode, $lightness: 3%);
   }
 
   .records-container {
@@ -1220,7 +1224,7 @@ $small-mobile-breakpoint: 480px;
   }
 
   .nav-btn {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
 
@@ -1234,7 +1238,7 @@ $small-mobile-breakpoint: 480px;
   }
 
   .page-number-search {
-    background-color: darken($dark-mode, 3%);
+    background-color: color.adjust($dark-mode, $lightness: -3%);
   }
 
   .page-label, .page-total {
@@ -1242,13 +1246,13 @@ $small-mobile-breakpoint: 480px;
   }
 
   .page-number-input {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
 
     &:focus {
-      outline-color: lighten($primary-colour, 10%);
-      border-color: lighten($primary-colour, 10%);
+      outline-color: color.adjust($primary-colour, $lightness: 10%);
+      border-color: color.adjust($primary-colour, $lightness: 10%);
     }
   }
 
@@ -1257,7 +1261,7 @@ $small-mobile-breakpoint: 480px;
     color: $secondary-colour;
 
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
 
@@ -1275,7 +1279,7 @@ $small-mobile-breakpoint: 480px;
     color: $secondary-colour;
 
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
   }
 
@@ -1288,7 +1292,7 @@ $small-mobile-breakpoint: 480px;
   }
 
   .volume-select {
-    background-color: darken($dark-mode, 5%);
+    background-color: color.adjust($dark-mode, $lightness: -5%);
     color: $secondary-colour;
     border-color: $light-gray;
   }
@@ -1310,7 +1314,7 @@ $small-mobile-breakpoint: 480px;
   .xml-modal-body {
     .xml-content {
       color: $secondary-colour;
-      background-color: darken($dark-mode, 3%);
+      background-color: color.adjust($dark-mode, $lightness: -3%);
     }
   }
 
@@ -1322,7 +1326,7 @@ $small-mobile-breakpoint: 480px;
       color: $secondary-colour;
 
       &:hover {
-        background-color: darken($primary-colour, 10%);
+        background-color: color.adjust($primary-colour, $lightness: -10%);
       }
     }
   }
@@ -1407,7 +1411,7 @@ $small-mobile-breakpoint: 480px;
     align-items: center;
 
     &:hover {
-      background-color: darken($primary-colour, 10%);
+      background-color: color.adjust($primary-colour, $lightness: -10%);
     }
 
     .dropdown-arrow {
@@ -1644,6 +1648,276 @@ body.dark {
 
     &:hover {
       background-color: color.adjust($primary-colour, $lightness: 10%);
+    }
+  }
+
+  .clear-btn {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    
+    &:hover {
+      background-color: color.adjust($primary-colour, $lightness: 5%);
+    }
+  }
+}
+#search-options {
+  .advanced-option {
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .horizontal-list {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      .radio-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        input[type="radio"] {
+          margin: 0;
+        }
+      }
+    }
+
+    button {
+      background-color: $primary-colour;
+      color: $secondary-colour;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: color.adjust($primary-colour, $lightness: -10%);
+      }
+    }
+
+    label,
+    select,
+    input {
+      display: block;
+      font-size: 1em;
+    }
+
+    input[type="checkbox"] {
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    #language {
+      background-color: $secondary-colour;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+      padding: 10px;
+      
+      .option-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+      }
+      
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        input[type="date"] {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
+
+    #dates {
+      background-color: $secondary-colour;
+      border: 1px solid $dark-gray;
+      border-radius: 4px;
+      padding: 10px;
+
+      .option-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+      }
+
+      input[type="date"] {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1em;
+        color: $dark-gray;
+        border: 1px solid $light-gray;
+        border-radius: 4px;
+        padding: 5px;
+        background-color: $secondary-colour;
+      }
+
+      body.dark & {
+        background-color: $dark-mode;
+        border-color: $light-gray;
+
+        label {
+          color: $secondary-colour;
+        }
+
+        input[type="date"] {
+          background-color: color.adjust($dark-mode, $lightness: -5%);
+          color: $secondary-colour;
+          border-color: $light-gray;
+        }
+      }
+    }
+  }
+}
+
+.advanced-search-dropdown {
+  #search-options {
+    .advanced-option {
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+      h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      .horizontal-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .radio-container {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          input[type="radio"] {
+            margin: 0;
+          }
+        }
+      }
+
+      button {
+        background-color: $primary-colour;
+        color: $secondary-colour;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $dark-gray;
+        }
+      }
+
+      label,
+      select,
+      input {
+        display: block;
+        font-size: 1em;
+      }
+
+      input[type="checkbox"] {
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      #dates {
+        background-color: $secondary-colour;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        padding: 10px;
+
+        .option-title {
+          font-size: 1.2em;
+          margin-bottom: 10px;
+        }
+
+        label {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 1em;
+          color: $dark-gray;
+        }
+
+        input[type="date"] {
+          display: inline-block;
+          margin-right: 10px;
+          font-size: 1em;
+          color: $dark-gray;
+          border: 1px solid $light-gray;
+          border-radius: 4px;
+          padding: 5px;
+          background-color: $secondary-colour;
+        }
+
+        body.dark & {
+          background-color: $dark-mode;
+          border-color: $light-gray;
+
+          label {
+            color: $secondary-colour;
+          }
+
+          input[type="date"] {
+            background-color: color.adjust($dark-mode, $lightness: -5%);
+            color: $secondary-colour;
+            border-color: $light-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    .image-container {
+      height: auto; // Adjust height for smaller screens
+      min-width: 100%; // Ensure the image container fits the screen width
+    }
+
+    .footer-links-container {
+      padding: 10px; // Adjust padding for smaller screens
+
+      .footer-links {
+        flex-direction: column; // Stack links vertically on smaller screens
+        align-items: center;
+      }
+    }
+  }
+}
+
+.nav-links a,
+.dark-mode-button {
+  // Add styles to hide the burger menu when clicked
+  @media (max-width: 768px) {
+    &:active {
+      .nav-links {
+        display: none;
+      }
     }
   }
 }
