@@ -56,7 +56,8 @@ const filterChange = () => {
 
 const search = async() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
-    const baseSearchUrl = 'http://localhost:8000/api/search'
+    // Use a relative URL that will work on both localhost and production domain
+    const baseSearchUrl = '/api/search'
     //console.log('im in search results');
     const searchParams = {
         ...props.queryParams,

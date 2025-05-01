@@ -2,25 +2,64 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: frontend
+      dockerfile: Dockerfile_front-end
+    image: sar-repo-frontend:latest
+    container_name: sar-repo-frontend
     volumes:
       - ./search-app/front-end:/app/search-app/front-end
-      - /app/search-app/front-end/node_modules
-    ports:
-      - "5173:5173"
+      - frontend_node_modules:/app/search-app/front-end/node_modules
+    network_mode: "host"  # Use host network mode to make the container accessible via localhost
     working_dir: /app/search-app/front-end
-    command: sh -c "npm install && npm run dev"
+    command: sh -c "npm install && npm run build && npm run preview -- --host 0.0.0.0 --port 5173"
+    environment:
+      - NODE_ENV=development
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
+      - VITE_APP_URL=https://sar2.andreasmaita.com
+      - BACKEND_API_URL=https://sar2.andreasmaita.com/api
 
   backend:
     build:
       context: .
-      dockerfile: Dockerfile
-      target: backend
+      dockerfile: Dockerfile_back-end
+    image: sar-repo-backend:latest
+    container_name: sar-repo-backend
     volumes:
       - ./search-app/back-end:/app/search-app/back-end
-      - ./search-app/back-end/venv_sar:/app/search-app/back-end/venv_sar
+      - backend_vendor:/app/search-app/back-end/vendor
+      - backend_venv:/opt/venv
     ports:
       - "8000:8000"
+    depends_on:
+      - frontend
     working_dir: /app/search-app/back-end
-    command: sh -c ". venv_sar/bin/activate && php artisan serve --host=0.0.0.0 --port=8000"
+    command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
+    environment:
+      - APP_ENV=development
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+  # exist:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile_exist
+  #   image: sar-repo-exist:latest
+  #   container_name: sar-repo-exist
+  #   volumes:
+  #     - ./search-app/exist-data:/app/search-app/exist-data
+  #     - ./search-app/back-end/storage/app/xml-files:/app/search-app/back-end/storage/app/xml-files
+  #   ports:
+  #     - "8080:8080"
+  #     - "8443:8443"
+  #   depends_on:
+  #     - backend
+  #   working_dir: /app/search-app/exist-data
+  #   command: java -jar start.jar
+  #   environment:
+  #     - DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+volumes:
+  frontend_node_modules:
+    name: sar-repo-frontend-node-modules
+  backend_vendor:
+    name: sar-repo-backend-vendor
+  backend_venv:
+    name: sar-repo-backend-venv
