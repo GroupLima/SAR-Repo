@@ -37,20 +37,13 @@
       </div>
     </div>
   </div>
-  <div>
-    <Footer />  
-  </div>
 </template>
 
 <script>
 import { inject } from 'vue';
 import { PDFDocument, rgb } from 'pdf-lib';
-import Footer from '@/components/Footer.vue';
 
 export default {
-  components: {
-    Footer,
-  },
   setup() {
     const selectedRecords = inject('selectedRecords');
     
