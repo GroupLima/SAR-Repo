@@ -211,7 +211,7 @@ class Search():
         qt = self.params['qt'] # query type: basic or advanced
 
         if self.query != "*": # search term not empty, perform search
-            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries, self.case_sensitive) # pass in parameters for basic search
             self.matches = search_obj.find_matches()
         else: # matches is all entries
             for entry_id in self.json_entries.keys():
@@ -267,7 +267,7 @@ class Search():
         basic search params: query, var, sm, entry_id
         """
         # set case sensitivity
-        if self.params['case_sensitive'] and self.params['case_sensitive'].lower() == 'true': self.case_sensitive = True
+        if self.params.get('case_sensitive') and self.params['case_sensitive'].lower() == 'true': self.case_sensitive = True
         # default number of results per page
         self.search_method = self.params['sm']
         # raise an error if the search method is not a key in search functions
@@ -280,7 +280,7 @@ class Search():
         #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
-        self.sort = self.params['sort']
+        self.sort = self.params.get('sort') or self.sort
         self.convert_variance(self.params['var'])
 
 
@@ -295,45 +295,6 @@ class Search():
         variance = int(variance)
         #print(abs(variance*10 - 100))
         self.variance = abs(variance*10 - 100)
-
-   
-    def init_sort_params(self):
-        """
-        index params using 'ob' to get the string value of the sort type
-        assign self.sort_criteria tuple values value of the values and whether its ascending or descending
-        eg. self.sort_criteria = (  
-                                    (date, ascending), 
-                                    (best matches, descending), 
-                                    (frequency in result, descending)
-                                )
-        """
-        # write code here
-
-
-        pass
-
-    def order_by(self, sort_criteria):
-        """
-        sort entries by sort criteria (tuple)
-        direction criteria: ascending, descending
-        params criteria: volume, page, date
-        date and volume are mutally exclusive
-        possible combinations:  (volume, page, ascending),
-                                (volume, page, descending),
-                                (date, ascending), #oldest to most recent
-                                (date, descending) #most recent to oldest
-                                (frequency in result)
-                                (best matches)
-        if volume, page are the same or date is the same, then sort by best match
-        if frequency in result is the same, then sort by best match
-        if match accuracy is the same, then sort by frequency
-        if sort_criteria not frequency_in_result: (criteria, matches accuracy descending, frequency descending)
-        if sort_criteria is frequency_in_result: (frequency descending, accuracy)
-        """
-        # write code here
-            
-
-        pass
 
     def sort_matches(self, matches):
         # frequency, best, volumeasc, volumedsc, chronological
