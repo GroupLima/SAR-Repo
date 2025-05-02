@@ -5,6 +5,8 @@
 # Ignore IDE config files
 /.idea
 .vscode/
+*.sublime-project
+*.sublime-workspace
 
 # Ignore vendor directory
 /vendor
@@ -17,3 +19,22 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*$py.class
+*.so
+.Python
+.pytest_cache/
+
+# Environment files
+.env
+.env.local
+.env.backup
+.env.production
+
+# Python virtual environment
+venv-sar/
+
+# System files
+Thumbs.db
+
+# Compiled CSS map files
+*.css.map
