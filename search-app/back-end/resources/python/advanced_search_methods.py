@@ -44,7 +44,7 @@ class AdvancedSearchMethods:
                 return AdvancedSearchMethods.is_after_date(to_val, date_from)
             return False
         
-        date_int = get_date_int_value(date)
+        date_int = AdvancedSearchMethods.get_date_int_value(date)
         date_from_int = (date_from[0] << 7) + (date_from[1] << 3) + (date_from[2])
         return date_int >= date_from_int
 
@@ -78,7 +78,7 @@ class AdvancedSearchMethods:
                 return AdvancedSearchMethods.is_before_date(from_val, date_to)
             return False
 
-        date_int = get_date_int_value(date)
+        date_int = AdvancedSearchMethods.get_date_int_value(date)
         date_to_int = (date_to[0] << 7) + (date_to[1] << 3) + (date_to[2])
         return date_int <= date_to_int
 
