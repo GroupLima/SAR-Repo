@@ -13,7 +13,6 @@ services:
     command: sh -c "npm install && npm run build && npm run preview -- --host 0.0.0.0 --port 5173"
     environment:
       - NODE_ENV=development
-      - DOCKER_DEFAULT_PLATFORM=linux/amd64
       - VITE_APP_URL=https://sar2.andreasmaita.com
       - BACKEND_API_URL=https://sar2.andreasmaita.com/api
 
@@ -35,26 +34,18 @@ services:
     command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
     environment:
       - APP_ENV=development
-      - DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-  # exist:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile_exist
-  #   image: sar-repo-exist:latest
-  #   container_name: sar-repo-exist
-  #   volumes:
-  #     - ./search-app/exist-data:/app/search-app/exist-data
-  #     - ./search-app/back-end/storage/app/xml-files:/app/search-app/back-end/storage/app/xml-files
-  #   ports:
-  #     - "8080:8080"
-  #     - "8443:8443"
-  #   depends_on:
-  #     - backend
-  #   working_dir: /app/search-app/exist-data
-  #   command: java -jar start.jar
-  #   environment:
-  #     - DOCKER_DEFAULT_PLATFORM=linux/amd64
+  exist:
+    image: existdb/existdb:latest
+    container_name: exist
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - exist-data:/exist/data
+      - exist-config:/exist/config
+    environment:
+      - JAVA_TOOL_OPTIONS=-XX:MaxRAMFraction=2
 
 volumes:
   frontend_node_modules:
@@ -63,3 +54,7 @@ volumes:
     name: sar-repo-backend-vendor
   backend_venv:
     name: sar-repo-backend-venv
+  exist-data:
+    name: sar-repo-exist-data
+  exist-config:
+    name: sar-repo-exist-config

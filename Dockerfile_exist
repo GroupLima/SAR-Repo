@@ -1,22 +1,10 @@
-# Use official ExistDB as the parent image for the back-end XQuery jobs
-FROM --platform=${BUILDPLATFORM:-linux/amd64} existdb/existdb:6.3.0 AS exist
+FROM existdb/existdb:latest
 
-# Set environment variables for ExistDB
-ENV EXIST_HOME=/exist
-ENV EXIST_DATA_DIR=/exist-data
-ENV EXIST_LOGS_DIR=/exist-data/logs
+# Example: Copy a .xar file for deployment
+# COPY your_app.xar /exist/autodeploy
 
-# Set working directory
-WORKDIR /app/search-app/exist-data
+# Example: Set the admin password
+# RUN java -jar start.jar client --no-gui -u admin -P '' -x "sm:passwd('admin', 'your_password')"
 
-# Copy XML files
-COPY search-app/back-end/storage/app/xml-files/* ./
-
-# Create directory for logs if it doesn't exist
-RUN mkdir -p ${EXIST_LOGS_DIR}
-
-# Expose ports for ExistDB
-EXPOSE 8080 8443
-
-# Using a more stable startup command for ExistDB with admin password setting
-CMD ["java", "-jar", "start.jar", "jetty"]
+# Example: Copy a custom configuration file
+# COPY src/conf.xml /exist/config
