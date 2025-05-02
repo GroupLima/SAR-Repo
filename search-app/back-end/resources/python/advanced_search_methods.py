@@ -44,13 +44,7 @@ class AdvancedSearchMethods:
                 return AdvancedSearchMethods.is_after_date(to_val, date_from)
             return False
         
-        date = [int(part) for part in date.split('-')]
-        date_int = 0
-        date_int += date[0] << 7
-        if len(date) > 1:
-            date_int += date[1] << 3
-            if len(date) > 2:
-                date_int += date[2]
+        date_int = AdvancedSearchMethods.get_date_int_value(date)
         date_from_int = (date_from[0] << 7) + (date_from[1] << 3) + (date_from[2])
         return date_int >= date_from_int
 
@@ -84,12 +78,26 @@ class AdvancedSearchMethods:
                 return AdvancedSearchMethods.is_before_date(from_val, date_to)
             return False
 
-        date = [int(part) for part in date.split('-')]
-        date_int = 0
-        date_int += date[0] << 7
-        if len(date) > 1:
-            date_int += date[1] << 3
-            if len(date) > 2:
-                date_int += date[2]
+        date_int = AdvancedSearchMethods.get_date_int_value(date)
         date_to_int = (date_to[0] << 7) + (date_to[1] << 3) + (date_to[2])
         return date_int <= date_to_int
+
+    @staticmethod
+    def get_date_int_value(date):
+        try:
+            date = [int(part) for part in date.split('-')]
+            date_int = 0
+            date_int += date[0] << 7
+            if len(date) > 1:
+                date_int += date[1] << 3
+                if len(date) > 2:
+                    date_int += date[2]
+            return date_int
+        except:
+            raise InvalidDateInputError(date)
+        return None
+
+    @staticmethod
+    def get_date_int_value_or_none(date):
+        if not date or date.strip() == '': return None
+        return AdvancedSearchMethods.get_date_int_value(date)

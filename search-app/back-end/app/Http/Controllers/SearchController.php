@@ -420,6 +420,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $startDate     = $data['startDate'];
         $endDate       = $data['endDate'];
         $docId         = $data['docId'];
+        $sortBy        = $data['sortBy'];
         echo "\nqueryType";
         echo $queryType;
         echo "\nbasicSearch";
@@ -443,6 +444,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         echo "\ndocId";
         echo $docId;
         echo "\n";
+        echo "\nsortBy";
+        echo $sortBy;
    
         
         if ($queryType === "xquery") {
@@ -481,44 +484,26 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
 
     function simplify_search_params($params){
-
-        //params: query_type, user query, results per page, variance, order by asce/desc, search method, entry id, date from, date to, volume, page, paragraph, language, page number
-        $param_keys = ['qt', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'pageNo'];
-
         $permitted = [];
-
-        /*
-
-        for basic search example, we need:
-
-            1. (qt) query type: 'basic_search'
-            2. (query) query
-            3. (var) variance
-            4. (sm) search method: 'start with'
-            5. (rpp) results per page
         
-        */ //left is python right is vue
+        //left is python right is vue (basic search)
         $permitted['query'] = $params['basicSearch'] ?? '';
+        $permitted['case_sensitive'] = $params['caseSensitive'] ?? false;
         $permitted['qt'] = $params['query_type'] ?? 'basic_search';
         $permitted['var'] = $params['variant'] ?? 0;
         $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
         $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
         $permitted['pageNo'] = $params['page'];
+        $permitted['sort'] = $params['sortBy'];
 
-        // advanced search params
+        // advanced search params (advanced search)
         $permitted['entry_id'] = $params['docId' ?? null];
         $permitted['date_from'] = $params['startDate'] ?? null;
         $permitted['date_to'] = $params['endDate'] ?? null;
         $permitted['vol'] = $params['volumes'] ?? null;
         $permitted['page'] = $params['pageSearch'] ?? null;
         $permitted['lang'] = $params['language'] ?? null;
-        
-        //create permitted list of valid parameters relevent to the type of search the user is making
-        // foreach ($param_keys as $param){
-        //     if (isset($params[$param])) {
-        //         $permitted[$param] = $params[$param];
-        //     }
-        // }
+
         return $permitted;
     }
 
@@ -582,15 +567,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             if (empty($this->match_results)) {
                 return []; // No results to display
             }
-            
-            uasort($this->match_results, function($a, $b) {
-                if ($a['accuracy_score'] == $b['accuracy_score']) {
-                    // If accuracy is the same, compare by match_frequency
-                    return $b['match_frequency'] - $a['match_frequency']; // Highest frequency first
-                }
-                return $b['accuracy_score'] - $a['accuracy_score']; // Highest accuracy first
-            });
-            
             $start_of_page = ($current_page-1) * $results_per_page;
             // get results from the array of match_results staring at $start_of_page for length of $results_per_page
             $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);
@@ -613,20 +589,10 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
                     $language_full = $language_map[$language_code] ?? $language_code;
 
                     $htmlcontent = $this->convert_to_html($content);
-                    $htmlvolume = $this->convert_to_html($volume);
-                    $htmlpage = $this->convert_to_html($page);
-                    //$htmldate = $this->convert_to_html($date);
-                    $htmllang = $this->convert_to_html($language_full);
                     
                     $matches = $entry['matches'];
                     $highlighted_html = $this->highlight($htmlcontent, $matches);
-                    // $display_results[$entry_id] = [
-                    //     'highlighted_html' => $highlighted_html,
-                    //     'volume' => $htmlvolume,
-                    //     'page' => $htmlpage,
-                    //     'date' => $htmldate,
-                    //     'lang' => $htmllang,
-                    // ];
+
                     $display_results[$entry_id] = [
                         'highlighted_html' => $highlighted_html,
                         'volume' => $volume,
@@ -639,15 +605,12 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             
             return $display_results;
         }
-        
-
-
 
         //return false if parametters couldnt be applied
     }
 
     //get chunk of results (if user requested 10 results per page, get the first 10 results)
-    function get_results_for_page($rpp, $pageNo){
+    function get_results_for_page($rpp){
         //use modulus to determine which chunk of results to return according to rpp (results per page)
         return $rpp;
     }
@@ -670,7 +633,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             $escaped_text = preg_quote($substring, '/');
             //echo 'escaped text: ' . $escaped_text . ' ';
             //$highlighted_htmlcontent = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $highlighted_htmlcontent);
-            $pattern = '/\b' . $escaped_text . '\b/i';
+            $pattern = '/\b' . $escaped_text . '\b/';
             $htmltext = preg_replace($pattern, "$opening_tag$substring$closing_tag", $htmltext);
 
             //echo 'highlights: ' . $htmltext . '; <br>';

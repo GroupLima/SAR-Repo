@@ -4,6 +4,7 @@ from rapidfuzz import process, fuzz
 from advanced_search import Advanced_Search
 from basic_search import Basic_Search
 import json_parser as Json_Parser
+import sort_methods
 
 from pathlib import Path
 
@@ -86,70 +87,6 @@ return example:
     }
 """
 
-"""
-def search(params):
-    query_type = params['qt']
-    match query_type:
-        case 'basic_search':
-            return basic_search(params)
-        case 'advanced_search':
-            return advanced_search(params)
-        case _:
-            print('search not found')
-            return None
-"""
-
-            
-
-"""
-# for basic search and autocomplete
-def basic_search(params):
-    try:
-        # write code here
-        # find matches using search method chosen by user
-        search = Search(params)
-        search.init_basic_search_params()
-        search.matches = search.apply_basic_search()
-        #print(search.matches)
-        # sort entries by criteria param
-        search.init_sort_params()
-        search.order_by(search.sort_criteria)
-        return search
-    except Exception as e:
-        print(
-            f"Error initializing parameters or applying search. "
-            f"Check parameter key names or search method. Details: {e}"
-        )
-
-    
-"""
-
-"""
-def advanced_search(params):
-    try:
-        # write code here
-        # filter which entries to find matches for
-        search = Search(params)
-        search.init_advanced_search_params()
-        search.apply_advanced_search()
-
-        # find matches using search method chosen by user
-        search.init_basic_search_params()
-        search.matches = search.apply_basic_search()
-
-        # sort entries by criteria param
-        search.init_sort_params()
-        search.order_by(search.sort_criteria)
-        return search.get_matches()
-    except Exception as e:
-        print(
-            f"Error initializing parameters or applying search. "
-            f"Check parameter key names or search method. Details: {e}"
-        )
-
-"""
-
-
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
@@ -168,7 +105,7 @@ class Search():
         #self.user_input = user_input # User string search
         
         self.params = params
-        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page']
+        # $param_keys = ['json', 'query', 'rpp', 'var', 'ob', 'sm', 'entry_id', 'date_from', 'date_to', 'vol', 'page', 'pr', 'lang', 'page', 'sort']
 
         # default advanced search params
         self.json_entries = json_entries or self.load_json()
@@ -183,18 +120,16 @@ class Search():
         self.search_method = 'word_start'
         self.search_class = ''
         self.query = ''
+        self.case_sensitive = False
         self.qlen = 0
-        self.window_size = 5
-        self.min_step_size = 1 # non inclusive
-        self.max_step_size = 6 # non inclusive
-        self.step_size = 5 # always ranges between 2 and 5 inclusive
         self.results_per_page = 5 # default is 5 results per page
         self.variance = 100 # default similarity of 100 (exact match)
         self.variance_limit = 50 # experiment with variance limit?
 
 
         # default sort params
-        self.sort_criteria = ''
+        self.sort_criteria = ()
+        self.sort = 'best'
         
         self.matches = {} # return to search controller
 
@@ -208,7 +143,7 @@ class Search():
         qt = self.params['qt'] # query type: basic or advanced
 
         if self.query != "*": # search term not empty, perform search
-            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries) # pass in parameters for basic search
+            search_obj = Basic_Search(self.search_method, self.query, self.variance, self.json_entries, self.case_sensitive) # pass in parameters for basic search
             self.matches = search_obj.find_matches()
         else: # matches is all entries
             for entry_id in self.json_entries.keys():
@@ -226,6 +161,9 @@ class Search():
             for id in list(self.matches):
                 if id not in adv_matches:
                     del self.matches[id] # remove entires that didnt pass the advv filters
+
+        self.sort_matches()
+
         
         # self.matches = {'ARO-1-0001-03' : {
         #     'accuracy_score' : 20,
@@ -260,6 +198,8 @@ class Search():
         """
         basic search params: query, var, sm, entry_id
         """
+        # set case sensitivity
+        if self.params.get('case_sensitive') and self.params['case_sensitive'].lower() == 'true': self.case_sensitive = True
         # default number of results per page
         self.search_method = self.params['sm']
         # raise an error if the search method is not a key in search functions
@@ -268,10 +208,9 @@ class Search():
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-        # if self.query != 'regex':
-        #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
+        self.sort = self.params.get('sort') or self.sort
         self.convert_variance(self.params['var'])
 
 
@@ -287,45 +226,23 @@ class Search():
         #print(abs(variance*10 - 100))
         self.variance = abs(variance*10 - 100)
 
-   
-    def init_sort_params(self):
-        """
-        index params using 'ob' to get the string value of the sort type
-        assign self.sort_criteria tuple values value of the values and whether its ascending or descending
-        eg. self.sort_criteria = (  
-                                    (date, ascending), 
-                                    (best matches, descending), 
-                                    (frequency in result, descending)
-                                )
-        """
-        # write code here
-
-
-        pass
-
-    def order_by(self, sort_criteria):
-        """
-        sort entries by sort criteria (tuple)
-        direction criteria: ascending, descending
-        params criteria: volume, page, date
-        date and volume are mutally exclusive
-        possible combinations:  (volume, page, ascending),
-                                (volume, page, descending),
-                                (date, ascending), #oldest to most recent
-                                (date, descending) #most recent to oldest
-                                (frequency in result)
-                                (best matches)
-        if volume, page are the same or date is the same, then sort by best match
-        if frequency in result is the same, then sort by best match
-        if match accuracy is the same, then sort by frequency
-        if sort_criteria not frequency_in_result: (criteria, matches accuracy descending, frequency descending)
-        if sort_criteria is frequency_in_result: (frequency descending, accuracy)
-        """
-        # write code here
-            
-
-        pass
-
+    def sort_matches(self):
+        # frequency, best, volumeasc, volumedsc, chronological
+        match self.sort.lower():
+            case 'frequency':
+                self.matches = sort_methods.sort_frequency(self.matches)
+            case 'best':
+                self.matches = sort_methods.sort_best_matches(self.matches)
+            case 'volumeasc':
+                self.matches = sort_methods.sort_volume_page_asc(self.matches, self.json_entries)
+            case 'volumedsc':
+                self.matches = sort_methods.sort_volume_page_dsc(self.matches, self.json_entries)
+            case 'chronological' | 'chronological_asc':
+                self.matches = sort_methods.sort_chronological_asc(self.matches, self.json_entries)
+            case 'chronological_dsc':
+                self.matches = sort_methods.sort_chronological_dsc(self.matches, self.json_entries)
+            case _:
+                self.matches = sort_methods.sort_best_matches(self.matches)
 
     def get_matches(self):
         return self.matches
