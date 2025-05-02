@@ -215,6 +215,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
                 $display_results[$entry_id] = [
                     'highlighted_html' => $highlighted_html,
+                    'raw_content' => $content,
+                    'matches' => $matches,
                     'volume' => $volume,
                     'page' => $page,
                     'date' => $date,

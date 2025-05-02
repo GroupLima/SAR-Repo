@@ -74,16 +74,25 @@ params = {
 }
 """
 
+# params = {
+#     'qt' : 'advanced_search',
+#     'query' : 'andreas',
+#     'rpp' : 5,
+#     'var' : 0,
+#     'sm' : 'phrase' ,
+#     'case_sensitive' : 'true',
+#     'sort' : 'frequency',
+#     'date_from' : '1495',
+#     'date_to' : '1500'
+# }
+
 params = {
     'qt' : 'advanced_search',
-    'query' : 'andreas',
+    'query' : 'y.ng',
     'rpp' : 5,
     'var' : 0,
-    'sm' : 'phrase' ,
-    'case_sensitive' : 'true',
-    'sort' : 'frequency',
-    'date_from' : '1495',
-    'date_to' : '1500'
+    'sm' : 'regex',
+    'entry_id' : 'ARO-7-0034-05'
 }
 
 # params2 = {
@@ -115,7 +124,6 @@ print('searching')
 search_obj = Search(params, json_entries)
 search_obj.start()
 matches = search_obj.get_matches()
-print('sort method: '+params.get('sort'))
 print('number of entries matched: '+str(len(matches)))
 if matches != None:
     json.dumps(matches, indent=4)
@@ -131,8 +139,11 @@ if matches != None:
         #print(f"accuracy_score: {match_data['accuracy_score']}, frequency: {match_data['match_frequency']}")
         
         # frequency
-        print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
-        print(json_entries[entry_id]['content'])
+        # print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
+        # print(json_entries[entry_id]['content'])
+        print(f"")
+        for match in match_data['matches']:
+            print(f"word to be highlighted: {match[0]}, start_index: {match[2]}")
 # print('test 2')
 # search_obj = Search(params2, json_entries)
 # search_obj.start()

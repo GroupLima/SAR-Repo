@@ -27,6 +27,14 @@ const props = defineProps({
     htmllang: {
         type: String,
         required: true
+    },
+    rawContent: {
+        type: String,
+        required: true
+    },
+    matches: {
+        type: Object,
+        required: true
     }
 })
 
@@ -74,19 +82,59 @@ const formatDate = () => {
     console.log(date, certainty);
     return {date: dateStr, certainty: certainty};
 }
+
+const highlightedContent = ref("<>");
+
+function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    })[m]);
+}
+
+const formatRawContent = () => {
+    // can highlight either whole word (word start, word middle, word end)
+    // or can highlight the specific match
+    const opening_tag = '<span class="highlight">';
+    const closing_tag = '</span>';
+    const sorted_matches =[...props.matches].sort((partial_text1, partial_text2) => partial_text2.length - partial_text1.length);
+    let content = props.rawContent;
+
+    console.log('escaped content: ' + content);
+    for (const [substring, _, start_index] of sorted_matches){
+        console.log('substring to be highlighted: ' + substring);
+        const escaped_substring = escapeHtml(substring)
+        content = 
+            content.slice(0, start_index) +
+            opening_tag +
+            escaped_substring +
+            closing_tag +
+            content.slice(start_index + escaped_substring.length)
+        
+    }
+    console.log('content after highlighting: ' + content);
+    highlightedContent.value = content;
+}
+
 const date = ref("");
 const certainty = ref("");
+
 
 onMounted(() =>{
     const dateResult = formatDate();
     date.value = dateResult.date;
     certainty.value = dateResult.certainty;
+    formatRawContent()
 });
 </script>
 <!-- view for one entry of the results -->
 <template>
     <div>
-        <div class="result-content" v-html="htmlContent"></div>
+        <!-- <div class="result-content" v-html="htmlContent"></div> -->
+        <div class="result-content" v-html="highlightedContent"></div>
         <div class="result-footer">
             <p class="result-info">
                 ID: {{ id }},&nbsp;

@@ -191,6 +191,8 @@ const showHelpPage = () => {
                     :htmlpage="result.page"
                     :date="result.date"
                     :htmllang="result.lang"
+                    :rawContent="result.raw_content"
+                    :matches="result.matches"
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
