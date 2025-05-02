@@ -197,7 +197,7 @@ class Search():
 
         # default sort params
         self.sort_criteria = ()
-        self.sort = 'Frequency within result'
+        self.sort = 'best'
         
         self.matches = {} # return to search controller
 
@@ -230,7 +230,7 @@ class Search():
                 if id not in adv_matches:
                     del self.matches[id] # remove entires that didnt pass the advv filters
 
-        self.matches = self.sort_matches(self.matches)
+        self.sort_matches()
 
         
         # self.matches = {'ARO-1-0001-03' : {
@@ -296,15 +296,23 @@ class Search():
         #print(abs(variance*10 - 100))
         self.variance = abs(variance*10 - 100)
 
-    def sort_matches(self, matches):
+    def sort_matches(self):
         # frequency, best, volumeasc, volumedsc, chronological
         match self.sort:
             case 'frequency':
-                return sort_methods.sort_frequency(matches)
+                self.matches = sort_methods.sort_frequency(self.matches)
             case 'best':
-                return sort_methods.sort_best_matches(matches)
+                self.matches = sort_methods.sort_best_matches(self.matches)
+            case 'volumeasc':
+                self.matches = sort_methods.sort_volume_page_asc(self.matches, self.json_entries)
+            case 'volumedsc':
+                self.matches = sort_methods.sort_volume_page_dsc(self.matches, self.json_entries)
+            case 'chronological' | 'chronological_asc':
+                self.matches = sort_methods.sort_chronological_asc(self.matches, self.json_entries)
+            case 'chronological_dsc':
+                self.matches = sort_methods.sort_chronological_dsc(self.matches, self.json_entries)
             case _:
-                return sort_methods.sort_best_matches(matches)
+                self.matches = sort_methods.sort_best_matches(self.matches)
 
     def get_matches(self):
         return self.matches

@@ -76,11 +76,12 @@ params = {
 
 params = {
     'qt' : 'basic_search',
-    'query' : 'andreas',
+    'query' : 'William',
     'rpp' : 5,
     'var' : 0,
-    'sm' : 'word_start' ,
-    'case_sensitive' : 'false'
+    'sm' : 'phrase' ,
+    'case_sensitive' : 'true',
+    'sort' : 'frequency',
 }
 
 # params2 = {
@@ -112,13 +113,23 @@ print('searching')
 search_obj = Search(params, json_entries)
 search_obj.start()
 matches = search_obj.get_matches()
-print(matches)
+print('sort method: '+params.get('sort'))
 
 if matches != None:
     json.dumps(matches, indent=4)
 
     for entry_id, match_data in matches.items():
-        print(entry_id, match_data)
+        # volume ascending / descending
+        #print(f"volume: {json_entries[entry_id]['volume']}, page: {json_entries[entry_id]['page']}, accuracy_score: {match_data['accuracy_score']}")
+        
+        # chronological ascending / descending
+        #print(f"date: {json_entries[entry_id]['date'].get('when') or json_entries[entry_id]['date'].get('from')}, accuracy_score: {match_data['accuracy_score']}, 'entry_id': {entry_id}")
+        
+        # best
+        #print(f"accuracy_score: {match_data['accuracy_score']}, frequency: {match_data['match_frequency']}")
+        
+        # frequency
+        print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
 # print('test 2')
 # search_obj = Search(params2, json_entries)
 # search_obj.start()
