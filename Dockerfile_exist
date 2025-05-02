@@ -36,5 +36,7 @@
 
 # EXPOSE 8080 8443
 
-FROM existdb/existdb:latest
+FROM existdb/existdb:latest as exist
+
+WORKDIR /app/search-app/exist
 

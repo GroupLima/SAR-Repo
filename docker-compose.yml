@@ -32,37 +32,19 @@ services:
       - frontend
     working_dir: /app/search-app/back-end
     command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
-    environment:
-      - APP_ENV=development
-
-  # exist:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile_exist
-  #   image: sar-repo-exist:latest
-  #   container_name: exist
-  #   volumes:
-  #     - ./search-app/exist-data:/exist/data
-  #     - ./search-app/back-end/storage/app/xml-files:/exist/autodeploy/xml-files
-  #     - sar-repo-exist-data:/exist/data
-  #     - sar-repo-exist-config:/exist/etc
-  #   ports:
-  #     - "8080:8080"
-  #     - "8443:8443"
-  #   environment:
-  #     - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0
-  #   restart: unless-stopped
-   exist:
-    build:
-      context: .
-      dockerfile: Dockerfile_exist
-    image: exist-custom:latest
-    container_name: exist
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./data:/exist/data
-    restart: unless-stopped
+  exist:
+  build:
+    context: .
+    dockerfile: Dockerfile_exist
+  image: exist-custom:latest
+  container_name: exist-custom
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./search-app/data:/app/search-app/exist
+      #     - ./search-app/front-end:/app/search-app/front-end
+      # - frontend_node_modules:/app/search-app/front-end/node_modules
+  restart: unless-stopped
 
 volumes:
   frontend_node_modules:
