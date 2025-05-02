@@ -502,6 +502,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         
         */ //left is python right is vue
         $permitted['query'] = $params['basicSearch'] ?? '';
+        $permitted['case_sensitive'] = $params['caseSensitive']?? false;
         $permitted['qt'] = $params['query_type'] ?? 'basic_search';
         $permitted['var'] = $params['variant'] ?? 0;
         $permitted['sm'] = $params['methodSearch'] ?? 'word_start';

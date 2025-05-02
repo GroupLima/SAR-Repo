@@ -184,6 +184,7 @@ class Search():
         self.search_method = 'word_start'
         self.search_class = ''
         self.query = ''
+        self.case_sensitive = False
         self.qlen = 0
         self.window_size = 5
         self.min_step_size = 1 # non inclusive
@@ -265,6 +266,8 @@ class Search():
         """
         basic search params: query, var, sm, entry_id
         """
+        # set case sensitivity
+        if self.params['case_sensitive'] and self.params['case_sensitive'].lower() == 'true': self.case_sensitive = True
         # default number of results per page
         self.search_method = self.params['sm']
         # raise an error if the search method is not a key in search functions

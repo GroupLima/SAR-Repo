@@ -15,11 +15,12 @@ from basic_search_methods.Search_Keywords import Search_Keywords
 from basic_search_methods.Search_Phrase import Search_Phrase
 
 class Basic_Search():
-    def __init__(self, search_method, user_input, variance, json_entries):
+    def __init__(self, search_method, user_input, variance, json_entries, case_sensitive=False):
         self.user_input = user_input # String
         self.variance = variance # Integer
         self.search_method = search_method # String
         self.json_entries = json_entries
+        self.case_sensitive = case_sensitive # Boolean
 
     def find_matches(self):
         search = None
@@ -29,21 +30,21 @@ class Basic_Search():
                 #deserialize arguments for each search
                 args = Word_Start(self.user_input)
                 #pass deserialized arguments into corresponding function
-                search = Search_Word_Start(args.query, args.qlen, self.variance, self.json_entries)
+                search = Search_Word_Start(args.query, args.qlen, self.variance, self.json_entries, self.case_sensitive)
             case 'word_middle':
                 args = Word_Middle(self.user_input)                  
-                search = Search_Word_Middle(args.query, args.qlen, self.variance, self.json_entries)
+                search = Search_Word_Middle(args.query, args.qlen, self.variance, self.json_entries, self.case_sensitive)
             case 'word_end':
                 args = Word_End(self.user_input)
-                search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries)
+                search = Search_Word_End(args.query, args.qlen, self.variance, self.json_entries, self.case_sensitive)
             case 'regex':
                 search = Search_Regex(self.user_input, self.json_entries)
             case 'keywords':
                 args = Keywords(self.user_input)
-                search = Search_Keywords(args.query, self.variance, self.json_entries) 
+                search = Search_Keywords(args.query, self.variance, self.json_entries, self.case_sensitive) 
             case 'phrase':
                 args = Phrase(self.user_input)
-                search = Search_Phrase(args.query, args.qlen, self.variance, self.json_entries)
+                search = Search_Phrase(args.query, args.qlen, self.variance, self.json_entries, self.case_sensitive)
             case _:
                 print('search method not specified')
 

@@ -52,7 +52,7 @@ class Search_Phrase(Search_Method):
                 if not self.case_sensitive:
                     score = get_fuzzy_score(self.query.lower(), phrase.lower())
                 else:
-                     get_fuzzy_score(self.query, phrase)
+                    score = get_fuzzy_score(self.query, phrase)
 
                 
                 # check if this phrase matches better than previous ones:
@@ -91,7 +91,7 @@ class Search_Phrase(Search_Method):
                 if not self.case_sensitive:
                     score = get_fuzzy_score(self.query.lower(), phrase.lower())
                 else:
-                     get_fuzzy_score(self.query, phrase)
+                    score = get_fuzzy_score(self.query, phrase)
 
                 
                 # check if this phrase matches better than previous ones:
