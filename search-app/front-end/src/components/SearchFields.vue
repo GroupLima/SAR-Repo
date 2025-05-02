@@ -12,6 +12,7 @@ const dateTo = ref();
 
 const form = reactive({
     query_type: "basic_search",
+    caseSensitive: false,
     basicSearch: "",
     methodSearch: "keywords", // default type of string matching for basic search
     language: "any",
@@ -23,7 +24,8 @@ const form = reactive({
     endDate: "",
     docId: "",
     resultsPerPage: 10,
-    sortBy: 'frequency'
+    sortBy: 'frequency',
+    
 });
 
 const isDropdownOpen = ref(false); // don't display dropdown initially
@@ -67,6 +69,7 @@ const toggleAllVolumes = () => {
         form.volumes = ['1', '2', '4', '5', '6', '7', '8'];
     }
 };
+
 
 const handleSearch = () => {
     if (allValidInput()) {
@@ -129,6 +132,7 @@ const handleEnterKey = (event) => {
 const setSearchBoxValue = () => {
     const urlParams = new URLSearchParams(window.location.search);
     form.basicSearch = urlParams.get('basicSearch') || form.basicSearch;
+    form.caseSensitive = urlParams.get('caseSensitive') || false;
     form.methodSearch = urlParams.get('methodSearch') || form.methodSearch;
     form.language = urlParams.get('language') || form.language;
     form.variant = urlParams.get('variant') || form.variant;
@@ -209,6 +213,10 @@ onMounted(() => {
                 <!-- need constriction so that user cannot search with empty bar -->
             </div>
             <div class="preferences" style="text-align: center;">
+                <div class="preference-item">
+                    <label>Case Sensitive:</label>
+                    <input type="checkbox" v-model="form.caseSensitive">
+                </div>
                 <div class="preference-item">
                     <label>Search method:</label>
                     <select v-model="form.methodSearch">
