@@ -87,70 +87,6 @@ return example:
     }
 """
 
-"""
-def search(params):
-    query_type = params['qt']
-    match query_type:
-        case 'basic_search':
-            return basic_search(params)
-        case 'advanced_search':
-            return advanced_search(params)
-        case _:
-            print('search not found')
-            return None
-"""
-
-            
-
-"""
-# for basic search and autocomplete
-def basic_search(params):
-    try:
-        # write code here
-        # find matches using search method chosen by user
-        search = Search(params)
-        search.init_basic_search_params()
-        search.matches = search.apply_basic_search()
-        #print(search.matches)
-        # sort entries by criteria param
-        search.init_sort_params()
-        search.order_by(search.sort_criteria)
-        return search
-    except Exception as e:
-        print(
-            f"Error initializing parameters or applying search. "
-            f"Check parameter key names or search method. Details: {e}"
-        )
-
-    
-"""
-
-"""
-def advanced_search(params):
-    try:
-        # write code here
-        # filter which entries to find matches for
-        search = Search(params)
-        search.init_advanced_search_params()
-        search.apply_advanced_search()
-
-        # find matches using search method chosen by user
-        search.init_basic_search_params()
-        search.matches = search.apply_basic_search()
-
-        # sort entries by criteria param
-        search.init_sort_params()
-        search.order_by(search.sort_criteria)
-        return search.get_matches()
-    except Exception as e:
-        print(
-            f"Error initializing parameters or applying search. "
-            f"Check parameter key names or search method. Details: {e}"
-        )
-
-"""
-
-
 # Perform main search of compiled entry data
 # Should consider splitting into 2 classes - one for file management to allow compounding of exact and match searches
 class Search():
@@ -186,10 +122,6 @@ class Search():
         self.query = ''
         self.case_sensitive = False
         self.qlen = 0
-        self.window_size = 5
-        self.min_step_size = 1 # non inclusive
-        self.max_step_size = 6 # non inclusive
-        self.step_size = 5 # always ranges between 2 and 5 inclusive
         self.results_per_page = 5 # default is 5 results per page
         self.variance = 100 # default similarity of 100 (exact match)
         self.variance_limit = 50 # experiment with variance limit?
@@ -276,8 +208,6 @@ class Search():
             raise SearchMethodDoesNotExistError(self.search_method)
         
         self.query = self.params['query']
-        # if self.query != 'regex':
-        #     self.set_window_and_step()
             
         self.result_per_page = self.params['rpp']
         self.sort = self.params.get('sort') or self.sort
