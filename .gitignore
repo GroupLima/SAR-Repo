@@ -38,3 +38,7 @@ Thumbs.db
 
 # Compiled CSS map files
 *.css.map
+
+# Ignore existdb logs and data
+logs/
+data/

@@ -35,17 +35,34 @@ services:
     environment:
       - APP_ENV=development
 
-  exist:
-    image: existdb/existdb:latest
+  # exist:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile_exist
+  #   image: sar-repo-exist:latest
+  #   container_name: exist
+  #   volumes:
+  #     - ./search-app/exist-data:/exist/data
+  #     - ./search-app/back-end/storage/app/xml-files:/exist/autodeploy/xml-files
+  #     - sar-repo-exist-data:/exist/data
+  #     - sar-repo-exist-config:/exist/etc
+  #   ports:
+  #     - "8080:8080"
+  #     - "8443:8443"
+  #   environment:
+  #     - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0
+  #   restart: unless-stopped
+   exist:
+    build:
+      context: .
+      dockerfile: Dockerfile_exist
+    image: exist-custom:latest
     container_name: exist
     ports:
       - "8080:8080"
-      - "8443:8443"
     volumes:
-      - exist-data:/exist/data
-      - exist-config:/exist/config
-    environment:
-      - JAVA_TOOL_OPTIONS=-XX:MaxRAMFraction=2
+      - ./data:/exist/data
+    restart: unless-stopped
 
 volumes:
   frontend_node_modules:
@@ -57,4 +74,8 @@ volumes:
   exist-data:
     name: sar-repo-exist-data
   exist-config:
+    name: sar-repo-exist-config
+  sar-repo-exist-data:
+    name: sar-repo-exist-data
+  sar-repo-exist-config:
     name: sar-repo-exist-config
