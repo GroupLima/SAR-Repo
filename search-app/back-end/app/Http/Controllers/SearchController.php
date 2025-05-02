@@ -33,12 +33,9 @@ class SearchController extends Controller
     Search Process:
 
                                         CLIENT SIDE
-        html        ->   1. user interface allows users to input in input fields
-        vue         ->   2. vue constantly gets input and stores it in correct data container
-        vue         ->   3. for autocomplete, as user is typing, vue automatically collects the stored data
-                            in input field and sends an async request to the search controller
-        vue         ->   4. for search button, vue collects stored data (already stored in vue) from all
-                            relevant input fields and sends an async request to the search controller
+        html        ->   1. user interface allows users to input in search fields
+        vue         ->   2. input is collected from search fields and compiled into a search query. A GET request passes 
+                            search query to the backend at route api/search. for xquery, it routes to api/runXQuery
                                         SERVER SIDE
 route_controller    ->   5. url request is routed through route controller
 route_controller    ->   6. route controller validates request for security
@@ -97,223 +94,169 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     protected $match_results = [];
 
     public function search(Request $request){
-        // *************BAD PIOTR CODE *******************
-        // Log or process the received data
-        // echo __DIR__;
-        // echo getcwd();
+        try {
+            //get request parameters
+            $params = $request->all();
+            //convert vue data params to backend params eg. endDate -> end_date
+            $permitted = $this->simplify_search_params($params);
+            //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
+            $python_search_file = $this->get_search_path($permitted['qt']);
+            
+            //get matches from any type of search
+            $permitted_params = escapeshellarg(json_encode($permitted));
+            
+            //$command = "python3 $python_search_file_arg $permitted_params";
+            $command = "python3 $python_search_file $permitted_params";
+            //extracts the json output object
+            $raw_output = shell_exec($command);
+            $output = json_decode($raw_output, true);
+            
+            //store matches
+            $this->match_results = $output["results"];
+            // Check if $this->match_results is not null and is an array
+            $total_results = (is_array($this->match_results) && count($this->match_results) > 0) ? count($this->match_results) : 0;
 
-        //get request parameters
-        $params = $request->all();
-        //convert vue data params to backend params eg. endDate -> end_date
-        $permitted = $this->simplify_search_params($params);
-        //get search script based on query type eg. xquery, basic_search, advanced_search, autocomplete, autocomplete entry
-        $python_search_file = $this->get_search_path($permitted['qt']);
+            //format results with convert relevent text to html, add highlights, filter by page, etc
+            $display_results = $this->filter_and_format($permitted);
+            $num_results = (is_array($display_results) && count($display_results) > 0) ? count($display_results) : 0;
+            $variant = $permitted['var'];
+            // Return the JSON response with the validated data
+            return response()->json([
+                'success' => true,
+                'num_results' => $num_results,
+                'total_results' => $total_results,
+                'results' => $display_results,
+                'message' => $output['message'],
+                'variant' => $variant
+            ]);
+
+        } catch (ValidationException $e){
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid parameters, add an error view instead of this message',
+                //route to valid error page eventually
+            ]);
+        }
+    }
+
+    function simplify_search_params($params){
+        $permitted = [];
         
-        //get matches from any type of search
-        $permitted_params = escapeshellarg(json_encode($permitted));
+        //left is python right is vue (basic search)
+        $permitted['query'] = $params['basicSearch'] ?? '';
+        $permitted['case_sensitive'] = $params['caseSensitive'] ?? false;
+        $permitted['qt'] = $params['query_type'] ?? 'basic_search';
+        $permitted['var'] = $params['variant'] ?? 0;
+        $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
+        $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
+        $permitted['pageNo'] = $params['page'];
+        $permitted['sort'] = $params['sortBy'];
+
+        // advanced search params (advanced search)
+        $permitted['entry_id'] = $params['docId' ?? null];
+        $permitted['date_from'] = $params['startDate'] ?? null;
+        $permitted['date_to'] = $params['endDate'] ?? null;
+        $permitted['vol'] = $params['volumes'] ?? null;
+        $permitted['page'] = $params['pageSearch'] ?? null;
+        $permitted['lang'] = $params['language'] ?? null;
+
+        return $permitted;
+    }
+
+
+    function get_search_path($query_type){
+        //$query_type = $permitted['qt'];
+        if (strtolower($query_type) == 'xquery'){
+            //hardcoded for now
+            return '../resources/python/XQuerySearch.py';
+        } else {
+            return '../resources/python/Search.py' ;
+        }
+    }
+
+    function filter_and_format($permitted) {
         
-        //$command = "python3 $python_search_file_arg $permitted_params";
-        $command = "python3 $python_search_file $permitted_params";
-        //extracts the json output object
-        $raw_output = shell_exec($command);
-        $output = json_decode($raw_output, true);
+        $query_type = $permitted['qt'];
+        $current_page = $permitted['pageNo'];
+        $results_per_page = $permitted['rpp'];
+        //format the basic/advanced search results
         
-        //store matches
-        $this->match_results = $output["results"];
-        // Check if $this->match_results is not null and is an array
-        $total_results = (is_array($this->match_results) && count($this->match_results) > 0) ? count($this->match_results) : 0;
+        $display_results = [];
 
-        //format results with convert relevent text to html, add highlights, filter by page, etc
-        $display_results = $this->filter_and_format($permitted);
-        $num_results = (is_array($display_results) && count($display_results) > 0) ? count($display_results) : 0;
-        $variant = $permitted['var'];
-        // Return the JSON response with the validated data
-        return response()->json([
-            'success' => true,
-            'num_results' => $num_results,
-            'total_results' => $total_results,
-            'results' => $display_results,
-            'message' => $output['message'],
-            'variant' => $variant
-        ]);
+        // Check if match_results are available and not empty
+        if (empty($this->match_results)) {
+            return []; // No results to display
+        }
+        $start_of_page = ($current_page-1) * $results_per_page;
+        // get results from the array of match_results staring at $start_of_page for length of $results_per_page
+        $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);
+        
+        $language_map = [ // better names of languages to be displayed
+            'sc' => 'Middle Scots',
+            'la' => 'Latin',
+            'mul' => 'Multiple'
+        ];
 
-        $xquery_doesnt_work = "no";
-        if ($xquery_doesnt_work === "xquery") {
-            // Do something
+        if ($page_results != null){
+            foreach ($page_results as $entry_id => $entry) {
+                $content = $this->jsonData[$entry_id]['content'];
+                $volume = $this->jsonData[$entry_id]['volume'];
+                $page = $this->jsonData[$entry_id]['page'];
+                $date = $this->jsonData[$entry_id]['date'];
+                $language_code = $this->jsonData[$entry_id]['lang'];
 
+                // Map the language code to a full name
+                $language_full = $language_map[$language_code] ?? $language_code;
 
-            // use the $query to run the xquery python
-            //just return results with the query nymber
-            // Run the Python script with the escaped query
-            //$output = shell_exec($command);
-            //echo $output;
-
-
-            // echo shell_exec('source ../../SAR_Venv/Scripts/activate && echo baba');
-            // echo shell_exec('echo $VIRTUAL_ENV');
-            //$output = shell_exec('python3 ../resources/python/XQuerySearch.py ');
-            //echo exec('basexserver -p49888 -S');
-            //sleep(5);
-            //echo exec('ss -tuln | grep 49888');
-            
-            
-            #THIS ACTRUALLT MADE IT RUN
-            $process = new Process(['python3', '../resources/python/XQuerySearch.py', 'for $i in //ns:div[@xml:lang="la"] return $i']);
-            $process->run();
-            echo $process->getOutput();
-            // Output the result
-            if ($process->isSuccessful()) {
-                echo $process->getOutput();
-            } else {
-                echo $process->getErrorOutput();
-            }
-            
-            // $response = Http::post('http://localhost:5000/query', [
-            //     'xquery' => 'for $i in //ns:div[@xml:lang="la"] return $i',
-            // ]);
-            // $result = $response->json();
-            
-            //sleep
-            //echo exec('basexserver -p49888 stop');
-
-            #$output = shell_exec('source ../../SAR-Venv/Scripts/activate && python3 ../../../search-app/resources/python/scuff2.py');
-            // $jsonData = json_decode($output, true);
-            // echo '$jsonData';
-            // echo $output;
-            // echo 'so sad';
-            //echo $output;
-
-
-            //$temp = exec('XQuerySearch-SCUFFED.py');
-            // $jsonData = json_decode($temp, true);
-            //echo($temp);
-
-            // if (json_last_error() === JSON_ERROR_NONE) {
-            //     echo $query;
-            //     echo "temp: ";
-            //     print_r($jsonData);
-            //     echo "nothing";
-            //     echo " a space";
-            // } else {
-            //     echo "Error decoding JSON: " . json_last_error_msg();
-            // }
-         // python3 search-app/resources/python/XQuerySearch.py 'for $i in //ns:div[@xml:lang="la"] return $i'
-            // source ./SAR_Venv/Scripts/activate
-            // if this fails we need to chmod +x ./SAR_Venv/Scripts/activate (add permission)
-
-            // Decode the JSON output from the Python script
-            // $decoded = json_decode($temp, true);
-
-            // if ($decoded) {
-            //     // Assign the query results and number of results
-            //     $queryResults = $decoded['matches'];
-            //     $numberOfXQuery = count($queryResults);
-
-            //     // Example output for debugging
-            //     echo "Number of Results: " . $numberOfXQuery . "\n";
-            //     echo "Query Results: \n";
-            //     print_r($queryResults);  // Or process as needed
-            // } else {
-            //     echo "Error: No valid JSON returned from Python script.";
-            // }
-            //$queryResults, $numberOfXQuery = $temp;
-            //$queryResults = [
-            //     'ARO-8-1290-9' => '<div>working</div>',
-            //     'ARO-8-1730-9' => '<div>hello world</div>',
-            //     'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
-            //     'ARO-8-4391-2' => '<div>hi hello implent andreas code here </div>',
-            // ];
-
-
-            // Create a response structure
-            //$response = [
-            //    'numberOfXQuery' => $numberOfXQuery,
-             //   'queryResults' => $queryResults,
-            //];
-            // Return the response
-            //return response()->json(['message' => $response]);
-        }else{
-
-            try {
-                /*
-                // Validate the incoming request
-                $validated = $request->validate([
-                    //q
-                    'basicSearch' => 'required|string|max:255', // Required, must be a string, max length 255
-                    //sm
-                    'methodSearch' => 'nullable|string|in:keywords,phrase,regularex,word-start,word-middle,word-end', // Optional, must be a valid search method
-                    //lang
-                    'language' => 'required|string',            // Required, must be a string
-                    //var
-                    'variant' => 'required|string',             // Required, must be a string
-                    //vol
-                    'volumes' => 'array',                       // Optional, must be an array
-                    //page
-                    'pageSearch' => 'nullable|string',          // Optional, must be a string
-                    //pr gets every nth entry from every specified page from every specified volume
-                    'entrySearch' => 'nullable|string',         // Optional, must be a string
-                    //start_date
-                    'startDate' => 'nullable|date',             // Optional, must be a valid date
-                    //end_data
-                    'endDate' => 'nullable|date',               // Optional, must be a valid date
-                    //entry_id
-                    'docId' => 'nullable|string',               // Optional, must be a string
-
-                    //still need the following data:
-                    //rpp (results per page)
-                    //ob (order by criteria)
-                ]);
-
-                */
+                $htmlcontent = $this->convert_to_html($content);
                 
+                $matches = $entry['matches'];
+                $highlighted_html = $this->highlight($htmlcontent, $matches);
 
-            } catch (ValidationException $e){
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Invalid parameters, add an error view instead of this message',
-                    //route to valid error page eventually
-                ]);
+                $display_results[$entry_id] = [
+                    'highlighted_html' => $highlighted_html,
+                    'volume' => $volume,
+                    'page' => $page,
+                    'date' => $date,
+                    'lang' => $language_full,
+                ];
             }
         }
-        /*
-        an example of what $matches looks like:
-        {
-        'ARO-1-0001-03' : {
-            'accuracy_score' : value,
-            'match_frequency' : value
-            'matches' : [
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                ]
-            }
-        'ARO-1-0001-04' : {
-            'accuracy_score' : value,
-            'match_freq' : value
-            'matches' : [
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                ]
-            }
-        'ARO-6-0001-01' : {
-            'accuracy_score' : value,
-            'match_freq' : value
-            'matches' : [
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                (string, similarity score, start index),
-                ]
-            }
-        etc...
+        
+        return $display_results;
+        //return false if parametters couldnt be applied
+    }
+
+    //get chunk of results (if user requested 10 results per page, get the first 10 results)
+    function get_results_for_page($rpp){
+        //use modulus to determine which chunk of results to return according to rpp (results per page)
+        return $rpp;
+    }
+
+    function convert_to_html($content){
+        $html = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+        return $html;
+    }
+
+    // add highlight tags to content
+    function highlight($htmltext, $matches){
+        // can highlight either whole word (word start, word middle, word end)
+        // or can highlight the specific match
+        $opening_tag = '<span class="highlight">';
+        $closing_tag = '</span>';
+        //$highlighted_htmlcontent = $htmltext;
+        foreach ($matches as $match){
+            $substring = $match[0];
+            //echo $substring . ' ';
+            $escaped_text = preg_quote($substring, '/');
+            //echo 'escaped text: ' . $escaped_text . ' ';
+            //$highlighted_htmlcontent = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $highlighted_htmlcontent);
+            $pattern = '/\b' . $escaped_text . '\b/';
+            $htmltext = preg_replace($pattern, "$opening_tag$substring$closing_tag", $htmltext);
+
+            //echo 'highlights: ' . $htmltext . '; <br>';
         }
-        */
+        return $htmltext;
     }
 
 
@@ -321,31 +264,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-
-
-        //print_r("\n");
-        //print_r($data.query.type);
-        //print_r($data.query.type);
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
-
-        //print_r($queryType);
-        //print_r($query);  
-        if ($queryType === "xquery") {
-            // Do something
-            $queryResults = [
-                'ARO-8-1290-9' => '<div>working</div>',
-                'ARO-8-1730-9' => '<div>hello world</div>',
-                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
-                'ARO-8-4391-2' => '<div>hi hello</div>',
-            ];
-        }else{
-            $queryResults = [
-            'ARO-8-1290-9' => '<div>i want to cry this isnt xquery  </div>',
-            'ARO-8-1730-9' => '<div>we we we </div>',
-            ];
-        }
-       
 
         error_log( 'Hello');
         // XQuery to fetch <item> elements from XML files in the collection
@@ -400,245 +320,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         return response()->json(['message' => $response]);
     }
 
-    public function runBasic(Request $request)
-    {
-        // Log or process the received data
-        $data = $request->all(); // Get all incoming request data
-       // \Log::info('Received data:', $data);
-        //echo $data;
-        //print_r("\n");
-        //print_r($data.query.type);
-        //print_r($data.query.type);
-        $queryType     = $data['query_type'];
-        $basicSearch   = $data['basicSearch'];
-        $methodSearch  = $data['methodSearch'];
-        $language      = $data['language'];
-        $variant       = $data['variant'];
-        $volumes       = $data['volumes'];
-        $pageSearch    = $data['pageSearch'];
-        $entrySearch   = $data['entrySearch'];
-        $startDate     = $data['startDate'];
-        $endDate       = $data['endDate'];
-        $docId         = $data['docId'];
-        $sortBy        = $data['sortBy'];
-        echo "\nqueryType";
-        echo $queryType;
-        echo "\nbasicSearch";
-        echo $basicSearch;
-        echo "\nmethodSearch";
-        echo $methodSearch;
-        echo "\nlanguage";
-        echo $language;
-        echo "\nvariant";
-        echo $variant;
-        echo "\nvolumes";
-        echo $volumes;
-        echo "\npageSearch";
-        echo $entrySearch;
-        echo "\nentrySearch";
-        echo $entrySearch;
-        echo "\nstartDate";
-        echo $startDate;
-        echo "\nendDate";
-        echo $endDate;
-        echo "\ndocId";
-        echo $docId;
-        echo "\n";
-        echo "\nsortBy";
-        echo $sortBy;
-   
-        
-        if ($queryType === "xquery") {
-            // Do somethin
-            $queryResults = [
-                'ARO-8-1290-9' => '<div>working</div>',
-                'ARO-8-1730-9' => '<div>hello world</div>',
-                'ARO-8-2989-1' => '<div>hello i like chocolate milk</div>',
-                'ARO-8-4391-2' => '<div>hi hello</div>',
-            ];
-        }else{
-            $queryResults = [
-            'ARO-8-1290-9' => '<div>ha ha ha caitlin</div>',
-            'ARO-8-1730-9' => '<div>we we we </div>',
-            ];
-        }
-        // Define your query results (replace with actual logic as needed)
 
-        // Calculate the number of results dynamically
-         $numberOfXQuery = count($queryResults);
-
-        // // Create a response structure
-         $response = [
-             'numberOfXQuery' => $numberOfXQuery,
-             'queryResults' => $queryResults,
-         ];
-
-        // Return the response
-        return response()->json(['message' => $response]);
-    }
-
-
-
-
-
-
-
-    function simplify_search_params($params){
-        $permitted = [];
-        
-        //left is python right is vue (basic search)
-        $permitted['query'] = $params['basicSearch'] ?? '';
-        $permitted['case_sensitive'] = $params['caseSensitive'] ?? false;
-        $permitted['qt'] = $params['query_type'] ?? 'basic_search';
-        $permitted['var'] = $params['variant'] ?? 0;
-        $permitted['sm'] = $params['methodSearch'] ?? 'word_start';
-        $permitted['rpp'] = $params['resultsPerPage'] ?? 5;
-        $permitted['pageNo'] = $params['page'];
-        $permitted['sort'] = $params['sortBy'];
-
-        // advanced search params (advanced search)
-        $permitted['entry_id'] = $params['docId' ?? null];
-        $permitted['date_from'] = $params['startDate'] ?? null;
-        $permitted['date_to'] = $params['endDate'] ?? null;
-        $permitted['vol'] = $params['volumes'] ?? null;
-        $permitted['page'] = $params['pageSearch'] ?? null;
-        $permitted['lang'] = $params['language'] ?? null;
-
-        return $permitted;
-    }
-
-
-    function get_search_path($query_type){
-        //$query_type = $permitted['qt'];
-        if (strtolower($query_type) == 'xquery'){
-            //hardcoded for now
-            return '../resources/python/XQuerySearch.py';
-        } else {
-            return '../resources/python/Search.py' ;
-        }
-    }
-
-    function filter_and_format($permitted) {
-
-        $query_type = $permitted['qt'];
-        $current_page = $permitted['pageNo'];
-        $results_per_page = $permitted['rpp'];
-
-        if (strtolower($query_type) == 'xquery'){
-            // display dict_of_results.items() display the data values, have the keys as a tag on the divs of the displayed result chunks
-
-            //store tag and match pairs in $xquery_matches
-            $xquery_matches = [];
-
-            $result_dict = $this->match_results[0];
-
-            //not needed? needed because previous team returned number of tresults too
-            $num_results = $this->match_results[1];
-
-            foreach ($result_dict as $tag => $content)
-            {
-                $xquery_matches[$tag] = $content;
-            }
-            /*
-                xquery return example:
-                {
-                    {'tag' = 'ARO-8-1290-9', 'content' = '<div>hello</div>'},
-                    {'tag' = 'ARO-8-1730-9', 'content' = '<div>hello world</div>'},
-                    {'tag' = 'ARO-8-2989-1', 'content' = '<div>hello i like chocolate milk</div>'},
-                    {'tag' = 'ARO-8-4391-2', 'content' = '<div>hi hello</div>'},
-                }
-            */
-            //set $match_results to new dictionary format
-            $this->match_results = $xquery_matches;
-        }
-        
-
-        //if not autocomplete, highlight the html
-        elseif (strpos($query_type, 'autocomplete') !== false ){
-            return $this->match_results;
-        }
-
-        else {
-            //format the basic/advanced search results
-            
-            $display_results = [];
-
-            // Check if match_results are available and not empty
-            if (empty($this->match_results)) {
-                return []; // No results to display
-            }
-            $start_of_page = ($current_page-1) * $results_per_page;
-            // get results from the array of match_results staring at $start_of_page for length of $results_per_page
-            $page_results = array_slice($this->match_results, $start_of_page, $results_per_page);
-            
-            $language_map = [ // better names of languages to be displayed
-                'sc' => 'Middle Scots',
-                'la' => 'Latin',
-                'mul' => 'Multiple'
-            ];
-
-            if ($page_results != null){
-                foreach ($page_results as $entry_id => $entry) {
-                    $content = $this->jsonData[$entry_id]['content'];
-                    $volume = $this->jsonData[$entry_id]['volume'];
-                    $page = $this->jsonData[$entry_id]['page'];
-                    $date = $this->jsonData[$entry_id]['date'];
-                    $language_code = $this->jsonData[$entry_id]['lang'];
-
-                    // Map the language code to a full name
-                    $language_full = $language_map[$language_code] ?? $language_code;
-
-                    $htmlcontent = $this->convert_to_html($content);
-                    
-                    $matches = $entry['matches'];
-                    $highlighted_html = $this->highlight($htmlcontent, $matches);
-
-                    $display_results[$entry_id] = [
-                        'highlighted_html' => $highlighted_html,
-                        'volume' => $volume,
-                        'page' => $page,
-                        'date' => $date,
-                        'lang' => $language_full,
-                    ];
-                }
-            }
-            
-            return $display_results;
-        }
-
-        //return false if parametters couldnt be applied
-    }
-
-    //get chunk of results (if user requested 10 results per page, get the first 10 results)
-    function get_results_for_page($rpp){
-        //use modulus to determine which chunk of results to return according to rpp (results per page)
-        return $rpp;
-    }
-
-    function convert_to_html($content){
-        $html = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
-        return $html;
-    }
-
-    // add highlight tags to content
-    function highlight($htmltext, $matches){
-        // can highlight either whole word (word start, word middle, word end)
-        // or can highlight the specific match
-        $opening_tag = '<span class="highlight">';
-        $closing_tag = '</span>';
-        //$highlighted_htmlcontent = $htmltext;
-        foreach ($matches as $match){
-            $substring = $match[0];
-            //echo $substring . ' ';
-            $escaped_text = preg_quote($substring, '/');
-            //echo 'escaped text: ' . $escaped_text . ' ';
-            //$highlighted_htmlcontent = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $highlighted_htmlcontent);
-            $pattern = '/\b' . $escaped_text . '\b/';
-            $htmltext = preg_replace($pattern, "$opening_tag$substring$closing_tag", $htmltext);
-
-            //echo 'highlights: ' . $htmltext . '; <br>';
-        }
-        return $htmltext;
-    }
+    
 
 }
