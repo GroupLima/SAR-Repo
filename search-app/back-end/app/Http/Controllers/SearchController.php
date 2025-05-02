@@ -633,7 +633,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             $escaped_text = preg_quote($substring, '/');
             //echo 'escaped text: ' . $escaped_text . ' ';
             //$highlighted_htmlcontent = preg_replace("/($escaped_text)/i", "$opening_tag$1$closing_tag", $highlighted_htmlcontent);
-            $pattern = '/\b' . $escaped_text . '\b/i';
+            $pattern = '/\b' . $escaped_text . '\b/';
             $htmltext = preg_replace($pattern, "$opening_tag$substring$closing_tag", $htmltext);
 
             //echo 'highlights: ' . $htmltext . '; <br>';

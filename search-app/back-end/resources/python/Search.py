@@ -228,7 +228,7 @@ class Search():
 
     def sort_matches(self):
         # frequency, best, volumeasc, volumedsc, chronological
-        match self.sort:
+        match self.sort.lower():
             case 'frequency':
                 self.matches = sort_methods.sort_frequency(self.matches)
             case 'best':

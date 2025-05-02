@@ -75,13 +75,15 @@ params = {
 """
 
 params = {
-    'qt' : 'basic_search',
-    'query' : 'William',
+    'qt' : 'advanced_search',
+    'query' : 'andreas',
     'rpp' : 5,
     'var' : 0,
     'sm' : 'phrase' ,
     'case_sensitive' : 'true',
     'sort' : 'frequency',
+    'date_from' : '1495',
+    'date_to' : '1500'
 }
 
 # params2 = {
@@ -114,7 +116,7 @@ search_obj = Search(params, json_entries)
 search_obj.start()
 matches = search_obj.get_matches()
 print('sort method: '+params.get('sort'))
-
+print('number of entries matched: '+str(len(matches)))
 if matches != None:
     json.dumps(matches, indent=4)
 
@@ -130,6 +132,7 @@ if matches != None:
         
         # frequency
         print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
+        print(json_entries[entry_id]['content'])
 # print('test 2')
 # search_obj = Search(params2, json_entries)
 # search_obj.start()
