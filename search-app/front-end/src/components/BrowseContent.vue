@@ -207,7 +207,8 @@ export default {
     window.addEventListener('resize', this.checkDeviceSize);
 
     await this.loadVolumes();
-    await this.loadRecords();
+    //await this.loadRecords();
+    this.handleVolumeChange();
   },
   unmounted() {
     window.removeEventListener('resize', this.checkDeviceSize);
