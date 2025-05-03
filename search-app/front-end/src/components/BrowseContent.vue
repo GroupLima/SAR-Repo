@@ -300,11 +300,6 @@ export default {
           alert('Failed to copy XML content. Please try again.');
         });
     },
-    loadRecords() {
-      console.log(`Loading records for Volume ${this.currentVolume}, Page ${this.currentPage}`);
-      // Here you would typically fetch records from an API
-      // For now we'll just use the static records in data()
-    },
     
     // Zoom methods that work for both touch and mouse
     handleZoom(event) {
