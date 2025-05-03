@@ -115,13 +115,13 @@
 </template>
 
 <script>
-import pageImage from '@/assets/images/try_one.jpeg';
+//import pageImage from '@/assets/images/try_one.jpeg';
 import { inject, ref, computed, onMounted } from 'vue';
 
 export default {
   data() {
     return {
-      pageImage,
+      pageImage:'',
       currentVolume: 1,
       currentPage: 1,
       volumes: {
