@@ -117,7 +117,7 @@
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
 import { inject, ref, computed, onMounted } from 'vue';
-import api from 'services/api';
+import api from '@/services/api';
 
 export default {
   data() {
