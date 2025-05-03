@@ -1,22 +1,56 @@
-# Use official ExistDB as the parent image for the back-end XQuery jobs
-FROM --platform=${BUILDPLATFORM:-linux/amd64} existdb/existdb:6.3.0 AS exist
+# # START STAGE 1
+# FROM openjdk:8-jdk-slim as builder
 
-# Set environment variables for ExistDB
-ENV EXIST_HOME=/exist
-ENV EXIST_DATA_DIR=/exist-data
-ENV EXIST_LOGS_DIR=/exist-data/logs
+# USER root
 
-# Set working directory
-WORKDIR /app/search-app/exist-data
+# ENV ANT_VERSION 1.10.5
+# ENV ANT_HOME /etc/ant-${ANT_VERSION}
 
-# Copy XML files
-COPY search-app/back-end/storage/app/xml-files/* ./
+# WORKDIR /tmp
 
-# Create directory for logs if it doesn't exist
-RUN mkdir -p ${EXIST_LOGS_DIR}
+# RUN wget https://dlcdn.apache.org//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz \
+#     && mkdir ant-${ANT_VERSION} \
+#     && tar -zxvf apache-ant-${ANT_VERSION}-bin.tar.gz \
+#     && mv apache-ant-${ANT_VERSION} ${ANT_HOME} \
+#     && rm apache-ant-${ANT_VERSION}-bin.tar.gz \
+#     && rm -rf ant-${ANT_VERSION} \
+#     && rm -rf ${ANT_HOME}/manual \
+#     && unset ANT_VERSION
 
-# Expose ports for ExistDB
+# ENV PATH ${PATH}:${ANT_HOME}/bin
+
+# WORKDIR /home/my-app
+# COPY . .
+# RUN apk add --no-cache --virtual .build-deps \
+#  nodejs \
+#  nodejs-npm \
+#  git \
+#  && npm i npm@latest -g \
+#  && ant
+
+
+# # START STAGE 2
+# FROM existdb/existdb:release
+
+# COPY --from=builder /home/my-app/build/*.xar /exist/autodeploy
+
+# EXPOSE 8080 8443
+
+#FROM existdb/existdb:latest as exist
+
+#WORKDIR /app/search-app/exist
+#
+
+FROM openjdk:11-jre-slim
+
+ENV EXIST_HOME=/app/existdb
+
+COPY ./existdb $EXIST_HOME
+
+WORKDIR $EXIST_HOME/bin
+
+RUN chmod +x startup.sh
+
 EXPOSE 8080 8443
 
-# Using a more stable startup command for ExistDB with admin password setting
-CMD ["java", "-jar", "start.jar", "jetty"]
+CMD ["./startup.sh"]

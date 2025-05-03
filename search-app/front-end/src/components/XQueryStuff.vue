@@ -25,7 +25,7 @@ const handleEnterKey = (event) => {
 };
 
 const runQuery = async () => {
-    const XQeuryURL = 'http://localhost:8000/api/xquery'
+    const XQeuryURL = '/api/xquery'
     console.log("Run Query button clicked!");
     state.isLoading = true;
     state.results = [];
@@ -39,9 +39,10 @@ const runQuery = async () => {
             },
         });
         console.log("Response received:", response);
-        if (response.data.message) {
-            // Directly map response to state.results
-            const xmlString = response.data.message.queryResults;
+        // Change this condition to check for queryResults directly
+        if (response.data.success) {
+            // Access queryResults directly from data
+            const xmlString = response.data.queryResults;
             console.log(typeof xmlString, xmlString);
             const xmlPretty = vkbeautify.xml(xmlString, 5);
             state.results = xmlPretty;
