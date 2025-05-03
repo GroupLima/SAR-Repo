@@ -1,3 +1,4 @@
+import axios from 'axios'
 <template>
   <div class="notification-banner">
     <div class="notification-content">
@@ -207,8 +208,7 @@ export default {
     window.addEventListener('resize', this.checkDeviceSize);
 
     await this.loadVolumes();
-    //await this.loadRecords();
-    this.handleVolumeChange();
+    await this.loadRecords();
   },
   unmounted() {
     window.removeEventListener('resize', this.checkDeviceSize);
