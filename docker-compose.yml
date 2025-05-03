@@ -34,18 +34,16 @@ services:
     command: sh -c "composer install && php artisan serve --host=0.0.0.0 --port=8000"
     
   exist:
-    build:
-      context: .
-      dockerfile: Dockerfile_exist
-    image: exist-custom:latest
-    container_name: exist-custom
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./search-app/data:/app/search-app/exist
-        #     - ./search-app/front-end:/app/search-app/front-end
-        # - frontend_node_modules:/app/search-app/front-end/node_modules
-    restart: unless-stopped
+      build:
+        context: .
+        dockerfile: Dockerfile_exist
+      image: exist-custom:latest
+      container_name: exist-custom
+      ports:
+        - "8080:8080"
+        - "8443:8443"
+      command: sh -c "./startup.sh"
+      restart: unless-stopped
 
 volumes:
   frontend_node_modules:

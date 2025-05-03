@@ -36,7 +36,21 @@
 
 # EXPOSE 8080 8443
 
-FROM existdb/existdb:latest as exist
+#FROM existdb/existdb:latest as exist
 
-WORKDIR /app/search-app/exist
+#WORKDIR /app/search-app/exist
+#
 
+FROM openjdk:11-jre-slim
+
+ENV EXIST_HOME=/app/existdb
+
+COPY ./existdb $EXIST_HOME
+
+WORKDIR $EXIST_HOME/bin
+
+RUN chmod +x startup.sh
+
+EXPOSE 8080 8443
+
+CMD ["./startup.sh"]
