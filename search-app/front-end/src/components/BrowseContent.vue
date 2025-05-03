@@ -133,20 +133,8 @@ export default {
         7: 16,
         8: 19
       },
-      records: [
-        {
-          id: 'ARO-1-0001-01',
-          date: '1398-09-30',
-          language: 'Latin',
-          content: 'H Processus Curiarum Balliuorum Isti Sunt...'
-        },
-        {
-          id: 'ARO-1-0001-02',
-          date: '1398-09-30',
-          language: 'Latin',
-          content: 'Quo die Willelmus de Camera pater cum...'
-        }
-      ],
+      records: [],
+      
       // XML Modal properties
       showXmlModal: false,
       currentXmlRecordId: '',
@@ -221,10 +209,12 @@ export default {
       };
     }
   },
-  mounted() {
-    this.loadRecords();
+  async mounted() {
     this.checkDeviceSize();
     window.addEventListener('resize', this.checkDeviceSize);
+
+    await this.loadVolumes();
+    await this.loadRecords();
   },
   unmounted() {
     window.removeEventListener('resize', this.checkDeviceSize);
@@ -233,6 +223,27 @@ export default {
     checkDeviceSize() {
       this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       this.smallScreen = window.innerWidth <= 768;
+    },
+    async loadVolumes() {
+    try {
+      const response = await axios.get('/api/volumes');
+      this.volumes = response.data;
+    } catch (error) {
+      console.error('Failed to fetch volumes:', error);
+    }
+    },
+    async loadRecords() {
+    try {
+      const response = await axios.get('/api/records', {
+        params: {
+          volume: this.currentVolume,
+          page: this.currentPage
+        }
+      });
+      this.records = response.data.records;
+    } catch (error) {
+      console.error('Failed to fetch records:', error);
+    }
     },
     handleVolumeChange() {
       this.currentPage = 1;
