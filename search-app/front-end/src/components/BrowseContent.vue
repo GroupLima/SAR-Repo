@@ -124,25 +124,18 @@ export default {
       pageImage,
       currentVolume: 1,
       currentPage: 1,
-      volumes: {
-        1: 20,
-        2: 15,
-        4: 25,
-        5: 18,
-        6: 22,
-        7: 16,
-        8: 19
-      },
+      volumes: {},
       records: [],
       
       // XML Modal properties
       showXmlModal: false,
       currentXmlRecordId: '',
       currentXmlContent: '',
-      xmlData: {
-        'ARO-1-0001-01': '<div type="heading" xml:id="ARO-1-0001-01" xml:lang="lat">\n  <head>Processus Curiarum Balliuorum Isti Sunt</head>\n  <p><lb break="yes"/>qui incipiunt die lune  proximo  post festum beati michaelis archangeli Anno<lb break="yes"/>Domini Millesimo  ccc<hi rend="superscript">mo</hi>  nonogesimo  Octauo .</p>\n</div>',
-        'ARO-1-0001-02': '<div type="heading" xml:id="ARO-1-0001-02" xml:lang="lat">\n  <head>Quo die Willelmus de Camera pater</head>\n  <p><lb break="yes"/>cum pertinentiis quibuscumque...</p>\n</div>'
-      },
+      //xmlData: {
+      //  'ARO-1-0001-01': '<div type="heading" xml:id="ARO-1-0001-01" xml:lang="lat">\n  <head>Processus Curiarum Balliuorum Isti Sunt</head>\n  <p><lb break="yes"/>qui incipiunt die lune  proximo  post festum beati michaelis archangeli Anno<lb break="yes"/>Domini Millesimo  ccc<hi rend="superscript">mo</hi>  nonogesimo  Octauo .</p>\n</div>',
+      //  'ARO-1-0001-02': '<div type="heading" xml:id="ARO-1-0001-02" xml:lang="lat">\n  <head>Quo die Willelmus de Camera pater</head>\n  <p><lb break="yes"/>cum pertinentiis quibuscumque...</p>\n</div>'
+     // },
+
       // Zoom properties
       zoomScale: 2.5, // Increased zoom scale for better visibility
       isZooming: false,
@@ -282,12 +275,18 @@ export default {
       
       this.loadRecords();
     },
-    viewXML(recordId) {
+    async viewXML(recordId) {
       this.currentXmlRecordId = recordId;
-      this.currentXmlContent = this.xmlData[recordId] || 'XML content not found';
+      try {
+        const response = await axios.get(`/api/records/${recordId}/xml`);
+        this.currentXmlContent = response.data.xml || 'No XML content found.';
+      } catch (error) {
+        console.error('Failed to fetch XML:', error);
+        this.currentXmlContent = 'Error fetching XML content.';
+      }
       this.showXmlModal = true;
-      console.log(`Viewing XML for record ${recordId}`);
     },
+
     closeXmlModal() {
       this.showXmlModal = false;
     },
