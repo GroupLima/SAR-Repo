@@ -25,7 +25,7 @@ const handleEnterKey = (event) => {
 };
 
 const runQuery = async () => {
-    const XQeuryURL = 'http://localhost:8000/api/xquery'
+    const XQeuryURL = '/api/xquery'
     console.log("Run Query button clicked!");
     state.isLoading = true;
     state.results = [];

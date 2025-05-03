@@ -266,8 +266,6 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $data = $request->all(); // Get all incoming request data
         $queryType = $data['query_type']; // "xquery"
         $query = $data['query'];         // "hello cait"
-
-        error_log( 'Hello');
         // XQuery to fetch <item> elements from XML files in the collection
 
         //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
@@ -291,7 +289,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $ch = curl_init();
 
         // Set the cURL options for running the XQuery
-        curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");
+        curl_setopt($ch, CURLOPT_URL, "/exist/rest/db/xmlfiles");  //////// this is the only line thats changing
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, "admin:"); // Basic authentication
@@ -301,7 +299,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         // Execute the cURL request and get the response
         $response = curl_exec($ch);
-        
+
         // Check for errors
         //if(curl_errno($ch)) {
         //    error_log('Errorrrrrrrr:' . curl_error($ch));
@@ -312,15 +310,16 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
 
         // // Create a response structure
     
-        $response = [
-            'queryResults' => $response,
-        ];
-
+        
         // Return the response
-        return response()->json(['message' => $response]);
+        return response()->json([
+            'success' => true,
+            'error' => curl_errno($ch),
+            'queryResults' => $response,
+        ]);
     }
 
-
+    
     
 
 }
