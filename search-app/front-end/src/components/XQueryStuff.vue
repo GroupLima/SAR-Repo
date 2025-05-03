@@ -1,121 +1,129 @@
-    <script setup>
-    import { reactive, onMounted } from 'vue';
-    import axios from 'axios';
-    import vkbeautify from 'vkbeautify';
-    import hljs from 'highlight.js';
-    import 'highlight.js/styles/github.css';
-    import CodeEditor from "simple-code-editor";
+<script setup>
+import { reactive, onMounted } from 'vue';
+import axios from 'axios';
+import vkbeautify from 'vkbeautify';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css'; // ADDED CSS
+import CodeEditor from "simple-code-editor";
 
+// ADDED HIGHLIGHT SETUP
+const highlightCode = (code) => {
+  return hljs.highlight(code, { language: 'xquery' }).value;
+};
 
+onMounted(() => {
+  hljs.configure({ languages: ['xml', 'xquery'] });
+});
 
+const props = defineProps({
+  queryParams: {
+    type: Object,
+    required: true
+  }
+});
 
-    const props = defineProps({
-        queryParams: {
-            type: Object,
-            required: true
-        }
+const state = reactive({
+  query: '',
+  results: '',
+  num_results: 0,
+  total_results: 0,
+  error: "",
+  isLoading: false
+});
+
+const runQuery = async () => {
+  const XQueryURL = '/api/xquery' // FIXED TYPO IN VARIABLE NAME
+  state.isLoading = true;
+  state.results = '';
+  state.error = "";
+
+  try {
+    const response = await axios.get(XQueryURL, {
+      params: {
+        query_type: "xquery",
+        query: state.query,
+      },
     });
-    const state = reactive({
-        query: '',
-        results: [],
-        num_results: 0,
-        total_results: 0,
-        error: "",
-        isLoading: false
-    });
 
+    if (response.data.success) {
+      const xmlString = response.data.queryResults;
+      const xmlPretty = vkbeautify.xml(xmlString, 5);
+      
+      // ADDED RESULTS HIGHLIGHTING
+      state.results = hljs.highlight(xmlPretty, {
+        language: 'xml',
+        ignoreIllegals: true
+      }).value;
+      
+    } else {
+      state.error = "No results found!";
+    }
+  } catch (error) {
+    state.error = error.response?.data?.error || 'An unexpected error occurred';
+  } finally {
+    state.isLoading = false;
+  }
+};
+</script>
 
-    const handleEnterKey = (event) => {
-        if (event.key === 'Enter') {
-            runQuery();
-        }
-    };
-
-    const runQuery = async () => {
-        const XQeuryURL = '/api/xquery'
-        console.log("Run Query button clicked!");
-        state.isLoading = true;
-        state.results = [];
-        state.error = "";
-
-        try {
-            const response = await axios.get(XQeuryURL, {
-                params: {
-                    query_type: "xquery",
-                    query: state.query,
-                },
-            });
-            console.log("Response received:", response);
-            // Change this condition to check for queryResults directly
-            if (response.data.success) {
-                // Access queryResults directly from data
-                const xmlString = response.data.queryResults;
-                console.log(typeof xmlString, xmlString);
-                const xmlPretty = vkbeautify.xml(xmlString, 5);
-                state.results = xmlPretty;
-                console.log("happy",state.results);
-            } else {
-                state.error = "No results found!";
-            }
-        } catch (error) {
-            console.error("Error occurred:", error);
-            state.error = error.response?.data?.error || 'An unexpected error occurred';
-        } finally {
-            state.isLoading = false;
-        }
-    };
-    function highlightCode(code, language) {
-        if (hljs.getLanguage(language)) {
-            return hljs.highlight(code, { language }).value;
-        }
-        return hljs.highlightAuto(code).value;
-        }
-
-        defineExpose({ highlightCode }); // ✅ Important
-    </script>
-
-    <template>
-        <div class="xquery-page">
-            <header>
-                <div class="header-content">
-                    <h1>XQuery Search</h1>
-                    <br/>
-                    <p>Harness the power of XQuery to perform precise, structured searches across our collection of XML-encoded historical documents. This advanced search tool allows you to craft custom queries that target specific elements, attributes, and content patterns within the document corpus.</p>
-                </div>
-            </header>
-            <br/>
-            <main class="content">
-                <div class="search-section">
-                    <CodeEditor 
-                    v-model="state.query" 
-                    :languages="[['xquery', 'XQuery']]"
-                    :highlight="code => highlightCode(code, 'xml')"
-                    :line-nums="true"
-                    width="100%"
-                    theme="github"
-                />
-                    <div class="basic-search">
-                        <!--<input 
-                            type="search" v-model="state.query" placeholder="Enter your search term" id="search-box" @keyup="handleEnterKey"
-                        />-->
-                        <button @click="runQuery">Run Query</button>   
-                    </div>
-                </div>
-                
-                <div v-if="state.error" class="alert alert-danger mt-3">
-                    {{ state.error }}
-                </div>
-                
-                <div class="results-section mt-3">
-                    <h2>Results</h2>
-                    <div v-if="!state.isLoading">
-                        <pre>{{ state.results }}</pre>
-                    </div>
-                    <div v-else>
-                        Loading...
-                    </div>
-                </div>
-            
-            </main>
+<template>
+  <div class="xquery-page">
+    <header>
+      <div class="header-content">
+        <h1>XQuery Search</h1>
+        <br/>
+        <p>Harness the power of XQuery to perform precise, structured searches across our collection...</p>
+      </div>
+    </header>
+    <br/>
+    <main class="content">
+      <div class="search-section">
+        <CodeEditor 
+          v-model="state.query" 
+          :languages="[['xquery', 'XQuery']]"
+          :highlight="highlightCode"
+          :line-nums="true"
+          width="100%"
+          theme="github-dark"
+        />
+        <div class="basic-search">
+          <button @click="runQuery">Run Query</button>   
         </div>
-    </template>
+      </div>
+      
+      <div v-if="state.error" class="alert alert-danger mt-3">
+        {{ state.error }}
+      </div>
+      
+      <div class="results-section mt-3">
+        <h2>Results</h2>
+        <div v-if="!state.isLoading">
+          <!-- CHANGED RESULTS DISPLAY -->
+          <pre v-if="state.results"><code class="hljs language-xml" v-html="state.results"></code></pre>
+        </div>
+        <div v-else>
+          Loading...
+        </div>
+      </div>
+    </main>
+  </div>
+</template>
+
+<!-- ADD THESE STYLES -->
+<style scoped>
+.hljs {
+  padding: 1rem;
+  border-radius: 4px;
+  background: #f6f8fa !important; /* Match github theme */
+}
+
+pre {
+  margin: 0;
+  background: transparent !important;
+}
+
+code {
+  display: block;
+  white-space: pre-wrap;
+}
+</style>
