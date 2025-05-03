@@ -1,4 +1,6 @@
-import axios from 'axios'
+
+import api from '@/services/api';
+
 <template>
   <div class="notification-banner">
     <div class="notification-content">
@@ -118,6 +120,7 @@ import axios from 'axios'
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
 import { inject, ref, computed, onMounted } from 'vue';
+import api from '../../services/api';
 
 export default {
   data() {
@@ -220,7 +223,7 @@ export default {
     },
     async loadVolumes() {
     try {
-      const response = await axios.get('/api/volumes');
+      const response = await api.get('/volumes');
       this.volumes = response.data;
     } catch (error) {
       console.error('Failed to fetch volumes:', error);
@@ -228,7 +231,7 @@ export default {
     },
     async loadRecords() {
     try {
-      const response = await axios.get('/api/records', {
+      const response = await api.get(`/records`, {
         params: {
           volume: this.currentVolume,
           page: this.currentPage
@@ -279,7 +282,7 @@ export default {
     async viewXML(recordId) {
       this.currentXmlRecordId = recordId;
       try {
-        const response = await axios.get(`/api/records/${recordId}/xml`);
+        const response = await api.get(`/records/${recordId}/xml`);
         this.currentXmlContent = response.data.xml || 'No XML content found.';
       } catch (error) {
         console.error('Failed to fetch XML:', error);
