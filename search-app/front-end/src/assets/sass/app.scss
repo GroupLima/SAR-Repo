@@ -527,6 +527,10 @@ footer {
       text-align: left;
       width: 190px;
       position: relative;
+
+      &:hover {
+        background-color: color.adjust($primary-colour, $lightness: -10%);
+      }
     }
 
     .advanced-search-dropdown {
@@ -785,7 +789,7 @@ footer {
       border-radius: 50px;
 
       &:hover {
-        background-color: lighten($primary-colour, 15%);
+        background-color: color.adjust($primary-colour, $lightness: 15%);
       }
     }
   }
@@ -1611,6 +1615,12 @@ body.dark {
 
   &:hover {
     background-color: color.adjust($primary-colour, $lightness: 10%);
+  }
+}
+
+.clear-btn {
+  &:hover {
+    background-color: color.adjust($primary-colour, $lightness: 5%);
   }
 }
 

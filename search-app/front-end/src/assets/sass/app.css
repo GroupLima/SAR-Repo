@@ -442,6 +442,9 @@ body.dark .search-section .preferences .preference-item select {
   width: 190px;
   position: relative;
 }
+.search-section .advanced-search-container .dropdown-button:hover {
+  background-color: #400816;
+}
 .search-section .advanced-search-container .advanced-search-dropdown {
   position: relative;
   top: 100%;
@@ -1402,6 +1405,10 @@ body.dark .help-page .help-dropdown-content .help-content pre, body.dark .help-p
 }
 .remove-btn:hover, .clear-btn:hover, .export-btn:hover, .export-pdf-btn:hover {
   background-color: #9c1234;
+}
+
+.clear-btn:hover {
+  background-color: #85102d;
 }
 
 .dark .selected-container {
