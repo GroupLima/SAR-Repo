@@ -10,11 +10,18 @@
   "test": "vitest"
  },
  "dependencies": {
+  "@codemirror/basic-setup": "^0.20.0",
+  "@codemirror/lang-xml": "^6.1.0",
+  "@codemirror/state": "^6.5.2",
+  "@codemirror/view": "^6.36.7",
+  "@highlightjs/vue-plugin": "^2.1.0",
   "@popperjs/core": "^2.11.8",
   "@vuepic/vue-datepicker": "^11.0.2",
   "@vueuse/core": "^12.5.0",
   "axios": "^1.7.9",
+  "highlight.js": "^11.11.1",
   "pdf-lib": "^1.17.1",
+  "simple-code-editor": "^2.0.9",
   "v-calendar": "^3.1.2",
   "vkbeautify": "^0.99.3",
   "vue": "^3.5.13",
