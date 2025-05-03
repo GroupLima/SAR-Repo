@@ -315,7 +315,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         return response()->json([
             //'success' => true,
             //'error' => curl_errno($ch),
-            'queryResults' => $response,
+            'success' => true,
+            'queryResults' => $response
         ]);
     }
 
