@@ -56,7 +56,7 @@ class RecordController extends Controller
                         $id = (string) $entry['xml:id'];
                         $lang = (string) $entry['xml:lang'];
 
-                        if ($type === 'entry' && str_starts_with($id, 'ARO-' . $volume . '-')) {
+                        if ($type === 'entry' && str_contains($id, 'ARO-' . $volume . '-')) {
                             // Attempt to extract date from parent <div> if present
                             $date = '';
                             if (isset($div->p->date['when'])) {
