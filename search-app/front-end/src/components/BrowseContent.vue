@@ -65,9 +65,11 @@
 
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
-import api from '@/services/api'; // ✅ Ensure this file exists and uses: `export default axios.create(...)`
+import { inject } from 'vue';
+import api from '@/services/api';
 
 export default {
+  inject: ['selectedRecords'],
   data() {
     return {
       pageImage,
@@ -91,9 +93,10 @@ export default {
       };
     },
   },
-  mounted() {
-    this.loadVolumes();
-    this.loadRecords();
+  async mounted() {
+    await this.loadVolumes();     // ✅ Ensure volumes are available before fetching records
+    this.loadRecords();           // ✅ Will now use correct currentVolume and currentPage
+    console.log(this.selectedRecords); // Confirm injection
   },
   methods: {
     async loadVolumes() {
@@ -167,10 +170,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Add minimal styles to make it visible if not styled yet */
-.browse-page {
-  padding: 1rem;
-}
-</style>
