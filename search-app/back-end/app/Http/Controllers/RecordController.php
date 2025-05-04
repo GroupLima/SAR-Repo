@@ -8,7 +8,7 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
-        // Example static data (can later be replaced with a DB query)
+        // You can make this dynamic by reading file counts later
         return response()->json([
             1 => 20,
             2 => 15,
@@ -22,25 +22,63 @@ class RecordController extends Controller
 
     public function getRecords(Request $request)
     {
-        $volume = $request->query('volume', 1); // Default to 1 if not set
-        $page = $request->query('page', 1);     // Default to 1 if not set
+        $volume = $request->query('volume');
+        $page = $request->query('page');
 
-        // Generate 2 dummy records dynamically based on volume and page
+        if (!$volume || !$page) {
+            return response()->json(['error' => 'Volume and page are required'], 400);
+        }
+
+        $directories = [
+            storage_path('xml-files/XML files volumes 1-7'),
+            storage_path('xml-files/XML files volume 8'),
+        ];
+
+        $records = [];
+
+        foreach ($directories as $dir) {
+            if (!is_dir($dir)) continue;
+
+            foreach (scandir($dir) as $file) {
+                if (!str_ends_with($file, '.xml')) continue;
+
+                $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+                $xml = simplexml_load_file($filePath);
+
+                if (!$xml) continue;
+
+                $namespaces = $xml->getNamespaces(true);
+                $teiBody = $xml->children($namespaces[''])->text->body;
+
+                foreach ($teiBody->div as $div) {
+                    foreach ($div->{'div'} as $entry) {
+                        $type = (string) $entry['type'];
+                        $id = (string) $entry['xml:id'];
+                        $lang = (string) $entry['xml:lang'];
+                        $content = trim((string) $entry->asXML());
+
+                        // Basic filtering: check volume in ID
+                        if ($type === 'entry' && str_starts_with($id, 'ARO-' . $volume . '-')) {
+                            $records[] = [
+                                'id' => $id,
+                                'language' => $lang,
+                                'content' => strip_tags($entry->asXML()),
+                                'date' => '', // Optional: extract <date> if needed
+                            ];
+                        }
+                    }
+                }
+            }
+        }
+
+        // Pagination logic
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+        $paginated = array_slice($records, $offset, $perPage);
+
         return response()->json([
-            'records' => [
-                [
-                    'id' => "ARO-{$volume}-{$page}-01",
-                    'date' => '1398-09-30',
-                    'language' => 'Latin',
-                    'content' => "Record 1 from Volume {$volume}, Page {$page}"
-                ],
-                [
-                    'id' => "ARO-{$volume}-{$page}-02",
-                    'date' => '1398-09-30',
-                    'language' => 'Latin',
-                    'content' => "Record 2 from Volume {$volume}, Page {$page}"
-                ]
-            ]
+            'records' => $paginated,
+            'total' => count($records),
         ]);
     }
 
@@ -54,14 +92,10 @@ class RecordController extends Controller
         foreach ($directories as $dir) {
             if (!is_dir($dir)) continue;
 
-            $files = scandir($dir);
-
-            foreach ($files as $file) {
+            foreach (scandir($dir) as $file) {
                 if (str_starts_with($file, $id) && str_ends_with($file, '.xml')) {
-                    $fullPath = $dir . DIRECTORY_SEPARATOR . $file;
-                    $content = file_get_contents($fullPath);
-
-                    return response($content, 200)
+                    $path = $dir . DIRECTORY_SEPARATOR . $file;
+                    return response(file_get_contents($path), 200)
                         ->header('Content-Type', 'application/xml');
                 }
             }
