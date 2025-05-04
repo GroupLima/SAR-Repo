@@ -5,6 +5,9 @@ import vkbeautify from 'vkbeautify';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css'; // ADDED CSS
 import CodeEditor from "simple-code-editor";
+import { useDark } from '@vueuse/core'
+const isDark = useDark({selector: 'body'})
+
 
 // ADDED HIGHLIGHT SETUP
 const highlightCode = (code) => {
@@ -84,7 +87,9 @@ const runQuery = async () => {
           :highlight="highlightCode"
           :line-nums="true"
           width="100%"
-          theme="github-dark"
+          :theme="isDark ? 'github-dark' : 'github'"
+
+          
         />
         <div class="basic-search">
           <button @click="runQuery">Run Query</button>   
@@ -111,19 +116,24 @@ const runQuery = async () => {
 
 <!-- ADD THESE STYLES -->
 <style scoped>
-.hljs {
-  padding: 1rem;
-  border-radius: 4px;
-  background: #f6f8fa !important; /* Match github theme */
-}
-
-pre {
-  margin: 0;
-  background: transparent !important;
-}
-
-code {
-  display: block;
-  white-space: pre-wrap;
+.xquery-page {
+    .results-section {
+        .hljs {
+            padding: 1rem;
+            border-radius: 4px;
+            body.dark & {
+                background-color: #202020;
+                color: #ffffff;
+            }
+        }
+        pre {
+            margin: 0;
+            background: transparent;
+        }
+        code {
+            display: block;
+            white-space: pre-wrap;
+        }
+    }
 }
 </style>
