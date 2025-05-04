@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import BrowseView from '@/views/BrowseView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +12,7 @@ const router = createRouter({
     {
       path: '/browse',
       name: 'browse',
-      component: () => import('@/views/BrowseView.vue'),
+      component: BrowseView.vue,
     },
     {
       path: '/search',
