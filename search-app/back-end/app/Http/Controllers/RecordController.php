@@ -8,7 +8,6 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
-        // Static for now; can be made dynamic later
         return response()->json([
             1 => 20,
             2 => 15,
@@ -37,39 +36,62 @@ class RecordController extends Controller
         $records = [];
 
         foreach ($directories as $dir) {
-            if (!is_dir($dir)) continue;
+            if (!is_dir($dir)) {
+                \Log::error("Directory not found: $dir");
+                continue;
+            }
 
             foreach (scandir($dir) as $file) {
                 if (!str_ends_with($file, '.xml')) continue;
 
                 $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+                \Log::info("Processing file: $filePath");
+
                 libxml_use_internal_errors(true);
                 $xml = simplexml_load_file($filePath);
-                if (!$xml) continue;
+
+                if (!$xml) {
+                    \Log::error("Failed to parse XML: " . print_r(libxml_get_errors(), true));
+                    continue;
+                }
 
                 $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
-                $entries = $xml->xpath('//tei:div[@type="entry"]');
+                $xml->registerXPathNamespace('xml', 'http://www.w3.org/XML/1998/namespace');
+
+                $entries = $xml->xpath('//tei:div[@type="entry" or @type="incompleteEntry"]');
 
                 foreach ($entries as $entry) {
-                    $id = (string) $entry['xml:id'];
+                    $id = (string)$entry->attributes('xml', true)->id;
+                    $lang = (string)$entry->attributes('xml', true)->lang;
 
-                    if (str_starts_with($id, 'ARO-' . $volume . '-')) {
-                        $lang = (string) $entry['xml:lang'];
-                        $content = strip_tags($entry->asXML());
-
-                        $date = '';
-                        $dateNode = $entry->xpath('preceding::tei:date[1]');
-                        if (!empty($dateNode)) {
-                            $date = (string) $dateNode[0]['when'];
-                        }
-
-                        $records[] = [
-                            'id' => $id,
-                            'language' => $lang,
-                            'content' => $content,
-                            'date' => $date,
-                        ];
+                    // Filter for volume
+                    if (!str_starts_with($id, 'ARO-' . $volume . '-')) {
+                        continue;
                     }
+
+                    // Get date from previous sibling
+                    $date = '';
+                    $precedingElements = $entry->xpath('preceding-sibling::tei:p[1]/tei:date[@when]');
+                    if (!empty($precedingElements)) {
+                        $date = (string)$precedingElements[0]['when'];
+                    }
+
+                    $content = '';
+                    if ($entry->head) {
+                        $content .= (string)$entry->head . "\n";
+                    }
+                    if ($entry->p) {
+                        $content .= strip_tags($entry->p->asXML());
+                    }
+
+                    $records[] = [
+                        'id' => $id,
+                        'language' => $lang,
+                        'content' => $content,
+                        'date' => $date,
+                    ];
+
+                    \Log::info("Found entry: $id");
                 }
             }
         }
@@ -98,16 +120,17 @@ class RecordController extends Controller
                 if (!str_ends_with($file, '.xml')) continue;
 
                 $filePath = $dir . DIRECTORY_SEPARATOR . $file;
-
                 libxml_use_internal_errors(true);
                 $xml = simplexml_load_file($filePath);
                 if (!$xml) continue;
 
                 $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
-                $entry = $xml->xpath('//tei:div[@xml:id="' . $id . '"]');
+                $xml->registerXPathNamespace('xml', 'http://www.w3.org/XML/1998/namespace');
 
-                if (!empty($entry)) {
-                    $dom = dom_import_simplexml($entry[0]);
+                $entries = $xml->xpath('//tei:div[@xml:id="' . $id . '"]');
+                if (!empty($entries)) {
+                    $entry = $entries[0];
+                    $dom = dom_import_simplexml($entry);
                     $xmlDoc = new \DOMDocument();
                     $xmlDoc->preserveWhiteSpace = false;
                     $xmlDoc->formatOutput = true;
