@@ -108,17 +108,13 @@ export default {
       currentXmlContent: '',
       zoomScale: 2.5,
       isZooming: false,
-      zoomX: 0,
-      zoomY: 0,
       transformOrigin: '0% 0%',
       isMobile: false,
       smallScreen: false,
-      lastTouchX: 0,
-      lastTouchY: 0,
       lastTapTime: 0,
       doubleTapDelay: 300,
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
     };
   },
   inject: ['selectedRecords'],
@@ -147,36 +143,30 @@ export default {
     window.removeEventListener('resize', this.checkDeviceSize);
   },
   methods: {
-    isRecordSelected(recordId) {
-      return this.selectedRecords.value.some(record => record.id === recordId);
+    isRecordSelected(id) {
+      return this.selectedRecords.value.some(r => r.id === id);
     },
     toggleRecordSelection(record) {
       const index = this.selectedRecords.value.findIndex(r => r.id === record.id);
-      if (index === -1) {
-        this.selectedRecords.value.push({ ...record });
-      } else {
-        this.selectedRecords.value.splice(index, 1);
-      }
+      if (index === -1) this.selectedRecords.value.push({ ...record });
+      else this.selectedRecords.value.splice(index, 1);
     },
     async loadVolumes() {
       try {
-        const response = await api.get('/volumes');
-        this.volumes = response.data;
-      } catch (error) {
-        console.error('Failed to fetch volumes:', error);
+        const res = await api.get('/volumes');
+        this.volumes = res.data;
+      } catch (e) {
+        console.error('Volumes error:', e);
       }
     },
     async loadRecords() {
       try {
-        const response = await api.get('/records', {
-          params: {
-            volume: this.currentVolume,
-            page: this.currentPage
-          }
+        const res = await api.get('/records', {
+          params: { volume: this.currentVolume, page: this.currentPage }
         });
-        this.records = response.data.records;
-      } catch (error) {
-        console.error('Failed to fetch records:', error);
+        this.records = res.data.records;
+      } catch (e) {
+        console.error('Records error:', e);
       }
     },
     handleVolumeChange() {
@@ -204,18 +194,18 @@ export default {
       this.loadRecords();
     },
     goToSpecificPage() {
-      const maxPage = this.volumes[this.currentVolume];
+      const max = this.volumes[this.currentVolume];
       if (this.currentPage < 1) this.currentPage = 1;
-      else if (this.currentPage > maxPage) this.currentPage = maxPage;
+      else if (this.currentPage > max) this.currentPage = max;
       this.loadRecords();
     },
     async viewXML(recordId) {
       this.currentXmlRecordId = recordId;
       try {
-        const response = await api.get(`/records/${recordId}/xml`);
-        this.currentXmlContent = response.data.xml || 'No XML content found.';
-      } catch (error) {
-        console.error('Failed to fetch XML:', error);
+        const res = await api.get(`/records/${recordId}/xml`);
+        this.currentXmlContent = res.data.xml || 'No XML content found.';
+      } catch (e) {
+        console.error('XML error:', e);
         this.currentXmlContent = 'Error fetching XML content.';
       }
       this.showXmlModal = true;
@@ -225,64 +215,53 @@ export default {
     },
     copyXmlContent() {
       navigator.clipboard.writeText(this.currentXmlContent)
-        .then(() => alert('XML content copied to clipboard!'))
-        .catch(err => {
-          console.error('Failed to copy:', err);
-          alert('Failed to copy XML content. Please try again.');
-        });
+        .then(() => alert('Copied!'))
+        .catch(() => alert('Copy failed.'));
     },
     checkDeviceSize() {
       this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       this.smallScreen = window.innerWidth <= 768;
     },
-    handleZoom(event) {
+    handleZoom(e) {
       const rect = this.$refs.pageImageRef.getBoundingClientRect();
-      this.mouseX = event.clientX;
-      this.mouseY = event.clientY;
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
       this.transformOrigin = `${x}% ${y}%`;
-      if (!this.smallScreen && !this.isMobile) {
-        this.isZooming = true;
-      }
+      if (!this.smallScreen && !this.isMobile) this.isZooming = true;
     },
-    toggleZoom(event) {
+    toggleZoom(e) {
       const rect = this.$refs.pageImageRef.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
       this.transformOrigin = `${x}% ${y}%`;
       this.isZooming = !this.isZooming;
     },
-    handleTouchStart(event) {
+    handleTouchStart(e) {
       if (!this.$refs.pageImageRef) return;
-      event.preventDefault();
-      if (event.touches.length === 1) {
-        const touch = event.touches[0];
+      e.preventDefault();
+      if (e.touches.length === 1) {
+        const touch = e.touches[0];
         const rect = this.$refs.pageImageRef.getBoundingClientRect();
         const x = ((touch.clientX - rect.left) / rect.width) * 100;
         const y = ((touch.clientY - rect.top) / rect.height) * 100;
         this.transformOrigin = `${x}% ${y}%`;
         const now = new Date().getTime();
-        if (now - this.lastTapTime < this.doubleTapDelay) {
-          this.isZooming = !this.isZooming;
-        }
+        if (now - this.lastTapTime < this.doubleTapDelay) this.isZooming = !this.isZooming;
         this.lastTapTime = now;
       }
     },
-    handleTouchMove(event) {
-      event.preventDefault();
+    handleTouchMove(e) {
+      e.preventDefault();
       if (!this.isZooming) return;
-      const touch = event.touches[0];
+      const touch = e.touches[0];
       const rect = this.$refs.pageImageRef.getBoundingClientRect();
       const x = ((touch.clientX - rect.left) / rect.width) * 100;
       const y = ((touch.clientY - rect.top) / rect.height) * 100;
       this.transformOrigin = `${x}% ${y}%`;
     },
-    handleTouchEnd(event) {},
+    handleTouchEnd() {},
     resetZoom() {
-      if (!this.smallScreen && !this.isMobile) {
-        this.isZooming = false;
-      }
+      if (!this.smallScreen && !this.isMobile) this.isZooming = false;
     }
   }
 };
