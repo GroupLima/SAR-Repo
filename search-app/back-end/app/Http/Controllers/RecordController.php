@@ -8,7 +8,6 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
-        // Static for now; can be made dynamic later
         return response()->json([
             1 => 20,
             2 => 15,
@@ -56,8 +55,10 @@ class RecordController extends Controller
                         $id = (string) $entry['xml:id'];
                         $lang = (string) $entry['xml:lang'];
 
-                        if ($type === 'entry' && str_contains($id, 'ARO-' . $volume . '-')) {
-                            // Attempt to extract date from parent <div> if present
+                        // TEMPORARY: Match all <div type="entry"> for testing
+                        if ($type === 'entry') {
+                            \Log::info("Matched entry: $id");
+
                             $date = '';
                             if (isset($div->p->date['when'])) {
                                 $date = (string) $div->p->date['when'];
@@ -75,7 +76,6 @@ class RecordController extends Controller
             }
         }
 
-        // Pagination
         $perPage = 10;
         $offset = ($page - 1) * $perPage;
         $paginated = array_slice($records, $offset, $perPage);
