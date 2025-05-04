@@ -204,26 +204,26 @@ onMounted(() => {
 
         <div class="search-section">
             <div class="basic-search"> <!-- this is the basic search bar -->
-                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box" @keyup="handleEnterKey"/>
+                <input type="search" v-model="form.basicSearch" placeholder="Enter your search term" aria-label="Search" id="search-box" @keyup="handleEnterKey" data-tooltip="Enter keywords or phrases to search for"/>
                 <!-- we need something that looks like a button here: "SEARCH"-->
-                <button id="search-button" @click="handleSearch">
+                <button id="search-button" @click="handleSearch" data-tooltip="Click to execute your search query">
                     SEARCH
                 </button>
                 <!-- need constriction so that user cannot search with empty bar -->
             </div>
             <div class="preferences" style="text-align: center;">
                 <div class="preference-item">
-                    <label>Case Sensitive:</label>
+                    <label data-tooltip="Match exactly the same uppercase/lowercase letters">Case Sensitive:</label>
                     <input type="checkbox" v-model="form.caseSensitive">
                 </div>
                 <div class="preference-item">
-                    <label>Search method:</label>
+                    <label data-tooltip="Select how your search terms will be matched">Search method:</label>
                     <select v-model="form.methodSearch">
                         <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label>Variance:</label>
+                    <label data-tooltip="Control the level of spelling variation in search results">Variance:</label>
                     <select v-model="form.variant">
                         <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
                             {{ displayOptions[index] }}
@@ -231,29 +231,29 @@ onMounted(() => {
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label>Results per page:</label>
+                    <label data-tooltip="Select how many results to show per page">Results per page:</label>
                     <select v-model="form.resultsPerPage">
                         <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label>Sort by:</label>
+                    <label data-tooltip="Select how many results to show per page">Sort by:</label>
                     <select v-model="form.sortBy">
                         <option v-for="(ord, index) in ordOptions" :key="ord" :value="ord">{{ ordDisplayOptions[index] }}</option>
                     </select>
                 </div>
             </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
-                <button class="dropdown-button" @click="toggleDropdown">
+                <button class="dropdown-button" @click="toggleDropdown" data-tooltip="Click to show or hide advanced search options">
                     ADVANCED SEARCH
                     <span class="dropdown-arrow" :class="{ 'open': isDropdownOpen }">▼</span>
                 </button>
                 <div v-if="isDropdownOpen" class="advanced-search-dropdown">
                     <div id="search-options">
                         <!-- Removed title and radio buttons from advanced search drop-down -->
-                        <div class="advanced-option">
-                            <h3 class="option-title">Languages</h3>
-                            <select v-model="form.language" id="language">
+                        <div class="advanced-option" data-tooltip="Click to show language options">
+                            <h3 class="option-title" >Languages</h3>
+                            <select v-model="form.language" id="language" >
                                 <option value="any" selected>Any</option>
                                 <option value="latin">Latin</option>
                                 <option value="scots">Middle Scots</option>
@@ -274,41 +274,41 @@ onMounted(() => {
                         <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
-                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume">
+                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume"data-tooltip="Select specific volumes to search within">
                                     <input type="checkbox" v-model="form.volumes" :id="volume" :value="volume"> {{ volume }}
                                 </label>
-                                <label>
+                                <label data-tooltip="Select or deselect all volumes at once">
                                     <input type="checkbox" :checked="isAllSelected" @change="toggleAllVolumes"> All
                                 </label>
                             </div>
                         </div>
                         <!-- We need a constraint to restrict between 1 and the max page number -->
                         <div class="advanced-option">
-                            <h3 class="option-title">Page Search</h3>
-                            <input type="search" v-model="form.pageSearch" id="page-search" placeholder="1, 69, 591...">
+                            <h3 class="option-title" data-tooltip="Enter specific page numbers to search within">Page Search</h3>
+                            <input type="search" v-model="form.pageSearch" id="page-search" placeholder="1, 69, 591..." >
                         </div>
                         <!-- We need a constraint to restrict between 1 and the number of entries -->
                         <div class="advanced-option" style="display: none;">
-                            <h3 class="option-title">Entry</h3>
-                            <input type="search" v-model="form.entrySearch" id="entry-search" placeholder="1, 2, 3, 4...">
+                            <h3 class="option-title" data-tooltip="Enter specific entry numbers to search within">Entry</h3>
+                            <input type="search" v-model="form.entrySearch" id="entry-search" placeholder="1, 2, 3, 4..." >
                         </div>
                         <!-- We need to apply constraints to limit date between 1398 and 1510 -->
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
-                            <label>
+                            <label data-tooltip="Filter results starting from this date (1398-1510)">
                                 From: <DatePicker ref="dateFrom" v-model="form.startDate" id="start-date" name="start-date" :yearAscending="true"/>
                             </label>
-                            <label>
+                            <label data-tooltip="Filter results ending at this date (1398-1510)">
                                 To: <DatePicker ref="dateTo" v-model="form.endDate" id="end-date" name="end-date"/>
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->
                         <div class="advanced-option">
-                            <h3 class="option-title">Doc ID</h3>
-                            <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01">
+                            <h3 class="option-title" data-tooltip="Search for a specific document by its ID">Doc ID</h3>
+                            <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01" data-tooltip="Search for a specific document by its ID">
                         </div>
                         <div class="advanced-option">
-                            <button @click="resetAdvancedSearch" class="reset-button">Reset Field Values</button>
+                            <button @click="resetAdvancedSearch" class="reset-button" data-tooltip="Clear all advanced search options">Reset Field Values</button>
                         </div>
                     </div>
                 </div>
