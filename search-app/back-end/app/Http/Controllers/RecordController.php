@@ -8,6 +8,7 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
+        // Static for now; can be made dynamic later
         return response()->json([
             1 => 20,
             2 => 15,
@@ -29,8 +30,8 @@ class RecordController extends Controller
         }
 
         $directories = [
-            storage_path('xml-files/XML files volumes 1-7'),
-            storage_path('xml-files/XML files volume 8'),
+            storage_path('app/xml-files/XML files volumes 1-7'),
+            storage_path('app/xml-files/XML files volume 8'),
         ];
 
         $records = [];
@@ -46,31 +47,28 @@ class RecordController extends Controller
                 $xml = simplexml_load_file($filePath);
                 if (!$xml) continue;
 
-                $namespaces = $xml->getNamespaces(true);
-                $teiBody = $xml->children($namespaces[''])->text->body;
+                $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+                $entries = $xml->xpath('//tei:div[@type="entry"]');
 
-                foreach ($teiBody->div as $div) {
-                    foreach ($div->{'div'} as $entry) {
-                        $type = (string) $entry['type'];
-                        $id = (string) $entry['xml:id'];
+                foreach ($entries as $entry) {
+                    $id = (string) $entry['xml:id'];
+
+                    if (str_starts_with($id, 'ARO-' . $volume . '-')) {
                         $lang = (string) $entry['xml:lang'];
+                        $content = strip_tags($entry->asXML());
 
-                        // TEMPORARY: Match all <div type="entry"> for testing
-                        if ($type === 'entry') {
-                            \Log::info("Matched entry: $id");
-
-                            $date = '';
-                            if (isset($div->p->date['when'])) {
-                                $date = (string) $div->p->date['when'];
-                            }
-
-                            $records[] = [
-                                'id' => $id,
-                                'language' => $lang,
-                                'content' => strip_tags($entry->asXML()),
-                                'date' => $date,
-                            ];
+                        $date = '';
+                        $dateNode = $entry->xpath('preceding::tei:date[1]');
+                        if (!empty($dateNode)) {
+                            $date = (string) $dateNode[0]['when'];
                         }
+
+                        $records[] = [
+                            'id' => $id,
+                            'language' => $lang,
+                            'content' => $content,
+                            'date' => $date,
+                        ];
                     }
                 }
             }
@@ -89,8 +87,8 @@ class RecordController extends Controller
     public function getXml($id)
     {
         $directories = [
-            storage_path('xml-files/XML files volumes 1-7'),
-            storage_path('xml-files/XML files volume 8'),
+            storage_path('app/xml-files/XML files volumes 1-7'),
+            storage_path('app/xml-files/XML files volume 8'),
         ];
 
         foreach ($directories as $dir) {
@@ -105,24 +103,19 @@ class RecordController extends Controller
                 $xml = simplexml_load_file($filePath);
                 if (!$xml) continue;
 
-                $namespaces = $xml->getNamespaces(true);
-                $body = $xml->children($namespaces[''])->text->body;
+                $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+                $entry = $xml->xpath('//tei:div[@xml:id="' . $id . '"]');
 
-                foreach ($body->div as $outerDiv) {
-                    foreach ($outerDiv->{'div'} as $entry) {
-                        $entryId = (string) $entry['xml:id'];
-                        if ($entryId === $id) {
-                            $dom = dom_import_simplexml($entry);
-                            $xmlDoc = new \DOMDocument();
-                            $xmlDoc->preserveWhiteSpace = false;
-                            $xmlDoc->formatOutput = true;
-                            $xmlDoc->appendChild($xmlDoc->importNode($dom, true));
+                if (!empty($entry)) {
+                    $dom = dom_import_simplexml($entry[0]);
+                    $xmlDoc = new \DOMDocument();
+                    $xmlDoc->preserveWhiteSpace = false;
+                    $xmlDoc->formatOutput = true;
+                    $xmlDoc->appendChild($xmlDoc->importNode($dom, true));
 
-                            libxml_clear_errors();
-                            return response($xmlDoc->saveXML(), 200)
-                                ->header('Content-Type', 'application/xml');
-                        }
-                    }
+                    libxml_clear_errors();
+                    return response($xmlDoc->saveXML(), 200)
+                        ->header('Content-Type', 'application/xml');
                 }
             }
         }
