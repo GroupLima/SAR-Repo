@@ -8,7 +8,7 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
-        // You can make this dynamic by reading file counts later
+        // Static for now; can be made dynamic later
         return response()->json([
             1 => 20,
             2 => 15,
@@ -43,8 +43,8 @@ class RecordController extends Controller
                 if (!str_ends_with($file, '.xml')) continue;
 
                 $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+                libxml_use_internal_errors(true);
                 $xml = simplexml_load_file($filePath);
-
                 if (!$xml) continue;
 
                 $namespaces = $xml->getNamespaces(true);
@@ -55,15 +55,19 @@ class RecordController extends Controller
                         $type = (string) $entry['type'];
                         $id = (string) $entry['xml:id'];
                         $lang = (string) $entry['xml:lang'];
-                        $content = trim((string) $entry->asXML());
 
-                        // Basic filtering: check volume in ID
                         if ($type === 'entry' && str_starts_with($id, 'ARO-' . $volume . '-')) {
+                            // Attempt to extract date from parent <div> if present
+                            $date = '';
+                            if (isset($div->p->date['when'])) {
+                                $date = (string) $div->p->date['when'];
+                            }
+
                             $records[] = [
                                 'id' => $id,
                                 'language' => $lang,
                                 'content' => strip_tags($entry->asXML()),
-                                'date' => '', // Optional: extract <date> if needed
+                                'date' => $date,
                             ];
                         }
                     }
@@ -71,7 +75,7 @@ class RecordController extends Controller
             }
         }
 
-        // Pagination logic
+        // Pagination
         $perPage = 10;
         $offset = ($page - 1) * $perPage;
         $paginated = array_slice($records, $offset, $perPage);
@@ -93,14 +97,36 @@ class RecordController extends Controller
             if (!is_dir($dir)) continue;
 
             foreach (scandir($dir) as $file) {
-                if (str_starts_with($file, $id) && str_ends_with($file, '.xml')) {
-                    $path = $dir . DIRECTORY_SEPARATOR . $file;
-                    return response(file_get_contents($path), 200)
-                        ->header('Content-Type', 'application/xml');
+                if (!str_ends_with($file, '.xml')) continue;
+
+                $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+
+                libxml_use_internal_errors(true);
+                $xml = simplexml_load_file($filePath);
+                if (!$xml) continue;
+
+                $namespaces = $xml->getNamespaces(true);
+                $body = $xml->children($namespaces[''])->text->body;
+
+                foreach ($body->div as $outerDiv) {
+                    foreach ($outerDiv->{'div'} as $entry) {
+                        $entryId = (string) $entry['xml:id'];
+                        if ($entryId === $id) {
+                            $dom = dom_import_simplexml($entry);
+                            $xmlDoc = new \DOMDocument();
+                            $xmlDoc->preserveWhiteSpace = false;
+                            $xmlDoc->formatOutput = true;
+                            $xmlDoc->appendChild($xmlDoc->importNode($dom, true));
+
+                            libxml_clear_errors();
+                            return response($xmlDoc->saveXML(), 200)
+                                ->header('Content-Type', 'application/xml');
+                        }
+                    }
                 }
             }
         }
 
-        return response()->json(['error' => 'XML file not found'], 404);
+        return response()->json(['error' => 'XML entry not found'], 404);
     }
 }
