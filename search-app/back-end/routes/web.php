@@ -5,6 +5,7 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\RecordController;
+use Illuminate\Support\Facades\File;
 
 
 /*
@@ -20,4 +21,9 @@ Route::prefix('/api')->group(function () {
     Route::get('/volumes', [RecordController::class, 'getVolumes']);
     Route::get('/records', [RecordController::class, 'getRecords']);
     Route::get('/records/{id}/xml', [RecordController::class, 'getXml']);
+    
 });
+
+Route::get('/{any}', function () {
+    return File::get(public_path('index.html'));
+})->where('any', '.*');
