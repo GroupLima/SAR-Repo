@@ -289,6 +289,7 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $ch = curl_init();
 
         // Set the cURL options for running the XQuery
+        //curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");  //////// this is the only line thats changing
         curl_setopt($ch, CURLOPT_URL, "http://exist:8080/exist/rest/db/xmlfiles");  //////// this is the only line thats changing
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
