@@ -4,6 +4,7 @@ import axios from 'axios';
 import vkbeautify from 'vkbeautify';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css'; // ADDED CSS
+import 'highlight.js/styles/github-dark.css';
 import CodeEditor from "simple-code-editor";
 import { useDark } from '@vueuse/core'
 const isDark = useDark({selector: 'body'})
@@ -114,26 +115,37 @@ const runQuery = async () => {
   </div>
 </template>
 
-<!-- ADD THESE STYLES -->
-<style scoped>
+<!-- ADD THESE STYLES --><style scoped>
 .xquery-page {
-    .results-section {
-        .hljs {
-            padding: 1rem;
-            border-radius: 4px;
-            body.dark & {
-                background-color: #202020;
-                color: #ffffff;
-            }
-        }
-        pre {
-            margin: 0;
-            background: transparent;
-        }
-        code {
-            display: block;
-            white-space: pre-wrap;
-        }
+  .results-section {
+    .hljs {
+      padding: 1rem;
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: #000000;
+      transition: all 0.3s;
+
+      /* 
+
+      /* Dark mode overrides */
+      body.dark & {
+        background-color: #2c2c2c;
+        color: #e0e0e0;
+
+      }
     }
+
+    pre {
+      margin: 0;
+      background: transparent;
+    }
+
+    code {
+      display: block;
+      white-space: pre-wrap;
+      font-family: 'Fira Code', monospace;
+      line-height: 1.5;
+    }
+  }
 }
 </style>
