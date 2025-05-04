@@ -93,7 +93,6 @@
 
 <script>
 import pageImage from '@/assets/images/try_one.jpeg';
-import { inject } from 'vue';
 import api from '@/services/api';
 
 export default {
