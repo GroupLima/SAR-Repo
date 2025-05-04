@@ -8,7 +8,7 @@ class RecordController extends Controller
 {
     public function getVolumes()
     {
-        // Example static data (you can fetch from DB later)
+        // Example static data (can later be replaced with a DB query)
         return response()->json([
             1 => 20,
             2 => 15,
@@ -22,23 +22,23 @@ class RecordController extends Controller
 
     public function getRecords(Request $request)
     {
-        $volume = $request->query('volume');
-        $page = $request->query('page');
+        $volume = $request->query('volume', 1); // Default to 1 if not set
+        $page = $request->query('page', 1);     // Default to 1 if not set
 
-        // Example static records (replace with DB query later)
+        // Generate 2 dummy records dynamically based on volume and page
         return response()->json([
             'records' => [
                 [
-                    'id' => 'ARO-1-0001-01',
+                    'id' => "ARO-{$volume}-{$page}-01",
                     'date' => '1398-09-30',
                     'language' => 'Latin',
-                    'content' => 'H Processus Curiarum Balliuorum Isti Sunt...'
+                    'content' => "Record 1 from Volume {$volume}, Page {$page}"
                 ],
                 [
-                    'id' => 'ARO-1-0001-02',
+                    'id' => "ARO-{$volume}-{$page}-02",
                     'date' => '1398-09-30',
                     'language' => 'Latin',
-                    'content' => 'Quo die Willelmus de Camera pater cum...'
+                    'content' => "Record 2 from Volume {$volume}, Page {$page}"
                 ]
             ]
         ]);
@@ -50,24 +50,23 @@ class RecordController extends Controller
             storage_path('xml-files/XML files volumes 1-7'),
             storage_path('xml-files/XML files volume 8'),
         ];
-    
+
         foreach ($directories as $dir) {
             if (!is_dir($dir)) continue;
-    
+
             $files = scandir($dir);
-    
+
             foreach ($files as $file) {
                 if (str_starts_with($file, $id) && str_ends_with($file, '.xml')) {
                     $fullPath = $dir . DIRECTORY_SEPARATOR . $file;
                     $content = file_get_contents($fullPath);
-    
+
                     return response($content, 200)
                         ->header('Content-Type', 'application/xml');
                 }
             }
         }
-    
+
         return response()->json(['error' => 'XML file not found'], 404);
     }
-    
 }
