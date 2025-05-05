@@ -198,7 +198,7 @@ onMounted(() => {
 
               <input type="string" v-model="browseState.currentPage" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage"/>
               <span>of {{ browseState.pages.length }}</span>
-              <button class="page-go-btn" @click="goToSpecificPage">Go</button>
+              <!-- <button class="page-go-btn" @click="goToSpecificPage">Go</button> -->
 
               <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPage >= browseState.pages.length">&gt;</button>
               <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
