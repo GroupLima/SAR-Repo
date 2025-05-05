@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 
 const props = defineProps({
     record: {
@@ -10,7 +11,7 @@ const props = defineProps({
             type: String,
             required: false
         },
-        language: {
+        lang: {
             type: String,
             required: false
         },
@@ -18,23 +19,42 @@ const props = defineProps({
             type: String,
             required: true
         },
-        xml: {
+        xml_content: {
             type: String,
             required: true
         }
     }
     
-})
+});
+
+// Reactive variable to control the display content
+const showXml = ref(false);
+
+// Toggle the content when the button is clicked
+const toggleContent = () => {
+  showXml.value = !showXml.value;
+};
 </script>
 
 <template>
     <div>
         <div class="record-header">
-        <div>ID: {{ props.record.id }}</div>
-        <div>Date: {{ props.record.date }}</div>
-        <div>Language: {{ props.record.lang }}</div>
-    </div>
-         <!-- add button to switch between content and xml -->
-        <div class="record-content">{{ props.record.content }}</div>
+            <div>ID: {{ record.id }}</div>
+            <div>Date: {{ record.date }}</div>
+            <div>Language: {{ record.lang }}</div>
+        </div>
+
+        <!-- Display either content or xml_content based on showXml value -->
+        <div class="record-content">
+            <div v-if="showXml">
+                <pre class="records-container">{{ record.xml_content }}</pre> <!-- Wrap XML content in <pre> tag -->
+            </div>
+            <div v-else>{{ record.content }}</div>
+        </div>
+
+        <!-- Button to toggle content -->
+        <button class="xml-btn" @click="toggleContent">
+            {{ showXml ? 'Switch to Content' : 'Switch to XML' }}
+        </button>
      </div>
 </template>

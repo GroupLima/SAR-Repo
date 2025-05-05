@@ -41,13 +41,13 @@ class RecordController extends Controller
             $match_results = $output["results"];
             
             // add xml content to each entry in every page of the volume
-            foreach ($match_results as $page) {
+            foreach ($match_results as &$page) {
                 foreach ($page['records'] as &$record){
                     $entry_id = $record['id'];
                     $xml_path = $record['xmlpath'];
                     // add xml content to record
                     $record['xml_content'] = $this->get_xml_content($entry_id, $xml_path);
-                    
+                    //echo $record['xml_content'];
                     // dont need to return the xmlpath so remove it
                     unset($record['xmlpath']);
                     }
@@ -90,16 +90,10 @@ class RecordController extends Controller
 
         // Check if the entry exists
         if (!empty($target_xml)) {
-            return $target_xml[0]; // Return the first match (or the only match)
+            return $target_xml[0]->asXML(); // Return the first match (or the only match)
         } else {
             return null; // Return null if no entry found
         }
-
-        // 1. asXML converts simple xml into a string format
-        // 2. htmlentities turns xml into a string and escapes special characters
-        // 3. nl2br implements new lines as <br> html tag
-        $converted_xml = nl2br(htmlentities($target_xml->asXML()));
-        return $converted_xml;
     }
 
     // public function getVolumes()
