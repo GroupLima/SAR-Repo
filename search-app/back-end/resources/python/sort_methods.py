@@ -41,6 +41,7 @@ return example:
 """
 # considers page numbers with letters as well ex. 130A
 def split_page_key(page):
+    print(page)
     match = re.match(r'^(\d+)([a-zA-Z]?)$', str(page))
     number = int(match.group(1))
     letter = match.group(2).lower() if match.group(2) else ''
@@ -141,14 +142,17 @@ def sort_chronological_dsc(matches, json_entries):
 # sort entries into sorted pages
 def sort_browse_entries_into_list(json_entries):
     # group into pages
-    pages = defaultdict(list)
+    pages = {}
     for entry in json_entries.values():
-        pages[entry['page']].append(entry)
+        page_name = entry['page']
+        if page_name not in pages:
+            pages[page_name] = []
+        pages[page_name].append(entry)
 
     # sort the entries within each page
-    sorted_matches = sorted(
-        page.items(),
-        key=lambda item: (split_page_key(json_entries[item[0]]['page']))
+    sorted_pages = sorted(
+        pages.items(),
+        key=lambda item: (split_page_key(item[0]))
     )
 
     return [

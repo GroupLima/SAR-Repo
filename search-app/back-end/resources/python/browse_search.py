@@ -8,8 +8,8 @@ from pathlib import Path
 
 class BrowseSearch():
 
-    def __init__(self, params):
-        self.json_entries = self.load_json()
+    def __init__(self, params, json_entries):
+        self.json_entries = json_entries or self.load_json()
         self.params = params
 
         self.vol = 1
@@ -19,15 +19,15 @@ class BrowseSearch():
         try:
             self.vol = self.params.get('vol')
             # attempt to convert to integer
-            self.vol = int(self.vol)
+            self.vol = [int(self.vol)]
 
             # use advanced search to get all entries in a single volume
-            search_obj = AdvancedSearch(None, None, self.vol, None, None, None)
-            adv_matches = search_obj.filter_entries(json_entries)
+            search_obj = Advanced_Search(None, None, self.vol, None, None, None)
+            adv_matches = search_obj.filter_entries(self.json_entries)
 
             # sort and format results
             grouped_entries = sort_methods.sort_browse_entries_into_list(adv_matches)
-            self.matches = self.normalize_attributes(sorted_entries)
+            self.matches = self.normalize_attributes(grouped_entries)
         except:
             raise BrowseError(self.vol)
 
@@ -37,7 +37,7 @@ class BrowseSearch():
             json_entries = json.load(json_file)
         return json_entries
 
-    def format_date(date):
+    def format_date(self, date):
         if date.get("when"):
             return date["when"]
         elif date.get("from") and date.get("to"):
