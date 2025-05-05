@@ -13,3 +13,7 @@ class InvalidVolumeInputError(Exception):
 class InvalidDateInputError(Exception):
     def __init__(self, date):
         super().__init__(f"Invalid date input: {date} \nShould be in the form YYYY-MM-DD")
+
+class BrowseSearchError(Exception):
+    def __init__(self, volume):
+        super().__init__(f"Something went wrong using BrowseSearch class: '\n{message}' is the value assigned to self.vol")

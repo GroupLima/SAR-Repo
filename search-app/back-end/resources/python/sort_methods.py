@@ -137,3 +137,21 @@ def sort_chronological_dsc(matches, json_entries):
         reverse=True
     )
     return dict(sorted_matches)
+
+# sort entries into sorted pages
+def sort_browse_entries_into_list(json_entries):
+    # group into pages
+    pages = defaultdict(list)
+    for entry in json_entries.values():
+        pages[entry['page']].append(entry)
+
+    # sort the entries within each page
+    sorted_matches = sorted(
+        page.items(),
+        key=lambda item: (split_page_key(json_entries[item[0]]['page']))
+    )
+
+    return [
+        {"page": page_name, "records": entries}
+        for page_name, entries in sorted_pages
+    ]

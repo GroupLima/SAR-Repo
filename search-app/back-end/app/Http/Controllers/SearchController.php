@@ -164,14 +164,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
 
-    function get_search_path($query_type){
-        //$query_type = $permitted['qt'];
-        if (strtolower($query_type) == 'xquery'){
-            //hardcoded for now
-            return '../resources/python/XQuerySearch.py';
-        } else {
-            return '../resources/python/Search.py' ;
-        }
+    function get_search_path(){
+        return '../resources/python/Search.py';
     }
 
     function filter_and_format($permitted) {

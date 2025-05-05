@@ -72,6 +72,7 @@ const loadRecordsForSingleVolume = async (volume) => {
   // fetch records from back end
   try {
     const response = await api.get('/records', {params: {volume: volume}});
+    // store list of pages containing lists of records
     browseState.pages = response.data.records;
     displayPageImage()
     
