@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, inject } from 'vue';
-
+import vkbeautify from 'vkbeautify';
 
 const selectedRecords = inject('selectedRecords');
 
@@ -39,10 +39,34 @@ const props = defineProps({
 
 // Reactive variable to control the display content
 const showXml = ref(false);
+const copySuccess = ref(false);
+const formattedXml = ref('');
+
+onMounted(() => {
+  try {
+    formattedXml.value = vkbeautify.xml(props.record.xml_content, 5);
+  } catch (error) {
+    console.error('Error formatting XML:', error);
+    formattedXml.value = props.record.xml_content;
+  }
+});
 
 // Toggle the content when the button is clicked
 const toggleContent = () => {
   showXml.value = !showXml.value;
+};
+
+const copyXmlToClipboard = () => {
+  navigator.clipboard.writeText(formattedXml.value)
+    .then(() => {
+      copySuccess.value = true;
+      setTimeout(() => {
+        copySuccess.value = false;
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Failed to copy XML: ', err);
+    });
 };
 
 // Toggle record selection
@@ -81,17 +105,27 @@ const isRecordSelected = () => {
             <div>Language: {{ record.lang }}</div>
         </div>
 
-        <!-- Display either content or xml_content based on showXml value -->
-        <div class="record-content">
-            <div v-if="showXml" class="xml-content">
-                <pre>{{ record.xml_content }}</pre>
-            </div>
-            <div v-else>{{ record.content }}</div>
+         <!-- Display either content or xml_content based on showXml value -->
+    <div class="record-content">
+      <div v-if="showXml" class="xml-content">
+        <div class="xml-toolbar">
+          <button 
+            class="copy-btn" 
+            @click="copyXmlToClipboard"
+          >
+            {{ copySuccess ? 'Copied!' : 'Copy XML' }}
+          </button>
         </div>
-        <!-- toggle between xml and content view -->
-        <button class="xml-btn" @click="toggleContent">
-            {{ showXml ? 'Switch to Content' : 'Switch to XML' }}
-        </button>
+        <pre>{{ formattedXml }}</pre>
+      </div>
+      <div v-else>{{ record.content }}</div>
+    </div>
+    
+    <!-- toggle between xml and content view -->
+    <div class="button-row">
+      <button class="xml-btn" @click="toggleContent">
+        {{ showXml ? 'Switch to Content' : 'Switch to XML' }}
+      </button>
 
         <div>
             <label data-tooltip="Save entry to export later as a PDF">Save</label>
@@ -103,4 +137,5 @@ const isRecordSelected = () => {
             >
         </div>
      </div>
+    </div>
 </template>

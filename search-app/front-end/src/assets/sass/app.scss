@@ -1289,6 +1289,17 @@ $small-mobile-breakpoint: 480px;
     max-height: none;
     max-width: 100%;
 }
+.copy-btn {
+  background-color: $primary-colour;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.copy-btn:hover {
+  background-color: #e0e0e0;
+}
 
   .xml-btn {
     background-color: $primary-colour;

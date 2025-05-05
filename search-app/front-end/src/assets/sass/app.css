@@ -1138,6 +1138,16 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   max-height: none;
   max-width: 100%;
 }
+.dark .copy-btn {
+  background-color: #6e0d25;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.dark .copy-btn:hover {
+  background-color: #e0e0e0;
+}
 .dark .xml-btn {
   background-color: #6e0d25;
   color: #ffffff;
