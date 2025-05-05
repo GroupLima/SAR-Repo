@@ -1,8 +1,9 @@
 <script setup>
-import { reactive, onMounted, ref, computed } from 'vue'
-import RecordList from '@/components/RecordList.vue'
-import api from '@/services/api'
+import { reactive, onMounted, ref, computed } from 'vue';
+import RecordList from '@/components/RecordList.vue';
+import api from '@/services/api';
 import pageImage from '@/assets/images/try_one.jpeg';
+import LoadingAnimation from '@/components/LoadingAnimation.vue';
 
 const volumes = [1, 2, 4, 5, 6, 7, 8];
 
@@ -216,8 +217,8 @@ onMounted(() => {
               <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
             </div>
              <!-- Display loading text if pages are loading -->
-             <div v-if="browseState.pagesLoading" class="loading-text">
-              Loading records, please wait...
+             <div v-if="browseState.pagesLoading">
+                <LoadingAnimation :loadingText="'Loading records, please wait'"/>
             </div>
 
             <!-- Display records once loading is complete -->
