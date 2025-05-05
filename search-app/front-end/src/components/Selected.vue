@@ -33,7 +33,7 @@
         <div class="record-content">
           {{ record.content }}
         </div>
-        <div class="record-content">
+        <div class="record-content xml-content">
           <pre>{{ record.xml_content }}</pre>
         </div>
         <div class="record-actions">
@@ -42,9 +42,8 @@
       </div>
       
       <div class="actions">
-        <button data-tooltip = "Clear all Item from Selected" class="clear-btn" @click="clearAll">Clear All</button>
-        <!--<button class="export-btn" @click="exportRecords">Export as JSON</button> -->
-        <button data-tooltip ="Download the Selected Items in PDF" class="export-pdf-btn" @click="exportToPDF">Export as PDF</button>
+        <button data-tooltip="Clear all Items from Selected" class="clear-btn" @click="clearAll">Clear All</button>
+        <button data-tooltip="Download the Selected Items in PDF" class="export-pdf-btn" @click="exportToPDF">Export as PDF</button>
       </div>
     </div>
   </div>
@@ -74,118 +73,118 @@ export default {
       selectedRecords.value = [];
     };
     
-    const exportRecords = () => {
-      // Export as JSON
-      const dataStr = JSON.stringify(selectedRecords.value, null, 2);
-      const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-      const exportFileDefaultName = 'selected-records.json';
-      
-      const linkElement = document.createElement('a');
-      linkElement.setAttribute('href', dataUri);
-      linkElement.setAttribute('download', exportFileDefaultName);
-      linkElement.click();
-    };
-
     const exportToPDF = async () => {
       try {
         const pdfDoc = await PDFDocument.create();
-        const page = pdfDoc.addPage();
-        const { width, height } = page.getSize();
-        let yPos = height - 40;
-
-        page.drawText('Selected Records', {
-          x: 50,
+        let currentPage = pdfDoc.addPage();
+        const { width, height } = currentPage.getSize();
+        const margin = 50;
+        const lineHeight = 20;
+        const fontSize = 12;
+        let yPos = height - margin;
+        
+        // Add title
+        currentPage.drawText('Selected Records', {
+          x: margin,
           y: yPos,
           size: 18,
           color: rgb(0, 0, 0),
         });
         
         yPos -= 30;
-
+    
         for (let i = 0; i < selectedRecords.value.length; i++) {
           const record = selectedRecords.value[i];
           
           // Check if we need a new page
-          if (yPos < 100) {
-            const newPage = pdfDoc.addPage();
-            yPos = height - 40;
+          if (yPos < margin + 100) { // Give enough space for at least basic record info
+            currentPage = pdfDoc.addPage();
+            yPos = height - margin;
           }
-
-          page.drawText(`Record ${i + 1}:`, {
-            x: 50,
+    
+          // Draw record header
+          currentPage.drawText(`Record ${i + 1}:`, {
+            x: margin,
             y: yPos,
-            size: 12,
+            size: 14,
             color: rgb(0, 0, 0),
           });
-          yPos -= 20;
-
-          page.drawText(`ID: ${record.id}`, {
-            x: 60,
-            y: yPos,
-            size: 12,
-            color: rgb(0, 0, 0),
-          });
-          yPos -= 20;
-
-          page.drawText(`Date: ${record.date}`, {
-            x: 60,
-            y: yPos,
-            size: 12,
-            color: rgb(0, 0, 0),
-          });
-          yPos -= 20;
-
-          page.drawText(`Language: ${record.language}`, {
-            x: 60,
-            y: yPos,
-            size: 12,
-            color: rgb(0, 0, 0),
-          });
-
-          yPos -= 20;
-          page.drawText(`Volume: ${record.volume}`, {
-            x: 60,
-            y: yPos,
-            size: 12,
-            color: rgb(0, 0, 0),
-          });
-
-          yPos -= 20;
-          page.drawText(`Page: ${record.page}`, {
-            x: 60,
-            y: yPos,
-            size: 12,
-            color: rgb(0, 0, 0),
-          });
-          yPos -= 20;
-
-          // Content might be too long, so truncate if needed
-          // const content = record.content.length > 80 ? 
-          //   record.content.substring(0, 80) + '...' : 
-          //   record.content;
+          yPos -= lineHeight;
+    
+          // Add record metadata
+          const fields = [
+            { label: 'ID', value: record.id },
+            { label: 'Date', value: record.date },
+            { label: 'Language', value: record.language },
+            { label: 'Volume', value: record.volume },
+            { label: 'Page', value: record.page }
+          ];
+    
+          for (const field of fields) {
+            // Check remaining space
+            if (yPos < margin + 20) {
+              currentPage = pdfDoc.addPage();
+              yPos = height - margin;
+            }
             
-          page.drawText(`Content: ${record.content}`, {
-            x: 60,
+            currentPage.drawText(`${field.label}: ${field.value || 'N/A'}`, {
+              x: margin + 10,
+              y: yPos,
+              size: fontSize,
+              color: rgb(0, 0, 0),
+            });
+            yPos -= lineHeight;
+          }
+    
+          // Add content with word wrapping
+          if (yPos < margin + 40) {
+            currentPage = pdfDoc.addPage();
+            yPos = height - margin;
+          }
+          
+          currentPage.drawText('Content:', {
+            x: margin + 10,
             y: yPos,
-            size: 12,
+            size: fontSize,
             color: rgb(0, 0, 0),
           });
-          yPos -= 30;
-
-          // Content might be too long, so truncate if needed
-          // const content = record.content.length > 80 ? 
-          //   record.content.substring(0, 80) + '...' : 
-          //   record.content;
-            
-          page.drawText(`XML Content: ${record.xml_content}`, {
-            x: 60,
+          yPos -= lineHeight;
+    
+          // Word wrapping for content
+          if (record.content) {
+            yPos = drawWrappedText(currentPage, record.content, margin + 20, yPos, width - margin * 2 - 20, fontSize, lineHeight, pdfDoc);
+          }
+          
+          // Check for space before adding XML content
+          if (yPos < margin + 40) {
+            currentPage = pdfDoc.addPage();
+            yPos = height - margin;
+          }
+    
+          // XML Content
+          currentPage.drawText('XML Content:', {
+            x: margin + 10,
             y: yPos,
-            size: 12,
+            size: fontSize,
             color: rgb(0, 0, 0),
           });
-          yPos -= 30;
+          yPos -= lineHeight;
+    
+          // Word wrapping for XML content
+          if (record.xml_content) {
+            yPos = drawWrappedText(currentPage, record.xml_content, margin + 20, yPos, width - margin * 2 - 20, fontSize, lineHeight, pdfDoc);
+          }
+    
+          // Add a separator between records
+          yPos -= lineHeight * 1.5;
+          
+          // Always ensure at least 50 pts of padding at the bottom
+          if (yPos < margin + 50) {
+            currentPage = pdfDoc.addPage();
+            yPos = height - margin;
+          }
         }
-
+    
         const pdfBytes = await pdfDoc.save();
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const link = document.createElement('a');
@@ -198,13 +197,65 @@ export default {
       }
     };
     
+    // Helper function to draw wrapped text
+    function drawWrappedText(page, text, x, y, maxWidth, fontSize, lineHeight, pdfDoc) {
+      const { height } = page.getSize();
+      const margin = 50;
+      const words = text.split(' ');
+      let line = '';
+      
+      for (let i = 0; i < words.length; i++) {
+        const testLine = line + words[i] + ' ';
+        const testWidth = testLine.length * (fontSize * 0.5); // Approximation for width
+        
+        if (testWidth > maxWidth && i > 0) {
+          // Check if we need a new page
+          if (y < margin + 20) {
+            page = pdfDoc.addPage();
+            y = height - margin;
+          }
+          
+          page.drawText(line, {
+            x: x,
+            y: y,
+            size: fontSize,
+            color: rgb(0, 0, 0),
+          });
+          
+          line = words[i] + ' ';
+          y -= lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      
+      // Draw the last line
+      if (line.trim().length > 0) {
+        // Check if we need a new page
+        if (y < margin + 20) {
+          page = pdfDoc.addPage();
+          y = height - margin;
+        }
+        
+        page.drawText(line, {
+          x: x,
+          y: y,
+          size: fontSize,
+          color: rgb(0, 0, 0),
+        });
+        y -= lineHeight;
+      }
+      
+      return y;
+    }
+    
     return {
       selectedRecords,
       removeRecord,
       clearAll,
-      exportRecords,
       exportToPDF
     };
   }
 }
 </script>
+
