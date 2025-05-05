@@ -44,7 +44,8 @@ function copyHtmlContent() {
 // opens the content in the browse page
 const openContentInBrowse = () => {
     const browseParams = {
-        id: props.id
+        volume: props.htmlvolume,
+        docPage: props.htmlpage
     };
     router.push({
         name: 'browse',

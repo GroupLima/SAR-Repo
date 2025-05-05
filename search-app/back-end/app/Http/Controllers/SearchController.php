@@ -164,14 +164,8 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     }
 
 
-    function get_search_path($query_type){
-        //$query_type = $permitted['qt'];
-        if (strtolower($query_type) == 'xquery'){
-            //hardcoded for now
-            return '../resources/python/XQuerySearch.py';
-        } else {
-            return '../resources/python/Search.py' ;
-        }
+    function get_search_path(){
+        return '../resources/python/Search.py';
     }
 
     function filter_and_format($permitted) {
@@ -257,6 +251,22 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
             //echo 'highlights: ' . $htmltext . '; <br>';
         }
         return $htmltext;
+    }
+
+    public function getRawEntry(Request $request){
+        $entry_id = $request->query('docId');
+        if (isset($this->jsonData[$entry_id])){
+            return response()->json([
+                'success' => true,
+                'content' => $this->jsonData[$entry_id]['content'],
+                'volume' => $this->jsonData[$entry_id]['volume'],
+                'page' => $this->jsonData[$entry_id]['page'],
+                'date' => $this->jsonData[$entry_id]['date'],
+                'lang' => $this->jsonData[$entry_id]['lang'],
+            ]);
+        } else {
+            return response()->json(['success' => false]);
+        }
     }
 
 

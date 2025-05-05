@@ -3,7 +3,6 @@ import json
 from rapidfuzz import process, fuzz
 from advanced_search import Advanced_Search
 from basic_search import Basic_Search
-import json_parser as Json_Parser
 import sort_methods
 
 from pathlib import Path
