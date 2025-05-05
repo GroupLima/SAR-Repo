@@ -83,11 +83,8 @@ const isRecordSelected = () => {
 
         <!-- Display either content or xml_content based on showXml value -->
         <div class="record-content">
-            <div v-if="showXml">
-                
-                <!-- PLEASE HELP STYLE THIS -->
-                <pre class="records-container">{{ record.xml_content }}</pre> <!-- Wrap XML content in <pre> tag -->
-            
+            <div v-if="showXml" class="xml-content">
+                <pre>{{ record.xml_content }}</pre>
             </div>
             <div v-else>{{ record.content }}</div>
         </div>

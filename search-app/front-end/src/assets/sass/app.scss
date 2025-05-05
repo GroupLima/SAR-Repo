@@ -1277,6 +1277,16 @@ $small-mobile-breakpoint: 480px;
   .record-header, .record-content, .record-label {
     color: $secondary-colour;
   }
+  .xml-content pre {
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 0.9rem;
+    max-height: 200px;
+    overflow-y: auto;
+  }
 
   .xml-btn {
     background-color: $primary-colour;
