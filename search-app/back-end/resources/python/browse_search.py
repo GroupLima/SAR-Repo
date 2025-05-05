@@ -61,7 +61,7 @@ class BrowseSearch():
                 date = entry.get("date")
                 entry["date"] = self.format_date(date)
 
-                lang = entry.get("language")
+                lang = entry.get("lang")
                 entry["lang"] = self.get_full_language(lang)
         return grouped_entries
 
