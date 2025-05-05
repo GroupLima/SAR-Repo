@@ -1,9 +1,10 @@
 <script setup>
-import { reactive, onMounted, ref, computed } from 'vue';
+import { reactive, onMounted, ref, computed, watch } from 'vue';
 import RecordList from '@/components/RecordList.vue';
 import api from '@/services/api';
 import pageImage from '@/assets/images/try_one.jpeg';
 import LoadingAnimation from '@/components/LoadingAnimation.vue';
+import browseCache from '@/services/browseCache.js';
 
 const volumes = [1, 2, 4, 5, 6, 7, 8];
 
@@ -16,40 +17,35 @@ const browseState = reactive({
   isZooming: false,
   transformOrigin: '0% 0%',
   pagesLoading: true,
-  cachedPages: {},
   pages: []
 })
 
 function onChangeVolume(){
+  browseState.currentPage = 1;
   // update browseState and load relevant records
   loadRecordsForSingleVolume(browseState.currentVolume);
 }
 
-function displayPageImage(){
-  // display placeholder page for now
-  browseState.pageImage = pageImage;
 
-  // display corresponding image here ...
-}
 
 const loadRecordsForSingleVolume = async (volume) => {
   browseState.pagesLoading = true;
   try {
     // fetch records from back end
-    if (!(volume in browseState.cachedPages)){
+    if (!browseCache.hasRecords(volume)){
       const response = await api.get('/records', {params: {volume: volume}});
       // store list of pages containing lists of records
       browseState.pages = response.data.records;
       // store volumes in cache for quick access
-      browseState.cachedPages[volume] = response.data.records;
+      browseCache.setRecords(volume, response.data.records);
       
     // no need to fetch twice
     } else {
       // retrieve from cache
-      browseState.pages = browseState.cachedPages[volume];
+      browseState.pages = browseCache.getRecords(volume);
     }
-    browseState.currentPage = 1;
     displayPageImage();
+
   } catch (error) {
     console.error('Failed to fetch volumes:', error);
   }
@@ -76,6 +72,13 @@ const currentRecords = computed(() => {
 
 // image stuff
 const pageImageRef = ref(null);
+
+function displayPageImage(){
+  // display placeholder page for now
+  browseState.pageImage = pageImage;
+
+  // display corresponding image here ...
+}
 
 function handleZoom(event) {
   const rect = pageImageRef.value.getBoundingClientRect();
@@ -105,27 +108,54 @@ const imageStyle = computed(() => {
   };
 });
 
+watch(() => [browseState.currentVolume, browseState.currentPage], ([newVolume, newPage]) => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('volume', newVolume);
+  url.searchParams.set('page', newPage);
+  window.history.pushState({}, '', url);
+
+  // Save to sessionStorage
+  sessionStorage.setItem('browseState', JSON.stringify({
+    volume: newVolume,
+    page: newPage
+  }));
+});
+
 
 const setBrowseStateValues = () => {
     // parse the url
     const urlParams = new URLSearchParams(window.location.search);
-    browseState.currentVolume = urlParams.get('volume') || browseState.currentVolume;
-    browseState.currentPage = urlParams.get('page') || browseState.currentPage;
+    let vol = parseInt(urlParams.get('volume'));
+    let page = parseInt(urlParams.get('page'));
+
+    if (isNaN(vol) && !isNaN(page)) {vol=1; page=1}
+    else if (!isNaN(vol) && isNaN(page)) page = 1;
+    else if (isNaN(vol) && isNaN(page)) {
+      // Fall back to sessionStorage
+      const saved = sessionStorage.getItem('browseState');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        vol = parsed.volume;
+        page = parsed.page;
+      }
+    }
+    if (!isNaN(vol)) browseState.currentVolume = vol;
+    if (!isNaN(page)) browseState.currentPage = page;
 };
 
 onMounted(() => {
   setBrowseStateValues();
+  
   // if volume or volume and page not specified, try loading first page of first volume.
   if (!volumes.includes(browseState.currentVolume) ){
     // try loading first volume
-    alert('volume does not exist')
-
-  } else {
-    // load according to url parameters
-    loadRecordsForSingleVolume(browseState.currentVolume)
+    alert(`volume ${browseState.currentVolume} does not exist`);
+    browseState.currentVolume = 1;
+    browseState.currentPage = 1;
+    
   }
-
-  // placeholder image for now
+  // load according to url parameters
+  loadRecordsForSingleVolume(browseState.currentVolume)
   
 });
 </script>
