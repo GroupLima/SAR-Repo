@@ -14,6 +14,8 @@ const browseState = reactive({
   zoomScale: 2.5,
   isZooming: false,
   transformOrigin: '0% 0%',
+  pagesLoading: true,
+  cachedPages: {},
   pages: []
   /* pages:
     [
@@ -58,7 +60,7 @@ const browseState = reactive({
 
 function onChangeVolume(){
   // update browseState and load relevant records
-  loadRecordsForSingleVolume();
+  loadRecordsForSingleVolume(browseState.currentVolume);
 }
 
 function displayPageImage(){
@@ -69,17 +71,27 @@ function displayPageImage(){
 }
 
 const loadRecordsForSingleVolume = async (volume) => {
-  // fetch records from back end
+  browseState.pagesLoading = true;
   try {
-    const response = await api.get('/records', {params: {volume: volume}});
-    // store list of pages containing lists of records
-    browseState.pages = response.data.records;
-    displayPageImage()
-    
+    // fetch records from back end
+    if (!(volume in browseState.cachedPages)){
+      const response = await api.get('/records', {params: {volume: volume}});
+      // store list of pages containing lists of records
+      browseState.pages = response.data.records;
+      // store volumes in cache for quick access
+      browseState.cachedPages[volume] = response.data.records;
+      
+    // no need to fetch twice
+    } else {
+      // retrieve from cache
+      browseState.pages = browseState.cachedPages[volume];
+    }
+    browseState.currentPage = 1;
+    displayPageImage();
   } catch (error) {
     console.error('Failed to fetch volumes:', error);
   }
-
+  browseState.pagesLoading = false
 }
 
 const goToFirstPage = () => browseState.currentPage = 1;
@@ -104,14 +116,14 @@ const currentRecords = computed(() => {
 const pageImageRef = ref(null);
 
 function handleZoom(event) {
-  const rect = pageImageRef.getBoundingClientRect();
+  const rect = pageImageRef.value.getBoundingClientRect();
   const x = ((event.clientX - rect.left) / rect.width) * 100;
   const y = ((event.clientY - rect.top) / rect.height) * 100;
   browseState.transformOrigin = `${x}% ${y}%`;
   browseState.isZooming = true;
 }
 function toggleZoom(event) {
-  const rect = pageImageRef.getBoundingClientRect();
+  const rect = pageImageRef.value.getBoundingClientRect();
   const x = ((event.clientX - rect.left) / rect.width) * 100;
   const y = ((event.clientY - rect.top) / rect.height) * 100;
   browseState.transformOrigin = `${x}% ${y}%`;
@@ -153,7 +165,7 @@ onMounted(() => {
 
   // placeholder image for now
   
-})
+});
 </script>
 
 <template>
@@ -170,7 +182,7 @@ onMounted(() => {
 
       <div class="container-browser">
         <div class="volume-nav">
-          <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume">
+          <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
             <option v-for="volId in volumes" :key="volId" :value="volId">
               Volume {{ volId }}
             </option>
@@ -192,20 +204,26 @@ onMounted(() => {
           </div>
 
           <div class="records-container">
-            <div class="page-navigation">
+            <div v-if="!browseState.pagesLoading" class="page-navigation">
               <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
               <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
 
-              <input type="string" v-model="browseState.currentPage" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" />
+              <input type="string" v-model="browseState.currentPage" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage"/>
               <span>of {{ browseState.pages.length }}</span>
               <button class="page-go-btn" @click="goToSpecificPage">Go</button>
 
               <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPage >= browseState.pages.length">&gt;</button>
               <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
             </div>
-            <RecordList :records="currentRecords"/>
+             <!-- Display loading text if pages are loading -->
+             <div v-if="browseState.pagesLoading" class="loading-text">
+              Loading records, please wait...
+            </div>
 
-            <div class="records">
+            <!-- Display records once loading is complete -->
+            <RecordList v-if="!browseState.pagesLoading" :records="currentRecords"/>
+
+            <!-- <div class="records">
               <div v-for="record in currentRecords" :key="record.id" class="record-item">
                 <div class="record-header">
                   <div>ID: {{ record.id }}</div>
@@ -214,7 +232,7 @@ onMounted(() => {
                 </div>
                 <div class="record-content">{{ record.content }}</div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

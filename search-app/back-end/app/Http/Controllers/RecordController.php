@@ -33,17 +33,18 @@ class RecordController extends Controller
             $command = "python3 $python_search_file $permitted_params";
             //extracts the json output object
             $raw_output = shell_exec($command);
+            //echo $raw_output;
+            //echo $raw_output["results"];
             $output = json_decode($raw_output, true);
             
             //store matches list
             $match_results = $output["results"];
-
+            
             // add xml content to each entry in every page of the volume
             foreach ($match_results as $page) {
                 foreach ($page['records'] as &$record){
                     $entry_id = $record['id'];
                     $xml_path = $record['xmlpath'];
-
                     // add xml content to record
                     $record['xml_content'] = $this->get_xml_content($entry_id, $xml_path);
                     
@@ -51,7 +52,7 @@ class RecordController extends Controller
                     unset($record['xmlpath']);
                     }
             };
-
+            //$echo $match_results;
             // Check if $this->match_results is not null and is an array
             $num_pages = (is_array($match_results) && count($match_results) > 0) ? count($match_results) : 0;
             
@@ -77,8 +78,9 @@ class RecordController extends Controller
     }
     
     public function get_xml_content($entry_id, $xml_path){
+        $path = base_path($xml_path);
         // load the xml as a simple xml element
-        $xml_file = simplexml_load_file($xml_path);
+        $xml_file = simplexml_load_file($path);
 
         // Register the TEI namespace
         $xml_file->registerXPathNamespace('tei', $this->TEI_namespace);

@@ -41,7 +41,6 @@ return example:
 """
 # considers page numbers with letters as well ex. 130A
 def split_page_key(page):
-    print(page)
     match = re.match(r'^(\d+)([a-zA-Z]?)$', str(page))
     number = int(match.group(1))
     letter = match.group(2).lower() if match.group(2) else ''

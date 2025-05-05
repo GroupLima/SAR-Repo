@@ -32,7 +32,7 @@ const props = defineProps({
         <div class="record-header">
         <div>ID: {{ props.record.id }}</div>
         <div>Date: {{ props.record.date }}</div>
-        <div>Language: {{ props.record.language }}</div>
+        <div>Language: {{ props.record.lang }}</div>
     </div>
          <!-- add button to switch between content and xml -->
         <div class="record-content">{{ props.record.content }}</div>

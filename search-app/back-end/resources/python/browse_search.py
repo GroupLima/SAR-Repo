@@ -8,7 +8,7 @@ from pathlib import Path
 
 class BrowseSearch():
 
-    def __init__(self, params, json_entries):
+    def __init__(self, params, json_entries=None):
         self.json_entries = json_entries or self.load_json()
         self.params = params
 
@@ -72,8 +72,8 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         permitted = json.loads(sys.argv[1])
         browse_search = BrowseSearch(permitted)
-        search.start()
-        matches = search.get_matches()
+        browse_search.start()
+        matches = browse_search.get_matches()
         if matches:
             results = {"message": "matches found", "results": matches}
         else:
