@@ -51,7 +51,8 @@
 
 <script>
 import { inject } from 'vue';
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import vkbeautify from 'vkbeautify';
 
 export default {
   setup() {
@@ -75,43 +76,57 @@ export default {
     
     const exportToPDF = async () => {
       try {
+        // Create a new PDF document
         const pdfDoc = await PDFDocument.create();
+        
+        // Embed the standard font
+        const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+        const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+        
+        // Add the first page
         let currentPage = pdfDoc.addPage();
         const { width, height } = currentPage.getSize();
+        
+        // Define layout parameters
         const margin = 50;
-        const lineHeight = 20;
-        const fontSize = 12;
+        const lineHeight = 14;
+        const normalFontSize = 10;
+        const headerFontSize = 16;
+        const subheaderFontSize = 12;
         let yPos = height - margin;
         
         // Add title
         currentPage.drawText('Selected Records', {
           x: margin,
           y: yPos,
-          size: 18,
+          size: headerFontSize + 2,
+          font: boldFont,
           color: rgb(0, 0, 0),
         });
         
-        yPos -= 30;
-    
+        yPos -= lineHeight * 2;
+
+        // Process each record
         for (let i = 0; i < selectedRecords.value.length; i++) {
           const record = selectedRecords.value[i];
           
-          // Check if we need a new page
-          if (yPos < margin + 100) { // Give enough space for at least basic record info
+          // Always start a record on a new page if less than 150pt available
+          if (yPos < height - margin - 150) {
             currentPage = pdfDoc.addPage();
             yPos = height - margin;
           }
-    
-          // Draw record header
+
+          // Draw record header with proper spacing
           currentPage.drawText(`Record ${i + 1}:`, {
             x: margin,
             y: yPos,
-            size: 14,
+            size: subheaderFontSize,
+            font: boldFont,
             color: rgb(0, 0, 0),
           });
-          yPos -= lineHeight;
-    
-          // Add record metadata
+          yPos -= lineHeight * 1.5;
+
+          // Add record metadata with consistent spacing
           const fields = [
             { label: 'ID', value: record.id },
             { label: 'Date', value: record.date },
@@ -119,134 +134,182 @@ export default {
             { label: 'Volume', value: record.volume },
             { label: 'Page', value: record.page }
           ];
-    
+
           for (const field of fields) {
-            // Check remaining space
-            if (yPos < margin + 20) {
+            // Check if we need a new page
+            if (yPos < margin + lineHeight) {
               currentPage = pdfDoc.addPage();
               yPos = height - margin;
             }
             
-            currentPage.drawText(`${field.label}: ${field.value || 'N/A'}`, {
-              x: margin + 10,
+            // Draw field label in bold
+            currentPage.drawText(`${field.label}:`, {
+              x: margin,
               y: yPos,
-              size: fontSize,
+              size: normalFontSize,
+              font: boldFont,
               color: rgb(0, 0, 0),
             });
+            
+            // Draw field value
+            currentPage.drawText(`${field.value || 'N/A'}`, {
+              x: margin + 60, // Fixed position for alignment
+              y: yPos,
+              size: normalFontSize,
+              font: font,
+              color: rgb(0, 0, 0),
+            });
+            
             yPos -= lineHeight;
           }
-    
-          // Add content with word wrapping
-          if (yPos < margin + 40) {
+          
+          // Add extra spacing after metadata
+          yPos -= lineHeight / 2;
+
+          // Content Section
+          if (yPos < margin + 100) { // Ensure enough space for section header + some content
             currentPage = pdfDoc.addPage();
             yPos = height - margin;
           }
           
           currentPage.drawText('Content:', {
-            x: margin + 10,
+            x: margin,
             y: yPos,
-            size: fontSize,
+            size: normalFontSize,
+            font: boldFont,
             color: rgb(0, 0, 0),
           });
           yPos -= lineHeight;
-    
-          // Word wrapping for content
+
+          // Draw content with proper wrapping
           if (record.content) {
-            yPos = drawWrappedText(currentPage, record.content, margin + 20, yPos, width - margin * 2 - 20, fontSize, lineHeight, pdfDoc);
+            const contentLines = splitTextIntoLines(record.content, font, normalFontSize, width - (margin * 2) - 20);
+            
+            for (const line of contentLines) {
+              if (yPos < margin + lineHeight) {
+                currentPage = pdfDoc.addPage();
+                yPos = height - margin;
+              }
+              
+              currentPage.drawText(line, {
+                x: margin + 10,
+                y: yPos,
+                size: normalFontSize,
+                font: font,
+                color: rgb(0, 0, 0),
+              });
+              
+              yPos -= lineHeight;
+            }
           }
           
-          // Check for space before adding XML content
-          if (yPos < margin + 40) {
+          // Add space after content
+          yPos -= lineHeight;
+
+          // XML Content Section
+          if (yPos < margin + 100) { // Ensure enough space for XML section
             currentPage = pdfDoc.addPage();
             yPos = height - margin;
           }
-    
-          // XML Content
+          
           currentPage.drawText('XML Content:', {
-            x: margin + 10,
+            x: margin,
             y: yPos,
-            size: fontSize,
+            size: normalFontSize,
+            font: boldFont,
             color: rgb(0, 0, 0),
           });
           yPos -= lineHeight;
-    
-          // Word wrapping for XML content
+
+          // Format and draw XML content with proper wrapping
           if (record.xml_content) {
-            yPos = drawWrappedText(currentPage, record.xml_content, margin + 20, yPos, width - margin * 2 - 20, fontSize, lineHeight, pdfDoc);
+            // Use a smaller font for XML to better display structure
+            const xmlFontSize = normalFontSize - 1;
+            
+            // Format XML using vkbeautify for proper indentation
+            let formattedXml = vkbeautify.xml(record.xml_content, 2); // 2 spaces indentation
+            const xmlLines = splitTextIntoLines(formattedXml, font, xmlFontSize, width - (margin * 2) - 20);
+            
+            for (const line of xmlLines) {
+              if (yPos < margin + lineHeight) {
+                currentPage = pdfDoc.addPage();
+                yPos = height - margin;
+              }
+              
+              // Calculate indentation based on XML nesting level (simplified)
+              const indentLevel = (line.match(/^\s*/) || [''])[0].length / 2;
+              const indentAmount = indentLevel * 10; // 10 points per indent level
+              
+              currentPage.drawText(line.trim(), {
+                x: margin + 10 + indentAmount,
+                y: yPos,
+                size: xmlFontSize,
+                font: font,
+                color: rgb(0, 0, 0),
+              });
+              
+              yPos -= lineHeight;
+            }
           }
-    
-          // Add a separator between records
-          yPos -= lineHeight * 1.5;
           
-          // Always ensure at least 50 pts of padding at the bottom
-          if (yPos < margin + 50) {
-            currentPage = pdfDoc.addPage();
-            yPos = height - margin;
-          }
+          // Add extra space between records
+          yPos -= lineHeight * 2;
         }
-    
+
+        // Save and download the PDF
         const pdfBytes = await pdfDoc.save();
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = 'selected-records.pdf';
         link.click();
+        
       } catch (error) {
         console.error('Error generating PDF:', error);
-        alert('Failed to generate PDF. Please try again.');
+        alert('Failed to generate PDF: ' + (error.message || 'Unknown error'));
       }
     };
     
-    // Helper function to draw wrapped text
-    function drawWrappedText(page, text, x, y, maxWidth, fontSize, lineHeight, pdfDoc) {
-      const { height } = page.getSize();
-      const margin = 50;
-      const words = text.split(' ');
-      let line = '';
+    /**
+     * Splits text into lines that fit within the specified width
+     * @param {string} text - The text to split
+     * @param {Font} font - The pdf-lib font object
+     * @param {number} fontSize - The font size
+     * @param {number} maxWidth - The maximum width in points
+     * @returns {string[]} An array of lines
+     */
+    function splitTextIntoLines(text, font, fontSize, maxWidth) {
+      const lines = [];
+      const paragraphs = text.split('\n');
       
-      for (let i = 0; i < words.length; i++) {
-        const testLine = line + words[i] + ' ';
-        const testWidth = testLine.length * (fontSize * 0.5); // Approximation for width
+      for (const paragraph of paragraphs) {
+        if (paragraph.trim() === '') {
+          lines.push('');
+          continue;
+        }
         
-        if (testWidth > maxWidth && i > 0) {
-          // Check if we need a new page
-          if (y < margin + 20) {
-            page = pdfDoc.addPage();
-            y = height - margin;
+        const words = paragraph.split(' ');
+        let currentLine = '';
+        
+        for (const word of words) {
+          // Test if adding this word would exceed the max width
+          const testLine = currentLine ? currentLine + ' ' + word : word;
+          const testWidth = font.widthOfTextAtSize(testLine, fontSize);
+          
+          if (testWidth > maxWidth && currentLine !== '') {
+            lines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = testLine;
           }
-          
-          page.drawText(line, {
-            x: x,
-            y: y,
-            size: fontSize,
-            color: rgb(0, 0, 0),
-          });
-          
-          line = words[i] + ' ';
-          y -= lineHeight;
-        } else {
-          line = testLine;
-        }
-      }
-      
-      // Draw the last line
-      if (line.trim().length > 0) {
-        // Check if we need a new page
-        if (y < margin + 20) {
-          page = pdfDoc.addPage();
-          y = height - margin;
         }
         
-        page.drawText(line, {
-          x: x,
-          y: y,
-          size: fontSize,
-          color: rgb(0, 0, 0),
-        });
-        y -= lineHeight;
+        if (currentLine) {
+          lines.push(currentLine);
+        }
       }
       
-      return y;
+      return lines;
     }
     
     return {
