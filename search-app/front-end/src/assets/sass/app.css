@@ -1130,11 +1130,13 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   padding: 10px;
   border-radius: 4px;
   font-family: monospace;
-  white-space: pre-wrap;
-  word-break: break-all;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: keep-all;
   font-size: 0.9rem;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: none;
+  max-width: 100%;
 }
 .dark .xml-btn {
   background-color: #6e0d25;
