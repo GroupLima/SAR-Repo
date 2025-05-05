@@ -21,9 +21,20 @@
             <span class="record-label">Language:</span>
             <span>{{ record.language }}</span>
           </div>
+          <div class="record-field">
+            <span class="record-label">Volume:</span>
+            <span>{{ record.volume }}</span>
+          </div>
+          <div class="record-field">
+            <span class="record-label">Page:</span>
+            <span>{{ record.page }}</span>
+          </div>
         </div>
         <div class="record-content">
           {{ record.content }}
+        </div>
+        <div class="record-content">
+          <pre>{{ record.xml_content }}</pre>
         </div>
         <div class="record-actions">
           <button data-tooltip="Remove Item from Selected" class="remove-btn" @click="removeRecord(record.id)">Remove</button>
@@ -88,6 +99,7 @@ export default {
           size: 18,
           color: rgb(0, 0, 0),
         });
+        
         yPos -= 30;
 
         for (let i = 0; i < selectedRecords.value.length; i++) {
@@ -129,14 +141,43 @@ export default {
             size: 12,
             color: rgb(0, 0, 0),
           });
+
+          yPos -= 20;
+          page.drawText(`Volume: ${record.volume}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+
+          yPos -= 20;
+          page.drawText(`Page: ${record.page}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
           yPos -= 20;
 
           // Content might be too long, so truncate if needed
-          const content = record.content.length > 80 ? 
-            record.content.substring(0, 80) + '...' : 
-            record.content;
+          // const content = record.content.length > 80 ? 
+          //   record.content.substring(0, 80) + '...' : 
+          //   record.content;
             
-          page.drawText(`Content: ${content}`, {
+          page.drawText(`Content: ${record.content}`, {
+            x: 60,
+            y: yPos,
+            size: 12,
+            color: rgb(0, 0, 0),
+          });
+          yPos -= 30;
+
+          // Content might be too long, so truncate if needed
+          // const content = record.content.length > 80 ? 
+          //   record.content.substring(0, 80) + '...' : 
+          //   record.content;
+            
+          page.drawText(`XML Content: ${record.xml_content}`, {
             x: 60,
             y: yPos,
             size: 12,

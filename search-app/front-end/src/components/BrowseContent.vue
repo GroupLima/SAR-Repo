@@ -219,7 +219,10 @@ onMounted(async () => {
         </div>
 
         <div>Volume: {{ browseState.currentVolume }}<span v-if="currentPageName != ''">, Page: {{ currentPageName }}</span></div>
-
+        <RouterLink 
+          to="/selected" 
+          >View Selected Entries
+        </RouterLink>
         <div class="split-view">
           <div class="image-viewer" ref="imageViewer">
             <img

@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, inject } from 'vue';
 
-const saved = ref(false);
+
+const selectedRecords = inject('selectedRecords');
 
 const props = defineProps({
     record: {
@@ -17,6 +18,14 @@ const props = defineProps({
             type: String,
             required: false
         },
+        page: {
+            type: String,
+            required: false
+        },
+        vol: {
+            type: String,
+            required: false
+        },
         content: {
             type: String,
             required: true
@@ -26,7 +35,6 @@ const props = defineProps({
             required: true
         }
     }
-    
 });
 
 // Reactive variable to control the display content
@@ -37,21 +45,32 @@ const toggleContent = () => {
   showXml.value = !showXml.value;
 };
 
-const addToSelected = () => {
-    // add contents of record to collection of saved records
-    if (!saved.value){
-        alert('Added Entry:\n' + JSON.stringify(props.record, null, 2));
-        // do stuff
-    } else {
-        alert('Removed Entry from Saved');
-        // do stuff
-    }
-    saved.value = !saved.value;
-}
+// Toggle record selection
+const toggleRecordSelection = () => {
+    const index = selectedRecords.value.findIndex(r => r.id === props.record.id);
+    
+    if (index === -1) {
 
-onMounted(() => {
-    // determine the value of saved
-})
+    // Add to selected records if not already there
+    selectedRecords.value.push({ 
+        id: props.record.id,
+        language: props.record.lang,
+        date: props.record.date,
+        page: props.record.page,
+        volume: props.record.volume,
+        content: props.record.content,
+        xml_content: props.record.xml_content
+    });
+    } else {
+    // Remove from selected records
+    selectedRecords.value.splice(index, 1);
+    }
+};
+
+// Check if a record is selected
+const isRecordSelected = () => {
+    return selectedRecords.value.some(r => r.id === props.record.id);
+};
 </script>
 
 <template>
@@ -72,15 +91,19 @@ onMounted(() => {
             </div>
             <div v-else>{{ record.content }}</div>
         </div>
-
-        <!-- Button to toggle content -->
+        <!-- toggle between xml and content view -->
         <button class="xml-btn" @click="toggleContent">
             {{ showXml ? 'Switch to Content' : 'Switch to XML' }}
         </button>
 
-        <!-- Button to toggle content -->
-        <button class="xml-btn" @click="addToSelected">
-            {{ saved ? 'Remove from Saved' : 'Save' }}
-        </button>
+        <div>
+            <label data-tooltip="Save entry to export later as a PDF">Save</label>
+            <input 
+                type="checkbox" 
+                :id="`record-${record.id}-checkbox`"
+                :checked="isRecordSelected()"
+                @change="toggleRecordSelection"
+            >
+        </div>
      </div>
 </template>
