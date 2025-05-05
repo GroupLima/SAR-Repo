@@ -17,10 +17,9 @@ Route::prefix('/api')->group(function () {
     Route::get('/test-request', [TestController::class, 'test']);
     Route::get('/search', [SearchController::class, 'search']);
     Route::get('/xquery', [SearchController::class, 'runXQuery']);
+    Route::get('/rawEntry', [SearchController::class, 'getRawEntry']);
 
-    Route::get('/volumes', [RecordController::class, 'getVolumes']);
     Route::get('/records', [RecordController::class, 'getRecords']);
-    Route::get('/records/{id}/xml', [RecordController::class, 'getXml']);
     
 });
 

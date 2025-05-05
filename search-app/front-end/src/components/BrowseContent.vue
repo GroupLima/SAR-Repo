@@ -69,9 +69,25 @@ const currentRecords = computed(() => {
 });
 
 const currentPageName = computed(() => {
-  console.log(browseState.pages?.[browseState.currentPage - 1]?.page || "");
   return browseState.pages?.[browseState.currentPage - 1]?.page || "";
 });
+
+const getPageIndex = (pageName) => {
+  return browseState.pages?.findIndex(p => p.page === pageName) ?? -1;
+}
+
+const getDocIdPageIndex = async(docId) => {
+  const response = await api.get('/rawEntry', {params: {docId: docId}});
+  
+  // load records from relevant volume if entry exists
+  if (response.data.success) {
+    const volume = parseInt(response.data.volume)
+    browseState.currentVolume = volume;
+    await loadRecordsForSingleVolume(volume);
+    return await getPageIndex(response.data.page);
+  }
+  return -1;
+}
 
 // image stuff
 const pageImageRef = ref(null);
@@ -115,6 +131,8 @@ watch(() => [browseState.currentVolume, browseState.currentPage], ([newVolume, n
   const url = new URL(window.location.href);
   url.searchParams.set('volume', newVolume);
   url.searchParams.set('page', newPage);
+  url.searchParams.delete('docId');
+  url.searchParams.delete('docPage');
   window.history.pushState({}, '', url);
 
   // Save to sessionStorage
@@ -125,10 +143,35 @@ watch(() => [browseState.currentVolume, browseState.currentPage], ([newVolume, n
 });
 
 
-const setBrowseStateValues = () => {
+const setBrowseStateValues = async() => {
     // parse the url
     const urlParams = new URLSearchParams(window.location.search);
     let vol = parseInt(urlParams.get('volume'));
+    let docPage = urlParams.get('docPage');
+    let docId = urlParams.get('docId');
+
+    // browse by docId ex. query param is docId=ARO-2-0098A-01
+    if (docId){
+      const pageIndex = await getDocIdPageIndex(docId);
+      // if page exists, find the page index and then load the relevant records
+      if (pageIndex != -1){
+        browseState.currentPage = pageIndex+1;
+        return;
+      }
+    }
+    
+    // browse by docPage ex. query param is docPage=98A
+    if (!isNaN(vol) && volumes.includes(vol)&& docPage){
+      await loadRecordsForSingleVolume(vol);
+      const pageIndex = getPageIndex(docPage);
+      if (pageIndex != -1){
+        browseState.currentVolume = vol;
+        browseState.currentPage = pageIndex+1;
+        return;
+      }
+    }
+
+    // browse normally with volume and page
     let page = parseInt(urlParams.get('page'));
 
     if (isNaN(vol) && !isNaN(page)) {vol=1; page=1}
@@ -146,8 +189,8 @@ const setBrowseStateValues = () => {
     if (!isNaN(page)) browseState.currentPage = page;
 };
 
-onMounted(() => {
-  setBrowseStateValues();
+onMounted(async () => {
+  await setBrowseStateValues();
   
   // if volume or volume and page not specified, try loading first page of first volume.
   if (!volumes.includes(browseState.currentVolume) ){
