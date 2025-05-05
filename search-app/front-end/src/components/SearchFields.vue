@@ -274,7 +274,7 @@ onMounted(() => {
                         <div id="volume-select" class="advanced-option">
                             <h3 class="option-title">Volume</h3>
                             <div class="horizontal-list">
-                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume"data-tooltip="Select specific volumes to search within">
+                                <label v-for="volume in ['1', '2', '4', '5', '6', '7', '8']" :key="volume" data-tooltip="Select specific volumes to search within">
                                     <input type="checkbox" v-model="form.volumes" :id="volume" :value="volume"> {{ volume }}
                                 </label>
                                 <label data-tooltip="Select or deselect all volumes at once">
