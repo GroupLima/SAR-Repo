@@ -26,8 +26,6 @@ function onChangeVolume(){
   loadRecordsForSingleVolume(browseState.currentVolume);
 }
 
-
-
 const loadRecordsForSingleVolume = async (volume) => {
   browseState.pagesLoading = true;
   try {
@@ -68,6 +66,11 @@ const goToSpecificPage = () => {
 
 const currentRecords = computed(() => {
   return browseState.pages?.[browseState.currentPage - 1]?.records || [];
+});
+
+const currentPageName = computed(() => {
+  console.log(browseState.pages?.[browseState.currentPage - 1]?.page || "");
+  return browseState.pages?.[browseState.currentPage - 1]?.page || "";
 });
 
 // image stuff
@@ -163,15 +166,6 @@ onMounted(() => {
 <template>
   <div class="browse-page">
     <main class="content">
-      <!-- <div class="notification-banner">
-        <div class="notification-content">
-          <div class="notification-icon">ℹ️</div>
-          <div class="notification-text">
-            <strong>Please Note:</strong> While the Browse page UI is fully functional, it currently displays a placeholder record only. The record fetching functionality is still a work in progress and will be implemented in a future update.
-          </div>
-        </div>
-      </div> -->
-
       <div class="container-browser">
         <div class="volume-nav">
           <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
@@ -180,6 +174,8 @@ onMounted(() => {
             </option>
           </select>
         </div>
+
+        <div>Volume: {{ browseState.currentVolume }}<span v-if="currentPageName != ''">, Page: {{ currentPageName }}</span></div>
 
         <div class="split-view">
           <div class="image-viewer" ref="imageViewer">

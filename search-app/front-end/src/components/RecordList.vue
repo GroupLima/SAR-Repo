@@ -1,6 +1,7 @@
 <script setup>
-import Record from '@/components/Record.vue'
-import pageImage from '@/assets/images/try_one.jpeg';
+import { onMounted } from 'vue';
+import Record from '@/components/Record.vue';
+
 const props = defineProps({
     records: {
         type: Object,
@@ -11,7 +12,7 @@ const props = defineProps({
 
 <template>
     <div class="records">
-        <div v-for="record in props.records" :key="record.id" class="record-item">
+        <div v-for="record in records" :key="record.id" class="record-item">
             <Record :record="record"/>
         </div>
     </div>
