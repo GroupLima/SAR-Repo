@@ -1298,7 +1298,7 @@ $small-mobile-breakpoint: 480px;
 }
 
 .copy-btn:hover {
-  background-color: #e0e0e0;
+  background-color: $primary-colour, $lightness -10%;
 }
 
   .xml-btn {
