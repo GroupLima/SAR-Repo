@@ -1,7 +1,6 @@
 <script setup>
 import { reactive, onMounted, ref, computed, watch } from 'vue';
 import RecordList from '@/components/RecordList.vue';
-import api from '@/services/api';
 import pageImage from '@/assets/images/try_one.jpeg';
 import LoadingAnimation from '@/components/LoadingAnimation.vue';
 import browseCache from '@/services/browseCache.js';
@@ -210,6 +209,17 @@ onMounted(async () => {
 <template>
   <div class="browse-page">
     <main class="content">
+
+      <!-- notification that image is a placeholder -->
+      <div class="notification-banner">
+        <div class="notification-content">
+          <div class="notification-icon">ℹ️</div>
+          <div class="notification-text">
+            <strong>Please Note:</strong> While the record data is accurate, the imaged displayed for each page is just a placeholder example document. 
+          </div>
+        </div>
+      </div>
+
       <div class="container-browser">
         <div class="volume-nav">
           <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
