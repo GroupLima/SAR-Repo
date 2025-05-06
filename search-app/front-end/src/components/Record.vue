@@ -128,7 +128,7 @@ const isRecordSelected = () => {
       </button>
 
         <div>
-            <label data-tooltip="Save entry to export later as a PDF">Save</label>
+            <label data-tooltip="Save entry to export later as a PDF">Add to selected </label>
             <input 
                 type="checkbox" 
                 :id="`record-${record.id}-checkbox`"
