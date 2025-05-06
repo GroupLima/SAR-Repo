@@ -210,6 +210,17 @@ onMounted(async () => {
 <template>
   <div class="browse-page">
     <main class="content">
+
+      <!-- notification that image is a placeholder -->
+      <div class="notification-banner">
+        <div class="notification-content">
+          <div class="notification-icon">ℹ️</div>
+          <div class="notification-text">
+            <strong>Please Note:</strong> While the record data is accurate, the imaged displayed for each page is just a placeholder example document. 
+          </div>
+        </div>
+      </div>
+
       <div class="container-browser">
         <div class="volume-nav">
           <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
