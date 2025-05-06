@@ -5,6 +5,7 @@ import api from '@/services/api';
 import pageImage from '@/assets/images/try_one.jpeg';
 import LoadingAnimation from '@/components/LoadingAnimation.vue';
 import browseCache from '@/services/browseCache.js';
+import axios from 'axios';
 
 const volumes = [1, 2, 4, 5, 6, 7, 8];
 
@@ -31,7 +32,7 @@ const loadRecordsForSingleVolume = async (volume) => {
   try {
     // fetch records from back end
     if (!browseCache.hasRecords(volume)){
-      const response = await api.get('/records', {params: {volume: volume}});
+      const response = await axios.get('/api/records', {params: {volume: volume}});
       // store list of pages containing lists of records
       browseState.pages = response.data.records;
       // store volumes in cache for quick access
@@ -77,7 +78,7 @@ const getPageIndex = (pageName) => {
 }
 
 const getDocIdPageIndex = async(docId) => {
-  const response = await api.get('/rawEntry', {params: {docId: docId}});
+  const response = await axios.get('/api/rawEntry', {params: {docId: docId}});
   
   // load records from relevant volume if entry exists
   if (response.data.success) {
