@@ -9,6 +9,7 @@ $logo-font-family: Times, serif;
 $box-shadow: 0 2px 5px #4a4a4a;
 $container-padding: 24px;
 $container-max-width: 1200px; // Consistent max-width for all pages
+$lightness: lighten($primary-colour, 10%);
 
 @use "sass:color";
 
@@ -1277,6 +1278,29 @@ $small-mobile-breakpoint: 480px;
   .record-header, .record-content, .record-label {
     color: $secondary-colour;
   }
+  .xml-content pre {
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre;
+    overflow-x: auto;
+    overflow-y: hidden;
+    word-break: keep-all;
+    font-size: 0.9rem;
+    max-height: none;
+    max-width: 100%;
+}
+.copy-btn {
+  background-color: $primary-colour;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.copy-btn:hover {
+  background-color: $primary-colour, $lightness -10%;
+}
 
   .xml-btn {
     background-color: $primary-colour;
