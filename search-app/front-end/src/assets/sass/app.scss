@@ -1109,6 +1109,19 @@ $small-mobile-breakpoint: 480px;
     font-size: 0.9rem;
   }
 }
+.xml-content pre {
+  background-color: $secondary-colour;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: keep-all;
+  font-size: 0.9rem;
+  max-height: none;
+  max-width: 100%;
+}
 
 // XML Modal Styles
 .xml-modal-overlay {
@@ -1279,6 +1292,7 @@ $small-mobile-breakpoint: 480px;
     color: $secondary-colour;
   }
   .xml-content pre {
+    background-color: $dark-mode;
     padding: 10px;
     border-radius: 4px;
     font-family: monospace;

@@ -973,6 +973,20 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   }
 }
 
+.xml-content pre {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: keep-all;
+  font-size: 0.9rem;
+  max-height: none;
+  max-width: 100%;
+}
+
 .xml-modal-overlay {
   position: fixed;
   top: 0;
@@ -1127,6 +1141,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   color: #ffffff;
 }
 .dark .xml-content pre {
+  background-color: #202020;
   padding: 10px;
   border-radius: 4px;
   font-family: monospace;
