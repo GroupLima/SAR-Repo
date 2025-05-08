@@ -1362,15 +1362,6 @@ $small-mobile-breakpoint: 480px;
 
   .xml-modal-footer {
     border-top-color: $light-gray;
-
-    .copy-btn {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-
-      &:hover {
-        background-color: color.adjust($primary-colour, $lightness: -10%);
-      }
-    }
   }
 }
 

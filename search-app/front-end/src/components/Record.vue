@@ -39,7 +39,8 @@ const props = defineProps({
 
 // Reactive variable to control the display content
 const showXml = ref(false);
-const copySuccess = ref(false);
+const copyXmlSuccess = ref(false);
+const copyContentSuccess = ref(false);
 const formattedXml = ref('');
 
 onMounted(() => {
@@ -51,23 +52,39 @@ onMounted(() => {
   }
 });
 
-// Toggle the content when the button is clicked
-const toggleContent = () => {
-  showXml.value = !showXml.value;
-};
-
+// Copy XML content to clipboard
 const copyXmlToClipboard = () => {
   navigator.clipboard.writeText(formattedXml.value)
     .then(() => {
-      copySuccess.value = true;
+      copyXmlSuccess.value = true;
       setTimeout(() => {
-        copySuccess.value = false;
+        copyXmlSuccess.value = false;
       }, 2000);
     })
     .catch(err => {
       console.error('Failed to copy XML: ', err);
     });
 };
+
+// Copy regular content to clipboard
+const copyContentToClipboard = () => {
+  navigator.clipboard.writeText(props.record.content)
+    .then(() => {
+      copyContentSuccess.value = true;
+      setTimeout(() => {
+        copyContentSuccess.value = false;
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Failed to copy content: ', err);
+    });
+};
+
+// Toggle the content when the button is clicked
+const toggleContent = () => {
+  showXml.value = !showXml.value;
+};
+
 
 // Toggle record selection
 const toggleRecordSelection = () => {
@@ -106,20 +123,31 @@ const isRecordSelected = () => {
         </div>
 
          <!-- Display either content or xml_content based on showXml value -->
+    <!-- Display either content or xml_content based on showXml value -->
     <div class="record-content">
-      <div v-if="showXml" class="xml-content">
-        <div class="xml-toolbar">
-          <button 
-            class="copy-btn" 
-            @click="copyXmlToClipboard"
-          >
-            {{ copySuccess ? 'Copied!' : 'Copy XML' }}
-          </button>
+          <div v-if="showXml" class="xml-content">
+            <div class="xml-toolbar">
+              <button 
+                class="copy-btn"
+                @click="copyXmlToClipboard"
+              >
+                {{ copyXmlSuccess ? 'Copied!' : 'Copy XML' }}
+              </button>
+            </div>
+            <pre>{{ formattedXml }}</pre>
+          </div>
+          <div v-else class="text-content">
+            <div class="content-toolbar">
+              <button
+                class="copy-btn"
+                @click="copyContentToClipboard"
+              >
+                {{ copyContentSuccess ? 'Copied!' : 'Copy Content' }}
+              </button>
+            </div>
+            <div>{{ record.content }}</div>
+          </div>
         </div>
-        <pre>{{ formattedXml }}</pre>
-      </div>
-      <div v-else>{{ record.content }}</div>
-    </div>
     
     <!-- toggle between xml and content view -->
     <div class="button-row">
