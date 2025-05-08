@@ -987,6 +987,27 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   max-width: 100%;
 }
 
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+}
+.copy-btn:hover {
+  background-color: #400816;
+}
+.copy-btn svg {
+  fill: #4a4a4a;
+  height: 26px;
+  width: 26px;
+  margin: 5px;
+}
+
 .xml-modal-overlay {
   position: fixed;
   top: 0;

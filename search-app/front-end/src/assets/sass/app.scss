@@ -1123,6 +1123,29 @@ $small-mobile-breakpoint: 480px;
   max-width: 100%;
 }
 
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 26px; // Circular for icon buttons
+  cursor: pointer;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: color.adjust($primary-colour, $lightness: -10%);
+  }
+  
+  svg {
+    fill: $dark-gray;
+    height: 26px;
+    width: 26px;
+    margin: 5px;
+  }
+}
+
 // XML Modal Styles
 .xml-modal-overlay {
   position: fixed;
