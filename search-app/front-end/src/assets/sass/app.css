@@ -988,7 +988,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
 }
 
 .copy-btn {
-  position: right;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1003,11 +1002,18 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
 .copy-btn:hover {
   background-color: #400816;
 }
-.copy-btn svg {
+body.dark .copy-btn {
+  background-color: #4a4a4a;
+}
+
+svg {
   fill: #4a4a4a;
   height: 26px;
   width: 26px;
   margin: 5px;
+}
+body.dark svg {
+  fill: #a69f9f;
 }
 
 .xml-modal-overlay {
@@ -1174,22 +1180,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   font-size: 0.9rem;
   max-height: none;
   max-width: 100%;
-}
-.dark .copy-btn {
-  border-radius: 30px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 0.8em;
-}
-.dark .copy-btn svg {
-  background-color: #4a4a4a;
-  fill: #a69f9f;
-  height: 26px;
-  width: 26px;
-  margin: 5px;
-}
-.dark body.dark .copy-btn svg {
-  fill: #4a4a4a;
 }
 .dark .xml-btn {
   background-color: #6e0d25;

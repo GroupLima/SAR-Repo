@@ -1123,31 +1123,40 @@ $small-mobile-breakpoint: 480px;
   max-width: 100%;
 }
 
+
 .copy-btn {
-  position: right;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: none;
-  border-radius: 26px; // Circular for icon buttons
+  border-radius: 26px;
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
-  margin-left: auto;
+  margin-left: auto; // This pushes the button to the right
 
-  
   &:hover {
     background-color: color.adjust($primary-colour, $lightness: -10%);
   }
-  
-  svg {
-    fill: $dark-gray;
-    height: 26px;
-    width: 26px;
-    margin: 5px;
+
+  body.dark & {
+    background-color: $dark-gray;
   }
 }
+ 
+svg {
+  fill: $dark-gray;
+  height: 26px;
+  width: 26px;
+  margin: 5px;
+
+  body.dark & {
+    fill: $light-gray;
+  }
+}
+
+
 
 // XML Modal Styles
 .xml-modal-overlay {
@@ -1329,27 +1338,7 @@ $small-mobile-breakpoint: 480px;
     max-height: none;
     max-width: 100%;
 }
-  .copy-btn {
-    border-radius: 30px;
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 0.8em;
   
-
-    svg {
-      background-color: $dark-gray;
-      fill: $light-gray;
-      height: 26px;
-      width: 26px;
-      margin: 5px;
-    }
-  }
-
-  // Dark mode (better approach)
-  body.dark .copy-btn svg {
-    fill: $dark-gray;
-  }
-
   .xml-btn {
     background-color: $primary-colour;
     color: $secondary-colour;
