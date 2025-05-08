@@ -1082,12 +1082,19 @@ $small-mobile-breakpoint: 480px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
   
   @media (max-width: $small-mobile-breakpoint) {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .xml-btn {
@@ -1109,6 +1116,52 @@ $small-mobile-breakpoint: 480px;
     font-size: 0.9rem;
   }
 }
+.xml-content pre {
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: keep-all;
+  font-size: 0.9rem;
+  max-height: none;
+  max-width: 100%;
+}
+
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: color.adjust($primary-colour, $lightness: -10%);
+  }
+
+  body.dark & {
+    background-color: $dark-gray;
+  }
+}
+ 
+svg {
+  fill: $dark-gray;
+  height: 26px;
+  width: 26px;
+  margin: 5px;
+
+  body.dark & {
+    fill: $light-gray;
+  }
+}
+
+
 
 // XML Modal Styles
 .xml-modal-overlay {
@@ -1278,30 +1331,8 @@ $small-mobile-breakpoint: 480px;
   .record-header, .record-content, .record-label {
     color: $secondary-colour;
   }
-  .xml-content pre {
-    padding: 10px;
-    border-radius: 4px;
-    font-family: monospace;
-    white-space: pre;
-    overflow-x: auto;
-    overflow-y: hidden;
-    word-break: keep-all;
-    font-size: 0.9rem;
-    max-height: none;
-    max-width: 100%;
-}
-.copy-btn {
-  background-color: $primary-colour;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 0.8em;
-}
-
-.copy-btn:hover {
-  background-color: $primary-colour, $lightness -10%;
-}
-
+ 
+  
   .xml-btn {
     background-color: $primary-colour;
     color: $secondary-colour;
@@ -1348,15 +1379,6 @@ $small-mobile-breakpoint: 480px;
 
   .xml-modal-footer {
     border-top-color: $light-gray;
-
-    .copy-btn {
-      background-color: $primary-colour;
-      color: $secondary-colour;
-
-      &:hover {
-        background-color: color.adjust($primary-colour, $lightness: -10%);
-      }
-    }
   }
 }
 

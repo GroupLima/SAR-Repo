@@ -942,6 +942,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 @media (max-width: 480px) {
   .record-actions {
@@ -949,6 +950,12 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
     align-items: flex-start;
     gap: 8px;
   }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .xml-btn {
@@ -971,6 +978,47 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   .checkbox-container {
     font-size: 0.9rem;
   }
+}
+
+.xml-content pre {
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  word-break: keep-all;
+  font-size: 0.9rem;
+  max-height: none;
+  max-width: 100%;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+}
+.copy-btn:hover {
+  background-color: #400816;
+}
+body.dark .copy-btn {
+  background-color: #4a4a4a;
+}
+
+svg {
+  fill: #4a4a4a;
+  height: 26px;
+  width: 26px;
+  margin: 5px;
+}
+body.dark svg {
+  fill: #a69f9f;
 }
 
 .xml-modal-overlay {
@@ -1126,28 +1174,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
 .dark .record-header, .dark .record-content, .dark .record-label {
   color: #ffffff;
 }
-.dark .xml-content pre {
-  padding: 10px;
-  border-radius: 4px;
-  font-family: monospace;
-  white-space: pre;
-  overflow-x: auto;
-  overflow-y: hidden;
-  word-break: keep-all;
-  font-size: 0.9rem;
-  max-height: none;
-  max-width: 100%;
-}
-.dark .copy-btn {
-  background-color: #6e0d25;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 0.8em;
-}
-.dark .copy-btn:hover {
-  background-color: #6e0d25, #9c1234 -10%;
-}
 .dark .xml-btn {
   background-color: #6e0d25;
   color: #ffffff;
@@ -1183,13 +1209,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
 }
 .dark .xml-modal-footer {
   border-top-color: #a69f9f;
-}
-.dark .xml-modal-footer .copy-btn {
-  background-color: #6e0d25;
-  color: #ffffff;
-}
-.dark .xml-modal-footer .copy-btn:hover {
-  background-color: #400816;
 }
 
 .about-page {
