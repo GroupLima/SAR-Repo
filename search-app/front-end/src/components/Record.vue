@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, inject } from 'vue';
 import vkbeautify from 'vkbeautify';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css';
 
 const selectedRecords = inject('selectedRecords');
 
@@ -42,13 +44,19 @@ const showXml = ref(false);
 const copyXmlSuccess = ref(false);
 const copyContentSuccess = ref(false);
 const formattedXml = ref('');
+const highlightedXml = ref('')
 
 onMounted(() => {
   try {
     formattedXml.value = vkbeautify.xml(props.record.xml_content, 5);
+    highlightedXml.value = hljs.highlight(formattedXml.value, {
+      language: 'xml',
+      ignoreIllegals: true
+    }).value;
   } catch (error) {
     console.error('Error formatting XML:', error);
     formattedXml.value = props.record.xml_content;
+    highlightedXml.value = props.record.xml_content;
   }
 });
 
@@ -131,7 +139,8 @@ const copyCurrentContent = () => {
       <!-- Display either content or xml_content based on showXml value -->
       <div class="record-content">
         <div v-if="showXml" class="xml-content">
-          <pre>{{ formattedXml }}</pre>
+          <pre v-html="highlightedXml"></pre>
+          <!--<pre >{{ formattedXml }}</pre> -->
         </div>
         <div v-else class="text-content">
           <div>{{ record.content }}</div>
