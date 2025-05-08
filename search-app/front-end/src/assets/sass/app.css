@@ -988,6 +988,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
 }
 
 .copy-btn {
+  position: right;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -997,6 +998,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
+  margin-left: auto;
 }
 .copy-btn:hover {
   background-color: #400816;
@@ -1162,7 +1164,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   color: #ffffff;
 }
 .dark .xml-content pre {
-  background-color: #202020;
   padding: 10px;
   border-radius: 4px;
   font-family: monospace;
@@ -1175,8 +1176,8 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   max-width: 100%;
 }
 .dark .copy-btn {
-  background-color: #6e0d25;
-  border-radius: 4px;
+  background-color: #a69f9f;
+  border-radius: 30px;
   padding: 4px 8px;
   cursor: pointer;
   font-size: 0.8em;

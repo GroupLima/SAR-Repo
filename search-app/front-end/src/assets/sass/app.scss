@@ -1124,6 +1124,7 @@ $small-mobile-breakpoint: 480px;
 }
 
 .copy-btn {
+  position: right;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1133,6 +1134,8 @@ $small-mobile-breakpoint: 480px;
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
+  margin-left: auto;
+
   
   &:hover {
     background-color: color.adjust($primary-colour, $lightness: -10%);
@@ -1315,7 +1318,6 @@ $small-mobile-breakpoint: 480px;
     color: $secondary-colour;
   }
   .xml-content pre {
-    background-color: $dark-mode;
     padding: 10px;
     border-radius: 4px;
     font-family: monospace;
@@ -1328,12 +1330,13 @@ $small-mobile-breakpoint: 480px;
     max-width: 100%;
 }
 .copy-btn {
-  background-color: $primary-colour;
-  border-radius: 4px;
+  background-color: $light-gray;
+  border-radius: 30px;
   padding: 4px 8px;
   cursor: pointer;
   font-size: 0.8em;
 }
+
 
 .copy-btn:hover {
   background-color: $primary-colour, $lightness -10%;
