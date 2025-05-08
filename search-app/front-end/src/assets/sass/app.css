@@ -1176,14 +1176,21 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   max-width: 100%;
 }
 .dark .copy-btn {
-  background-color: #a69f9f;
+  background-color: #4a4a4a;
   border-radius: 30px;
   padding: 4px 8px;
   cursor: pointer;
   font-size: 0.8em;
 }
-.dark .copy-btn:hover {
-  background-color: #6e0d25, #9c1234 -10%;
+.dark .copy-btn svg {
+  background-color: #4a4a4a;
+  fill: #a69f9f;
+  height: 26px;
+  width: 26px;
+  margin: 5px;
+}
+.dark body.dark .copy-btn svg {
+  fill: #4a4a4a;
 }
 .dark .xml-btn {
   background-color: #6e0d25;

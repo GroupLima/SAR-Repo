@@ -1329,18 +1329,27 @@ $small-mobile-breakpoint: 480px;
     max-height: none;
     max-width: 100%;
 }
-.copy-btn {
-  background-color: $light-gray;
-  border-radius: 30px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 0.8em;
-}
+  .copy-btn {
+    background-color: $dark-gray;
+    border-radius: 30px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+  
 
+    svg {
+      background-color: $dark-gray;
+      fill: $light-gray;
+      height: 26px;
+      width: 26px;
+      margin: 5px;
+    }
+  }
 
-.copy-btn:hover {
-  background-color: $primary-colour, $lightness -10%;
-}
+  // Dark mode (better approach)
+  body.dark .copy-btn svg {
+    fill: $dark-gray;
+  }
 
   .xml-btn {
     background-color: $primary-colour;
