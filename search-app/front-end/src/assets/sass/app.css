@@ -1174,18 +1174,6 @@ body.dark svg {
 .dark .record-header, .dark .record-content, .dark .record-label {
   color: #ffffff;
 }
-.dark .xml-content pre {
-  padding: 10px;
-  border-radius: 4px;
-  font-family: monospace;
-  white-space: pre;
-  overflow-x: auto;
-  overflow-y: hidden;
-  word-break: keep-all;
-  font-size: 0.9rem;
-  max-height: none;
-  max-width: 100%;
-}
 .dark .xml-btn {
   background-color: #6e0d25;
   color: #ffffff;
