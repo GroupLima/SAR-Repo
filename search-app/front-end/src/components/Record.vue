@@ -2,7 +2,7 @@
 import { ref, onMounted, inject } from 'vue';
 import vkbeautify from 'vkbeautify';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github-dark.css';
+import 'highlight.js/styles/atom-one-light.css';
 
 const selectedRecords = inject('selectedRecords');
 
