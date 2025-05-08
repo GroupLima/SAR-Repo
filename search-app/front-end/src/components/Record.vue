@@ -123,15 +123,24 @@ const isRecordSelected = () => {
         </div>
 
          <!-- Display either content or xml_content based on showXml value -->
-    <!-- Display either content or xml_content based on showXml value -->
-    <div class="record-content">
+        <div class="record-content">
           <div v-if="showXml" class="xml-content">
             <div class="xml-toolbar">
               <button 
                 class="copy-btn"
                 @click="copyXmlToClipboard"
+                title="Copy XML"
               >
-                {{ copyXmlSuccess ? 'Copied!' : 'Copy XML' }}
+                <template v-if="!copyXmlSuccess">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed">
+                    <path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/>
+                  </svg>
+                </template>
+                <template v-else>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed">
+                    <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+                  </svg>
+                </template>
               </button>
             </div>
             <pre>{{ formattedXml }}</pre>
@@ -141,8 +150,18 @@ const isRecordSelected = () => {
               <button
                 class="copy-btn"
                 @click="copyContentToClipboard"
+                title="Copy Content"
               >
-                {{ copyContentSuccess ? 'Copied!' : 'Copy Content' }}
+                <template v-if="!copyContentSuccess">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed">
+                    <path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/>
+                  </svg>
+                </template>
+                <template v-else>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed">
+                    <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+                  </svg>
+                </template>
               </button>
             </div>
             <div>{{ record.content }}</div>
