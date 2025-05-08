@@ -942,6 +942,7 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 @media (max-width: 480px) {
   .record-actions {
@@ -949,6 +950,12 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
     align-items: flex-start;
     gap: 8px;
   }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .xml-btn {
@@ -996,7 +1003,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
-  margin-left: auto;
 }
 .copy-btn:hover {
   background-color: #400816;

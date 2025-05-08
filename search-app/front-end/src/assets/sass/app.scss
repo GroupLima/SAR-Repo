@@ -1082,12 +1082,19 @@ $small-mobile-breakpoint: 480px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
   
   @media (max-width: $small-mobile-breakpoint) {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .xml-btn {
@@ -1133,7 +1140,6 @@ $small-mobile-breakpoint: 480px;
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
-  margin-left: auto; // This pushes the button to the right
 
   &:hover {
     background-color: color.adjust($primary-colour, $lightness: -10%);
