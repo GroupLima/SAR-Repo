@@ -188,7 +188,6 @@ body {
   }
 }
 
-// Navbar
 .navbar {
   font-weight: bold;
   background-color: $primary-colour;
@@ -237,13 +236,40 @@ body {
       }
     }
 
+    // Updated dark mode button styles
     .dark-mode-button {
-      min-height: 50px;
-      min-width: 50px;
-      border-radius: 50%;
       background-color: transparent;
+      border: 2px solid $secondary-colour;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background-color 0.3s, transform 0.3s;
       cursor: pointer;
-      margin-left: 20px;
+      margin-left: 15px;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+      
+      svg {
+        height: 22px;
+        width: 22px;
+        margin: 0;
+        fill: $secondary-colour;
+      }
+      
+      // Dark mode specific styling
+      body.dark & {
+        border-color: $secondary-colour;
+        
+        svg {
+          fill: $secondary-colour;
+        }
+      }
     }
 
     .logo-section {
@@ -298,8 +324,20 @@ body {
       flex-direction: column;
       align-items: center;
 
-      .logo-section .text-container img {
-        height: 50px;
+      .logo-section {
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: center;
+        
+        .text-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          img {
+            height: 50px;
+          }
+        }
       }
 
       .nav-links {
@@ -311,12 +349,14 @@ body {
         top: 100%;
         left: 0;
         z-index: 999;
-
+        text-align: center;
+        padding: 10px 0;
+        
         a {
-          padding: 10px;
+          padding: 12px;
           width: 100%;
           text-align: center;
-          margin: 5px 0;
+          margin: 0;
         }
       }
 
@@ -326,6 +366,16 @@ body {
 
       .burger-menu {
         display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px; 
+        z-index: 1001;
+      }
+      
+      .logo-section + .burger-menu {
+        top: 25px;
       }
     }
   }
@@ -344,6 +394,11 @@ body {
         align-items: center;
       }
     }
+  }
+  
+  /* Add some space below the navbar to prevent content overlap */
+  body {
+    padding-top: 140px; /* Adjust based on your navbar height */
   }
 }
 
@@ -1140,14 +1195,6 @@ $small-mobile-breakpoint: 480px;
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: color.adjust($primary-colour, $lightness: -10%);
-  }
-
-  body.dark & {
-    background-color: $dark-gray;
-  }
 }
  
 svg {
