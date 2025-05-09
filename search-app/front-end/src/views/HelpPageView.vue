@@ -26,10 +26,10 @@
                             <p>You can adjust your search preferences:</p>
 
                             <ul>
-                                <ul><b>Search method</b>: Choose how your search term is matched (default is "Word Start")</ul>
-                                <ul><b>Variants</b>: Select the level of spelling variants to include (0 to 4)</ul>
+                                <ul><b>Search method</b>: Choose how your search term is matched (default is "Keywords")</ul>
+                                <ul><b>Variants</b>: Select the level of spelling variants to include (0 to 40%)</ul>
                                 <ul><b>Results per page</b>: Choose how many results to display (5, 10, 20, 30, or 50)</ul>
-                                <ul><b>Sort by</b>: Select how to order your results (Frequency within result, Volume ascending/descending, or Chronological)</ul>
+                                <ul><b>Sort by</b>: Select how to order your results (Best Match, Frequency within result, Volume ascending/descending, or Chronological)</ul>
                             </ul>
                             
                             <h3>Advanced Search</h3>
@@ -70,16 +70,16 @@
                     <div class="help-dropdown-content" :class="{ 'active': openSections.browse }">
                         <div class="help-content">
                             <h3>Volume Navigation</h3>
-                            <p>Use the volume selector to choose specific volumes to browse through.</p>
+                            <p>Use the volume selector to choose a volume to browse through.</p>
                             
                             <h3>Page Navigation</h3>
-                            <p>Navigate between pages using the navigation controls. You can jump to a specific page by entering the page number.</p>
+                            <p>Switch between pages using the navigation controls. You can jump to a specific page by entering the page number.</p>
                             
                             <h3>Viewing Records</h3>
-                            <p>Records associated with each page are displayed in the right panel. Click on a record to see more details.</p>
+                            <p>Records associated with each page are displayed in the right panel. Pictures of the page are on the left.</p>
                             
                             <h3>XML View</h3>
-                            <p>Click the "View XML" button to see the XML structure of a record.</p>
+                            <p>Click the "Switch to XML" button to see the XML structure of an entry.</p>
 
                             <h3>Export PDF</h3>
                             <p>Click the "Add to selected" checkbox and navigate to the nes "Selected" tab in the navigation bar to view all selected records.</p>
@@ -99,21 +99,20 @@
                             <p>XQuery is a powerful query language for searching XML data. Use it to create complex queries for the ARO database.</p>
                             
                             <h3>XQuery Syntax</h3>
-                            <p>Basic XQuery expressions follow this format:</p>
-                            <pre>...</pre>
+                            <p>The XQuery expressions will generally follow this format:</p>
+                            <pre>/axis:elementName[@attributeName="value"]</pre>
                             
                             <h3>Examples</h3>
                             <p>Here are some example queries:</p>
                             <ul>
                                 <li>Return all records in Latin: 
                                     <br>
-                                    <code>declare namespace ns = "http://www.tei-c.org/ns/1.0";
-                                    for $i in //ns:div[@xml:lang="la"] return $i</code></li>
+                                    <code>//ns:div[@xml:lang="la"]</code></li>
+                                    Instead of "la", use "sc" to return Scots text and "mul" for Multiple
                                     <br>
-                                    <li>Return all records in Scots: 
+                                    <li>Return records of a specific date:
                                     <br>
-                                    <code>declare namespace ns = "http://www.tei-c.org/ns/1.0";
-                                    for $i in //ns:div[@xml:lang="sc"] return $i</code></li>
+                                    <code>//ns:div[.//ns:date[@when="1398-09-30"]]</code></li>
                             </ul>
                         </div>
                     </div>
