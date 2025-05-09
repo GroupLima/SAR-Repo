@@ -11,8 +11,7 @@ const volumes = [1, 2, 4, 5, 6, 7, 8];
 const browseState = reactive({
   pageImage: null,
   currentVolume: 1,
-  currentPage: 1, // limited to the length of pages - 1
-  currentPageName: '1',
+  currentPageName: '',
   currentPageIndex: 1,
   zoomScale: 2.5,
   isZooming: false,
@@ -44,6 +43,15 @@ const loadRecordsForSingleVolume = async (volume) => {
       // retrieve from cache
       browseState.pages = browseCache.getRecords(volume);
     }
+
+    const foundIndex = browseState.pages.findIndex(p => p.page === browseState.currentPageName);
+    if (foundIndex !== -1) {
+      browseState.currentPageIndex = foundIndex + 1;
+    } else if (browseState.pages.length > 0) {
+      browseState.currentPageIndex = 1;
+      browseState.currentPageName = browseState.pages[0].page;
+    }
+
     displayPageImage();
 
   } catch (error) {
@@ -53,17 +61,46 @@ const loadRecordsForSingleVolume = async (volume) => {
 }
 
 const goToSpecificPage = () => {
-  // find the page with this exact name
-  const pageIndex = browseState.pages.findIndex(p => p.page === browseState.currentPageName);
-  if (pageIndex !== -1) {
-    browseState.currentPageIndex = pageIndex + 1;
-  }
-}
+  const input = browseState.currentPageName.trim();
 
-const goToPageByName = (pageName) => {
-  browseState.currentPageName = pageName;
-  goToSpecificPage();
-}
+  // Try exact match first
+  const exactIndex = browseState.pages.findIndex(p => p.page === input);
+  if (exactIndex !== -1) {
+    browseState.currentPageIndex = exactIndex + 1;
+    return;
+  }
+
+  const inputNum = parseInt(input);
+
+  // If input is a number, try to match numerically with page.page
+  if (!isNaN(inputNum)) {
+    const pageNumbers = browseState.pages
+      .map((p, idx) => ({
+        ...p,
+        numeric: parseInt(p.page),
+        index: idx
+      }))
+      .filter(p => !isNaN(p.numeric))
+      .sort((a, b) => a.numeric - b.numeric);
+
+    const closest = pageNumbers.find(p => p.numeric >= inputNum);
+
+    if (closest) {
+      browseState.currentPageIndex = closest.index + 1;
+      browseState.currentPageName = closest.page;
+      return;
+    }
+  }
+
+  // Fallback: alphabetical closest match
+  const sortedPages = [...browseState.pages].sort((a, b) => a.page.localeCompare(b.page));
+  const fallback = sortedPages.find(p => p.page.localeCompare(input) >= 0);
+  if (fallback) {
+    const fallbackIndex = browseState.pages.findIndex(p => p.page === fallback.page);
+    browseState.currentPageIndex = fallbackIndex + 1;
+    browseState.currentPageName = fallback.page;
+  }
+};
 
 const goToFirstPage = () => {
   browseState.currentPageName = browseState.pages[0].page;
@@ -167,6 +204,15 @@ watch(() => [browseState.currentVolume, browseState.currentPageName], ([newVolum
   }));
 });
 
+watch(() => browseState.currentPageName, (newName) => {
+  // Only update if we have pages loaded and the name isn't empty
+  if (browseState.pages.length > 0 && newName.trim()) {
+    const foundIndex = browseState.pages.findIndex(p => p.page === newName);
+    if (foundIndex !== -1) {
+      browseState.currentPageIndex = foundIndex + 1;
+    }
+  }
+}, { immediate: true });
 
 const setBrowseStateValues = async() => {
     // parse the url
@@ -224,12 +270,11 @@ onMounted(async () => {
     // try loading first volume
     alert(`volume ${browseState.currentVolume} does not exist`);
     browseState.currentVolume = 1;
-    browseState.currentPage = 1;
-    
+    browseState.currentPageIndex = 1;
   }
   // load according to url parameters
   loadRecordsForSingleVolume(browseState.currentVolume)
-  
+
 });
 </script>
 
@@ -276,7 +321,7 @@ onMounted(async () => {
               <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
               <button class="nav-btn" @click="goToPrevPage" :disabled="browseState.currentPageIndex <= 1">&lt;</button>
 
-              <input type="string" v-model="browseState.currentPageName" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
+              <input type="string" v-model="browseState.currentPageName" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
               <span>of {{ browseState.pages[browseState.pages.length - 1]?.page || browseState.pages.length }}</span>
               <!-- <button class="page-go-btn" @click="goToSpecificPage">Go</button> -->
 
