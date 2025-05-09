@@ -277,7 +277,7 @@ onMounted(async () => {
               <button class="nav-btn" @click="goToPrevPage" :disabled="browseState.currentPageIndex <= 1">&lt;</button>
 
               <input type="string" v-model="browseState.currentPageName" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
-              <span>of {{ browseState.pages.length }}</span>
+              <span>of {{ browseState.pages[browseState.pages.length - 1]?.page || browseState.pages.length }}</span>
               <!-- <button class="page-go-btn" @click="goToSpecificPage">Go</button> -->
 
               <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPageIndex >= browseState.pages.length">&gt;</button>
