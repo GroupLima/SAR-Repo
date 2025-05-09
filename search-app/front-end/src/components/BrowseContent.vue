@@ -293,7 +293,7 @@ onMounted(async () => {
         <div class="notification-content">
           <div class="notification-icon">ℹ️</div>
           <div class="notification-text">
-            <strong>Please Note:</strong> While the record data is accurate, the imaged displayed for each page is just a placeholder example document. 
+            <strong>Please Note:</strong> While the record data displayed is accurate, the image displayed for each page is a placeholder image that will not change. The image fetching functionality is still a work in progress that can be implemented in a future update. 
           </div>
         </div>
       </div>
@@ -308,6 +308,7 @@ onMounted(async () => {
         </div>
 
         <div>Volume: {{ browseState.currentVolume }}<span v-if="currentPageName != ''">, Page: {{ currentPageName }}</span></div>
+        <br>
         <div class="split-view">
           <div class="image-viewer" ref="imageViewer">
             <img

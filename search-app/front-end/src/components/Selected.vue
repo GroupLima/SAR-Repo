@@ -39,6 +39,7 @@
         <div class="record-actions">
           <button data-tooltip="Remove Item from Selected" class="remove-btn" @click="removeRecord(record.id)">Remove</button>
         </div>
+        <br>
       </div>
       
       <div class="actions">
