@@ -194,8 +194,8 @@ const showHelpPage = () => {
                 />
                 <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
-            <div v-else>
-                loading...
+            <div class="loading-spinner-container">
+                <div class="loading-spinner"></div>
             </div>
         </div>
 

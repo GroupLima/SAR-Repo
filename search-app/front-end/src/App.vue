@@ -24,9 +24,6 @@ provide('selectedRecords', selectedRecords);
     <div>
       <RouterView />
     </div>
-    <div>
-      <HelpPage/>
-    </div>
   </div>
   <div>
       <Footer />
