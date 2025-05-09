@@ -216,20 +216,20 @@ watch(() => browseState.currentPageName, (newName) => {
 
 const setBrowseStateValues = async () => {
   // parse the url
-    const urlParams = new URLSearchParams(window.location.search);
-    let vol = parseInt(urlParams.get('volume'));
-    let docPage = urlParams.get('docPage');
-    let docId = urlParams.get('docId');
-    let page = urlParams.get('page');
-    
-    // browse by docId ex. query param is docId=ARO-2-0098A-01
-    if (docId) {
-        const pageIndex = await getDocIdPageIndex(docId);
-        if (pageIndex !== -1) {
-            browseState.currentPageIndex = pageIndex + 1;
-            browseState.currentPageName = browseState.pages[pageIndex].page;
-            return;
-      }
+  const urlParams = new URLSearchParams(window.location.search);
+  let vol = parseInt(urlParams.get('volume'));
+  let docPage = urlParams.get('docPage');
+  let docId = urlParams.get('docId');
+  let page = urlParams.get('page');
+  
+ // browse by docId ex. query param is docId=ARO-2-0098A-01
+  if (docId) {
+    const pageIndex = await getDocIdPageIndex(docId);
+    if (pageIndex !== -1) {
+      browseState.currentPageIndex = pageIndex + 1;
+      browseState.currentPageName = browseState.pages[pageIndex].page;
+      return;
+    }
   }
 
   // 2. From docPage
