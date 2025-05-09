@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <title>SARP</title>
+    <style>
+      #app {
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+      }
+      #app[data-v-app-mounted="true"] {
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
-    <link rel="stylesheet" href="https://unpkg.com/simple-code-editor@latest/themes.css" />
-    <link rel="stylesheet" href="https://unpkg.com/simple-code-editor@latest/themes-base16.css" />
-    <link rel="stylesheet" href="https://unpkg.com/simple-code-editor@latest/simple-code-editor.css" />
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
