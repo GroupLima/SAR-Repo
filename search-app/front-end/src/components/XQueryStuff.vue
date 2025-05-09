@@ -122,7 +122,7 @@ const runQuery = async () => {
     .hljs {
       padding: 1rem;
       border-radius: 4px;
-      background-color: #ffffff;
+      background-color: #f7f7f7;
       color: #000000;
       transition: all 0.3s;
 
