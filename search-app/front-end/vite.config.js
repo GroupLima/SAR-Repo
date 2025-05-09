@@ -27,6 +27,7 @@ export default defineConfig({
   allowedHosts: ['sar2.andreasmaita.com', 'localhost', '0.0.0.0']
  },
  build: {
+  target: ['es2022', 'chrome90', 'firefox90', 'safari15', 'edge90'],
   rollupOptions: {
     output: {
       manualChunks(id) {

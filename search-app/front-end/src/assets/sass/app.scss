@@ -953,6 +953,17 @@ $small-mobile-breakpoint: 480px;
   gap: 10px;
   margin: 10px 0 20px;
   flex-wrap: wrap;
+
+  .nav-btn {
+    background-color: $primary-colour;
+    color: $secondary-colour;
+    border: none;
+    border-radius: 50px; // Match other primary buttons
+
+    &:hover:enabled {
+      background-color: color.adjust($primary-colour, $lightness: -10%);
+    }
+  }
   
   @media (max-width: $small-mobile-breakpoint) {
     gap: 5px;
@@ -1264,7 +1275,7 @@ svg {
 }
 
 // Dark Mode Styles
-.dark {
+body.dark :is([data-v-c556e80a]) {
   .container-browser {
     background-color: $dark-mode;
     color: $secondary-colour;
