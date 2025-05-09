@@ -218,7 +218,6 @@ body.dark .navbar .nav-content .dark-mode-button {
 }
 body.dark .navbar .nav-content .dark-mode-button svg {
   fill: #ffffff;
-  margin: 5px auto;
 }
 .navbar .nav-content .logo-section {
   color: #ffffff;
@@ -291,7 +290,7 @@ body.dark .navbar .nav-content .dark-mode-button svg {
     padding: 10px 0;
   }
   .navbar .nav-content .nav-links a {
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     margin: 5px 0;
     box-sizing: border-box;
@@ -328,8 +327,10 @@ body.dark .navbar .nav-content .dark-mode-button svg {
   }
 }
 footer {
-  margin-top: 45px;
+  margin-top: auto;
+  padding-top: 30px;
   width: 100%;
+  flex-shrink: 0;
 }
 footer .image-container {
   overflow: hidden;
@@ -362,7 +363,7 @@ footer .footer-links-container .footer-links a {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px;
+  padding: 12px;
   flex: 1 1 auto;
   text-align: center;
 }
@@ -370,15 +371,32 @@ footer .footer-links-container .footer-links a:hover {
   text-decoration: underline;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.content-wrapper {
+  flex: 1; /* Take up all available space between navbar and footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  max-height: -moz-fit-content;
+  max-height: fit-content; /* Don't exceed the size of its contents */
+}
+
 .home-page {
   display: flex;
   flex-direction: column;
+  min-height: auto;
 }
 .home-page main {
   flex: 1;
 }
 .home-page .home-description {
   margin: 20px;
+  margin-bottom: 10px;
 }
 .home-page .home-description h1 {
   font-size: 3em;
@@ -471,6 +489,7 @@ body.dark .search-section .preferences .preference-item select {
 }
 .search-section .advanced-search-container {
   position: relative;
+  margin-bottom: 20px;
 }
 .search-section .advanced-search-container .dropdown-arrow {
   display: inline-block;
@@ -502,7 +521,7 @@ body.dark .search-section .preferences .preference-item select {
   border-radius: 4px;
   box-shadow: 0 2px 5px #4a4a4a;
   width: 100%;
-  padding: 24px;
+  padding: 15px;
 }
 .search-section .advanced-search-container .advanced-search-dropdown .active {
   display: block;

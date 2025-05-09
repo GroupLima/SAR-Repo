@@ -353,7 +353,7 @@ body {
         padding: 10px 0;
         
         a {
-          padding: 10px;
+          padding: 12px;
           // width: 100%;
           text-align: center;
           margin: 5px 0;
@@ -406,8 +406,10 @@ body {
 
 // Footer
 footer {
-  margin-top: 45px;
+  margin-top: auto; // Push footer to bottom when content is short
+  padding-top: 30px; // Add padding at the top of the footer
   width: 100%;
+  flex-shrink: 0; // Prevent footer from shrinking
 
   .image-container {
     overflow: hidden;
@@ -441,7 +443,7 @@ footer {
         color: $secondary-colour;
         text-decoration: none;
         font-weight: bold;
-        padding: 10px;
+        padding: 12px;
         flex: 1 1 auto;
         text-align: center;
 
@@ -453,10 +455,25 @@ footer {
   }
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.content-wrapper {
+  flex: 1; /* Take up all available space between navbar and footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  max-height: fit-content; /* Don't exceed the size of its contents */
+}
+
 // Home Page
 .home-page {
   display: flex;
   flex-direction: column;
+  min-height: auto; // Let content determine height
 
   main {
     flex: 1;
@@ -464,6 +481,7 @@ footer {
 
   .home-description {
     margin: 20px;
+    margin-bottom: 10px; // Reduce bottom margin
 
     h1 {
       font-size: 3em;
@@ -567,6 +585,7 @@ footer {
 
   .advanced-search-container {
     position: relative;
+    margin-bottom: 20px; // Reduce bottom margin to reduce whitespace
 
     .dropdown-arrow {
       display: inline-block;
@@ -600,7 +619,7 @@ footer {
       border-radius: 4px;
       box-shadow: $box-shadow;
       width: 100%;
-      padding: $container-padding;
+      padding: 15px; // Reduce padding to make it more compact
 
       .active {
         display: block;
