@@ -214,68 +214,74 @@ watch(() => browseState.currentPageName, (newName) => {
   }
 }, { immediate: true });
 
-const setBrowseStateValues = async() => {
-    // parse the url
+const setBrowseStateValues = async () => {
+  // parse the url
     const urlParams = new URLSearchParams(window.location.search);
     let vol = parseInt(urlParams.get('volume'));
     let docPage = urlParams.get('docPage');
     let docId = urlParams.get('docId');
-
-    // browse by docId ex. query param is docId=ARO-2-0098A-01
-    if (docId){
-      const pageIndex = await getDocIdPageIndex(docId);
-      // if page exists, find the page index and then load the relevant records
-      if (pageIndex != -1){
-        browseState.currentPageIndex = pageIndex+1;
-        browseState.currentPageName = browseState.pages[pageIndex].page;
-        return;
-      }
-    }
-    
-    // browse by docPage ex. query param is docPage=98A
-    if (!isNaN(vol) && volumes.includes(vol)&& docPage){
-      await loadRecordsForSingleVolume(vol);
-      const pageIndex = getPageIndex(docPage);
-      if (pageIndex != -1){
-        browseState.currentVolume = vol;
-        browseState.currentPageIndex = pageIndex + 1;
-        browseState.currentPageName = docPage;;
-        return;
-      }
-    }
-
-    // browse normally with volume and page
     let page = urlParams.get('page');
-
-    if (isNaN(vol) && !isNaN(page)) {vol=1; page=browseState.pages[0]?.page || '';}
-    else if (!isNaN(vol) && isNaN(page)) page = browseState.pages[0]?.page || '';
-    else if (isNaN(vol) && isNaN(page)) {
-      // Fall back to sessionStorage
-      const saved = sessionStorage.getItem('browseState');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        vol = parsed.volume;
-        page = parsed.page;
+    
+    // browse by docId ex. query param is docId=ARO-2-0098A-01
+    if (docId) {
+        const pageIndex = await getDocIdPageIndex(docId);
+        if (pageIndex !== -1) {
+            browseState.currentPageIndex = pageIndex + 1;
+            browseState.currentPageName = browseState.pages[pageIndex].page;
+            return;
       }
+  }
+
+  // 2. From docPage
+  if (!isNaN(vol) && volumes.includes(vol) && docPage) {
+    browseState.currentVolume = vol;
+    await loadRecordsForSingleVolume(vol);
+    const pageIndex = getPageIndex(docPage);
+    if (pageIndex !== -1) {
+      browseState.currentPageIndex = pageIndex + 1;
+      browseState.currentPageName = docPage;
+      return;
     }
-    if (!isNaN(vol)) browseState.currentVolume = vol;
-    if (!isNaN(page)) browseState.currentPageName = page;
+  }
+
+  // 3. From URL volume + page
+  if (!isNaN(vol) && typeof page === 'string') {
+    browseState.currentVolume = vol;
+    browseState.currentPageName = page;
+    return;
+  }
+
+  // 4. From sessionStorage
+  const saved = sessionStorage.getItem('browseState');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    if (volumes.includes(parsed.volume)) {
+      browseState.currentVolume = parsed.volume;
+      browseState.currentPageName = parsed.page;
+    }
+  }
 };
+
 
 onMounted(async () => {
   await setBrowseStateValues();
-  
-  // if volume or volume and page not specified, try loading first page of first volume.
-  if (!volumes.includes(browseState.currentVolume) ){
-    // try loading first volume
-    alert(`volume ${browseState.currentVolume} does not exist`);
-    browseState.currentVolume = 1;
-    browseState.currentPageIndex = 1;
-  }
-  // load according to url parameters
-  loadRecordsForSingleVolume(browseState.currentVolume)
 
+  // Fallback to default volume if necessary
+  if (!volumes.includes(browseState.currentVolume)) {
+    alert(`Volume ${browseState.currentVolume} does not exist. Loading Volume 1.`);
+    browseState.currentVolume = 1;
+    browseState.currentPageName = '';
+  }
+
+  await loadRecordsForSingleVolume(browseState.currentVolume);
+
+  // Ensure page index is set correctly if not already
+  if (!browseState.currentPageIndex || !browseState.currentPageName) {
+    browseState.currentPageIndex = 1;
+    browseState.currentPageName = browseState.pages[0]?.page || '';
+  }
 });
+
 </script>
 
 <template>
