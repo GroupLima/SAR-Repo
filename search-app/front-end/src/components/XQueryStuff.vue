@@ -107,9 +107,12 @@ const runQuery = async () => {
           <!-- CHANGED RESULTS DISPLAY -->
           <pre v-if="state.results"><code class="hljs language-xml" v-html="state.results"></code></pre>
         </div>
-        <div v-else>
+        <!-- <div v-else>
           Loading...
-        </div>
+        </div> -->
+        <div class="loading-spinner-container">
+                <div class="loading-spinner"></div>
+            </div>
       </div>
     </main>
   </div>

@@ -188,7 +188,6 @@ body.dark {
   text-decoration: underline;
 }
 .navbar .nav-content .nav-links a.help-link {
-  margin-left: 10px;
   font-weight: bold;
 }
 .navbar .nav-content .dark-mode-button {
@@ -197,7 +196,7 @@ body.dark {
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-  margin-left: 20px;
+  margin: 5px auto;
 }
 .navbar .nav-content .logo-section {
   color: #ffffff;
@@ -259,9 +258,9 @@ body.dark {
   }
   .navbar .nav-content .nav-links a {
     padding: 10px;
-    width: 100%;
     text-align: center;
     margin: 5px 0;
+    box-sizing: border-box;
   }
   .navbar .nav-content .nav-links.active {
     display: flex;

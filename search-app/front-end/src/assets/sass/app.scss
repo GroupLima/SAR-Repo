@@ -232,7 +232,7 @@ body {
       }
 
       a.help-link {
-        margin-left: 10px;
+        // margin-left: 10px;
         font-weight: bold;
       }
     }
@@ -243,7 +243,7 @@ body {
       border-radius: 50%;
       background-color: transparent;
       cursor: pointer;
-      margin-left: 20px;
+      margin: 5px auto;
     }
 
     .logo-section {
@@ -314,9 +314,11 @@ body {
 
         a {
           padding: 10px;
-          width: 100%;
+          // width: 100%;
           text-align: center;
           margin: 5px 0;
+          // padding-left: calc(50% - 40px); /* Align first character of text while keeping visual centering */
+          box-sizing: border-box;
         }
       }
 
