@@ -105,14 +105,21 @@
                             <h3>Examples</h3>
                             <p>Here are some example queries:</p>
                             <ul>
-                                <li>Return all records in Latin: 
+                                <li>
+                                    Return all records in Latin: 
                                     <br>
-                                    <code>//ns:div[@xml:lang="la"]</code></li>
-                                    Instead of "la", use "sc" to return Scots text and "mul" for Multiple
+                                    <code>//ns:div[@xml:lang="la"]</code>
+                                </li>
+                                <br>
+                                <li>
+                                    Instead of "la", use "sc" to return records in Scots and "mul" to return records in multiple languages.
+                                </li>
+                                <br>
+                                <li>
+                                    Return records of a specific date:
                                     <br>
-                                    <li>Return records of a specific date:
-                                    <br>
-                                    <code>//ns:div[.//ns:date[@when="1398-09-30"]]</code></li>
+                                    <code>//ns:div[.//ns:date[@when="1398-09-30"]]</code>
+                                </li>
                             </ul>
                         </div>
                     </div>

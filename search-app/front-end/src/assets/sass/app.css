@@ -191,11 +191,33 @@ body.dark {
   font-weight: bold;
 }
 .navbar .nav-content .dark-mode-button {
-  min-height: 50px;
-  min-width: 50px;
-  border-radius: 50%;
   background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.3s, transform 0.3s;
   cursor: pointer;
+  margin-left: 15px;
+}
+.navbar .nav-content .dark-mode-button:hover {
+  transform: scale(1.1);
+}
+.navbar .nav-content .dark-mode-button svg {
+  height: 22px;
+  width: 22px;
+  margin: 0;
+  fill: #ffffff;
+}
+body.dark .navbar .nav-content .dark-mode-button {
+  border-color: #ffffff;
+}
+body.dark .navbar .nav-content .dark-mode-button svg {
+  fill: #ffffff;
   margin: 5px auto;
 }
 .navbar .nav-content .logo-section {
@@ -243,6 +265,16 @@ body.dark {
     flex-direction: column;
     align-items: center;
   }
+  .navbar .nav-content .logo-section {
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  .navbar .nav-content .logo-section .text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .navbar .nav-content .logo-section .text-container img {
     height: 50px;
   }
@@ -255,6 +287,8 @@ body.dark {
     top: 100%;
     left: 0;
     z-index: 999;
+    text-align: center;
+    padding: 10px 0;
   }
   .navbar .nav-content .nav-links a {
     padding: 10px;
@@ -267,6 +301,15 @@ body.dark {
   }
   .navbar .nav-content .burger-menu {
     display: flex;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    z-index: 1001;
+  }
+  .navbar .nav-content .logo-section + .burger-menu {
+    top: 25px;
   }
   footer .image-container {
     height: auto;
@@ -278,6 +321,10 @@ body.dark {
   footer .footer-links-container .footer-links {
     flex-direction: column;
     align-items: center;
+  }
+  /* Add some space below the navbar to prevent content overlap */
+  body {
+    padding-top: 140px; /* Adjust based on your navbar height */
   }
 }
 footer {
@@ -1022,12 +1069,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   cursor: pointer;
   padding: 4px;
   transition: background-color 0.2s ease;
-}
-.copy-btn:hover {
-  background-color: #400816;
-}
-body.dark .copy-btn {
-  background-color: #4a4a4a;
 }
 
 svg {
