@@ -217,13 +217,13 @@ onMounted(() => {
                     <input type="checkbox" v-model="form.caseSensitive">
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Select how your search terms will be matched">Search Method:</label>
+                    <label data-tooltip="Choose how your search term is matched to text">Search Method:</label>
                     <select v-model="form.methodSearch">
                         <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Control the level of spelling variation in search results">Spelling Variance:</label>
+                    <label data-tooltip="Control the level of spelling variation in the results from your search term">Spelling Variance:</label>
                     <select v-model="form.variant">
                         <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
                             {{ displayOptions[index] }}
@@ -237,7 +237,7 @@ onMounted(() => {
                     </select>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Select how many results to show per page">Sort By:</label>
+                    <label data-tooltip="Choose how the results should be ordered">Sort By:</label>
                     <select v-model="form.sortBy">
                         <option v-for="(ord, index) in ordOptions" :key="ord" :value="ord">{{ ordDisplayOptions[index] }}</option>
                     </select>
@@ -284,7 +284,7 @@ onMounted(() => {
                         </div>
                         <!-- We need a constraint to restrict between 1 and the max page number -->
                         <div class="advanced-option">
-                            <h3 class="option-title" data-tooltip="Enter specific page numbers to search within">Page Search</h3>
+                            <h3 class="option-title" data-tooltip="Enter the numbers of specific pages to seach within">Page Search</h3>
                             <input type="search" v-model="form.pageSearch" id="page-search" placeholder="1, 69, 591..." >
                         </div>
                         <!-- We need a constraint to restrict between 1 and the number of entries -->
@@ -295,16 +295,16 @@ onMounted(() => {
                         <!-- We need to apply constraints to limit date between 1398 and 1510 -->
                         <div id="dates" class="option-title">
                             <h3 class="option-title">Date Range</h3>
-                            <label data-tooltip="Filter results starting from this date (1398-1510)">
+                            <label data-tooltip="Fetch entries starting from this date">
                                 From: <DatePicker ref="dateFrom" v-model="form.startDate" id="start-date" name="start-date" :yearAscending="true"/>
                             </label>
-                            <label data-tooltip="Filter results ending at this date (1398-1510)">
+                            <label data-tooltip="Fetch entries ending at this date">
                                 To: <DatePicker ref="dateTo" v-model="form.endDate" id="end-date" name="end-date"/>
                             </label>
                         </div>
                         <!-- We should only allow valid DocIDs -->
                         <div class="advanced-option">
-                            <h3 class="option-title" data-tooltip="Search for a specific document by its ID">Doc ID</h3>
+                            <h3 class="option-title" data-tooltip="Search for a specific entry by its ID">Doc ID</h3>
                             <input type="search" v-model="form.docId" id="doc-id-search" placeholder="ARO-1-0001-01" data-tooltip="Search for a specific document by its ID">
                         </div>
                         <div class="advanced-option">
