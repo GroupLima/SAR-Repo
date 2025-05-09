@@ -1,6 +1,6 @@
 <script setup>
 import router from '@/router';
-import { reactive, ref, toRaw, onMounted, computed } from 'vue';
+import { reactive, ref, toRaw, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router'; // Import the useRoute hook
 import DatePicker from '@/components/DatePicker.vue';
 
@@ -68,7 +68,6 @@ const toggleAllVolumes = () => {
         form.volumes = ['1', '2', '4', '5', '6', '7', '8'];
     }
 };
-
 
 const handleSearch = () => {
     if (allValidInput()) {
@@ -145,6 +144,14 @@ const setSearchBoxValue = () => {
     form.resultsPerPage = Number(route.query.resultsPerPage) || form.resultsPerPage;
     
 };
+
+const isRegexSelected = computed(() => form.methodSearch === "regex");
+
+watch(isRegexSelected, (newVal) => {
+    if (newVal) {
+        form.variant = '0'; // Set variant to 'None' when regex is selected
+    }
+});
 
 const resetAdvancedSearch = () => {
     form.language = "any";
@@ -224,7 +231,7 @@ onMounted(() => {
                 </div>
                 <div class="preference-item">
                     <label data-tooltip="Control the level of spelling variation in the results from your search term">Spelling Variance:</label>
-                    <select v-model="form.variant">
+                    <select v-model="form.variant" :disabled="isRegexSelected">
                         <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
                             {{ displayOptions[index] }}
                         </option>
