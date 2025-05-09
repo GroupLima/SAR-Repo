@@ -355,6 +355,9 @@ footer .footer-links-container .footer-links a:hover {
   border: 2px solid #4a4a4a;
   border-radius: 50px;
   font-size: 16px;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 .search-section .basic-search button {
   padding: 10px 20px;
@@ -524,6 +527,9 @@ body.dark .search-section .preferences .preference-item select {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 body.dark .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates {
   background-color: #202020;
@@ -653,6 +659,9 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   border-radius: 4px;
   font-size: 16px;
   text-align: center;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 .search-page .go-to-page button {
   padding: 10px 20px;
@@ -861,6 +870,8 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   border-radius: 4px;
   text-align: center;
   font-family: Arial, sans-serif;
+  -webkit-appearance: textfield;
+          appearance: textfield;
   -moz-appearance: textfield;
 }
 .page-number-input::-webkit-inner-spin-button, .page-number-input::-webkit-outer-spin-button {
@@ -1582,6 +1593,9 @@ body.dark #search-options .advanced-option #language input[type=date] {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 body.dark #search-options .advanced-option #dates {
   background-color: #202020;
@@ -1663,6 +1677,9 @@ body.dark #search-options .advanced-option #dates input[type=date] {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 body.dark .advanced-search-dropdown #search-options .advanced-option #dates {
   background-color: #202020;

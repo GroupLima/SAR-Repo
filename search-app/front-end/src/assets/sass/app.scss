@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Standard variables
 $primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
@@ -9,9 +11,7 @@ $logo-font-family: Times, serif;
 $box-shadow: 0 2px 5px #4a4a4a;
 $container-padding: 24px;
 $container-max-width: 1200px; // Consistent max-width for all pages
-$lightness: lighten($primary-colour, 10%);
-
-@use "sass:color";
+$lightness: color.adjust($primary-colour, $lightness: 10%);
 
 @mixin button-base {
   padding: 10px 20px;
@@ -432,6 +432,7 @@ footer {
       border: 2px solid $dark-gray;
       border-radius: 50px;
       font-size: 16px;
+      appearance: textfield;
     }
 
     button {
@@ -620,6 +621,7 @@ footer {
               border-radius: 4px;
               padding: 5px;
               background-color: $secondary-colour;
+              appearance: textfield;
             }
 
             body.dark & {
@@ -780,6 +782,7 @@ footer {
       border-radius: 4px;
       font-size: 16px;
       text-align: center;
+      appearance: textfield;
     }
 
     button {
@@ -1000,6 +1003,7 @@ $small-mobile-breakpoint: 480px;
   border-radius: 4px;
   text-align: center;
   font-family: $font-family;
+  appearance: textfield;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -1828,6 +1832,7 @@ body.dark {
         border-radius: 4px;
         padding: 5px;
         background-color: $secondary-colour;
+        appearance: textfield;
       }
 
       body.dark & {
@@ -1927,6 +1932,7 @@ body.dark {
           border-radius: 4px;
           padding: 5px;
           background-color: $secondary-colour;
+          appearance: textfield;
         }
 
         body.dark & {

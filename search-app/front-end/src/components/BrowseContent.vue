@@ -247,7 +247,7 @@ onMounted(async () => {
           <div class="records-container">
             <div v-if="!browseState.pagesLoading" class="page-navigation">
               <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
-              <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
+              <button class="nav-btn" @click="goToPrevPage" :disabled="browseState.currentPage <= 1">&lt;</button>
 
               <input type="string" v-model="browseState.currentPage" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
               <span>of {{ browseState.pages.length }}</span>
