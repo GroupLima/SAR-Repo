@@ -13,6 +13,7 @@ const browseState = reactive({
   currentVolume: 1,
   currentPage: 1, // limited to the length of pages - 1
   currentPageName: '1',
+  currentPageIndex: 1,
   zoomScale: 2.5,
   isZooming: false,
   transformOrigin: '0% 0%',
@@ -21,7 +22,8 @@ const browseState = reactive({
 })
 
 function onChangeVolume(){
-  browseState.currentPage = 1;
+  browseState.currentPageIndex = 1;
+  browseState.currentPageName = browseState.pages[0]?.page || '';
   // update browseState and load relevant records
   loadRecordsForSingleVolume(browseState.currentVolume);
 }
@@ -50,26 +52,49 @@ const loadRecordsForSingleVolume = async (volume) => {
   browseState.pagesLoading = false
 }
 
-const goToFirstPage = () => browseState.currentPage = 1;
-
-const goToLastPage = () => browseState.currentPage = browseState.pages.length;
-
-const goToPrevPage = () => { if (browseState.currentPage > 1) browseState.currentPage--; }
-
-const goToNextPage = () => { if (browseState.currentPage < browseState.pages.length) { browseState.currentPage++; } }
-
 const goToSpecificPage = () => {
-  const max = browseState.pages.length;
-  if (browseState.currentPage < 1) browseState.currentPage = 1;
-  else if (browseState.currentPage > max) browseState.currentPage = max;
+  // find the page with this exact name
+  const pageIndex = browseState.pages.findIndex(p => p.page === browseState.currentPageName);
+  if (pageIndex !== -1) {
+    browseState.currentPageIndex = pageIndex + 1;
+  }
+}
+
+const goToPageByName = (pageName) => {
+  browseState.currentPageName = pageName;
+  goToSpecificPage();
+}
+
+const goToFirstPage = () => {
+  browseState.currentPageName = browseState.pages[0].page;
+  browseState.currentPageIndex = 1;
+}
+
+const goToLastPage = () => {
+  browseState.currentPageName = browseState.pages[browseState.pages.length - 1].page;
+  browseState.currentPageIndex = browseState.pages.length;
+}
+
+const goToPrevPage = () => {
+  if (browseState.currentPageIndex > 1) {
+    browseState.currentPageIndex--;
+    browseState.currentPageName = browseState.pages[browseState.currentPageIndex - 1].page;
+  }
+}
+
+const goToNextPage = () => {
+  if (browseState.currentPageIndex < browseState.pages.length) {
+    browseState.currentPageIndex++;
+    browseState.currentPageName = browseState.pages[browseState.currentPageIndex - 1].page;
+  }
 }
 
 const currentRecords = computed(() => {
-  return browseState.pages?.[browseState.currentPage - 1]?.records || [];
+  return browseState.pages?.[browseState.currentPageIndex - 1]?.records || [];
 });
 
 const currentPageName = computed(() => {
-  return browseState.pages?.[browseState.currentPage - 1]?.page || "";
+  return browseState.pages?.[browseState.currentPageIndex - 1]?.page || "";
 });
 
 const getPageIndex = (pageName) => {
@@ -127,7 +152,7 @@ const imageStyle = computed(() => {
   };
 });
 
-watch(() => [browseState.currentVolume, browseState.currentPage], ([newVolume, newPage]) => {
+watch(() => [browseState.currentVolume, browseState.currentPageName], ([newVolume, newPage]) => {
   const url = new URL(window.location.href);
   url.searchParams.set('volume', newVolume);
   url.searchParams.set('page', newPage);
@@ -155,7 +180,8 @@ const setBrowseStateValues = async() => {
       const pageIndex = await getDocIdPageIndex(docId);
       // if page exists, find the page index and then load the relevant records
       if (pageIndex != -1){
-        browseState.currentPage = pageIndex+1;
+        browseState.currentPageIndex = pageIndex+1;
+        browseState.currentPageName = browseState.pages[pageIndex].page;
         return;
       }
     }
@@ -166,16 +192,17 @@ const setBrowseStateValues = async() => {
       const pageIndex = getPageIndex(docPage);
       if (pageIndex != -1){
         browseState.currentVolume = vol;
-        browseState.currentPage = pageIndex+1;
+        browseState.currentPageIndex = pageIndex + 1;
+        browseState.currentPageName = docPage;;
         return;
       }
     }
 
     // browse normally with volume and page
-    let page = parseInt(urlParams.get('page'));
+    let page = urlParams.get('page');
 
-    if (isNaN(vol) && !isNaN(page)) {vol=1; page=1}
-    else if (!isNaN(vol) && isNaN(page)) page = 1;
+    if (isNaN(vol) && !isNaN(page)) {vol=1; page=browseState.pages[0]?.page || '';}
+    else if (!isNaN(vol) && isNaN(page)) page = browseState.pages[0]?.page || '';
     else if (isNaN(vol) && isNaN(page)) {
       // Fall back to sessionStorage
       const saved = sessionStorage.getItem('browseState');
@@ -186,7 +213,7 @@ const setBrowseStateValues = async() => {
       }
     }
     if (!isNaN(vol)) browseState.currentVolume = vol;
-    if (!isNaN(page)) browseState.currentPage = page;
+    if (!isNaN(page)) browseState.currentPageName = page;
 };
 
 onMounted(async () => {
@@ -247,13 +274,13 @@ onMounted(async () => {
           <div class="records-container">
             <div v-if="!browseState.pagesLoading" class="page-navigation">
               <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
-              <button class="nav-btn" @click="goToPrevPage" :disabled="currentPage <= 1">&lt;</button>
+              <button class="nav-btn" @click="goToPrevPage" :disabled="browseState.currentPageIndex <= 1">&lt;</button>
 
-              <input type="string" v-model="browseState.currentPage" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
+              <input type="string" v-model="browseState.currentPageName" min="1" :max="browseState.pages.length" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
               <span>of {{ browseState.pages.length }}</span>
               <!-- <button class="page-go-btn" @click="goToSpecificPage">Go</button> -->
 
-              <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPage >= browseState.pages.length">&gt;</button>
+              <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPageIndex >= browseState.pages.length">&gt;</button>
               <button class="nav-btn" @click="goToLastPage">&gt;&gt;</button>
             </div>
              <!-- Display loading text if pages are loading -->
