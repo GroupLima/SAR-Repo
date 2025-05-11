@@ -188,6 +188,7 @@ body.dark {
   text-decoration: underline;
 }
 .navbar .nav-content .nav-links a.help-link {
+  margin-left: 10px;
   font-weight: bold;
 }
 .navbar .nav-content .dark-mode-button {
@@ -291,9 +292,9 @@ body.dark .navbar .nav-content .dark-mode-button svg {
   }
   .navbar .nav-content .nav-links a {
     padding: 12px;
+    width: 100%;
     text-align: center;
-    margin: 5px 0;
-    box-sizing: border-box;
+    margin: 0;
   }
   .navbar .nav-content .nav-links.active {
     display: flex;
@@ -327,10 +328,8 @@ body.dark .navbar .nav-content .dark-mode-button svg {
   }
 }
 footer {
-  margin-top: auto;
-  padding-top: 30px;
+  margin-top: 45px;
   width: 100%;
-  flex-shrink: 0;
 }
 footer .image-container {
   overflow: hidden;
@@ -363,7 +362,7 @@ footer .footer-links-container .footer-links a {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
-  padding: 12px;
+  padding: 10px;
   flex: 1 1 auto;
   text-align: center;
 }
@@ -371,32 +370,15 @@ footer .footer-links-container .footer-links a:hover {
   text-decoration: underline;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
-}
-
-.content-wrapper {
-  flex: 1; /* Take up all available space between navbar and footer */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  max-height: -moz-fit-content;
-  max-height: fit-content; /* Don't exceed the size of its contents */
-}
-
 .home-page {
   display: flex;
   flex-direction: column;
-  min-height: auto;
 }
 .home-page main {
   flex: 1;
 }
 .home-page .home-description {
   margin: 20px;
-  margin-bottom: 10px;
 }
 .home-page .home-description h1 {
   font-size: 3em;
@@ -419,9 +401,6 @@ footer .footer-links-container .footer-links a:hover {
   border: 2px solid #4a4a4a;
   border-radius: 50px;
   font-size: 16px;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
 }
 .search-section .basic-search button {
   padding: 10px 20px;
@@ -489,7 +468,6 @@ body.dark .search-section .preferences .preference-item select {
 }
 .search-section .advanced-search-container {
   position: relative;
-  margin-bottom: 20px;
 }
 .search-section .advanced-search-container .dropdown-arrow {
   display: inline-block;
@@ -521,7 +499,7 @@ body.dark .search-section .preferences .preference-item select {
   border-radius: 4px;
   box-shadow: 0 2px 5px #4a4a4a;
   width: 100%;
-  padding: 15px;
+  padding: 24px;
 }
 .search-section .advanced-search-container .advanced-search-dropdown .active {
   display: block;
@@ -592,9 +570,6 @@ body.dark .search-section .preferences .preference-item select {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
 }
 body.dark .search-section .advanced-search-container .advanced-search-dropdown #search-options .advanced-option #dates {
   background-color: #202020;
@@ -718,9 +693,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   border-radius: 4px;
   font-size: 16px;
   text-align: center;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
 }
 .search-page .go-to-page button {
   padding: 10px 20px;
@@ -876,15 +848,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   margin: 10px 0 20px;
   flex-wrap: wrap;
 }
-.page-navigation .nav-btn {
-  background-color: #6e0d25;
-  color: #ffffff;
-  border: none;
-  border-radius: 50px;
-}
-.page-navigation .nav-btn:hover:enabled {
-  background-color: #400816;
-}
 @media (max-width: 480px) {
   .page-navigation {
     gap: 5px;
@@ -938,8 +901,6 @@ body.dark .search-page .results-section .result-item .result-footer .result-butt
   border-radius: 4px;
   text-align: center;
   font-family: Arial, sans-serif;
-  -webkit-appearance: textfield;
-          appearance: textfield;
   -moz-appearance: textfield;
 }
 .page-number-input::-webkit-inner-spin-button, .page-number-input::-webkit-outer-spin-button {
@@ -1191,96 +1152,96 @@ body.dark svg {
   background-color: #400816;
 }
 
-body.dark :is([data-v-c556e80a]) .container-browser {
+.dark .container-browser {
   background-color: #202020;
   color: #ffffff;
   border-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .split-view {
+.dark .split-view {
   border-color: #a69f9f;
   background-color: #202020;
 }
-body.dark :is([data-v-c556e80a]) .image-viewer {
+.dark .image-viewer {
   background-color: #282828;
 }
-body.dark :is([data-v-c556e80a]) .records-container {
+.dark .records-container {
   background-color: #202020;
   border-left-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .nav-btn {
+.dark .nav-btn {
   background-color: #131313;
   color: #ffffff;
   border-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .nav-btn:disabled {
+.dark .nav-btn:disabled {
   opacity: 0.5;
 }
-body.dark :is([data-v-c556e80a]) .page-number {
+.dark .page-number {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .page-number-search {
+.dark .page-number-search {
   background-color: #181818;
 }
-body.dark :is([data-v-c556e80a]) .page-label, body.dark :is([data-v-c556e80a]) .page-total {
+.dark .page-label, .dark .page-total {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .page-number-input {
+.dark .page-number-input {
   background-color: #131313;
   color: #ffffff;
   border-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .page-number-input:focus {
+.dark .page-number-input:focus {
   outline-color: #9c1234;
   border-color: #9c1234;
 }
-body.dark :is([data-v-c556e80a]) .page-go-btn {
+.dark .page-go-btn {
   background-color: #6e0d25;
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .page-go-btn:hover {
+.dark .page-go-btn:hover {
   background-color: #400816;
 }
-body.dark :is([data-v-c556e80a]) .record-item {
+.dark .record-item {
   border-bottom-color: #a69f9f;
   background-color: #202020;
 }
-body.dark :is([data-v-c556e80a]) .record-header, body.dark :is([data-v-c556e80a]) .record-content, body.dark :is([data-v-c556e80a]) .record-label {
+.dark .record-header, .dark .record-content, .dark .record-label {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .xml-btn {
+.dark .xml-btn {
   background-color: #6e0d25;
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .xml-btn:hover {
+.dark .xml-btn:hover {
   background-color: #400816;
 }
-body.dark :is([data-v-c556e80a]) .checkbox-container {
+.dark .checkbox-container {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .checkbox-container label {
+.dark .checkbox-container label {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .volume-select {
+.dark .volume-select {
   background-color: #131313;
   color: #ffffff;
   border-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .xml-modal {
+.dark .xml-modal {
   background-color: #202020;
   color: #ffffff;
   border: 1px solid #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .xml-modal-header {
+.dark .xml-modal-header {
   border-bottom-color: #a69f9f;
 }
-body.dark :is([data-v-c556e80a]) .xml-modal-header .close-btn {
+.dark .xml-modal-header .close-btn {
   color: #ffffff;
 }
-body.dark :is([data-v-c556e80a]) .xml-modal-body .xml-content {
+.dark .xml-modal-body .xml-content {
   color: #ffffff;
   background-color: #181818;
 }
-body.dark :is([data-v-c556e80a]) .xml-modal-footer {
+.dark .xml-modal-footer {
   border-top-color: #a69f9f;
 }
 
@@ -1655,9 +1616,6 @@ body.dark #search-options .advanced-option #language input[type=date] {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
 }
 body.dark #search-options .advanced-option #dates {
   background-color: #202020;
@@ -1739,9 +1697,6 @@ body.dark #search-options .advanced-option #dates input[type=date] {
   border-radius: 4px;
   padding: 5px;
   background-color: #ffffff;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
 }
 body.dark .advanced-search-dropdown #search-options .advanced-option #dates {
   background-color: #202020;
