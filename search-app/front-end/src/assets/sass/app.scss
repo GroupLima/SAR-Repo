@@ -1,5 +1,3 @@
-@use "sass:color";
-
 // Standard variables
 $primary-colour: #6e0d25;
 $secondary-colour: #ffffff;
@@ -11,7 +9,9 @@ $logo-font-family: Times, serif;
 $box-shadow: 0 2px 5px #4a4a4a;
 $container-padding: 24px;
 $container-max-width: 1200px; // Consistent max-width for all pages
-$lightness: color.adjust($primary-colour, $lightness: 10%);
+$lightness: lighten($primary-colour, 10%);
+
+@use "sass:color";
 
 @mixin button-base {
   padding: 10px 20px;
@@ -231,7 +231,7 @@ body {
       }
 
       a.help-link {
-        // margin-left: 10px;
+        margin-left: 10px;
         font-weight: bold;
       }
     }
@@ -354,11 +354,9 @@ body {
         
         a {
           padding: 12px;
-          // width: 100%;
+          width: 100%;
           text-align: center;
-          margin: 5px 0;
-          // padding-left: calc(50% - 40px); /* Align first character of text while keeping visual centering */
-          box-sizing: border-box;
+          margin: 0;
         }
       }
 
@@ -406,10 +404,8 @@ body {
 
 // Footer
 footer {
-  margin-top: auto; // Push footer to bottom when content is short
-  padding-top: 30px; // Add padding at the top of the footer
+  margin-top: 45px;
   width: 100%;
-  flex-shrink: 0; // Prevent footer from shrinking
 
   .image-container {
     overflow: hidden;
@@ -443,7 +439,7 @@ footer {
         color: $secondary-colour;
         text-decoration: none;
         font-weight: bold;
-        padding: 12px;
+        padding: 10px;
         flex: 1 1 auto;
         text-align: center;
 
@@ -455,25 +451,10 @@ footer {
   }
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
-}
-
-.content-wrapper {
-  flex: 1; /* Take up all available space between navbar and footer */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  max-height: fit-content; /* Don't exceed the size of its contents */
-}
-
 // Home Page
 .home-page {
   display: flex;
   flex-direction: column;
-  min-height: auto; // Let content determine height
 
   main {
     flex: 1;
@@ -481,7 +462,6 @@ footer {
 
   .home-description {
     margin: 20px;
-    margin-bottom: 10px; // Reduce bottom margin
 
     h1 {
       font-size: 3em;
@@ -507,7 +487,6 @@ footer {
       border: 2px solid $dark-gray;
       border-radius: 50px;
       font-size: 16px;
-      appearance: textfield;
     }
 
     button {
@@ -585,7 +564,6 @@ footer {
 
   .advanced-search-container {
     position: relative;
-    margin-bottom: 20px; // Reduce bottom margin to reduce whitespace
 
     .dropdown-arrow {
       display: inline-block;
@@ -619,7 +597,7 @@ footer {
       border-radius: 4px;
       box-shadow: $box-shadow;
       width: 100%;
-      padding: 15px; // Reduce padding to make it more compact
+      padding: $container-padding;
 
       .active {
         display: block;
@@ -697,7 +675,6 @@ footer {
               border-radius: 4px;
               padding: 5px;
               background-color: $secondary-colour;
-              appearance: textfield;
             }
 
             body.dark & {
@@ -858,7 +835,6 @@ footer {
       border-radius: 4px;
       font-size: 16px;
       text-align: center;
-      appearance: textfield;
     }
 
     button {
@@ -1029,17 +1005,6 @@ $small-mobile-breakpoint: 480px;
   gap: 10px;
   margin: 10px 0 20px;
   flex-wrap: wrap;
-
-  .nav-btn {
-    background-color: $primary-colour;
-    color: $secondary-colour;
-    border: none;
-    border-radius: 50px; // Match other primary buttons
-
-    &:hover:enabled {
-      background-color: color.adjust($primary-colour, $lightness: -10%);
-    }
-  }
   
   @media (max-width: $small-mobile-breakpoint) {
     gap: 5px;
@@ -1090,7 +1055,6 @@ $small-mobile-breakpoint: 480px;
   border-radius: 4px;
   text-align: center;
   font-family: $font-family;
-  appearance: textfield;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -1343,7 +1307,7 @@ svg {
 }
 
 // Dark Mode Styles
-body.dark :is([data-v-c556e80a]) {
+.dark {
   .container-browser {
     background-color: $dark-mode;
     color: $secondary-colour;
@@ -1911,7 +1875,6 @@ body.dark {
         border-radius: 4px;
         padding: 5px;
         background-color: $secondary-colour;
-        appearance: textfield;
       }
 
       body.dark & {
@@ -2011,7 +1974,6 @@ body.dark {
           border-radius: 4px;
           padding: 5px;
           background-color: $secondary-colour;
-          appearance: textfield;
         }
 
         body.dark & {

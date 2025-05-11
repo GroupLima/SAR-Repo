@@ -42,51 +42,7 @@ Now, you will need to install a few packages and dependencies in order to run th
 3. Install system requirements: `brew install nodejs unzip php-mbstring php-xml php-json php-zip php-curl`
 4. Install PHP for your system: `/bin/bash -c "$(curl -fsSL https://php.new/install/mac)"`
 
-
-### Docker Run
-
-The following are instructions to run the project with Docker. Do not run the front & back end as well as this simultaneously - only either the Docker or both the front and back end being run will serve the project.
-
-1. Ensure you have Docker installed using the official guide: [Docker Installation](https://docs.docker.com/engine/install/)
-2. Start the Docker Daemon for your system:
-   1. For Linux: `sudo systemctl start docker`
-   2. For macOS: Start the GUI application (as of writing no easy way to do this from the terminal)
-3. From the root of the project (SAR-Repo) run the command: `docker-compose up --build`
-
-#### Maintenance
-
-1. Stop the containers with: `docker-compose down`
-2. Enter a specific container within the project (back/front-end):
-   1. List running containers with: `docker ps`
-   2. Enter the shell of the container with: `docker exec -it <container_id_or_name> /bin/sh`, replacing the variable with the desired container ID or name.
-
-#### Rebuilding Specific Apps
-
-If you need to rebuild only certain apps (e.g., `sar-repo-backend-1` or `sar-repo-frontend-1`) while the project is still running, you can use the following commands:
-
-1. Rebuild and restart a specific service:
-   `docker-compose up --build <service_name>`
-   Replace `<service_name>` with the name of the service you want to rebuild (e.g., `sar-repo-backend-1` or `sar-repo-frontend-1`).
-
-2. Restart a specific service without rebuilding:
-   `docker-compose restart <service_name>`
-   Replace `<service_name>` with the name of the service you want to restart.
-
-#### Other Useful Docker Commands
-
-1. View logs of a specific container:
-   `docker logs <container_id_or_name>`
-   Replace `<container_id_or_name>` with the ID or name of the container.
-
-2. Follow logs of a specific container in real-time:
-   `docker logs -f <container_id_or_name>`
-
-3. Stop all running containers:
-   `docker stop $(docker ps -q)`
-
-4. Put down and then clear all cached and built containers `docker-compose down && docker-compose down --volumes --remove-orphans && docker system prune -f`
-
-### Running the Project Locally
+### Running the Project
 
 #### Back-End
 
@@ -110,8 +66,8 @@ If you need to rebuild only certain apps (e.g., `sar-repo-backend-1` or `sar-rep
 
 #### ExistDB Setup
 1. On first time installing existdb we have to download it from the web
-   1. Use this [ExistDB Install](https://github.com/eXist-db/exist/releases/tag/eXist-6.3.0)
-   2. Please download `exist-distribution-6.3.0-unix.tar.bz2`
+   1. Use this https://github.com/eXist-db/exist/releases/tag/eXist-6.3.0
+   2. Please download exist-distribution-6.3.0-unix.tar.bz2
    3. Navigate to where you downloaded the folder.
    4. run this `tar -xvjf exist-distribution-6.3.0-unix.tar.bz2`
    5. this should create a folder called this; exist-distribution-6.3.0
@@ -120,10 +76,52 @@ If you need to rebuild only certain apps (e.g., `sar-repo-backend-1` or `sar-rep
    8. Now, open http://localhost:8080/exist/
    9. Click on eXide - Xquery IDE
    10. Click file, then Manage
-   11. Use the appropriate credentials by (reading the documents)[https://exist-db.org/exist/apps/doc/]
+   11. The username is `admin`
+   12. the password is `` (blank)
    13. somewhere create a new folder called xmlfiles 
    14. put both xml 1-7 and volume 8 directories from into it called search-app/back-end/storage/app/xml-files
    15. then go to file, manage, upload, then directories and upload this xmlfiles folder
    16. Once uploaded click close. 
    17. now try out the existdb site!!!
 2. If installed just filed the existdb folder in terminal and run `bin/startup.sh`and procee
+
+#### Docker Run
+
+The following are instructions to run the project with Docker. Do not run the front & back end as well as this simultaneously - only either the Docker or both the front and back end being run will serve the project.
+
+1. Ensure you have Docker installed using the official guide: [Docker Installation](https://docs.docker.com/engine/install/)
+2. Start the Docker Daemon for your system:
+   1. For Linux: `sudo systemctl start docker`
+   2. For macOS: Start the GUI application (as of writing no easy way to do this from the terminal)
+3. From the root of the project (SAR-Repo) run the command: `docker-compose up --build`
+
+##### Maintenance
+
+1. Stop the containers with: `docker-compose down`
+2. Enter a specific container within the project (back/front-end):
+   1. List running containers with: `docker ps`
+   2. Enter the shell of the container with: `docker exec -it <container_id_or_name> /bin/sh`, replacing the variable with the desired container ID or name.
+
+##### Rebuilding Specific Apps
+
+If you need to rebuild only certain apps (e.g., `sar-repo-backend-1` or `sar-repo-frontend-1`) while the project is still running, you can use the following commands:
+
+1. Rebuild and restart a specific service:
+   `docker-compose up --build <service_name>`
+   Replace `<service_name>` with the name of the service you want to rebuild (e.g., `sar-repo-backend-1` or `sar-repo-frontend-1`).
+
+2. Restart a specific service without rebuilding:
+   `docker-compose restart <service_name>`
+   Replace `<service_name>` with the name of the service you want to restart.
+
+##### Other Useful Docker Commands
+
+1. View logs of a specific container:
+   `docker logs <container_id_or_name>`
+   Replace `<container_id_or_name>` with the ID or name of the container.
+
+2. Follow logs of a specific container in real-time:
+   `docker logs -f <container_id_or_name>`
+
+3. Stop all running containers:
+   `docker stop $(docker ps -q)`

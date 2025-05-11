@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controller;
+namespace Tests\Controllers;
 
 use Tests\TestCase;
 use App\Http\Controllers\SearchController;
