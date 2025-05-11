@@ -31,7 +31,7 @@ const state = reactive({
     isLoading: false,
     current_page: 1,
     results_per_page: Number(props.queryParams.resultsPerPage) || 5,
-    sort_by: props.queryParams.sortBy || 'Frequency in result',
+    sortBy: props.queryParams.sortBy || 'Frequency in result',
     total_pages: 1,
     searchMethod: props.queryParams.methodSearch || 'word_start',
     variants: props.queryParams.variant || '0',
@@ -83,7 +83,7 @@ const search = async() => {
         rpp: state.results_per_page,
         variant: state.variants,
         methodSearch: state.searchMethod,
-        sort_by: state.sort_by,
+        sortBy: state.sortBy,
     };
     
     try {

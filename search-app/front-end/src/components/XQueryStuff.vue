@@ -264,21 +264,18 @@ const downloadResults = () => {
             </button>
           </div>
         </div>
-
-        <!-- <div v-if="state.isLoading" class="loading-spinner-container">
-          <div class="loading-spinner"></div>
-        </div> -->
-
-        <div v-if="!state.isFirstLoad && !state.results && !state.error && !state.isFetchingPage" class="no-results">
-          No results found
+        
+        <div v-if="state.isLoading">
+          Loading...
         </div>
+
+        <!-- Can't seem to get this part to work, just keeps showing up indefinitely even if results are found-->
+        <!-- <div v-else-if="!state.isFirstLoad && !state.results && !state.error && !state.isFetchingPage" class="no-results">
+          No results found
+        </div> -->
         
         <template v-else>
           <!-- Results display -->
-          <!-- <div v-if="state.isFetchingPage" class="loading-spinner-container">
-            <div class="loading-spinner"></div>
-            <div>Loading page {{ state.currentPage }}...</div>
-          </div> -->
           
           <pre v-if="state.results && !state.isFetchingPage"><code class="hljs language-xml" v-html="state.results"></code></pre>
           

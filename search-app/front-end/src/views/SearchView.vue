@@ -80,9 +80,6 @@ const handleSearchInitiated = (searchParamsFromFields) => {
         <!-- Main Section -->
         <main class="content">
             <SearchFields @search-initiated="handleSearchInitiated" />
-            <!-- <div v-if="state.isLoading" class="loading-spinner-container">
-                <div class="loading-spinner"></div>
-            </div> -->
             <div v-if="state.userMessage && !state.isLoading" class="user-message" role="alert">
                 {{ state.userMessage }}
                 <!-- Add additional guidance for server errors -->
