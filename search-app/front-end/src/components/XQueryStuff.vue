@@ -3,9 +3,6 @@ import { reactive, onMounted, computed } from 'vue';
 import axios from 'axios';
 import vkbeautify from 'vkbeautify';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css'; // ADDED CSS
-import 'highlight.js/styles/github-dark.css';
-import 'highlight.js/styles/atom-one-light.css';
 import CodeEditor from "simple-code-editor";
 import { useDark } from '@vueuse/core'
 const isDark = useDark({selector: 'body'})
@@ -272,7 +269,7 @@ const downloadResults = () => {
           <div class="loading-spinner"></div>
         </div> -->
 
-        <div v-if="!state.isFirstLoad && !state.results && !state.error" class="no-results">
+        <div v-if="!state.isFirstLoad && !state.results && !state.error && !state.isFetchingPage" class="no-results">
           No results found
         </div>
         
@@ -312,107 +309,3 @@ const downloadResults = () => {
     </main>
   </div>
 </template>
-
-<!-- ADD THESE STYLES -->
-<style scoped>
-.xquery-page {
-  .results-section {
-    .hljs {
-      padding: 1rem;
-      border-radius: 4px;
-      background-color: #f7f7f7;
-      color: #000000;
-      transition: all 0.3s;
-
-      /* Dark mode overrides */
-      body.dark & {
-        background-color: #2c2c2c;
-        color: #e0e0e0;
-      }
-    }
-
-    pre {
-      margin: 0;
-      background: transparent;
-    }
-
-    code {
-      display: block;
-      white-space: pre-wrap;
-      font-family: 'Fira Code', monospace;
-      line-height: 1.5;
-    }
-    
-    .results-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      
-      .results-meta {
-        font-size: 0.9rem;
-        color: #6c757d;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-    }
-    
-    .no-results {
-      text-align: center;
-      padding: 2rem;
-      color: #6c757d;
-    }
-    
-    .pagination-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 1rem;
-      gap: 1rem;
-      
-      .page-indicator {
-        font-size: 0.9rem;
-      }
-      
-      .pagination-btn {
-        padding: 0.5rem 1rem;
-        background-color: #6e0d25;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        
-        &:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        
-        &:hover:not(:disabled) {
-          background-color: #5a0a1e;
-        }
-      }
-    }
-    
-    .download-btn {
-      padding: 0.25rem 0.5rem;
-      background-color: #6e0d25;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      
-      &:hover {
-        background-color: #5a0a1e;
-      }
-    }
-  }
-  
-  /* .loading-spinner-container {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-  } */
-}
-</style>
