@@ -132,19 +132,20 @@ def get_word_count_margin(query_word_count):
 
     #increase margin for longer phrases
     word_margin = 0
-    if query_word_count > 1:
-        word_margin = ceil(query_word_count*0.1)
-    if query_word_count > 5:
-        word_margin = ceil(query_word_count*0.2)
-    elif query_word_count > 10:
-        word_margin = ceil(query_word_count*0.3)
+    if query_word_count > 20:
+        word_margin = ceil(query_word_count*0.6)
     elif query_word_count > 15:
         word_margin = ceil(query_word_count*0.4)
-    elif query_word_count > 20:
-        word_margin = ceil(query_word_count*0.6)
+    elif query_word_count > 10:
+        word_margin = ceil(query_word_count*0.3)
+    elif query_word_count > 5:
+        word_margin = ceil(query_word_count*0.2)
+    elif query_word_count > 1:
+        word_margin = ceil(query_word_count*0.1)
     return word_margin
 
 def is_overlapping(start_index, stop_index, best_start_index, best_stop_index):
     # check if the start and stop indices of the current phrase overlap with the best phrase
-    return (start_index <= best_stop_index and stop_index >= best_start_index)
+    return (start_index < best_stop_index and stop_index > best_start_index)
+
 

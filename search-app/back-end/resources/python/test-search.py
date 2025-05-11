@@ -111,28 +111,30 @@ params = {
 # 4 variance = at least 60 similarity score
 # so, converted variance = abs(variance*10 - 100)
 
-print('searching')
-search_obj = Search(params, json_entries)
-search_obj.start()
-matches = search_obj.get_matches()
-print('sort method: '+params.get('sort'))
-print('number of entries matched: '+str(len(matches)))
-if matches != None:
-    json.dumps(matches, indent=4)
+# print('searching')
+# search_obj = Search(params, json_entries)
+# search_obj.start()
+# matches = search_obj.get_matches()
+# print('sort method: '+params.get('sort'))
+# print('number of entries matched: '+str(len(matches)))
+# if matches != None:
+#     json.dumps(matches, indent=4)
 
-    for entry_id, match_data in matches.items():
-        # volume ascending / descending
-        #print(f"volume: {json_entries[entry_id]['volume']}, page: {json_entries[entry_id]['page']}, accuracy_score: {match_data['accuracy_score']}")
+#     for entry_id, match_data in matches.items():
+#         # volume ascending / descending
+#         #print(f"volume: {json_entries[entry_id]['volume']}, page: {json_entries[entry_id]['page']}, accuracy_score: {match_data['accuracy_score']}")
         
-        # chronological ascending / descending
-        #print(f"date: {json_entries[entry_id]['date'].get('when') or json_entries[entry_id]['date'].get('from')}, accuracy_score: {match_data['accuracy_score']}, 'entry_id': {entry_id}")
+#         # chronological ascending / descending
+#         #print(f"date: {json_entries[entry_id]['date'].get('when') or json_entries[entry_id]['date'].get('from')}, accuracy_score: {match_data['accuracy_score']}, 'entry_id': {entry_id}")
         
-        # best
-        #print(f"accuracy_score: {match_data['accuracy_score']}, frequency: {match_data['match_frequency']}")
+#         # best
+#         #print(f"accuracy_score: {match_data['accuracy_score']}, frequency: {match_data['match_frequency']}")
         
-        # frequency
-        print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
-        print(json_entries[entry_id]['content'])
+#         # frequency
+#         print(f"frequency: {match_data['match_frequency']}, accuracy_score: {match_data['accuracy_score']}")
+#         print(json_entries[entry_id]['content'])
+
+
 # print('test 2')
 # search_obj = Search(params2, json_entries)
 # search_obj.start()
@@ -151,16 +153,16 @@ if matches != None:
 # print(sorted_match)
 
 
-# score = search_word_middle.get_fuzzy_score('hollly', 0, 5, 'holly')
-# print(score)
-# score = search_word_middle.get_fuzzy_score('holi', 0, 5, 'holly')
-# print(score)
-# score = search_word_middle.get_fuzzy_score('holee', 0, 5, 'holly')
-# print(score)
-# score = search_word_middle.get_fuzzy_score('holy', 0, 5, 'holly')
-# print(score)
-# score = search_word_middle.get_fuzzy_score('colly', 0, 5, 'holly')
-# print(score)
+score = search_word_middle.get_fuzzy_score('hollly', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holi', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holee', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('holy', 0, 5, 'holly')
+print(score)
+score = search_word_middle.get_fuzzy_score('colly', 0, 5, 'holly')
+print(score)
 
 #shorter words should be more lenient
 # the longer the word
