@@ -96,8 +96,18 @@ const processResults = (xmlString) => {
     state.totalResults = countElement ? parseInt(countElement.textContent) : 0;
     
     // Get all item elements (divs or whatever your XQuery returns)
-    const items = Array.from(xmlDoc.querySelectorAll("items > div"));
-    
+    const temp_items = Array.from(xmlDoc.querySelectorAll("items > div"));
+
+    let items; // declare outside the if/else so it's in scope
+
+    if (temp_items.length === 0) {
+      // No <div>s — use the <items> element itself
+      items = Array.from(xmlDoc.querySelectorAll("items"));
+    } else {
+      items = temp_items;
+    }
+
+    console.error("itmes:", items);
     // Convert each item to its XML string representation
     state.processedResults = items.map(item => {
       const serializer = new XMLSerializer();
@@ -276,6 +286,7 @@ const downloadResults = () => {
 
         <div v-else-if="!state.isFirstLoad && !state.results && !state.error" class="no-results">
           No results found
+          
         </div>
         
         <template v-else>
