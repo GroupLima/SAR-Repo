@@ -103,6 +103,14 @@ const search = async() => {
             state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
             state.displayResults = state.results.length > 0;
             
+            // Ensure current_page is within valid range
+            if (state.current_page > state.total_pages) {
+                state.current_page = state.total_pages;
+            }
+            if (state.current_page < 1) {
+                state.current_page = 1;
+            }
+            
             if (state.results.length === 0) {
                 emit('update:message', 'Sorry, no results found');
             }
@@ -146,6 +154,7 @@ const search = async() => {
                         state.total_results = retryResponse.data.total_results || 0;
                         state.frozen_variant = retryResponse.data.variant * 10 || 0;
                         state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
+                        state.current_page = 1; // Explicitly set to page 1 since we're retrying with page=1
                         
                         if (state.results.length === 0) {
                             emit('update:message', 'Sorry, no results found');
@@ -211,6 +220,8 @@ const nextPage = () => {
 const prevPage = () => {
     if (state.current_page > 1) {
         state.current_page--;
+        // Make sure the value is properly updated before search
+        goToPageNumber.value = state.current_page;
         search();
     }
 }
@@ -272,7 +283,7 @@ const showHelpPage = () => {
                         :htmlContent="result.highlighted_html"
                         :htmlvolume="result.volume" 
                         :htmlpage="result.page"
-                        :date="result.date"
+                        :date="typeof result.date === 'string' ? { value: result.date } : result.date"
                         :htmllang="result.lang || 'en'"
                     />
                 </div>
