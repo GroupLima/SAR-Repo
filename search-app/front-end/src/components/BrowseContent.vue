@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, onMounted, ref, computed, watch } from 'vue';
 import RecordList from '@/components/RecordList.vue';
-import pageImage from '@/assets/images/try_one.jpeg';
+import pageImage from '@/assets/images/whiskey.jpeg';
 import LoadingAnimation from '@/components/LoadingAnimation.vue';
 import browseCache from '@/services/browseCache.js';
 import axios from 'axios';
