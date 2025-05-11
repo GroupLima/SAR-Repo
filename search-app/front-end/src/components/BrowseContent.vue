@@ -300,11 +300,11 @@ onMounted(async () => {
 
       <div class="container-browser">
         <div class="volume-nav">
-          <select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
+          <label><select class="volume-select" v-model="browseState.currentVolume" @change="onChangeVolume" :disabled="browseState.pagesLoading">
             <option v-for="volId in volumes" :key="volId" :value="volId">
               Volume {{ volId }}
             </option>
-          </select>
+          </select></label>
         </div>
 
         <div>Volume: {{ browseState.currentVolume }}<span v-if="currentPageName != ''">, Page: {{ currentPageName }}</span></div>
@@ -328,8 +328,8 @@ onMounted(async () => {
               <button class="nav-btn" @click="goToFirstPage">&lt;&lt;</button>
               <button class="nav-btn" @click="goToPrevPage" :disabled="browseState.currentPageIndex <= 1">&lt;</button>
 
-              <input type="string" v-model="browseState.currentPageName" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
-              <span>of {{ browseState.pages[browseState.pages.length - 1]?.page || browseState.pages.length }}</span>
+              <label><input type="string" v-model="browseState.currentPageName" @keyup.enter="goToSpecificPage" style="width: 48px; padding: 2px 4px; font-size: 0.9rem; text-align: center;"/>
+              <span>of {{ browseState.pages[browseState.pages.length - 1]?.page || browseState.pages.length }}</span></label>
               <!-- <button class="page-go-btn" @click="goToSpecificPage">Go</button> -->
 
               <button class="nav-btn" @click="goToNextPage" :disabled="browseState.currentPageIndex >= browseState.pages.length">&gt;</button>
