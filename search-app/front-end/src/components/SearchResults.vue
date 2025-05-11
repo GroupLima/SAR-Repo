@@ -28,10 +28,10 @@ const state = reactive({
     total_results: 0,
     frozen_variant: 0,
     error: "",
-    isLoading: false,
+    isLoading: true,
     current_page: 1,
     results_per_page: Number(props.queryParams.resultsPerPage) || 5,
-    sortBy: props.queryParams.sortBy || 'Frequency in result',
+    sort_by: props.queryParams.sortBy || 'Frequency in result',
     total_pages: 1,
     searchMethod: props.queryParams.methodSearch || 'word_start',
     variants: props.queryParams.variant || '0',
@@ -83,7 +83,7 @@ const search = async() => {
         rpp: state.results_per_page,
         variant: state.variants,
         methodSearch: state.searchMethod,
-        sortBy: state.sortBy,
+        sort_by: state.sort_by,
     };
     
     try {
@@ -258,23 +258,32 @@ const showHelpPage = () => {
 
         <!-- Results -->
         <div class="results-section mt-3">
-            <h2 class="results-title">Results page {{ state.current_page }}</h2>
             <!-- <p v-if="numberOfXQuery">Number of Results: @{{ numberOfXQuery }}</p> -->
             <div v-if="!state.isLoading">
-                <p>Showing {{ firstResultOfPage }} to {{ lastResultOfPage }} of {{ state.total_results }} entries with {{ state.frozen_variant }}% variance</p>
-                <!-- show message if result exists -->
-                <SearchResultCard 
-                    class="result-item" 
-                    v-for="(result, docId) in state.results"
-                    :key="docId"
-                    :id="docId"
-                    :htmlContent="result.highlighted_html"
-                    :htmlvolume="result.volume" 
-                    :htmlpage="result.page"
-                    :date="result.date"
-                    :htmllang="result.lang"
-                />
-                <!-- <p>Debug: {{ state.results }}</p> -->
+                <div v-if="state.total_results > 0">
+                    <h2 class="results-title">Results page {{ state.current_page }}</h2>
+                    <p>Showing {{ firstResultOfPage }} to {{ lastResultOfPage }} of {{ state.total_results }} entries with {{ state.frozen_variant }}% variance</p>
+                    <!-- show message if result exists -->
+                    <SearchResultCard 
+                        class="result-item" 
+                        v-for="(result, docId) in state.results"
+                        :key="docId"
+                        :id="docId"
+                        :htmlContent="result.highlighted_html"
+                        :htmlvolume="result.volume" 
+                        :htmlpage="result.page"
+                        :date="result.date"
+                        :htmllang="result.lang || 'en'"
+                    />
+                </div>
+                <div v-else>
+                    <h2 class="results-title">No results found</h2>
+                    <p>
+                        Your search
+                        <span v-if="props.queryParams.basicSearch != '*'"> - {{ props.queryParams.basicSearch }} - </span>
+                        did not match any documents
+                    </p>
+                </div>
             </div>
             <div v-else>
                 Loading...
@@ -282,29 +291,29 @@ const showHelpPage = () => {
         </div>
 
         <!-- Changing Pages -->
-        <div v-if="state.total_pages > 1 & !state.isLoading" class="page-changer">
-            <!-- previous button -->
-            <button @click="prevPage" :disabled="state.current_page <= 1">
-                Previous
-            </button>
-            <!-- numbered buttons -->
-            <button class="page-number" v-for="activePage in displayedPageNumbers" :key="activePage"
-                :class="{ active: activePage === state.current_page }" @click="selectedPage(activePage)"
-                :disabled="activePage === state.current_page">
-                {{ activePage }}
-            </button>
-            <!-- next button -->
-            <button @click="nextPage" :disabled="state.current_page >= state.total_pages">
-                Next
-            </button>
-        </div>
+        <div v-if="state.total_results > 0 & !state.isLoading">
+            <div class="page-changer">
+                <!-- previous button -->
+                <button @click="prevPage" :disabled="state.current_page <= 1">
+                    Previous
+                </button>
+                <!-- numbered buttons -->
+                <button class="page-number" v-for="activePage in displayedPageNumbers" :key="activePage"
+                    :class="{ active: activePage === state.current_page }" @click="selectedPage(activePage)"
+                    :disabled="activePage === state.current_page">
+                    {{ activePage }}
+                </button>
+                <!-- next button -->
+                <button @click="nextPage" :disabled="state.current_page >= state.total_pages">
+                    Next
+                </button>
+            </div>
 
-        <!-- Go to specific page -->
-        <div class="go-to-page">
-            <input type="number" v-model="goToPageNumber" min="1" :max="state.total_pages" @keypress="handleKeyPress" @input="handleInput" />
-            <button @click="goToSpecificPage">Go to page</button>
+            <!-- Go to specific page -->
+            <div class="go-to-page">
+                <input type="number" v-model="goToPageNumber" min="1" :max="state.total_pages" @keypress="handleKeyPress" @input="handleInput" />
+                <button @click="goToSpecificPage">Go to page</button>
+            </div>
         </div>
-
     </div>
-
 </template>

@@ -268,16 +268,15 @@ const downloadResults = () => {
         <div v-if="state.isLoading">
           Loading...
         </div>
-
-        <!-- Can't seem to get this part to work, just keeps showing up indefinitely even if results are found-->
-        <!-- <div v-else-if="!state.isFirstLoad && !state.results && !state.error && !state.isFetchingPage" class="no-results">
-          No results found
-        </div> -->
         
         <template v-else>
           <!-- Results display -->
-          
           <pre v-if="state.results && !state.isFetchingPage"><code class="hljs language-xml" v-html="state.results"></code></pre>
+          
+          <!-- No results message -->
+          <div v-else-if="!state.isFirstLoad && !state.error && !state.isFetchingPage" class="no-results">
+            No results found
+          </div>
           
           <!-- Pagination controls -->
           <div v-if="state.totalPages > 1" class="pagination-controls">
