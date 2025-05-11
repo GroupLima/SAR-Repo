@@ -268,20 +268,20 @@ const downloadResults = () => {
           </div>
         </div>
 
-        <div v-if="state.isLoading" class="loading-spinner-container">
+        <!-- <div v-if="state.isLoading" class="loading-spinner-container">
           <div class="loading-spinner"></div>
-        </div>
+        </div> -->
 
-        <div v-else-if="!state.isFirstLoad && !state.results && !state.error" class="no-results">
+        <div v-if="!state.isFirstLoad && !state.results && !state.error" class="no-results">
           No results found
         </div>
         
         <template v-else>
           <!-- Results display -->
-          <div v-if="state.isFetchingPage" class="loading-spinner-container">
+          <!-- <div v-if="state.isFetchingPage" class="loading-spinner-container">
             <div class="loading-spinner"></div>
             <div>Loading page {{ state.currentPage }}...</div>
-          </div>
+          </div> -->
           
           <pre v-if="state.results && !state.isFetchingPage"><code class="hljs language-xml" v-html="state.results"></code></pre>
           
@@ -409,10 +409,10 @@ const downloadResults = () => {
     }
   }
   
-  .loading-spinner-container {
+  /* .loading-spinner-container {
     display: flex;
     justify-content: center;
     padding: 2rem 0;
-  }
+  } */
 }
 </style>

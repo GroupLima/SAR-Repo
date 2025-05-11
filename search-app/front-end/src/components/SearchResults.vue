@@ -1,30 +1,41 @@
 <script setup>
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import { reactive, onMounted, computed, ref } from 'vue';
+import { reactive, onMounted, computed, ref, watch } from 'vue';
 import axios from 'axios';
 import '@/assets/sass/app.scss';
 import router from '@/router';
+
+const emit = defineEmits(['update:loading', 'update:message']);
 
 const props = defineProps({
     queryParams: {
         type: Object,
         required: true
+    },
+    isLoading: {
+        type: Boolean,
+        default: false
+    },
+    userMessage: {
+        type: String,
+        default: ''
     }
 });
 
 const state = reactive({
     results: [],
     num_results: 0,
-    total_results: 0, //dummy data
+    total_results: 0,
     frozen_variant: 0,
     error: "",
-    isLoading: true,
+    isLoading: false,
     current_page: 1,
     results_per_page: Number(props.queryParams.resultsPerPage) || 5,
     sort_by: props.queryParams.sortBy || 'Frequency in result',
     total_pages: 1,
     searchMethod: props.queryParams.methodSearch || 'word_start',
-    variants: props.queryParams.variant || '0'
+    variants: props.queryParams.variant || '0',
+    displayResults: false
 });
 
 const goToPageNumber = ref(1);
@@ -57,41 +68,112 @@ const filterChange = () => {
 
 const search = async() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
+    state.isLoading = true;
+    state.error = '';
+    emit('update:loading', true);
+    emit('update:message', '');
+    
     // Use a relative URL that will work on both localhost and production domain
-    const baseSearchUrl = '/api/search'
-    //console.log('im in search results');
+    const baseSearchUrl = '/api/search';
+    
+    // Ensure query params include pagination information
     const searchParams = {
         ...props.queryParams,
         page: state.current_page,
         rpp: state.results_per_page,
         variant: state.variants,
         methodSearch: state.searchMethod,
-        sort_by: state.sortBy,
+        sort_by: state.sort_by,
     };
+    
     try {
-        const response = await axios.get(baseSearchUrl, { params: searchParams,});
-        console.log("results", response);
-        //console.log("data", response.data);
-        if (response.data.success) {
-            state.results = response.data.results;
-            // Handle the response data (assuming it's structured like this)
+        // Add timeout to prevent long-hanging requests
+        const response = await axios.get(baseSearchUrl, { 
+            params: searchParams,
+            timeout: 30000 // 30 seconds timeout
+        });
+        
+        console.log("Search results:", response);
+        
+        if (response.data && (response.data.results || response.data.success)) {
             state.results = response.data.results || [];
-            state.num_results = response.data.num_results;
+            state.num_results = response.data.num_results || 0;
             state.total_results = response.data.total_results || 0;
-            state.frozen_variant = response.data.variant*10;
-            state.total_pages = Math.ceil(state.total_results / state.results_per_page);
-            //console.log('date', state.results['ARO-5-0333-01'].date);
+            state.frozen_variant = response.data.variant * 10 || 0;
+            state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
+            state.displayResults = state.results.length > 0;
+            
+            if (state.results.length === 0) {
+                emit('update:message', 'Sorry, no results found');
+            }
         } else {
-            console.log("no debug results");
-            console.log(response);
-            // Handle the case where the message is empty or malformed
-            //state.error = "No results found!";
+            console.log("No results or unexpected response format:", response);
+            state.results = [];
+            state.displayResults = false;
+            emit('update:message', 'Sorry, no results found');
         }
     } catch (error) {
-        console.error("error fetching results", error);
+        state.results = []; // Ensure results are cleared on error
+        state.displayResults = false;
+        
+        if (error.code === 'ECONNABORTED') {
+            console.warn('Request timeout or cancelled:', error);
+            emit('update:message', 'The search request timed out. Please try again with a more specific query.');
+        } else if (axios.isCancel && axios.isCancel(error)) { 
+            console.log('Search request was cancelled:', error.message);
+            emit('update:message', 'Search request cancelled.');
+        } else if (error.response && error.response.status === 500) {
+            console.error('Backend server error (HTTP 500):', error);
+            
+            // If the error is about "Undefined array key page", provide a more specific message
+            if (error.response.data && error.response.data.message && 
+                error.response.data.message.includes('Undefined array key "page"')) {
+                console.error('Page parameter missing:', error.response.data);
+                // Retry the request with the page parameter explicitly added
+                try {
+                    const retryParams = {
+                        ...searchParams,
+                        page: 1  // Explicitly set page parameter
+                    };
+                    console.log('Retrying with explicit page parameter:', retryParams);
+                    const retryResponse = await axios.get(baseSearchUrl, { 
+                        params: retryParams,
+                        timeout: 30000
+                    });
+                    if (retryResponse.data && retryResponse.data.results) {
+                        state.results = retryResponse.data.results || [];
+                        state.num_results = retryResponse.data.num_results || 0;
+                        state.total_results = retryResponse.data.total_results || 0;
+                        state.frozen_variant = retryResponse.data.variant * 10 || 0;
+                        state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
+                        
+                        if (state.results.length === 0) {
+                            emit('update:message', 'Sorry, no results found');
+                        } else {
+                            state.displayResults = true;
+                        }
+                    } else {
+                        emit('update:message', 'Sorry, no results found');
+                    }
+                } catch (retryError) {
+                    console.error('Retry also failed:', retryError);
+                    emit('update:message', 'The search service is experiencing issues. Please try again later.');
+                }
+            } else {
+                emit('update:message', 'The search service is currently experiencing issues. Please try again later or contact support if the problem persists.');
+                
+                // Log more specific error details for debugging if available
+                if (error.response && error.response.data) {
+                    console.error('Server error details:', error.response.data);
+                }
+            }
+        } else {
+            console.error('An unexpected error occurred while fetching search results:', error);
+            emit('update:message', 'An error occurred while fetching search results. Please try again.');
+        }
     } finally {
-        //console.log("setting load value to false");
         state.isLoading = false;
+        emit('update:loading', false);
     }
 }
 
@@ -195,7 +277,7 @@ const showHelpPage = () => {
                 <!-- <p>Debug: {{ state.results }}</p> -->
             </div>
             <div v-else>
-                loading...
+                Loading...
             </div>
         </div>
 
