@@ -761,14 +761,6 @@ footer {
             border: none;
             border-radius: 26px; // Circular for icon buttons
             cursor: pointer;
-
-            &:hover {
-              background-color: color.adjust($primary-colour, $lightness: -10%);
-            }
-
-            body.dark & {
-              background-color: $dark-gray;
-            }
           }
         }
       }
