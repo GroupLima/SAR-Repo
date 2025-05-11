@@ -38,7 +38,15 @@ const state = reactive({
     displayResults: false
 });
 
-const goToPageNumber = ref(1);
+const goToPageNumber = ref(state.current_page);
+
+// keep input in sync when page changes programmatically
+watch(
+  () => state.current_page,
+  (newPage) => {
+    goToPageNumber.value = newPage;
+  }
+);
 
 // preferences
 const searchMethods = [
@@ -99,7 +107,7 @@ const search = async() => {
             state.results = response.data.results || [];
             state.num_results = response.data.num_results || 0;
             state.total_results = response.data.total_results || 0;
-            state.frozen_variant = response.data.variant * 10 || 0;
+            state.frozen_variant = (response.data.variant || 0) * 10;
             state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
             state.displayResults = state.results.length > 0;
             
@@ -152,7 +160,7 @@ const search = async() => {
                         state.results = retryResponse.data.results || [];
                         state.num_results = retryResponse.data.num_results || 0;
                         state.total_results = retryResponse.data.total_results || 0;
-                        state.frozen_variant = retryResponse.data.variant * 10 || 0;
+                        state.frozen_variant = (retryResponse.data.variant || 0) * 10;
                         state.total_pages = Math.ceil(state.total_results / state.results_per_page) || 1;
                         state.current_page = 1; // Explicitly set to page 1 since we're retrying with page=1
                         
@@ -184,10 +192,9 @@ const search = async() => {
         state.isLoading = false;
         emit('update:loading', false);
     }
-}
+};
 
 onMounted(search);
-//search
 
 // return an array of all page numbers
 const pageNumbers = computed(() => {
@@ -201,7 +208,7 @@ const pageNumbers = computed(() => {
 const displayedPageNumbers = computed(() => {
     const startPage = Math.max(1, state.current_page-4);
     const endPage = Math.min(state.total_pages, state.current_page+4);
-    return pageNumbers.value.slice(startPage-1, endPage,);
+    return pageNumbers.value.slice(startPage-1, endPage);
 });
 
 // SelectedPage
@@ -212,17 +219,13 @@ const selectedPage = (pageNumber) => {
 // Next page
 const nextPage = () => {
     if (state.current_page < state.total_pages) {
-        state.current_page++;
-        search();
+        selectedPage(state.current_page + 1);
     }
 }
 // Previous page
 const prevPage = () => {
     if (state.current_page > 1) {
-        state.current_page--;
-        // Make sure the value is properly updated before search
-        goToPageNumber.value = state.current_page;
-        search();
+        selectedPage(state.current_page - 1);
     }
 }
 // first result of page
@@ -302,7 +305,7 @@ const showHelpPage = () => {
         </div>
 
         <!-- Changing Pages -->
-        <div v-if="state.total_results > 0 & !state.isLoading">
+        <div v-if="state.total_results > 0">
             <div class="page-changer">
                 <!-- previous button -->
                 <button @click="prevPage" :disabled="state.current_page <= 1">
