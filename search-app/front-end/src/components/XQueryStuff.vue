@@ -153,6 +153,7 @@ const fetchPage = async (page) => {
       // Create a partial XML string for rendering
       const pageContent = pageItems.join('\n');
       const xmlPretty = vkbeautify.xml(pageContent, 5);
+      console.log("XML STRING RECEIVED:", xmlPretty); // <-- AND THIS
       
       // Highlight the XML
       state.results = hljs.highlight(xmlPretty, {
@@ -172,6 +173,7 @@ const fetchPage = async (page) => {
 };
 
 const runQuery = async () => {
+  console.log("Running query...")
   const XQueryURL = '/api/xquery' // FIXED TYPO IN VARIABLE NAME
   state.isLoading = true;
   state.results = '';
@@ -188,7 +190,7 @@ const runQuery = async () => {
       },
       timeout: 60000 // Increase timeout to 60 seconds for complex queries
     });
-
+    console.log("RESPONSE:", response.data);
     if (response.data.success) {
       // Store query ID for subsequent page requests
       state.queryId = response.data.queryId || null;
