@@ -7,6 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Cache;
 
 
 class SearchController extends Controller
