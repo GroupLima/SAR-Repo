@@ -172,13 +172,13 @@ const copyCurrentContent = () => {
   </div>
 
   <div class="checkbox-container">
-    <label data-tooltip="Save entry to export later as a PDF">Add to selected</label>
+    <label data-tooltip="Save entry to export later as a PDF">Add to selected
     <input 
         type="checkbox" 
         :id="`record-${record.id}-checkbox`"
         :checked="isRecordSelected()"
         @change="toggleRecordSelection"
-    >
+    ></label>
   </div>
 </div>
 </template>

@@ -220,34 +220,34 @@ onMounted(() => {
             </div>
             <div class="preferences" style="text-align: center;">
                 <div class="preference-item">
-                    <label data-tooltip="Distinguish between uppercase and lowercase characters">Case Sensitive:</label>
-                    <input type="checkbox" v-model="form.caseSensitive">
+                    <label data-tooltip="Distinguish between uppercase and lowercase characters">Case Sensitive:
+                    <input type="checkbox" v-model="form.caseSensitive"></label>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Choose how your search term is matched to text">Search Method:</label>
+                    <label for="search method" data-tooltip="Choose how your search term is matched to text">Search Method:
                     <select v-model="form.methodSearch">
                         <option v-for="sm in searchMethods" :key="sm.value" :value="sm.value">{{ sm.text }}</option>
-                    </select>
+                    </select></label>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Control the level of spelling variation in the results from your search term">Spelling Variance:</label>
+                    <label data-tooltip="Control the level of spelling variation in the results from your search term">Spelling Variance:
                     <select v-model="form.variant" :disabled="isRegexSelected">
                         <option v-for="(variant, index) in varOptions" :key="variant" :value="variant">
                             {{ displayOptions[index] }}
                         </option>
-                    </select>
+                    </select></label>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Select how many results to show per page">Results Per Page:</label>
+                    <label data-tooltip="Select how many results to show per page">Results Per Page:
                     <select v-model="form.resultsPerPage">
                         <option v-for="rpp in rrpOptions" :key="rpp" :value="rpp">{{ rpp }}</option>
-                    </select>
+                    </select></label>
                 </div>
                 <div class="preference-item">
-                    <label data-tooltip="Choose how the results should be ordered">Sort By:</label>
+                    <label for="sort by" data-tooltip="Choose how the results should be ordered">Sort By:
                     <select v-model="form.sortBy">
                         <option v-for="(ord, index) in ordOptions" :key="ord" :value="ord">{{ ordDisplayOptions[index] }}</option>
-                    </select>
+                    </select></label>
                 </div>
             </div>
             <div id="advanced" class="advanced-search-container"> <!-- form for advanced filters -->
