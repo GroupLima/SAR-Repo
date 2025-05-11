@@ -141,7 +141,7 @@ const setSearchBoxValue = () => {
     form.endDate = urlParams.get('endDate') || form.endDate;
     form.docId = urlParams.get('docId') || form.docId;
     form.sortBy = urlParams.get('sortBy') || form.sortBy;
-    form.resultsPerPage = Number(route.query.resultsPerPage) || form.resultsPerPage;
+    form.resultsPerPage = urlParams.get('resultsPerPage') || form.resultsPerPage;
     
 };
 

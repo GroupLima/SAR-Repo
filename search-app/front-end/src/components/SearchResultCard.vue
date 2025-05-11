@@ -1,6 +1,6 @@
 <script setup>
 import router from '@/router';
-import { ref, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 
 
 const props = defineProps({
@@ -54,7 +54,7 @@ const openContentInBrowse = () => {
 }
 
 // return date string and date certainty
-const formatDate = () => {
+const formatDate = computed(() => {
     const certainty = props.date?.cert ?? null;
     const when = props.date?.when ?? null;
     let dateStr = "unknown";
@@ -72,17 +72,12 @@ const formatDate = () => {
             dateStr = to;
         }
     }
-    console.log(date, certainty);
-    return {date: dateStr, certainty: certainty};
-}
-const date = ref("");
-const certainty = ref("");
-
-onMounted(() =>{
-    const dateResult = formatDate();
-    date.value = dateResult.date;
-    certainty.value = dateResult.certainty;
+    return {
+        date: dateStr, 
+        certainty: certainty ? certainty.charAt(0).toUpperCase() + certainty.slice(1): '' 
+    };
 });
+
 </script>
 <!-- view for one entry of the results -->
 <template>
@@ -93,7 +88,7 @@ onMounted(() =>{
                 ID: {{ id }},&nbsp;
                 Volume: {{ htmlvolume }},&nbsp;
                 Page: {{ htmlpage }},&nbsp;
-                Date: {{ date }} (Certainty: {{ certainty ? certainty.charAt(0).toUpperCase() + certainty.slice(1): '' }}),&nbsp;
+                Date: {{ formatDate.date }} (Certainty: {{ formatDate.certainty }}),&nbsp;
                 Language: {{ htmllang }}
             </p>
             <div class="result-buttons">
