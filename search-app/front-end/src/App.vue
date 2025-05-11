@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import { ref, provide, watch } from 'vue'
 import Navbar from './components/Navbar.vue';
+import HelpPage from './components/HelpPage.vue';
 import Footer from '@/components/Footer.vue';
 
 // Initialize selectedRecords - Try to load from localStorage first
@@ -18,11 +19,16 @@ provide('selectedRecords', selectedRecords);
 </script>
 
 <template>
-  <div class="app-container">
+  <div >
     <Navbar/>
-    <div class="content-wrapper">
+    <div>
       <RouterView />
     </div>
-    <Footer />
+    <div>
+      <HelpPage/>
+    </div>
+  </div>
+  <div>
+      <Footer />
   </div>
 </template>

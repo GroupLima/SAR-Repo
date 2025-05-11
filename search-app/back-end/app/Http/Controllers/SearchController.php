@@ -7,7 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\Process\Process;
-use Illuminate\Support\Facades\Cache;
+
 
 class SearchController extends Controller
 {
@@ -274,51 +274,13 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
     {
         // Log or process the received data
         $data = $request->all(); // Get all incoming request data
-        $queryType = $data['query_type']; // "xquery" or "xquery_page"
-        $queryId = $data['queryId'] ?? null;
-        $page = intval($data['page'] ?? 1);
-        $pageSize = intval($data['pageSize'] ?? 20);
-        
-        // If this is a page request for a previous query, check the cache
-        if ($queryType === "xquery_page" && $queryId) {
-            if (Cache::has("xquery_results_$queryId")) {
-                $cachedResults = Cache::get("xquery_results_$queryId");
-                // Calculate pagination offsets
-                $totalResults = $cachedResults['count'] ?? 0;
-                $totalPages = ceil($totalResults / $pageSize);
-                
-                // Create a paginated response using the cached results
-                $paginatedXml = $this->paginateXmlResults($cachedResults['xml'], $page, $pageSize);
-                
-                return response()->json([
-                    'success' => true,
-                    'queryResults' => $paginatedXml,
-                    'queryId' => $queryId,
-                    'totalResults' => $totalResults,
-                    'totalPages' => $totalPages
-                ]);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'error' => 'Query results no longer in cache. Please run your query again.'
-                ], 404);
-            }
-        }
-        
-        // For new queries, we need to run the XQuery
-        $query = $data['query'] ?? '';
-        
-        if (empty($query)) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Query cannot be empty'
-            ], 400);
-        }
+        $queryType = $data['query_type']; // "xquery"
+        $query = $data['query'];         // "hello cait"
+        // XQuery to fetch <item> elements from XML files in the collection
 
-        // Generate a new query ID for this request
-        $newQueryId = md5($query . time());
+        //$xquery = 'declare namespace ns = "http://www.tei-c.org/ns/1.0"; for $i in //ns:div[@xml:lang="la"] return $i';
+        //$query = '//ns:div[@xml:lang="la"]';
 
-        // XQuery to fetch elements from XML files
         $xquery = <<<XQUERY
         xquery version "3.1";
         declare namespace ns = "http://www.tei-c.org/ns/1.0";
@@ -337,111 +299,39 @@ search_controller   ->  15. sorted results (html text, other match data, entry d
         $ch = curl_init();
 
         // Set the cURL options for running the XQuery
-        curl_setopt($ch, CURLOPT_URL, "http://exist:8080/exist/rest/db/xmlfiles");
+        //curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/exist/rest/db/xmlfiles");  //////// this is the only line thats changing
+        curl_setopt($ch, CURLOPT_URL, "http://exist:8080/exist/rest/db/xmlfiles");  //////// this is the only line thats changing
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, "admin:"); // Basic authentication
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/x-www-form-urlencoded"]);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['_query' => $xquery]));
-        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // Set a 60-second timeout
 
         // Execute the cURL request and get the response
         $response = curl_exec($ch);
-        $curlError = curl_error($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
-        if ($curlError || $httpCode >= 400) {
-            return response()->json([
-                'success' => false,
-                'error' => "XQuery execution failed: $curlError",
-                'httpCode' => $httpCode
-            ], 500);
-        }
+        // Check for errors
+        //if(curl_errno($ch)) {
+        //    error_log('Errorrrrrrrr:' . curl_error($ch));
+        //} else {
+        //    error_log('Responceeeeee:' . $response); // Print the query result
+        //}
 
-        // Cache the full results for future page requests
-        Cache::put("xquery_results_$newQueryId", [
-            'xml' => $response,
-            'count' => $this->extractResultCount($response)
-        ], 3600); // Cache for 1 hour
 
-        // Paginate the results for the current request
-        $totalResults = $this->extractResultCount($response);
-        $totalPages = ceil($totalResults / $pageSize);
-        $paginatedResponse = $this->paginateXmlResults($response, $page, $pageSize);
+        // // Create a response structure
+    
         
         // Return the response
         return response()->json([
+            //'success' => true,
+            //'error' => curl_errno($ch),
             'success' => true,
-            'queryResults' => $paginatedResponse,
-            'queryId' => $newQueryId,
-            'totalResults' => $totalResults,
-            'totalPages' => $totalPages
+            'queryResults' => $response
         ]);
     }
 
-    /**
-     * Extract the count of results from the XML response
-     */
-    private function extractResultCount($xmlString) {
-        $count = 0;
-        try {
-            $xml = new \SimpleXMLElement($xmlString);
-            $countNode = $xml->count;
-            if ($countNode) {
-                $count = (int)$countNode;
-            }
-        } catch (\Exception $e) {
-            // In case of XML parsing error, return 0
-        }
-        return $count;
-    }
+    
+    
 
-    /**
-     * Paginate XML results for the requested page
-     */
-    private function paginateXmlResults($xmlString, $page, $pageSize) {
-        try {
-            $xml = new \SimpleXMLElement($xmlString);
-            $doc = new \DOMDocument('1.0', 'UTF-8');
-            $doc->formatOutput = true;
-            
-            // Create a new result structure
-            $results = $doc->createElement('results');
-            $doc->appendChild($results);
-            
-            // Add count element
-            $count = $doc->createElement('count', (string)$xml->count);
-            $results->appendChild($count);
-            
-            // Create items container
-            $items = $doc->createElement('items');
-            $results->appendChild($items);
-            
-            // Calculate pagination offsets
-            $totalItems = (int)$xml->count;
-            $start = ($page - 1) * $pageSize;
-            $end = min($start + $pageSize, $totalItems);
-            
-            // Get items for current page
-            $itemsXml = $xml->items->children();
-            $i = 0;
-            foreach ($itemsXml as $item) {
-                if ($i >= $start && $i < $end) {
-                    // Import this node into our new document
-                    $importedNode = $doc->importNode(dom_import_simplexml($item), true);
-                    $items->appendChild($importedNode);
-                }
-                $i++;
-                // Break early if we've reached our quota
-                if ($i >= $end) break;
-            }
-            
-            return $doc->saveXML();
-        } catch (\Exception $e) {
-            // In case of error, return the original XML
-            return $xmlString;
-        }
-    }
 }
