@@ -41,7 +41,8 @@
 #WORKDIR /app/search-app/exist
 #
 
-FROM openjdk:11-jre-slim
+#FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-jre
 
 ENV EXIST_HOME=/app/existdb
 
